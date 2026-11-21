@@ -5,8 +5,8 @@ import '../estilos/cores-produtos.css';
 import Cabecalho from '../componentes/Cabecalho.astro';
 import site from '../config/site.json';
 
-interface Props { titulo?: string; descricao?: string; temaAtual?: string }
-const { titulo, descricao = site.slogan, temaAtual } = Astro.props;
+interface Props { titulo?: string; descricao?: string; temaAtual?: string; naoIndexar?: boolean }
+const { titulo, descricao = site.slogan, temaAtual, naoIndexar = false } = Astro.props;
 const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · ${site.slogan}`;
 ---
 <!doctype html>
@@ -16,6 +16,7 @@ const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · $
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{tituloCompleto}</title>
     <meta name="description" content={descricao} />
+    {naoIndexar && <meta name="robots" content="noindex" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
       // Aplica o tema antes de desenhar a página (evita "piscar").

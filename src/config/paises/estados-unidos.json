@@ -1,0 +1,111 @@
+{
+  "_explicacao": "Configuração dos Estados Unidos (página de teste do molde). Tudo que é exclusivo do país fica aqui.",
+  "codigo": "US",
+  "nome": "Estados Unidos",
+  "dePais": "dos Estados Unidos",
+  "caminho": "/estados-unidos",
+  "subtemas": {
+    "economia": [
+      "visao-geral"
+    ]
+  },
+  "idioma": "pt-BR",
+  "moeda": {
+    "codigo": "USD",
+    "simbolo": "US$"
+  },
+  "formatoNumero": {
+    "separadorDecimal": ",",
+    "separadorMilhar": "."
+  },
+  "niveisGeograficos": [
+    {
+      "id": "pais",
+      "singular": "país",
+      "plural": "países"
+    },
+    {
+      "id": "regiao",
+      "singular": "região",
+      "plural": "regiões"
+    },
+    {
+      "id": "estado",
+      "singular": "estado",
+      "plural": "estados"
+    }
+  ],
+  "arquivos": {
+    "geo": {
+      "estado": "eua-estados"
+    },
+    "economia": {
+      "estado": "eua-estados"
+    }
+  },
+  "cortes": {
+    "economia-estados": {
+      "pib-por-pessoa": [
+        65000,
+        75000,
+        85000,
+        100000,
+        120000
+      ],
+      "crescimento": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "mapa": {
+    "_explicacao": "Ajustes do desenho do mapa. 'chamadas' = estados pequenos do nordeste americano com a sigla fora do mapa (posição x,y no desenho).",
+    "margem": {
+      "cima": 10,
+      "direita": 110,
+      "baixo": 10,
+      "esquerda": 10
+    },
+    "chamadas": {
+      "VT": [
+        990,
+        104
+      ],
+      "NH": [
+        990,
+        132
+      ],
+      "MA": [
+        990,
+        160
+      ],
+      "RI": [
+        990,
+        188
+      ],
+      "CT": [
+        990,
+        216
+      ],
+      "NJ": [
+        990,
+        244
+      ],
+      "DE": [
+        990,
+        272
+      ],
+      "MD": [
+        990,
+        300
+      ],
+      "DC": [
+        990,
+        328
+      ]
+    }
+  }
+}

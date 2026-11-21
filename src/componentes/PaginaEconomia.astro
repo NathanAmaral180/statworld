@@ -1,0 +1,54 @@
+---
+// Página "Economia · Visão geral" de um país: mapa + ranking por estado.
+// Serve para qualquer país: tudo que muda vem do arquivo do país (src/config/paises/).
+import Base from '../layouts/Base.astro';
+import Abas from './Abas.astro';
+import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
+import { preencher } from './mapa-ranking/visao';
+import site from '../config/site.json';
+import tema from '../config/temas/economia-estados.json';
+import { carregarDados } from '../lib/dados';
+import { contextoDoPais } from '../lib/contexto';
+
+interface Props { pais: any; teste?: boolean }
+const { pais, teste = false } = Astro.props;
+
+const NIVEL = 'estado';
+const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
+const economia = carregarDados<any>('economia', pais.arquivos.economia[NIVEL]);
+
+// Cortes das cores: os do tema, a não ser que o país tenha os seus (moeda e escala mudam).
+const cortesPais = pais.cortes?.['economia-estados'] ?? {};
+const medidas = (tema.medidas as Medida[])
+  .filter((m) => economia.indicadores[m.id])
+  .map((m) => ({ ...m, cortes: cortesPais[m.id] ?? m.cortes }));
+const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx)]));
+const opcoes = medidas.map((m) => ({ id: m.id, rotulo: preencher(m.rotulo, { periodo: economia.indicadores[m.id].periodo }), visao: m.id }));
+
+const vars = { pais: pais.nome, dePais: pais.dePais };
+const titulo = preencher(tema.titulo, vars);
+const trilha = tema.trilha.map((t) => preencher(t, vars));
+const disponiveis: string[] = pais.subtemas?.economia ?? ['visao-geral'];
+const abas = site.subtemas.economia.map((i: any) => ({
+  ...i,
+  href: i.href ? pais.caminho + i.href : undefined,
+  ativo: i.ativo && disponiveis.includes(i.id),
+}));
+---
+<Base titulo={titulo} temaAtual="economia" naoIndexar={teste}>
+  <section class="conteudo pagina">
+    {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
+    <p class="trilha">{trilha.join(' / ')}</p>
+    <h1>{titulo}</h1>
+    <Abas itens={abas} atual="visao-geral" rotulo="Economia" emBreve={site.textos.emBreve} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} />
+  </section>
+</Base>
+
+<style>
+  .pagina { padding-top: 40px; padding-bottom: 80px; }
+  .aviso-teste { display: inline-block; margin: 0 0 16px; padding: 6px 12px; font-size: 14px; color: var(--sub); background: var(--surf); border: 1px dashed var(--line2); border-radius: 8px; }
+  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
+  h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+</style>

@@ -2,6 +2,8 @@
   "_explicacao": "Tudo que é exclusivo de um país fica aqui. Para lançar outro país, copie este arquivo e troque os valores. Os moldes (mapa, ranking, ficha, gráfico) leem daqui e nunca têm 'Brasil' escrito dentro deles.",
   "codigo": "BR",
   "nome": "Brasil",
+  "dePais": "do Brasil",
+  "caminho": "",
   "idioma": "pt-BR",
   "moeda": {
     "codigo": "BRL",
@@ -89,5 +91,11 @@
         500
       ]
     }
+  },
+  "subtemas": {
+    "economia": [
+      "visao-geral",
+      "agro"
+    ]
   }
 }
