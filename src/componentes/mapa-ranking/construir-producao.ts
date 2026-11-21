@@ -14,8 +14,8 @@ export interface Produto {
   fontes?: Fonte[]; // quando o produto tem fonte própria
   nota?: string; // aviso sobre o produto (ex.: estados não estimados)
   unidadeQuantidade: string | null; // null = não há quantidade
-  valorBrasil: number | null;
-  quantidadeBrasil: number | null;
+  valorPais: number | null;
+  quantidadePais: number | null;
   valores: Record<string, Valor>; // 0 = não produz; null = sem dado
   quantidades: Record<string, Valor>;
 }
@@ -83,7 +83,7 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
   const classe = (uf: string) => (total(uf) === null ? 'sem' : lider[uf] ? corDoProduto(cfg, lider[uf]!.id) : 'zero');
 
   // Legenda: produtos líderes, na ordem do valor no país; "outros" no fim.
-  const lideres = [...new Set(Object.values(lider).filter(Boolean) as Produto[])].sort((a, b) => (b.valorBrasil ?? 0) - (a.valorBrasil ?? 0));
+  const lideres = [...new Set(Object.values(lider).filter(Boolean) as Produto[])].sort((a, b) => (b.valorPais ?? 0) - (a.valorPais ?? 0));
   const legenda: Visao['legenda'] = lideres.filter((p) => temCor(cfg, p.id)).map((p) => ({ classe: corDoProduto(cfg, p.id), rotulo: p.nome, icone: iconeDoProduto(cfg, p.id) }));
   const outros = lideres.filter((p) => !temCor(cfg, p.id));
   if (outros.length) legenda.push({ classe: 'p-outro', rotulo: `${t.outrosProdutos} (${outros.map((p) => p.nome).join(', ')})`, icone: 'outro' });
@@ -141,7 +141,7 @@ export function construirVisaoProduto(
 ): Visao {
   const t = ctx.textos;
   const vals = modo === 'valor' ? p.valores : p.quantidades;
-  const brasil = modo === 'valor' ? p.valorBrasil : p.quantidadeBrasil;
+  const brasil = modo === 'valor' ? p.valorPais : p.quantidadePais;
   const fmt = modo === 'valor' ? fmtValor : fmtQuant(p);
   const outro = modo === 'valor' ? p.quantidades : p.valores;
   const fmtOutro = modo === 'valor' ? fmtQuant(p) : fmtValor;

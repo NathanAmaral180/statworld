@@ -97,5 +97,16 @@
       "visao-geral",
       "agro"
     ]
+  },
+  "slug": "brasil",
+  "agro": {
+    "notas": {
+      "tudo": "Lavouras, leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. As duas fontes usam preços e métodos diferentes; compare com cuidado. Não inclui silvicultura nem extração vegetal.",
+      "lavouras": "Lavouras temporárias e permanentes (IBGE). Não inclui pecuária.",
+      "pecuaria": "Leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. O MAPA usa preços e métodos diferentes dos do IBGE; compare com cuidado.",
+      "avisoPorFonte": {
+        "MAPA": "O MAPA não estima a produção de alguns estados; eles aparecem como \"sem dado\"."
+      }
+    }
   }
 }

@@ -111,8 +111,8 @@ for (const [aba, def] of Object.entries(PRODUTOS_VBP)) {
 }
 
 const lista = [...produtos.values()]
-  .map((p) => ({ ...p, valorBrasil: soma(p.valores), quantidadeBrasil: p.unidadeQuantidade ? soma(p.quantidades) : null }))
-  .sort((x, y) => (y.valorBrasil ?? 0) - (x.valorBrasil ?? 0));
+  .map((p) => ({ ...p, valorPais: soma(p.valores), quantidadePais: p.unidadeQuantidade ? soma(p.quantidades) : null }))
+  .sort((x, y) => (y.valorPais ?? 0) - (x.valorPais ?? 0));
 
 const saida = {
   _explicacao:
@@ -128,4 +128,4 @@ const saida = {
 await mkdir(new URL('.', SAIDA), { recursive: true });
 await writeFile(SAIDA, JSON.stringify(saida));
 console.log(`Pronto: ${lista.length} produtos da pecuária (${ANO}) salvos em dados/agro/brasil-estados-pecuaria.json`);
-for (const p of lista) console.log(`  ${p.nome}: R$ ${(p.valorBrasil / 1e9).toFixed(1)} bi (${p.fontes[0].nome})`);
+for (const p of lista) console.log(`  ${p.nome}: R$ ${(p.valorPais / 1e9).toFixed(1)} bi (${p.fontes[0].nome})`);

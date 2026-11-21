@@ -26,4 +26,5 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `agro/brasil-estados-pecuaria.json` | Valor (e quantidade, quando há) de 9 produtos da pecuária por estado | `scripts/pecuaria-estados/` |
 | `geo/eua-estados.json` | Contorno dos 50 estados dos EUA + DC | `scripts/eua-mapa-estados/` |
 | `economia/eua-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado dos EUA | `scripts/eua-pib-estados/` |
+| `agro/eua-estados.json` | Receita da venda de 94 produtos agropecuários por estado dos EUA | `scripts/eua-agro-estados/` |
 | `economia/brasil-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado | `scripts/pib-estados/` |

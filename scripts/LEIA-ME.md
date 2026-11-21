@@ -17,3 +17,4 @@ Scripts existentes:
 - `icones-agro/`: ícones e cores dos produtos, vindos do Claude Design
 - `eua-mapa-estados/`: contorno dos estados dos EUA
 - `eua-pib-estados/`: PIB por estado dos EUA
+- `eua-agro-estados/`: agro por estado e produto dos EUA (USDA)

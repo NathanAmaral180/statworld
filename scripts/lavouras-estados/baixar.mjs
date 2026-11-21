@@ -73,10 +73,10 @@ const soma = (obj) => {
 const lista = [...produtos.values()]
   .map((p) => {
     for (const s of siglas) { p.valores[s] ??= null; p.quantidades[s] ??= null; }
-    return { ...p, valorBrasil: soma(p.valores), quantidadeBrasil: soma(p.quantidades) };
+    return { ...p, valorPais: soma(p.valores), quantidadePais: soma(p.quantidades) };
   })
-  .filter((p) => p.valorBrasil) // só produtos com produção no país
-  .sort((x, y) => y.valorBrasil - x.valorBrasil);
+  .filter((p) => p.valorPais) // só produtos com produção no país
+  .sort((x, y) => y.valorPais - x.valorPais);
 
 if (new Set(lista.map((p) => p.id)).size !== lista.length) throw new Error('Dois produtos ficaram com o mesmo identificador');
 if (Object.keys(totais).length !== 27) throw new Error(`Esperava 27 estados no total, vieram ${Object.keys(totais).length}`);

@@ -46,9 +46,9 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 
 ## Países
 - Cada país tem `src/config/paises/<pais>.json`: nome, `dePais` ("do Brasil", "dos Estados Unidos"), `caminho` do endereço ("" para o Brasil, "/estados-unidos"), moeda, níveis, arquivos de dados, ajustes do mapa (chamadas), `subtemas` disponíveis e `cortes` próprios quando a escala muda.
-- Páginas de um país usam moldes de página (ex.: `src/componentes/PaginaEconomia.astro`); o arquivo em `src/pages/` só escolhe o país.
+- Páginas de um país usam moldes de página (`src/componentes/PaginaEconomia.astro`, `PaginaAgro.astro`, `PaginaProdutoAgro.astro`); o arquivo em `src/pages/` só escolhe o país. Cada país tem também `slug` (usado em `/dados/<slug>/…`) e `agro.notas` (de onde vêm os números do agro daquele país).
 - Scripts de cada país ficam em pastas próprias (ex.: `scripts/eua-pib-estados/`).
-- EUA: página de teste em `/estados-unidos/economia`, fora do menu e com "noindex". Fonte: BEA.
+- EUA: páginas de teste em `/estados-unidos/economia` (BEA) e `/estados-unidos/economia/agro` (USDA, cash receipts), fora do menu e com "noindex".
 
 ## Agro
 - Lavouras: IBGE, Produção Agrícola Municipal. Leite, ovos, mel, lã, casulos: IBGE, Pesquisa da Pecuária Municipal. Bovinos, suínos, frango: MAPA, Valor Bruto da Produção (valores nominais, ano fechado), porque o IBGE não calcula valor de carne. O site avisa que as fontes usam métodos diferentes. `src/lib/agro.ts` junta tudo; lavouras e pecuária precisam ser do mesmo ano.

@@ -1,74 +1,11 @@
 ---
-// Página de um produto das lavouras (ex.: /economia/agro/soja).
-// Uma página é criada para cada produto que existe em dados/agro/.
-import Base from '../../../layouts/Base.astro';
-import Abas from '../../../componentes/Abas.astro';
-import MapaRanking from '../../../componentes/mapa-ranking/MapaRanking.astro';
-import { construirVisaoProduto, iconeDoProduto, type Produto } from '../../../componentes/mapa-ranking/construir-producao';
-import { formatar, preencher } from '../../../componentes/mapa-ranking/visao';
-import pais from '../../../config/paises/brasil.json';
-import site from '../../../config/site.json';
-import temaBase from '../../../config/temas/agro-estados.json';
-import iconesAgro from '../../../config/icones/agro.json';
-import { contextoDoPais } from '../../../lib/contexto';
+// Página de um produto do agro (brasil). Uma página por produto; o conteúdo vem do molde PaginaProdutoAgro.
+import PaginaProdutoAgro from '../../../componentes/PaginaProdutoAgro.astro';
+import paisCfg from '../../../config/paises/brasil.json';
 import { carregarAgro } from '../../../lib/agro';
-const tema = { ...temaBase, icones: iconesAgro };
 
 export function getStaticPaths() {
-  return carregarAgro(pais, 'estado', { ...temaBase, icones: iconesAgro }).todos.map((p) => ({ params: { produto: p.id } }));
+  return carregarAgro(paisCfg, 'estado').todos.map((p) => ({ params: { produto: p.id } }));
 }
-
-const NIVEL = 'estado';
-const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
-const { todos, porFiltro } = carregarAgro(pais, NIVEL, tema);
-const dados = porFiltro.tudo;
-const posicao = todos.findIndex((p) => p.id === Astro.params.produto);
-const produto = todos[posicao] as Produto;
-
-const visoes: Record<string, any> = { valor: construirVisaoProduto('valor', unidades, dados, produto, 'valor', tema, ctx) };
-const opcoes = [{ id: 'valor', rotulo: tema.opcoes.valor, visao: 'valor' }];
-if (produto.unidadeQuantidade) {
-  visoes.quantidade = construirVisaoProduto('quantidade', unidades, dados, produto, 'quantidade', tema, ctx);
-  opcoes.push({ id: 'quantidade', rotulo: produto.unidadeQuantidade === 't' ? tema.opcoes.quantidade : tema.opcoes.quantidadeOutra, visao: 'quantidade' });
-}
-
-const subtitulo = preencher(tema.textos.subtituloProduto, {
-  valor: formatar(produto.valorBrasil, { formato: 'moeda', casas: 1, compacto: true }, ctx),
-  periodo: dados.periodo,
-  n: posicao + 1,
-  grupoNome: tema.grupos[produto.grupo as keyof typeof tema.grupos],
-  fonte: (produto.fontes ?? dados.fontes).map((f) => `${f.nome}, ${f.publicacao.replace(/ \(.*\)$/, '')}`).join('; '),
-});
-const desenho = iconesAgro.icones[iconeDoProduto(tema, produto.id) as keyof typeof iconesAgro.icones];
-const trilha = [...tema.trilha.map((t) => preencher(t, { pais: pais.nome })), produto.nome];
-const abas = [
-  { id: 'dados', nome: tema.textos.abaDados, ativo: false },
-  { id: 'ao-vivo', nome: tema.textos.abaAoVivo, ativo: false },
-  { id: 'historia', nome: tema.textos.abaHistoria, ativo: false },
-];
 ---
-<Base titulo={`${produto.nome} · ${trilha[2]}`} temaAtual="economia">
-  <section class="conteudo pagina">
-    <p class="trilha">
-      <a href="/economia">{trilha[0]}</a> / {trilha[1]} / <a href="/economia/agro">{trilha[2]}</a> / {trilha[3]}
-    </p>
-    <div class="titulo">
-      <span class="icone-produto" aria-hidden="true"><svg viewBox="0 0 24 24" set:html={desenho} /></span>
-      <h1>{produto.nome}</h1>
-    </div>
-    <p class="sub">{subtitulo}</p>
-    <Abas itens={abas} atual="dados" rotulo={produto.nome} emBreve={site.textos.emBreve} />
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="valor" visoes={visoes} />
-  </section>
-</Base>
-
-<style>
-  .pagina { padding-top: 40px; padding-bottom: 80px; }
-  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
-  .trilha a { color: inherit; }
-  .titulo { display: flex; align-items: center; gap: 20px; margin-bottom: 10px; }
-  .icone-produto { flex: none; display: grid; place-items: center; width: 72px; height: 72px; border-radius: 16px; background: var(--surf); border: 1px solid var(--line); }
-  .icone-produto svg { width: 40px; height: 40px; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-  h1 { margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
-  .sub { margin: 0 0 24px; color: var(--sub); font-size: 17px; line-height: 1.5; max-width: 80ch; }
-</style>
+<PaginaProdutoAgro pais={paisCfg} produtoId={Astro.params.produto!} />

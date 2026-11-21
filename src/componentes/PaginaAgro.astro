@@ -1,0 +1,70 @@
+---
+// Página "Economia · Agro" de um país: produto líder (tudo / lavouras / pecuária) e quanto cada estado produz.
+// Serve para qualquer país: tudo que muda vem do arquivo do país (src/config/paises/).
+import Base from '../layouts/Base.astro';
+import Abas from './Abas.astro';
+import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import { construirVisaoLider, construirVisaoProduto } from './mapa-ranking/construir-producao';
+import { preencher } from './mapa-ranking/visao';
+import site from '../config/site.json';
+import { contextoDoPais } from '../lib/contexto';
+import { carregarAgro, temaAgro } from '../lib/agro';
+
+interface Props { pais: any; teste?: boolean }
+const { pais, teste = false } = Astro.props;
+const tema = temaAgro(pais);
+
+const NIVEL = 'estado';
+const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
+const { todos, porFiltro } = carregarAgro(pais, NIVEL);
+
+const padrao = todos.find((p) => p.id === tema.produtoPadrao) ?? todos[0];
+const visoes: Record<string, any> = {
+  [`lista:${padrao.id}`]: construirVisaoProduto(padrao.id, unidades, porFiltro.tudo, padrao, 'valor', tema, ctx, true),
+};
+for (const f of tema.filtros) {
+  visoes[`lider-${f.id}`] = construirVisaoLider(`lider-${f.id}`, unidades, porFiltro[f.id], tema, ctx, f.grupoTexto);
+}
+const opcoes = [
+  {
+    id: 'lider',
+    rotulo: tema.opcoes.lider,
+    filtros: { rotulo: tema.opcoes.mostrar, padrao: tema.filtros[0].id, itens: tema.filtros.map((f) => ({ id: f.id, rotulo: f.rotulo, visao: `lider-${f.id}` })) },
+  },
+  {
+    id: 'quanto',
+    rotulo: tema.opcoes.quanto,
+    lista: {
+      rotulo: ctx.textos.escolhaProduto,
+      padrao: padrao.id,
+      itens: ['lavouras', 'pecuaria'].flatMap((g) =>
+        todos.filter((p) => p.grupo === g).map((p) => ({
+          id: p.id, rotulo: p.nome, grupo: tema.grupos[g as keyof typeof tema.grupos], url: preencher(tema.urlDadosProduto, { produto: p.id }),
+        }))
+      ),
+    },
+  },
+];
+
+const vars = { pais: pais.nome, dePais: pais.dePais };
+const titulo = preencher(tema.titulo, vars);
+const trilha = tema.trilha.map((t) => preencher(t, vars));
+const disponiveis: string[] = pais.subtemas?.economia ?? ['visao-geral'];
+const abas = site.subtemas.economia.map((i: any) => ({ ...i, href: i.href ? pais.caminho + i.href : undefined, ativo: i.ativo && disponiveis.includes(i.id) }));
+---
+<Base titulo={`${trilha.at(-1)} · ${titulo}`} temaAtual="economia" naoIndexar={teste}>
+  <section class="conteudo pagina">
+    {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
+    <p class="trilha">{trilha.join(' / ')}</p>
+    <h1>{titulo}</h1>
+    <Abas itens={abas} atual="agro" rotulo="Economia" emBreve={site.textos.emBreve} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} />
+  </section>
+</Base>
+
+<style>
+  .pagina { padding-top: 40px; padding-bottom: 80px; }
+  .aviso-teste { display: inline-block; margin: 0 0 16px; padding: 6px 12px; font-size: 14px; color: var(--sub); background: var(--surf); border: 1px dashed var(--line2); border-radius: 8px; }
+  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
+  h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+</style>

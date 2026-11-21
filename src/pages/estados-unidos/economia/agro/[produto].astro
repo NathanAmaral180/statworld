@@ -1,0 +1,11 @@
+---
+// Página de um produto do agro (estados-unidos). Uma página por produto; o conteúdo vem do molde PaginaProdutoAgro.
+import PaginaProdutoAgro from '../../../../componentes/PaginaProdutoAgro.astro';
+import paisCfg from '../../../../config/paises/estados-unidos.json';
+import { carregarAgro } from '../../../../lib/agro';
+
+export function getStaticPaths() {
+  return carregarAgro(paisCfg, 'estado').todos.map((p) => ({ params: { produto: p.id } }));
+}
+---
+<PaginaProdutoAgro pais={paisCfg} produtoId={Astro.params.produto!} teste />

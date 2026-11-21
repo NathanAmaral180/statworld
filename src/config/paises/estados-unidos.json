@@ -6,7 +6,8 @@
   "caminho": "/estados-unidos",
   "subtemas": {
     "economia": [
-      "visao-geral"
+      "visao-geral",
+      "agro"
     ]
   },
   "idioma": "pt-BR",
@@ -40,6 +41,9 @@
       "estado": "eua-estados"
     },
     "economia": {
+      "estado": "eua-estados"
+    },
+    "agro": {
       "estado": "eua-estados"
     }
   },
@@ -106,6 +110,14 @@
         990,
         328
       ]
+    }
+  },
+  "slug": "estados-unidos",
+  "agro": {
+    "notas": {
+      "tudo": "Receita da venda de produtos agropecuários (cash receipts) do USDA, que inclui produtos florestais e aquicultura. Produtos que o USDA agrupa como \"outros\" entram no total, mas não aparecem sozinhos. Estado sem número para um produto aparece como \"sem dado\": o USDA não diz se não houve venda ou se o número é sigiloso.",
+      "lavouras": "Receita da venda das lavouras (cash receipts) do USDA, incluindo flores, feno e produtos florestais.",
+      "pecuaria": "Receita da venda de animais e produtos de origem animal (cash receipts) do USDA, incluindo aquicultura."
     }
   }
 }

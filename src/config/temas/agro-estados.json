@@ -1,6 +1,6 @@
 {
-  "_explicacao": "Mapa do Agro (lavouras) por estado. Para outro país, troque só textos e cortes. Ícones e cores dos produtos vêm do Claude Design (src/config/icones/agro.json e src/estilos/cores-produtos.css); 'apelidos' liga um produto ao nome do ícone/cor quando são diferentes. Produto sem cor própria aparece como 'Outros'. 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores.",
-  "titulo": "A economia do {pais}",
+  "_explicacao": "Mapa do Agro por estado (molde, serve a qualquer país). Para outro país, troque só textos e cortes. Ícones e cores dos produtos vêm do Claude Design (src/config/icones/agro.json e src/estilos/cores-produtos.css); 'apelidos' liga um produto ao nome do ícone/cor quando são diferentes. Produto sem cor própria aparece como 'Outros'. 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores. Notas sobre as fontes de cada país ficam no arquivo do país (agro.notas).",
+  "titulo": "A economia {dePais}",
   "trilha": [
     "Economia",
     "{pais}",
@@ -22,8 +22,8 @@
     10,
     20
   ],
-  "urlProduto": "/economia/agro/{produto}",
-  "urlDadosProduto": "/dados/brasil/agro/{produto}.json",
+  "urlProduto": "{caminho}/economia/agro/{produto}",
+  "urlDadosProduto": "/dados/{pais}/agro/{produto}.json",
   "textos": {
     "medidaTotal": "Valor da produção {grupo} em {periodo}",
     "medidaCurta": "valor da produção",
@@ -33,15 +33,12 @@
     "subtituloProduto": "{grupoNome} · {valor} de valor da produção em {periodo}, o {n}º entre os produtos do agro ({fonte})",
     "abaDados": "Dados",
     "abaAoVivo": "Ao vivo",
-    "abaHistoria": "História",
-    "notaLavouras": "Lavouras temporárias e permanentes (IBGE). Não inclui pecuária.",
-    "notaPecuaria": "Leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. O MAPA usa preços e métodos diferentes dos do IBGE; compare com cuidado.",
-    "notaTudo": "Lavouras, leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. As duas fontes usam preços e métodos diferentes; compare com cuidado. Não inclui silvicultura nem extração vegetal.",
-    "notaVbp": "O MAPA não estima a produção de alguns estados; eles aparecem como \"sem dado\"."
+    "abaHistoria": "História"
   },
   "apelidos": {
     "cana-de-acucar": "cana",
-    "bovinos": "gado"
+    "bovinos": "gado",
+    "algodao": "algodao-herbaceo"
   },
   "filtros": [
     {
