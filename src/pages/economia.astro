@@ -1,0 +1,19 @@
+---
+// Página de Economia. Por enquanto só o título: os dados entram na próxima etapa.
+import Base from '../layouts/Base.astro';
+import pais from '../config/paises/brasil.json';
+---
+<Base titulo={`A economia do ${pais.nome}`} temaAtual="economia">
+  <section class="conteudo pagina">
+    <p class="trilha">Economia / {pais.nome}</p>
+    <h1>A economia do {pais.nome}</h1>
+    <p class="aviso">Em construção. Os números entram quando estiverem conferidos na fonte.</p>
+  </section>
+</Base>
+
+<style>
+  .pagina { padding-top: 48px; padding-bottom: 80px; }
+  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
+  h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  .aviso { margin: 0; padding: 16px 20px; background: var(--surf); border: 1px solid var(--line); border-radius: 12px; color: var(--sub); max-width: 60ch; }
+</style>

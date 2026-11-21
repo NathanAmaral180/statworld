@@ -1,0 +1,12 @@
+{
+  "nome": "StatWorld",
+  "slogan": "Os números do mundo, explicados.",
+  "idiomaPadrao": "pt-BR",
+  "paisPadrao": "brasil",
+  "temas": [
+    { "id": "economia", "nome": "Economia", "ativo": true },
+    { "id": "saude", "nome": "Saúde", "ativo": false },
+    { "id": "politica", "nome": "Política", "ativo": false },
+    { "id": "demografia", "nome": "Demografia", "ativo": false }
+  ]
+}

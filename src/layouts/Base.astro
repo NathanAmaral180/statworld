@@ -1,0 +1,38 @@
+---
+// Moldura comum de todas as páginas: <head>, tema e cabeçalho.
+import '../estilos/global.css';
+import Cabecalho from '../componentes/Cabecalho.astro';
+import site from '../config/site.json';
+
+interface Props { titulo?: string; descricao?: string; temaAtual?: string }
+const { titulo, descricao = site.slogan, temaAtual } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · ${site.slogan}`;
+---
+<!doctype html>
+<html lang={site.idiomaPadrao}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      // Aplica o tema antes de desenhar a página (evita "piscar").
+      // Usa a escolha salva; se não houver, segue o tema do computador.
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('tema'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <Cabecalho temaAtual={temaAtual} />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "_explicacao": "Tudo que é exclusivo de um país fica aqui. Para lançar outro país, copie este arquivo e troque os valores. Os moldes (mapa, ranking, ficha, gráfico) leem daqui e nunca têm 'Brasil' escrito dentro deles.",
+  "codigo": "BR",
+  "nome": "Brasil",
+  "idioma": "pt-BR",
+  "moeda": { "codigo": "BRL", "simbolo": "R$" },
+  "formatoNumero": { "separadorDecimal": ",", "separadorMilhar": "." },
+  "niveisGeograficos": [
+    { "id": "pais", "singular": "país", "plural": "países" },
+    { "id": "regiao", "singular": "região", "plural": "regiões" },
+    { "id": "estado", "singular": "estado", "plural": "estados" },
+    { "id": "municipio", "singular": "município", "plural": "municípios" }
+  ]
+}

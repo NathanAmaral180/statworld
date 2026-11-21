@@ -1,0 +1,12 @@
+# Pasta scripts/
+
+Aqui ficam os programas que **buscam os dados nas fontes oficiais** (IBGE, Banco Central etc.) e salvam na pasta `dados/`.
+
+## Regra
+Todo script ganha um arquivo LEIA-ME em português simples dizendo:
+1. O que ele busca e de onde (com link da fonte).
+2. Como rodar (o comando exato).
+3. Que arquivo ele cria em `dados/`.
+4. O que fazer se der erro.
+
+Ainda não há scripts: eles chegam na próxima etapa.
