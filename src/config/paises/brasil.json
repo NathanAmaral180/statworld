@@ -10,5 +10,23 @@
     { "id": "regiao", "singular": "região", "plural": "regiões" },
     { "id": "estado", "singular": "estado", "plural": "estados" },
     { "id": "municipio", "singular": "município", "plural": "municípios" }
-  ]
+  ],
+  "arquivos": {
+    "geo": { "estado": "brasil-estados" },
+    "economia": { "estado": "brasil-estados" }
+  },
+  "mapa": {
+    "_explicacao": "Ajustes do desenho do mapa deste país. 'chamadas' = estados pequenos cuja sigla fica fora do mapa, ligada por uma linha (posição x,y no desenho). 'margem' = espaço extra em volta do desenho para caber essas siglas.",
+    "margem": { "cima": 10, "direita": 110, "baixo": 10, "esquerda": 10 },
+    "chamadas": {
+      "RN": [1060, 268],
+      "PB": [1060, 308],
+      "PE": [1060, 348],
+      "AL": [1060, 388],
+      "SE": [1060, 428],
+      "ES": [960, 670],
+      "RJ": [880, 800],
+      "DF": [720, 500]
+    }
+  }
 }

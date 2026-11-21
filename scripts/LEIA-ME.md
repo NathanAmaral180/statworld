@@ -9,4 +9,4 @@ Todo script ganha um arquivo LEIA-ME em português simples dizendo:
 3. Que arquivo ele cria em `dados/`.
 4. O que fazer se der erro.
 
-Ainda não há scripts: eles chegam na próxima etapa.
+Scripts existentes: `mapa-estados/` (contorno dos estados) e `pib-estados/` (PIB por estado).

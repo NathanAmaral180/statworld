@@ -1,0 +1,260 @@
+---
+// Molde "mapa + ranking + ficha". Recebe tudo por configuração:
+// nada aqui é exclusivo de um país ou de um tema.
+import {
+  classe, montarRanking, htmlRanking, htmlFicha, htmlFonte, htmlLegenda, preencher,
+  type Indicador, type Medida, type Unidade, type Contexto,
+} from './logica';
+
+interface Props {
+  geo: { largura: number; altura: number; unidades: (Unidade & { caminho: string; centro: [number, number] })[] };
+  indicadores: Record<string, Indicador>;
+  medidas: Medida[];
+  medidaPadrao: string;
+  ctx: Contexto;
+  mapa: { margem: { cima: number; direita: number; baixo: number; esquerda: number }; chamadas: Record<string, [number, number]> };
+}
+const { geo, indicadores, medidas: medidasBrutas, medidaPadrao, ctx, mapa } = Astro.props;
+
+// Troca {periodo} pelo ano de cada indicador; só entram medidas que têm dados.
+const medidas = medidasBrutas
+  .filter((m) => indicadores[m.id])
+  .map((m) => ({
+    ...m,
+    rotulo: preencher(m.rotulo, { periodo: indicadores[m.id].periodo }),
+    titulo: preencher(m.titulo, { periodo: indicadores[m.id].periodo }),
+  }));
+const medida = medidas.find((m) => m.id === medidaPadrao) ?? medidas[0];
+const ind = indicadores[medida.id];
+const unidades: Unidade[] = geo.unidades.map(({ codigo, sigla, nome, regiao }) => ({ codigo, sigla, nome, regiao }));
+const linhas = montarRanking(unidades, ind, ctx.idioma);
+const comDado = linhas.filter((l) => l.valor !== null).length;
+const ativo = linhas[0];
+
+const { margem, chamadas } = mapa;
+const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esquerda + margem.direita} ${geo.altura + margem.cima + margem.baixo}`;
+const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, ctx };
+---
+<div class="mr" data-mapa-ranking>
+  <div class="mr-medidas" role="group" aria-label={ctx.textos.escolhaMedida}>
+    {medidas.map((m) => (
+      <button type="button" data-medida={m.id} aria-pressed={String(m.id === medida.id)}>{m.rotulo}</button>
+    ))}
+  </div>
+
+  <div class="mr-grade">
+    <figure class="mr-mapa">
+      <svg viewBox={viewBox} role="img" aria-label={preencher(ctx.textos.mapaDescricao, { titulo: medida.titulo, nivel: ctx.nivelSingular })}>
+        <defs>
+          <pattern id="mr-hachura" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
+            <rect width="7" height="7" class="hachura-fundo" />
+            <line x1="0" y1="0" x2="0" y2="7" class="hachura-linha" />
+          </pattern>
+        </defs>
+        <g class="mr-unidades">
+          {geo.unidades.map((u) => (
+            <path class="uf" id={`mr-uf-${u.sigla}`} d={u.caminho} data-uf={u.sigla}
+              data-classe={classe(ind.valores[u.sigla], medida.cortes)}><title>{u.nome}</title></path>
+          ))}
+        </g>
+        <path class="mr-destaque" d={geo.unidades.find((u) => u.sigla === ativo.unidade.sigla)?.caminho} />
+        <g class="mr-rotulos" aria-hidden="true">
+          {geo.unidades.map((u) => {
+            const ch = chamadas[u.sigla];
+            const c = classe(ind.valores[u.sigla], medida.cortes);
+            return ch ? (
+              <g class="chamada" data-uf={u.sigla}>
+                <line x1={u.centro[0]} y1={u.centro[1]} x2={ch[0] - 14} y2={ch[1]} />
+                <circle cx={u.centro[0]} cy={u.centro[1]} r="2.6" />
+                <text x={ch[0]} y={ch[1]} text-anchor="start" dominant-baseline="central">{u.sigla}</text>
+              </g>
+            ) : (
+              <text class="rotulo" data-uf={u.sigla} data-classe={c} x={u.centro[0]} y={u.centro[1]}
+                text-anchor="middle" dominant-baseline="central">{u.sigla}</text>
+            );
+          })}
+        </g>
+      </svg>
+      <ul class="mr-legenda" set:html={htmlLegenda(medida, ctx, linhas.length - comDado)} />
+    </figure>
+
+    <div class="mr-lado">
+      <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(ativo, linhas.length, comDado, medida, medida.titulo, ind, ctx)} />
+      <div class="mr-tabela">
+        <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{medida.titulo}</span></div>
+        <ol class="mr-ranking" set:html={htmlRanking(linhas, medida, ctx, ativo.unidade.sigla)} />
+        <p class="mr-dica">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</p>
+      </div>
+      <p class="mr-fonte" set:html={htmlFonte(ind, ctx)} />
+    </div>
+  </div>
+
+  <script type="application/json" class="mr-dados" set:html={JSON.stringify(dadosCliente).replace(/</g, '\\u003c')} />
+</div>
+
+<script>
+  import { classe, montarRanking, htmlRanking, htmlFicha, htmlFonte, htmlLegenda, type Linha } from './logica';
+
+  for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-ranking]')) {
+    const d = JSON.parse(raiz.querySelector('.mr-dados')!.textContent!);
+    const { unidades, indicadores, medidas, ctx } = d;
+    let medidaId: string = d.medidaPadrao;
+    let fixado: string | null = null;
+    let previa: string | null = null;
+    let linhas: Linha[] = [];
+
+    const $ = <T extends Element = HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+    const ficha = $('.mr-ficha');
+    const ranking = $('.mr-ranking');
+    const destaque = $<SVGPathElement>('.mr-destaque');
+
+    const medida = () => medidas.find((m: any) => m.id === medidaId);
+    const ind = () => indicadores[medidaId];
+
+    function desenharMedida() {
+      const m = medida(), i = ind();
+      linhas = montarRanking(unidades, i, ctx.idioma);
+      const comDado = linhas.filter((l) => l.valor !== null).length;
+      raiz.querySelectorAll('[data-medida]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-medida') === medidaId)));
+      raiz.querySelectorAll<SVGElement>('.uf, .rotulo').forEach((el) => {
+        el.dataset.classe = String(classe(i.valores[el.dataset.uf!], m.cortes));
+      });
+      $('.mr-legenda').innerHTML = htmlLegenda(m, ctx, linhas.length - comDado);
+      $('.mr-cab-medida').textContent = m.titulo;
+      $('.mr-fonte').innerHTML = htmlFonte(i, ctx);
+      ranking.innerHTML = htmlRanking(linhas, m, ctx, null);
+      destacar();
+    }
+
+    function destacar() {
+      const sigla = previa ?? fixado ?? linhas[0].unidade.sigla;
+      const linha = linhas.find((l) => l.unidade.sigla === sigla)!;
+      const comDado = linhas.filter((l) => l.valor !== null).length;
+      ficha.innerHTML = htmlFicha(linha, linhas.length, comDado, medida(), medida().titulo, ind(), ctx);
+      const caminho = raiz.querySelector(`#mr-uf-${sigla}`)?.getAttribute('d');
+      if (caminho) destaque.setAttribute('d', caminho);
+      ranking.querySelectorAll<HTMLElement>('.linha').forEach((b) => {
+        const eh = b.dataset.uf === sigla;
+        b.classList.toggle('ativa', eh);
+        b.setAttribute('aria-pressed', String(b.dataset.uf === fixado));
+      });
+      raiz.classList.toggle('tem-fixado', fixado !== null);
+    }
+
+    const ufDe = (alvo: EventTarget | null) => (alvo as Element | null)?.closest<HTMLElement | SVGElement>('[data-uf]')?.dataset.uf ?? null;
+
+    // Passar o mouse = prévia; clicar = fixa (clicar de novo solta).
+    raiz.addEventListener('pointerover', (e) => {
+      const uf = ufDe(e.target);
+      if (uf && uf !== previa) { previa = uf; destacar(); }
+    });
+    raiz.addEventListener('pointerout', (e) => {
+      if (previa && !ufDe(e.relatedTarget)) { previa = null; destacar(); }
+    });
+    raiz.addEventListener('click', (e) => {
+      const botaoMedida = (e.target as Element).closest<HTMLElement>('[data-medida]');
+      if (botaoMedida) { medidaId = botaoMedida.dataset.medida!; desenharMedida(); return; }
+      const uf = ufDe(e.target);
+      if (uf) { fixado = fixado === uf ? null : uf; destacar(); }
+    });
+    // Teclado: foco numa linha = prévia; setas sobem/descem.
+    ranking.addEventListener('focusin', (e) => { previa = ufDe(e.target); destacar(); });
+    ranking.addEventListener('focusout', (e) => { if (!ranking.contains(e.relatedTarget as Node)) { previa = null; destacar(); } });
+    ranking.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      const botoes = [...ranking.querySelectorAll<HTMLElement>('.linha')];
+      const i = botoes.indexOf(document.activeElement as HTMLElement);
+      const prox = botoes[Math.max(0, Math.min(botoes.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1)))];
+      prox?.focus();
+      e.preventDefault();
+    });
+
+    desenharMedida();
+  }
+</script>
+
+<style>
+  .mr { --mr-lado: 560px; }
+
+  /* Seletor de medida */
+  .mr-medidas { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surf); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 28px; }
+  .mr-medidas button { font: inherit; font-size: 16px; color: var(--sub); background: transparent; border: 0; border-radius: 9px; padding: 10px 18px; cursor: pointer; }
+  .mr-medidas button:hover { color: var(--ink); }
+  .mr-medidas button[aria-pressed="true"] { background: var(--bg); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 1px var(--line), 0 1px 3px var(--line); }
+
+  .mr-grade { display: grid; grid-template-columns: minmax(0, 1fr) var(--mr-lado); gap: 48px; align-items: start; }
+
+  /* Mapa */
+  .mr-mapa { margin: 0; }
+  .mr-mapa svg { width: 100%; height: auto; display: block; }
+  :global(.mr .uf) { stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; transition: fill .2s; }
+  :global(.mr [data-classe="-1"].uf) { fill: url(#mr-hachura); }
+  :global(.mr [data-classe="0"].uf) { fill: var(--rampa-1); }
+  :global(.mr [data-classe="1"].uf) { fill: var(--rampa-2); }
+  :global(.mr [data-classe="2"].uf) { fill: var(--rampa-3); }
+  :global(.mr [data-classe="3"].uf) { fill: var(--rampa-4); }
+  :global(.mr [data-classe="4"].uf) { fill: var(--rampa-5); }
+  :global(.mr [data-classe="5"].uf) { fill: var(--rampa-6); }
+  .hachura-fundo { fill: var(--bg); }
+  .hachura-linha { stroke: var(--hatch); stroke-width: 1.4; }
+  .mr-destaque { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; pointer-events: none; }
+
+  .mr-rotulos text { font-size: 23px; font-weight: 600; fill: var(--ink); pointer-events: none; }
+  /* Nas duas cores mais fortes a sigla fica na cor do fundo para ter contraste */
+  :global(.mr .rotulo[data-classe="4"]), :global(.mr .rotulo[data-classe="5"]) { fill: var(--bg); }
+  .chamada line { stroke: var(--sub); stroke-width: 1.2; }
+  .chamada circle { fill: var(--sub); }
+
+  /* Legenda */
+  .mr-legenda { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px 4px; font-size: 14px; color: var(--sub); }
+  :global(.mr-legenda .amostra) { display: block; height: 12px; margin-bottom: 8px; }
+  :global(.mr-legenda .c0) { background: var(--rampa-1); }
+  :global(.mr-legenda .c1) { background: var(--rampa-2); }
+  :global(.mr-legenda .c2) { background: var(--rampa-3); }
+  :global(.mr-legenda .c3) { background: var(--rampa-4); }
+  :global(.mr-legenda .c4) { background: var(--rampa-5); }
+  :global(.mr-legenda .c5) { background: var(--rampa-6); }
+  :global(.mr-legenda .hachura) { background: repeating-linear-gradient(-45deg, var(--hatch) 0 1.5px, var(--bg) 1.5px 5px); box-shadow: inset 0 0 0 1px var(--line); }
+  :global(.mr-legenda .leg-sem) { grid-column: span 2; }
+
+  /* Ficha */
+  .mr-ficha { background: var(--surf); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; margin-bottom: 20px; }
+  :global(.mr-ficha .ficha-topo) { margin: 0 0 8px; color: var(--sub); font-size: 15px; }
+  :global(.mr-ficha .ficha-linha) { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  :global(.mr-ficha .ficha-nome) { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  :global(.mr-ficha .ficha-valor) { margin: 0; white-space: nowrap; }
+  :global(.mr-ficha .ficha-valor strong) { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  :global(.mr-ficha .ficha-valor small) { font-size: 18px; color: var(--sub); margin: 0 4px; }
+  :global(.mr-ficha .ficha-valor.sem strong) { font-size: 28px; color: var(--faint); font-weight: 500; }
+  :global(.mr-ficha .ficha-fonte) { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
+
+  /* Ranking */
+  .mr-cab { display: flex; justify-content: space-between; gap: 12px; padding: 0 14px 10px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); }
+  .mr-ranking { list-style: none; margin: 0; padding: 0; }
+  :global(.mr-ranking .linha) { width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) minmax(60px, 190px) 84px; align-items: center; gap: 12px; font: inherit; font-size: 16px; color: var(--ink); text-align: left; background: transparent; border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  :global(.mr-ranking .linha:hover), :global(.mr-ranking .linha.ativa) { background: var(--surf); }
+  :global(.mr-ranking .linha.ativa .nome), :global(.mr-ranking .linha.ativa .valor) { font-weight: 600; }
+  :global(.mr-ranking .linha:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+  :global(.mr-ranking .pos) { color: var(--sub); }
+  :global(.mr-ranking .nome) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  :global(.mr-ranking .trilho) { position: relative; height: 9px; background: var(--track); border-radius: 2px; }
+  :global(.mr-ranking .barra) { position: absolute; top: 0; bottom: 0; background: var(--bar); border-radius: 2px; }
+  :global(.mr-ranking .linha.ativa .barra) { background: var(--accent); }
+  :global(.mr-ranking .valor) { text-align: right; }
+  :global(.mr-ranking .linha.sem .valor) { color: var(--faint); }
+  .mr-dica { margin: 10px 14px 0; font-size: 13px; color: var(--faint); }
+
+  .mr-fonte { margin: 20px 14px 0; font-size: 14px; line-height: 1.5; color: var(--sub); }
+  :global(.mr-fonte a) { color: inherit; }
+
+  @media (max-width: 1100px) {
+    .mr-grade { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 560px) {
+    .mr-medidas { display: flex; }
+    .mr-medidas button { flex: 1 1 auto; padding: 8px 10px; font-size: 14px; }
+    :global(.mr-ranking .linha) { grid-template-columns: 26px minmax(0, 1fr) 56px 70px; gap: 8px; padding: 6px 8px; font-size: 15px; }
+    :global(.mr-ficha .ficha-valor strong) { font-size: 40px; }
+    .mr-ficha { padding: 18px; }
+  }
+</style>

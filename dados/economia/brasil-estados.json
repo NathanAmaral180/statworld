@@ -1,0 +1,146 @@
+{
+  "_explicacao": "Medidas de economia por estado. Gerado por scripts/pib-estados/baixar.mjs. Não edite à mão. null = sem dado.",
+  "pais": "BR",
+  "nivel": "estado",
+  "periodo": "2024",
+  "baixadoEm": "2026-11-21",
+  "indicadores": {
+    "peso-pib": {
+      "nome": "Participação no PIB do Brasil",
+      "unidade": "%",
+      "periodo": "2024",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "Contas Regionais do Brasil 2024",
+          "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "dataDivulgacao": "2026-11-13"
+        }
+      ],
+      "calculo": "Valor publicado pelo IBGE (Tabela 2 das Contas Regionais).",
+      "valores": {
+        "AC": 0.2404,
+        "AL": 0.8322,
+        "AM": 1.5046,
+        "AP": 0.2592,
+        "BA": 3.971,
+        "CE": 2.1839,
+        "DF": 3.245,
+        "ES": 1.9835,
+        "GO": 3.032,
+        "MA": 1.5037,
+        "MG": 9.0478,
+        "MS": 1.5395,
+        "MT": 2.2465,
+        "PA": 2.4715,
+        "PB": 0.9085,
+        "PE": 2.5005,
+        "PI": 0.7423,
+        "PR": 6.1687,
+        "RJ": 10.548,
+        "RN": 0.9462,
+        "RO": 0.7214,
+        "RR": 0.2368,
+        "RS": 5.9605,
+        "SC": 4.9598,
+        "SE": 0.5761,
+        "SP": 31.0923,
+        "TO": 0.578
+      }
+    },
+    "pib-por-pessoa": {
+      "nome": "PIB por pessoa",
+      "unidade": "moeda",
+      "periodo": "2024",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "Contas Regionais do Brasil 2024",
+          "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "dataDivulgacao": "2026-11-13"
+        },
+        {
+          "nome": "IBGE",
+          "publicacao": "Estimativas da População 2024 (tabela 6579 do Sidra)",
+          "url": "https://sidra.ibge.gov.br/tabela/6579"
+        }
+      ],
+      "calculo": "Cálculo do StatWorld: PIB do estado (Tabela 1 das Contas Regionais) dividido pela população estimada pelo IBGE para o mesmo ano.",
+      "valores": {
+        "AC": 32161,
+        "AL": 30442,
+        "AM": 41397,
+        "AP": 38027,
+        "BA": 31497,
+        "CE": 27860,
+        "DF": 128147,
+        "ES": 56956,
+        "GO": 48588,
+        "MA": 25264,
+        "MG": 49983,
+        "MS": 62491,
+        "MT": 68975,
+        "PA": 33601,
+        "PB": 25817,
+        "PE": 30878,
+        "PI": 25903,
+        "PR": 61450,
+        "RJ": 72154,
+        "RN": 32342,
+        "RO": 48665,
+        "RR": 38907,
+        "RS": 62521,
+        "SC": 72498,
+        "SE": 29620,
+        "SP": 79665,
+        "TO": 43167
+      }
+    },
+    "crescimento": {
+      "nome": "Crescimento real do PIB em 2024",
+      "unidade": "%",
+      "periodo": "2024",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "Contas Regionais do Brasil 2024",
+          "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "dataDivulgacao": "2026-11-13"
+        }
+      ],
+      "calculo": "Variação do índice de volume do PIB (Tabela 3 das Contas Regionais) de 2023 para 2024, descontada a inflação.",
+      "valores": {
+        "AC": 4.9052,
+        "AL": 2.949,
+        "AM": 5.5892,
+        "AP": 6.0785,
+        "BA": 3.8897,
+        "CE": 5.3661,
+        "DF": 2.9185,
+        "ES": 2.5074,
+        "GO": 3.2894,
+        "MA": 4.1749,
+        "MG": 3.332,
+        "MS": -4.3669,
+        "MT": -2.8355,
+        "PA": 4.1411,
+        "PB": 6.5097,
+        "PE": 5.2686,
+        "PI": 3.3406,
+        "PR": 3.4181,
+        "RJ": 3.181,
+        "RN": 5.9574,
+        "RO": 3.0417,
+        "RR": 4.8442,
+        "RS": 4.5947,
+        "SC": 5.2713,
+        "SE": 4.2168,
+        "SP": 3.3319,
+        "TO": 3.9198
+      }
+    }
+  }
+}

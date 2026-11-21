@@ -1,0 +1,35 @@
+{
+  "_explicacao": "Medidas do mapa de Economia por estado. Para outro tema ou país, troque só as medidas, os cortes e as legendas. Os cortes vêm do guia de design (design/LEIA-ME-design-1abc.md): 5 limites = 6 cores.",
+  "titulo": "A economia do {pais}",
+  "trilha": ["Economia", "{pais}"],
+  "medidaPadrao": "crescimento",
+  "medidas": [
+    {
+      "id": "peso-pib",
+      "rotulo": "Peso no PIB",
+      "titulo": "Peso no PIB em {periodo}",
+      "formato": "percentual",
+      "casas": 1,
+      "sinal": false,
+      "cortes": [0.5, 1, 2, 4, 8]
+    },
+    {
+      "id": "pib-por-pessoa",
+      "rotulo": "PIB por pessoa",
+      "titulo": "PIB por pessoa em {periodo}",
+      "formato": "moeda",
+      "casas": 0,
+      "sinal": false,
+      "cortes": [25000, 30000, 40000, 50000, 70000]
+    },
+    {
+      "id": "crescimento",
+      "rotulo": "Crescimento em {periodo}",
+      "titulo": "Crescimento em {periodo}",
+      "formato": "percentual",
+      "casas": 1,
+      "sinal": true,
+      "cortes": [1.5, 2.5, 4, 8, 12]
+    }
+  ]
+}

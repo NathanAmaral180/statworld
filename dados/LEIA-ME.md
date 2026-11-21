@@ -18,4 +18,8 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 }
 ```
 
-Por enquanto a pasta está vazia de propósito: nenhum dado real foi colocado ainda.
+## O que existe hoje
+| Arquivo | O que é | Script que gera |
+|---|---|---|
+| `geo/brasil-estados.json` | Contorno dos 27 estados (desenho do mapa) | `scripts/mapa-estados/` |
+| `economia/brasil-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado | `scripts/pib-estados/` |

@@ -1,0 +1,16 @@
+{
+  "_explicacao": "Textos fixos dos moldes, por idioma. Para outro idioma, copie este arquivo com o código do idioma (ex.: es.json). {x} é trocado pelo valor certo.",
+  "semDado": "sem dado",
+  "legendaSemDado": "Sem dado ({n} {nivel})",
+  "ate": "até {v}",
+  "entre": "{a}–{b}",
+  "ouMais": "{v} ou mais",
+  "posicao": "{n}º de {total}",
+  "posicaoComFalta": "{n}º de {total} com dado",
+  "fonte": "Fonte",
+  "divulgadaEm": "divulgada em {data}",
+  "comoCalculamos": "Como calculamos",
+  "escolhaMedida": "Escolha a medida",
+  "rankingDica": "Passe o mouse ou use as setas para ver cada {nivel}; clique para fixar.",
+  "mapaDescricao": "Mapa: {titulo}, por {nivel}."
+}

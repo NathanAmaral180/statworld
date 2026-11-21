@@ -35,7 +35,9 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - `src/componentes/` — peças reutilizáveis (cabeçalho, mapa, ranking, ficha, gráfico).
 - `src/pages/` — páginas do site (o Astro exige este nome em inglês; cada arquivo vira um endereço).
 - `src/layouts/` — moldura comum das páginas.
-- `src/config/` — configurações de site e de país.
+- `src/componentes/mapa-ranking/` — molde mapa + ranking + ficha (`logica.ts` tem as regras, usadas no servidor e no navegador).
+- `src/lib/dados.ts` — lê os arquivos de `dados/` e os textos por idioma.
+- `src/config/` — configurações: `site.json`, `paises/<pais>.json` (inclui ajustes do mapa e chamadas), `temas/<tema>-<nivel>.json` (medidas, cortes, legendas), `textos/<idioma>.json` (textos fixos dos moldes).
 - `src/estilos/` — cores e estilos globais.
 - `design/` — telas aprovadas (só referência; não é publicado).
 
