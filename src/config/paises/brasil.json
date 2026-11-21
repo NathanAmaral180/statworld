@@ -48,7 +48,7 @@
     "_explicacao": "Ajustes do desenho do mapa deste país. 'chamadas' = estados pequenos cuja sigla fica fora do mapa, ligada por uma linha (posição x,y no desenho). 'margem' = espaço extra em volta do desenho para caber essas siglas.",
     "margem": {
       "cima": 10,
-      "direita": 110,
+      "direita": 150,
       "baixo": 10,
       "esquerda": 10
     },

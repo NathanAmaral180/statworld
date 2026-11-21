@@ -69,27 +69,3 @@ a { color: var(--accent); }
   .conteudo { padding: 0 16px; }
 }
 
-/* Cores de categoria (ex.: produto líder no mapa do agro).
-   Inspiradas na tela 2a do design; usadas só para categorias, nunca para valores. */
-:root {
-  --cat-1: #4F9A5E; /* verde */
-  --cat-2: #D6A93A; /* amarelo */
-  --cat-3: #C9653F; /* laranja-terra */
-  --cat-4: #8A5B3F; /* marrom */
-  --cat-5: #8662B8; /* roxo */
-  --cat-6: #D57CA9; /* rosa */
-  --cat-7: #5FA8CF; /* azul-claro */
-  --cat-8: #3C9A93; /* verde-água */
-  --cat-outro: #A9AFB8;
-}
-:root[data-theme="dark"] {
-  --cat-1: #5FAE6E;
-  --cat-2: #D9B04E;
-  --cat-3: #D27352;
-  --cat-4: #A87556;
-  --cat-5: #9A7BCB;
-  --cat-6: #D88AB2;
-  --cat-7: #6EB4D8;
-  --cat-8: #4DAEA6;
-  --cat-outro: #6C727C;
-}

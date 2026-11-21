@@ -34,7 +34,7 @@ export interface LinhaRanking {
   pos: number | null;
   texto: string;
   barra: [number, number] | null; // [esquerda %, largura %]
-  marca?: string; // classe de cor de um marcador antes do nome (ex.: produto líder)
+  icone?: string; // ícone antes do nome (ex.: produto líder)
   tipo?: 'sem' | 'zero';
 }
 
@@ -46,7 +46,7 @@ export interface Ficha {
   depois: string;
   apagado?: boolean; // sem dado / não produz
   subtitulo?: string;
-  marca?: string;
+  icone?: string;
   detalhes?: [string, string][];
   link?: { texto: string; url: string };
   nota: string;
@@ -55,12 +55,25 @@ export interface Ficha {
 export interface Visao {
   id: string;
   titulo: string; // título da coluna do ranking
-  classes: Record<string, string>; // c0..c5 | cat-N | outro | zero | sem
-  legenda: { classe: string; rotulo: string }[];
+  classes: Record<string, string>; // c0..c5 | p-<produto> | zero | sem
+  legenda: { classe: string; rotulo: string; icone?: string }[];
   legendaTitulo?: string;
   linhas: LinhaRanking[];
   fichas: Record<string, Ficha>;
   fonte: string; // HTML já escapado
+  icones?: Record<string, string>; // lugar -> ícone desenhado no mapa
+  svgs?: Record<string, string>; // ícone -> desenho (conteúdo do SVG 24x24)
+}
+
+// Ícone dentro do mapa: um círculo com o desenho no meio (posição dada pelo <g> de fora).
+export function htmlChip(svgs: Record<string, string> | undefined, nome?: string): string {
+  const corpo = nome && svgs?.[nome];
+  return corpo ? `<circle class="chip" r="16"></circle><svg class="ic-mapa" x="-11" y="-11" width="22" height="22" viewBox="0 0 24 24">${corpo}</svg>` : '';
+}
+
+export function htmlIcone(svgs: Record<string, string> | undefined, nome?: string): string {
+  const corpo = nome && svgs?.[nome];
+  return corpo ? `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${corpo}</svg>` : '';
 }
 
 // ---------- utilidades ----------
@@ -185,17 +198,17 @@ export function htmlRanking(v: Visao, ativo: string | null): string {
   return v.linhas
     .map((l) => {
       const barra = l.barra ? `<span class="barra" style="left:${l.barra[0]}%;width:${l.barra[1]}%"></span>` : '';
-      const marca = l.marca ? `<i class="marca" data-classe="${l.marca}"></i>` : '';
+      const marca = htmlIcone(v.svgs, l.icone);
       return `<li><button type="button" class="linha${l.tipo ? ' ' + l.tipo : ''}${l.uf === ativo ? ' ativa' : ''}" data-uf="${l.uf}">
 <span class="pos">${l.pos ?? '—'}</span><span class="nome">${marca}${escapar(l.nome)}</span><span class="trilho">${barra}</span><span class="valor">${escapar(l.texto)}</span></button></li>`;
     })
     .join('');
 }
 
-export function htmlFicha(f: Ficha): string {
+export function htmlFicha(f: Ficha, svgs?: Record<string, string>): string {
   const valor = `${f.antes ? `<small>${escapar(f.antes)}</small>` : ''}<strong>${escapar(f.numero)}</strong>${f.depois ? `<small>${escapar(f.depois)}</small>` : ''}`;
   const sub = f.subtitulo
-    ? `<p class="ficha-sub">${f.marca ? `<i class="marca" data-classe="${f.marca}"></i>` : ''}${escapar(f.subtitulo)}</p>`
+    ? `<p class="ficha-sub">${htmlIcone(svgs, f.icone)}${escapar(f.subtitulo)}</p>`
     : '';
   const det = f.detalhes?.length
     ? `<dl class="ficha-detalhes">${f.detalhes.map(([a, b]) => `<div><dt>${escapar(a)}</dt><dd>${escapar(b)}</dd></div>`).join('')}</dl>`
@@ -208,5 +221,5 @@ ${sub}${det}${link}<p class="ficha-fonte">${escapar(f.nota)}</p>`;
 
 export function htmlLegenda(v: Visao): string {
   const titulo = v.legendaTitulo ? `<li class="leg-titulo">${escapar(v.legendaTitulo)}</li>` : '';
-  return titulo + v.legenda.map((l) => `<li class="leg-${l.classe}"><span class="amostra" data-classe="${l.classe}"></span>${escapar(l.rotulo)}</li>`).join('');
+  return titulo + v.legenda.map((l) => `<li class="leg-${l.classe}"><span class="amostra" data-classe="${l.classe}"></span>${htmlIcone(v.svgs, l.icone)}${escapar(l.rotulo)}</li>`).join('');
 }

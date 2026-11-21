@@ -1,7 +1,7 @@
 ---
 // Molde "mapa + ranking + ficha". Recebe "visões" prontas (ver visao.ts) e só desenha.
 // Nada aqui é exclusivo de um país ou de um tema.
-import { htmlRanking, htmlFicha, htmlLegenda, preencher, type Visao, type Contexto, type Unidade } from './visao';
+import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, preencher, type Visao, type Contexto, type Unidade } from './visao';
 
 export interface Opcao {
   id: string;
@@ -31,7 +31,7 @@ const { margem, chamadas } = mapa;
 const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esquerda + margem.direita} ${geo.altura + margem.cima + margem.baixo}`;
 const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
 ---
-<div class="mr" data-mapa-ranking>
+<div class={`mr${visao.icones ? ' com-icones' : ''}`} data-mapa-ranking>
   {(opcoes.length > 1 || listaOpcao) && (
     <div class="mr-controles">
       {opcoes.length > 1 && (
@@ -69,6 +69,14 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
           ))}
         </g>
         <path class="mr-destaque" d={geo.unidades.find((u) => u.sigla === ativo)?.caminho} />
+        <g class="mr-icones" aria-hidden="true">
+          {geo.unidades.map((u) => {
+            const ch = chamadas[u.sigla];
+            const [x, y] = ch ? [ch[0] + 14, ch[1]] : [u.centro[0], u.centro[1] - 14];
+            return <g class={`chip-uf${ch ? ' de-chamada' : ''}`} data-uf={u.sigla} transform={`translate(${x} ${y})`}
+              set:html={htmlChip(visao.svgs, visao.icones?.[u.sigla])} />;
+          })}
+        </g>
         <g class="mr-rotulos" aria-hidden="true">
           {geo.unidades.map((u) => {
             const ch = chamadas[u.sigla];
@@ -89,7 +97,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
     </figure>
 
     <div class="mr-lado">
-      <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo])} />
+      <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo], visao.svgs)} />
       <div class="mr-tabela">
         <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{visao.titulo}</span></div>
         <ol class="mr-ranking" set:html={htmlRanking(visao, ativo)} />
@@ -103,7 +111,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
 </div>
 
 <script>
-  import { htmlRanking, htmlFicha, htmlLegenda, type Visao } from './visao';
+  import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, type Visao } from './visao';
 
   for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-ranking]')) {
     const d = JSON.parse(raiz.querySelector('.mr-dados')!.textContent!);
@@ -150,6 +158,8 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
     function aplicar(v: Visao) {
       visao = v;
       raiz.querySelectorAll<SVGElement>('.uf, .rotulo').forEach((el) => { el.dataset.classe = v.classes[el.dataset.uf!]; });
+      raiz.classList.toggle('com-icones', !!v.icones);
+      raiz.querySelectorAll<SVGGElement>('.chip-uf').forEach((g) => { g.innerHTML = htmlChip(v.svgs, v.icones?.[g.dataset.uf!]); });
       $('.mr-legenda')!.innerHTML = htmlLegenda(v);
       $('.mr-cab-medida')!.textContent = v.titulo;
       $('.mr-fonte')!.innerHTML = v.fonte;
@@ -159,7 +169,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
 
     function destacar() {
       const sigla = previa ?? fixado ?? visao.linhas[0].uf;
-      ficha.innerHTML = htmlFicha(visao.fichas[sigla]);
+      ficha.innerHTML = htmlFicha(visao.fichas[sigla], visao.svgs);
       const caminho = raiz.querySelector(`#mr-uf-${sigla}`)?.getAttribute('d');
       if (caminho) destaque.setAttribute('d', caminho);
       ranking.querySelectorAll<HTMLElement>('.linha').forEach((b) => {
@@ -224,15 +234,6 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   :global(.mr [data-classe="c3"]) { --cor: var(--rampa-4); }
   :global(.mr [data-classe="c4"]) { --cor: var(--rampa-5); }
   :global(.mr [data-classe="c5"]) { --cor: var(--rampa-6); }
-  :global(.mr [data-classe="cat-1"]) { --cor: var(--cat-1); }
-  :global(.mr [data-classe="cat-2"]) { --cor: var(--cat-2); }
-  :global(.mr [data-classe="cat-3"]) { --cor: var(--cat-3); }
-  :global(.mr [data-classe="cat-4"]) { --cor: var(--cat-4); }
-  :global(.mr [data-classe="cat-5"]) { --cor: var(--cat-5); }
-  :global(.mr [data-classe="cat-6"]) { --cor: var(--cat-6); }
-  :global(.mr [data-classe="cat-7"]) { --cor: var(--cat-7); }
-  :global(.mr [data-classe="cat-8"]) { --cor: var(--cat-8); }
-  :global(.mr [data-classe="outro"]) { --cor: var(--cat-outro); }
   :global(.mr [data-classe="zero"]) { --cor: var(--track); }
 
   /* Mapa */
@@ -248,7 +249,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   /* Nas duas cores mais fortes a sigla fica na cor do fundo para ter contraste */
   :global(.mr .rotulo[data-classe="c4"]), :global(.mr .rotulo[data-classe="c5"]) { fill: var(--bg); }
   /* Cores de produto: sigla com contorno na cor do fundo para ler sobre qualquer cor */
-  :global(.mr .rotulo[data-classe^="cat-"]), :global(.mr .rotulo[data-classe="outro"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
+  :global(.mr .rotulo[data-classe^="p-"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
   .chamada line { stroke: var(--sub); stroke-width: 1.2; }
   .chamada circle { fill: var(--sub); }
 
@@ -258,7 +259,15 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   :global(.mr-legenda .amostra) { display: block; height: 12px; margin-bottom: 8px; background: var(--cor); }
   :global(.mr-legenda .amostra[data-classe="sem"]) { background: repeating-linear-gradient(-45deg, var(--hatch) 0 1.5px, var(--bg) 1.5px 5px); box-shadow: inset 0 0 0 1px var(--line); }
   :global(.mr-legenda .leg-sem), :global(.mr-legenda .leg-outro) { grid-column: span 2; }
-  :global(.mr .marca) { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--cor); margin-right: 8px; vertical-align: 0; flex: none; }
+  /* Ícones de produto (desenhos do Claude Design: só traço, uma cor) */
+  :global(.mr .ic) { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; color: var(--sub); vertical-align: -0.22em; margin-right: 8px; flex: none; }
+  :global(.mr .chip) { fill: var(--bg); stroke: var(--line2); stroke-width: 1; }
+  :global(.mr .ic-mapa) { fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .chip-uf { pointer-events: none; }
+  /* Com ícones, a sigla desce um pouco (ou vai para a direita, nas chamadas) */
+  .mr-rotulos text { transition: transform .2s; }
+  .com-icones .rotulo { transform: translateY(16px); }
+  .com-icones .chamada text { transform: translateX(32px); }
 
   /* Ficha */
   .mr-ficha { background: var(--surf); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; margin-bottom: 20px; }

@@ -3,9 +3,11 @@
 import type { APIRoute } from 'astro';
 import { construirVisaoProduto, type DadosProducao } from '../../../../componentes/mapa-ranking/construir-producao';
 import pais from '../../../../config/paises/brasil.json';
-import tema from '../../../../config/temas/agro-estados.json';
+import temaBase from '../../../../config/temas/agro-estados.json';
+import iconesAgro from '../../../../config/icones/agro.json';
 import { carregarDados } from '../../../../lib/dados';
 import { contextoDoPais } from '../../../../lib/contexto';
+const tema = { ...temaBase, icones: iconesAgro };
 
 const dados = () => carregarDados<DadosProducao>('agro', pais.arquivos.agro.estado);
 

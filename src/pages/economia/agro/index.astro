@@ -8,9 +8,11 @@ import { construirVisaoLider, construirVisaoProduto, type DadosProducao } from '
 import { preencher } from '../../../componentes/mapa-ranking/visao';
 import pais from '../../../config/paises/brasil.json';
 import site from '../../../config/site.json';
-import tema from '../../../config/temas/agro-estados.json';
+import temaBase from '../../../config/temas/agro-estados.json';
+import iconesAgro from '../../../config/icones/agro.json';
 import { carregarDados } from '../../../lib/dados';
 import { contextoDoPais } from '../../../lib/contexto';
+const tema = { ...temaBase, icones: iconesAgro };
 
 const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);

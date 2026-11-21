@@ -1,20 +1,25 @@
 {
-  "_explicacao": "Mapa do Agro (lavouras) por estado. Para outro país, troque só textos, cores e cortes. 'cores' liga cada produto a uma das 8 cores de categoria (src/estilos/global.css); produto sem cor aparece como 'Outros'. 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores.",
+  "_explicacao": "Mapa do Agro (lavouras) por estado. Para outro país, troque só textos e cortes. Ícones e cores dos produtos vêm do Claude Design (src/config/icones/agro.json e src/estilos/cores-produtos.css); 'apelidos' liga um produto ao nome do ícone/cor quando são diferentes. Produto sem cor própria aparece como 'Outros'. 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores.",
   "titulo": "A economia do {pais}",
-  "trilha": ["Economia", "{pais}", "Agro"],
-  "opcoes": { "lider": "Produto líder", "quanto": "Quanto produz", "valor": "Valor da produção", "quantidade": "Produção em toneladas" },
-  "produtoPadrao": "soja",
-  "cortesParticipacao": [1, 2.5, 5, 10, 20],
-  "cores": {
-    "soja": 1,
-    "milho": 2,
-    "cana-de-acucar": 3,
-    "cafe": 4,
-    "acai": 5,
-    "uva": 6,
-    "banana": 7,
-    "mandioca": 8
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Agro"
+  ],
+  "opcoes": {
+    "lider": "Produto líder",
+    "quanto": "Quanto produz",
+    "valor": "Valor da produção",
+    "quantidade": "Produção em toneladas"
   },
+  "produtoPadrao": "soja",
+  "cortesParticipacao": [
+    1,
+    2.5,
+    5,
+    10,
+    20
+  ],
   "urlProduto": "/economia/agro/{produto}",
   "urlDadosProduto": "/dados/brasil/agro/{produto}.json",
   "textos": {
@@ -27,5 +32,9 @@
     "abaDados": "Dados",
     "abaAoVivo": "Ao vivo",
     "abaHistoria": "História"
+  },
+  "apelidos": {
+    "cana-de-acucar": "cana",
+    "bovinos": "gado"
   }
 }

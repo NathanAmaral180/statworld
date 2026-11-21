@@ -1,0 +1,59 @@
+/* Cores dos produtos (Claude Design). Gerado por scripts/icones-agro/extrair.mjs. Não edite à mão. */
+:root {
+  --p-soja: oklch(0.66 0.13 140);
+  --p-milho: oklch(0.85 0.14 95);
+  --p-cana: oklch(0.72 0.10 185);
+  --p-cafe: oklch(0.50 0.07 50);
+  --p-gado: oklch(0.62 0.15 30);
+  --p-frango: oklch(0.76 0.11 350);
+  --p-leite: oklch(0.83 0.06 235);
+  --p-mandioca: oklch(0.58 0.11 305);
+  --p-arroz: oklch(0.80 0.07 70);
+  --p-acai: oklch(0.42 0.12 330);
+  --p-uva: oklch(0.64 0.14 285);
+  --p-algodao-herbaceo: oklch(0.56 0.10 225);
+  --p-banana: oklch(0.84 0.16 122);
+  --p-laranja: oklch(0.72 0.17 55);
+  --p-cacau: oklch(0.44 0.11 15);
+  --p-suinos: oklch(0.58 0.20 345);
+  --p-ovos: oklch(0.48 0.09 165);
+  --p-outro: oklch(0.72 0 0);
+}
+:root[data-theme="dark"] {
+  --p-soja: oklch(0.62 0.11 140);
+  --p-milho: oklch(0.80 0.12 95);
+  --p-cana: oklch(0.66 0.09 185);
+  --p-cafe: oklch(0.52 0.06 50);
+  --p-gado: oklch(0.60 0.13 30);
+  --p-frango: oklch(0.70 0.10 350);
+  --p-leite: oklch(0.74 0.06 235);
+  --p-mandioca: oklch(0.58 0.10 305);
+  --p-arroz: oklch(0.74 0.06 70);
+  --p-acai: oklch(0.48 0.11 330);
+  --p-uva: oklch(0.62 0.12 285);
+  --p-algodao-herbaceo: oklch(0.56 0.09 225);
+  --p-banana: oklch(0.78 0.14 122);
+  --p-laranja: oklch(0.68 0.15 55);
+  --p-cacau: oklch(0.48 0.10 15);
+  --p-suinos: oklch(0.58 0.17 345);
+  --p-ovos: oklch(0.52 0.08 165);
+  --p-outro: oklch(0.56 0 0);
+}
+[data-classe="p-soja"] { --cor: var(--p-soja); }
+[data-classe="p-milho"] { --cor: var(--p-milho); }
+[data-classe="p-cana"] { --cor: var(--p-cana); }
+[data-classe="p-cafe"] { --cor: var(--p-cafe); }
+[data-classe="p-gado"] { --cor: var(--p-gado); }
+[data-classe="p-frango"] { --cor: var(--p-frango); }
+[data-classe="p-leite"] { --cor: var(--p-leite); }
+[data-classe="p-mandioca"] { --cor: var(--p-mandioca); }
+[data-classe="p-arroz"] { --cor: var(--p-arroz); }
+[data-classe="p-acai"] { --cor: var(--p-acai); }
+[data-classe="p-uva"] { --cor: var(--p-uva); }
+[data-classe="p-algodao-herbaceo"] { --cor: var(--p-algodao-herbaceo); }
+[data-classe="p-banana"] { --cor: var(--p-banana); }
+[data-classe="p-laranja"] { --cor: var(--p-laranja); }
+[data-classe="p-cacau"] { --cor: var(--p-cacau); }
+[data-classe="p-suinos"] { --cor: var(--p-suinos); }
+[data-classe="p-ovos"] { --cor: var(--p-ovos); }
+[data-classe="p-outro"] { --cor: var(--p-outro); }

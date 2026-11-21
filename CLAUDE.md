@@ -47,6 +47,7 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 ## Agro
 - Fonte: IBGE, Produção Agrícola Municipal (só lavouras). Não inclui pecuária, silvicultura nem extração vegetal; o site diz isso. Para pecuária será preciso outra fonte (ex.: MAPA, Valor Bruto da Produção).
 - "Não produz" (0 no IBGE, símbolo "-") é diferente de "sem dado" (null).
+- Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321
