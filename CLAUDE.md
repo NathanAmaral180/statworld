@@ -35,11 +35,18 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - `src/componentes/` — peças reutilizáveis (cabeçalho, mapa, ranking, ficha, gráfico).
 - `src/pages/` — páginas do site (o Astro exige este nome em inglês; cada arquivo vira um endereço).
 - `src/layouts/` — moldura comum das páginas.
-- `src/componentes/mapa-ranking/` — molde mapa + ranking + ficha (`logica.ts` tem as regras, usadas no servidor e no navegador).
+- `src/componentes/mapa-ranking/` — molde mapa + ranking + ficha. `visao.ts` define a "visão" (cores, legenda, ranking, fichas) e desenha; `construir-indicador.ts` (valor numérico, ex.: PIB) e `construir-producao.ts` (produtos por lugar, ex.: lavouras) montam as visões no servidor.
+- `src/componentes/Abas.astro` — abas (Visão geral / Agro…; itens sem página aparecem "em breve").
+- `src/lib/contexto.ts` — junta mapa, lugares, idioma, moeda e textos de um país.
+- `src/pages/dados/` — arquivos JSON gerados no build e baixados pelo navegador sob demanda (ex.: um por produto).
 - `src/lib/dados.ts` — lê os arquivos de `dados/` e os textos por idioma.
 - `src/config/` — configurações: `site.json`, `paises/<pais>.json` (inclui ajustes do mapa e chamadas), `temas/<tema>-<nivel>.json` (medidas, cortes, legendas), `textos/<idioma>.json` (textos fixos dos moldes).
 - `src/estilos/` — cores e estilos globais.
 - `design/` — telas aprovadas (só referência; não é publicado).
+
+## Agro
+- Fonte: IBGE, Produção Agrícola Municipal (só lavouras). Não inclui pecuária, silvicultura nem extração vegetal; o site diz isso. Para pecuária será preciso outra fonte (ex.: MAPA, Valor Bruto da Produção).
+- "Não produz" (0 no IBGE, símbolo "-") é diferente de "sem dado" (null).
 
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321

@@ -1,41 +1,39 @@
 ---
-// Página de Economia: mapa + ranking dos estados.
-// Os números vêm de dados/economia/; as medidas de src/config/temas/;
-// o país de src/config/paises/. Nenhum número escrito aqui.
+// Economia · Visão geral: mapa + ranking dos estados.
+// Números: dados/economia/. Medidas: src/config/temas/. País: src/config/paises/.
 import Base from '../layouts/Base.astro';
+import Abas from '../componentes/Abas.astro';
 import MapaRanking from '../componentes/mapa-ranking/MapaRanking.astro';
+import { construirVisaoIndicador, type Medida } from '../componentes/mapa-ranking/construir-indicador';
+import { preencher } from '../componentes/mapa-ranking/visao';
 import pais from '../config/paises/brasil.json';
+import site from '../config/site.json';
 import tema from '../config/temas/economia-estados.json';
-import { carregarDados, carregarTextos } from '../lib/dados';
-import { preencher, type Medida } from '../componentes/mapa-ranking/logica';
+import { carregarDados } from '../lib/dados';
+import { contextoDoPais } from '../lib/contexto';
 
 const NIVEL = 'estado';
-const geo = carregarDados('geo', pais.arquivos.geo[NIVEL]);
-const economia = carregarDados('economia', pais.arquivos.economia[NIVEL]);
-const textos = carregarTextos(pais.idioma);
-const nivel = pais.niveisGeograficos.find((n) => n.id === NIVEL)!;
+const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
+const economia = carregarDados<any>('economia', pais.arquivos.economia[NIVEL]);
+
+const medidas = (tema.medidas as Medida[]).filter((m) => economia.indicadores[m.id]);
+const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx)]));
+const opcoes = medidas.map((m) => ({ id: m.id, rotulo: preencher(m.rotulo, { periodo: economia.indicadores[m.id].periodo }), visao: m.id }));
 
 const titulo = preencher(tema.titulo, { pais: pais.nome });
 const trilha = tema.trilha.map((t) => preencher(t, { pais: pais.nome }));
-const ctx = { idioma: pais.idioma, moeda: pais.moeda.codigo, textos, nivelSingular: nivel.singular, nivelPlural: nivel.plural };
 ---
 <Base titulo={titulo} temaAtual="economia">
   <section class="conteudo pagina">
     <p class="trilha">{trilha.join(' / ')}</p>
     <h1>{titulo}</h1>
-    <MapaRanking
-      geo={geo}
-      indicadores={economia.indicadores}
-      medidas={tema.medidas as Medida[]}
-      medidaPadrao={tema.medidaPadrao}
-      ctx={ctx}
-      mapa={pais.mapa}
-    />
+    <Abas itens={site.subtemas.economia} atual="visao-geral" rotulo="Economia" emBreve={site.textos.emBreve} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} />
   </section>
 </Base>
 
 <style>
   .pagina { padding-top: 40px; padding-bottom: 80px; }
   .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
-  h1 { margin: 0 0 32px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
 </style>

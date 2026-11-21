@@ -1,0 +1,33 @@
+---
+// Abas de navegação (ex.: Visão geral / Agro / Indústria). Itens inativos aparecem como "em breve".
+interface Item { id: string; nome: string; href?: string; ativo: boolean }
+interface Props { itens: Item[]; atual: string; rotulo: string; emBreve: string }
+const { itens, atual, rotulo, emBreve } = Astro.props;
+---
+<nav class="abas" aria-label={rotulo}>
+  <ul>
+    {itens.map((i) => (
+      <li>
+        {i.ativo && i.href ? (
+          <a href={i.href} aria-current={i.id === atual ? 'page' : undefined}>{i.nome}</a>
+        ) : i.id === atual ? (
+          <span class="atual">{i.nome}</span>
+        ) : (
+          <span class="inativo">{i.nome}<small>{emBreve}</small></span>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .abas { border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; overflow-y: hidden; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+  a, span { display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-size: 17px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  a { color: var(--sub); }
+  a:hover { color: var(--ink); }
+  a[aria-current="page"], .atual { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+  .inativo { color: var(--faint); }
+  small { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>

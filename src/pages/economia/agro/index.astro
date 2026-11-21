@@ -1,0 +1,53 @@
+---
+// Economia · Agro: produto líder das lavouras e quanto cada estado produz.
+// Números: dados/agro/. Configuração: src/config/temas/agro-estados.json.
+import Base from '../../../layouts/Base.astro';
+import Abas from '../../../componentes/Abas.astro';
+import MapaRanking from '../../../componentes/mapa-ranking/MapaRanking.astro';
+import { construirVisaoLider, construirVisaoProduto, type DadosProducao } from '../../../componentes/mapa-ranking/construir-producao';
+import { preencher } from '../../../componentes/mapa-ranking/visao';
+import pais from '../../../config/paises/brasil.json';
+import site from '../../../config/site.json';
+import tema from '../../../config/temas/agro-estados.json';
+import { carregarDados } from '../../../lib/dados';
+import { contextoDoPais } from '../../../lib/contexto';
+
+const NIVEL = 'estado';
+const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
+const dados = carregarDados<DadosProducao>('agro', pais.arquivos.agro[NIVEL]);
+
+const padrao = dados.produtos.find((p) => p.id === tema.produtoPadrao) ?? dados.produtos[0];
+const visoes = {
+  lider: construirVisaoLider('lider', unidades, dados, tema, ctx),
+  [`lista:${padrao.id}`]: construirVisaoProduto(padrao.id, unidades, dados, padrao, 'valor', tema, ctx, true),
+};
+const opcoes = [
+  { id: 'lider', rotulo: tema.opcoes.lider, visao: 'lider' },
+  {
+    id: 'quanto',
+    rotulo: tema.opcoes.quanto,
+    lista: {
+      rotulo: ctx.textos.escolhaProduto,
+      padrao: padrao.id,
+      itens: dados.produtos.map((p) => ({ id: p.id, rotulo: p.nome, url: preencher(tema.urlDadosProduto, { produto: p.id }) })),
+    },
+  },
+];
+
+const titulo = preencher(tema.titulo, { pais: pais.nome });
+const trilha = tema.trilha.map((t) => preencher(t, { pais: pais.nome }));
+---
+<Base titulo={`${trilha.at(-1)} · ${titulo}`} temaAtual="economia">
+  <section class="conteudo pagina">
+    <p class="trilha">{trilha.join(' / ')}</p>
+    <h1>{titulo}</h1>
+    <Abas itens={site.subtemas.economia} atual="agro" rotulo="Economia" emBreve={site.textos.emBreve} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} />
+  </section>
+</Base>
+
+<style>
+  .pagina { padding-top: 40px; padding-bottom: 80px; }
+  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
+  h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+</style>

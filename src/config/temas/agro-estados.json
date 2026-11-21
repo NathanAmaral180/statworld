@@ -1,0 +1,31 @@
+{
+  "_explicacao": "Mapa do Agro (lavouras) por estado. Para outro país, troque só textos, cores e cortes. 'cores' liga cada produto a uma das 8 cores de categoria (src/estilos/global.css); produto sem cor aparece como 'Outros'. 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores.",
+  "titulo": "A economia do {pais}",
+  "trilha": ["Economia", "{pais}", "Agro"],
+  "opcoes": { "lider": "Produto líder", "quanto": "Quanto produz", "valor": "Valor da produção", "quantidade": "Produção em toneladas" },
+  "produtoPadrao": "soja",
+  "cortesParticipacao": [1, 2.5, 5, 10, 20],
+  "cores": {
+    "soja": 1,
+    "milho": 2,
+    "cana-de-acucar": 3,
+    "cafe": 4,
+    "acai": 5,
+    "uva": 6,
+    "banana": 7,
+    "mandioca": 8
+  },
+  "urlProduto": "/economia/agro/{produto}",
+  "urlDadosProduto": "/dados/brasil/agro/{produto}.json",
+  "textos": {
+    "medidaTotal": "Valor da produção das lavouras em {periodo}",
+    "medidaCurta": "valor da produção",
+    "legendaLider": "Principal produto das lavouras",
+    "medidaProdutoValor": "Valor da produção de {produto} em {periodo}",
+    "medidaProdutoQuantidade": "Produção de {produto} em {periodo}",
+    "subtituloProduto": "Lavouras · {valor} de valor da produção em {periodo}, o {n}º entre os produtos das lavouras ({fonte})",
+    "abaDados": "Dados",
+    "abaAoVivo": "Ao vivo",
+    "abaHistoria": "História"
+  }
+}

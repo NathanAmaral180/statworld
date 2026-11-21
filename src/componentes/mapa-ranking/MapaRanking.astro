@@ -1,50 +1,62 @@
 ---
-// Molde "mapa + ranking + ficha". Recebe tudo por configuração:
-// nada aqui é exclusivo de um país ou de um tema.
-import {
-  classe, montarRanking, htmlRanking, htmlFicha, htmlFonte, htmlLegenda, preencher,
-  type Indicador, type Medida, type Unidade, type Contexto,
-} from './logica';
+// Molde "mapa + ranking + ficha". Recebe "visões" prontas (ver visao.ts) e só desenha.
+// Nada aqui é exclusivo de um país ou de um tema.
+import { htmlRanking, htmlFicha, htmlLegenda, preencher, type Visao, type Contexto, type Unidade } from './visao';
+
+export interface Opcao {
+  id: string;
+  rotulo: string;
+  visao?: string; // chave em `visoes`
+  lista?: { rotulo: string; itens: { id: string; rotulo: string; url: string }[]; padrao: string };
+}
 
 interface Props {
   geo: { largura: number; altura: number; unidades: (Unidade & { caminho: string; centro: [number, number] })[] };
-  indicadores: Record<string, Indicador>;
-  medidas: Medida[];
-  medidaPadrao: string;
-  ctx: Contexto;
   mapa: { margem: { cima: number; direita: number; baixo: number; esquerda: number }; chamadas: Record<string, [number, number]> };
+  ctx: Contexto;
+  opcoes: Opcao[];
+  opcaoInicial: string;
+  visoes: Record<string, Visao>; // chave: id da visão, ou "lista:<item>" para itens de lista
 }
-const { geo, indicadores, medidas: medidasBrutas, medidaPadrao, ctx, mapa } = Astro.props;
+const { geo, mapa, ctx, opcoes, opcaoInicial, visoes } = Astro.props;
 
-// Troca {periodo} pelo ano de cada indicador; só entram medidas que têm dados.
-const medidas = medidasBrutas
-  .filter((m) => indicadores[m.id])
-  .map((m) => ({
-    ...m,
-    rotulo: preencher(m.rotulo, { periodo: indicadores[m.id].periodo }),
-    titulo: preencher(m.titulo, { periodo: indicadores[m.id].periodo }),
-  }));
-const medida = medidas.find((m) => m.id === medidaPadrao) ?? medidas[0];
-const ind = indicadores[medida.id];
-const unidades: Unidade[] = geo.unidades.map(({ codigo, sigla, nome, regiao }) => ({ codigo, sigla, nome, regiao }));
-const linhas = montarRanking(unidades, ind, ctx.idioma);
-const comDado = linhas.filter((l) => l.valor !== null).length;
-const ativo = linhas[0];
+const chaveDe = (o: Opcao) => (o.lista ? `lista:${o.lista.padrao}` : o.visao!);
+const opcao = opcoes.find((o) => o.id === opcaoInicial) ?? opcoes[0];
+const visao = visoes[chaveDe(opcao)];
+if (!visao) throw new Error(`Visão inicial não encontrada: ${chaveDe(opcao)}`);
+const ativo = visao.linhas[0].uf;
+const listaOpcao = opcoes.find((o) => o.lista);
 
 const { margem, chamadas } = mapa;
 const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esquerda + margem.direita} ${geo.altura + margem.cima + margem.baixo}`;
-const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, ctx };
+const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
 ---
 <div class="mr" data-mapa-ranking>
-  <div class="mr-medidas" role="group" aria-label={ctx.textos.escolhaMedida}>
-    {medidas.map((m) => (
-      <button type="button" data-medida={m.id} aria-pressed={String(m.id === medida.id)}>{m.rotulo}</button>
-    ))}
-  </div>
+  {(opcoes.length > 1 || listaOpcao) && (
+    <div class="mr-controles">
+      {opcoes.length > 1 && (
+        <div class="mr-medidas" role="group" aria-label={ctx.textos.escolhaMedida}>
+          {opcoes.map((o) => (
+            <button type="button" data-opcao={o.id} aria-pressed={String(o.id === opcao.id)}>{o.rotulo}</button>
+          ))}
+        </div>
+      )}
+      {listaOpcao && (
+        <label class="mr-lista" hidden={opcao.id !== listaOpcao.id}>
+          <span>{listaOpcao.lista!.rotulo}</span>
+          <select data-lista={listaOpcao.id}>
+            {listaOpcao.lista!.itens.map((i) => (
+              <option value={i.id} data-url={i.url} selected={i.id === listaOpcao.lista!.padrao}>{i.rotulo}</option>
+            ))}
+          </select>
+        </label>
+      )}
+    </div>
+  )}
 
   <div class="mr-grade">
     <figure class="mr-mapa">
-      <svg viewBox={viewBox} role="img" aria-label={preencher(ctx.textos.mapaDescricao, { titulo: medida.titulo, nivel: ctx.nivelSingular })}>
+      <svg viewBox={viewBox} role="img" aria-label={preencher(ctx.textos.mapaDescricao, { titulo: visao.titulo, nivel: ctx.nivelSingular })}>
         <defs>
           <pattern id="mr-hachura" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
             <rect width="7" height="7" class="hachura-fundo" />
@@ -53,15 +65,13 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
         </defs>
         <g class="mr-unidades">
           {geo.unidades.map((u) => (
-            <path class="uf" id={`mr-uf-${u.sigla}`} d={u.caminho} data-uf={u.sigla}
-              data-classe={classe(ind.valores[u.sigla], medida.cortes)}><title>{u.nome}</title></path>
+            <path class="uf" id={`mr-uf-${u.sigla}`} d={u.caminho} data-uf={u.sigla} data-classe={visao.classes[u.sigla]}><title>{u.nome}</title></path>
           ))}
         </g>
-        <path class="mr-destaque" d={geo.unidades.find((u) => u.sigla === ativo.unidade.sigla)?.caminho} />
+        <path class="mr-destaque" d={geo.unidades.find((u) => u.sigla === ativo)?.caminho} />
         <g class="mr-rotulos" aria-hidden="true">
           {geo.unidades.map((u) => {
             const ch = chamadas[u.sigla];
-            const c = classe(ind.valores[u.sigla], medida.cortes);
             return ch ? (
               <g class="chamada" data-uf={u.sigla}>
                 <line x1={u.centro[0]} y1={u.centro[1]} x2={ch[0] - 14} y2={ch[1]} />
@@ -69,23 +79,23 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
                 <text x={ch[0]} y={ch[1]} text-anchor="start" dominant-baseline="central">{u.sigla}</text>
               </g>
             ) : (
-              <text class="rotulo" data-uf={u.sigla} data-classe={c} x={u.centro[0]} y={u.centro[1]}
+              <text class="rotulo" data-uf={u.sigla} data-classe={visao.classes[u.sigla]} x={u.centro[0]} y={u.centro[1]}
                 text-anchor="middle" dominant-baseline="central">{u.sigla}</text>
             );
           })}
         </g>
       </svg>
-      <ul class="mr-legenda" set:html={htmlLegenda(medida, ctx, linhas.length - comDado)} />
+      <ul class="mr-legenda" set:html={htmlLegenda(visao)} />
     </figure>
 
     <div class="mr-lado">
-      <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(ativo, linhas.length, comDado, medida, medida.titulo, ind, ctx)} />
+      <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo])} />
       <div class="mr-tabela">
-        <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{medida.titulo}</span></div>
-        <ol class="mr-ranking" set:html={htmlRanking(linhas, medida, ctx, ativo.unidade.sigla)} />
+        <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{visao.titulo}</span></div>
+        <ol class="mr-ranking" set:html={htmlRanking(visao, ativo)} />
         <p class="mr-dica">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</p>
       </div>
-      <p class="mr-fonte" set:html={htmlFonte(ind, ctx)} />
+      <p class="mr-fonte" set:html={visao.fonte} />
     </div>
   </div>
 
@@ -93,55 +103,72 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
 </div>
 
 <script>
-  import { classe, montarRanking, htmlRanking, htmlFicha, htmlFonte, htmlLegenda, type Linha } from './logica';
+  import { htmlRanking, htmlFicha, htmlLegenda, type Visao } from './visao';
 
   for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-ranking]')) {
     const d = JSON.parse(raiz.querySelector('.mr-dados')!.textContent!);
-    const { unidades, indicadores, medidas, ctx } = d;
-    let medidaId: string = d.medidaPadrao;
+    const cache: Record<string, Visao> = { ...d.visoes };
+    let opcaoId: string = d.opcaoInicial;
+    let visao: Visao;
     let fixado: string | null = null;
     let previa: string | null = null;
-    let linhas: Linha[] = [];
 
-    const $ = <T extends Element = HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
-    const ficha = $('.mr-ficha');
-    const ranking = $('.mr-ranking');
-    const destaque = $<SVGPathElement>('.mr-destaque');
+    const $ = <T extends Element = HTMLElement>(s: string) => raiz.querySelector<T>(s);
+    const ficha = $('.mr-ficha')!;
+    const ranking = $('.mr-ranking')!;
+    const destaque = $<SVGPathElement>('.mr-destaque')!;
+    const select = $<HTMLSelectElement>('select[data-lista]');
 
-    const medida = () => medidas.find((m: any) => m.id === medidaId);
-    const ind = () => indicadores[medidaId];
+    async function carregar(chave: string, url?: string): Promise<Visao> {
+      if (!cache[chave]) {
+        raiz.classList.add('carregando');
+        try {
+          const r = await fetch(url!);
+          if (!r.ok) throw new Error(String(r.status));
+          cache[chave] = await r.json();
+        } finally {
+          raiz.classList.remove('carregando');
+        }
+      }
+      return cache[chave];
+    }
 
-    function desenharMedida() {
-      const m = medida(), i = ind();
-      linhas = montarRanking(unidades, i, ctx.idioma);
-      const comDado = linhas.filter((l) => l.valor !== null).length;
-      raiz.querySelectorAll('[data-medida]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-medida') === medidaId)));
-      raiz.querySelectorAll<SVGElement>('.uf, .rotulo').forEach((el) => {
-        el.dataset.classe = String(classe(i.valores[el.dataset.uf!], m.cortes));
-      });
-      $('.mr-legenda').innerHTML = htmlLegenda(m, ctx, linhas.length - comDado);
-      $('.mr-cab-medida').textContent = m.titulo;
-      $('.mr-fonte').innerHTML = htmlFonte(i, ctx);
-      ranking.innerHTML = htmlRanking(linhas, m, ctx, null);
+    async function escolher(id: string) {
+      opcaoId = id;
+      const o = d.opcoes.find((x: any) => x.id === id);
+      raiz.querySelectorAll('[data-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-opcao') === id)));
+      const rotuloLista = select?.closest('label');
+      if (rotuloLista) rotuloLista.hidden = !o.lista;
+      if (o.lista) {
+        const item = select!.selectedOptions[0];
+        aplicar(await carregar(`lista:${item.value}`, item.dataset.url));
+      } else {
+        aplicar(cache[o.visao]);
+      }
+    }
+
+    function aplicar(v: Visao) {
+      visao = v;
+      raiz.querySelectorAll<SVGElement>('.uf, .rotulo').forEach((el) => { el.dataset.classe = v.classes[el.dataset.uf!]; });
+      $('.mr-legenda')!.innerHTML = htmlLegenda(v);
+      $('.mr-cab-medida')!.textContent = v.titulo;
+      $('.mr-fonte')!.innerHTML = v.fonte;
+      ranking.innerHTML = htmlRanking(v, null);
       destacar();
     }
 
     function destacar() {
-      const sigla = previa ?? fixado ?? linhas[0].unidade.sigla;
-      const linha = linhas.find((l) => l.unidade.sigla === sigla)!;
-      const comDado = linhas.filter((l) => l.valor !== null).length;
-      ficha.innerHTML = htmlFicha(linha, linhas.length, comDado, medida(), medida().titulo, ind(), ctx);
+      const sigla = previa ?? fixado ?? visao.linhas[0].uf;
+      ficha.innerHTML = htmlFicha(visao.fichas[sigla]);
       const caminho = raiz.querySelector(`#mr-uf-${sigla}`)?.getAttribute('d');
       if (caminho) destaque.setAttribute('d', caminho);
       ranking.querySelectorAll<HTMLElement>('.linha').forEach((b) => {
-        const eh = b.dataset.uf === sigla;
-        b.classList.toggle('ativa', eh);
+        b.classList.toggle('ativa', b.dataset.uf === sigla);
         b.setAttribute('aria-pressed', String(b.dataset.uf === fixado));
       });
-      raiz.classList.toggle('tem-fixado', fixado !== null);
     }
 
-    const ufDe = (alvo: EventTarget | null) => (alvo as Element | null)?.closest<HTMLElement | SVGElement>('[data-uf]')?.dataset.uf ?? null;
+    const ufDe = (alvo: EventTarget | null) => (alvo as Element | null)?.closest?.<HTMLElement | SVGElement>('[data-uf]')?.dataset.uf ?? null;
 
     // Passar o mouse = prévia; clicar = fixa (clicar de novo solta).
     raiz.addEventListener('pointerover', (e) => {
@@ -152,11 +179,12 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
       if (previa && !ufDe(e.relatedTarget)) { previa = null; destacar(); }
     });
     raiz.addEventListener('click', (e) => {
-      const botaoMedida = (e.target as Element).closest<HTMLElement>('[data-medida]');
-      if (botaoMedida) { medidaId = botaoMedida.dataset.medida!; desenharMedida(); return; }
+      const botao = (e.target as Element).closest<HTMLElement>('[data-opcao]');
+      if (botao) { escolher(botao.dataset.opcao!); return; }
       const uf = ufDe(e.target);
       if (uf) { fixado = fixado === uf ? null : uf; destacar(); }
     });
+    select?.addEventListener('change', () => escolher(opcaoId));
     // Teclado: foco numa linha = prévia; setas sobem/descem.
     ranking.addEventListener('focusin', (e) => { previa = ufDe(e.target); destacar(); });
     ranking.addEventListener('focusout', (e) => { if (!ranking.contains(e.relatedTarget as Node)) { previa = null; destacar(); } });
@@ -164,58 +192,73 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
       if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
       const botoes = [...ranking.querySelectorAll<HTMLElement>('.linha')];
       const i = botoes.indexOf(document.activeElement as HTMLElement);
-      const prox = botoes[Math.max(0, Math.min(botoes.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1)))];
-      prox?.focus();
+      botoes[Math.max(0, Math.min(botoes.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1)))]?.focus();
       e.preventDefault();
     });
 
-    desenharMedida();
+    escolher(opcaoId);
   }
 </script>
 
 <style>
   .mr { --mr-lado: 560px; }
+  .mr.carregando .mr-grade { opacity: .55; transition: opacity .2s; }
 
-  /* Seletor de medida */
-  .mr-medidas { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surf); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 28px; }
+  /* Controles */
+  .mr-controles { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 28px; }
+  .mr-medidas { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surf); border: 1px solid var(--line); border-radius: 12px; }
   .mr-medidas button { font: inherit; font-size: 16px; color: var(--sub); background: transparent; border: 0; border-radius: 9px; padding: 10px 18px; cursor: pointer; }
   .mr-medidas button:hover { color: var(--ink); }
   .mr-medidas button[aria-pressed="true"] { background: var(--bg); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 1px var(--line), 0 1px 3px var(--line); }
+  .mr-medidas button:focus-visible, .mr-lista select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .mr-lista { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--sub); }
+  .mr-lista[hidden] { display: none; }
+  .mr-lista select { font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 10px; padding: 9px 12px; min-width: 200px; }
 
   .mr-grade { display: grid; grid-template-columns: minmax(0, 1fr) var(--mr-lado); gap: 48px; align-items: start; }
+
+  /* Cores por classe — no mapa (fill) e em amostras/marcadores (background) */
+  :global(.mr [data-classe="c0"]) { --cor: var(--rampa-1); }
+  :global(.mr [data-classe="c1"]) { --cor: var(--rampa-2); }
+  :global(.mr [data-classe="c2"]) { --cor: var(--rampa-3); }
+  :global(.mr [data-classe="c3"]) { --cor: var(--rampa-4); }
+  :global(.mr [data-classe="c4"]) { --cor: var(--rampa-5); }
+  :global(.mr [data-classe="c5"]) { --cor: var(--rampa-6); }
+  :global(.mr [data-classe="cat-1"]) { --cor: var(--cat-1); }
+  :global(.mr [data-classe="cat-2"]) { --cor: var(--cat-2); }
+  :global(.mr [data-classe="cat-3"]) { --cor: var(--cat-3); }
+  :global(.mr [data-classe="cat-4"]) { --cor: var(--cat-4); }
+  :global(.mr [data-classe="cat-5"]) { --cor: var(--cat-5); }
+  :global(.mr [data-classe="cat-6"]) { --cor: var(--cat-6); }
+  :global(.mr [data-classe="cat-7"]) { --cor: var(--cat-7); }
+  :global(.mr [data-classe="cat-8"]) { --cor: var(--cat-8); }
+  :global(.mr [data-classe="outro"]) { --cor: var(--cat-outro); }
+  :global(.mr [data-classe="zero"]) { --cor: var(--track); }
 
   /* Mapa */
   .mr-mapa { margin: 0; }
   .mr-mapa svg { width: 100%; height: auto; display: block; }
-  :global(.mr .uf) { stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; transition: fill .2s; }
-  :global(.mr [data-classe="-1"].uf) { fill: url(#mr-hachura); }
-  :global(.mr [data-classe="0"].uf) { fill: var(--rampa-1); }
-  :global(.mr [data-classe="1"].uf) { fill: var(--rampa-2); }
-  :global(.mr [data-classe="2"].uf) { fill: var(--rampa-3); }
-  :global(.mr [data-classe="3"].uf) { fill: var(--rampa-4); }
-  :global(.mr [data-classe="4"].uf) { fill: var(--rampa-5); }
-  :global(.mr [data-classe="5"].uf) { fill: var(--rampa-6); }
+  :global(.mr .uf) { fill: var(--cor); stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; }
+  :global(.mr .uf[data-classe="sem"]) { fill: url(#mr-hachura); }
   .hachura-fundo { fill: var(--bg); }
   .hachura-linha { stroke: var(--hatch); stroke-width: 1.4; }
   .mr-destaque { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; pointer-events: none; }
 
   .mr-rotulos text { font-size: 23px; font-weight: 600; fill: var(--ink); pointer-events: none; }
   /* Nas duas cores mais fortes a sigla fica na cor do fundo para ter contraste */
-  :global(.mr .rotulo[data-classe="4"]), :global(.mr .rotulo[data-classe="5"]) { fill: var(--bg); }
+  :global(.mr .rotulo[data-classe="c4"]), :global(.mr .rotulo[data-classe="c5"]) { fill: var(--bg); }
+  /* Cores de produto: sigla com contorno na cor do fundo para ler sobre qualquer cor */
+  :global(.mr .rotulo[data-classe^="cat-"]), :global(.mr .rotulo[data-classe="outro"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
   .chamada line { stroke: var(--sub); stroke-width: 1.2; }
   .chamada circle { fill: var(--sub); }
 
   /* Legenda */
   .mr-legenda { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px 4px; font-size: 14px; color: var(--sub); }
-  :global(.mr-legenda .amostra) { display: block; height: 12px; margin-bottom: 8px; }
-  :global(.mr-legenda .c0) { background: var(--rampa-1); }
-  :global(.mr-legenda .c1) { background: var(--rampa-2); }
-  :global(.mr-legenda .c2) { background: var(--rampa-3); }
-  :global(.mr-legenda .c3) { background: var(--rampa-4); }
-  :global(.mr-legenda .c4) { background: var(--rampa-5); }
-  :global(.mr-legenda .c5) { background: var(--rampa-6); }
-  :global(.mr-legenda .hachura) { background: repeating-linear-gradient(-45deg, var(--hatch) 0 1.5px, var(--bg) 1.5px 5px); box-shadow: inset 0 0 0 1px var(--line); }
-  :global(.mr-legenda .leg-sem) { grid-column: span 2; }
+  :global(.mr-legenda .leg-titulo) { grid-column: 1 / -1; font-weight: 600; color: var(--ink); }
+  :global(.mr-legenda .amostra) { display: block; height: 12px; margin-bottom: 8px; background: var(--cor); }
+  :global(.mr-legenda .amostra[data-classe="sem"]) { background: repeating-linear-gradient(-45deg, var(--hatch) 0 1.5px, var(--bg) 1.5px 5px); box-shadow: inset 0 0 0 1px var(--line); }
+  :global(.mr-legenda .leg-sem), :global(.mr-legenda .leg-outro) { grid-column: span 2; }
+  :global(.mr .marca) { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--cor); margin-right: 8px; vertical-align: 0; flex: none; }
 
   /* Ficha */
   .mr-ficha { background: var(--surf); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; margin-bottom: 20px; }
@@ -226,12 +269,20 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
   :global(.mr-ficha .ficha-valor strong) { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
   :global(.mr-ficha .ficha-valor small) { font-size: 18px; color: var(--sub); margin: 0 4px; }
   :global(.mr-ficha .ficha-valor.sem strong) { font-size: 28px; color: var(--faint); font-weight: 500; }
+  :global(.mr-ficha .ficha-sub) { margin: 10px 0 0; font-size: 15px; color: var(--ink); }
+  :global(.mr-ficha .ficha-detalhes) { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 15px; }
+  :global(.mr-ficha .ficha-detalhes div) { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; }
+  :global(.mr-ficha .ficha-detalhes dt) { color: var(--sub); }
+  :global(.mr-ficha .ficha-detalhes dd) { margin: 0; font-weight: 600; text-align: right; }
+  :global(.mr-ficha .ficha-link) { display: inline-block; margin-top: 10px; font-size: 15px; color: var(--accent); text-decoration: none; }
+  :global(.mr-ficha .ficha-link:hover) { text-decoration: underline; }
   :global(.mr-ficha .ficha-fonte) { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
 
   /* Ranking */
   .mr-cab { display: flex; justify-content: space-between; gap: 12px; padding: 0 14px 10px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); }
+  .mr-cab-medida { text-align: right; }
   .mr-ranking { list-style: none; margin: 0; padding: 0; }
-  :global(.mr-ranking .linha) { width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) minmax(60px, 190px) 84px; align-items: center; gap: 12px; font: inherit; font-size: 16px; color: var(--ink); text-align: left; background: transparent; border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  :global(.mr-ranking .linha) { width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) minmax(60px, 170px) 96px; align-items: center; gap: 12px; font: inherit; font-size: 16px; color: var(--ink); text-align: left; background: transparent; border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
   :global(.mr-ranking .linha:hover), :global(.mr-ranking .linha.ativa) { background: var(--surf); }
   :global(.mr-ranking .linha.ativa .nome), :global(.mr-ranking .linha.ativa .valor) { font-weight: 600; }
   :global(.mr-ranking .linha:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -240,8 +291,8 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
   :global(.mr-ranking .trilho) { position: relative; height: 9px; background: var(--track); border-radius: 2px; }
   :global(.mr-ranking .barra) { position: absolute; top: 0; bottom: 0; background: var(--bar); border-radius: 2px; }
   :global(.mr-ranking .linha.ativa .barra) { background: var(--accent); }
-  :global(.mr-ranking .valor) { text-align: right; }
-  :global(.mr-ranking .linha.sem .valor) { color: var(--faint); }
+  :global(.mr-ranking .valor) { text-align: right; white-space: nowrap; }
+  :global(.mr-ranking .linha.sem .valor), :global(.mr-ranking .linha.zero .valor) { color: var(--faint); }
   .mr-dica { margin: 10px 14px 0; font-size: 13px; color: var(--faint); }
 
   .mr-fonte { margin: 20px 14px 0; font-size: 14px; line-height: 1.5; color: var(--sub); }
@@ -251,9 +302,11 @@ const dadosCliente = { unidades, indicadores, medidas, medidaPadrao: medida.id, 
     .mr-grade { grid-template-columns: 1fr; gap: 32px; }
   }
   @media (max-width: 560px) {
-    .mr-medidas { display: flex; }
+    .mr-medidas { display: flex; width: 100%; }
     .mr-medidas button { flex: 1 1 auto; padding: 8px 10px; font-size: 14px; }
-    :global(.mr-ranking .linha) { grid-template-columns: 26px minmax(0, 1fr) 56px 70px; gap: 8px; padding: 6px 8px; font-size: 15px; }
+    .mr-lista { width: 100%; }
+    .mr-lista select { flex: 1; min-width: 0; }
+    :global(.mr-ranking .linha) { grid-template-columns: 26px minmax(0, 1fr) 48px 84px; gap: 8px; padding: 6px 8px; font-size: 15px; }
     :global(.mr-ficha .ficha-valor strong) { font-size: 40px; }
     .mr-ficha { padding: 18px; }
   }
