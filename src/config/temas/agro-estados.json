@@ -10,7 +10,9 @@
     "lider": "Produto líder",
     "quanto": "Quanto produz",
     "valor": "Valor da produção",
-    "quantidade": "Produção em toneladas"
+    "quantidade": "Produção em toneladas",
+    "quantidadeOutra": "Quantidade produzida",
+    "mostrar": "Mostrar"
   },
   "produtoPadrao": "soja",
   "cortesParticipacao": [
@@ -23,18 +25,43 @@
   "urlProduto": "/economia/agro/{produto}",
   "urlDadosProduto": "/dados/brasil/agro/{produto}.json",
   "textos": {
-    "medidaTotal": "Valor da produção das lavouras em {periodo}",
+    "medidaTotal": "Valor da produção {grupo} em {periodo}",
     "medidaCurta": "valor da produção",
-    "legendaLider": "Principal produto das lavouras",
+    "legendaLider": "Principal produto {grupo}",
     "medidaProdutoValor": "Valor da produção de {produto} em {periodo}",
     "medidaProdutoQuantidade": "Produção de {produto} em {periodo}",
-    "subtituloProduto": "Lavouras · {valor} de valor da produção em {periodo}, o {n}º entre os produtos das lavouras ({fonte})",
+    "subtituloProduto": "{grupoNome} · {valor} de valor da produção em {periodo}, o {n}º entre os produtos do agro ({fonte})",
     "abaDados": "Dados",
     "abaAoVivo": "Ao vivo",
-    "abaHistoria": "História"
+    "abaHistoria": "História",
+    "notaLavouras": "Lavouras temporárias e permanentes (IBGE). Não inclui pecuária.",
+    "notaPecuaria": "Leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. O MAPA usa preços e métodos diferentes dos do IBGE; compare com cuidado.",
+    "notaTudo": "Lavouras, leite, ovos, mel, lã e casulos: IBGE. Bovinos, suínos e frango: MAPA, porque o IBGE não calcula o valor da produção de carne. As duas fontes usam preços e métodos diferentes; compare com cuidado. Não inclui silvicultura nem extração vegetal.",
+    "notaVbp": "O MAPA não estima a produção de alguns estados; eles aparecem como \"sem dado\"."
   },
   "apelidos": {
     "cana-de-acucar": "cana",
     "bovinos": "gado"
+  },
+  "filtros": [
+    {
+      "id": "tudo",
+      "rotulo": "Tudo",
+      "grupoTexto": "do agro"
+    },
+    {
+      "id": "lavouras",
+      "rotulo": "Lavouras",
+      "grupoTexto": "das lavouras"
+    },
+    {
+      "id": "pecuaria",
+      "rotulo": "Pecuária",
+      "grupoTexto": "da pecuária"
+    }
+  ],
+  "grupos": {
+    "lavouras": "Lavouras",
+    "pecuaria": "Pecuária"
   }
 }

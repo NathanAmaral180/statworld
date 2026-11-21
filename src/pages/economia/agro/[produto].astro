@@ -4,41 +4,40 @@
 import Base from '../../../layouts/Base.astro';
 import Abas from '../../../componentes/Abas.astro';
 import MapaRanking from '../../../componentes/mapa-ranking/MapaRanking.astro';
-import { construirVisaoProduto, iconeDoProduto, type DadosProducao, type Produto } from '../../../componentes/mapa-ranking/construir-producao';
+import { construirVisaoProduto, iconeDoProduto, type Produto } from '../../../componentes/mapa-ranking/construir-producao';
 import { formatar, preencher } from '../../../componentes/mapa-ranking/visao';
 import pais from '../../../config/paises/brasil.json';
 import site from '../../../config/site.json';
 import temaBase from '../../../config/temas/agro-estados.json';
 import iconesAgro from '../../../config/icones/agro.json';
-import { carregarDados } from '../../../lib/dados';
 import { contextoDoPais } from '../../../lib/contexto';
+import { carregarAgro } from '../../../lib/agro';
 const tema = { ...temaBase, icones: iconesAgro };
 
 export function getStaticPaths() {
-  const d = carregarDados<DadosProducao>('agro', pais.arquivos.agro.estado);
-  return d.produtos.map((p) => ({ params: { produto: p.id } }));
+  return carregarAgro(pais, 'estado', { ...temaBase, icones: iconesAgro }).todos.map((p) => ({ params: { produto: p.id } }));
 }
 
 const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
-const dados = carregarDados<DadosProducao>('agro', pais.arquivos.agro[NIVEL]);
-const posicao = dados.produtos.findIndex((p) => p.id === Astro.params.produto);
-const produto = dados.produtos[posicao] as Produto;
+const { todos, porFiltro } = carregarAgro(pais, NIVEL, tema);
+const dados = porFiltro.tudo;
+const posicao = todos.findIndex((p) => p.id === Astro.params.produto);
+const produto = todos[posicao] as Produto;
 
-const visoes = {
-  valor: construirVisaoProduto('valor', unidades, dados, produto, 'valor', tema, ctx),
-  quantidade: construirVisaoProduto('quantidade', unidades, dados, produto, 'quantidade', tema, ctx),
-};
-const opcoes = [
-  { id: 'valor', rotulo: tema.opcoes.valor, visao: 'valor' },
-  { id: 'quantidade', rotulo: tema.opcoes.quantidade, visao: 'quantidade' },
-];
+const visoes: Record<string, any> = { valor: construirVisaoProduto('valor', unidades, dados, produto, 'valor', tema, ctx) };
+const opcoes = [{ id: 'valor', rotulo: tema.opcoes.valor, visao: 'valor' }];
+if (produto.unidadeQuantidade) {
+  visoes.quantidade = construirVisaoProduto('quantidade', unidades, dados, produto, 'quantidade', tema, ctx);
+  opcoes.push({ id: 'quantidade', rotulo: produto.unidadeQuantidade === 't' ? tema.opcoes.quantidade : tema.opcoes.quantidadeOutra, visao: 'quantidade' });
+}
 
 const subtitulo = preencher(tema.textos.subtituloProduto, {
   valor: formatar(produto.valorBrasil, { formato: 'moeda', casas: 1, compacto: true }, ctx),
   periodo: dados.periodo,
   n: posicao + 1,
-  fonte: dados.fontes.map((f) => `${f.nome}, ${f.publicacao.replace(/ \(.*\)$/, '')}`).join('; '),
+  grupoNome: tema.grupos[produto.grupo as keyof typeof tema.grupos],
+  fonte: (produto.fontes ?? dados.fontes).map((f) => `${f.nome}, ${f.publicacao.replace(/ \(.*\)$/, '')}`).join('; '),
 });
 const desenho = iconesAgro.icones[iconeDoProduto(tema, produto.id) as keyof typeof iconesAgro.icones];
 const trilha = [...tema.trilha.map((t) => preencher(t, { pais: pais.nome })), produto.nome];

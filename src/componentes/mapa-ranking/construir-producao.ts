@@ -10,7 +10,10 @@ import {
 export interface Produto {
   id: string;
   nome: string;
-  unidadeQuantidade: string;
+  grupo?: string; // ex.: "lavouras", "pecuaria"
+  fontes?: Fonte[]; // quando o produto tem fonte própria
+  nota?: string; // aviso sobre o produto (ex.: estados não estimados)
+  unidadeQuantidade: string | null; // null = não há quantidade
   valorBrasil: number | null;
   quantidadeBrasil: number | null;
   valores: Record<string, Valor>; // 0 = não produz; null = sem dado
@@ -21,7 +24,7 @@ export interface DadosProducao {
   periodo: string;
   fontes: Fonte[];
   abrangencia?: string;
-  totalLavouras: Record<string, Valor>;
+  total: Record<string, Valor>; // valor total de cada lugar (soma do grupo)
   produtos: Produto[];
 }
 
@@ -34,7 +37,8 @@ export interface ConfigProducao {
 }
 
 const fmtValor: OpcoesNumero = { formato: 'moeda', casas: 1, compacto: true };
-const fmtQuant = (p: Produto): OpcoesNumero => ({ formato: 'numero', casas: 1, compacto: true, sufixo: ' ' + p.unidadeQuantidade });
+const fmtQuant = (p: Produto): OpcoesNumero => ({ formato: 'numero', casas: 1, compacto: true, sufixo: ' ' + (p.unidadeQuantidade ?? '') });
+const fontesDe = (p: Produto, dados: DadosProducao) => p.fontes ?? dados.fontes;
 const fmtPct: OpcoesNumero = { formato: 'percentual', casas: 1 };
 
 const apelido = (cfg: ConfigProducao, id: string) => cfg.apelidos[id] ?? id;
@@ -44,8 +48,8 @@ export const iconeDoProduto = (cfg: ConfigProducao, id: string) => (cfg.icones.i
 // Só os desenhos usados nesta visão (para a página ficar leve).
 const desenhos = (cfg: ConfigProducao, nomes: string[]) => Object.fromEntries([...new Set(nomes)].filter((n) => cfg.icones.icones[n]).map((n) => [n, cfg.icones.icones[n]]));
 
-function nota(cfg: ConfigProducao, dados: DadosProducao, chave: string, vars: Record<string, string> = {}) {
-  return `${preencher(cfg.textos[chave], { periodo: dados.periodo, ...vars })} · ${dados.fontes.map((f) => `${f.nome}, ${f.publicacao}`).join('; ')}`;
+function nota(cfg: ConfigProducao, dados: DadosProducao, chave: string, vars: Record<string, string> = {}, fontes = dados.fontes) {
+  return `${preencher(cfg.textos[chave], { periodo: dados.periodo, ...vars })} · ${fontes.map((f) => `${f.nome}, ${f.publicacao}`).join('; ')}`;
 }
 
 // Posição de cada lugar entre os produtores de um produto (1 = maior).
@@ -55,7 +59,8 @@ function posicoes(valores: Record<string, Valor>): Map<string, number> {
 }
 
 // ---------- produto líder ----------
-export function construirVisaoLider(id: string, unidades: Unidade[], dados: DadosProducao, cfg: ConfigProducao, ctx: Contexto): Visao {
+// grupoTexto: como o grupo aparece nas frases (ex.: "do agro", "das lavouras").
+export function construirVisaoLider(id: string, unidades: Unidade[], dados: DadosProducao, cfg: ConfigProducao, ctx: Contexto, grupoTexto = ''): Visao {
   const t = ctx.textos;
   const lider: Record<string, Produto | null> = {};
   for (const u of unidades) {
@@ -66,13 +71,14 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
     }
     lider[u.sigla] = melhor;
   }
-  const total = (uf: string) => dados.totalLavouras[uf] ?? null;
+  const total = (uf: string) => dados.total[uf] ?? null;
   const comDado = unidades.filter((u) => total(u.sigla) !== null).sort((a, b) => (total(b.sigla) as number) - (total(a.sigla) as number));
   const semDado = unidades.filter((u) => total(u.sigla) === null).sort((a, b) => a.nome.localeCompare(b.nome, ctx.idioma));
   const ordem = [...comDado, ...semDado];
   const n = comDado.length;
   const bs = barras(ordem.map((u) => total(u.sigla)));
-  const medida = preencher(cfg.textos.medidaTotal, { periodo: dados.periodo });
+  const vars = { periodo: dados.periodo, grupo: grupoTexto };
+  const medida = preencher(cfg.textos.medidaTotal, vars);
 
   const classe = (uf: string) => (total(uf) === null ? 'sem' : lider[uf] ? corDoProduto(cfg, lider[uf]!.id) : 'zero');
 
@@ -90,7 +96,7 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
     titulo: medida,
     classes: Object.fromEntries(unidades.map((u) => [u.sigla, classe(u.sigla)])),
     legenda,
-    legendaTitulo: cfg.textos.legendaLider,
+    legendaTitulo: preencher(cfg.textos.legendaLider, vars),
     icones: Object.fromEntries(unidades.filter((u) => lider[u.sigla]).map((u) => [u.sigla, iconeDoProduto(cfg, lider[u.sigla]!.id)])),
     svgs: desenhos(cfg, [...lideres.map((p) => iconeDoProduto(cfg, p.id)), 'outro']),
     linhas: ordem.map((u, i) => ({
@@ -111,12 +117,12 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
           nome: u.nome,
           ...formatarEmPartes(total(u.sigla), fmtValor, ctx),
           apagado: total(u.sigla) === null,
-          nota: nota(cfg, dados, 'medidaTotal'),
+          nota: nota(cfg, dados, 'medidaTotal', vars),
           ...(p
             ? {
                 subtitulo: `${p.nome} · ${preencher(t.maiorProdutor, { n: posPorProduto.get(p.id)!.get(u.sigla)! })}`,
                 icone: iconeDoProduto(cfg, p.id),
-                detalhes: [[t.produtoLider, `${p.nome} · ${formatar(p.valores[u.sigla], fmtValor, ctx)}`]] as [string, string][],
+                detalhes: [[t.produtoLider, `${p.nome} · ${formatar(p.valores[u.sigla], fmtValor, ctx)}`], [t.fonteDoProduto, fontesDe(p, dados).map((f) => f.nome).join(', ')]] as [string, string][],
                 link: cfg.urlProduto ? { texto: preencher(t.verProduto, { produto: p.nome }), url: preencher(cfg.urlProduto, { produto: p.id }) } : undefined,
               }
             : {}),
@@ -179,7 +185,9 @@ export function construirVisaoProduto(
         const detalhes: [string, string][] = val
           ? [
               [t.participacaoNoPais, formatar(part(u.sigla), fmtPct, ctx)],
-              [modo === 'valor' ? t.quantidadeProduzida : t.valorDaProducao, formatar(outro[u.sigla] ?? null, fmtOutro, ctx)],
+              ...(p.unidadeQuantidade || modo === 'quantidade'
+                ? [[modo === 'valor' ? t.quantidadeProduzida : t.valorDaProducao, formatar(outro[u.sigla] ?? null, fmtOutro, ctx)] as [string, string]]
+                : []),
             ]
           : [];
         return [u.sigla, {
@@ -189,10 +197,10 @@ export function construirVisaoProduto(
           apagado: !val,
           detalhes,
           link: comLink && cfg.urlProduto ? { texto: preencher(t.verProduto, { produto: p.nome }), url: preencher(cfg.urlProduto, { produto: p.id }) } : undefined,
-          nota: nota(cfg, dados, chave, { produto: nomeFrase }),
+          nota: nota(cfg, dados, chave, { produto: nomeFrase }, fontesDe(p, dados)),
         }];
       })
     ),
-    fonte: htmlFontes(dados.fontes, ctx, dados.abrangencia),
+    fonte: htmlFontes(fontesDe(p, dados), ctx, p.nota),
   };
 }

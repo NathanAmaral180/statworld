@@ -45,7 +45,8 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - `design/` — telas aprovadas (só referência; não é publicado).
 
 ## Agro
-- Fonte: IBGE, Produção Agrícola Municipal (só lavouras). Não inclui pecuária, silvicultura nem extração vegetal; o site diz isso. Para pecuária será preciso outra fonte (ex.: MAPA, Valor Bruto da Produção).
+- Lavouras: IBGE, Produção Agrícola Municipal. Leite, ovos, mel, lã, casulos: IBGE, Pesquisa da Pecuária Municipal. Bovinos, suínos, frango: MAPA, Valor Bruto da Produção (valores nominais, ano fechado), porque o IBGE não calcula valor de carne. O site avisa que as fontes usam métodos diferentes. `src/lib/agro.ts` junta tudo; lavouras e pecuária precisam ser do mesmo ano.
+- Não inclui silvicultura nem extração vegetal.
 - "Não produz" (0 no IBGE, símbolo "-") é diferente de "sem dado" (null).
 - Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 

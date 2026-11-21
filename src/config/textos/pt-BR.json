@@ -26,5 +26,6 @@
   "outrosProdutos": "Outros",
   "verProduto": "Ver página: {produto}",
   "escolhaProduto": "Produto",
-  "posicaoComFalta": "{n}º de {total} com dado"
+  "posicaoComFalta": "{n}º de {total} com dado",
+  "fonteDoProduto": "Fonte deste produto"
 }

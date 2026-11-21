@@ -42,6 +42,9 @@
     },
     "agro": {
       "estado": "brasil-estados-lavouras"
+    },
+    "pecuaria": {
+      "estado": "brasil-estados-pecuaria"
     }
   },
   "mapa": {
