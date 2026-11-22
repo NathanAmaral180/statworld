@@ -64,6 +64,10 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - "Quanto produz": o degradê de 6 tons usa a cor do produto (do claro ao forte); produto sem cor própria usa o azul padrão. Cada estado produtor mostra o ícone do produto. Há botões com ícone para os 6 maiores produtos com cor própria e um botão "Outros produtos ▾" que abre a lista completa com ícones e busca (quando o produto escolhido não é um dos 6, o botão mostra o nome e o ícone dele).
 - Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 
+## Indústria
+- Fonte planejada: IBGE, Pesquisa Industrial Anual – Empresa 2024 (tabela 10457 do Sidra): valor da transformação industrial e pessoal ocupado por estado e por divisão da CNAE (29 setores). Células com sigilo ("X") = sem dado.
+- Ícones e cores (`--s-*`) do Claude Design: `design/icones-industria/`, extraídos por `scripts/icones-industria/` para `src/config/icones/industria.json` e `src/estilos/cores-setores.css`.
+
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321
 - `npm run build` — gera a versão final na pasta `dist/`

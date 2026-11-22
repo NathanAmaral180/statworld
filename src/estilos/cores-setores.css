@@ -1,0 +1,50 @@
+/* Cores dos setores da indústria (Claude Design). Gerado por scripts/icones-industria/extrair.mjs. Não edite à mão. */
+:root {
+  --s-alimentos: oklch(0.74 0.16 60);
+  --s-bebidas: oklch(0.52 0.17 350);
+  --s-extracao-petroleo-gas: oklch(0.40 0.10 265);
+  --s-extracao-minerais-metalicos: oklch(0.50 0.11 40);
+  --s-derivados-petroleo: oklch(0.82 0.15 92);
+  --s-quimicos: oklch(0.74 0.11 205);
+  --s-metalurgia: oklch(0.62 0.06 240);
+  --s-veiculos: oklch(0.60 0.20 25);
+  --s-celulose-papel: oklch(0.58 0.13 150);
+  --s-maquinas-equipamentos: oklch(0.80 0.16 128);
+  --s-eletronicos-informatica: oklch(0.56 0.17 295);
+  --s-borracha-plastico: oklch(0.46 0.07 182);
+  --s-cimento-vidro-ceramica: oklch(0.68 0.06 80);
+  --s-farmaceuticos: oklch(0.76 0.10 320);
+  --s-outro: oklch(0.72 0 0);
+}
+:root[data-theme="dark"] {
+  --s-alimentos: oklch(0.70 0.14 60);
+  --s-bebidas: oklch(0.56 0.15 350);
+  --s-extracao-petroleo-gas: oklch(0.48 0.10 265);
+  --s-extracao-minerais-metalicos: oklch(0.54 0.10 40);
+  --s-derivados-petroleo: oklch(0.78 0.13 92);
+  --s-quimicos: oklch(0.68 0.10 205);
+  --s-metalurgia: oklch(0.60 0.06 240);
+  --s-veiculos: oklch(0.60 0.17 25);
+  --s-celulose-papel: oklch(0.58 0.11 150);
+  --s-maquinas-equipamentos: oklch(0.74 0.14 128);
+  --s-eletronicos-informatica: oklch(0.60 0.15 295);
+  --s-borracha-plastico: oklch(0.52 0.07 182);
+  --s-cimento-vidro-ceramica: oklch(0.64 0.06 80);
+  --s-farmaceuticos: oklch(0.70 0.09 320);
+  --s-outro: oklch(0.56 0 0);
+}
+[data-classe="s-alimentos"] { --cor: var(--s-alimentos); }
+[data-classe="s-bebidas"] { --cor: var(--s-bebidas); }
+[data-classe="s-extracao-petroleo-gas"] { --cor: var(--s-extracao-petroleo-gas); }
+[data-classe="s-extracao-minerais-metalicos"] { --cor: var(--s-extracao-minerais-metalicos); }
+[data-classe="s-derivados-petroleo"] { --cor: var(--s-derivados-petroleo); }
+[data-classe="s-quimicos"] { --cor: var(--s-quimicos); }
+[data-classe="s-metalurgia"] { --cor: var(--s-metalurgia); }
+[data-classe="s-veiculos"] { --cor: var(--s-veiculos); }
+[data-classe="s-celulose-papel"] { --cor: var(--s-celulose-papel); }
+[data-classe="s-maquinas-equipamentos"] { --cor: var(--s-maquinas-equipamentos); }
+[data-classe="s-eletronicos-informatica"] { --cor: var(--s-eletronicos-informatica); }
+[data-classe="s-borracha-plastico"] { --cor: var(--s-borracha-plastico); }
+[data-classe="s-cimento-vidro-ceramica"] { --cor: var(--s-cimento-vidro-ceramica); }
+[data-classe="s-farmaceuticos"] { --cor: var(--s-farmaceuticos); }
+[data-classe="s-outro"] { --cor: var(--s-outro); }
