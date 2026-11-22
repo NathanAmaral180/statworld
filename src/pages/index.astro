@@ -132,29 +132,32 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
         </div>
       </div>
       <div class="mapbox">
-        <svg class="wmap" viewBox={`0 0 ${mundo.largura} ${mundo.altura}`} role="img" aria-label="Mapa-múndi: países disponíveis no StatWorld">
+        <svg class="wmap" viewBox={`0 0 ${mundo.largura} ${mundo.altura}`} role="img" aria-label="Mapa-múndi. Países disponíveis em destaque; os demais, em breve.">
           <defs>
             <pattern id="em-breve" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
               <rect width="5" height="5" class="pt-fundo" /><line x1="0" y1="0" x2="0" y2="5" class="pt-linha" />
             </pattern>
           </defs>
-          {mundo.unidades.map((u: any) => {
-            const p = disponiveis.get(u.codigo);
-            return p ? (
-              <a href={p.href} class="c-link"><path class="c on" d={u.caminho}><title>{p.nome}: disponível</title></path></a>
-            ) : (
-              <path class="c off" d={u.caminho} />
+          <path class="sph" d={mundo.esfera} />
+          <path class="grat" d={mundo.grade} />
+          {mundo.unidades.filter((u: any) => !disponiveis.has(u.codigo)).map((u: any) => (
+            <path class="c off" d={u.caminho} data-dica="em-breve" />
+          ))}
+          {mundo.unidades.filter((u: any) => disponiveis.has(u.codigo)).map((u: any) => {
+            const p = disponiveis.get(u.codigo)!;
+            const [x, y] = u.centro;
+            return (
+              <a href={p.href} class="c-link" aria-label={`${p.nome}, disponível. Abrir`} data-dica={p.nome} data-nota={p.resumo}>
+                <path class="c on" d={u.caminho} />
+                <line class="cl" x1={x} y1={y} x2={x - 120} y2={y + 70} />
+                <circle class="pt" cx={x} cy={y} r="3" />
+                <text class="lab" x={x - 126} y={y + 76} text-anchor="end">{p.nome}</text>
+                <text class="lab2" x={x - 126} y={y + 94} text-anchor="end">disponível</text>
+              </a>
             );
           })}
-          {mundo.unidades.filter((u: any) => disponiveis.has(u.codigo)).map((u: any) => (
-            <g class="rot" transform={`translate(${u.centro[0] + 62} ${u.centro[1] - 22})`} aria-hidden="true">
-              <circle cx="-62" cy="22" r="2.5" class="pt" />
-              <line x1="-62" y1="22" x2="-6" y2="-4" class="cl" />
-              <text class="lab" x="0" y="0">{disponiveis.get(u.codigo)!.nome}</text>
-              <text class="lab2" x="0" y="16">disponível</text>
-            </g>
-          ))}
         </svg>
+        <div class="tip" id="dica-mapa" role="tooltip"></div>
         <div class="mlegend">
           <div><i class="a"></i>Disponível</div>
           <div><i class="b"></i>Em breve</div>
@@ -236,6 +239,29 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
   </div>
 </Base>
 
+<script>
+  // Dica ao passar o mouse no mapa-múndi (igual ao design): país disponível ou "em breve".
+  const caixa = document.querySelector('.mapbox') as HTMLElement | null;
+  const dica = document.getElementById('dica-mapa');
+  const mapa = caixa?.querySelector('.wmap');
+  if (caixa && dica && mapa) {
+    mapa.addEventListener('mousemove', (e) => {
+      const ev = e as MouseEvent;
+      const alvo = (ev.target as Element).closest('[data-dica]') as HTMLElement | SVGElement | null;
+      if (!alvo) { dica.style.display = 'none'; return; }
+      const d = alvo.dataset;
+      dica.innerHTML = d.dica === 'em-breve'
+        ? '<b>Em breve</b><span>Ainda sem dados neste país</span>'
+        : `<b>${d.dica}</b><span>${d.nota} · clique para abrir</span>`;
+      const r = caixa.getBoundingClientRect();
+      dica.style.display = 'block';
+      dica.style.left = Math.min(ev.clientX - r.left + 14, r.width - dica.offsetWidth) + 'px';
+      dica.style.top = ev.clientY - r.top + 14 + 'px';
+    });
+    mapa.addEventListener('mouseleave', () => { dica.style.display = 'none'; });
+  }
+</script>
+
 <style>
   .wrap { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
   :global(.ic) { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; vertical-align: -.15em; }
@@ -261,8 +287,14 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
   .wmap { width: 100%; height: auto; display: block; overflow: visible; }
   .wmap .c { stroke: var(--bg); stroke-width: .5; stroke-linejoin: round; }
   .wmap .c.off { fill: url(#em-breve); }
+  .wmap .sph { fill: none; stroke: var(--line); stroke-width: 1; }
+  .wmap .grat { fill: none; stroke: var(--line); stroke-width: .5; }
+  .wmap .lab { cursor: pointer; }
+  .tip { position: absolute; pointer-events: none; background: var(--bg); border: 1px solid var(--line2); border-radius: 10px; padding: 10px 12px; font-size: 14px; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); display: none; white-space: nowrap; z-index: 5; }
+  .tip :global(b) { display: block; font-size: 15px; }
+  .tip :global(span) { color: var(--faint); font-size: 13px; }
   .pt-fundo { fill: var(--track); }
-  .pt-linha { stroke: var(--hatch); stroke-width: .8; }
+  .pt-linha { stroke: var(--hatch); stroke-width: .9; }
   .wmap .c.on { fill: var(--rampa-5); cursor: pointer; transition: fill .15s; }
   .wmap .c-link:hover .c.on, .wmap .c-link:focus-visible .c.on { fill: var(--rampa-6); }
   .wmap .c-link:focus-visible { outline: none; }
