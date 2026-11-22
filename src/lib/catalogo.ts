@@ -21,11 +21,13 @@ export function abasDe(temaId: string, pais: any) {
   const tema = temas.find((t) => t.id === temaId) as any;
   if (!tema?.abas) return [];
   const doPais: string[] = pais.subtemas?.[temaId] ?? [];
-  const nomeGrupo = Object.fromEntries(tema.abas.grupos.map((g: any) => [g.id, g.nome]));
+  const grupo = Object.fromEntries(tema.abas.grupos.map((g: any) => [g.id, g]));
   return tema.abas.itens.map((a: any) => ({
     id: a.id,
     nome: a.nome,
-    grupo: nomeGrupo[a.grupo],
+    grupo: grupo[a.grupo]?.nome,
+    grupoId: a.grupo,
+    grupoCurto: grupo[a.grupo]?.nomeCurto ?? grupo[a.grupo]?.nome,
     href: a.href ? pais.caminho + a.href : undefined,
     ativo: a.situacao === 'no-ar' && !!a.href && doPais.includes(a.id),
   }));

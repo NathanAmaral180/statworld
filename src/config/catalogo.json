@@ -76,11 +76,13 @@
           },
           {
             "id": "pessoas-governo",
-            "nome": "Pessoas e governo"
+            "nome": "Pessoas e governo",
+            "nomeCurto": "Pessoas"
           },
           {
             "id": "mundo-mercado",
-            "nome": "Mundo e mercado"
+            "nome": "Mundo e mercado",
+            "nomeCurto": "Mundo"
           }
         ],
         "itens": [

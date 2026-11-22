@@ -85,14 +85,14 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - EUA: páginas de teste em `/estados-unidos/economia` (BEA) e `/estados-unidos/economia/agro` (USDA, cash receipts), fora do menu e com "noindex".
 
 ## Abas novas de Economia (design)
-- Design aprovado das 6 abas novas e da Visão geral refeita: `design/rodada-4-economia/` (o LEIA-ME de lá resume cada tela). Números das telas são exemplos.
+- Design aprovado das 6 abas novas e da Visão geral refeita: `design/rodada-4-economia/` (vale a v2, com navegação em dois níveis) (o LEIA-ME de lá resume cada tela). Números das telas são exemplos.
 - Padrão de cada aba: faixa "<Assunto> hoje" com 3 números nacionais (selo de frequência, fonte, data) + seletor de vistas + mapa/ficha/ranking ou gráfico de série.
 
 ## Impostos
 - Página `/economia/impostos`: molde `PaginaEconomia` com `aba="impostos"` (`src/config/temas/impostos-estados.json`, que reaproveita a medida da Visão geral pelo id).
 - Medida "Impostos sobre produtos (% do PIB)" (também 4ª medida da Visão geral): cálculo do StatWorld (PIB − valor adicionado) ÷ PIB, tabelas 1 e 4 das Contas Regionais (`scripts/pib-estados/`). Conferido: bate exatamente com a tabela 5938 do Sidra (2021). **Não é arrecadação** — a nota (`aviso` da medida) aparece acima do mapa e na ficha. A ficha mostra composição (valor adicionado × impostos), média do país (`valorPais`) e diferença.
 - Faixa "Impostos hoje" (`src/componentes/FaixaHoje.astro`, dados em `dados/impostos/brasil-hoje.json`, `scripts/impostos-hoje/`): impostos no PIB (IBGE), carga tributária (Tesouro, digitada no script a partir do boletim anual, estimativa preliminar) e arrecadação federal do último mês (Receita, arquivo de dados abertos; a data de divulgação de cada mês é digitada no script).
-- Visual igual ao design da rodada 4 (`pg_imp`): cabeçalho do mapa com carimbo "selo + fonte · data" à direita; nota com ícone "i" e começo em negrito (`avisoTitulo` + `aviso`); ficha com "% do PIB" (`sufixoFicha`), barra empilhada da composição, média e diferença, frase curta e carimbo; coluna do ranking curta (`rotuloRanking`); ranking aberto com "Mostrar só os 8 primeiros" (`ranking` na config da aba). A barra de abas segue o design em todas as páginas de Economia.
+- Visual igual ao design da rodada 4 (`pg_imp`): cabeçalho do mapa com carimbo "selo + fonte · data" à direita; nota com ícone "i" e começo em negrito (`avisoTitulo` + `aviso`); ficha com "% do PIB" (`sufixoFicha`), barra empilhada da composição, média e diferença, frase curta e carimbo; coluna do ranking curta (`rotuloRanking`); ranking aberto com "Mostrar só os 8 primeiros" (`ranking` na config da aba). A navegação segue o design (versão 2): dois níveis, grupos em cima e abas do grupo embaixo, com "Mais" no computador e rótulos curtos (`nomeCurto` do grupo no catálogo) no celular — `src/componentes/Abas.astro`. Clicar num grupo abre a primeira aba dele que está no ar; grupo sem aba no ar fica apagado.
 - Ainda não feito (previsto no mapa): ICMS por estado (Confaz) e arrecadação federal por estado.
 
 ## Página inicial
