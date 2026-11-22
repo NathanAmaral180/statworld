@@ -69,6 +69,11 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Usa o mesmo molde do Agro (`PaginaAgro`/`PaginaProdutoAgro` com `temaId="industria"`, `src/lib/agro.ts`, `src/config/temas/industria-estados.json`). `textosMolde` troca "produto" por "setor"; cores com prefixo `s-`.
 - Ícones e cores (`--s-*`) do Claude Design: `design/icones-industria/`, extraídos por `scripts/icones-industria/` para `src/config/icones/industria.json` e `src/estilos/cores-setores.css`.
 
+## Serviços
+- Fonte: IBGE, Contas Regionais 2024, Conta da produção (`scripts/servicos-estados/`): valor adicionado bruto de 7 atividades de serviços por estado (e crescimento real, guardado para uso futuro). Sem sigilo.
+- Mesmo molde do Agro/Indústria (`temaId="servicos"`, `src/config/temas/servicos-estados.json`); filtros "De mercado" e "Públicos"; cores `sv-*`.
+- Cada atividade tem uma descrição ("Inclui: …") mostrada na ficha e na página — "Outros serviços" é agrupado pelo próprio IBGE e não é detalhado por estado nessa fonte. Detalhar exigiria outra pesquisa (Pesquisa Anual de Serviços), com outra medida: só num mapa separado.
+
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321
 - `npm run build` — gera a versão final na pasta `dist/`

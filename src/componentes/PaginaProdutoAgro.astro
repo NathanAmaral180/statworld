@@ -57,6 +57,7 @@ const abas = [
       <h1>{produto.nome}</h1>
     </div>
     <p class="sub">{subtitulo}</p>
+    {produto.descricao && <p class="inclui"><strong>{ctx.textos.inclui}:</strong> {produto.descricao}</p>}
     <Abas itens={abas} atual="dados" rotulo={produto.nome} emBreve={site.textos.emBreve} />
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="valor" visoes={visoes} />
   </section>
@@ -71,5 +72,7 @@ const abas = [
   .icone-produto { flex: none; display: grid; place-items: center; width: 72px; height: 72px; border-radius: 16px; background: var(--surf); border: 1px solid var(--line); }
   .icone-produto svg { width: 40px; height: 40px; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   h1 { margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  .inclui { margin: -12px 0 24px; color: var(--sub); font-size: 15px; line-height: 1.5; max-width: 80ch; }
+  .inclui strong { color: var(--ink); font-weight: 600; }
   .sub { margin: 0 0 24px; color: var(--sub); font-size: 17px; line-height: 1.5; max-width: 80ch; }
 </style>

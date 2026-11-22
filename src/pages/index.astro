@@ -16,6 +16,7 @@ const economia = carregarDados<any>('economia', 'brasil-estados');
 const lavouras = carregarDados<any>('agro', 'brasil-estados-lavouras');
 const pecuaria = carregarDados<any>('agro', 'brasil-estados-pecuaria');
 const industria = carregarDados<any>('industria', 'brasil-estados');
+const servicos = carregarDados<any>('servicos', 'brasil-estados');
 
 // ---------- datas ----------
 const dataLonga = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString(ctx.idioma, { day: 'numeric', month: 'short', year: 'numeric' }).replace(/\./g, '').replace(/ de /g, ' ');
@@ -59,7 +60,7 @@ function numeroTema(t: any) {
   return { numero: formatar(t.valor, { formato: 'numero', casas: 1 }, ctx), unidade: t.unidade };
 }
 const DESCRICOES: Record<string, string> = {
-  economia: 'Produção, renda, agro e indústria, por país e por estado.',
+  economia: 'Produção, renda, agro, indústria e serviços, por país e por estado.',
   saude: 'Expectativa de vida, causas de morte e acesso a serviços.',
   politica: 'Eleições, representação e gasto público.',
   demografia: 'População, idade, nascimentos e migração.',
@@ -103,7 +104,7 @@ const historias = [
 // ---------- fontes usadas (lidas dos próprios dados) ----------
 const todasFontes: Fonte[] = [
   ...Object.values(economia.indicadores).flatMap((i: any) => i.fontes),
-  ...lavouras.fontes, ...pecuaria.fontes, ...industria.fontes, ...agora.indicadores.flatMap((i: any) => i.fontes),
+  ...lavouras.fontes, ...pecuaria.fontes, ...industria.fontes, ...servicos.fontes, ...agora.indicadores.flatMap((i: any) => i.fontes),
   ...temasMundo.temas.flatMap((t: any) => t.fontes), mundo.fonte,
 ];
 const porOrgao = new Map<string, Set<string>>();
@@ -115,7 +116,7 @@ for (const f of todasFontes) {
 const fontesUsadas = [...porOrgao.entries()].map(([nome, pubs]) => ({ nome, pubs: [...pubs].join('; ') }));
 
 // "Dados conferidos em": a busca mais recente nas fontes.
-const conferido = [economia.baixadoEm, lavouras.baixadoEm, pecuaria.baixadoEm, industria.baixadoEm, agora.baixadoEm, temasMundo.baixadoEm].filter(Boolean).sort().at(-1);
+const conferido = [economia.baixadoEm, lavouras.baixadoEm, pecuaria.baixadoEm, industria.baixadoEm, servicos.baixadoEm, agora.baixadoEm, temasMundo.baixadoEm].filter(Boolean).sort().at(-1);
 const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 ---
 <Base temaAtual="">

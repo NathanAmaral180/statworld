@@ -18,14 +18,15 @@ const SAIDA = new URL('../../dados/servicos/brasil-estados.json', import.meta.ur
 
 // Número da aba dentro de cada planilha de estado -> [identificador = nome do ícone, nome curto, grupo]
 const M = 'mercado', P = 'publico';
+// O 4º item diz o que a atividade inclui (aparece na ficha e na página), segundo o IBGE.
 const ATIVIDADES = {
-  7: ['comercio', 'Comércio', M],
-  8: ['transporte', 'Transporte, armazenagem e correio', M],
-  9: ['informacao-comunicacao', 'Informação e comunicação', M],
-  10: ['financeiras', 'Atividades financeiras e seguros', M],
-  11: ['imobiliarias', 'Atividades imobiliárias', M],
-  12: ['administracao-publica', 'Administração, educação e saúde públicas', P],
-  13: ['outros-servicos', 'Outros serviços', M],
+  7: ['comercio', 'Comércio', M, 'Comércio atacadista e varejista e reparação de veículos.'],
+  8: ['transporte', 'Transporte, armazenagem e correio', M, 'Transporte de cargas e passageiros, armazéns e correio.'],
+  9: ['informacao-comunicacao', 'Informação e comunicação', M, 'Telecomunicações, internet, TV, rádio, editoras, cinema e software.'],
+  10: ['financeiras', 'Atividades financeiras e seguros', M, 'Bancos, seguros, previdência privada e outros serviços financeiros.'],
+  11: ['imobiliarias', 'Atividades imobiliárias', M, 'Compra, venda e aluguel de imóveis, incluindo o aluguel imputado (o aluguel que os donos "pagariam" pela própria casa, uma convenção das contas nacionais).'],
+  12: ['administracao-publica', 'Administração, educação e saúde públicas', P, 'Governos federal, estaduais e municipais, defesa, seguridade social e escolas e hospitais públicos.'],
+  13: ['outros-servicos', 'Outros serviços', M, 'Alimentação e hospedagem; educação e saúde privadas; serviços profissionais, científicos e administrativos; artes, cultura e esporte; organizações associativas; serviços pessoais e domésticos.'],
 };
 
 const r = await fetch(URL_ZIP);
@@ -47,8 +48,8 @@ function lerVAB(ws) {
   return { valor: num(linha[5]) === null ? null : linha[5] * 1e6, volume: num(linha[2]) };
 }
 
-const atividades = Object.fromEntries(Object.values(ATIVIDADES).map(([id, nome, grupo]) => [id, {
-  id, nome, grupo, unidadeQuantidade: null, valores: vazio(), quantidades: vazio(), crescimento: vazio(),
+const atividades = Object.fromEntries(Object.values(ATIVIDADES).map(([id, nome, grupo, descricao]) => [id, {
+  id, nome, grupo, descricao, unidadeQuantidade: null, valores: vazio(), quantidades: vazio(), crescimento: vazio(),
 }]));
 let achados = 0;
 for (const arq of zip.FileIndex.filter((f) => /Tabela\d+\.xls$/i.test(f.name))) {

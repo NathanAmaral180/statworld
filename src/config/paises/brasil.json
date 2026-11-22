@@ -50,6 +50,9 @@
     },
     "industria": {
       "estado": "brasil-estados"
+    },
+    "servicos": {
+      "estado": "brasil-estados"
     }
   },
   "mapa": {
@@ -99,7 +102,8 @@
     "economia": [
       "visao-geral",
       "agro",
-      "industria"
+      "industria",
+      "servicos"
     ]
   },
   "slug": "brasil",
@@ -118,6 +122,13 @@
       "tudo": "Empresas industriais com 5 ou mais pessoas ocupadas (IBGE). Valor da transformação industrial = valor da produção menos o custo das operações industriais. Quando um setor tem poucas empresas num estado, o IBGE esconde o número por sigilo: ele aparece como \"sem dado\", e o setor líder é o maior entre os setores publicados. Não inclui construção nem energia.",
       "extrativa": "Indústrias extrativas: carvão, petróleo e gás, minerais e serviços de apoio (IBGE).",
       "transformacao": "Indústrias de transformação: alimentos, químicos, veículos, metalurgia e outros 20 setores (IBGE)."
+    }
+  },
+  "servicos": {
+    "notas": {
+      "tudo": "Valor adicionado bruto das 7 atividades de serviços (IBGE, Contas Regionais, a mesma pesquisa do PIB por estado). As atividades imobiliárias incluem o aluguel imputado, uma convenção das contas nacionais. \"Outros serviços\" reúne alimentação e hospedagem, educação e saúde privadas, serviços profissionais, artes e serviços domésticos.",
+      "mercado": "Serviços oferecidos por empresas e profissionais: comércio, transporte, informação, finanças, imobiliárias e outros serviços (IBGE).",
+      "publico": "Administração pública, defesa, seguridade social e educação e saúde públicas (IBGE)."
     }
   }
 }

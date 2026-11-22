@@ -1,0 +1,29 @@
+/* Cores das atividades de serviços (Claude Design). Gerado por scripts/icones-servicos/extrair.mjs. Não edite à mão. */
+:root {
+  --sv-comercio: oklch(0.60 0.18 5);
+  --sv-transporte: oklch(0.76 0.14 85);
+  --sv-informacao-comunicacao: oklch(0.68 0.11 215);
+  --sv-financeiras: oklch(0.50 0.15 280);
+  --sv-imobiliarias: oklch(0.55 0.09 175);
+  --sv-administracao-publica: oklch(0.46 0.13 325);
+  --sv-outros-servicos: oklch(0.80 0.15 122);
+  --sv-outro: oklch(0.72 0 0);
+}
+:root[data-theme="dark"] {
+  --sv-comercio: oklch(0.60 0.16 5);
+  --sv-transporte: oklch(0.72 0.12 85);
+  --sv-informacao-comunicacao: oklch(0.64 0.10 215);
+  --sv-financeiras: oklch(0.56 0.13 280);
+  --sv-imobiliarias: oklch(0.58 0.08 175);
+  --sv-administracao-publica: oklch(0.50 0.12 325);
+  --sv-outros-servicos: oklch(0.74 0.13 122);
+  --sv-outro: oklch(0.56 0 0);
+}
+[data-classe="sv-comercio"] { --cor: var(--sv-comercio); }
+[data-classe="sv-transporte"] { --cor: var(--sv-transporte); }
+[data-classe="sv-informacao-comunicacao"] { --cor: var(--sv-informacao-comunicacao); }
+[data-classe="sv-financeiras"] { --cor: var(--sv-financeiras); }
+[data-classe="sv-imobiliarias"] { --cor: var(--sv-imobiliarias); }
+[data-classe="sv-administracao-publica"] { --cor: var(--sv-administracao-publica); }
+[data-classe="sv-outros-servicos"] { --cor: var(--sv-outros-servicos); }
+[data-classe="sv-outro"] { --cor: var(--sv-outro); }

@@ -13,6 +13,7 @@ export interface Produto {
   grupo?: string; // ex.: "lavouras", "pecuaria"
   fontes?: Fonte[]; // quando o produto tem fonte própria
   nota?: string; // aviso sobre o produto (ex.: estados não estimados)
+  descricao?: string; // o que o item inclui (mostrado na ficha e na página)
   unidadeQuantidade: string | null; // null = não há quantidade
   valorPais: number | null;
   quantidadePais: number | null;
@@ -128,6 +129,7 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
                 icone: iconeDoProduto(cfg, p.id),
                 detalhes: [
                   [t.produtoLider, `${p.nome} · ${formatar(p.valores[u.sigla], fmtValor, ctx)}`],
+                  ...(p.descricao ? [[t.inclui, p.descricao]] : []),
                   [t.fonteDoProduto, fontesDe(p, dados).map((f) => f.nome).join(', ')],
                   // Parte do valor que a fonte não detalha (sigilo): o líder é o maior entre os publicados.
                   ...((dados.oculto?.[u.sigla] ?? 0) >= 1 ? [[t.semDetalheSigilo, `${formatar(dados.oculto![u.sigla], fmtPct, ctx)} do valor`]] : []),

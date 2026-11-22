@@ -18,6 +18,7 @@ Scripts existentes:
 - `industria-estados/`: indústria por estado e setor (IBGE, PIA)
 - `servicos-estados/`: serviços por estado e atividade (IBGE, Contas Regionais)
 - `icones-industria/`: ícones e cores dos setores da indústria, vindos do Claude Design
+- `icones-servicos/`: ícones e cores das atividades de serviços, vindos do Claude Design
 - `mundo-mapa/`: mapa-múndi da página inicial
 - `brasil-agora/`: faixa "Agora" (Banco Central)
 - `mundo-temas/`: um número do mundo por tema (Banco Mundial)

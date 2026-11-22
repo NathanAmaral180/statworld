@@ -48,7 +48,8 @@
       {
         "id": "servicos",
         "nome": "Serviços",
-        "ativo": false
+        "ativo": true,
+        "href": "/economia/servicos"
       }
     ]
   },
