@@ -1,0 +1,23 @@
+{
+  "_explicacao": "Aba Impostos (molde PaginaEconomia). As medidas são as mesmas da Visão geral (economia-estados.json), escolhidas pelo id. 'faixaHoje.grupo' diz de qual pasta de dados/ vem a faixa do topo; o nome do arquivo fica no arquivo do país (arquivos.<grupo>.hoje).",
+  "aba": "impostos",
+  "titulo": "A economia {dePais}",
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Impostos"
+  ],
+  "medidas": [
+    "impostos-produtos"
+  ],
+  "medidaPadrao": "impostos-produtos",
+  "cabecalhoMapa": {
+    "titulo": "Impostos sobre produtos, % do PIB de cada estado",
+    "descricao": "Quanto do PIB do estado vem de impostos cobrados sobre bens e serviços (menos os subsídios)."
+  },
+  "faixaHoje": {
+    "grupo": "impostos",
+    "rotulo": "Impostos hoje",
+    "descricao": "Números mais recentes, nacionais"
+  }
+}

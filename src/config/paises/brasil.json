@@ -53,6 +53,9 @@
     },
     "servicos": {
       "estado": "brasil-estados"
+    },
+    "impostos": {
+      "hoje": "brasil-hoje"
     }
   },
   "mapa": {
@@ -103,7 +106,8 @@
       "visao-geral",
       "agro",
       "industria",
-      "servicos"
+      "servicos",
+      "impostos"
     ]
   },
   "slug": "brasil",

@@ -51,6 +51,27 @@
         8,
         12
       ]
+    },
+    {
+      "id": "impostos-produtos",
+      "rotulo": "Impostos sobre produtos (% do PIB)",
+      "titulo": "Impostos sobre produtos, % do PIB, {periodo}",
+      "formato": "percentual",
+      "casas": 1,
+      "sinal": false,
+      "cortes": [
+        9,
+        11,
+        12.5,
+        14,
+        15.5
+      ],
+      "aviso": "PIB = valor adicionado + impostos sobre produtos. Esta medida mostra o peso dos impostos na economia do estado; não é a arrecadação.",
+      "composicao": {
+        "rotuloParte": "Impostos sobre produtos",
+        "rotuloResto": "Valor adicionado"
+      },
+      "comparaPais": true
     }
   ]
 }

@@ -1,44 +1,72 @@
 ---
-// Página "Economia · Visão geral" de um país: mapa + ranking por estado.
-// Serve para qualquer país: tudo que muda vem do arquivo do país (src/config/paises/).
+// Páginas de Economia de um país feitas de mapa + ranking por estado: a Visão geral e abas como Impostos.
+// Serve para qualquer país: tudo que muda vem do arquivo do país (src/config/paises/)
+// e da configuração da aba (src/config/temas/).
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
+import FaixaHoje from './FaixaHoje.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
-import tema from '../config/temas/economia-estados.json';
+import economiaEstados from '../config/temas/economia-estados.json';
+import impostosEstados from '../config/temas/impostos-estados.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
-interface Props { pais: any; teste?: boolean }
-const { pais, teste = false } = Astro.props;
+// Configuração de cada aba feita com este molde.
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados };
+
+interface Props { pais: any; aba?: string; teste?: boolean }
+const { pais, aba = 'visao-geral', teste = false } = Astro.props;
+const tema = CONFIGS[aba];
+if (!tema) throw new Error(`Aba sem configuração: ${aba}`);
 
 const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
 const economia = carregarDados<any>('economia', pais.arquivos.economia[NIVEL]);
 
+// As medidas podem ser escritas na própria aba ou escolhidas pelo id entre as da Visão geral.
+const todasMedidas = economiaEstados.medidas as Medida[];
+const medidasDaAba: Medida[] = tema.medidas.map((m: any) =>
+  typeof m === 'string' ? todasMedidas.find((x) => x.id === m) ?? (() => { throw new Error(`Medida desconhecida: ${m}`); })() : m
+);
 // Cortes das cores: os do tema, a não ser que o país tenha os seus (moeda e escala mudam).
 const cortesPais = pais.cortes?.['economia-estados'] ?? {};
-const medidas = (tema.medidas as Medida[])
+const medidas = medidasDaAba
   .filter((m) => economia.indicadores[m.id])
   .map((m) => ({ ...m, cortes: cortesPais[m.id] ?? m.cortes }));
 const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx)]));
 const opcoes = medidas.map((m) => ({ id: m.id, rotulo: preencher(m.rotulo, { periodo: economia.indicadores[m.id].periodo }), visao: m.id }));
 
+// Faixa "<Assunto> hoje": só aparece se o país tem o arquivo de dados dela.
+const arqHoje = tema.faixaHoje && pais.arquivos?.[tema.faixaHoje.grupo]?.hoje;
+const hoje = arqHoje ? carregarDados<any>(tema.faixaHoje.grupo, arqHoje) : null;
+
 const vars = { pais: pais.nome, dePais: pais.dePais };
 const titulo = preencher(tema.titulo, vars);
-const trilha = tema.trilha.map((t) => preencher(t, vars));
+const trilha = tema.trilha.map((t: string) => preencher(t, vars));
+const cabMapa = tema.cabecalhoMapa;
+const indPrincipal = cabMapa ? economia.indicadores[medidas[0]?.id] : null;
 // Abas de Economia (com grupos) vêm do cadastro; as que o país ainda não tem aparecem "em breve".
 const abas = abasDe('economia', pais);
+const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a.id === aba)?.nome ?? aba} · ${titulo}`;
 ---
-<Base titulo={titulo} temaAtual="economia" naoIndexar={teste}>
+<Base titulo={tituloPagina} temaAtual="economia" naoIndexar={teste}>
   <section class="conteudo pagina">
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">{trilha.join(' / ')}</p>
     <h1>{titulo}</h1>
-    <Abas itens={abas} atual="visao-geral" rotulo="Economia" emBreve={site.textos.emBreve} />
+    {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
+    <Abas itens={abas} atual={aba} rotulo="Economia" emBreve={site.textos.emBreve} />
+    {cabMapa && (
+      <div class="cab-mapa">
+        <h2>{cabMapa.titulo}</h2>
+        <p>{indPrincipal?.periodo}. {cabMapa.descricao}</p>
+        {indPrincipal?.frequencia && <p class="selos"><span class="selo">{indPrincipal.frequencia}</span></p>}
+      </div>
+    )}
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} />
   </section>
 </Base>
@@ -48,4 +76,9 @@ const abas = abasDe('economia', pais);
   .aviso-teste { display: inline-block; margin: 0 0 16px; padding: 6px 12px; font-size: 14px; color: var(--sub); background: var(--surf); border: 1px dashed var(--line2); border-radius: 8px; }
   .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
   h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  .cab-mapa { margin: 0 0 24px; }
+  .cab-mapa h2 { margin: 0 0 6px; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+  .cab-mapa p { margin: 0; color: var(--sub); font-size: 15px; }
+  .cab-mapa .selos { margin-top: 8px; }
+  .selo { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
 </style>

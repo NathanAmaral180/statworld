@@ -97,6 +97,8 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     </div>
   )}
 
+  <p class="mr-aviso" hidden={!visao.aviso}>{visao.aviso}</p>
+
   <div class="mr-grade">
     <figure class="mr-mapa">
       <svg viewBox={viewBox} role="img" aria-label={preencher(ctx.textos.mapaDescricao, { titulo: visao.titulo, nivel: ctx.nivelSingular })}>
@@ -279,6 +281,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       if (v.matiz) { raiz.dataset.matiz = v.matiz; raiz.style.setProperty('--matiz', `var(--${v.matiz})`); }
       else { delete raiz.dataset.matiz; raiz.style.removeProperty('--matiz'); }
       raiz.querySelectorAll<SVGGElement>('.chip-uf').forEach((g) => { g.innerHTML = htmlChip(v.svgs, v.icones?.[g.dataset.uf!]); });
+      const aviso = $('.mr-aviso')!; aviso.textContent = v.aviso ?? ''; aviso.hidden = !v.aviso;
       $('.mr-legenda')!.innerHTML = htmlLegenda(v);
       $('.mr-cab-medida')!.textContent = v.titulo;
       $('.mr-fonte')!.innerHTML = v.fonte;
@@ -448,6 +451,9 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   :global(.mr-ficha .ficha-detalhes dd) { margin: 0; font-weight: 600; text-align: right; }
   :global(.mr-ficha .ficha-link) { display: inline-block; margin-top: 10px; font-size: 15px; color: var(--accent); text-decoration: none; }
   :global(.mr-ficha .ficha-link:hover) { text-decoration: underline; }
+  .mr-aviso { margin: -12px 0 24px; padding: 10px 14px; font-size: 15px; line-height: 1.45; color: var(--ink); background: var(--surf); border: 1px solid var(--line); border-radius: 10px; max-width: 760px; }
+  .mr-aviso[hidden] { display: none; }
+  :global(.mr-ficha .ficha-aviso) { margin: 12px 0 0; font-size: 14px; color: var(--sub); }
   :global(.mr-ficha .ficha-fonte) { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
 
   /* Ranking */

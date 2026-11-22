@@ -1,13 +1,14 @@
 # Script: PIB dos estados
 
 ## O que faz
-Baixa do IBGE os números da economia de cada estado e prepara as três medidas do mapa:
+Baixa do IBGE os números da economia de cada estado e prepara as medidas do mapa:
 
 | Medida no site | De onde vem |
 |---|---|
 | **Peso no PIB** | Participação de cada estado no PIB do Brasil, publicada pelo IBGE (Tabela 2). |
 | **PIB por pessoa** | **Cálculo nosso**: PIB do estado (Tabela 1) dividido pela população estimada pelo IBGE no mesmo ano. |
 | **Crescimento** | Quanto a economia do estado cresceu de um ano para o outro, já descontada a inflação (Tabela 3, "série encadeada do volume"). |
+| **Impostos sobre produtos (% do PIB)** | **Cálculo nosso**: (PIB − valor adicionado) ÷ PIB (Tabelas 1 e 4). Pela definição do IBGE, PIB = valor adicionado + impostos (menos subsídios) sobre produtos. Guarda também o valor do Brasil, para comparar. **Não é arrecadação.** Conferido: em 2021 o cálculo dá exatamente o número publicado pelo IBGE na tabela 5938 do Sidra, nos 27 estados. |
 
 ## De onde vêm os dados
 - **Contas Regionais do Brasil**, do IBGE. Planilhas em https://ftp.ibge.gov.br/Contas_Regionais/

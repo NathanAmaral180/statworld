@@ -32,5 +32,9 @@
   "buscarProduto": "Buscar produto",
   "nenhumProduto": "Nenhum produto com esse nome.",
   "semDetalheSigilo": "Sem detalhe por sigilo",
-  "inclui": "Inclui"
+  "inclui": "Inclui",
+  "mediaDoPais": "Média do país",
+  "diferencaMedia": "Diferença para a média",
+  "ponto": "{v} ponto",
+  "pontos": "{v} pontos"
 }

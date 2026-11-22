@@ -56,17 +56,32 @@ function lerTabela(nomeArquivo) {
     throw new Error(`${nomeArquivo}: esperava 27 estados, achei ${Object.keys(porEstado).length}`);
   return porEstado;
 }
+// Linha "Brasil" de uma tabela (total do país), no ano escolhido.
+function lerBrasil(nomeArquivo) {
+  const wb = XLSX.read(XLSX.CFB.find(pacote, nomeArquivo).content, { type: 'buffer' });
+  const linhas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: null });
+  const cabecalho = linhas.find((l) => l.includes(ANO));
+  const linha = linhas.find((l) => typeof l[0] === 'string' && sem(l[0]) === 'brasil');
+  if (!linha) throw new Error(`${nomeArquivo}: não achei a linha Brasil`);
+  return num(linha[cabecalho.indexOf(ANO)]);
+}
 // Vazio vira null ("sem dado"), nunca zero.
 const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
 const pib = lerTabela('tab01.xls'); // milhões de R$
 const participacao = lerTabela('tab02.xls'); // %
 const volume = lerTabela('tab03.xls'); // índice, 2010 = 100
+const vab = lerTabela('tab04.xls'); // valor adicionado bruto, milhões de R$
 
 const populacao = {};
 for (const l of populacaoBruta.slice(1)) {
   populacao[siglaPorCodigo.get(l.D1C)] = num(Number(l.V));
 }
+
+const pibBrasil = lerBrasil('tab01.xls');
+const vabBrasil = lerBrasil('tab04.xls');
+// Parte do PIB que são impostos sobre produtos (líquidos de subsídios), em %.
+const impostosPct = (p, v) => (p === null || v === null || !p ? null : ((p - v) / p) * 100);
 
 const arred = (v, casas) => (v === null ? null : Math.round(v * 10 ** casas) / 10 ** casas);
 const siglas = estados.map((e) => e.sigla).sort();
@@ -111,6 +126,18 @@ const saida = {
       valores: valores((s) =>
         pib[s].atual === null || !populacao[s] ? null : arred((pib[s].atual * 1e6) / populacao[s], 0)
       ),
+    },
+    'impostos-produtos': {
+      nome: 'Impostos sobre produtos, % do PIB',
+      unidade: '%',
+      periodo: String(ANO),
+      frequencia: 'anual',
+      fontes: [fonteContas],
+      calculo:
+        'Cálculo do StatWorld com números do IBGE: (PIB − valor adicionado bruto) ÷ PIB × 100 (Tabelas 1 e 4 das Contas Regionais). Pela definição do IBGE, PIB = valor adicionado + impostos, líquidos de subsídios, sobre produtos. Não é arrecadação.',
+      // Valor do país inteiro (linha "Brasil" das mesmas tabelas), para comparar cada estado com a média.
+      valorPais: arred(impostosPct(pibBrasil, vabBrasil), 4),
+      valores: valores((s) => arred(impostosPct(pib[s].atual, vab[s].atual), 4)),
     },
     crescimento: {
       nome: `Crescimento real do PIB em ${ANO}`,

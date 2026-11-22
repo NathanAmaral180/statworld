@@ -1,0 +1,62 @@
+{
+  "_explicacao": "Faixa \"Impostos hoje\". Gerado por scripts/impostos-hoje/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-22",
+  "indicadores": [
+    {
+      "id": "impostos-produtos",
+      "rotulo": "Impostos sobre produtos no PIB, 2024",
+      "frequencia": "anual",
+      "valor": 14.1363,
+      "formato": "percentual",
+      "casas": 1,
+      "periodo": "2024",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "Contas Regionais do Brasil 2024",
+          "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "dataDivulgacao": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "carga-tributaria",
+      "rotulo": "Carga tributária bruta em 2025: tudo o que os governos arrecadam, sobre o PIB",
+      "frequencia": "anual",
+      "valor": 32.4,
+      "formato": "percentual",
+      "casas": 1,
+      "periodo": "2025",
+      "observacao": "estimativa preliminar",
+      "fontes": [
+        {
+          "nome": "Tesouro Nacional",
+          "publicacao": "Boletim de Estimativa da Carga Tributária Bruta do Governo Geral 2025",
+          "url": "https://www.gov.br/tesouronacional/pt-br/noticias/carga-tributaria-bruta-do-governo-geral-atinge-32-40-do-pib-em-2025",
+          "dataDivulgacao": "2026-04-10"
+        }
+      ]
+    },
+    {
+      "id": "arrecadacao-federal",
+      "rotulo": "Arrecadação federal em setembro de 2026",
+      "frequencia": "mensal",
+      "valor": 239384140375,
+      "formato": "moeda",
+      "casas": 1,
+      "compacto": true,
+      "periodo": "2026-09",
+      "fontes": [
+        {
+          "nome": "Receita Federal",
+          "publicacao": "Arrecadação das receitas federais por estado (dados abertos)",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/outubro/arrecadacao-federal-soma-r-239-384-bilhoes-em-setembro-alta-real-de-5-62",
+          "arquivo": "https://www.gov.br/receitafederal/dados/arrecadacao-estado.csv",
+          "dataDivulgacao": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

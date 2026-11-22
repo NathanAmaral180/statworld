@@ -3,7 +3,7 @@
   "pais": "BR",
   "nivel": "estado",
   "periodo": "2024",
-  "baixadoEm": "2026-11-21",
+  "baixadoEm": "2026-11-22",
   "indicadores": {
     "peso-pib": {
       "nome": "Participação no PIB do Brasil",
@@ -96,6 +96,52 @@
         "SE": 29620,
         "SP": 79665,
         "TO": 43167
+      }
+    },
+    "impostos-produtos": {
+      "nome": "Impostos sobre produtos, % do PIB",
+      "unidade": "%",
+      "periodo": "2024",
+      "frequencia": "anual",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "Contas Regionais do Brasil 2024",
+          "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "dataDivulgacao": "2026-11-13"
+        }
+      ],
+      "calculo": "Cálculo do StatWorld com números do IBGE: (PIB − valor adicionado bruto) ÷ PIB × 100 (Tabelas 1 e 4 das Contas Regionais). Pela definição do IBGE, PIB = valor adicionado + impostos, líquidos de subsídios, sobre produtos. Não é arrecadação.",
+      "valorPais": 14.1363,
+      "valores": {
+        "AC": 9.5831,
+        "AL": 12.3905,
+        "AM": 15.2272,
+        "AP": 7.6526,
+        "BA": 12.6003,
+        "CE": 12.5618,
+        "DF": 11.6909,
+        "ES": 20.6036,
+        "GO": 12.0883,
+        "MA": 10.4044,
+        "MG": 13.4361,
+        "MS": 14.2561,
+        "MT": 12.2577,
+        "PA": 10.928,
+        "PB": 11.9926,
+        "PE": 14.8098,
+        "PI": 10.617,
+        "PR": 13.5184,
+        "RJ": 12.2819,
+        "RN": 11.2261,
+        "RO": 13.0636,
+        "RR": 9.3486,
+        "RS": 12.9686,
+        "SC": 19.3813,
+        "SE": 11.6145,
+        "SP": 15.8199,
+        "TO": 11.2168
       }
     },
     "crescimento": {

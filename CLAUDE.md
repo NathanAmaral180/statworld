@@ -73,6 +73,12 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Design aprovado das 6 abas novas e da Visão geral refeita: `design/rodada-4-economia/` (o LEIA-ME de lá resume cada tela). Números das telas são exemplos.
 - Padrão de cada aba: faixa "<Assunto> hoje" com 3 números nacionais (selo de frequência, fonte, data) + seletor de vistas + mapa/ficha/ranking ou gráfico de série.
 
+## Impostos
+- Página `/economia/impostos`: molde `PaginaEconomia` com `aba="impostos"` (`src/config/temas/impostos-estados.json`, que reaproveita a medida da Visão geral pelo id).
+- Medida "Impostos sobre produtos (% do PIB)" (também 4ª medida da Visão geral): cálculo do StatWorld (PIB − valor adicionado) ÷ PIB, tabelas 1 e 4 das Contas Regionais (`scripts/pib-estados/`). Conferido: bate exatamente com a tabela 5938 do Sidra (2021). **Não é arrecadação** — a nota (`aviso` da medida) aparece acima do mapa e na ficha. A ficha mostra composição (valor adicionado × impostos), média do país (`valorPais`) e diferença.
+- Faixa "Impostos hoje" (`src/componentes/FaixaHoje.astro`, dados em `dados/impostos/brasil-hoje.json`, `scripts/impostos-hoje/`): impostos no PIB (IBGE), carga tributária (Tesouro, digitada no script a partir do boletim anual, estimativa preliminar) e arrecadação federal do último mês (Receita, arquivo de dados abertos; a data de divulgação de cada mês é digitada no script).
+- Ainda não feito (previsto no mapa): ICMS por estado (Confaz) e arrecadação federal por estado.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

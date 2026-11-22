@@ -1,0 +1,59 @@
+---
+// Faixa "<Assunto> hoje" no topo de uma aba: 3 números nacionais recentes, cada um com
+// selo de frequência, fonte e data. Os números vêm de um arquivo em dados/ (nada escrito aqui).
+import { formatarEmPartes, type Contexto } from './mapa-ranking/visao';
+
+interface Indicador {
+  id: string; rotulo: string; frequencia: string; valor: number | null; formato: any; casas: number; compacto?: boolean;
+  observacao?: string; fontes: { nome: string; publicacao: string; url?: string; dataDivulgacao?: string | null }[];
+}
+interface Props { rotulo: string; descricao?: string; indicadores: Indicador[]; ctx: Contexto }
+const { rotulo, descricao, indicadores, ctx } = Astro.props;
+
+const dataCurta = (d: string) =>
+  new Date(d + 'T12:00:00').toLocaleDateString(ctx.idioma, { day: 'numeric', month: 'short', year: 'numeric' }).replace(/\./g, '').replace(/ de /g, ' ');
+const itens = indicadores.map((i) => {
+  const f = i.fontes[0];
+  return {
+    ...i,
+    partes: formatarEmPartes(i.valor, { formato: i.formato, casas: i.casas, compacto: i.compacto }, ctx),
+    fonte: f.nome + (f.dataDivulgacao ? ` · ${dataCurta(f.dataDivulgacao)}` : ''),
+    titulo: f.publicacao,
+    url: f.url,
+  };
+});
+---
+<section class="hoje" aria-label={rotulo}>
+  <div class="hoje-cab"><span class="eyebrow">{rotulo}</span>{descricao && <span>{descricao}</span>}</div>
+  {itens.map((k) => (
+    <div class="kpi">
+      <b class={k.valor === null ? 'sem' : undefined}>{k.partes.antes && <small>{k.partes.antes} </small>}{k.partes.numero}{k.partes.depois && <small>{k.partes.depois}</small>}</b>
+      <p class="lbl">{k.rotulo}</p>
+      <p class="selos"><span class="selo">{k.frequencia}</span>{k.observacao && <span class="selo">{k.observacao}</span>}</p>
+      <p class="src">{k.url ? <a href={k.url} title={k.titulo} rel="noopener">{k.fonte}</a> : <span title={k.titulo}>{k.fonte}</span>}</p>
+    </div>
+  ))}
+</section>
+
+<style>
+  .hoje { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 180px repeat(3, minmax(0, 1fr)); margin: 0 0 32px; }
+  .hoje-cab { padding: 18px 0; display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); font-weight: 600; }
+  .hoje-cab span:last-child:not(.eyebrow) { font-size: 13px; color: var(--faint); line-height: 1.4; }
+  .kpi { padding: 16px 24px; border-left: 1px solid var(--line); display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .kpi b { font-size: 28px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+  .kpi b small { font-size: 17px; font-weight: 500; color: var(--sub); }
+  .kpi b.sem { color: var(--faint); font-size: 20px; }
+  .kpi p { margin: 0; }
+  .lbl { font-size: 14px; color: var(--ink); line-height: 1.4; }
+  .selos { display: flex; gap: 6px; flex-wrap: wrap; }
+  .selo { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
+  .src { font-size: 12px; color: var(--faint); }
+  .src a { color: inherit; }
+  .src a:hover { color: var(--ink); }
+  @media (max-width: 760px) {
+    .hoje { grid-template-columns: 1fr; }
+    .kpi { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0; }
+    .hoje-cab { padding: 14px 0 4px; }
+  }
+</style>

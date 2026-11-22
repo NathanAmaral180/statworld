@@ -49,6 +49,7 @@ export interface Ficha {
   icone?: string;
   detalhes?: [string, string][];
   link?: { texto: string; url: string };
+  aviso?: string; // nota importante sobre a medida (ex.: "não é arrecadação")
   nota: string;
 }
 
@@ -65,6 +66,7 @@ export interface Visao {
   svgs?: Record<string, string>; // ícone -> desenho (conteúdo do SVG 24x24)
   matiz?: string; // classe de cor (ex.: "p-soja") que tinge o degradê de 6 tons; sem matiz = azul padrão
   iconeTitulo?: string; // ícone ao lado do título da legenda
+  aviso?: string; // nota sobre a medida, mostrada acima do mapa e repetida na ficha
 }
 
 // Ícone dentro do mapa: um círculo com o desenho no meio (posição dada pelo <g> de fora).
@@ -218,7 +220,7 @@ export function htmlFicha(f: Ficha, svgs?: Record<string, string>): string {
   const link = f.link ? `<a class="ficha-link" href="${escapar(f.link.url)}">${escapar(f.link.texto)} →</a>` : '';
   return `<p class="ficha-topo">${escapar(f.topo)}</p>
 <div class="ficha-linha"><h2 class="ficha-nome">${escapar(f.nome)}</h2><p class="ficha-valor${f.apagado ? ' sem' : ''}">${valor}</p></div>
-${sub}${det}${link}<p class="ficha-fonte">${escapar(f.nota)}</p>`;
+${sub}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}<p class="ficha-fonte">${escapar(f.nota)}</p>`;
 }
 
 export function htmlLegenda(v: Visao): string {

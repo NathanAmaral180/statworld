@@ -11,6 +11,7 @@ export interface Indicador {
   periodo: string;
   fontes: Fonte[];
   calculo?: string;
+  valorPais?: number | null; // valor do país inteiro (para comparar)
   valores: Record<string, Valor>;
 }
 
@@ -22,6 +23,10 @@ export interface Medida {
   casas: number;
   sinal: boolean;
   cortes: number[];
+  aviso?: string; // nota sobre a medida (acima do mapa e na ficha)
+  // Ficha com a composição (parte da medida × o resto, que soma 100%) e a comparação com o país.
+  composicao?: { rotuloParte: string; rotuloResto: string };
+  comparaPais?: boolean;
 }
 
 export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctx: Contexto): Visao {
@@ -62,9 +67,23 @@ export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: In
         const v = ind.valores[u.sigla];
         const partes = formatarEmPartes(v, fmt, ctx);
         const pos = i < n ? preencher(n < total ? t.posicaoComFalta : t.posicao, { n: i + 1, total: n }) : t.semDado;
-        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, apagado: v === null, nota }];
+        const detalhes: [string, string][] = [];
+        const pct = (x: number | null) => formatar(x, { formato: 'percentual', casas: m.casas }, ctx);
+        if (m.composicao && v !== null) {
+          detalhes.push([m.composicao.rotuloResto, pct(100 - (v as number))], [m.composicao.rotuloParte, pct(v as number)]);
+        }
+        if (m.comparaPais && ind.valorPais != null) {
+          detalhes.push([t.mediaDoPais, formatar(ind.valorPais, fmt, ctx)]);
+          if (v !== null) {
+            const d = Math.round(((v as number) - ind.valorPais) * 10 ** m.casas) / 10 ** m.casas;
+            const num = formatar(d, { formato: 'numero', casas: m.casas, sinal: true }, ctx);
+            detalhes.push([t.diferencaMedia, preencher(Math.abs(d) === 1 ? t.ponto : t.pontos, { v: num })]);
+          }
+        }
+        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, apagado: v === null, detalhes: detalhes.length ? detalhes : undefined, aviso: m.aviso, nota }];
       })
     ),
+    aviso: m.aviso,
     fonte: htmlFontes(ind.fontes, ctx, ind.calculo ? `${t.comoCalculamos}: ${ind.calculo}` : undefined),
   };
 }
