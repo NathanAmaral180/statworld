@@ -61,7 +61,7 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Lavouras: IBGE, Produção Agrícola Municipal. Leite, ovos, mel, lã, casulos: IBGE, Pesquisa da Pecuária Municipal. Bovinos, suínos, frango: MAPA, Valor Bruto da Produção (valores nominais, ano fechado), porque o IBGE não calcula valor de carne. O site avisa que as fontes usam métodos diferentes. `src/lib/agro.ts` junta tudo; lavouras e pecuária precisam ser do mesmo ano.
 - Não inclui silvicultura nem extração vegetal.
 - "Não produz" (0 no IBGE, símbolo "-") é diferente de "sem dado" (null).
-- "Quanto produz": o degradê de 6 tons usa a cor do produto (do claro ao forte); produto sem cor própria usa o azul padrão. Cada estado produtor mostra o ícone do produto. Há botões com ícone para os 6 maiores produtos com cor própria. (Ainda falta registrar isso no Design System.)
+- "Quanto produz": o degradê de 6 tons usa a cor do produto (do claro ao forte); produto sem cor própria usa o azul padrão. Cada estado produtor mostra o ícone do produto. Há botões com ícone para os 6 maiores produtos com cor própria e um botão "Outros produtos ▾" que abre a lista completa com ícones e busca (quando o produto escolhido não é um dos 6, o botão mostra o nome e o ícone dele). (Ainda falta registrar isso no Design System.)
 - Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 
 ## Comandos

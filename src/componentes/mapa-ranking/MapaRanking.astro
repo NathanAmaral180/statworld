@@ -36,7 +36,9 @@ const gruposLista = listaOpcao
 
 const { margem, chamadas } = mapa;
 const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esquerda + margem.direita} ${geo.altura + margem.cima + margem.baixo}`;
-const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
+// O navegador não precisa dos desenhos dos ícones da lista (já estão no HTML).
+const opcoesCliente = opcoes.map((o) => (o.lista ? { ...o, lista: { ...o.lista, itens: o.lista.itens.map(({ iconeSvg, ...resto }) => resto) } } : o));
+const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 ---
 <div class={`mr${visao.icones ? ' com-icones' : ''}`} data-mapa-ranking data-matiz={visao.matiz} style={visao.matiz ? `--matiz: var(--${visao.matiz})` : undefined}>
   {(opcoes.length > 1 || listaOpcao || filtroOpcao) && (
@@ -68,15 +70,29 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
         </div>
       )}
       {listaOpcao && (
-        <label class="mr-lista" hidden={opcao.id !== listaOpcao.id}>
-          <span>{listaOpcao.lista!.rotulo}</span>
-          <select data-lista={listaOpcao.id}>
-            {gruposLista.map(({ g, itens }) => {
-              const ops = itens.map((i) => <option value={i.id} data-url={i.url} selected={i.id === listaOpcao.lista!.padrao}>{i.rotulo}</option>);
-              return g ? <optgroup label={g}>{ops}</optgroup> : ops;
-            })}
-          </select>
-        </label>
+        <div class="mr-mais" data-mais={listaOpcao.id} data-atual={listaOpcao.lista!.padrao} hidden={opcao.id !== listaOpcao.id}>
+          <button type="button" class="mr-mais-botao" aria-haspopup="listbox" aria-expanded="false" aria-controls={`mr-mais-${listaOpcao.id}`} aria-pressed="false">
+            <span class="mr-mais-icone" aria-hidden="true"></span><span class="mr-mais-rotulo">{ctx.textos.outrosProdutosBotao}</span>
+            <svg class="ic seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          </button>
+          <div class="mr-mais-painel" hidden>
+            <input type="search" class="mr-mais-busca" placeholder={ctx.textos.buscarProduto} aria-label={ctx.textos.buscarProduto} autocomplete="off" />
+            <ul role="listbox" id={`mr-mais-${listaOpcao.id}`} aria-label={listaOpcao.lista!.rotulo}>
+              {gruposLista.map(({ g, itens }) => (
+                <>
+                  {g && <li class="mr-mais-grupo" role="presentation">{g}</li>}
+                  {itens.map((i) => (
+                    <li role="option" tabindex="-1" data-valor={i.id} data-url={i.url} data-busca={i.rotulo.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()} aria-selected={String(i.id === listaOpcao.lista!.padrao)}>
+                      {i.iconeSvg ? <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" set:html={i.iconeSvg} /> : <span class="ic-vazio" aria-hidden="true"></span>}
+                      <span>{i.rotulo}</span>
+                    </li>
+                  ))}
+                </>
+              ))}
+            </ul>
+            <p class="mr-mais-vazio" hidden>{ctx.textos.nenhumProduto}</p>
+          </div>
+        </div>
       )}
     </div>
   )}
@@ -152,7 +168,71 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
     const ficha = $('.mr-ficha')!;
     const ranking = $('.mr-ranking')!;
     const destaque = $<SVGPathElement>('.mr-destaque')!;
-    const select = $<HTMLSelectElement>('select[data-lista]');
+    // Escolha de produto: botões de atalho + botão "Outros produtos ▾" que abre a lista com ícones.
+    const mais = $<HTMLElement>('[data-mais]');
+    const maisBotao = mais?.querySelector<HTMLButtonElement>('.mr-mais-botao');
+    const maisPainel = mais?.querySelector<HTMLElement>('.mr-mais-painel');
+    const maisBusca = mais?.querySelector<HTMLInputElement>('.mr-mais-busca');
+    const itensLista = () => [...(mais?.querySelectorAll<HTMLElement>('[role="option"]') ?? [])];
+    let produtoAtual = mais?.dataset.atual ?? '';
+
+    function marcarProduto() {
+      const atalhos = [...raiz.querySelectorAll<HTMLElement>('[data-produto]')];
+      atalhos.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.produto === produtoAtual)));
+      itensLista().forEach((li) => li.setAttribute('aria-selected', String(li.dataset.valor === produtoAtual)));
+      if (!maisBotao) return;
+      const ehAtalho = atalhos.some((b) => b.dataset.produto === produtoAtual);
+      const item = itensLista().find((li) => li.dataset.valor === produtoAtual);
+      // Produto fora dos atalhos: o botão passa a mostrar o nome e o ícone dele.
+      maisBotao.setAttribute('aria-pressed', String(!ehAtalho));
+      maisBotao.querySelector('.mr-mais-rotulo')!.textContent = !ehAtalho && item ? item.innerText.trim() : maisBotao.dataset.rotuloPadrao!;
+      maisBotao.querySelector('.mr-mais-icone')!.innerHTML = !ehAtalho && item ? (item.querySelector('svg.ic')?.outerHTML ?? '') : '';
+    }
+    function abrirLista() {
+      if (!maisPainel || !maisBotao) return;
+      maisPainel.hidden = false;
+      maisBotao.setAttribute('aria-expanded', 'true');
+      if (maisBusca) { maisBusca.value = ''; filtrarLista(''); maisBusca.focus(); }
+    }
+    function fecharLista(devolverFoco = false) {
+      if (!maisPainel || maisPainel.hidden) return;
+      maisPainel.hidden = true;
+      maisBotao?.setAttribute('aria-expanded', 'false');
+      if (devolverFoco) maisBotao?.focus();
+    }
+    function filtrarLista(texto: string) {
+      const t = texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+      let algum = false;
+      itensLista().forEach((li) => { const ok = !t || li.dataset.busca!.includes(t); li.hidden = !ok; algum ||= ok; });
+      mais?.querySelectorAll<HTMLElement>('.mr-mais-grupo').forEach((g) => { g.hidden = !!t; });
+      const vazio = mais?.querySelector<HTMLElement>('.mr-mais-vazio');
+      if (vazio) vazio.hidden = algum;
+    }
+    function escolherProduto(id: string) {
+      produtoAtual = id;
+      fecharLista(true);
+      escolher(opcaoId);
+    }
+    if (maisBotao) {
+      maisBotao.dataset.rotuloPadrao = maisBotao.querySelector('.mr-mais-rotulo')!.textContent!;
+      maisBotao.addEventListener('click', () => (maisPainel!.hidden ? abrirLista() : fecharLista()));
+      maisBusca?.addEventListener('input', () => filtrarLista(maisBusca.value));
+      mais!.addEventListener('click', (e) => {
+        const li = (e.target as Element).closest<HTMLElement>('[role="option"]');
+        if (li) escolherProduto(li.dataset.valor!);
+      });
+      mais!.addEventListener('keydown', (e) => {
+        const visiveis = itensLista().filter((li) => !li.hidden);
+        const i = visiveis.indexOf(document.activeElement as HTMLElement);
+        if (e.key === 'Escape') { fecharLista(true); e.preventDefault(); }
+        else if (e.key === 'ArrowDown') { (visiveis[Math.min(visiveis.length - 1, i + 1)] ?? visiveis[0])?.focus(); e.preventDefault(); }
+        else if (e.key === 'ArrowUp') { if (i <= 0) maisBusca?.focus(); else visiveis[i - 1].focus(); e.preventDefault(); }
+        else if (e.key === 'Enter' && i >= 0) { escolherProduto(visiveis[i].dataset.valor!); e.preventDefault(); }
+        else if (e.key === 'Enter' && document.activeElement === maisBusca && visiveis.length) { escolherProduto(visiveis[0].dataset.valor!); e.preventDefault(); }
+      });
+      document.addEventListener('click', (e) => { if (!mais!.contains(e.target as Node)) fecharLista(); });
+      marcarProduto();
+    }
     const filtroEscolhido: Record<string, string> = Object.fromEntries(
       d.opcoes.filter((o: any) => o.filtros).map((o: any) => [o.id, o.filtros.padrao])
     );
@@ -175,18 +255,18 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
       opcaoId = id;
       const o = d.opcoes.find((x: any) => x.id === id);
       raiz.querySelectorAll('[data-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-opcao') === id)));
-      const rotuloLista = select?.closest('label');
-      if (rotuloLista) rotuloLista.hidden = !o.lista;
+      if (mais) mais.hidden = !o.lista;
+      if (!o.lista) fecharLista();
       raiz.querySelectorAll<HTMLElement>('[data-atalhos-de]').forEach((el) => { el.hidden = !o.lista; });
-      raiz.querySelectorAll('[data-produto]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-produto') === select?.value)));
+      marcarProduto();
       raiz.querySelectorAll<HTMLElement>('[data-filtros-de]').forEach((el) => { el.hidden = el.dataset.filtrosDe !== id; });
       if (o.filtros) {
         const f = filtroEscolhido[id];
         raiz.querySelectorAll('[data-filtro]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-filtro') === f)));
         aplicar(cache[o.filtros.itens.find((i: any) => i.id === f).visao]);
       } else if (o.lista) {
-        const item = select!.selectedOptions[0];
-        aplicar(await carregar(`lista:${item.value}`, item.dataset.url));
+        const item = itensLista().find((li) => li.dataset.valor === produtoAtual)!;
+        aplicar(await carregar(`lista:${produtoAtual}`, item.dataset.url));
       } else {
         aplicar(cache[o.visao]);
       }
@@ -231,13 +311,12 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
       const botao = (e.target as Element).closest<HTMLElement>('[data-opcao]');
       if (botao) { escolher(botao.dataset.opcao!); return; }
       const atalho = (e.target as Element).closest<HTMLElement>('[data-produto]');
-      if (atalho && select) { select.value = atalho.dataset.produto!; escolher(opcaoId); return; }
+      if (atalho) { produtoAtual = atalho.dataset.produto!; escolher(opcaoId); return; }
       const filtro = (e.target as Element).closest<HTMLElement>('[data-filtro]');
       if (filtro) { filtroEscolhido[opcaoId] = filtro.dataset.filtro!; escolher(opcaoId); return; }
       const uf = ufDe(e.target);
       if (uf) { fixado = fixado === uf ? null : uf; destacar(); }
     });
-    select?.addEventListener('change', () => escolher(opcaoId));
     // Teclado: foco numa linha = prévia; setas sobem/descem.
     ranking.addEventListener('focusin', (e) => { previa = ufDe(e.target); destacar(); });
     ranking.addEventListener('focusout', (e) => { if (!ranking.contains(e.relatedTarget as Node)) { previa = null; destacar(); } });
@@ -263,7 +342,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   .mr-medidas button { font: inherit; font-size: 16px; color: var(--sub); background: transparent; border: 0; border-radius: 9px; padding: 10px 18px; cursor: pointer; }
   .mr-medidas button:hover { color: var(--ink); }
   .mr-medidas button[aria-pressed="true"] { background: var(--bg); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 1px var(--line), 0 1px 3px var(--line); }
-  .mr-medidas button:focus-visible, .mr-lista select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .mr-medidas button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .mr-filtros { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--sub); }
   .mr-filtros[hidden] { display: none; }
   .mr-pequeno button { font-size: 14px; padding: 7px 14px; }
@@ -274,9 +353,30 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   .mr-atalhos button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .mr-atalhos button[aria-pressed="true"] :global(.ic) { color: var(--bg); }
   .mr-atalhos button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .mr-lista { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--sub); }
-  .mr-lista[hidden] { display: none; }
-  .mr-lista select { font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 10px; padding: 9px 12px; min-width: 200px; }
+  /* "Outros produtos ▾": mesmo visual dos botões de atalho; abre uma lista com ícones e busca */
+  .mr-mais { position: relative; }
+  .mr-mais[hidden] { display: none; }
+  .mr-mais-botao { font: inherit; font-size: 15px; display: inline-flex; align-items: center; gap: 0; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 8px; padding: 7px 10px 7px 12px; cursor: pointer; }
+  .mr-mais-botao:hover { background: var(--surf); }
+  .mr-mais-botao[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .mr-mais-botao[aria-pressed="true"] :global(.ic) { color: var(--bg); }
+  .mr-mais-botao:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .mr-mais-botao .seta { margin: 0 0 0 6px; width: 16px; height: 16px; }
+  .mr-mais-icone:empty { display: none; }
+  .mr-mais-painel { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; width: 300px; max-width: calc(100vw - 32px); background: var(--bg); border: 1px solid var(--line2); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, .16); padding: 8px; }
+  .mr-mais-painel[hidden] { display: none; }
+  .mr-mais-busca { font: inherit; font-size: 15px; width: 100%; color: var(--ink); background: var(--surf); border: 1px solid transparent; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; }
+  .mr-mais-busca:focus { outline: none; background: var(--bg); border-color: var(--accent); }
+  .mr-mais-painel ul { list-style: none; margin: 0; padding: 0; max-height: 340px; overflow-y: auto; }
+  .mr-mais-grupo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--sub); padding: 10px 10px 4px; }
+  .mr-mais-painel [role="option"] { display: flex; align-items: center; gap: 0; padding: 8px 10px; border-radius: 8px; font-size: 15px; color: var(--ink); cursor: pointer; }
+  .mr-mais-painel [role="option"][hidden], .mr-mais-grupo[hidden] { display: none; }
+  .mr-mais-painel [role="option"]:hover, .mr-mais-painel [role="option"]:focus { background: var(--surf); outline: none; }
+  .mr-mais-painel [role="option"]:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+  .mr-mais-painel [role="option"][aria-selected="true"] { font-weight: 600; }
+  .mr-mais-painel [role="option"][aria-selected="true"]::after { content: "✓"; margin-left: auto; color: var(--accent); }
+  .ic-vazio { display: inline-block; width: 1.15em; margin-right: 8px; flex: none; }
+  .mr-mais-vazio { margin: 8px 10px; font-size: 14px; color: var(--faint); }
 
   .mr-grade { display: grid; grid-template-columns: minmax(0, 1fr) var(--mr-lado); gap: 48px; align-items: start; }
 
@@ -376,8 +476,7 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   @media (max-width: 560px) {
     .mr-medidas { display: flex; width: 100%; }
     .mr-medidas button { flex: 1 1 auto; padding: 8px 10px; font-size: 14px; }
-    .mr-lista { width: 100%; }
-    .mr-lista select { flex: 1; min-width: 0; }
+    .mr-mais-painel { width: calc(100vw - 32px); }
     :global(.mr-ranking .linha) { grid-template-columns: 26px minmax(0, 1fr) 48px 84px; gap: 8px; padding: 6px 8px; font-size: 15px; }
     :global(.mr-ficha .ficha-valor strong) { font-size: 40px; }
     .mr-ficha { padding: 18px; }

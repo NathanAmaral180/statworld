@@ -43,7 +43,7 @@ const opcoes = [
         todos.filter((p) => p.grupo === g).map((p) => ({
           id: p.id, rotulo: p.nome, grupo: tema.grupos[g as keyof typeof tema.grupos], url: preencher(tema.urlDadosProduto, { produto: p.id }),
           destaque: atalhos.has(p.id),
-          iconeSvg: atalhos.has(p.id) ? tema.icones.icones[iconeDoProduto(tema, p.id) as keyof typeof tema.icones.icones] : undefined,
+          iconeSvg: tema.icones.icones[iconeDoProduto(tema, p.id) as keyof typeof tema.icones.icones],
         }))
       ),
     },
