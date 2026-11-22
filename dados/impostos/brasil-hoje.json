@@ -11,6 +11,7 @@
       "formato": "percentual",
       "casas": 1,
       "periodo": "2024",
+      "fonteCurta": "IBGE, Contas Regionais",
       "fontes": [
         {
           "nome": "IBGE",
@@ -23,13 +24,14 @@
     },
     {
       "id": "carga-tributaria",
-      "rotulo": "Carga tributária bruta em 2025: tudo o que os governos arrecadam, sobre o PIB",
+      "rotulo": "Carga tributária bruta em 2025, isto é, a arrecadação de todos os governos sobre o PIB",
       "frequencia": "anual",
       "valor": 32.4,
       "formato": "percentual",
       "casas": 1,
       "periodo": "2025",
-      "observacao": "estimativa preliminar",
+      "observacao": "estimativa",
+      "fonteCurta": "Tesouro Nacional",
       "fontes": [
         {
           "nome": "Tesouro Nacional",
@@ -41,7 +43,8 @@
     },
     {
       "id": "arrecadacao-federal",
-      "rotulo": "Arrecadação federal em setembro de 2026",
+      "rotulo": "Arrecadação federal em setembro",
+      "fonteCurta": "Receita Federal",
       "frequencia": "mensal",
       "valor": 239384140375,
       "formato": "moeda",

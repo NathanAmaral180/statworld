@@ -5,7 +5,7 @@
   "ate": "até {v}",
   "entre": "{a}–{b}",
   "ouMais": "{v} ou mais",
-  "posicao": "{n}º de {total}",
+  "posicao": "{n}º de {total} {nivel}",
   "fonte": "Fonte",
   "divulgadaEm": "divulgada em {data}",
   "comoCalculamos": "Como calculamos",
@@ -26,7 +26,7 @@
   "outrosProdutos": "Outros",
   "verProduto": "Ver página: {produto}",
   "escolhaProduto": "Produto",
-  "posicaoComFalta": "{n}º de {total} com dado",
+  "posicaoComFalta": "{n}º de {total} {nivel} com dado",
   "fonteDoProduto": "Fonte deste produto",
   "outrosProdutosBotao": "Outros produtos",
   "buscarProduto": "Buscar produto",
@@ -36,5 +36,7 @@
   "mediaDoPais": "Média do país",
   "diferencaMedia": "Diferença para a média",
   "ponto": "{v} ponto",
-  "pontos": "{v} pontos"
+  "pontos": "{v} pontos",
+  "rankingMenos": "Mostrar só os {n} primeiros",
+  "rankingTodos": "Ver todos os {total} {nivel}"
 }

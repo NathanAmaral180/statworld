@@ -1,7 +1,7 @@
 ---
 // Molde "mapa + ranking + ficha". Recebe "visões" prontas (ver visao.ts) e só desenha.
 // Nada aqui é exclusivo de um país ou de um tema.
-import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, preencher, type Visao, type Contexto, type Unidade } from './visao';
+import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, htmlAviso, preencher, type Visao, type Contexto, type Unidade } from './visao';
 
 export interface Opcao {
   id: string;
@@ -18,8 +18,10 @@ interface Props {
   opcoes: Opcao[];
   opcaoInicial: string;
   visoes: Record<string, Visao>; // chave: id da visão, ou "lista:<item>" para itens de lista
+  // Ranking que pode encolher para os 8 primeiros (botão "Mostrar só os 8 primeiros" / "Ver todos"). O CSS esconde do 9º em diante.
+  ranking?: { mostrar: number; aberto: boolean };
 }
-const { geo, mapa, ctx, opcoes, opcaoInicial, visoes } = Astro.props;
+const { geo, mapa, ctx, opcoes, opcaoInicial, visoes, ranking } = Astro.props;
 
 const chaveDe = (o: Opcao) =>
   o.lista ? `lista:${o.lista.padrao}` : o.filtros ? o.filtros.itens.find((i) => i.id === o.filtros!.padrao)!.visao : o.visao!;
@@ -97,7 +99,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     </div>
   )}
 
-  <p class="mr-aviso" hidden={!visao.aviso}>{visao.aviso}</p>
+  <p class="mr-aviso" hidden={!visao.aviso} set:html={htmlAviso(visao)} />
 
   <div class="mr-grade">
     <figure class="mr-mapa">
@@ -144,8 +146,16 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     <div class="mr-lado">
       <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo], visao.svgs)} />
       <div class="mr-tabela">
-        <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{visao.titulo}</span></div>
-        <ol class="mr-ranking" set:html={htmlRanking(visao, ativo)} />
+        <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{visao.cabecalhoRanking ?? visao.titulo}</span></div>
+        <ol class={`mr-ranking${ranking && !ranking.aberto ? ' recolhido' : ''}`} set:html={htmlRanking(visao, ativo)} />
+        {ranking && (
+          <div class="mr-ranking-mais">
+            <button type="button" data-ranking-mais data-menos={preencher(ctx.textos.rankingMenos, { n: ranking.mostrar })}
+              data-todos={preencher(ctx.textos.rankingTodos, { total: visao.linhas.length, nivel: ctx.nivelPlural })} aria-expanded={String(ranking.aberto)}>
+              {ranking.aberto ? preencher(ctx.textos.rankingMenos, { n: ranking.mostrar }) : preencher(ctx.textos.rankingTodos, { total: visao.linhas.length, nivel: ctx.nivelPlural })}
+            </button>
+          </div>
+        )}
         <p class="mr-dica">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</p>
       </div>
       <p class="mr-fonte" set:html={visao.fonte} />
@@ -156,7 +166,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 </div>
 
 <script>
-  import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, type Visao } from './visao';
+  import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, htmlAviso, type Visao } from './visao';
 
   for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-ranking]')) {
     const d = JSON.parse(raiz.querySelector('.mr-dados')!.textContent!);
@@ -281,9 +291,9 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       if (v.matiz) { raiz.dataset.matiz = v.matiz; raiz.style.setProperty('--matiz', `var(--${v.matiz})`); }
       else { delete raiz.dataset.matiz; raiz.style.removeProperty('--matiz'); }
       raiz.querySelectorAll<SVGGElement>('.chip-uf').forEach((g) => { g.innerHTML = htmlChip(v.svgs, v.icones?.[g.dataset.uf!]); });
-      const aviso = $('.mr-aviso')!; aviso.textContent = v.aviso ?? ''; aviso.hidden = !v.aviso;
+      const aviso = $('.mr-aviso')!; aviso.innerHTML = htmlAviso(v); aviso.hidden = !v.aviso;
       $('.mr-legenda')!.innerHTML = htmlLegenda(v);
-      $('.mr-cab-medida')!.textContent = v.titulo;
+      $('.mr-cab-medida')!.textContent = v.cabecalhoRanking ?? v.titulo;
       $('.mr-fonte')!.innerHTML = v.fonte;
       ranking.innerHTML = htmlRanking(v, null);
       destacar();
@@ -311,6 +321,14 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       if (previa && !ufDe(e.relatedTarget)) { previa = null; destacar(); }
     });
     raiz.addEventListener('click', (e) => {
+      const maisRanking = (e.target as Element).closest<HTMLElement>('[data-ranking-mais]');
+      if (maisRanking) {
+        const recolher = !ranking.classList.contains('recolhido');
+        ranking.classList.toggle('recolhido', recolher);
+        maisRanking.setAttribute('aria-expanded', String(!recolher));
+        maisRanking.textContent = (recolher ? maisRanking.dataset.todos : maisRanking.dataset.menos) ?? '';
+        return;
+      }
       const botao = (e.target as Element).closest<HTMLElement>('[data-opcao]');
       if (botao) { escolher(botao.dataset.opcao!); return; }
       const atalho = (e.target as Element).closest<HTMLElement>('[data-produto]');
@@ -451,9 +469,23 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   :global(.mr-ficha .ficha-detalhes dd) { margin: 0; font-weight: 600; text-align: right; }
   :global(.mr-ficha .ficha-link) { display: inline-block; margin-top: 10px; font-size: 15px; color: var(--accent); text-decoration: none; }
   :global(.mr-ficha .ficha-link:hover) { text-decoration: underline; }
-  .mr-aviso { margin: -12px 0 24px; padding: 10px 14px; font-size: 15px; line-height: 1.45; color: var(--ink); background: var(--surf); border: 1px solid var(--line); border-radius: 10px; max-width: 760px; }
+  .mr-aviso { display: flex; gap: 10px; align-items: flex-start; margin: -12px 0 24px; font-size: 15px; line-height: 1.5; color: var(--sub); max-width: 76ch; text-wrap: pretty; }
   .mr-aviso[hidden] { display: none; }
-  :global(.mr-ficha .ficha-aviso) { margin: 12px 0 0; font-size: 14px; color: var(--sub); }
+  :global(.mr-aviso .i) { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ink); color: var(--ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; margin-top: 2px; font-style: normal; }
+  :global(.mr-aviso b) { color: var(--ink); font-weight: 600; }
+  :global(.mr-ficha .ficha-aviso) { margin: 10px 0 0; font-size: 14px; color: var(--sub); }
+  :global(.mr-ficha .ficha-comp) { margin-top: 12px; display: grid; gap: 6px; }
+  :global(.mr-ficha .ficha-pilha) { height: 14px; display: flex; gap: 2px; margin-top: 8px; }
+  :global(.mr-ficha .ficha-pilha i) { display: block; height: 100%; background: var(--bar); }
+  :global(.mr-ficha .ficha-pilha i.forte) { background: var(--accent); }
+  :global(.mr-ficha .ficha-pilha-rot) { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--sub); }
+  :global(.mr-ficha .ficha-pilha-rot .forte) { color: var(--ink); font-weight: 500; text-align: right; }
+  :global(.mr-ficha .ficha-carimbo) { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; }
+  :global(.mr-ficha .selo-freq) { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
+  .mr-ranking.recolhido :global(li:nth-child(n + 9)) { display: none; }
+  .mr-ranking-mais { margin-top: 6px; padding: 10px 14px; border-top: 1px solid var(--line); }
+  .mr-ranking-mais button { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; font: inherit; font-size: 15px; font-weight: 500; }
+  .mr-ranking-mais button:hover { text-decoration: underline; }
   :global(.mr-ficha .ficha-fonte) { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
 
   /* Ranking */

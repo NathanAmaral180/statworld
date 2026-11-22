@@ -69,17 +69,19 @@ const saida = {
       formato: 'percentual',
       casas: 1,
       periodo: imp.periodo,
+      fonteCurta: 'IBGE, Contas Regionais',
       fontes: imp.fontes,
     },
     {
       id: 'carga-tributaria',
-      rotulo: `Carga tributária bruta em ${CARGA.ano}: tudo o que os governos arrecadam, sobre o PIB`,
+      rotulo: `Carga tributária bruta em ${CARGA.ano}, isto é, a arrecadação de todos os governos sobre o PIB`,
       frequencia: 'anual',
       valor: CARGA.valor,
       formato: 'percentual',
       casas: 1,
       periodo: String(CARGA.ano),
-      observacao: CARGA.preliminar ? 'estimativa preliminar' : undefined,
+      observacao: CARGA.preliminar ? 'estimativa' : undefined, // selo "estimativa" do mapa do site (dado preliminar)
+      fonteCurta: 'Tesouro Nacional',
       fontes: [{
         nome: 'Tesouro Nacional',
         publicacao: `Boletim de Estimativa da Carga Tributária Bruta do Governo Geral ${CARGA.ano}`,
@@ -89,7 +91,8 @@ const saida = {
     },
     {
       id: 'arrecadacao-federal',
-      rotulo: `Arrecadação federal em ${MESES[mesU - 1]} de ${anoU}`,
+      rotulo: `Arrecadação federal em ${MESES[mesU - 1]}`, // o ano aparece na data de divulgação
+      fonteCurta: 'Receita Federal',
       frequencia: 'mensal',
       valor: Math.round(total),
       formato: 'moeda',

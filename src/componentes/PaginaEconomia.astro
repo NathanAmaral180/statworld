@@ -7,7 +7,7 @@ import Abas from './Abas.astro';
 import FaixaHoje from './FaixaHoje.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
-import { preencher } from './mapa-ranking/visao';
+import { preencher, dataCurta } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
 import economiaEstados from '../config/temas/economia-estados.json';
@@ -49,6 +49,7 @@ const titulo = preencher(tema.titulo, vars);
 const trilha = tema.trilha.map((t: string) => preencher(t, vars));
 const cabMapa = tema.cabecalhoMapa;
 const indPrincipal = cabMapa ? economia.indicadores[medidas[0]?.id] : null;
+const fontePrincipal = indPrincipal?.fontes?.[0];
 // Abas de Economia (com grupos) vêm do cadastro; as que o país ainda não tem aparecem "em breve".
 const abas = abasDe('economia', pais);
 const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a.id === aba)?.nome ?? aba} · ${titulo}`;
@@ -62,12 +63,16 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
     <Abas itens={abas} atual={aba} rotulo="Economia" emBreve={site.textos.emBreve} />
     {cabMapa && (
       <div class="cab-mapa">
-        <h2>{cabMapa.titulo}</h2>
-        <p>{indPrincipal?.periodo}. {cabMapa.descricao}</p>
-        {indPrincipal?.frequencia && <p class="selos"><span class="selo">{indPrincipal.frequencia}</span></p>}
+        <div><h2>{cabMapa.titulo}</h2><p>{indPrincipal?.periodo}. {cabMapa.descricao}</p></div>
+        {fontePrincipal && (
+          <p class="carimbo">
+            {indPrincipal.frequencia && <span class="selo">{indPrincipal.frequencia}</span>}
+            <span>{fontePrincipal.nome}, {fontePrincipal.publicacao}{fontePrincipal.dataDivulgacao && ` · ${dataCurta(fontePrincipal.dataDivulgacao, ctx)}`}</span>
+          </p>
+        )}
       </div>
     )}
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking} />
   </section>
 </Base>
 
@@ -76,9 +81,9 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
   .aviso-teste { display: inline-block; margin: 0 0 16px; padding: 6px 12px; font-size: 14px; color: var(--sub); background: var(--surf); border: 1px dashed var(--line2); border-radius: 8px; }
   .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
   h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
-  .cab-mapa { margin: 0 0 24px; }
-  .cab-mapa h2 { margin: 0 0 6px; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
-  .cab-mapa p { margin: 0; color: var(--sub); font-size: 15px; }
-  .cab-mapa .selos { margin-top: 8px; }
-  .selo { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
+  .cab-mapa { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 28px 0 28px; }
+  .cab-mapa h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; margin: 0; }
+  .cab-mapa p { margin: 4px 0 0; color: var(--sub); font-size: 15px; }
+  .cab-mapa .carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--faint); line-height: 1.4; margin: 0; }
+  .selo { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
 </style>

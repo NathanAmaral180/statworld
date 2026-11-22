@@ -66,12 +66,15 @@
         14,
         15.5
       ],
-      "aviso": "PIB = valor adicionado + impostos sobre produtos. Esta medida mostra o peso dos impostos na economia do estado; não é a arrecadação.",
+      "aviso": "PIB = valor adicionado + impostos sobre produtos. Esta medida mostra o peso dos impostos na economia do estado, não a arrecadação.",
       "composicao": {
         "rotuloParte": "Impostos sobre produtos",
         "rotuloResto": "Valor adicionado"
       },
-      "comparaPais": true
+      "comparaPais": true,
+      "avisoTitulo": "Esta medida não é arrecadação.",
+      "sufixoFicha": " do PIB",
+      "rotuloRanking": "% do PIB"
     }
   ]
 }

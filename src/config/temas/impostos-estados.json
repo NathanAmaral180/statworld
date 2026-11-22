@@ -13,11 +13,15 @@
   "medidaPadrao": "impostos-produtos",
   "cabecalhoMapa": {
     "titulo": "Impostos sobre produtos, % do PIB de cada estado",
-    "descricao": "Quanto do PIB do estado vem de impostos cobrados sobre bens e serviços (menos os subsídios)."
+    "descricao": "Quanto do PIB do estado vem de impostos cobrados sobre bens e serviços."
   },
   "faixaHoje": {
     "grupo": "impostos",
     "rotulo": "Impostos hoje",
     "descricao": "Números mais recentes, nacionais"
+  },
+  "ranking": {
+    "mostrar": 8,
+    "aberto": true
   }
 }

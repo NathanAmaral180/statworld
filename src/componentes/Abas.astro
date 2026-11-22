@@ -1,6 +1,7 @@
 ---
 // Abas de navegação (ex.: Visão geral / Agro / Indústria), em grupos com rótulo discreto.
-// Itens inativos aparecem como "em breve". Sem quebra de linha: no celular, rolagem lateral.
+// Visual: design da rodada 4 (design/rodada-4-economia/). Itens inativos aparecem como "em breve".
+// Sem quebra de linha: no celular, rolagem lateral, já posicionada na aba ativa.
 interface Item { id: string; nome: string; href?: string; ativo: boolean; grupo?: string }
 interface Props { itens: Item[]; atual: string; rotulo: string; emBreve: string }
 const { itens, atual, rotulo, emBreve } = Astro.props;
@@ -12,13 +13,15 @@ for (const i of itens) {
   else blocos.push({ grupo: i.grupo, itens: [i] });
 }
 const comGrupos = blocos.some((b) => b.grupo);
+// Grupo de um item só com o mesmo nome (ex.: "Visão geral"): o rótulo fica em branco, como no design.
+const rotuloDe = (b: { grupo?: string; itens: Item[] }) => (b.itens.length === 1 && b.itens[0].nome === b.grupo ? '' : b.grupo ?? '');
 ---
 <nav class={`abas${comGrupos ? ' com-grupos' : ''}`} aria-label={rotulo}>
-  <ul>
+  <ul class="abas-in">
     {blocos.map((b) => (
       <li class={`bloco${b.itens.some((i) => i.id === atual) ? ' ativo' : ''}`}>
-        {comGrupos && b.grupo && <span class="grupo" aria-hidden="true">{b.grupo}</span>}
-        <ul>
+        {comGrupos && <span class="grupo" aria-hidden="true">{rotuloDe(b) || ' '}</span>}
+        <ul class="itens">
           {b.itens.map((i) => (
             <li>
               {i.ativo && i.href ? (
@@ -26,7 +29,7 @@ const comGrupos = blocos.some((b) => b.grupo);
               ) : i.id === atual ? (
                 <span class="atual">{i.nome}</span>
               ) : (
-                <span class="inativo">{i.nome}<small>{emBreve}</small></span>
+                <span class="inativo" aria-disabled="true">{i.nome}<em>{emBreve}</em></span>
               )}
             </li>
           ))}
@@ -41,30 +44,32 @@ const comGrupos = blocos.some((b) => b.grupo);
   for (const nav of document.querySelectorAll<HTMLElement>('nav.abas')) {
     const atual = nav.querySelector<HTMLElement>('[aria-current="page"], .atual');
     if (atual && nav.scrollWidth > nav.clientWidth) {
-      nav.scrollLeft = atual.offsetLeft - 16;
+      // Só rola se a aba ativa não estiver inteira à vista.
+      const caixa = nav.getBoundingClientRect(), aba = atual.getBoundingClientRect();
+      if (aba.right > caixa.right || aba.left < caixa.left) nav.scrollLeft = aba.left - caixa.left - 16;
     }
   }
 </script>
 
 <style>
-  .abas { border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
-  ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
-  .bloco { display: flex; flex-direction: column; flex: none; }
-  .com-grupos > ul { gap: 36px; }
-  .com-grupos .bloco + .bloco { padding-left: 36px; border-left: 1px solid var(--line); margin-left: -18px; }
-  .grupo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding-top: 4px; white-space: nowrap; }
+  .abas { margin: 36px 0 28px; overflow-x: auto; scrollbar-width: none; position: relative; }
+  .abas::-webkit-scrollbar { display: none; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .abas-in { display: flex; align-items: flex-end; width: max-content; min-width: 100%; box-shadow: inset 0 -1px 0 var(--line); }
+  .bloco { display: grid; gap: 8px; padding: 0 16px; position: relative; }
+  .bloco:first-child { padding-left: 0; }
+  .com-grupos .bloco + .bloco::before { content: ""; position: absolute; left: 0; bottom: 14px; height: 16px; width: 1px; background: var(--line2); }
+  .grupo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 600; height: 14px; line-height: 14px; white-space: pre; }
   .bloco.ativo .grupo { color: var(--ink); }
-  .abas { position: relative; }
-  a, span.atual, span.inativo { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0 12px; font-size: 17px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-  .abas:not(.com-grupos) a, .abas:not(.com-grupos) span.atual, .abas:not(.com-grupos) span.inativo { padding-top: 12px; }
-  a { color: var(--sub); }
+  .itens { display: flex; gap: 18px; }
+  a, span.atual, span.inativo { display: flex; align-items: center; gap: 6px; padding: 0 0 12px; font-size: 16px; color: var(--sub); border-bottom: 2px solid transparent; white-space: nowrap; text-decoration: none; }
   a:hover { color: var(--ink); }
-  a[aria-current="page"], .atual { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
-  .inativo { color: var(--faint); }
-  small { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
+  a[aria-current="page"], .atual { color: var(--ink); border-bottom-color: var(--ink); font-weight: 600; }
+  .inativo { color: var(--faint); cursor: not-allowed; }
+  em { font-style: normal; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; border: 1px dashed var(--line2); border-radius: 4px; padding: 1px 4px; color: var(--faint); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  @media (max-width: 760px) {
+  @media (max-width: 640px) {
+    .abas { margin: 28px -16px 24px; padding: 0 16px; }
     a, span.atual, span.inativo { font-size: 15px; }
-    ul { gap: 20px; }
   }
 </style>

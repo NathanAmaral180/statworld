@@ -50,6 +50,9 @@ export interface Ficha {
   detalhes?: [string, string][];
   link?: { texto: string; url: string };
   aviso?: string; // nota importante sobre a medida (ex.: "não é arrecadação")
+  // Composição em barra empilhada (ex.: valor adicionado × impostos), larguras em %.
+  composicao?: { rotulo: string; texto: string; largura: number; destaque?: boolean }[];
+  selo?: string; // selo de frequência (anual, mensal...) ao lado da fonte
   nota: string;
 }
 
@@ -66,7 +69,20 @@ export interface Visao {
   svgs?: Record<string, string>; // ícone -> desenho (conteúdo do SVG 24x24)
   matiz?: string; // classe de cor (ex.: "p-soja") que tinge o degradê de 6 tons; sem matiz = azul padrão
   iconeTitulo?: string; // ícone ao lado do título da legenda
-  aviso?: string; // nota sobre a medida, mostrada acima do mapa e repetida na ficha
+  aviso?: string; // nota sobre a medida, mostrada acima do mapa (ficha repete a versão curta)
+  avisoTitulo?: string; // começo da nota, em negrito
+  cabecalhoRanking?: string; // título curto da coluna do ranking (sem ele, usa "titulo")
+}
+
+// Nota sobre a medida (acima do mapa): ícone "i", começo em negrito e o resto.
+export function htmlAviso(v: Visao): string {
+  if (!v.aviso) return '';
+  return `<em class="i" aria-hidden="true">i</em><span>${v.avisoTitulo ? `<b>${escapar(v.avisoTitulo)}</b> ` : ''}${escapar(v.aviso)}</span>`;
+}
+
+// Data curta (ex.: "13 nov 2026").
+export function dataCurta(d: string, ctx: Contexto): string {
+  return new Date(d + 'T12:00:00').toLocaleDateString(ctx.idioma, { day: 'numeric', month: 'short', year: 'numeric' }).replace(/[.]/g, '').replace(/ de /g, ' ');
 }
 
 // Ícone dentro do mapa: um círculo com o desenho no meio (posição dada pelo <g> de fora).
@@ -161,7 +177,7 @@ export function rotulosCortes(cortes: number[], o: OpcoesNumero, ctx: Contexto):
   const fm = formatador({ ...o, compacto: true, sinal: false, casas: 1, minCasas: 0, sufixo: undefined }, ctx);
   const p = (v: number) => {
     const partes = fm.formatToParts(paraFormato(o, v));
-    const ehSimb = (t: string) => t === 'percentSign' || t === 'currency';
+    const ehSimb = (t: string) => t === 'percentSign' || t === 'currency' || t === 'unit';
     return {
       cheio: fm.format(paraFormato(o, v)),
       num: partes.filter((x) => !ehSimb(x.type)).map((x) => x.value).join('').trim(),
@@ -217,10 +233,16 @@ export function htmlFicha(f: Ficha, svgs?: Record<string, string>): string {
   const det = f.detalhes?.length
     ? `<dl class="ficha-detalhes">${f.detalhes.map(([a, b]) => `<div><dt>${escapar(a)}</dt><dd>${escapar(b)}</dd></div>`).join('')}</dl>`
     : '';
+  const comp = f.composicao?.length
+    ? `<div class="ficha-comp"><div class="ficha-pilha" role="img" aria-label="${escapar(f.composicao.map((c) => `${c.rotulo} ${c.texto}`).join(', '))}">${f.composicao.map((c) => `<i class="${c.destaque ? 'forte' : ''}" style="width:${c.largura.toFixed(2)}%"></i>`).join('')}</div><div class="ficha-pilha-rot">${f.composicao.map((c) => `<span class="${c.destaque ? 'forte' : ''}">${escapar(c.rotulo)} ${escapar(c.texto)}</span>`).join('')}</div></div>`
+    : '';
+  const fonte = f.selo
+    ? `<p class="ficha-fonte ficha-carimbo"><span class="selo-freq">${escapar(f.selo)}</span><span>${escapar(f.nota)}</span></p>`
+    : `<p class="ficha-fonte">${escapar(f.nota)}</p>`;
   const link = f.link ? `<a class="ficha-link" href="${escapar(f.link.url)}">${escapar(f.link.texto)} →</a>` : '';
   return `<p class="ficha-topo">${escapar(f.topo)}</p>
 <div class="ficha-linha"><h2 class="ficha-nome">${escapar(f.nome)}</h2><p class="ficha-valor${f.apagado ? ' sem' : ''}">${valor}</p></div>
-${sub}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}<p class="ficha-fonte">${escapar(f.nota)}</p>`;
+${sub}${comp}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}${fonte}`;
 }
 
 export function htmlLegenda(v: Visao): string {
