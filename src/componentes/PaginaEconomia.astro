@@ -60,7 +60,6 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">{trilha.join(' / ')}</p>
     <h1>{titulo}</h1>
-    {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
     <Abas itens={abas} atual={aba} rotulo="Economia" emBreve={site.textos.emBreve} />
     {cabMapa && (
       <div class="cab-mapa">
@@ -74,6 +73,8 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       </div>
     )}
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking} />
+    {/* Faixa "<Assunto> hoje": abaixo do mapa e do ranking (o dono achou que no topo poluía a página). */}
+    {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
     <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
 </Base>

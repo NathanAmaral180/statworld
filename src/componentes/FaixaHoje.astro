@@ -1,5 +1,5 @@
 ---
-// Faixa "<Assunto> hoje" no topo de uma aba: 3 números nacionais recentes, cada um com
+// Faixa "<Assunto> hoje" de uma aba (fica abaixo do mapa e do ranking): 3 números nacionais recentes, cada um com
 // selo de frequência, fonte e data. Visual: design da rodada 4 (design/rodada-4-economia/).
 // Os números vêm de um arquivo em dados/ (nada escrito aqui).
 import { formatar, dataCurta, type Contexto } from './mapa-ranking/visao';
@@ -39,7 +39,7 @@ const itens = indicadores.map((i) => {
 </section>
 
 <style>
-  .hoje { margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 200px repeat(3, minmax(0, 1fr)); align-items: stretch; }
+  .hoje { margin-top: 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 200px repeat(3, minmax(0, 1fr)); align-items: stretch; }
   .hoje-cab { padding: 18px 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); font-weight: 600; display: flex; flex-direction: column; gap: 4px; }
   .hoje-cab span { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--faint); font-size: 13px; }
   .kpi { padding: 16px 24px; border-left: 1px solid var(--line); display: grid; gap: 4px; align-content: start; min-width: 0; }
@@ -58,7 +58,7 @@ const itens = indicadores.map((i) => {
     .kpi:nth-child(2) { border-left: 0; padding-left: 0; }
   }
   @media (max-width: 640px) {
-    .hoje { grid-template-columns: minmax(0, 1fr); margin-top: 20px; }
+    .hoje { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
     .hoje-cab { padding: 14px 0 6px; }
     .kpi, .kpi:nth-child(2) { border-left: 0; padding: 12px 0; border-top: 1px solid var(--line); }
     .kpi b { font-size: 22px; }
