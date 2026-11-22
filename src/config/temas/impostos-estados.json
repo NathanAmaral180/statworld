@@ -1,5 +1,5 @@
 {
-  "_explicacao": "Aba Impostos (molde PaginaEconomia). As medidas são as mesmas da Visão geral (economia-estados.json), escolhidas pelo id. Sem faixa \"… hoje\": o dono decidiu tirar (poluía a página). O molde ainda aceita 'faixaHoje' se um dia ela voltar em outro lugar.",
+  "_explicacao": "Aba Impostos (molde PaginaEconomia). A medida 'impostos sobre produtos' mora aqui (saiu da Visão geral por decisão do dono, para não repetir). Os números vêm do mesmo arquivo da Visão geral (dados/economia/brasil-estados.json). Sem faixa \"… hoje\" (o dono tirou). O molde ainda aceita 'faixaHoje' e medidas escritas pelo id da Visão geral.",
   "aba": "impostos",
   "titulo": "A economia {dePais}",
   "trilha": [
@@ -8,15 +8,34 @@
     "Impostos"
   ],
   "medidas": [
-    "impostos-produtos"
+    {
+      "id": "impostos-produtos",
+      "rotulo": "Impostos sobre produtos (% do PIB)",
+      "titulo": "Impostos sobre produtos, % do PIB, {periodo}",
+      "formato": "percentual",
+      "casas": 1,
+      "sinal": false,
+      "cortes": [
+        9,
+        11,
+        12.5,
+        14,
+        15.5
+      ],
+      "aviso": "PIB = valor adicionado + impostos sobre produtos. Esta medida mostra o peso dos impostos na economia do estado, não a arrecadação.",
+      "composicao": {
+        "rotuloParte": "Impostos sobre produtos",
+        "rotuloResto": "Valor adicionado"
+      },
+      "comparaPais": true,
+      "avisoTitulo": "Esta medida não é arrecadação.",
+      "sufixoFicha": " do PIB",
+      "rotuloRanking": "% do PIB"
+    }
   ],
   "medidaPadrao": "impostos-produtos",
   "cabecalhoMapa": {
     "titulo": "Impostos sobre produtos, % do PIB de cada estado",
     "descricao": "Quanto do PIB do estado vem de impostos cobrados sobre bens e serviços."
-  },
-  "ranking": {
-    "mostrar": 8,
-    "aberto": true
   }
 }

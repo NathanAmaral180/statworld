@@ -21,7 +21,8 @@ interface Props {
   // Ranking que pode encolher para os 8 primeiros (botão "Mostrar só os 8 primeiros" / "Ver todos"). O CSS esconde do 9º em diante.
   ranking?: { mostrar: number; aberto: boolean };
 }
-const { geo, mapa, ctx, opcoes, opcaoInicial, visoes, ranking } = Astro.props;
+// Ranking: por padrão mostra só os 8 primeiros, com botão para ver todos (decisão do dono).
+const { geo, mapa, ctx, opcoes, opcaoInicial, visoes, ranking = { mostrar: 8, aberto: false } } = Astro.props;
 
 const chaveDe = (o: Opcao) =>
   o.lista ? `lista:${o.lista.padrao}` : o.filtros ? o.filtros.itens.find((i) => i.id === o.filtros!.padrao)!.visao : o.visao!;
@@ -421,6 +422,11 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   /* Mapa */
   .mr-mapa { margin: 0; }
   .mr-mapa svg { width: 100%; height: auto; display: block; }
+  /* Computador: o mapa fica preso na tela enquanto a pessoa desce pelo ranking (cabe inteiro, com a legenda). */
+  @media (min-width: 1101px) {
+    .mr-mapa { position: sticky; top: 16px; }
+    .mr-mapa svg { max-height: calc(100vh - 120px); width: auto; max-width: 100%; margin: 0 auto; }
+  }
   :global(.mr .uf) { fill: var(--cor); stroke: var(--bg); stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; }
   :global(.mr .uf[data-classe="sem"]) { fill: url(#mr-hachura); }
   .hachura-fundo { fill: var(--bg); }
@@ -483,6 +489,8 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   :global(.mr-ficha .ficha-carimbo) { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; }
   :global(.mr-ficha .selo-freq) { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
   .mr-ranking.recolhido :global(li:nth-child(n + 9)) { display: none; }
+  /* O lugar escolhido no mapa aparece mesmo com o ranking recolhido. */
+  .mr-ranking.recolhido :global(li:nth-child(n + 9):has(.linha.ativa)) { display: list-item; }
   .mr-ranking-mais { margin-top: 6px; padding: 10px 14px; border-top: 1px solid var(--line); }
   .mr-ranking-mais button { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; font: inherit; font-size: 15px; font-weight: 500; }
   .mr-ranking-mais button:hover { text-decoration: underline; }
