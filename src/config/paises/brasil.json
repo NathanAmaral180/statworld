@@ -47,6 +47,9 @@
     },
     "pecuaria": {
       "estado": "brasil-estados-pecuaria"
+    },
+    "industria": {
+      "estado": "brasil-estados"
     }
   },
   "mapa": {
@@ -95,7 +98,8 @@
   "subtemas": {
     "economia": [
       "visao-geral",
-      "agro"
+      "agro",
+      "industria"
     ]
   },
   "slug": "brasil",
@@ -107,6 +111,13 @@
       "avisoPorFonte": {
         "MAPA": "O MAPA não estima a produção de alguns estados; eles aparecem como \"sem dado\"."
       }
+    }
+  },
+  "industria": {
+    "notas": {
+      "tudo": "Empresas industriais com 5 ou mais pessoas ocupadas (IBGE). Valor da transformação industrial = valor da produção menos o custo das operações industriais. Quando um setor tem poucas empresas num estado, o IBGE esconde o número por sigilo: ele aparece como \"sem dado\", e o setor líder é o maior entre os setores publicados. Não inclui construção nem energia.",
+      "extrativa": "Indústrias extrativas: carvão, petróleo e gás, minerais e serviços de apoio (IBGE).",
+      "transformacao": "Indústrias de transformação: alimentos, químicos, veículos, metalurgia e outros 20 setores (IBGE)."
     }
   }
 }

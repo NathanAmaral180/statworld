@@ -412,7 +412,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   /* No degradê de produto a sigla fica sempre em ink, com contorno na cor do fundo (vale para cor clara ou escura). */
   :global(.mr[data-matiz] .rotulo[data-classe]) { fill: var(--ink); }
   /* Cores de produto: sigla com contorno na cor do fundo para ler sobre qualquer cor */
-  :global(.mr[data-matiz] .rotulo), :global(.mr .rotulo[data-classe^="p-"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
+  :global(.mr[data-matiz] .rotulo), :global(.mr .rotulo[data-classe^="p-"]), :global(.mr .rotulo[data-classe^="s-"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
   .chamada line { stroke: var(--sub); stroke-width: 1.2; }
   .chamada circle { fill: var(--sub); }
 

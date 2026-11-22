@@ -1,5 +1,6 @@
 ---
-// Página de um produto do agro de um país (ex.: /economia/agro/soja). Serve para qualquer país.
+// Página de um item de produção (produto do agro, setor da indústria…) de um país
+// (ex.: /economia/agro/soja, /economia/industria/metalurgia). Serve para qualquer país e tema.
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
@@ -9,13 +10,15 @@ import site from '../config/site.json';
 import { contextoDoPais } from '../lib/contexto';
 import { carregarAgro, temaAgro } from '../lib/agro';
 
-interface Props { pais: any; produtoId: string; teste?: boolean }
-const { pais, produtoId, teste = false } = Astro.props;
-const tema = temaAgro(pais);
+interface Props { pais: any; produtoId: string; teste?: boolean; temaId?: string }
+const { pais, produtoId, teste = false, temaId = 'agro' } = Astro.props;
+const tema = temaAgro(pais, temaId);
 
 const NIVEL = 'estado';
-const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
-const { todos, porFiltro } = carregarAgro(pais, NIVEL);
+const { geo, ctx: ctxPais, unidades, mapa } = contextoDoPais(pais, NIVEL);
+// Textos do molde ajustados ao tema (ex.: na indústria, "setor" no lugar de "produto").
+const ctx = { ...ctxPais, textos: { ...ctxPais.textos, ...(tema.textosMolde ?? {}) } };
+const { todos, porFiltro } = carregarAgro(pais, NIVEL, temaId);
 const dados = porFiltro.tudo;
 const posicao = todos.findIndex((p) => p.id === produtoId);
 const produto = todos[posicao] as Produto;
@@ -47,7 +50,7 @@ const abas = [
   <section class="conteudo pagina">
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">
-      <a href={`${pais.caminho}/economia`}>{trilha[0]}</a> / {trilha[1]} / <a href={`${pais.caminho}/economia/agro`}>{trilha[2]}</a> / {trilha[3]}
+      <a href={`${pais.caminho}/economia`}>{trilha[0]}</a> / {trilha[1]} / <a href={tema.urlProduto.replace('/{produto}', '')}>{trilha[2]}</a> / {trilha[3]}
     </p>
     <div class="titulo">
       <span class="icone-produto" aria-hidden="true"><svg viewBox="0 0 24 24" set:html={desenho} /></span>

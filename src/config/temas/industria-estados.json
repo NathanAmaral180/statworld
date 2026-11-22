@@ -1,0 +1,55 @@
+{
+  "_explicacao": "Mapa da Indústria por estado (mesmo molde do Agro). Ícones e cores dos setores vêm do Claude Design (src/config/icones/industria.json e src/estilos/cores-setores.css). 'textosMolde' troca as palavras do molde (produto -> setor). 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores. Notas sobre a fonte ficam no arquivo do país (industria.notas).",
+  "titulo": "A economia {dePais}",
+  "trilha": ["Economia", "{pais}", "Indústria"],
+  "opcoes": {
+    "lider": "Setor líder",
+    "quanto": "Quanto produz",
+    "valor": "Valor da transformação",
+    "quantidade": "Pessoas ocupadas",
+    "quantidadeOutra": "Pessoas ocupadas",
+    "mostrar": "Mostrar"
+  },
+  "filtros": [
+    { "id": "tudo", "rotulo": "Tudo", "grupoTexto": "da indústria" },
+    { "id": "extrativa", "rotulo": "Extrativa", "grupoTexto": "da indústria extrativa" },
+    { "id": "transformacao", "rotulo": "Transformação", "grupoTexto": "da indústria de transformação" }
+  ],
+  "grupos": {
+    "extrativa": "Indústria extrativa",
+    "transformacao": "Indústria de transformação"
+  },
+  "produtoPadrao": "alimentos",
+  "cortesParticipacao": [1, 2.5, 5, 10, 20],
+  "apelidos": {},
+  "iconeOutro": "industria",
+  "urlProduto": "{caminho}/economia/industria/{produto}",
+  "urlDadosProduto": "/dados/{pais}/industria/{produto}.json",
+  "textos": {
+    "medidaTotal": "Valor da transformação industrial {grupo} em {periodo}",
+    "medidaCurta": "valor da transformação industrial",
+    "legendaLider": "Principal setor {grupo}",
+    "medidaProdutoValor": "Valor da transformação industrial de {produto} em {periodo}",
+    "medidaProdutoQuantidade": "Pessoas ocupadas em {produto} em {periodo}",
+    "subtituloProduto": "{grupoNome} · {valor} de valor da transformação industrial em {periodo}, o {n}º entre os setores da indústria ({fonte})",
+    "abaDados": "Dados",
+    "abaAoVivo": "Ao vivo",
+    "abaHistoria": "História"
+  },
+  "textosMolde": {
+    "produtoLider": "Setor líder",
+    "maiorProdutor": "{n}º maior polo do setor no país",
+    "posicaoProdutores": "{n}º de {total} {nivel} com o setor",
+    "naoProduz": "sem o setor",
+    "legendaNaoProduz": "Sem o setor",
+    "quantidadeProduzida": "Pessoas ocupadas",
+    "valorDaProducao": "Valor da transformação",
+    "fonteDoProduto": "Fonte",
+    "outrosProdutos": "Outros",
+    "verProduto": "Ver página: {produto}",
+    "escolhaProduto": "Setor",
+    "outrosProdutosBotao": "Outros setores",
+    "buscarProduto": "Buscar setor",
+    "nenhumProduto": "Nenhum setor com esse nome."
+  }
+}

@@ -42,7 +42,8 @@
       {
         "id": "industria",
         "nome": "Indústria",
-        "ativo": false
+        "ativo": true,
+        "href": "/economia/industria"
       },
       {
         "id": "servicos",

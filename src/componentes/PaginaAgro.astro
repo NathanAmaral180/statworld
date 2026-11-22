@@ -10,13 +10,15 @@ import site from '../config/site.json';
 import { contextoDoPais } from '../lib/contexto';
 import { carregarAgro, temaAgro } from '../lib/agro';
 
-interface Props { pais: any; teste?: boolean }
-const { pais, teste = false } = Astro.props;
-const tema = temaAgro(pais);
+interface Props { pais: any; teste?: boolean; temaId?: string }
+const { pais, teste = false, temaId = 'agro' } = Astro.props;
+const tema = temaAgro(pais, temaId);
 
 const NIVEL = 'estado';
-const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
-const { todos, porFiltro } = carregarAgro(pais, NIVEL);
+const { geo, ctx: ctxPais, unidades, mapa } = contextoDoPais(pais, NIVEL);
+// Textos do molde ajustados ao tema (ex.: na indústria, "setor" no lugar de "produto").
+const ctx = { ...ctxPais, textos: { ...ctxPais.textos, ...(tema.textosMolde ?? {}) } };
+const { todos, porFiltro } = carregarAgro(pais, NIVEL, temaId);
 
 const padrao = todos.find((p) => p.id === tema.produtoPadrao) ?? todos[0];
 // Atalhos com ícone (como no design): os 6 produtos de maior valor que têm cor e ícone próprios.
@@ -39,7 +41,7 @@ const opcoes = [
     lista: {
       rotulo: ctx.textos.escolhaProduto,
       padrao: padrao.id,
-      itens: ['lavouras', 'pecuaria'].flatMap((g) =>
+      itens: Object.keys(tema.grupos).flatMap((g) =>
         todos.filter((p) => p.grupo === g).map((p) => ({
           id: p.id, rotulo: p.nome, grupo: tema.grupos[g as keyof typeof tema.grupos], url: preencher(tema.urlDadosProduto, { produto: p.id }),
           destaque: atalhos.has(p.id),
@@ -61,7 +63,7 @@ const abas = site.subtemas.economia.map((i: any) => ({ ...i, href: i.href ? pais
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">{trilha.join(' / ')}</p>
     <h1>{titulo}</h1>
-    <Abas itens={abas} atual="agro" rotulo="Economia" emBreve={site.textos.emBreve} />
+    <Abas itens={abas} atual={temaId} rotulo="Economia" emBreve={site.textos.emBreve} />
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} />
   </section>
 </Base>

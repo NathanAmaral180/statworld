@@ -25,13 +25,15 @@ export interface DadosProducao {
   fontes: Fonte[];
   abrangencia?: string;
   total: Record<string, Valor>; // valor total de cada lugar (soma do grupo)
+  oculto?: Record<string, Valor>; // % do total que a fonte não detalha por produto/setor (sigilo)
   produtos: Produto[];
 }
 
 export interface ConfigProducao {
   textos: Record<string, string>; // títulos do tema (com {periodo}, {produto})
   apelidos: Record<string, string>; // produto -> nome do ícone/cor, quando diferente (ex.: cana-de-acucar -> cana)
-  icones: { comCor: string[]; icones: Record<string, string> }; // de src/config/icones/
+  icones: { comCor: string[]; icones: Record<string, string>; prefixoCor?: string }; // de src/config/icones/
+  iconeOutro?: string; // ícone para item sem ícone próprio (padrão: "outro")
   cortesParticipacao: number[];
   urlProduto?: string; // ex.: "/economia/agro/{produto}"
 }
@@ -43,8 +45,10 @@ const fmtPct: OpcoesNumero = { formato: 'percentual', casas: 1 };
 
 const apelido = (cfg: ConfigProducao, id: string) => cfg.apelidos[id] ?? id;
 export const temCor = (cfg: ConfigProducao, id: string) => cfg.icones.comCor.includes(apelido(cfg, id));
-export const corDoProduto = (cfg: ConfigProducao, id: string) => (temCor(cfg, id) ? `p-${apelido(cfg, id)}` : 'p-outro');
-export const iconeDoProduto = (cfg: ConfigProducao, id: string) => (cfg.icones.icones[apelido(cfg, id)] ? apelido(cfg, id) : 'outro');
+// Prefixo das classes de cor: "p-" para produtos do agro, "s-" para setores da indústria (vem dos ícones).
+const prefixo = (cfg: ConfigProducao) => cfg.icones.prefixoCor ?? 'p-';
+export const corDoProduto = (cfg: ConfigProducao, id: string) => (temCor(cfg, id) ? `${prefixo(cfg)}${apelido(cfg, id)}` : `${prefixo(cfg)}outro`);
+export const iconeDoProduto = (cfg: ConfigProducao, id: string) => (cfg.icones.icones[apelido(cfg, id)] ? apelido(cfg, id) : (cfg.iconeOutro ?? 'outro'));
 // Só os desenhos usados nesta visão (para a página ficar leve).
 const desenhos = (cfg: ConfigProducao, nomes: string[]) => Object.fromEntries([...new Set(nomes)].filter((n) => cfg.icones.icones[n]).map((n) => [n, cfg.icones.icones[n]]));
 
@@ -86,7 +90,7 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
   const lideres = [...new Set(Object.values(lider).filter(Boolean) as Produto[])].sort((a, b) => (b.valorPais ?? 0) - (a.valorPais ?? 0));
   const legenda: Visao['legenda'] = lideres.filter((p) => temCor(cfg, p.id)).map((p) => ({ classe: corDoProduto(cfg, p.id), rotulo: p.nome, icone: iconeDoProduto(cfg, p.id) }));
   const outros = lideres.filter((p) => !temCor(cfg, p.id));
-  if (outros.length) legenda.push({ classe: 'p-outro', rotulo: `${t.outrosProdutos} (${outros.map((p) => p.nome).join(', ')})`, icone: 'outro' });
+  if (outros.length) legenda.push({ classe: `${prefixo(cfg)}outro`, rotulo: `${t.outrosProdutos} (${outros.map((p) => p.nome).join(', ')})`, icone: cfg.iconeOutro ?? 'outro' });
   if (semDado.length) legenda.push({ classe: 'sem', rotulo: preencher(t.legendaSemDado, { n: semDado.length, nivel: semDado.length === 1 ? ctx.nivelSingular : ctx.nivelPlural }) });
 
   const posPorProduto = new Map(dados.produtos.map((p) => [p.id, posicoes(p.valores)]));
@@ -98,7 +102,7 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
     legenda,
     legendaTitulo: preencher(cfg.textos.legendaLider, vars),
     icones: Object.fromEntries(unidades.filter((u) => lider[u.sigla]).map((u) => [u.sigla, iconeDoProduto(cfg, lider[u.sigla]!.id)])),
-    svgs: desenhos(cfg, [...lideres.map((p) => iconeDoProduto(cfg, p.id)), 'outro']),
+    svgs: desenhos(cfg, [...lideres.map((p) => iconeDoProduto(cfg, p.id)), cfg.iconeOutro ?? 'outro']),
     linhas: ordem.map((u, i) => ({
       uf: u.sigla,
       nome: u.nome,
@@ -122,7 +126,12 @@ export function construirVisaoLider(id: string, unidades: Unidade[], dados: Dado
             ? {
                 subtitulo: `${p.nome} · ${preencher(t.maiorProdutor, { n: posPorProduto.get(p.id)!.get(u.sigla)! })}`,
                 icone: iconeDoProduto(cfg, p.id),
-                detalhes: [[t.produtoLider, `${p.nome} · ${formatar(p.valores[u.sigla], fmtValor, ctx)}`], [t.fonteDoProduto, fontesDe(p, dados).map((f) => f.nome).join(', ')]] as [string, string][],
+                detalhes: [
+                  [t.produtoLider, `${p.nome} · ${formatar(p.valores[u.sigla], fmtValor, ctx)}`],
+                  [t.fonteDoProduto, fontesDe(p, dados).map((f) => f.nome).join(', ')],
+                  // Parte do valor que a fonte não detalha (sigilo): o líder é o maior entre os publicados.
+                  ...((dados.oculto?.[u.sigla] ?? 0) >= 1 ? [[t.semDetalheSigilo, `${formatar(dados.oculto![u.sigla], fmtPct, ctx)} do valor`]] : []),
+                ] as [string, string][],
                 link: cfg.urlProduto ? { texto: preencher(t.verProduto, { produto: p.nome }), url: preencher(cfg.urlProduto, { produto: p.id }) } : undefined,
               }
             : {}),

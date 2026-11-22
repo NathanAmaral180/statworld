@@ -15,6 +15,7 @@ Scripts existentes:
 - `lavouras-estados/`: agro, lavouras por estado e produto
 - `pecuaria-estados/`: agro, pecuária (IBGE + MAPA)
 - `icones-agro/`: ícones e cores dos produtos, vindos do Claude Design
+- `industria-estados/`: indústria por estado e setor (IBGE, PIA)
 - `icones-industria/`: ícones e cores dos setores da indústria, vindos do Claude Design
 - `mundo-mapa/`: mapa-múndi da página inicial
 - `brasil-agora/`: faixa "Agora" (Banco Central)

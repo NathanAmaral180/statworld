@@ -30,4 +30,5 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `geo/mundo-paises.json` | Mapa-múndi (países) | `scripts/mundo-mapa/` |
 | `agora/brasil.json` | Dólar, Selic e IPCA 12 meses (faixa "Agora") | `scripts/brasil-agora/` |
 | `mundo/temas.json` | Um número do mundo por tema | `scripts/mundo-temas/` |
+| `industria/brasil-estados.json` | Indústria por estado e setor (valor da transformação e pessoas ocupadas) | `scripts/industria-estados/` |
 | `economia/brasil-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado | `scripts/pib-estados/` |

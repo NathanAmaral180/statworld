@@ -65,7 +65,8 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 
 ## Indústria
-- Fonte planejada: IBGE, Pesquisa Industrial Anual – Empresa 2024 (tabela 10457 do Sidra): valor da transformação industrial e pessoal ocupado por estado e por divisão da CNAE (29 setores). Células com sigilo ("X") = sem dado.
+- Fonte: IBGE, Pesquisa Industrial Anual – Empresa 2024 (tabela 10457 do Sidra), `scripts/industria-estados/`: valor da transformação industrial e pessoal ocupado por estado e divisão da CNAE (29 setores). Sigilo ("X") = sem dado; a ficha mostra a % do valor do estado sem detalhe, e o setor líder é o maior entre os publicados.
+- Usa o mesmo molde do Agro (`PaginaAgro`/`PaginaProdutoAgro` com `temaId="industria"`, `src/lib/agro.ts`, `src/config/temas/industria-estados.json`). `textosMolde` troca "produto" por "setor"; cores com prefixo `s-`.
 - Ícones e cores (`--s-*`) do Claude Design: `design/icones-industria/`, extraídos por `scripts/icones-industria/` para `src/config/icones/industria.json` e `src/estilos/cores-setores.css`.
 
 ## Comandos
