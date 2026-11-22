@@ -69,6 +69,10 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Scripts de cada país ficam em pastas próprias (ex.: `scripts/eua-pib-estados/`).
 - EUA: páginas de teste em `/estados-unidos/economia` (BEA) e `/estados-unidos/economia/agro` (USDA, cash receipts), fora do menu e com "noindex".
 
+## Abas novas de Economia (design)
+- Design aprovado das 6 abas novas e da Visão geral refeita: `design/rodada-4-economia/` (o LEIA-ME de lá resume cada tela). Números das telas são exemplos.
+- Padrão de cada aba: faixa "<Assunto> hoje" com 3 números nacionais (selo de frequência, fonte, data) + seletor de vistas + mapa/ficha/ranking ou gráfico de série.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

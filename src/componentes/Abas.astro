@@ -16,7 +16,7 @@ const comGrupos = blocos.some((b) => b.grupo);
 <nav class={`abas${comGrupos ? ' com-grupos' : ''}`} aria-label={rotulo}>
   <ul>
     {blocos.map((b) => (
-      <li class="bloco">
+      <li class={`bloco${b.itens.some((i) => i.id === atual) ? ' ativo' : ''}`}>
         {comGrupos && b.grupo && <span class="grupo" aria-hidden="true">{b.grupo}</span>}
         <ul>
           {b.itens.map((i) => (
@@ -36,6 +36,16 @@ const comGrupos = blocos.some((b) => b.grupo);
   </ul>
 </nav>
 
+<script>
+  // No celular a barra rola na horizontal: abre já posicionada na aba ativa.
+  for (const nav of document.querySelectorAll<HTMLElement>('nav.abas')) {
+    const atual = nav.querySelector<HTMLElement>('[aria-current="page"], .atual');
+    if (atual && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollLeft = atual.offsetLeft - 16;
+    }
+  }
+</script>
+
 <style>
   .abas { border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
   ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
@@ -43,6 +53,8 @@ const comGrupos = blocos.some((b) => b.grupo);
   .com-grupos > ul { gap: 36px; }
   .com-grupos .bloco + .bloco { padding-left: 36px; border-left: 1px solid var(--line); margin-left: -18px; }
   .grupo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding-top: 4px; white-space: nowrap; }
+  .bloco.ativo .grupo { color: var(--ink); }
+  .abas { position: relative; }
   a, span.atual, span.inativo { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0 12px; font-size: 17px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
   .abas:not(.com-grupos) a, .abas:not(.com-grupos) span.atual, .abas:not(.com-grupos) span.inativo { padding-top: 12px; }
   a { color: var(--sub); }
