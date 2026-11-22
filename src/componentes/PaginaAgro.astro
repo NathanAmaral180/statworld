@@ -4,6 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoLider, construirVisaoProduto, temCor, iconeDoProduto } from './mapa-ranking/construir-producao';
 import { preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
@@ -66,6 +67,7 @@ const abas = abasDe('economia', pais);
     <h1>{titulo}</h1>
     <Abas itens={abas} atual={temaId} rotulo="Economia" emBreve={site.textos.emBreve} />
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} />
+    <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
 </Base>
 

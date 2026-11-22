@@ -5,10 +5,17 @@ import '../estilos/cores-produtos.css';
 import '../estilos/cores-setores.css';
 import '../estilos/cores-servicos.css';
 import Cabecalho from '../componentes/Cabecalho.astro';
+import EspacoAnuncio from '../componentes/EspacoAnuncio.astro';
+import AvisoCookies from '../componentes/AvisoCookies.astro';
+import anuncios from '../config/anuncios.json';
 import site from '../config/site.json';
 
-interface Props { titulo?: string; descricao?: string; temaAtual?: string; naoIndexar?: boolean }
-const { titulo, descricao = site.slogan, temaAtual, naoIndexar = false } = Astro.props;
+// semAnuncios: páginas sem espaço de anúncio (ex.: política de privacidade).
+interface Props { titulo?: string; descricao?: string; temaAtual?: string; naoIndexar?: boolean; semAnuncios?: boolean }
+const { titulo, descricao = site.slogan, temaAtual, naoIndexar = false, semAnuncios = false } = Astro.props;
+// Colunas laterais de anúncio: só aparecem em telas bem largas, fora da área do conteúdo.
+const telaMinima = anuncios.posicoes.lateral.telaMinima;
+const cssLaterais = `.anuncios-laterais{display:none}@media (min-width:${telaMinima}px){.anuncios-laterais{display:block}}`;
 const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · ${site.slogan}`;
 ---
 <!doctype html>
@@ -38,5 +45,31 @@ const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · $
     <main>
       <slot />
     </main>
+    {!semAnuncios && (
+      <div class="anuncios-laterais">
+        <style is:inline set:html={cssLaterais}></style>
+        <div class="lateral esquerda"><EspacoAnuncio posicao="lateral" /></div>
+        <div class="lateral direita"><EspacoAnuncio posicao="lateral" /></div>
+      </div>
+    )}
+    <footer class="rodape-site">
+      <div class="conteudo">
+        <span>{site.nome}</span>
+        <a href="/privacidade">Privacidade</a>
+        <a href="/privacidade#cookies" data-abrir-cookies>Preferências de cookies</a>
+      </div>
+    </footer>
+    <AvisoCookies />
   </body>
 </html>
+
+<style>
+  /* Colunas laterais de anúncio: presas na tela, ao lado (fora) da área de 1440px do conteúdo. */
+  .lateral { position: fixed; top: 140px; z-index: 1; }
+  .esquerda { right: calc(50% + 720px + 24px); }
+  .direita { left: calc(50% + 720px + 24px); }
+  .rodape-site { border-top: 1px solid var(--line); margin-top: 64px; }
+  .rodape-site .conteudo { display: flex; gap: 24px; flex-wrap: wrap; padding-top: 20px; padding-bottom: 32px; font-size: 13px; color: var(--faint); }
+  .rodape-site a { color: var(--sub); text-decoration: none; }
+  .rodape-site a:hover { color: var(--ink); text-decoration: underline; }
+</style>

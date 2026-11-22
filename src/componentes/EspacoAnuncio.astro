@@ -1,0 +1,37 @@
+---
+// Espaço de anúncio com tamanho fixo e rótulo "Publicidade".
+// Hoje só reserva o lugar (bloco cinza neutro): nenhuma rede de anúncios está ativa
+// (src/config/anuncios.json). Regras: nunca junto do mapa, dos gráficos ou da ficha;
+// nunca imita um dado ou um botão; nenhum anunciante influencia o que o dado mostra.
+// Quando houver rede ativa, o anúncio só pode ser carregado depois do consentimento
+// (evento "statworld:consentimento" do aviso de cookies, com anuncios === true).
+import anuncios from '../config/anuncios.json';
+
+interface Props { posicao: 'lateral' | 'abaixo-ranking' | 'entre-capitulos' }
+const { posicao } = Astro.props;
+const p = (anuncios.posicoes as Record<string, any>)[posicao];
+if (!p) throw new Error(`Posição de anúncio desconhecida: ${posicao}`);
+const aparece = anuncios.ativo || anuncios.mostrarReserva;
+const estilo = [
+  `--anuncio-l: ${p.largura}px`,
+  `--anuncio-a: ${p.altura}px`,
+  p.celular && `--anuncio-l-cel: ${p.celular.largura}px`,
+  p.celular && `--anuncio-a-cel: ${p.celular.altura}px`,
+].filter(Boolean).join('; ');
+---
+{aparece && (
+  <aside class={`anuncio anuncio-${posicao}`} aria-label={anuncios.rotulo} data-posicao={posicao} data-rede={anuncios.ativo ? anuncios.rede : undefined} style={estilo}>
+    <span class="anuncio-rotulo">{anuncios.rotulo}</span>
+    <div class="anuncio-caixa" aria-hidden="true"></div>
+  </aside>
+)}
+
+<style>
+  .anuncio { display: grid; gap: 6px; justify-items: center; width: max-content; max-width: 100%; margin: 0 auto; }
+  .anuncio-rotulo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); line-height: 1; justify-self: start; }
+  .anuncio-caixa { width: var(--anuncio-l); max-width: 100%; height: var(--anuncio-a); background: var(--track); border-radius: 4px; }
+  .anuncio-abaixo-ranking { margin: 56px auto 0; }
+  @media (max-width: 760px) {
+    .anuncio-abaixo-ranking .anuncio-caixa { width: var(--anuncio-l-cel, var(--anuncio-l)); height: var(--anuncio-a-cel, var(--anuncio-a)); }
+  }
+</style>

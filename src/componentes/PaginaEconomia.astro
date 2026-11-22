@@ -6,6 +6,7 @@ import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import FaixaHoje from './FaixaHoje.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher, dataCurta } from './mapa-ranking/visao';
 import site from '../config/site.json';
@@ -73,6 +74,7 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       </div>
     )}
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking} />
+    <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
 </Base>
 

@@ -1,0 +1,70 @@
+---
+// Política de privacidade (modelo conforme a LGPD, Lei 13.709/2018). O DONO DO SITE DEVE REVISAR.
+// Trechos entre [colchetes] precisam ser preenchidos antes de ativar anúncios.
+// Data da versão: troque quando o texto mudar.
+import Base from '../layouts/Base.astro';
+import site from '../config/site.json';
+const versao = '22 de novembro de 2026';
+---
+<Base titulo="Política de privacidade" descricao={`Como o ${site.nome} trata dados pessoais e cookies.`} semAnuncios>
+  <article class="conteudo texto">
+    <p class="trilha">Privacidade</p>
+    <h1>Política de privacidade</h1>
+    <p class="versao">Versão de {versao}. Modelo em revisão.</p>
+
+    <h2>Resumo</h2>
+    <ul>
+      <li>O {site.nome} mostra números de fontes oficiais. Para ler o site, você não precisa criar conta nem informar nenhum dado pessoal.</li>
+      <li>Hoje o site <strong>não usa cookies de anúncio nem de rastreamento</strong>.</li>
+      <li>Se um dia houver anúncios, cookies de anúncio só serão usados <strong>se você aceitar</strong>. Você pode mudar de ideia a qualquer momento.</li>
+    </ul>
+
+    <h2>Quem é o responsável</h2>
+    <p>O controlador dos dados é [nome completo ou razão social], [CPF/CNPJ], com contato pelo e-mail [e-mail de contato]. O encarregado pelo tratamento de dados pessoais (DPO) é [nome], pelo e-mail [e-mail do encarregado].</p>
+
+    <h2>Que dados tratamos hoje</h2>
+    <ul>
+      <li><strong>Preferências guardadas no seu navegador:</strong> o tema escolhido (claro ou escuro) e a sua escolha sobre cookies. Ficam só no seu aparelho (armazenamento local do navegador). Não chegam até nós e não identificam você.</li>
+      <li><strong>Dados técnicos de acesso:</strong> o site é hospedado na Cloudflare. Como todo servidor, ela recebe dados técnicos de cada acesso (endereço IP, tipo de navegador, página pedida, data e hora) para entregar as páginas e proteger o site contra ataques. Base legal: legítimo interesse (art. 7º, IX, da LGPD). [Confirmar se há registros ou estatísticas de acesso ligados na conta da Cloudflare e por quanto tempo ficam guardados.]</li>
+    </ul>
+
+    <h2 id="cookies">Cookies</h2>
+    <p>Cookies são pequenos arquivos que um site guarda no seu navegador.</p>
+    <ul>
+      <li><strong>Necessários:</strong> hoje o site não grava cookies próprios. As preferências de tema e de cookies ficam no armazenamento local do navegador, com a mesma finalidade de um cookie necessário.</li>
+      <li><strong>De anúncio:</strong> nenhum é usado hoje. Quando houver uma rede de anúncios, ela poderá usar cookies para mostrar e medir anúncios, <strong>somente depois de você aceitar</strong> no aviso de cookies. Base legal: consentimento (art. 7º, I, da LGPD). Se você recusar, o site continua funcionando igual, e os anúncios, se houver, não serão personalizados.</li>
+    </ul>
+    <p>Para mudar sua escolha: <a href="#cookies" data-abrir-cookies>abrir preferências de cookies</a>.</p>
+
+    <h2>Anúncios e patrocínio</h2>
+    <p>O site poderá ter anúncios, páginas patrocinadas (sempre com o selo "patrocinado") e venda de dados e acesso por API. Todo anúncio é marcado "Publicidade", tem tamanho fixo, nunca fica junto do mapa, dos gráficos ou da ficha e nunca imita um dado ou um botão. <strong>Nenhum anunciante ou patrocinador influencia o que os dados mostram.</strong> [Quando houver uma rede de anúncios, informe aqui o nome dela e o link para a política de privacidade dela.]</p>
+
+    <h2>Com quem compartilhamos</h2>
+    <p>Com a Cloudflare, que hospeda o site (dados técnicos de acesso). [Quando houver, a rede de anúncios, só com o seu consentimento.] Alguns desses serviços podem guardar dados fora do Brasil; nesses casos, a transferência segue o que a LGPD permite (art. 33).</p>
+
+    <h2>Seus direitos</h2>
+    <p>Pela LGPD (art. 18), você pode pedir: confirmação de que tratamos seus dados; acesso a eles; correção; anonimização, bloqueio ou eliminação de dados desnecessários; portabilidade; informação sobre com quem compartilhamos; e revogar o consentimento a qualquer momento. Para isso, escreva para [e-mail de contato]. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD), em <a href="https://www.gov.br/anpd" rel="noopener">gov.br/anpd</a>.</p>
+
+    <h2>Por quanto tempo guardamos</h2>
+    <p>As preferências guardadas no navegador ficam lá até você apagá-las. Os dados técnicos de acesso são guardados pela Cloudflare pelo tempo definido por ela [confirmar o prazo].</p>
+
+    <h2>Crianças e adolescentes</h2>
+    <p>O site não pede dados pessoais de ninguém, nem de crianças e adolescentes. Anúncios personalizados não devem ser mostrados a menores de idade.</p>
+
+    <h2>Mudanças nesta política</h2>
+    <p>Quando esta política mudar, a data da versão no topo será atualizada. Mudanças importantes, como o início dos anúncios, serão avisadas no site.</p>
+  </article>
+</Base>
+
+<style>
+  .texto { max-width: 760px; padding-top: 40px; padding-bottom: 40px; }
+  .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
+  h1 { margin: 0 0 8px; font-size: clamp(32px, 4.4vw, 48px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  .versao { margin: 0 0 32px; color: var(--faint); font-size: 14px; }
+  h2 { margin: 32px 0 10px; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+  p, li { font-size: 16px; line-height: 1.6; color: var(--sub); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 20px; display: grid; gap: 6px; }
+  strong { color: var(--ink); font-weight: 600; }
+  a { color: var(--accent); }
+</style>

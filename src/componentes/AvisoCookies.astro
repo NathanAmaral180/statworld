@@ -1,0 +1,59 @@
+---
+// Aviso de cookies discreto (LGPD). Guarda a escolha no próprio navegador (localStorage "consentimento").
+// Nenhum cookie de anúncio é ativado antes de o visitante aceitar: quem for carregar anúncios
+// deve ouvir o evento "statworld:consentimento" (ou ler window.StatWorldConsentimento.ler())
+// e só carregar quando anuncios === true.
+// O link "Preferências de cookies" (rodapé) reabre o aviso.
+---
+<div id="aviso-cookies" class="cookies" role="dialog" aria-live="polite" aria-labelledby="cookies-titulo" hidden>
+  <p id="cookies-titulo" class="cookies-titulo">Cookies e privacidade</p>
+  <p class="cookies-texto">
+    Hoje o StatWorld não usa cookies de anúncio nem de rastreamento: só guarda no seu navegador
+    o tema (claro ou escuro) e esta escolha. Se um dia houver anúncios, eles só usarão cookies
+    se você aceitar. <a href="/privacidade">Política de privacidade</a>
+  </p>
+  <div class="cookies-botoes">
+    <button type="button" data-escolha="recusar">Só o necessário</button>
+    <button type="button" data-escolha="aceitar">Aceitar anúncios</button>
+  </div>
+</div>
+
+<script>
+  const CHAVE = 'consentimento';
+  type Escolha = { anuncios: boolean; data: string };
+  const ler = (): Escolha | null => {
+    try { const v = localStorage.getItem(CHAVE); return v ? JSON.parse(v) : null; } catch { return null; }
+  };
+  const aviso = document.getElementById('aviso-cookies')!;
+  const avisar = (e: Escolha) => window.dispatchEvent(new CustomEvent('statworld:consentimento', { detail: e }));
+  (window as any).StatWorldConsentimento = { ler, abrir: () => { aviso.hidden = false; } };
+
+  const atual = ler();
+  if (atual) avisar(atual);
+  else aviso.hidden = false;
+
+  aviso.addEventListener('click', (ev) => {
+    const b = (ev.target as Element).closest<HTMLElement>('[data-escolha]');
+    if (!b) return;
+    const escolha: Escolha = { anuncios: b.dataset.escolha === 'aceitar', data: new Date().toISOString().slice(0, 10) };
+    try { localStorage.setItem(CHAVE, JSON.stringify(escolha)); } catch {}
+    aviso.hidden = true;
+    avisar(escolha);
+  });
+  document.addEventListener('click', (ev) => {
+    if ((ev.target as Element).closest('[data-abrir-cookies]')) { ev.preventDefault(); aviso.hidden = false; }
+  });
+</script>
+
+<style>
+  .cookies { position: fixed; left: 16px; bottom: 16px; z-index: 50; width: min(420px, calc(100vw - 32px)); background: var(--bg); color: var(--ink); border: 1px solid var(--line2); border-radius: 12px; padding: 16px 18px; box-shadow: 0 6px 24px rgba(0, 0, 0, .12); display: grid; gap: 10px; }
+  .cookies[hidden] { display: none; }
+  .cookies p { margin: 0; }
+  .cookies-titulo { font-size: 15px; font-weight: 600; }
+  .cookies-texto { font-size: 14px; line-height: 1.5; color: var(--sub); }
+  .cookies-texto a { color: var(--accent); }
+  .cookies-botoes { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .cookies-botoes button { font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+  .cookies-botoes button:hover { background: var(--surf); }
+  .cookies-botoes button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>

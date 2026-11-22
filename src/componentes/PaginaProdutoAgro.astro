@@ -4,6 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoProduto, iconeDoProduto, type Produto } from './mapa-ranking/construir-producao';
 import { formatar, preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
@@ -60,6 +61,7 @@ const abas = [
     {produto.descricao && <p class="inclui"><strong>{ctx.textos.inclui}:</strong> {produto.descricao}</p>}
     <Abas itens={abas} atual="dados" rotulo={produto.nome} emBreve={site.textos.emBreve} />
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="valor" visoes={visoes} />
+    <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
 </Base>
 

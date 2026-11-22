@@ -1,0 +1,26 @@
+{
+  "_explicacao": "Espaços de anúncio do site. Hoje NENHUMA rede de anúncios está ativa: os espaços só reservam o lugar (bloco cinza neutro com o rótulo 'Publicidade'). Para ativar: cadastrar uma rede, ser aprovado, pôr aqui o nome dela em 'rede' e mudar 'ativo' para true. Mesmo ativo, nenhum anúncio (nem cookie de anúncio) é carregado antes de o visitante aceitar no aviso de cookies. Tamanhos fixos para a página não pular ao carregar.",
+  "ativo": false,
+  "rede": null,
+  "mostrarReserva": true,
+  "rotulo": "Publicidade",
+  "posicoes": {
+    "lateral": {
+      "_explicacao": "Colunas laterais, só em telas largas (somem abaixo de 'telaMinima' pixels de largura).",
+      "largura": 160,
+      "altura": 600,
+      "telaMinima": 1840
+    },
+    "abaixo-ranking": {
+      "_explicacao": "Faixa abaixo do bloco mapa + ranking + ficha, separada dele. No celular, tamanho menor.",
+      "largura": 728,
+      "altura": 90,
+      "celular": { "largura": 320, "altura": 100 }
+    },
+    "entre-capitulos": {
+      "_explicacao": "Entre capítulos da página de História (ainda não existe).",
+      "largura": 300,
+      "altura": 250
+    }
+  }
+}

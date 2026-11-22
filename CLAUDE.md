@@ -21,6 +21,21 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 
 **Diferenças conhecidas entre o site e o mapa (decidir antes de mudar):** endereços (`/economia`, `/economia/agro/soja`, `/estados-unidos/economia`); Serviços mede valor adicionado das Contas Regionais (o mapa prevê receita e emprego da PAS/PMC/PMS e RAIS); níveis de estado e município, lentes Ao vivo/História, selos de frequência nos mapas, gráfico de série e composição "R$ 100" ainda não existem; classificações internacionais e PPC ainda não aplicadas.
 
+## Publicidade e privacidade
+- O site vai se financiar com anúncios e outras fontes: páginas patrocinadas (sempre com o selo "patrocinado"), dados e API pagos, apoio de leitores. **Hoje nenhuma rede de anúncios está ativa**: os espaços só reservam o lugar.
+- Configuração: `src/config/anuncios.json` (`ativo: false`, `rede: null`, tamanhos de cada posição). Componente: `src/componentes/EspacoAnuncio.astro`. Ele tem tamanho fixo (a página não pula ao carregar) e o rótulo "Publicidade", funciona no tema claro e no escuro, e hoje mostra só um bloco cinza neutro.
+- **Regras:**
+  - anúncio nunca fica junto do mapa, dos gráficos ou da ficha;
+  - nunca imita um dado ou um botão (nada de números, cores de dado ou bordas de botão no espaço);
+  - nenhum anunciante influencia o que o dado mostra.
+- **Posições:**
+  - colunas laterais em telas bem largas (no `Base.astro`, fora da área de 1440px; somem abaixo de 1840px);
+  - abaixo do bloco mapa + ranking (`posicao="abaixo-ranking"`, 728×90 e 320×100 no celular), nos moldes `PaginaEconomia`, `PaginaAgro` e `PaginaProdutoAgro`;
+  - entre capítulos da página de História (`posicao="entre-capitulos"`, 300×250), quando ela existir.
+  - Página sem anúncio: `<Base semAnuncios>`.
+- **Consentimento (LGPD):** o aviso de cookies (`src/componentes/AvisoCookies.astro`) guarda a escolha no navegador (`localStorage` "consentimento") e avisa pelo evento `statworld:consentimento`. **Nenhum script ou cookie de anúncio pode ser carregado antes de `anuncios === true`.** O rodapé de todas as páginas tem "Privacidade" e "Preferências de cookies", que reabre o aviso.
+- **Política de privacidade:** `/privacidade` (`src/pages/privacidade.astro`), um modelo que o dono vai revisar. Trechos entre [colchetes] precisam ser preenchidos antes de ativar anúncios. Ao ativar uma rede, atualize a política (nome da rede, link da política dela) e a data da versão.
+
 ## Quem é o dono do projeto
 - O dono não programa. Fale sempre em **português simples**, sem jargão (ou explicando o jargão).
 - **Sempre termine dizendo qual é o próximo passo.**
