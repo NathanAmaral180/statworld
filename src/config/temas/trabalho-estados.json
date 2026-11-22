@@ -1,0 +1,62 @@
+{
+  "_explicacao": "Aba Trabalho e renda (molde PaginaEconomia). Dados: dados/trabalho/ (scripts/trabalho-estados/). 'dados' = pasta de dados/ e chave em arquivos.<pasta> do país. 'extras' = outros números do mesmo arquivo mostrados na ficha. 'serie' = vista com gráficos de série no lugar do mapa (ficha e ranking continuam). Cortes do guia de design (rodada 4).",
+  "aba": "trabalho-renda",
+  "titulo": "A economia {dePais}",
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Trabalho e renda"
+  ],
+  "dados": "trabalho",
+  "carimboNosBotoes": true,
+  "medidas": [
+    {
+      "id": "desemprego",
+      "rotulo": "Desemprego por estado",
+      "titulo": "Desemprego, {periodo}",
+      "formato": "percentual",
+      "casas": 1,
+      "sinal": false,
+      "cortes": [
+        3.5,
+        4.5,
+        6,
+        7.5,
+        9
+      ],
+      "rotuloRanking": "Desemprego",
+      "subtituloFicha": "Desemprego, {periodo}",
+      "comparaPais": true,
+      "extras": [
+        {
+          "indicador": "renda",
+          "rotulo": "Renda média do trabalho",
+          "formato": "moeda",
+          "casas": 0,
+          "sufixo": " por mês"
+        }
+      ]
+    }
+  ],
+  "medidaPadrao": "desemprego",
+  "serie": {
+    "id": "no-tempo",
+    "rotulo": "Desemprego e renda no tempo",
+    "titulo": "Desemprego e renda média, desde {inicio}",
+    "descricao": "Cada ponto é a média de três meses. Passe o cursor para ver cada mês nos dois gráficos.",
+    "series": [
+      {
+        "id": "desemprego",
+        "titulo": "Taxa de desemprego, %",
+        "formato": "percentual",
+        "casas": 1
+      },
+      {
+        "id": "renda",
+        "titulo": "Renda média do trabalho, R$ por mês, corrigida pela inflação",
+        "formato": "moeda",
+        "casas": 0
+      }
+    ]
+  }
+}

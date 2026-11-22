@@ -9,6 +9,8 @@ export interface Opcao {
   visao?: string; // chave em `visoes`
   lista?: { rotulo: string; itens: { id: string; rotulo: string; url: string; grupo?: string; destaque?: boolean; iconeSvg?: string }[]; padrao: string };
   filtros?: { rotulo: string; itens: { id: string; rotulo: string; visao: string }[]; padrao: string };
+  painel?: boolean; // em vez do mapa, mostra o conteúdo do slot "painel" (ex.: gráficos de série); ficha e ranking continuam
+  carimbo?: { selo?: string; texto: string }; // selo de frequência + fonte · data, ao lado dos botões
 }
 
 interface Props {
@@ -53,6 +55,11 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
           ))}
         </div>
       )}
+      {opcoes.filter((o) => o.carimbo).map((o) => (
+        <p class="mr-carimbo" data-carimbo-de={o.id} hidden={o.id !== opcao.id}>
+          {o.carimbo!.selo && <span class="mr-selo">{o.carimbo!.selo}</span>}<span>{o.carimbo!.texto}</span>
+        </p>
+      ))}
       {filtroOpcao && (
         <div class="mr-filtros" data-filtros-de={filtroOpcao.id} hidden={opcao.id !== filtroOpcao.id}>
           <span>{filtroOpcao.filtros!.rotulo}</span>
@@ -103,7 +110,9 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   <p class="mr-aviso" hidden={!visao.aviso} set:html={htmlAviso(visao)} />
 
   <div class="mr-grade">
-    <figure class="mr-mapa">
+    <div class="mr-esq">
+    <div class="mr-painel" hidden={!opcao.painel}><slot name="painel" /></div>
+    <figure class="mr-mapa" hidden={!!opcao.painel}>
       <svg viewBox={viewBox} role="img" aria-label={preencher(ctx.textos.mapaDescricao, { titulo: visao.titulo, nivel: ctx.nivelSingular })}>
         <defs>
           <pattern id="mr-hachura" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
@@ -143,6 +152,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       </svg>
       <ul class="mr-legenda" set:html={htmlLegenda(visao)} />
     </figure>
+    </div>
 
     <div class="mr-lado">
       <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo], visao.svgs)} />
@@ -268,6 +278,9 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       opcaoId = id;
       const o = d.opcoes.find((x: any) => x.id === id);
       raiz.querySelectorAll('[data-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-opcao') === id)));
+      raiz.querySelectorAll<HTMLElement>('[data-carimbo-de]').forEach((c) => { c.hidden = c.dataset.carimboDe !== id; });
+      $('.mr-mapa')!.hidden = !!o.painel;
+      $('.mr-painel')!.hidden = !o.painel;
       if (mais) mais.hidden = !o.lista;
       if (!o.lista) fecharLista();
       raiz.querySelectorAll<HTMLElement>('[data-atalhos-de]').forEach((el) => { el.hidden = !o.lista; });
@@ -420,6 +433,10 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   :global(.mr[data-matiz] [data-classe="c5"]) { --cor: color-mix(in oklch, var(--matiz) 84%, var(--ink)); }
 
   /* Mapa */
+  .mr-esq { align-self: stretch; min-width: 0; }
+  .mr-mapa[hidden], .mr-painel[hidden], .mr-carimbo[hidden] { display: none; }
+  .mr-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; margin: 0; font-size: 13px; color: var(--faint); line-height: 1.4; }
+  .mr-selo { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
   .mr-mapa { margin: 0; }
   .mr-mapa svg { width: 100%; height: auto; display: block; }
   /* Computador: o mapa fica preso na tela enquanto a pessoa desce pelo ranking (cabe inteiro, com a legenda). */

@@ -1,0 +1,99 @@
+{
+  "_explicacao": "Desemprego e renda por estado (PNAD Contínua). Gerado por scripts/trabalho-estados/baixar.mjs. Não edite à mão. null = sem dado.",
+  "pais": "BR",
+  "nivel": "estado",
+  "periodo": "3º trimestre 2026",
+  "baixadoEm": "2026-11-22",
+  "indicadores": {
+    "desemprego": {
+      "nome": "Taxa de desemprego",
+      "unidade": "%",
+      "periodo": "3º trimestre 2026",
+      "frequencia": "trimestral",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "PNAD Contínua, 3º trimestre 2026 (tabela 4099 do Sidra)",
+          "url": "https://sidra.ibge.gov.br/tabela/4099",
+          "dataDivulgacao": "2026-11-18"
+        }
+      ],
+      "calculo": "Valor publicado pelo IBGE: parcela das pessoas de 14 anos ou mais que procuraram trabalho e não encontraram, entre as que estão na força de trabalho.",
+      "valorPais": 5.2,
+      "valores": {
+        "AC": 6.3,
+        "AL": 6.8,
+        "AM": 6.4,
+        "AP": 7.9,
+        "BA": 7.1,
+        "CE": 5.7,
+        "DF": 5.4,
+        "ES": 3,
+        "GO": 4.5,
+        "MA": 6,
+        "MG": 4,
+        "MS": 2.3,
+        "MT": 2.6,
+        "PA": 5.7,
+        "PB": 4.5,
+        "PE": 8.6,
+        "PI": 6.8,
+        "PR": 3,
+        "RJ": 6.9,
+        "RN": 4.5,
+        "RO": 3.3,
+        "RR": 5,
+        "RS": 4.3,
+        "SC": 2.2,
+        "SE": 7.4,
+        "SP": 5.4,
+        "TO": 4.1
+      }
+    },
+    "renda": {
+      "nome": "Renda média do trabalho, por mês",
+      "unidade": "moeda",
+      "periodo": "3º trimestre 2026",
+      "frequencia": "trimestral",
+      "fontes": [
+        {
+          "nome": "IBGE",
+          "publicacao": "PNAD Contínua, 3º trimestre 2026 (tabela 5436 do Sidra)",
+          "url": "https://sidra.ibge.gov.br/tabela/5436",
+          "dataDivulgacao": "2026-11-18"
+        }
+      ],
+      "calculo": "Valor publicado pelo IBGE: rendimento médio mensal real habitualmente recebido em todos os trabalhos, pessoas ocupadas de 14 anos ou mais. \"Real\" = corrigido pela inflação até o trimestre mais recente.",
+      "valorPais": 3790,
+      "valores": {
+        "AC": 3107,
+        "AL": 2609,
+        "AM": 2828,
+        "AP": 3139,
+        "BA": 2688,
+        "CE": 2835,
+        "DF": 6306,
+        "ES": 3684,
+        "GO": 3814,
+        "MA": 2280,
+        "MG": 3551,
+        "MS": 3913,
+        "MT": 4334,
+        "PA": 2584,
+        "PB": 2934,
+        "PE": 2754,
+        "PI": 2677,
+        "PR": 4231,
+        "RJ": 4086,
+        "RN": 2978,
+        "RO": 3573,
+        "RR": 3438,
+        "RS": 4216,
+        "SC": 4498,
+        "SE": 2921,
+        "SP": 4543,
+        "TO": 3480
+      }
+    }
+  }
+}

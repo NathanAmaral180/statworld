@@ -1,11 +1,12 @@
 ---
-// Páginas de Economia de um país feitas de mapa + ranking por estado: a Visão geral e abas como Impostos.
+// Páginas de Economia de um país feitas de mapa + ranking por estado: a Visão geral e abas como Impostos e Trabalho e renda.
 // Serve para qualquer país: tudo que muda vem do arquivo do país (src/config/paises/)
 // e da configuração da aba (src/config/temas/).
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import FaixaHoje from './FaixaHoje.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
+import GraficoSerie from './GraficoSerie.astro';
 import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher, dataCurta } from './mapa-ranking/visao';
@@ -13,11 +14,12 @@ import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
 import economiaEstados from '../config/temas/economia-estados.json';
 import impostosEstados from '../config/temas/impostos-estados.json';
+import trabalhoEstados from '../config/temas/trabalho-estados.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
 // Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados };
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados };
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -26,7 +28,9 @@ if (!tema) throw new Error(`Aba sem configuração: ${aba}`);
 
 const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
-const economia = carregarDados<any>('economia', pais.arquivos.economia[NIVEL]);
+// Pasta de dados da aba (padrão: economia). O nome do arquivo vem do país (arquivos.<pasta>.<nível>).
+const pastaDados = tema.dados ?? 'economia';
+const economia = carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
 
 // As medidas podem ser escritas na própria aba ou escolhidas pelo id entre as da Visão geral.
 const todasMedidas = economiaEstados.medidas as Medida[];
@@ -38,8 +42,34 @@ const cortesPais = pais.cortes?.['economia-estados'] ?? {};
 const medidas = medidasDaAba
   .filter((m) => economia.indicadores[m.id])
   .map((m) => ({ ...m, cortes: cortesPais[m.id] ?? m.cortes }));
-const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx)]));
-const opcoes = medidas.map((m) => ({ id: m.id, rotulo: preencher(m.rotulo, { periodo: economia.indicadores[m.id].periodo }), visao: m.id }));
+const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx, economia.indicadores)]));
+// Carimbo "selo + fonte · data" de um conjunto de fontes.
+const carimboDe = (frequencia: string | undefined, fontes: any[]) => {
+  const f = fontes[0];
+  return { selo: frequencia, texto: `${f.nome}, ${f.publicacao}${f.dataDivulgacao ? ` · ${dataCurta(f.dataDivulgacao, ctx)}` : ''}` };
+};
+const opcoes: any[] = medidas.map((m) => ({
+  id: m.id,
+  rotulo: preencher(m.rotulo, { periodo: economia.indicadores[m.id].periodo }),
+  visao: m.id,
+  carimbo: tema.carimboNosBotoes ? carimboDe(economia.indicadores[m.id].frequencia, economia.indicadores[m.id].fontes) : undefined,
+}));
+
+// Vista de série (gráficos no tempo no lugar do mapa; ficha e ranking continuam os da medida padrão).
+const cfgSerie = tema.serie;
+const arqSeries = cfgSerie && pais.arquivos[pastaDados]?.series;
+const dadosSeries = arqSeries ? carregarDados<any>(pastaDados, arqSeries) : null;
+const series = dadosSeries ? cfgSerie.series.map((c: any) => ({ ...c, ...dadosSeries.series[c.id] })) : [];
+if (dadosSeries) {
+  opcoes.push({
+    id: cfgSerie.id,
+    rotulo: cfgSerie.rotulo,
+    visao: tema.medidaPadrao,
+    painel: true,
+    carimbo: carimboDe(series[0].frequencia, series[0].fontes),
+  });
+}
+const inicioSerie = series[0]?.pontos?.[0]?.nome.match(/[0-9]{4}$/)?.[0] ?? '';
 
 // Faixa "<Assunto> hoje": só aparece se o país tem o arquivo de dados dela.
 const arqHoje = tema.faixaHoje && pais.arquivos?.[tema.faixaHoje.grupo]?.hoje;
@@ -72,7 +102,12 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
         )}
       </div>
     )}
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking}>
+      {dadosSeries && (
+        <GraficoSerie slot="painel" titulo={preencher(cfgSerie.titulo, { inicio: inicioSerie })} descricao={cfgSerie.descricao}
+          series={series.map((x: any) => ({ titulo: x.titulo, formato: x.formato, casas: x.casas, pontos: x.pontos }))} ctx={ctx} />
+      )}
+    </MapaRanking>
     {/* Faixa "<Assunto> hoje": só aparece se a aba tiver "faixaHoje" na configuração (hoje nenhuma tem: o dono tirou). */}
     {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
     <EspacoAnuncio posicao="abaixo-ranking" />

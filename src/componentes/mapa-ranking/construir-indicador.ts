@@ -31,9 +31,12 @@ export interface Medida {
   // Ficha com a composição (parte da medida × o resto, que soma 100%) e a comparação com o país.
   composicao?: { rotuloParte: string; rotuloResto: string };
   comparaPais?: boolean;
+  subtituloFicha?: string; // linha sob o nome na ficha (ex.: "Desemprego, {periodo}")
+  // Outros números do mesmo arquivo de dados mostrados na ficha (ex.: renda média ao lado do desemprego).
+  extras?: { indicador: string; rotulo: string; formato: Formato; casas: number; sufixo?: string }[];
 }
 
-export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctx: Contexto): Visao {
+export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctx: Contexto, outros: Record<string, Indicador> = {}): Visao {
   const t = ctx.textos;
   const fmt = { formato: m.formato, casas: m.casas, sinal: m.sinal };
   const titulo = preencher(m.titulo, { periodo: ind.periodo });
@@ -76,6 +79,12 @@ export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: In
         const partes = formatarEmPartes(v, fmt, ctx);
         const pos = i < n ? preencher(n < total ? t.posicaoComFalta : t.posicao, { n: i + 1, total: n, nivel: ctx.nivelPlural }) : t.semDado;
         const detalhes: [string, string][] = [];
+        for (const x of m.extras ?? []) {
+          const outro = outros[x.indicador];
+          if (!outro) continue;
+          const vx = outro.valores[u.sigla];
+          detalhes.push([x.rotulo, formatar(vx, { formato: x.formato, casas: x.casas }, ctx) + (vx != null && x.sufixo ? x.sufixo : '')]);
+        }
         const pct = (x: number | null) => formatar(x, { formato: 'percentual', casas: m.casas }, ctx);
         const composicao = m.composicao && v !== null
           ? [
@@ -92,7 +101,7 @@ export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: In
           }
         }
         if (m.sufixoFicha && v !== null) partes.depois += m.sufixoFicha;
-        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, apagado: v === null, composicao, detalhes: detalhes.length ? detalhes : undefined, aviso: m.avisoTitulo ?? m.aviso, selo: ind.frequencia, nota }];
+        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, subtitulo: m.subtituloFicha ? preencher(m.subtituloFicha, { periodo: ind.periodo }) : undefined, apagado: v === null, composicao, detalhes: detalhes.length ? detalhes : undefined, aviso: m.avisoTitulo ?? m.aviso, selo: ind.frequencia, nota }];
       })
     ),
     aviso: m.aviso,

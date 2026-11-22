@@ -96,6 +96,13 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Visual igual ao design da rodada 4 (`pg_imp`): cabeçalho do mapa com carimbo "selo + fonte · data" à direita; nota com ícone "i" e começo em negrito (`avisoTitulo` + `aviso`); ficha com "% do PIB" (`sufixoFicha`), barra empilhada da composição, média e diferença, frase curta e carimbo; coluna do ranking curta (`rotuloRanking`); ranking com botão "Ver todos" / "Mostrar só os 8 primeiros". A navegação segue o design (versão 2): dois níveis, grupos em cima e abas do grupo embaixo, com "Mais" no computador e rótulos curtos (`nomeCurto` do grupo no catálogo) no celular — `src/componentes/Abas.astro`. Clicar num grupo abre a primeira aba dele que está no ar; grupo sem aba no ar fica apagado.
 - Ainda não feito (previsto no mapa): ICMS por estado (Confaz) e arrecadação federal por estado.
 
+## Trabalho e renda
+- Página `/economia/trabalho`: molde `PaginaEconomia` com `aba="trabalho-renda"` (`src/config/temas/trabalho-estados.json`, `dados: "trabalho"`).
+- Fonte: IBGE, PNAD Contínua (`scripts/trabalho-estados/`). Por estado, trimestral: desemprego (tabela 4099, mapa e ranking) e renda média real habitual (5436, na ficha, via `extras`). Brasil mês a mês desde 2012 (trimestre móvel): desemprego (6381) e renda (6390), na vista "Desemprego e renda no tempo". A data de divulgação vem do próprio IBGE.
+- Vista de série: `src/componentes/GraficoSerie.astro` (linhas com cursor ligado entre os gráficos), entra no lugar do mapa (opção com `painel` no `MapaRanking`); ficha e ranking continuam.
+- Selo de frequência + fonte · data ao lado dos botões (`carimboNosBotoes`), como no design.
+- **Falta:** empregos com carteira (Novo Caged). Em 2026 o Ministério do Trabalho só publica por estado em PDF e microdados; precisa de script que leia os microdados.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

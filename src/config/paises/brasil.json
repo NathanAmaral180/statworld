@@ -56,6 +56,10 @@
     },
     "impostos": {
       "hoje": "brasil-hoje"
+    },
+    "trabalho": {
+      "estado": "brasil-estados",
+      "series": "brasil-series"
     }
   },
   "mapa": {
@@ -107,6 +111,7 @@
       "agro",
       "industria",
       "servicos",
+      "trabalho-renda",
       "impostos"
     ]
   },

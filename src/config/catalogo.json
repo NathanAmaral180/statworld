@@ -162,7 +162,8 @@
             "id": "trabalho-renda",
             "nome": "Trabalho e renda",
             "grupo": "pessoas-governo",
-            "situacao": "em-breve",
+            "situacao": "no-ar",
+            "href": "/economia/trabalho",
             "medidas": [
               "Desemprego",
               "Renda média",
