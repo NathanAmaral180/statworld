@@ -1,0 +1,74 @@
+{
+  "_explicacao": "Um número do mundo por tema, para a página inicial. Gerado por scripts/mundo-temas/baixar.mjs. Não edite à mão. null = sem dado.",
+  "baixadoEm": "2026-11-22",
+  "temas": [
+    {
+      "tema": "economia",
+      "indicador": "NY.GDP.MKTP.CD",
+      "rotulo": "PIB mundial",
+      "unidade": "moeda-usd",
+      "origem": "Banco Mundial e OCDE",
+      "valor": 118350166039396,
+      "periodo": "2025",
+      "fontes": [
+        {
+          "nome": "Banco Mundial",
+          "publicacao": "Indicadores de Desenvolvimento Mundial (NY.GDP.MKTP.CD); dado original: Banco Mundial e OCDE",
+          "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
+          "dataAtualizacao": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "tema": "saude",
+      "indicador": "SP.DYN.LE00.IN",
+      "rotulo": "Expectativa de vida ao nascer no mundo",
+      "unidade": "anos",
+      "origem": "ONU, World Population Prospects",
+      "valor": 73.4818184164654,
+      "periodo": "2024",
+      "fontes": [
+        {
+          "nome": "Banco Mundial",
+          "publicacao": "Indicadores de Desenvolvimento Mundial (SP.DYN.LE00.IN); dado original: ONU, World Population Prospects",
+          "url": "https://data.worldbank.org/indicator/SP.DYN.LE00.IN",
+          "dataAtualizacao": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "tema": "politica",
+      "indicador": "SG.GEN.PARL.ZS",
+      "rotulo": "Cadeiras de parlamentos ocupadas por mulheres",
+      "unidade": "%",
+      "origem": "União Interparlamentar",
+      "valor": 27.2485552269582,
+      "periodo": "2025",
+      "fontes": [
+        {
+          "nome": "Banco Mundial",
+          "publicacao": "Indicadores de Desenvolvimento Mundial (SG.GEN.PARL.ZS); dado original: União Interparlamentar",
+          "url": "https://data.worldbank.org/indicator/SG.GEN.PARL.ZS",
+          "dataAtualizacao": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "tema": "demografia",
+      "indicador": "SP.POP.TOTL",
+      "rotulo": "População mundial",
+      "unidade": "pessoas",
+      "origem": "ONU, World Population Prospects",
+      "valor": 8215424893,
+      "periodo": "2025",
+      "fontes": [
+        {
+          "nome": "Banco Mundial",
+          "publicacao": "Indicadores de Desenvolvimento Mundial (SP.POP.TOTL); dado original: ONU, World Population Prospects",
+          "url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+          "dataAtualizacao": "2026-11-11"
+        }
+      ]
+    }
+  ]
+}

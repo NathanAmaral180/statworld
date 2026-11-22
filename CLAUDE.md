@@ -51,6 +51,12 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Scripts de cada país ficam em pastas próprias (ex.: `scripts/eua-pib-estados/`).
 - EUA: páginas de teste em `/estados-unidos/economia` (BEA) e `/estados-unidos/economia/agro` (USDA, cash receipts), fora do menu e com "noindex".
 
+## Página inicial
+- Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
+- Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.
+- A faixa "Agora" só fica atualizada se o script rodar e o site for publicado de novo; cada número mostra a sua data.
+- Cores `--up` e `--down` (subiu/caiu) vieram do design da rodada 3 e ainda precisam entrar no Design System.
+
 ## Agro
 - Lavouras: IBGE, Produção Agrícola Municipal. Leite, ovos, mel, lã, casulos: IBGE, Pesquisa da Pecuária Municipal. Bovinos, suínos, frango: MAPA, Valor Bruto da Produção (valores nominais, ano fechado), porque o IBGE não calcula valor de carne. O site avisa que as fontes usam métodos diferentes. `src/lib/agro.ts` junta tudo; lavouras e pecuária precisam ser do mesmo ano.
 - Não inclui silvicultura nem extração vegetal.

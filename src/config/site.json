@@ -53,5 +53,15 @@
   },
   "textos": {
     "emBreve": "em breve"
-  }
+  },
+  "paises": [
+    {
+      "codigo": "076",
+      "nome": "Brasil",
+      "resumo": "27 estados · Economia e Agro",
+      "href": "/economia",
+      "disponivel": true
+    }
+  ],
+  "_explicacaoPaises": "\"paises\" = lugares que aparecem na página inicial (mapa-múndi e lista). \"codigo\" = código numérico ISO do país (o mesmo de dados/geo/mundo-paises.json). Páginas de teste (ex.: EUA) ficam fora daqui."
 }

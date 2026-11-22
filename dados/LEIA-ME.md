@@ -27,4 +27,7 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `geo/eua-estados.json` | Contorno dos 50 estados dos EUA + DC | `scripts/eua-mapa-estados/` |
 | `economia/eua-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado dos EUA | `scripts/eua-pib-estados/` |
 | `agro/eua-estados.json` | Receita da venda de 94 produtos agropecuários por estado dos EUA | `scripts/eua-agro-estados/` |
+| `geo/mundo-paises.json` | Mapa-múndi (países) | `scripts/mundo-mapa/` |
+| `agora/brasil.json` | Dólar, Selic e IPCA 12 meses (faixa "Agora") | `scripts/brasil-agora/` |
+| `mundo/temas.json` | Um número do mundo por tema | `scripts/mundo-temas/` |
 | `economia/brasil-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado | `scripts/pib-estados/` |

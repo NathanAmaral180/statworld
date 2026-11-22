@@ -1,0 +1,72 @@
+{
+  "_explicacao": "Indicadores da faixa \"Agora\". Gerado por scripts/brasil-agora/baixar.mjs. Não edite à mão. Cada número traz a data a que se refere.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-22",
+  "indicadores": [
+    {
+      "id": "dolar",
+      "rotulo": "Dólar comercial, venda (PTAX)",
+      "frequencia": "diário",
+      "valor": 5.8889,
+      "formato": "moeda",
+      "casas": 2,
+      "data": "2026-11-19",
+      "variacao": {
+        "tipo": "percentual",
+        "valor": 1.3545144745447546,
+        "desde": "2026-11-18"
+      },
+      "fontes": [
+        {
+          "nome": "Banco Central do Brasil",
+          "publicacao": "Taxa de câmbio, dólar americano, venda, PTAX (série 1 do SGS)",
+          "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/telaCvsSelecionarSeries.paint"
+        }
+      ]
+    },
+    {
+      "id": "selic",
+      "rotulo": "Selic, meta ao ano",
+      "frequencia": "por reunião",
+      "valor": 13.75,
+      "formato": "percentual",
+      "casas": 2,
+      "data": "2026-11-22",
+      "variacao": {
+        "tipo": "pontos",
+        "valor": -0.25,
+        "desde": "2026-09-17",
+        "mantida": true
+      },
+      "fontes": [
+        {
+          "nome": "Banco Central do Brasil",
+          "publicacao": "Meta Selic definida pelo Copom (série 432 do SGS)",
+          "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/telaCvsSelecionarSeries.paint"
+        }
+      ]
+    },
+    {
+      "id": "ipca12",
+      "rotulo": "Inflação (IPCA) em 12 meses",
+      "frequencia": "mensal",
+      "valor": 4.63,
+      "formato": "percentual",
+      "casas": 2,
+      "data": "2026-10-01",
+      "periodoMensal": true,
+      "variacao": {
+        "tipo": "pontos",
+        "valor": 0.04999999999999982,
+        "desde": "2026-09-01"
+      },
+      "fontes": [
+        {
+          "nome": "Banco Central do Brasil",
+          "publicacao": "IPCA acumulado em 12 meses, calculado pelo IBGE (série 13522 do SGS)",
+          "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/telaCvsSelecionarSeries.paint"
+        }
+      ]
+    }
+  ]
+}

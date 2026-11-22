@@ -15,6 +15,9 @@ Scripts existentes:
 - `lavouras-estados/`: agro, lavouras por estado e produto
 - `pecuaria-estados/`: agro, pecuária (IBGE + MAPA)
 - `icones-agro/`: ícones e cores dos produtos, vindos do Claude Design
+- `mundo-mapa/`: mapa-múndi da página inicial
+- `brasil-agora/`: faixa "Agora" (Banco Central)
+- `mundo-temas/`: um número do mundo por tema (Banco Mundial)
 - `eua-mapa-estados/`: contorno dos estados dos EUA
 - `eua-pib-estados/`: PIB por estado dos EUA
 - `eua-agro-estados/`: agro por estado e produto dos EUA (USDA)
