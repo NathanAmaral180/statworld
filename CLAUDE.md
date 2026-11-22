@@ -55,13 +55,13 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.
 - A faixa "Agora" só fica atualizada se o script rodar e o site for publicado de novo; cada número mostra a sua data.
-- Cores `--up` e `--down` (subiu/caiu) vieram do design da rodada 3 e ainda precisam entrar no Design System.
+- Cores `--up` e `--down` (subiu/caiu) vieram do design da rodada 3; já estão no Design System.
 
 ## Agro
 - Lavouras: IBGE, Produção Agrícola Municipal. Leite, ovos, mel, lã, casulos: IBGE, Pesquisa da Pecuária Municipal. Bovinos, suínos, frango: MAPA, Valor Bruto da Produção (valores nominais, ano fechado), porque o IBGE não calcula valor de carne. O site avisa que as fontes usam métodos diferentes. `src/lib/agro.ts` junta tudo; lavouras e pecuária precisam ser do mesmo ano.
 - Não inclui silvicultura nem extração vegetal.
 - "Não produz" (0 no IBGE, símbolo "-") é diferente de "sem dado" (null).
-- "Quanto produz": o degradê de 6 tons usa a cor do produto (do claro ao forte); produto sem cor própria usa o azul padrão. Cada estado produtor mostra o ícone do produto. Há botões com ícone para os 6 maiores produtos com cor própria e um botão "Outros produtos ▾" que abre a lista completa com ícones e busca (quando o produto escolhido não é um dos 6, o botão mostra o nome e o ícone dele). (Ainda falta registrar isso no Design System.)
+- "Quanto produz": o degradê de 6 tons usa a cor do produto (do claro ao forte); produto sem cor própria usa o azul padrão. Cada estado produtor mostra o ícone do produto. Há botões com ícone para os 6 maiores produtos com cor própria e um botão "Outros produtos ▾" que abre a lista completa com ícones e busca (quando o produto escolhido não é um dos 6, o botão mostra o nome e o ícone dele).
 - Ícones e cores dos produtos vêm do Claude Design (`design/icones/`), extraídos por `scripts/icones-agro/` para `src/config/icones/agro.json` e `src/estilos/cores-produtos.css`. Não invente ícones nem cores de produto: peça ao Claude Design.
 
 ## Comandos
