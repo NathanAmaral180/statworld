@@ -73,7 +73,7 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       </div>
     )}
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking} />
-    {/* Faixa "<Assunto> hoje": abaixo do mapa e do ranking (o dono achou que no topo poluía a página). */}
+    {/* Faixa "<Assunto> hoje": só aparece se a aba tiver "faixaHoje" na configuração (hoje nenhuma tem: o dono tirou). */}
     {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
     <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
