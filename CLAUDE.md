@@ -24,6 +24,7 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 - Para outro tema: troca-se só a medida, os cortes e a legenda. Mapa, ficha, ranking e cores ficam iguais.
 
 ## Visual (guia: `design/LEIA-ME-design-1abc.md`)
+- **Design System StatWorld** (claude.ai, privado): https://claude.ai/artifact/YMjJ44DR6MjzvcKEkBqvwD — feito a partir deste código (cores, tipografia, componentes, 81 ícones). Pedidos ao Claude Design devem usar esse Design System. Se mudar cores, componentes ou ícones no site, atualize-o também.
 - **Tema claro e escuro**, usando apenas as cores do guia, definidas como variáveis em `src/estilos/global.css`. Não use cores soltas fora dessas variáveis.
 - Fonte do sistema, números tabulares (`font-variant-numeric: tabular-nums`).
 - Layout de referência aprovado: **1c Mapa e ranking** (`design/1c-mapa-ranking.png` e `design/rodada-2-agro/`).
