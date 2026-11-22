@@ -4,7 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Abas from './Abas.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
-import { construirVisaoLider, construirVisaoProduto } from './mapa-ranking/construir-producao';
+import { construirVisaoLider, construirVisaoProduto, temCor, iconeDoProduto } from './mapa-ranking/construir-producao';
 import { preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { contextoDoPais } from '../lib/contexto';
@@ -19,6 +19,8 @@ const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
 const { todos, porFiltro } = carregarAgro(pais, NIVEL);
 
 const padrao = todos.find((p) => p.id === tema.produtoPadrao) ?? todos[0];
+// Atalhos com ícone (como no design): os 6 produtos de maior valor que têm cor e ícone próprios.
+const atalhos = new Set(todos.filter((p) => temCor(tema, p.id)).slice(0, 6).map((p) => p.id));
 const visoes: Record<string, any> = {
   [`lista:${padrao.id}`]: construirVisaoProduto(padrao.id, unidades, porFiltro.tudo, padrao, 'valor', tema, ctx, true),
 };
@@ -40,6 +42,8 @@ const opcoes = [
       itens: ['lavouras', 'pecuaria'].flatMap((g) =>
         todos.filter((p) => p.grupo === g).map((p) => ({
           id: p.id, rotulo: p.nome, grupo: tema.grupos[g as keyof typeof tema.grupos], url: preencher(tema.urlDadosProduto, { produto: p.id }),
+          destaque: atalhos.has(p.id),
+          iconeSvg: atalhos.has(p.id) ? tema.icones.icones[iconeDoProduto(tema, p.id) as keyof typeof tema.icones.icones] : undefined,
         }))
       ),
     },

@@ -163,12 +163,21 @@ export function construirVisaoProduto(
   if (naoProduz.length) legenda.push({ classe: 'zero', rotulo: `${t.legendaNaoProduz} (${naoProduz.length})` });
   if (semDado.length) legenda.push({ classe: 'sem', rotulo: preencher(t.legendaSemDado, { n: semDado.length, nivel: semDado.length === 1 ? ctx.nivelSingular : ctx.nivelPlural }) });
 
+  // Produto com cor própria: o degradê do mapa usa a cor dele (do claro ao forte) e
+  // cada estado produtor ganha o ícone do produto. Sem cor própria: degradê azul padrão.
+  const icone = iconeDoProduto(cfg, p.id);
+  const matiz = temCor(cfg, p.id) ? corDoProduto(cfg, p.id) : undefined;
+
   return {
     id,
     titulo,
     classes: Object.fromEntries(unidades.map((u) => [u.sigla, classe(u.sigla)])),
     legenda,
     legendaTitulo: t.legendaParticipacao,
+    matiz,
+    icones: Object.fromEntries(produtores.map((u) => [u.sigla, icone])),
+    svgs: desenhos(cfg, [icone]),
+    iconeTitulo: icone,
     linhas: ordem.map((u, i) => ({
       uf: u.sigla,
       nome: u.nome,

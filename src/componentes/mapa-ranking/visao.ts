@@ -63,6 +63,8 @@ export interface Visao {
   fonte: string; // HTML já escapado
   icones?: Record<string, string>; // lugar -> ícone desenhado no mapa
   svgs?: Record<string, string>; // ícone -> desenho (conteúdo do SVG 24x24)
+  matiz?: string; // classe de cor (ex.: "p-soja") que tinge o degradê de 6 tons; sem matiz = azul padrão
+  iconeTitulo?: string; // ícone ao lado do título da legenda
 }
 
 // Ícone dentro do mapa: um círculo com o desenho no meio (posição dada pelo <g> de fora).
@@ -220,6 +222,6 @@ ${sub}${det}${link}<p class="ficha-fonte">${escapar(f.nota)}</p>`;
 }
 
 export function htmlLegenda(v: Visao): string {
-  const titulo = v.legendaTitulo ? `<li class="leg-titulo">${escapar(v.legendaTitulo)}</li>` : '';
+  const titulo = v.legendaTitulo ? `<li class="leg-titulo">${htmlIcone(v.svgs, v.iconeTitulo)}${escapar(v.legendaTitulo)}</li>` : '';
   return titulo + v.legenda.map((l) => `<li class="leg-${l.classe}"><span class="amostra" data-classe="${l.classe}"></span>${htmlIcone(v.svgs, l.icone)}${escapar(l.rotulo)}</li>`).join('');
 }

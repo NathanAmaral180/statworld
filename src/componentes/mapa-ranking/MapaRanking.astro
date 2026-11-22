@@ -7,7 +7,7 @@ export interface Opcao {
   id: string;
   rotulo: string;
   visao?: string; // chave em `visoes`
-  lista?: { rotulo: string; itens: { id: string; rotulo: string; url: string; grupo?: string }[]; padrao: string };
+  lista?: { rotulo: string; itens: { id: string; rotulo: string; url: string; grupo?: string; destaque?: boolean; iconeSvg?: string }[]; padrao: string };
   filtros?: { rotulo: string; itens: { id: string; rotulo: string; visao: string }[]; padrao: string };
 }
 
@@ -38,7 +38,7 @@ const { margem, chamadas } = mapa;
 const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esquerda + margem.direita} ${geo.altura + margem.cima + margem.baixo}`;
 const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
 ---
-<div class={`mr${visao.icones ? ' com-icones' : ''}`} data-mapa-ranking>
+<div class={`mr${visao.icones ? ' com-icones' : ''}`} data-mapa-ranking data-matiz={visao.matiz} style={visao.matiz ? `--matiz: var(--${visao.matiz})` : undefined}>
   {(opcoes.length > 1 || listaOpcao || filtroOpcao) && (
     <div class="mr-controles">
       {opcoes.length > 1 && (
@@ -56,6 +56,15 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
               <button type="button" data-filtro={i.id} aria-pressed={String(i.id === filtroOpcao.filtros!.padrao)}>{i.rotulo}</button>
             ))}
           </div>
+        </div>
+      )}
+      {listaOpcao && listaOpcao.lista!.itens.some((i) => i.destaque) && (
+        <div class="mr-atalhos" data-atalhos-de={listaOpcao.id} hidden={opcao.id !== listaOpcao.id} role="group" aria-label={listaOpcao.lista!.rotulo}>
+          {listaOpcao.lista!.itens.filter((i) => i.destaque).map((i) => (
+            <button type="button" data-produto={i.id} aria-pressed={String(i.id === listaOpcao.lista!.padrao)}>
+              {i.iconeSvg && <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" set:html={i.iconeSvg} />}{i.rotulo}
+            </button>
+          ))}
         </div>
       )}
       {listaOpcao && (
@@ -168,6 +177,8 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
       raiz.querySelectorAll('[data-opcao]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-opcao') === id)));
       const rotuloLista = select?.closest('label');
       if (rotuloLista) rotuloLista.hidden = !o.lista;
+      raiz.querySelectorAll<HTMLElement>('[data-atalhos-de]').forEach((el) => { el.hidden = !o.lista; });
+      raiz.querySelectorAll('[data-produto]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-produto') === select?.value)));
       raiz.querySelectorAll<HTMLElement>('[data-filtros-de]').forEach((el) => { el.hidden = el.dataset.filtrosDe !== id; });
       if (o.filtros) {
         const f = filtroEscolhido[id];
@@ -185,6 +196,8 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
       visao = v;
       raiz.querySelectorAll<SVGElement>('.uf, .rotulo').forEach((el) => { el.dataset.classe = v.classes[el.dataset.uf!]; });
       raiz.classList.toggle('com-icones', !!v.icones);
+      if (v.matiz) { raiz.dataset.matiz = v.matiz; raiz.style.setProperty('--matiz', `var(--${v.matiz})`); }
+      else { delete raiz.dataset.matiz; raiz.style.removeProperty('--matiz'); }
       raiz.querySelectorAll<SVGGElement>('.chip-uf').forEach((g) => { g.innerHTML = htmlChip(v.svgs, v.icones?.[g.dataset.uf!]); });
       $('.mr-legenda')!.innerHTML = htmlLegenda(v);
       $('.mr-cab-medida')!.textContent = v.titulo;
@@ -217,6 +230,8 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
     raiz.addEventListener('click', (e) => {
       const botao = (e.target as Element).closest<HTMLElement>('[data-opcao]');
       if (botao) { escolher(botao.dataset.opcao!); return; }
+      const atalho = (e.target as Element).closest<HTMLElement>('[data-produto]');
+      if (atalho && select) { select.value = atalho.dataset.produto!; escolher(opcaoId); return; }
       const filtro = (e.target as Element).closest<HTMLElement>('[data-filtro]');
       if (filtro) { filtroEscolhido[opcaoId] = filtro.dataset.filtro!; escolher(opcaoId); return; }
       const uf = ufDe(e.target);
@@ -252,6 +267,13 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   .mr-filtros { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--sub); }
   .mr-filtros[hidden] { display: none; }
   .mr-pequeno button { font-size: 14px; padding: 7px 14px; }
+  .mr-atalhos { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mr-atalhos[hidden] { display: none; }
+  .mr-atalhos button { font: inherit; font-size: 15px; display: inline-flex; align-items: center; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+  .mr-atalhos button:hover { background: var(--surf); }
+  .mr-atalhos button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .mr-atalhos button[aria-pressed="true"] :global(.ic) { color: var(--bg); }
+  .mr-atalhos button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .mr-lista { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--sub); }
   .mr-lista[hidden] { display: none; }
   .mr-lista select { font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 10px; padding: 9px 12px; min-width: 200px; }
@@ -266,6 +288,14 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   :global(.mr [data-classe="c4"]) { --cor: var(--rampa-5); }
   :global(.mr [data-classe="c5"]) { --cor: var(--rampa-6); }
   :global(.mr [data-classe="zero"]) { --cor: var(--track); }
+  /* Degradê na cor do produto ("quanto produz"): a cor do produto misturada ao fundo, do claro ao forte. */
+  :global(.mr[data-matiz] [data-classe="c0"]) { --cor: color-mix(in oklch, var(--matiz) 14%, var(--bg)); }
+  :global(.mr[data-matiz] [data-classe="c1"]) { --cor: color-mix(in oklch, var(--matiz) 30%, var(--bg)); }
+  :global(.mr[data-matiz] [data-classe="c2"]) { --cor: color-mix(in oklch, var(--matiz) 50%, var(--bg)); }
+  :global(.mr[data-matiz] [data-classe="c3"]) { --cor: color-mix(in oklch, var(--matiz) 72%, var(--bg)); }
+  :global(.mr[data-matiz] [data-classe="c4"]) { --cor: var(--matiz); }
+  /* o tom mais alto passa da cor do produto em direção ao texto (mais escuro no tema claro, mais claro no escuro) */
+  :global(.mr[data-matiz] [data-classe="c5"]) { --cor: color-mix(in oklch, var(--matiz) 84%, var(--ink)); }
 
   /* Mapa */
   .mr-mapa { margin: 0; }
@@ -279,8 +309,10 @@ const dadosCliente = { opcoes, opcaoInicial: opcao.id, visoes };
   .mr-rotulos text { font-size: 23px; font-weight: 600; fill: var(--ink); pointer-events: none; }
   /* Nas duas cores mais fortes a sigla fica na cor do fundo para ter contraste */
   :global(.mr .rotulo[data-classe="c4"]), :global(.mr .rotulo[data-classe="c5"]) { fill: var(--bg); }
+  /* No degradê de produto a sigla fica sempre em ink, com contorno na cor do fundo (vale para cor clara ou escura). */
+  :global(.mr[data-matiz] .rotulo[data-classe]) { fill: var(--ink); }
   /* Cores de produto: sigla com contorno na cor do fundo para ler sobre qualquer cor */
-  :global(.mr .rotulo[data-classe^="p-"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
+  :global(.mr[data-matiz] .rotulo), :global(.mr .rotulo[data-classe^="p-"]) { stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; }
   .chamada line { stroke: var(--sub); stroke-width: 1.2; }
   .chamada circle { fill: var(--sub); }
 
