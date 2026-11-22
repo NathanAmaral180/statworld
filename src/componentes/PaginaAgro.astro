@@ -7,6 +7,7 @@ import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import { construirVisaoLider, construirVisaoProduto, temCor, iconeDoProduto } from './mapa-ranking/construir-producao';
 import { preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
+import { abasDe } from '../lib/catalogo';
 import { contextoDoPais } from '../lib/contexto';
 import { carregarAgro, temaAgro } from '../lib/agro';
 
@@ -55,8 +56,8 @@ const opcoes = [
 const vars = { pais: pais.nome, dePais: pais.dePais };
 const titulo = preencher(tema.titulo, vars);
 const trilha = tema.trilha.map((t) => preencher(t, vars));
-const disponiveis: string[] = pais.subtemas?.economia ?? ['visao-geral'];
-const abas = site.subtemas.economia.map((i: any) => ({ ...i, href: i.href ? pais.caminho + i.href : undefined, ativo: i.ativo && disponiveis.includes(i.id) }));
+// Abas de Economia (com grupos) vêm do cadastro; as que o país ainda não tem aparecem "em breve".
+const abas = abasDe('economia', pais);
 ---
 <Base titulo={`${trilha.at(-1)} · ${titulo}`} temaAtual="economia" naoIndexar={teste}>
   <section class="conteudo pagina">

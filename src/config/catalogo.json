@@ -1,0 +1,671 @@
+{
+  "_explicacao": "Cadastro de temas, abas e subdivisões do StatWorld, feito a partir de docs/StatWorld · Mapa do site (esqueleto completo).md. As páginas leem daqui: uma página nova é uma linha neste cadastro mais os dados. 'situacao': 'no-ar' (tem página) ou 'em-breve'. 'fontesCandidatas' são só candidatas: todas estão 'a verificar' (nenhuma conferida) e nenhum número vem daqui. 'cabecalho': aparece no menu do topo. 'numeroDoMundo': qual número de dados/mundo/temas.json aparece no cartão do tema na página inicial; 'resumo': frase do cartão.",
+  "fontesSituacao": "a verificar",
+  "lentes": [
+    {
+      "id": "dados",
+      "nome": "Dados"
+    },
+    {
+      "id": "ao-vivo",
+      "nome": "Ao vivo"
+    },
+    {
+      "id": "historia",
+      "nome": "História"
+    }
+  ],
+  "grupos": [
+    {
+      "id": "economia-infraestrutura",
+      "nome": "Economia e infraestrutura"
+    },
+    {
+      "id": "pessoas",
+      "nome": "Pessoas"
+    },
+    {
+      "id": "estado-sociedade",
+      "nome": "Estado e sociedade"
+    },
+    {
+      "id": "planeta-tecnologia",
+      "nome": "Planeta e tecnologia"
+    },
+    {
+      "id": "cultura-lazer",
+      "nome": "Cultura e lazer"
+    }
+  ],
+  "temas": [
+    {
+      "id": "economia",
+      "numero": 1,
+      "nome": "Economia",
+      "grupo": "economia-infraestrutura",
+      "situacao": "no-ar",
+      "href": "/economia",
+      "cabecalho": true,
+      "subdivisoes": [
+        "Visão geral",
+        "Setores",
+        "Trabalho",
+        "Preços",
+        "Impostos",
+        "Comércio exterior",
+        "Dinheiro",
+        "Contas públicas"
+      ],
+      "fontesCandidatas": [
+        "IBGE",
+        "Banco Central",
+        "Tesouro",
+        "Comex Stat"
+      ],
+      "nivelMaisFino": "Município",
+      "nota": "O Agro fica dentro de Economia, como setor.",
+      "abas": {
+        "grupos": [
+          {
+            "id": "visao-geral",
+            "nome": "Visão geral"
+          },
+          {
+            "id": "setores",
+            "nome": "Setores"
+          },
+          {
+            "id": "pessoas-governo",
+            "nome": "Pessoas e governo"
+          },
+          {
+            "id": "mundo-mercado",
+            "nome": "Mundo e mercado"
+          }
+        ],
+        "itens": [
+          {
+            "id": "visao-geral",
+            "nome": "Visão geral",
+            "grupo": "visao-geral",
+            "situacao": "no-ar",
+            "href": "/economia",
+            "medidas": [
+              "Peso no PIB",
+              "PIB por pessoa",
+              "Crescimento",
+              "Impostos sobre produtos (% do PIB)"
+            ],
+            "fontesCandidatas": [
+              "IBGE, Contas Regionais"
+            ],
+            "frequencia": "anual",
+            "nivelMaisFino": "Estado (município pelo PIB dos Municípios)"
+          },
+          {
+            "id": "agro",
+            "nome": "Agro",
+            "grupo": "setores",
+            "situacao": "no-ar",
+            "href": "/economia/agro",
+            "medidas": [
+              "Produto líder por estado",
+              "Quanto cada estado produz de cada produto",
+              "Valor da produção",
+              "Rebanho"
+            ],
+            "fontesCandidatas": [
+              "IBGE (PAM, PPM)",
+              "MAPA"
+            ],
+            "frequencia": "anual",
+            "nivelMaisFino": "Município"
+          },
+          {
+            "id": "industria",
+            "nome": "Indústria",
+            "grupo": "setores",
+            "situacao": "no-ar",
+            "href": "/economia/industria",
+            "medidas": [
+              "Valor da transformação industrial",
+              "Ramo líder",
+              "Emprego industrial",
+              "Construção e energia"
+            ],
+            "fontesCandidatas": [
+              "IBGE (PIA)",
+              "RAIS"
+            ],
+            "frequencia": "anual",
+            "nivelMaisFino": "Estado (emprego: município)"
+          },
+          {
+            "id": "servicos",
+            "nome": "Serviços",
+            "grupo": "setores",
+            "situacao": "no-ar",
+            "href": "/economia/servicos",
+            "medidas": [
+              "Receita e emprego por atividade (comércio, finanças, transporte, turismo)"
+            ],
+            "fontesCandidatas": [
+              "IBGE (PAS, PMC, PMS)",
+              "RAIS"
+            ],
+            "frequencia": "mensal e anual",
+            "nivelMaisFino": "Estado (emprego: município)"
+          },
+          {
+            "id": "trabalho-renda",
+            "nome": "Trabalho e renda",
+            "grupo": "pessoas-governo",
+            "situacao": "em-breve",
+            "medidas": [
+              "Desemprego",
+              "Renda média",
+              "Informalidade",
+              "Empregos com carteira criados e perdidos",
+              "Gini"
+            ],
+            "fontesCandidatas": [
+              "IBGE (PNAD Contínua)",
+              "Novo Caged",
+              "RAIS"
+            ],
+            "frequencia": "trimestral, mensal e anual",
+            "nivelMaisFino": "Estado (emprego formal: município)"
+          },
+          {
+            "id": "precos",
+            "nome": "Preços e poder de compra",
+            "grupo": "pessoas-governo",
+            "situacao": "em-breve",
+            "medidas": [
+              "IPCA e por região",
+              "Cesta básica",
+              "Salário mínimo em cestas",
+              "Renda real",
+              "Paridade de poder de compra"
+            ],
+            "fontesCandidatas": [
+              "IBGE",
+              "DIEESE",
+              "Banco Mundial"
+            ],
+            "frequencia": "mensal e anual",
+            "nivelMaisFino": "Capital / região"
+          },
+          {
+            "id": "impostos",
+            "nome": "Impostos",
+            "grupo": "pessoas-governo",
+            "situacao": "em-breve",
+            "medidas": [
+              "Impostos sobre produtos (% do PIB)",
+              "ICMS por estado",
+              "Arrecadação federal por estado",
+              "Carga tributária"
+            ],
+            "fontesCandidatas": [
+              "IBGE",
+              "Confaz",
+              "Receita Federal",
+              "Tesouro"
+            ],
+            "frequencia": "anual e mensal",
+            "nivelMaisFino": "Estado"
+          },
+          {
+            "id": "comercio-exterior",
+            "nome": "Comércio exterior",
+            "grupo": "mundo-mercado",
+            "situacao": "em-breve",
+            "medidas": [
+              "Exportações e importações por estado e produto",
+              "Parceiros comerciais",
+              "Balança"
+            ],
+            "fontesCandidatas": [
+              "Comex Stat (MDIC)"
+            ],
+            "frequencia": "mensal",
+            "nivelMaisFino": "Município"
+          },
+          {
+            "id": "dinheiro-juros",
+            "nome": "Dinheiro e juros",
+            "grupo": "mundo-mercado",
+            "situacao": "em-breve",
+            "medidas": [
+              "Selic",
+              "Câmbio",
+              "Bolsa",
+              "Crédito",
+              "Inadimplência"
+            ],
+            "fontesCandidatas": [
+              "Banco Central",
+              "B3"
+            ],
+            "frequencia": "diário e mensal",
+            "nivelMaisFino": "País"
+          },
+          {
+            "id": "contas-publicas",
+            "nome": "Contas públicas",
+            "grupo": "mundo-mercado",
+            "situacao": "em-breve",
+            "medidas": [
+              "Dívida pública",
+              "Resultado primário",
+              "Gasto por função"
+            ],
+            "fontesCandidatas": [
+              "Tesouro",
+              "Banco Central"
+            ],
+            "frequencia": "mensal",
+            "nivelMaisFino": "País e estado"
+          }
+        ]
+      },
+      "numeroDoMundo": "economia",
+      "resumo": "Produção, renda, agro, indústria e serviços, por país e por estado."
+    },
+    {
+      "id": "empresas-mercados",
+      "numero": 2,
+      "nome": "Empresas e mercados",
+      "grupo": "economia-infraestrutura",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Maiores empresas",
+        "Por setor",
+        "Bolsa",
+        "Capital aberto",
+        "Abertura e fechamento de empresas"
+      ],
+      "fontesCandidatas": [
+        "CVM",
+        "B3",
+        "Receita Federal (CNPJ)"
+      ],
+      "nivelMaisFino": "Empresa"
+    },
+    {
+      "id": "energia",
+      "numero": 3,
+      "nome": "Energia",
+      "grupo": "economia-infraestrutura",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Geração por fonte",
+        "Consumo",
+        "Preços de combustíveis",
+        "Petróleo e gás",
+        "Renováveis"
+      ],
+      "fontesCandidatas": [
+        "EPE",
+        "ANEEL",
+        "ANP"
+      ],
+      "nivelMaisFino": "Estado"
+    },
+    {
+      "id": "transporte-infraestrutura",
+      "numero": 4,
+      "nome": "Transporte e infraestrutura",
+      "grupo": "economia-infraestrutura",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Rodovias",
+        "Ferrovias",
+        "Portos",
+        "Aeroportos",
+        "Frota",
+        "Acidentes",
+        "Logística"
+      ],
+      "fontesCandidatas": [
+        "ANTT",
+        "ANTAQ",
+        "ANAC",
+        "DNIT",
+        "Senatran"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "demografia",
+      "numero": 5,
+      "nome": "Demografia",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "cabecalho": true,
+      "subdivisoes": [
+        "População",
+        "Nascimentos e mortes",
+        "Envelhecimento",
+        "Migração",
+        "Famílias",
+        "Raça e cor"
+      ],
+      "fontesCandidatas": [
+        "IBGE (Censo, estimativas)"
+      ],
+      "nivelMaisFino": "Município",
+      "numeroDoMundo": "demografia",
+      "resumo": "População, idade, nascimentos e migração."
+    },
+    {
+      "id": "saude",
+      "numero": 6,
+      "nome": "Saúde",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "cabecalho": true,
+      "subdivisoes": [
+        "Expectativa de vida",
+        "Mortalidade",
+        "Doenças",
+        "Vacinação",
+        "Leitos e profissionais",
+        "Gasto em saúde"
+      ],
+      "fontesCandidatas": [
+        "DATASUS",
+        "Ministério da Saúde",
+        "IBGE"
+      ],
+      "nivelMaisFino": "Município",
+      "numeroDoMundo": "saude",
+      "resumo": "Expectativa de vida, causas de morte e acesso a serviços."
+    },
+    {
+      "id": "educacao",
+      "numero": 7,
+      "nome": "Educação",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Alfabetização",
+        "Matrículas",
+        "Qualidade (Ideb, Enem)",
+        "Evasão",
+        "Ensino superior",
+        "Gasto"
+      ],
+      "fontesCandidatas": [
+        "INEP",
+        "IBGE"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "moradia-urbanismo",
+      "numero": 8,
+      "nome": "Moradia e urbanismo",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Déficit habitacional",
+        "Aluguel e preço de imóveis",
+        "Favelas",
+        "Áreas urbanas"
+      ],
+      "fontesCandidatas": [
+        "IBGE",
+        "Fundação João Pinheiro"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "agua-saneamento",
+      "numero": 9,
+      "nome": "Água e saneamento",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Acesso à água",
+        "Esgoto",
+        "Coleta de lixo",
+        "Perdas na distribuição"
+      ],
+      "fontesCandidatas": [
+        "SNIS/SINISA",
+        "IBGE"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "desigualdade-inclusao",
+      "numero": 10,
+      "nome": "Desigualdade e inclusão",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Renda por faixa",
+        "Gini",
+        "Pobreza",
+        "Gênero",
+        "Raça",
+        "Pessoas com deficiência"
+      ],
+      "fontesCandidatas": [
+        "IBGE (PNAD)",
+        "CadÚnico"
+      ],
+      "nivelMaisFino": "Estado (município em parte)"
+    },
+    {
+      "id": "desenvolvimento-humano",
+      "numero": 11,
+      "nome": "Desenvolvimento humano e bem-estar",
+      "grupo": "pessoas",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "IDH",
+        "Índices de felicidade e qualidade de vida"
+      ],
+      "fontesCandidatas": [
+        "PNUD",
+        "Atlas Brasil",
+        "ONU"
+      ],
+      "nivelMaisFino": "Município (IDH-M)"
+    },
+    {
+      "id": "politica-eleicoes",
+      "numero": 12,
+      "nome": "Política e eleições",
+      "nomeCurto": "Política",
+      "grupo": "estado-sociedade",
+      "situacao": "em-breve",
+      "cabecalho": true,
+      "subdivisoes": [
+        "Resultados",
+        "Candidatos",
+        "Partidos",
+        "Comparecimento",
+        "Perfil do eleitorado",
+        "Congresso"
+      ],
+      "fontesCandidatas": [
+        "TSE",
+        "Câmara",
+        "Senado"
+      ],
+      "nivelMaisFino": "Seção eleitoral / município",
+      "numeroDoMundo": "politica",
+      "resumo": "Eleições, representação e gasto público."
+    },
+    {
+      "id": "governo-servicos-publicos",
+      "numero": 13,
+      "nome": "Governo e serviços públicos",
+      "grupo": "estado-sociedade",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Servidores",
+        "Orçamento",
+        "Gasto por função",
+        "Transparência",
+        "Compras públicas"
+      ],
+      "fontesCandidatas": [
+        "Portal da Transparência",
+        "Tesouro",
+        "SIAFI"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "seguranca-justica",
+      "numero": 14,
+      "nome": "Segurança e justiça",
+      "grupo": "estado-sociedade",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Homicídios",
+        "Roubos",
+        "Prisões",
+        "Polícia",
+        "Processos e tempo da Justiça"
+      ],
+      "fontesCandidatas": [
+        "Fórum Brasileiro de Segurança Pública",
+        "Sinesp",
+        "CNJ",
+        "Senappen"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "relacoes-internacionais-defesa",
+      "numero": 15,
+      "nome": "Relações internacionais e defesa",
+      "grupo": "estado-sociedade",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Parceiros",
+        "Tratados",
+        "Gasto militar",
+        "Missões",
+        "Migração e refúgio"
+      ],
+      "fontesCandidatas": [
+        "Itamaraty",
+        "Ministério da Defesa",
+        "SIPRI (comparativo)"
+      ],
+      "nivelMaisFino": "País"
+    },
+    {
+      "id": "meio-ambiente-clima",
+      "numero": 16,
+      "nome": "Meio ambiente e clima",
+      "grupo": "planeta-tecnologia",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Desmatamento",
+        "Queimadas",
+        "Emissões",
+        "Áreas protegidas",
+        "Clima e chuvas",
+        "Biodiversidade"
+      ],
+      "fontesCandidatas": [
+        "INPE",
+        "MapBiomas",
+        "SEEG",
+        "INMET"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "tecnologia-conectividade",
+      "numero": 17,
+      "nome": "Tecnologia e conectividade",
+      "grupo": "planeta-tecnologia",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Acesso à internet",
+        "Celular",
+        "Banda larga",
+        "Comércio eletrônico",
+        "Governo digital"
+      ],
+      "fontesCandidatas": [
+        "Anatel",
+        "CETIC.br",
+        "IBGE"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "ciencia-inovacao",
+      "numero": 18,
+      "nome": "Ciência e inovação",
+      "grupo": "planeta-tecnologia",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Pesquisa e desenvolvimento",
+        "Patentes",
+        "Bolsas",
+        "Publicações",
+        "Universidades"
+      ],
+      "fontesCandidatas": [
+        "CAPES",
+        "CNPq",
+        "INPI",
+        "MCTI"
+      ],
+      "nivelMaisFino": "Instituição"
+    },
+    {
+      "id": "cultura-esporte-lazer",
+      "numero": 19,
+      "nome": "Cultura, esporte e lazer",
+      "grupo": "cultura-lazer",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Equipamentos culturais",
+        "Cinema",
+        "Livros",
+        "Patrimônio",
+        "Esporte",
+        "Hábitos de lazer"
+      ],
+      "fontesCandidatas": [
+        "IBGE (Munic, PNAD)",
+        "Ancine",
+        "IPHAN"
+      ],
+      "nivelMaisFino": "Município"
+    },
+    {
+      "id": "turismo-viagens",
+      "numero": 20,
+      "nome": "Turismo e viagens",
+      "grupo": "cultura-lazer",
+      "situacao": "em-breve",
+      "subdivisoes": [
+        "Chegadas",
+        "Gasto",
+        "Hospedagem",
+        "Destinos",
+        "Aeroportos",
+        "Balança de turismo"
+      ],
+      "fontesCandidatas": [
+        "Ministério do Turismo",
+        "Embratur",
+        "ANAC"
+      ],
+      "nivelMaisFino": "Município"
+    }
+  ]
+}

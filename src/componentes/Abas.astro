@@ -1,33 +1,58 @@
 ---
-// Abas de navegação (ex.: Visão geral / Agro / Indústria). Itens inativos aparecem como "em breve".
-interface Item { id: string; nome: string; href?: string; ativo: boolean }
+// Abas de navegação (ex.: Visão geral / Agro / Indústria), em grupos com rótulo discreto.
+// Itens inativos aparecem como "em breve". Sem quebra de linha: no celular, rolagem lateral.
+interface Item { id: string; nome: string; href?: string; ativo: boolean; grupo?: string }
 interface Props { itens: Item[]; atual: string; rotulo: string; emBreve: string }
 const { itens, atual, rotulo, emBreve } = Astro.props;
+// Junta itens seguidos do mesmo grupo.
+const blocos: { grupo?: string; itens: Item[] }[] = [];
+for (const i of itens) {
+  const ultimo = blocos.at(-1);
+  if (ultimo && ultimo.grupo === i.grupo) ultimo.itens.push(i);
+  else blocos.push({ grupo: i.grupo, itens: [i] });
+}
+const comGrupos = blocos.some((b) => b.grupo);
 ---
-<nav class="abas" aria-label={rotulo}>
+<nav class={`abas${comGrupos ? ' com-grupos' : ''}`} aria-label={rotulo}>
   <ul>
-    {itens.map((i) => (
-      <li>
-        {i.ativo && i.href ? (
-          <a href={i.href} aria-current={i.id === atual ? 'page' : undefined}>{i.nome}</a>
-        ) : i.id === atual ? (
-          <span class="atual">{i.nome}</span>
-        ) : (
-          <span class="inativo">{i.nome}<small>{emBreve}</small></span>
-        )}
+    {blocos.map((b) => (
+      <li class="bloco">
+        {comGrupos && b.grupo && <span class="grupo" aria-hidden="true">{b.grupo}</span>}
+        <ul>
+          {b.itens.map((i) => (
+            <li>
+              {i.ativo && i.href ? (
+                <a href={i.href} aria-current={i.id === atual ? 'page' : undefined}>{i.nome}</a>
+              ) : i.id === atual ? (
+                <span class="atual">{i.nome}</span>
+              ) : (
+                <span class="inativo">{i.nome}<small>{emBreve}</small></span>
+              )}
+            </li>
+          ))}
+        </ul>
       </li>
     ))}
   </ul>
 </nav>
 
 <style>
-  .abas { border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; overflow-y: hidden; }
+  .abas { border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
   ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
-  a, span { display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-size: 17px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .bloco { display: flex; flex-direction: column; flex: none; }
+  .com-grupos > ul { gap: 36px; }
+  .com-grupos .bloco + .bloco { padding-left: 36px; border-left: 1px solid var(--line); margin-left: -18px; }
+  .grupo { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding-top: 4px; white-space: nowrap; }
+  a, span.atual, span.inativo { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0 12px; font-size: 17px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .abas:not(.com-grupos) a, .abas:not(.com-grupos) span.atual, .abas:not(.com-grupos) span.inativo { padding-top: 12px; }
   a { color: var(--sub); }
   a:hover { color: var(--ink); }
   a[aria-current="page"], .atual { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
   .inativo { color: var(--faint); }
   small { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 760px) {
+    a, span.atual, span.inativo { font-size: 15px; }
+    ul { gap: 20px; }
+  }
 </style>

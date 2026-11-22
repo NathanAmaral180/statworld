@@ -1,7 +1,8 @@
 ---
 // Cabeçalho do site: logo, temas (Economia, Saúde...) e botão de tema claro/escuro.
-// Os temas vêm de src/config/site.json — nada escrito à mão aqui.
+// Os temas vêm do cadastro (src/config/catalogo.json) — nada escrito à mão aqui.
 import site from '../config/site.json';
+import { temasDoCabecalho } from '../lib/catalogo';
 
 interface Props { temaAtual?: string }
 const { temaAtual = 'economia' } = Astro.props;
@@ -20,9 +21,9 @@ const { temaAtual = 'economia' } = Astro.props;
 
     <nav aria-label="Temas">
       <ul>
-        {site.temas.map((t) =>
+        {temasDoCabecalho().map((t) =>
           t.ativo ? (
-            <li><a href={`/${t.id}`} aria-current={t.id === temaAtual ? 'page' : undefined}>{t.nome}</a></li>
+            <li><a href={t.href} aria-current={t.id === temaAtual ? 'page' : undefined}>{t.nome}</a></li>
           ) : (
             <li><span class="em-breve" title="Em breve">{t.nome}</span></li>
           )

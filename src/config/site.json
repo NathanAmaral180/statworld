@@ -3,56 +3,6 @@
   "slogan": "Os números do mundo, explicados.",
   "idiomaPadrao": "pt-BR",
   "paisPadrao": "brasil",
-  "temas": [
-    {
-      "id": "economia",
-      "nome": "Economia",
-      "ativo": true
-    },
-    {
-      "id": "saude",
-      "nome": "Saúde",
-      "ativo": false
-    },
-    {
-      "id": "politica",
-      "nome": "Política",
-      "ativo": false
-    },
-    {
-      "id": "demografia",
-      "nome": "Demografia",
-      "ativo": false
-    }
-  ],
-  "subtemas": {
-    "economia": [
-      {
-        "id": "visao-geral",
-        "nome": "Visão geral",
-        "href": "/economia",
-        "ativo": true
-      },
-      {
-        "id": "agro",
-        "nome": "Agro",
-        "href": "/economia/agro",
-        "ativo": true
-      },
-      {
-        "id": "industria",
-        "nome": "Indústria",
-        "ativo": true,
-        "href": "/economia/industria"
-      },
-      {
-        "id": "servicos",
-        "nome": "Serviços",
-        "ativo": true,
-        "href": "/economia/servicos"
-      }
-    ]
-  },
   "textos": {
     "emBreve": "em breve"
   },

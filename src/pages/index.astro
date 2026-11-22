@@ -3,6 +3,7 @@
 // Todos os números vêm de dados/ (mapa-múndi, faixa "Agora", números do mundo).
 import Base from '../layouts/Base.astro';
 import site from '../config/site.json';
+import { temas as todosTemas, temasPorGrupo } from '../lib/catalogo';
 import pais from '../config/paises/brasil.json';
 import { carregarDados, carregarTextos } from '../lib/dados';
 import { formatar, formatarEmPartes, type Contexto, type Fonte } from '../componentes/mapa-ranking/visao';
@@ -59,14 +60,9 @@ function numeroTema(t: any) {
   if (t.unidade === '%') return { numero: formatar(t.valor, { formato: 'numero', casas: 1 }, ctx), unidade: '%' };
   return { numero: formatar(t.valor, { formato: 'numero', casas: 1 }, ctx), unidade: t.unidade };
 }
-const DESCRICOES: Record<string, string> = {
-  economia: 'Produção, renda, agro, indústria e serviços, por país e por estado.',
-  saude: 'Expectativa de vida, causas de morte e acesso a serviços.',
-  politica: 'Eleições, representação e gasto público.',
-  demografia: 'População, idade, nascimentos e migração.',
-};
-const temas = site.temas.map((t) => {
-  const d = porTema[t.id];
+// Cartões de tema: os temas do menu do topo, com um número do mundo (cadastro: numeroDoMundo).
+const temas = todosTemas.filter((t) => t.cabecalho).map((t) => {
+  const d = porTema[t.numeroDoMundo ?? ''];
   const f: Fonte | undefined = d?.fontes?.[0];
   return {
     ...t,
@@ -74,7 +70,9 @@ const temas = site.temas.map((t) => {
     rotulo: d ? `${d.rotulo}${d.periodo ? ` em ${d.periodo}` : ''}` : '',
     fonte: f ? `${f.nome}, WDI${f.dataAtualizacao ? ` · atualizado em ${dataLonga(f.dataAtualizacao)}` : ''}` : '',
     origem: d?.origem,
-    descricao: DESCRICOES[t.id] ?? '',
+    nome: t.nomeCurto ?? t.nome,
+    ativo: t.situacao === 'no-ar' && !!t.href,
+    descricao: (t as any).resumo ?? '',
   };
 });
 
@@ -197,8 +195,23 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
               <div class="ph">{t.descricao}</div>
             </>
           );
-          return t.ativo ? <a class="th on" href="/economia">{corpo}</a> : <div class="th off" aria-disabled="true">{corpo}</div>;
+          return t.ativo ? <a class="th on" href={t.href}>{corpo}</a> : <div class="th off" aria-disabled="true">{corpo}</div>;
         })}
+      </div>
+      <div class="todos" id="todos-os-temas">
+        <h3>Todos os temas</h3>
+        <div class="todos-grade">
+          {temasPorGrupo().map((g) => (
+            <div class="todos-grupo">
+              <h4>{g.nome}</h4>
+              <ul>
+                {g.temas.map((t) => (
+                  <li>{t.situacao === 'no-ar' && t.href ? <a href={t.href}>{t.nome}</a> : <span class="off">{t.nome} <span class="soon">{site.textos.emBreve}</span></span>}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -350,6 +363,16 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
   .th .cta { display: flex; align-items: center; gap: 6px; color: var(--accent); font-size: 15px; font-weight: 500; }
   .th.off .big, .th.off .nm { color: var(--sub); }
 
+  /* todos os temas */
+  .todos { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .todos h3 { margin: 0 0 16px; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+  .todos-grade { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+  .todos-grupo h4 { margin: 0 0 10px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); font-weight: 600; }
+  .todos-grupo ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 15px; }
+  .todos-grupo a { color: var(--ink); font-weight: 500; }
+  .todos-grupo .off { color: var(--faint); }
+  .todos-grupo .soon { margin-left: 4px; font-size: 10px; }
+
   /* explore */
   .stories { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
   .st { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid var(--ink); color: var(--ink); min-width: 0; text-decoration: none; }
@@ -382,6 +405,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
     .kpi { border-left: 0; padding-left: 0; }
     .themes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .todos-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .st.lead { grid-column: 1 / -1; }
   }
   @media (max-width: 760px) {
@@ -399,6 +423,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
     .th { min-height: 0; padding: 20px; }
     .th .big { font-size: 40px; margin-top: 8px; }
     .stories { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .todos-grade { grid-template-columns: minmax(0, 1fr); }
     .st.lead h3 { font-size: 30px; }
     .st h3 { font-size: 22px; }
     .ft { grid-template-columns: minmax(0, 1fr); gap: 32px; }

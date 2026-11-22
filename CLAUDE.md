@@ -3,6 +3,24 @@
 StatWorld: "Os números do mundo, explicados." Site de dados globais feito com Astro.
 Primeiro tema: Economia. Primeiro país: Brasil.
 
+## Mapa do site e princípios (fonte: `docs/StatWorld · Mapa do site (esqueleto completo).md`)
+O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas em 5 grupos e as 10 abas de Economia. Os princípios valem para qualquer tema e país:
+1. **Um molde só.** O Brasil é o modelo. Mapa, ranking, ficha, gráfico de série e "de onde vem cada R$ 100" funcionam para todos os temas e países.
+2. **Páginas nascem de cadastro.** Tema, aba, indicador e território são registros num catálogo (`src/config/catalogo.json`). Página nova = uma linha no cadastro + os dados, sem desenho novo. Não escreva listas de temas ou abas dentro das páginas.
+3. **Todo número tem fonte, data e selo de frequência** (anual, mensal, diário, ao vivo). Nenhum número fica escrito dentro de uma página.
+4. **"Sem dado" é um estado próprio**, com hachura, nunca zero.
+5. **Três lentes em toda entidade:** Dados (consolidado), Ao vivo (só com fonte frequente; contador estimado leva o rótulo "estimativa") e História (texto com gráficos).
+6. **Classificações internacionais desde o início**, para comparar países: ISIC (indústria), FAO (agro), CID (saúde), COFOG (gasto público), ISCED (educação).
+7. **Comparação entre países em paridade de poder de compra (PPC)**, além da moeda local.
+8. **Medir pelo que é comparável:** o produto que mais se produz num estado é medido em valor (R$), nunca em toneladas.
+9. **Documentação como regra:** cada fonte de dados tem um LEIA-ME em português simples; este arquivo guarda os princípios.
+
+**Molde de página (6 níveis):** Início (mundo) → Tema → País → Estado/região → Município → Entidades transversais (produto, empresa, instituição). Cada indicador declara em que níveis existe; fora deles a página mostra "sem dado neste nível". Endereços previstos no mapa: `/br/economia`, `/br/sp/economia`, `/br/sp/campinas/economia`, `/produtos/soja`, `/empresas/petrobras` (o site hoje usa outros — ver "Diferenças" abaixo). Selos: frequência, "estimativa", "exemplo" (só em desenho), "pendente de conferência". Barra de abas em grupos com rótulo discreto, sem quebra de linha (no celular, rolagem lateral).
+
+**Fontes do mapa:** todas as fontes candidatas estão **"a verificar"**. Não use números delas sem conferir na fonte oficial e registrar fonte e data.
+
+**Diferenças conhecidas entre o site e o mapa (decidir antes de mudar):** endereços (`/economia`, `/economia/agro/soja`, `/estados-unidos/economia`); Serviços mede valor adicionado das Contas Regionais (o mapa prevê receita e emprego da PAS/PMC/PMS e RAIS); níveis de estado e município, lentes Ao vivo/História, selos de frequência nos mapas, gráfico de série e composição "R$ 100" ainda não existem; classificações internacionais e PPC ainda não aplicadas.
+
 ## Quem é o dono do projeto
 - O dono não programa. Fale sempre em **português simples**, sem jargão (ou explicando o jargão).
 - **Sempre termine dizendo qual é o próximo passo.**
@@ -20,7 +38,7 @@ Primeiro tema: Economia. Primeiro país: Brasil.
 ## Regras do molde (para replicar em outros países)
 - Mapa, ranking, ficha e gráfico **não podem depender de nada exclusivo do Brasil**.
 - Moeda, idioma, formato de número e níveis geográficos (país, região, estado, município) ficam em configuração: `src/config/paises/<pais>.json`.
-- Textos do site, temas e país padrão ficam em `src/config/site.json`.
+- Textos do site e país padrão ficam em `src/config/site.json`. Temas, abas, grupos e subdivisões ficam no cadastro `src/config/catalogo.json` (lido por `src/lib/catalogo.ts`); o arquivo do país diz quais abas aquele país já tem (`subtemas`).
 - Para outro tema: troca-se só a medida, os cortes e a legenda. Mapa, ficha, ranking e cores ficam iguais.
 
 ## Visual (guia: `design/LEIA-ME-design-1abc.md`)
