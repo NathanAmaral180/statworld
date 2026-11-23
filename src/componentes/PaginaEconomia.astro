@@ -9,6 +9,7 @@ import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import GraficoSerie from './GraficoSerie.astro';
 import ListaBarras from './ListaBarras.astro';
 import CartaoBalanca from './CartaoBalanca.astro';
+import PainelSeries from './PainelSeries.astro';
 import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher, dataCurta, formatar, quandoCurto } from './mapa-ranking/visao';
@@ -19,11 +20,12 @@ import impostosEstados from '../config/temas/impostos-estados.json';
 import trabalhoEstados from '../config/temas/trabalho-estados.json';
 import precosEstados from '../config/temas/precos-estados.json';
 import comercioEstados from '../config/temas/comercio-estados.json';
+import dinheiroBrasil from '../config/temas/dinheiro-brasil.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
 // Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados };
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados, 'dinheiro-juros': dinheiroBrasil };
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -34,9 +36,11 @@ const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
 // Pasta de dados da aba (padrão: economia). O nome do arquivo vem do país (arquivos.<pasta>.<nível>).
 const pastaDados = tema.dados ?? 'economia';
-const economiaBase = carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
+// Abas só com painel de séries (ex.: Dinheiro e juros) não têm dado por estado.
+const painelSeries = tema.painelSeries ? carregarDados<any>(pastaDados, pais.arquivos[pastaDados][tema.painelSeries.arquivo]) : null;
+const economiaBase = painelSeries ? { indicadores: {} } : carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
 // Arquivos extras da mesma pasta (ex.: Novo Caged), juntados aos indicadores da aba.
-const extrasDados = (pais.arquivos[pastaDados].extras ?? []).map((nome: string) => carregarDados<any>(pastaDados, nome));
+const extrasDados = (pais.arquivos[pastaDados]?.extras ?? []).map((nome: string) => carregarDados<any>(pastaDados, nome));
 const economia = { ...economiaBase, indicadores: Object.assign({}, economiaBase.indicadores, ...extrasDados.map((x: any) => x.indicadores)) };
 
 // As medidas podem ser escritas na própria aba ou escolhidas pelo id entre as da Visão geral.
@@ -170,7 +174,8 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
         )}
       </div>
     )}
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
+    {painelSeries && <PainelSeries series={painelSeries.series} ctx={ctx} textos={tema.painelSeries.textos} />}
+    {!painelSeries && <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
       {balanca && <CartaoBalanca slot="lateral" dados={balanca} ctx={ctx} textos={tema.balanca.textos} />}
       {paineis.filter((p: any) => p.lista).map((p: any) => (
         <ListaBarras slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} balanca={balanca} textosBalanca={tema.balanca?.textos} />
@@ -178,7 +183,7 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       {paineis.filter((p: any) => !p.lista).map((p: any) => (
         <GraficoSerie slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />
       ))}
-    </MapaRanking>
+    </MapaRanking>}
     {/* Faixa "<Assunto> hoje": só aparece se a aba tiver "faixaHoje" na configuração (hoje nenhuma tem: o dono tirou). */}
     {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}
     <EspacoAnuncio posicao="abaixo-ranking" />

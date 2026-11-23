@@ -242,7 +242,8 @@
             "id": "dinheiro-juros",
             "nome": "Dinheiro e juros",
             "grupo": "mundo-mercado",
-            "situacao": "em-breve",
+            "situacao": "no-ar",
+            "href": "/economia/dinheiro-e-juros",
             "medidas": [
               "Selic",
               "Câmbio",

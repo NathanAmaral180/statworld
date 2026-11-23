@@ -1,0 +1,35 @@
+{
+  "_explicacao": "Aba Dinheiro e juros (molde PaginaEconomia, só com painel de séries: não há dado por estado). Dados: dados/dinheiro/ (scripts/dinheiro/, Banco Central, SGS). Sem 'ao vivo' e sem bolsa: o índice da bolsa não tem série oficial aberta (os dados da B3 exigem licença).",
+  "aba": "dinheiro-juros",
+  "titulo": "A economia {dePais}",
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Dinheiro e juros"
+  ],
+  "dados": "dinheiro",
+  "medidas": [],
+  "painelSeries": {
+    "arquivo": "series",
+    "textos": {
+      "series": "Séries",
+      "periodo": "Período",
+      "dia": "Dia",
+      "mes": "Mês",
+      "doze": "12 meses",
+      "mesAnterior": "Mês anterior",
+      "semMudanca": "sem mudança",
+      "ponto": "{v} ponto",
+      "pontos": "{v} pontos",
+      "semDado": "sem dado",
+      "valorDe": "Valor de",
+      "mesDe": "Referente a",
+      "consultadoEm": "consultado em {data}",
+      "p1m": "1 mês",
+      "p6m": "6 meses",
+      "p1a": "1 ano",
+      "p5a": "5 anos",
+      "p10a": "10 anos"
+    }
+  }
+}

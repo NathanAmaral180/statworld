@@ -121,6 +121,12 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - O cartão da **balança comercial** do ano em curso (`CartaoBalanca.astro`, config `balanca`) fica no alto da lateral do mapa e ao lado das listas (`ListaBarras.astro`, painéis `tipo: "lista"`).
 - Data = "atualizada em" (a API do Comex Stat informa). Conferido com a notícia oficial do MDIC (jan–out 2026).
 
+## Dinheiro e juros
+- Página `/economia/dinheiro-e-juros`: molde `PaginaEconomia` com `aba="dinheiro-juros"` (`src/config/temas/dinheiro-brasil.json`), só com **painel de séries** (`painelSeries`, componente `PainelSeries.astro`): não há dado por estado.
+- Script `scripts/dinheiro/` (Banco Central, SGS): dólar PTAX (1), Selic meta (432), juros médios do crédito (20714), juros do crédito pessoal (20742), inadimplência (21082), saldo do crédito (20539).
+- Cada valor mostra a data a que se refere, e a fonte diz "consultado em".
+- **Sem "ao vivo" e sem bolsa:** a série do Ibovespa no SGS parou em 2019 e os dados da B3 exigem licença. Só entram com fonte oficial liberada.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

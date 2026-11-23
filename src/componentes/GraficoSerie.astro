@@ -64,15 +64,32 @@ const desenhos = series.map((s) => {
   const doPonto = s.pontos.map((p) => p.nome.match(/\d{4}/)?.[0] ?? '');
   const distintos = [...new Set(doPonto.filter(Boolean))];
   const cada = tipo === 'colunas' ? 4 : distintos.length <= 10 ? 1 : 2;
-  let ultimoAno = '';
-  doPonto.forEach((ano, i) => {
-    if (!ano || ano === ultimoAno) return;
-    ultimoAno = ano;
-    const k = distintos.indexOf(ano);
-    if (k % cada === 0 || (tipo === 'colunas' && k === distintos.length - 1)) anos.push({ x: x(i), texto: ano });
-  });
+  // Período curto (até 2 anos, pontos com mês no nome, ex.: "19 nov 2026" ou "set 2026"): rótulos por mês.
+  const mesDe = (nome: string) => nome.replace(/^\d+\s+/, '').match(/^([^\s\d]+)\s+\d{4}$/)?.[0] ?? '';
+  const meses = s.pontos.map((p) => mesDe(p.nome));
+  if (tipo === 'linhas' && distintos.length <= 2 && meses.every(Boolean)) {
+    const mDistintos = [...new Set(meses)];
+    const passoM = Math.ceil(mDistintos.length / 8);
+    let ultimoMes = '';
+    meses.forEach((m, i) => {
+      if (m === ultimoMes) return;
+      ultimoMes = m;
+      const k = mDistintos.indexOf(m);
+      if (k % passoM === 0) anos.push({ x: x(i), texto: k === 0 || m.startsWith('jan') ? m : m.split(' ')[0] });
+    });
+  } else {
+    let ultimoAno = '';
+    doPonto.forEach((ano, i) => {
+      if (!ano || ano === ultimoAno) return;
+      ultimoAno = ano;
+      const k = distintos.indexOf(ano);
+      if (k % cada === 0 || (tipo === 'colunas' && k === distintos.length - 1)) anos.push({ x: x(i), texto: ano });
+    });
+  }
+  // O primeiro rótulo sai se o seguinte estiver colado nele (no celular as letras crescem e eles se sobrepõem).
+  if (anos.length > 1 && anos[1].x - anos[0].x < 120) anos.shift();
   const fmt = { formato: s.formato, casas: s.casas };
-  const ultimo = [...s.pontos.keys()].reverse().find((i) => s.pontos[i].valor !== null) ?? 0;
+  const ultimo =[...s.pontos.keys()].reverse().find((i) => s.pontos[i].valor !== null) ?? 0;
   const primeiro = s.pontos.findIndex((p) => p.valor !== null);
   const eixo = (v: number) => formatar(v, { formato: s.formato, casas: Number.isInteger(v) ? 0 : (String(v).split('.')[1]?.length ?? 1), minCasas: 0 }, ctx).replace(/^R\$\s?/, '');
   return {
@@ -91,7 +108,7 @@ const desenhos = series.map((s) => {
 ---
 <div class={`gs${resumo ? ' com-resumo' : ''}`} data-grafico-serie data-painel-de={painelDe} hidden={oculto}>
   <div class="gs-graficos">
-    <h2 class="gs-titulo">{titulo}</h2>
+    {titulo && <h2 class="gs-titulo">{titulo}</h2>}
     {descricao && <p class="gs-desc">{descricao}</p>}
     {desenhos.map((g) => (
       <figure class="gs-fig">

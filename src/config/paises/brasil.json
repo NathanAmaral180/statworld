@@ -73,6 +73,9 @@
       "estado": "brasil-estados",
       "listas": "brasil-listas",
       "balanca": "brasil-balanca"
+    },
+    "dinheiro": {
+      "series": "brasil-series"
     }
   },
   "mapa": {
@@ -127,7 +130,8 @@
       "trabalho-renda",
       "precos",
       "impostos",
-      "comercio-exterior"
+      "comercio-exterior",
+      "dinheiro-juros"
     ]
   },
   "slug": "brasil",
