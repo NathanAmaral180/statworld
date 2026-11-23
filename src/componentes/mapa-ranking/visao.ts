@@ -53,6 +53,7 @@ export interface Ficha {
   // Composição em barra empilhada (ex.: valor adicionado × impostos), larguras em %.
   composicao?: { rotulo: string; texto: string; largura: number; destaque?: boolean }[];
   selo?: string; // selo de frequência (anual, mensal...) ao lado da fonte
+  carimbosExtras?: { selo?: string; texto: string }[]; // fontes de outros números da ficha (ex.: Novo Caged)
   nota: string;
 }
 
@@ -239,10 +240,11 @@ export function htmlFicha(f: Ficha, svgs?: Record<string, string>): string {
   const fonte = f.selo
     ? `<p class="ficha-fonte ficha-carimbo"><span class="selo-freq">${escapar(f.selo)}</span><span>${escapar(f.nota)}</span></p>`
     : `<p class="ficha-fonte">${escapar(f.nota)}</p>`;
+  const extras = (f.carimbosExtras ?? []).map((c) => `<p class="ficha-fonte ficha-carimbo">${c.selo ? `<span class="selo-freq">${escapar(c.selo)}</span>` : ''}<span>${escapar(c.texto)}</span></p>`).join('');
   const link = f.link ? `<a class="ficha-link" href="${escapar(f.link.url)}">${escapar(f.link.texto)} →</a>` : '';
   return `<p class="ficha-topo">${escapar(f.topo)}</p>
 <div class="ficha-linha"><h2 class="ficha-nome">${escapar(f.nome)}</h2><p class="ficha-valor${f.apagado ? ' sem' : ''}">${valor}</p></div>
-${sub}${comp}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}${fonte}`;
+${sub}${comp}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}${fonte}${extras}`;
 }
 
 export function htmlLegenda(v: Visao): string {

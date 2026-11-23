@@ -59,7 +59,10 @@
     },
     "trabalho": {
       "estado": "brasil-estados",
-      "series": "brasil-series"
+      "series": "brasil-series",
+      "extras": [
+        "brasil-caged"
+      ]
     }
   },
   "mapa": {

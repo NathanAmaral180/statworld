@@ -30,7 +30,10 @@ const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
 // Pasta de dados da aba (padrão: economia). O nome do arquivo vem do país (arquivos.<pasta>.<nível>).
 const pastaDados = tema.dados ?? 'economia';
-const economia = carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
+const economiaBase = carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
+// Arquivos extras da mesma pasta (ex.: Novo Caged), juntados aos indicadores da aba.
+const extrasDados = (pais.arquivos[pastaDados].extras ?? []).map((nome: string) => carregarDados<any>(pastaDados, nome));
+const economia = { ...economiaBase, indicadores: Object.assign({}, economiaBase.indicadores, ...extrasDados.map((x: any) => x.indicadores)) };
 
 // As medidas podem ser escritas na própria aba ou escolhidas pelo id entre as da Visão geral.
 const todasMedidas = economiaEstados.medidas as Medida[];

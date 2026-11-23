@@ -33,7 +33,7 @@ export interface Medida {
   comparaPais?: boolean;
   subtituloFicha?: string; // linha sob o nome na ficha (ex.: "Desemprego, {periodo}")
   // Outros números do mesmo arquivo de dados mostrados na ficha (ex.: renda média ao lado do desemprego).
-  extras?: { indicador: string; rotulo: string; formato: Formato; casas: number; sufixo?: string }[];
+  extras?: { indicador: string; rotulo: string; formato: Formato; casas: number; sufixo?: string; sinal?: boolean; mostrarFonte?: boolean }[];
 }
 
 export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctx: Contexto, outros: Record<string, Indicador> = {}): Visao {
@@ -79,11 +79,16 @@ export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: In
         const partes = formatarEmPartes(v, fmt, ctx);
         const pos = i < n ? preencher(n < total ? t.posicaoComFalta : t.posicao, { n: i + 1, total: n, nivel: ctx.nivelPlural }) : t.semDado;
         const detalhes: [string, string][] = [];
+        const carimbosExtras: { selo?: string; texto: string }[] = [];
         for (const x of m.extras ?? []) {
           const outro = outros[x.indicador];
           if (!outro) continue;
           const vx = outro.valores[u.sigla];
-          detalhes.push([x.rotulo, formatar(vx, { formato: x.formato, casas: x.casas }, ctx) + (vx != null && x.sufixo ? x.sufixo : '')]);
+          detalhes.push([preencher(x.rotulo, { periodo: outro.periodo }), formatar(vx, { formato: x.formato, casas: x.casas, sinal: x.sinal }, ctx) + (vx != null && x.sufixo ? x.sufixo : '')]);
+          if (x.mostrarFonte) {
+            const fx = outro.fontes[0] as Fonte & { dataDivulgacao?: string };
+            carimbosExtras.push({ selo: (outro as any).frequencia, texto: `${fx.nome}, ${fx.publicacao}${fx.dataDivulgacao ? ` · ${dataCurta(fx.dataDivulgacao, ctx)}` : ''}` });
+          }
         }
         const pct = (x: number | null) => formatar(x, { formato: 'percentual', casas: m.casas }, ctx);
         const composicao = m.composicao && v !== null
@@ -101,7 +106,7 @@ export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: In
           }
         }
         if (m.sufixoFicha && v !== null) partes.depois += m.sufixoFicha;
-        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, subtitulo: m.subtituloFicha ? preencher(m.subtituloFicha, { periodo: ind.periodo }) : undefined, apagado: v === null, composicao, detalhes: detalhes.length ? detalhes : undefined, aviso: m.avisoTitulo ?? m.aviso, selo: ind.frequencia, nota }];
+        return [u.sigla, { topo: `${u.regiao} · ${pos}`, nome: u.nome, ...partes, subtitulo: m.subtituloFicha ? preencher(m.subtituloFicha, { periodo: ind.periodo }) : undefined, apagado: v === null, composicao, detalhes: detalhes.length ? detalhes : undefined, aviso: m.avisoTitulo ?? m.aviso, selo: ind.frequencia, nota, carimbosExtras: carimbosExtras.length ? carimbosExtras : undefined }];
       })
     ),
     aviso: m.aviso,

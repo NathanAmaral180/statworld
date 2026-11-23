@@ -1,0 +1,55 @@
+{
+  "_explicacao": "Saldo de empregos com carteira (Novo Caged) por estado, no mês mais recente. Gerado por scripts/caged-estados/baixar.mjs. Não edite à mão. null = sem dado.",
+  "pais": "BR",
+  "nivel": "estado",
+  "periodo": "setembro de 2026",
+  "baixadoEm": "2026-11-23",
+  "indicadores": {
+    "caged-saldo": {
+      "nome": "Empregos com carteira criados no mês (admissões menos desligamentos)",
+      "unidade": "pessoas",
+      "periodo": "setembro de 2026",
+      "frequencia": "mensal",
+      "fontes": [
+        {
+          "nome": "Ministério do Trabalho e Emprego",
+          "publicacao": "Novo Caged, setembro de 2026",
+          "url": "https://www.gov.br/trabalho-e-emprego/pt-br/noticias-e-conteudo/2026/novembro/pais-gerou-1-248-mil-empregos-formais-ate-setembro-de-2026",
+          "arquivo": "ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/2026/202609/CAGEDMOV202609.7z",
+          "dataDivulgacao": "2026-11-04"
+        }
+      ],
+      "calculo": "Cálculo do StatWorld com os microdados oficiais: soma do saldo das movimentações declaradas no prazo (arquivo CAGEDMOV) de cada estado. O total do país (121305) inclui 168 movimentações sem estado identificado.",
+      "valorPais": 121305,
+      "valores": {
+        "AC": 235,
+        "AL": 11110,
+        "AM": 4412,
+        "AP": 1493,
+        "BA": 9626,
+        "CE": 5156,
+        "DF": 4327,
+        "ES": 2626,
+        "GO": 307,
+        "MA": 654,
+        "MG": 8102,
+        "MS": 1027,
+        "MT": 2233,
+        "PA": 5624,
+        "PB": 3895,
+        "PE": 13371,
+        "PI": 783,
+        "PR": 5800,
+        "RJ": 9285,
+        "RN": 879,
+        "RO": 1200,
+        "RR": 1068,
+        "RS": -2937,
+        "SC": 7086,
+        "SE": 3668,
+        "SP": 19391,
+        "TO": 716
+      }
+    }
+  }
+}

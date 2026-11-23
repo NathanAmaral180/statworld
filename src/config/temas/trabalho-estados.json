@@ -34,6 +34,14 @@
           "formato": "moeda",
           "casas": 0,
           "sufixo": " por mês"
+        },
+        {
+          "indicador": "caged-saldo",
+          "rotulo": "Empregos com carteira criados em {periodo}",
+          "formato": "numero",
+          "casas": 0,
+          "sinal": true,
+          "mostrarFonte": true
         }
       ]
     }

@@ -101,7 +101,7 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Fonte: IBGE, PNAD Contínua (`scripts/trabalho-estados/`). Por estado, trimestral: desemprego (tabela 4099, mapa e ranking) e renda média real habitual (5436, na ficha, via `extras`). Brasil mês a mês desde 2012 (trimestre móvel): desemprego (6381) e renda (6390), na vista "Desemprego e renda no tempo". A data de divulgação vem do próprio IBGE.
 - Vista de série: `src/componentes/GraficoSerie.astro` (linhas com cursor ligado entre os gráficos), entra no lugar do mapa (opção com `painel` no `MapaRanking`); ficha e ranking continuam.
 - Selo de frequência + fonte · data ao lado dos botões (`carimboNosBotoes`), como no design.
-- **Falta:** empregos com carteira (Novo Caged). Em 2026 o Ministério do Trabalho só publica por estado em PDF e microdados; precisa de script que leia os microdados.
+- Empregos com carteira (Novo Caged, Ministério do Trabalho): `scripts/caged-estados/` baixa os **microdados** do mês (FTP oficial, .7z aberto pelo pacote `7zip-bin`) e soma o saldo por estado → `dados/trabalho/brasil-caged.json` (arquivo extra da pasta trabalho: `arquivos.trabalho.extras` no país). Aparece na ficha com o próprio carimbo (mensal). Conferido com a divulgação oficial de set/2026. A data de divulgação de cada mês é digitada no script (`DIVULGACOES`).
 
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).

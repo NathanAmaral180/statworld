@@ -42,5 +42,5 @@ Basta rodar o comando; o script pega sozinho o período mais recente.
 - "estão em trimestres diferentes": o IBGE atualizou uma tabela e ainda não a outra. Rode de novo no dia seguinte.
 - "valores sem dado": o site mostra esses estados com hachura. Não é erro, mas vale conferir no Sidra.
 
-## O que ficou de fora (por enquanto)
-**Empregos com carteira criados no mês (Novo Caged, Ministério do Trabalho).** Em 2026 o Ministério publica esses números por estado só em PDF e em arquivos brutos muito grandes, e não mais em planilha. Para entrar no site, é preciso um script que leia os arquivos brutos (microdados).
+## Empregos com carteira
+Os empregos com carteira criados no mês (Novo Caged) vêm de outro script: `scripts/caged-estados/`.
