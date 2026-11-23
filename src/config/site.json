@@ -13,7 +13,14 @@
       "resumo": "Economia, estado por estado",
       "href": "/economia",
       "disponivel": true
+    },
+    {
+      "codigo": "840",
+      "nome": "Estados Unidos",
+      "resumo": "Economia, estado por estado",
+      "href": "/estados-unidos/economia",
+      "disponivel": true
     }
   ],
-  "_explicacaoPaises": "\"paises\" = lugares que aparecem na página inicial (mapa-múndi e lista). \"codigo\" = código numérico ISO do país (o mesmo de dados/geo/mundo-paises.json). Páginas de teste (ex.: EUA) ficam fora daqui."
+  "_explicacaoPaises": "\"paises\" = lugares que aparecem na página inicial (mapa-múndi e lista). \"codigo\" = código numérico ISO do país (o mesmo de dados/geo/mundo-paises.json)."
 }

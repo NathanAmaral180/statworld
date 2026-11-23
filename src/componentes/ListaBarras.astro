@@ -10,10 +10,10 @@ interface Props {
   titulo: string; descricao?: string; itens: Item[]; ctx: Contexto;
   formato: Formato; casas: number; compacto?: boolean; moeda?: string;
   cabecalhos: { nome: string; valor: string; parte?: string };
-  nota?: string; painelDe?: string; oculto?: boolean;
+  nota?: string; observacao?: string; painelDe?: string; oculto?: boolean;
   balanca?: any; textosBalanca?: any;
 }
-const { titulo, descricao, itens, ctx, formato, casas, compacto, moeda, cabecalhos, nota, painelDe, oculto = false, balanca, textosBalanca } = Astro.props;
+const { titulo, descricao, itens, ctx, formato, casas, compacto, moeda, cabecalhos, nota, observacao, painelDe, oculto = false, balanca, textosBalanca } = Astro.props;
 const c = moeda ? { ...ctx, moeda } : ctx;
 const maior = Math.max(...itens.map((i) => i.valor));
 ---
@@ -35,6 +35,7 @@ const maior = Math.max(...itens.map((i) => i.valor));
         ))}
       </tbody>
     </table>
+    {observacao && <p class="lb-nota">{observacao}</p>}
     {nota && <p class="lb-nota">{nota}</p>}
   </div>
   {balanca && <aside class="lb-lado"><CartaoBalanca dados={balanca} ctx={ctx} textos={textosBalanca} /></aside>}

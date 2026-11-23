@@ -161,7 +161,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
         <h1 id="h1">{site.slogan}</h1>
         <p class="lede">Cada número traz a fonte oficial e a data em que foi divulgado. Escolha um país no mapa ou um tema abaixo.</p>
         <div class="ctys">
-          <div class="ctys-h"><span class="eyebrow">Países</span><span>{site.paises.filter((p) => p.disponivel).length} disponível</span></div>
+          <div class="ctys-h"><span class="eyebrow">Países</span><span>{site.paises.filter((p) => p.disponivel).length} {site.paises.filter((p) => p.disponivel).length === 1 ? 'disponível' : 'disponíveis'}</span></div>
           {site.paises.filter((p) => p.disponivel).map((p) => (
             <a class="cty" href={p.href}><span class="sq"></span><span>{p.nome} <small>{p.resumo}</small></span><span class="go">Abrir <Fragment set:html={seta} /></span></a>
           ))}

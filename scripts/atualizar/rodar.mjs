@@ -26,6 +26,10 @@ const SCRIPTS = [
   { nome: 'Comércio exterior (Comex Stat)', script: 'comercio', quando: 'diario', arquivos: ['dados/comercio/brasil-estados.json', 'dados/comercio/brasil-listas.json', 'dados/comercio/brasil-balanca.json'] },
   { nome: 'Contas públicas (Tesouro, Banco Central)', script: 'contas-publicas', quando: 'diario', arquivos: ['dados/contas-publicas/brasil-r100.json', 'dados/contas-publicas/brasil-divida.json', 'dados/contas-publicas/brasil-cofog.json'] },
   { nome: 'Empregos com carteira (Novo Caged)', script: 'caged-estados', quando: 'semanal', arquivos: ['dados/trabalho/brasil-caged.json'] },
+  { nome: 'EUA: Trabalho e renda (BLS, BEA)', script: 'eua-trabalho', quando: 'diario', arquivos: ['dados/trabalho/eua-estados.json', 'dados/trabalho/eua-series.json'] },
+  { nome: 'EUA: Preços (BLS, BEA)', script: 'eua-precos', quando: 'diario', arquivos: ['dados/precos/eua-ipca.json', 'dados/precos/eua-estados.json'] },
+  { nome: 'EUA: Dinheiro e juros (Fed, Tesouro, Freddie Mac)', script: 'eua-dinheiro', quando: 'diario', arquivos: ['dados/dinheiro/eua-series.json'] },
+  { nome: 'EUA: Contas públicas (Tesouro dos EUA, BEA)', script: 'eua-contas-publicas', quando: 'diario', arquivos: ['dados/contas-publicas/eua-r100.json', 'dados/contas-publicas/eua-divida.json', 'dados/contas-publicas/eua-funcoes.json'] },
 ];
 
 const semanal = process.argv.includes('--semanal');

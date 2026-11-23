@@ -1,0 +1,1818 @@
+{
+  "_explicacao": "EUA: desemprego e salário médio por hora, mês a mês (BLS). Gerado por scripts/eua-trabalho/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-23",
+  "series": {
+    "desemprego": {
+      "nome": "Taxa de desemprego, %",
+      "unidade": "%",
+      "frequencia": "mensal",
+      "fontes": [
+        {
+          "nome": "BLS (EUA)",
+          "publicacao": "Current Population Survey, taxa de desemprego com ajuste sazonal (série LNS14000000)",
+          "url": "https://www.bls.gov/cps/",
+          "dataConsulta": "2026-11-23"
+        }
+      ],
+      "pontos": [
+        {
+          "periodo": "201201",
+          "nome": "jan 2012",
+          "valor": 8.3
+        },
+        {
+          "periodo": "201202",
+          "nome": "fev 2012",
+          "valor": 8.3
+        },
+        {
+          "periodo": "201203",
+          "nome": "mar 2012",
+          "valor": 8.2
+        },
+        {
+          "periodo": "201204",
+          "nome": "abr 2012",
+          "valor": 8.2
+        },
+        {
+          "periodo": "201205",
+          "nome": "mai 2012",
+          "valor": 8.2
+        },
+        {
+          "periodo": "201206",
+          "nome": "jun 2012",
+          "valor": 8.2
+        },
+        {
+          "periodo": "201207",
+          "nome": "jul 2012",
+          "valor": 8.2
+        },
+        {
+          "periodo": "201208",
+          "nome": "ago 2012",
+          "valor": 8.1
+        },
+        {
+          "periodo": "201209",
+          "nome": "set 2012",
+          "valor": 7.8
+        },
+        {
+          "periodo": "201210",
+          "nome": "out 2012",
+          "valor": 7.8
+        },
+        {
+          "periodo": "201211",
+          "nome": "nov 2012",
+          "valor": 7.7
+        },
+        {
+          "periodo": "201212",
+          "nome": "dez 2012",
+          "valor": 7.9
+        },
+        {
+          "periodo": "201301",
+          "nome": "jan 2013",
+          "valor": 8
+        },
+        {
+          "periodo": "201302",
+          "nome": "fev 2013",
+          "valor": 7.7
+        },
+        {
+          "periodo": "201303",
+          "nome": "mar 2013",
+          "valor": 7.5
+        },
+        {
+          "periodo": "201304",
+          "nome": "abr 2013",
+          "valor": 7.6
+        },
+        {
+          "periodo": "201305",
+          "nome": "mai 2013",
+          "valor": 7.5
+        },
+        {
+          "periodo": "201306",
+          "nome": "jun 2013",
+          "valor": 7.5
+        },
+        {
+          "periodo": "201307",
+          "nome": "jul 2013",
+          "valor": 7.3
+        },
+        {
+          "periodo": "201308",
+          "nome": "ago 2013",
+          "valor": 7.2
+        },
+        {
+          "periodo": "201309",
+          "nome": "set 2013",
+          "valor": 7.2
+        },
+        {
+          "periodo": "201310",
+          "nome": "out 2013",
+          "valor": 7.2
+        },
+        {
+          "periodo": "201311",
+          "nome": "nov 2013",
+          "valor": 6.9
+        },
+        {
+          "periodo": "201312",
+          "nome": "dez 2013",
+          "valor": 6.7
+        },
+        {
+          "periodo": "201401",
+          "nome": "jan 2014",
+          "valor": 6.6
+        },
+        {
+          "periodo": "201402",
+          "nome": "fev 2014",
+          "valor": 6.7
+        },
+        {
+          "periodo": "201403",
+          "nome": "mar 2014",
+          "valor": 6.7
+        },
+        {
+          "periodo": "201404",
+          "nome": "abr 2014",
+          "valor": 6.2
+        },
+        {
+          "periodo": "201405",
+          "nome": "mai 2014",
+          "valor": 6.3
+        },
+        {
+          "periodo": "201406",
+          "nome": "jun 2014",
+          "valor": 6.1
+        },
+        {
+          "periodo": "201407",
+          "nome": "jul 2014",
+          "valor": 6.2
+        },
+        {
+          "periodo": "201408",
+          "nome": "ago 2014",
+          "valor": 6.1
+        },
+        {
+          "periodo": "201409",
+          "nome": "set 2014",
+          "valor": 5.9
+        },
+        {
+          "periodo": "201410",
+          "nome": "out 2014",
+          "valor": 5.7
+        },
+        {
+          "periodo": "201411",
+          "nome": "nov 2014",
+          "valor": 5.8
+        },
+        {
+          "periodo": "201412",
+          "nome": "dez 2014",
+          "valor": 5.6
+        },
+        {
+          "periodo": "201501",
+          "nome": "jan 2015",
+          "valor": 5.7
+        },
+        {
+          "periodo": "201502",
+          "nome": "fev 2015",
+          "valor": 5.5
+        },
+        {
+          "periodo": "201503",
+          "nome": "mar 2015",
+          "valor": 5.4
+        },
+        {
+          "periodo": "201504",
+          "nome": "abr 2015",
+          "valor": 5.4
+        },
+        {
+          "periodo": "201505",
+          "nome": "mai 2015",
+          "valor": 5.6
+        },
+        {
+          "periodo": "201506",
+          "nome": "jun 2015",
+          "valor": 5.3
+        },
+        {
+          "periodo": "201507",
+          "nome": "jul 2015",
+          "valor": 5.2
+        },
+        {
+          "periodo": "201508",
+          "nome": "ago 2015",
+          "valor": 5.1
+        },
+        {
+          "periodo": "201509",
+          "nome": "set 2015",
+          "valor": 5
+        },
+        {
+          "periodo": "201510",
+          "nome": "out 2015",
+          "valor": 5
+        },
+        {
+          "periodo": "201511",
+          "nome": "nov 2015",
+          "valor": 5.1
+        },
+        {
+          "periodo": "201512",
+          "nome": "dez 2015",
+          "valor": 5
+        },
+        {
+          "periodo": "201601",
+          "nome": "jan 2016",
+          "valor": 4.8
+        },
+        {
+          "periodo": "201602",
+          "nome": "fev 2016",
+          "valor": 4.9
+        },
+        {
+          "periodo": "201603",
+          "nome": "mar 2016",
+          "valor": 5
+        },
+        {
+          "periodo": "201604",
+          "nome": "abr 2016",
+          "valor": 5.1
+        },
+        {
+          "periodo": "201605",
+          "nome": "mai 2016",
+          "valor": 4.8
+        },
+        {
+          "periodo": "201606",
+          "nome": "jun 2016",
+          "valor": 4.9
+        },
+        {
+          "periodo": "201607",
+          "nome": "jul 2016",
+          "valor": 4.8
+        },
+        {
+          "periodo": "201608",
+          "nome": "ago 2016",
+          "valor": 4.9
+        },
+        {
+          "periodo": "201609",
+          "nome": "set 2016",
+          "valor": 5
+        },
+        {
+          "periodo": "201610",
+          "nome": "out 2016",
+          "valor": 4.9
+        },
+        {
+          "periodo": "201611",
+          "nome": "nov 2016",
+          "valor": 4.7
+        },
+        {
+          "periodo": "201612",
+          "nome": "dez 2016",
+          "valor": 4.7
+        },
+        {
+          "periodo": "201701",
+          "nome": "jan 2017",
+          "valor": 4.7
+        },
+        {
+          "periodo": "201702",
+          "nome": "fev 2017",
+          "valor": 4.6
+        },
+        {
+          "periodo": "201703",
+          "nome": "mar 2017",
+          "valor": 4.4
+        },
+        {
+          "periodo": "201704",
+          "nome": "abr 2017",
+          "valor": 4.4
+        },
+        {
+          "periodo": "201705",
+          "nome": "mai 2017",
+          "valor": 4.4
+        },
+        {
+          "periodo": "201706",
+          "nome": "jun 2017",
+          "valor": 4.3
+        },
+        {
+          "periodo": "201707",
+          "nome": "jul 2017",
+          "valor": 4.3
+        },
+        {
+          "periodo": "201708",
+          "nome": "ago 2017",
+          "valor": 4.4
+        },
+        {
+          "periodo": "201709",
+          "nome": "set 2017",
+          "valor": 4.3
+        },
+        {
+          "periodo": "201710",
+          "nome": "out 2017",
+          "valor": 4.2
+        },
+        {
+          "periodo": "201711",
+          "nome": "nov 2017",
+          "valor": 4.2
+        },
+        {
+          "periodo": "201712",
+          "nome": "dez 2017",
+          "valor": 4.1
+        },
+        {
+          "periodo": "201801",
+          "nome": "jan 2018",
+          "valor": 4
+        },
+        {
+          "periodo": "201802",
+          "nome": "fev 2018",
+          "valor": 4.1
+        },
+        {
+          "periodo": "201803",
+          "nome": "mar 2018",
+          "valor": 4
+        },
+        {
+          "periodo": "201804",
+          "nome": "abr 2018",
+          "valor": 4
+        },
+        {
+          "periodo": "201805",
+          "nome": "mai 2018",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201806",
+          "nome": "jun 2018",
+          "valor": 4
+        },
+        {
+          "periodo": "201807",
+          "nome": "jul 2018",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201808",
+          "nome": "ago 2018",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201809",
+          "nome": "set 2018",
+          "valor": 3.7
+        },
+        {
+          "periodo": "201810",
+          "nome": "out 2018",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201811",
+          "nome": "nov 2018",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201812",
+          "nome": "dez 2018",
+          "valor": 3.9
+        },
+        {
+          "periodo": "201901",
+          "nome": "jan 2019",
+          "valor": 4
+        },
+        {
+          "periodo": "201902",
+          "nome": "fev 2019",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201903",
+          "nome": "mar 2019",
+          "valor": 3.8
+        },
+        {
+          "periodo": "201904",
+          "nome": "abr 2019",
+          "valor": 3.7
+        },
+        {
+          "periodo": "201905",
+          "nome": "mai 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "201906",
+          "nome": "jun 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "201907",
+          "nome": "jul 2019",
+          "valor": 3.7
+        },
+        {
+          "periodo": "201908",
+          "nome": "ago 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "201909",
+          "nome": "set 2019",
+          "valor": 3.5
+        },
+        {
+          "periodo": "201910",
+          "nome": "out 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "201911",
+          "nome": "nov 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "201912",
+          "nome": "dez 2019",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202001",
+          "nome": "jan 2020",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202002",
+          "nome": "fev 2020",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202003",
+          "nome": "mar 2020",
+          "valor": 4.4
+        },
+        {
+          "periodo": "202004",
+          "nome": "abr 2020",
+          "valor": 14.8
+        },
+        {
+          "periodo": "202005",
+          "nome": "mai 2020",
+          "valor": 13.2
+        },
+        {
+          "periodo": "202006",
+          "nome": "jun 2020",
+          "valor": 11
+        },
+        {
+          "periodo": "202007",
+          "nome": "jul 2020",
+          "valor": 10.2
+        },
+        {
+          "periodo": "202008",
+          "nome": "ago 2020",
+          "valor": 8.4
+        },
+        {
+          "periodo": "202009",
+          "nome": "set 2020",
+          "valor": 7.8
+        },
+        {
+          "periodo": "202010",
+          "nome": "out 2020",
+          "valor": 6.9
+        },
+        {
+          "periodo": "202011",
+          "nome": "nov 2020",
+          "valor": 6.7
+        },
+        {
+          "periodo": "202012",
+          "nome": "dez 2020",
+          "valor": 6.7
+        },
+        {
+          "periodo": "202101",
+          "nome": "jan 2021",
+          "valor": 6.4
+        },
+        {
+          "periodo": "202102",
+          "nome": "fev 2021",
+          "valor": 6.2
+        },
+        {
+          "periodo": "202103",
+          "nome": "mar 2021",
+          "valor": 6.1
+        },
+        {
+          "periodo": "202104",
+          "nome": "abr 2021",
+          "valor": 6.1
+        },
+        {
+          "periodo": "202105",
+          "nome": "mai 2021",
+          "valor": 5.8
+        },
+        {
+          "periodo": "202106",
+          "nome": "jun 2021",
+          "valor": 5.9
+        },
+        {
+          "periodo": "202107",
+          "nome": "jul 2021",
+          "valor": 5.4
+        },
+        {
+          "periodo": "202108",
+          "nome": "ago 2021",
+          "valor": 5.1
+        },
+        {
+          "periodo": "202109",
+          "nome": "set 2021",
+          "valor": 4.7
+        },
+        {
+          "periodo": "202110",
+          "nome": "out 2021",
+          "valor": 4.5
+        },
+        {
+          "periodo": "202111",
+          "nome": "nov 2021",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202112",
+          "nome": "dez 2021",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202201",
+          "nome": "jan 2022",
+          "valor": 4
+        },
+        {
+          "periodo": "202202",
+          "nome": "fev 2022",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202203",
+          "nome": "mar 2022",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202204",
+          "nome": "abr 2022",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202205",
+          "nome": "mai 2022",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202206",
+          "nome": "jun 2022",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202207",
+          "nome": "jul 2022",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202208",
+          "nome": "ago 2022",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202209",
+          "nome": "set 2022",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202210",
+          "nome": "out 2022",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202211",
+          "nome": "nov 2022",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202212",
+          "nome": "dez 2022",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202301",
+          "nome": "jan 2023",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202302",
+          "nome": "fev 2023",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202303",
+          "nome": "mar 2023",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202304",
+          "nome": "abr 2023",
+          "valor": 3.4
+        },
+        {
+          "periodo": "202305",
+          "nome": "mai 2023",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202306",
+          "nome": "jun 2023",
+          "valor": 3.6
+        },
+        {
+          "periodo": "202307",
+          "nome": "jul 2023",
+          "valor": 3.5
+        },
+        {
+          "periodo": "202308",
+          "nome": "ago 2023",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202309",
+          "nome": "set 2023",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202310",
+          "nome": "out 2023",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202311",
+          "nome": "nov 2023",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202312",
+          "nome": "dez 2023",
+          "valor": 3.8
+        },
+        {
+          "periodo": "202401",
+          "nome": "jan 2024",
+          "valor": 3.7
+        },
+        {
+          "periodo": "202402",
+          "nome": "fev 2024",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202403",
+          "nome": "mar 2024",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202404",
+          "nome": "abr 2024",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202405",
+          "nome": "mai 2024",
+          "valor": 3.9
+        },
+        {
+          "periodo": "202406",
+          "nome": "jun 2024",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202407",
+          "nome": "jul 2024",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202408",
+          "nome": "ago 2024",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202409",
+          "nome": "set 2024",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202410",
+          "nome": "out 2024",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202411",
+          "nome": "nov 2024",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202412",
+          "nome": "dez 2024",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202501",
+          "nome": "jan 2025",
+          "valor": 4
+        },
+        {
+          "periodo": "202502",
+          "nome": "fev 2025",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202503",
+          "nome": "mar 2025",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202504",
+          "nome": "abr 2025",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202505",
+          "nome": "mai 2025",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202506",
+          "nome": "jun 2025",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202507",
+          "nome": "jul 2025",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202508",
+          "nome": "ago 2025",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202509",
+          "nome": "set 2025",
+          "valor": 4.4
+        },
+        {
+          "periodo": "202510",
+          "nome": "out 2025",
+          "valor": null
+        },
+        {
+          "periodo": "202511",
+          "nome": "nov 2025",
+          "valor": 4.5
+        },
+        {
+          "periodo": "202512",
+          "nome": "dez 2025",
+          "valor": 4.4
+        },
+        {
+          "periodo": "202601",
+          "nome": "jan 2026",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202602",
+          "nome": "fev 2026",
+          "valor": 4.4
+        },
+        {
+          "periodo": "202603",
+          "nome": "mar 2026",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202604",
+          "nome": "abr 2026",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202605",
+          "nome": "mai 2026",
+          "valor": 4.3
+        },
+        {
+          "periodo": "202606",
+          "nome": "jun 2026",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202607",
+          "nome": "jul 2026",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202608",
+          "nome": "ago 2026",
+          "valor": 4.1
+        },
+        {
+          "periodo": "202609",
+          "nome": "set 2026",
+          "valor": 4.2
+        },
+        {
+          "periodo": "202610",
+          "nome": "out 2026",
+          "valor": 4.1
+        }
+      ]
+    },
+    "renda": {
+      "nome": "Salário médio por hora, setor privado, US$",
+      "unidade": "moeda",
+      "frequencia": "mensal",
+      "observacao": "Valores correntes (sem descontar a inflação).",
+      "fontes": [
+        {
+          "nome": "BLS (EUA)",
+          "publicacao": "Current Employment Statistics, salário médio por hora no setor privado (série CES0500000003)",
+          "url": "https://www.bls.gov/ces/",
+          "dataConsulta": "2026-11-23"
+        }
+      ],
+      "pontos": [
+        {
+          "periodo": "201201",
+          "nome": "jan 2012",
+          "valor": 23.26
+        },
+        {
+          "periodo": "201202",
+          "nome": "fev 2012",
+          "valor": 23.28
+        },
+        {
+          "periodo": "201203",
+          "nome": "mar 2012",
+          "valor": 23.36
+        },
+        {
+          "periodo": "201204",
+          "nome": "abr 2012",
+          "valor": 23.39
+        },
+        {
+          "periodo": "201205",
+          "nome": "mai 2012",
+          "valor": 23.41
+        },
+        {
+          "periodo": "201206",
+          "nome": "jun 2012",
+          "valor": 23.46
+        },
+        {
+          "periodo": "201207",
+          "nome": "jul 2012",
+          "valor": 23.49
+        },
+        {
+          "periodo": "201208",
+          "nome": "ago 2012",
+          "valor": 23.48
+        },
+        {
+          "periodo": "201209",
+          "nome": "set 2012",
+          "valor": 23.57
+        },
+        {
+          "periodo": "201210",
+          "nome": "out 2012",
+          "valor": 23.56
+        },
+        {
+          "periodo": "201211",
+          "nome": "nov 2012",
+          "valor": 23.63
+        },
+        {
+          "periodo": "201212",
+          "nome": "dez 2012",
+          "valor": 23.72
+        },
+        {
+          "periodo": "201301",
+          "nome": "jan 2013",
+          "valor": 23.74
+        },
+        {
+          "periodo": "201302",
+          "nome": "fev 2013",
+          "valor": 23.78
+        },
+        {
+          "periodo": "201303",
+          "nome": "mar 2013",
+          "valor": 23.8
+        },
+        {
+          "periodo": "201304",
+          "nome": "abr 2013",
+          "valor": 23.87
+        },
+        {
+          "periodo": "201305",
+          "nome": "mai 2013",
+          "valor": 23.89
+        },
+        {
+          "periodo": "201306",
+          "nome": "jun 2013",
+          "valor": 23.96
+        },
+        {
+          "periodo": "201307",
+          "nome": "jul 2013",
+          "valor": 23.98
+        },
+        {
+          "periodo": "201308",
+          "nome": "ago 2013",
+          "valor": 24.02
+        },
+        {
+          "periodo": "201309",
+          "nome": "set 2013",
+          "valor": 24.06
+        },
+        {
+          "periodo": "201310",
+          "nome": "out 2013",
+          "valor": 24.09
+        },
+        {
+          "periodo": "201311",
+          "nome": "nov 2013",
+          "valor": 24.16
+        },
+        {
+          "periodo": "201312",
+          "nome": "dez 2013",
+          "valor": 24.18
+        },
+        {
+          "periodo": "201401",
+          "nome": "jan 2014",
+          "valor": 24.22
+        },
+        {
+          "periodo": "201402",
+          "nome": "fev 2014",
+          "valor": 24.33
+        },
+        {
+          "periodo": "201403",
+          "nome": "mar 2014",
+          "valor": 24.31
+        },
+        {
+          "periodo": "201404",
+          "nome": "abr 2014",
+          "valor": 24.34
+        },
+        {
+          "periodo": "201405",
+          "nome": "mai 2014",
+          "valor": 24.4
+        },
+        {
+          "periodo": "201406",
+          "nome": "jun 2014",
+          "valor": 24.46
+        },
+        {
+          "periodo": "201407",
+          "nome": "jul 2014",
+          "valor": 24.48
+        },
+        {
+          "periodo": "201408",
+          "nome": "ago 2014",
+          "valor": 24.54
+        },
+        {
+          "periodo": "201409",
+          "nome": "set 2014",
+          "valor": 24.56
+        },
+        {
+          "periodo": "201410",
+          "nome": "out 2014",
+          "valor": 24.59
+        },
+        {
+          "periodo": "201411",
+          "nome": "nov 2014",
+          "valor": 24.66
+        },
+        {
+          "periodo": "201412",
+          "nome": "dez 2014",
+          "valor": 24.63
+        },
+        {
+          "periodo": "201501",
+          "nome": "jan 2015",
+          "valor": 24.74
+        },
+        {
+          "periodo": "201502",
+          "nome": "fev 2015",
+          "valor": 24.79
+        },
+        {
+          "periodo": "201503",
+          "nome": "mar 2015",
+          "valor": 24.85
+        },
+        {
+          "periodo": "201504",
+          "nome": "abr 2015",
+          "valor": 24.89
+        },
+        {
+          "periodo": "201505",
+          "nome": "mai 2015",
+          "valor": 24.97
+        },
+        {
+          "periodo": "201506",
+          "nome": "jun 2015",
+          "valor": 24.97
+        },
+        {
+          "periodo": "201507",
+          "nome": "jul 2015",
+          "valor": 25.01
+        },
+        {
+          "periodo": "201508",
+          "nome": "ago 2015",
+          "valor": 25.1
+        },
+        {
+          "periodo": "201509",
+          "nome": "set 2015",
+          "valor": 25.11
+        },
+        {
+          "periodo": "201510",
+          "nome": "out 2015",
+          "valor": 25.2
+        },
+        {
+          "periodo": "201511",
+          "nome": "nov 2015",
+          "valor": 25.25
+        },
+        {
+          "periodo": "201512",
+          "nome": "dez 2015",
+          "valor": 25.25
+        },
+        {
+          "periodo": "201601",
+          "nome": "jan 2016",
+          "valor": 25.37
+        },
+        {
+          "periodo": "201602",
+          "nome": "fev 2016",
+          "valor": 25.38
+        },
+        {
+          "periodo": "201603",
+          "nome": "mar 2016",
+          "valor": 25.45
+        },
+        {
+          "periodo": "201604",
+          "nome": "abr 2016",
+          "valor": 25.53
+        },
+        {
+          "periodo": "201605",
+          "nome": "mai 2016",
+          "valor": 25.58
+        },
+        {
+          "periodo": "201606",
+          "nome": "jun 2016",
+          "valor": 25.62
+        },
+        {
+          "periodo": "201607",
+          "nome": "jul 2016",
+          "valor": 25.69
+        },
+        {
+          "periodo": "201608",
+          "nome": "ago 2016",
+          "valor": 25.71
+        },
+        {
+          "periodo": "201609",
+          "nome": "set 2016",
+          "valor": 25.77
+        },
+        {
+          "periodo": "201610",
+          "nome": "out 2016",
+          "valor": 25.9
+        },
+        {
+          "periodo": "201611",
+          "nome": "nov 2016",
+          "valor": 25.9
+        },
+        {
+          "periodo": "201612",
+          "nome": "dez 2016",
+          "valor": 25.93
+        },
+        {
+          "periodo": "201701",
+          "nome": "jan 2017",
+          "valor": 26
+        },
+        {
+          "periodo": "201702",
+          "nome": "fev 2017",
+          "valor": 26.07
+        },
+        {
+          "periodo": "201703",
+          "nome": "mar 2017",
+          "valor": 26.11
+        },
+        {
+          "periodo": "201704",
+          "nome": "abr 2017",
+          "valor": 26.18
+        },
+        {
+          "periodo": "201705",
+          "nome": "mai 2017",
+          "valor": 26.21
+        },
+        {
+          "periodo": "201706",
+          "nome": "jun 2017",
+          "valor": 26.26
+        },
+        {
+          "periodo": "201707",
+          "nome": "jul 2017",
+          "valor": 26.35
+        },
+        {
+          "periodo": "201708",
+          "nome": "ago 2017",
+          "valor": 26.37
+        },
+        {
+          "periodo": "201709",
+          "nome": "set 2017",
+          "valor": 26.49
+        },
+        {
+          "periodo": "201710",
+          "nome": "out 2017",
+          "valor": 26.5
+        },
+        {
+          "periodo": "201711",
+          "nome": "nov 2017",
+          "valor": 26.54
+        },
+        {
+          "periodo": "201712",
+          "nome": "dez 2017",
+          "valor": 26.63
+        },
+        {
+          "periodo": "201801",
+          "nome": "jan 2018",
+          "valor": 26.72
+        },
+        {
+          "periodo": "201802",
+          "nome": "fev 2018",
+          "valor": 26.74
+        },
+        {
+          "periodo": "201803",
+          "nome": "mar 2018",
+          "valor": 26.85
+        },
+        {
+          "periodo": "201804",
+          "nome": "abr 2018",
+          "valor": 26.91
+        },
+        {
+          "periodo": "201805",
+          "nome": "mai 2018",
+          "valor": 26.98
+        },
+        {
+          "periodo": "201806",
+          "nome": "jun 2018",
+          "valor": 27.03
+        },
+        {
+          "periodo": "201807",
+          "nome": "jul 2018",
+          "valor": 27.1
+        },
+        {
+          "periodo": "201808",
+          "nome": "ago 2018",
+          "valor": 27.21
+        },
+        {
+          "periodo": "201809",
+          "nome": "set 2018",
+          "valor": 27.32
+        },
+        {
+          "periodo": "201810",
+          "nome": "out 2018",
+          "valor": 27.37
+        },
+        {
+          "periodo": "201811",
+          "nome": "nov 2018",
+          "valor": 27.44
+        },
+        {
+          "periodo": "201812",
+          "nome": "dez 2018",
+          "valor": 27.56
+        },
+        {
+          "periodo": "201901",
+          "nome": "jan 2019",
+          "valor": 27.59
+        },
+        {
+          "periodo": "201902",
+          "nome": "fev 2019",
+          "valor": 27.69
+        },
+        {
+          "periodo": "201903",
+          "nome": "mar 2019",
+          "valor": 27.77
+        },
+        {
+          "periodo": "201904",
+          "nome": "abr 2019",
+          "valor": 27.79
+        },
+        {
+          "periodo": "201905",
+          "nome": "mai 2019",
+          "valor": 27.88
+        },
+        {
+          "periodo": "201906",
+          "nome": "jun 2019",
+          "valor": 27.97
+        },
+        {
+          "periodo": "201907",
+          "nome": "jul 2019",
+          "valor": 28.03
+        },
+        {
+          "periodo": "201908",
+          "nome": "ago 2019",
+          "valor": 28.14
+        },
+        {
+          "periodo": "201909",
+          "nome": "set 2019",
+          "valor": 28.16
+        },
+        {
+          "periodo": "201910",
+          "nome": "out 2019",
+          "valor": 28.24
+        },
+        {
+          "periodo": "201911",
+          "nome": "nov 2019",
+          "valor": 28.34
+        },
+        {
+          "periodo": "201912",
+          "nome": "dez 2019",
+          "valor": 28.38
+        },
+        {
+          "periodo": "202001",
+          "nome": "jan 2020",
+          "valor": 28.43
+        },
+        {
+          "periodo": "202002",
+          "nome": "fev 2020",
+          "valor": 28.54
+        },
+        {
+          "periodo": "202003",
+          "nome": "mar 2020",
+          "valor": 28.73
+        },
+        {
+          "periodo": "202004",
+          "nome": "abr 2020",
+          "valor": 30.04
+        },
+        {
+          "periodo": "202005",
+          "nome": "mai 2020",
+          "valor": 29.72
+        },
+        {
+          "periodo": "202006",
+          "nome": "jun 2020",
+          "valor": 29.38
+        },
+        {
+          "periodo": "202007",
+          "nome": "jul 2020",
+          "valor": 29.39
+        },
+        {
+          "periodo": "202008",
+          "nome": "ago 2020",
+          "valor": 29.49
+        },
+        {
+          "periodo": "202009",
+          "nome": "set 2020",
+          "valor": 29.51
+        },
+        {
+          "periodo": "202010",
+          "nome": "out 2020",
+          "valor": 29.54
+        },
+        {
+          "periodo": "202011",
+          "nome": "nov 2020",
+          "valor": 29.64
+        },
+        {
+          "periodo": "202012",
+          "nome": "dez 2020",
+          "valor": 29.91
+        },
+        {
+          "periodo": "202101",
+          "nome": "jan 2021",
+          "valor": 29.93
+        },
+        {
+          "periodo": "202102",
+          "nome": "fev 2021",
+          "valor": 30.05
+        },
+        {
+          "periodo": "202103",
+          "nome": "mar 2021",
+          "valor": 30.03
+        },
+        {
+          "periodo": "202104",
+          "nome": "abr 2021",
+          "valor": 30.22
+        },
+        {
+          "periodo": "202105",
+          "nome": "mai 2021",
+          "valor": 30.41
+        },
+        {
+          "periodo": "202106",
+          "nome": "jun 2021",
+          "valor": 30.54
+        },
+        {
+          "periodo": "202107",
+          "nome": "jul 2021",
+          "valor": 30.66
+        },
+        {
+          "periodo": "202108",
+          "nome": "ago 2021",
+          "valor": 30.78
+        },
+        {
+          "periodo": "202109",
+          "nome": "set 2021",
+          "valor": 30.98
+        },
+        {
+          "periodo": "202110",
+          "nome": "out 2021",
+          "valor": 31.14
+        },
+        {
+          "periodo": "202111",
+          "nome": "nov 2021",
+          "valor": 31.23
+        },
+        {
+          "periodo": "202112",
+          "nome": "dez 2021",
+          "valor": 31.39
+        },
+        {
+          "periodo": "202201",
+          "nome": "jan 2022",
+          "valor": 31.6
+        },
+        {
+          "periodo": "202202",
+          "nome": "fev 2022",
+          "valor": 31.64
+        },
+        {
+          "periodo": "202203",
+          "nome": "mar 2022",
+          "valor": 31.8
+        },
+        {
+          "periodo": "202204",
+          "nome": "abr 2022",
+          "valor": 31.96
+        },
+        {
+          "periodo": "202205",
+          "nome": "mai 2022",
+          "valor": 32.1
+        },
+        {
+          "periodo": "202206",
+          "nome": "jun 2022",
+          "valor": 32.19
+        },
+        {
+          "periodo": "202207",
+          "nome": "jul 2022",
+          "valor": 32.34
+        },
+        {
+          "periodo": "202208",
+          "nome": "ago 2022",
+          "valor": 32.44
+        },
+        {
+          "periodo": "202209",
+          "nome": "set 2022",
+          "valor": 32.57
+        },
+        {
+          "periodo": "202210",
+          "nome": "out 2022",
+          "valor": 32.7
+        },
+        {
+          "periodo": "202211",
+          "nome": "nov 2022",
+          "valor": 32.82
+        },
+        {
+          "periodo": "202212",
+          "nome": "dez 2022",
+          "valor": 32.94
+        },
+        {
+          "periodo": "202301",
+          "nome": "jan 2023",
+          "valor": 33.02
+        },
+        {
+          "periodo": "202302",
+          "nome": "fev 2023",
+          "valor": 33.15
+        },
+        {
+          "periodo": "202303",
+          "nome": "mar 2023",
+          "valor": 33.27
+        },
+        {
+          "periodo": "202304",
+          "nome": "abr 2023",
+          "valor": 33.43
+        },
+        {
+          "periodo": "202305",
+          "nome": "mai 2023",
+          "valor": 33.5
+        },
+        {
+          "periodo": "202306",
+          "nome": "jun 2023",
+          "valor": 33.69
+        },
+        {
+          "periodo": "202307",
+          "nome": "jul 2023",
+          "valor": 33.85
+        },
+        {
+          "periodo": "202308",
+          "nome": "ago 2023",
+          "valor": 33.89
+        },
+        {
+          "periodo": "202309",
+          "nome": "set 2023",
+          "valor": 34.01
+        },
+        {
+          "periodo": "202310",
+          "nome": "out 2023",
+          "valor": 34.08
+        },
+        {
+          "periodo": "202311",
+          "nome": "nov 2023",
+          "valor": 34.17
+        },
+        {
+          "periodo": "202312",
+          "nome": "dez 2023",
+          "valor": 34.29
+        },
+        {
+          "periodo": "202401",
+          "nome": "jan 2024",
+          "valor": 34.47
+        },
+        {
+          "periodo": "202402",
+          "nome": "fev 2024",
+          "valor": 34.52
+        },
+        {
+          "periodo": "202403",
+          "nome": "mar 2024",
+          "valor": 34.65
+        },
+        {
+          "periodo": "202404",
+          "nome": "abr 2024",
+          "valor": 34.76
+        },
+        {
+          "periodo": "202405",
+          "nome": "mai 2024",
+          "valor": 34.89
+        },
+        {
+          "periodo": "202406",
+          "nome": "jun 2024",
+          "valor": 35.01
+        },
+        {
+          "periodo": "202407",
+          "nome": "jul 2024",
+          "valor": 35.08
+        },
+        {
+          "periodo": "202408",
+          "nome": "ago 2024",
+          "valor": 35.22
+        },
+        {
+          "periodo": "202409",
+          "nome": "set 2024",
+          "valor": 35.34
+        },
+        {
+          "periodo": "202410",
+          "nome": "out 2024",
+          "valor": 35.46
+        },
+        {
+          "periodo": "202411",
+          "nome": "nov 2024",
+          "valor": 35.6
+        },
+        {
+          "periodo": "202412",
+          "nome": "dez 2024",
+          "valor": 35.69
+        },
+        {
+          "periodo": "202501",
+          "nome": "jan 2025",
+          "valor": 35.84
+        },
+        {
+          "periodo": "202502",
+          "nome": "fev 2025",
+          "valor": 35.94
+        },
+        {
+          "periodo": "202503",
+          "nome": "mar 2025",
+          "valor": 36.11
+        },
+        {
+          "periodo": "202504",
+          "nome": "abr 2025",
+          "valor": 36.12
+        },
+        {
+          "periodo": "202505",
+          "nome": "mai 2025",
+          "valor": 36.28
+        },
+        {
+          "periodo": "202506",
+          "nome": "jun 2025",
+          "valor": 36.36
+        },
+        {
+          "periodo": "202507",
+          "nome": "jul 2025",
+          "valor": 36.47
+        },
+        {
+          "periodo": "202508",
+          "nome": "ago 2025",
+          "valor": 36.62
+        },
+        {
+          "periodo": "202509",
+          "nome": "set 2025",
+          "valor": 36.7
+        },
+        {
+          "periodo": "202510",
+          "nome": "out 2025",
+          "valor": 36.85
+        },
+        {
+          "periodo": "202511",
+          "nome": "nov 2025",
+          "valor": 37
+        },
+        {
+          "periodo": "202512",
+          "nome": "dez 2025",
+          "valor": 37.02
+        },
+        {
+          "periodo": "202601",
+          "nome": "jan 2026",
+          "valor": 37.15
+        },
+        {
+          "periodo": "202602",
+          "nome": "fev 2026",
+          "valor": 37.27
+        },
+        {
+          "periodo": "202603",
+          "nome": "mar 2026",
+          "valor": 37.35
+        },
+        {
+          "periodo": "202604",
+          "nome": "abr 2026",
+          "valor": 37.41
+        },
+        {
+          "periodo": "202605",
+          "nome": "mai 2026",
+          "valor": 37.49
+        },
+        {
+          "periodo": "202606",
+          "nome": "jun 2026",
+          "valor": 37.59
+        },
+        {
+          "periodo": "202607",
+          "nome": "jul 2026",
+          "valor": 37.64
+        },
+        {
+          "periodo": "202608",
+          "nome": "ago 2026",
+          "valor": 37.76
+        },
+        {
+          "periodo": "202609",
+          "nome": "set 2026",
+          "valor": 37.86
+        },
+        {
+          "periodo": "202610",
+          "nome": "out 2026",
+          "valor": 38
+        }
+      ]
+    }
+  }
+}

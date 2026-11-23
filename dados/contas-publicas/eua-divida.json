@@ -1,0 +1,121 @@
+{
+  "_explicacao": "EUA: dívida do governo federal em mãos do público, % do PIB, no fim de cada ano. Gerado por scripts/eua-contas-publicas/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-23",
+  "periodo": "2025",
+  "hoje": {
+    "data": "2026-11-20",
+    "valor": 32901198701800.97
+  },
+  "serie": {
+    "nome": "Dívida em mãos do público, % do PIB",
+    "unidade": "%",
+    "frequencia": "anual",
+    "fontes": [
+      {
+        "nome": "Tesouro dos EUA",
+        "publicacao": "Debt to the Penny, dívida em mãos do público (último dia de cada ano)",
+        "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/",
+        "dataConsulta": "2026-11-23"
+      },
+      {
+        "nome": "BEA (EUA)",
+        "publicacao": "PIB dos EUA, tabela SAGDP2",
+        "url": "https://apps.bea.gov/regional/downloadzip.htm"
+      }
+    ],
+    "calculo": "Cálculo do StatWorld: dívida em mãos do público no último dia do ano ÷ PIB do ano. Não inclui a dívida que o governo deve a si mesmo (fundos internos) nem a de estados e cidades.",
+    "pontos": [
+      {
+        "periodo": "2008",
+        "nome": "2008",
+        "valor": 43.1
+      },
+      {
+        "periodo": "2009",
+        "nome": "2009",
+        "valor": 54
+      },
+      {
+        "periodo": "2010",
+        "nome": "2010",
+        "valor": 62.4
+      },
+      {
+        "periodo": "2011",
+        "nome": "2011",
+        "valor": 67
+      },
+      {
+        "periodo": "2012",
+        "nome": "2012",
+        "valor": 71.3
+      },
+      {
+        "periodo": "2013",
+        "nome": "2013",
+        "valor": 73.2
+      },
+      {
+        "periodo": "2014",
+        "nome": "2014",
+        "valor": 74
+      },
+      {
+        "periodo": "2015",
+        "nome": "2015",
+        "valor": 74.7
+      },
+      {
+        "periodo": "2016",
+        "nome": "2016",
+        "valor": 76.8
+      },
+      {
+        "periodo": "2017",
+        "nome": "2017",
+        "valor": 75.5
+      },
+      {
+        "periodo": "2018",
+        "nome": "2018",
+        "valor": 77.9
+      },
+      {
+        "periodo": "2019",
+        "nome": "2019",
+        "valor": 79.7
+      },
+      {
+        "periodo": "2020",
+        "nome": "2020",
+        "valor": 101.2
+      },
+      {
+        "periodo": "2021",
+        "nome": "2021",
+        "valor": 97.5
+      },
+      {
+        "periodo": "2022",
+        "nome": "2022",
+        "valor": 94.1
+      },
+      {
+        "periodo": "2023",
+        "nome": "2023",
+        "valor": 96.8
+      },
+      {
+        "periodo": "2024",
+        "nome": "2024",
+        "valor": 98.1
+      },
+      {
+        "periodo": "2025",
+        "nome": "2025",
+        "valor": 100
+      }
+    ]
+  }
+}

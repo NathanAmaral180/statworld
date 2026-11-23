@@ -8,4 +8,4 @@ export function getStaticPaths() {
   return carregarAgro(paisCfg, 'estado').todos.map((p) => ({ params: { produto: p.id } }));
 }
 ---
-<PaginaProdutoAgro pais={paisCfg} produtoId={Astro.params.produto!} teste />
+<PaginaProdutoAgro pais={paisCfg} produtoId={Astro.params.produto!} />

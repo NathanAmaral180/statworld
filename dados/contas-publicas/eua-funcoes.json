@@ -1,0 +1,121 @@
+{
+  "_explicacao": "EUA: gasto do governo federal por função do orçamento no último ano fiscal completo. Gerado por scripts/eua-contas-publicas/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-23",
+  "periodo": "ano fiscal 2026",
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Tesouro dos EUA",
+      "publicacao": "Monthly Treasury Statement, tabela 9, ano fiscal de 2026 (out/2025 a set/2026)",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/",
+      "dataConsulta": "2026-11-23"
+    }
+  ],
+  "total": 7395799983313.23,
+  "observacao": "Não aparecem na lista, porque são valores negativos (descontos no gasto): Comércio e crédito habitacional (−US$ 15,5 bi); Receitas compensatórias (descontos) (−US$ 155,0 bi).",
+  "funcoes": [
+    {
+      "codigo": "Social Security",
+      "nome": "Previdência Social (aposentadorias e pensões)",
+      "valor": 1667097265194.46,
+      "parte": 22.54
+    },
+    {
+      "codigo": "Medicare",
+      "nome": "Medicare (saúde dos idosos)",
+      "valor": 1072626018868.53,
+      "parte": 14.5
+    },
+    {
+      "codigo": "Net Interest",
+      "nome": "Juros da dívida",
+      "valor": 1051753969311.11,
+      "parte": 14.22
+    },
+    {
+      "codigo": "Health",
+      "nome": "Saúde (inclui Medicaid)",
+      "valor": 1025587234576.31,
+      "parte": 13.87
+    },
+    {
+      "codigo": "National Defense",
+      "nome": "Defesa",
+      "valor": 965160356821.48,
+      "parte": 13.05
+    },
+    {
+      "codigo": "Income Security",
+      "nome": "Assistência e seguro-desemprego",
+      "valor": 694224470394.36,
+      "parte": 9.39
+    },
+    {
+      "codigo": "Veterans Benefits and Services",
+      "nome": "Veteranos de guerra",
+      "valor": 416204104589.87,
+      "parte": 5.63
+    },
+    {
+      "codigo": "Transportation",
+      "nome": "Transportes",
+      "valor": 142864249326.25,
+      "parte": 1.93
+    },
+    {
+      "codigo": "Administration of Justice",
+      "nome": "Justiça e segurança",
+      "valor": 109915442478.9,
+      "parte": 1.49
+    },
+    {
+      "codigo": "Education, Training, Employment, and Social Services",
+      "nome": "Educação, treinamento e serviços sociais",
+      "valor": 107551403356.47,
+      "parte": 1.45
+    },
+    {
+      "codigo": "Community and Regional Development",
+      "nome": "Desenvolvimento regional",
+      "valor": 62429584486.16,
+      "parte": 0.84
+    },
+    {
+      "codigo": "Natural Resources and Environment",
+      "nome": "Recursos naturais e meio ambiente",
+      "valor": 57098136028.25,
+      "parte": 0.77
+    },
+    {
+      "codigo": "Agriculture",
+      "nome": "Agricultura",
+      "valor": 52566167744.02,
+      "parte": 0.71
+    },
+    {
+      "codigo": "International Affairs",
+      "nome": "Relações internacionais",
+      "valor": 48014568338.42,
+      "parte": 0.65
+    },
+    {
+      "codigo": "General Science, Space, and Technology",
+      "nome": "Ciência, espaço e tecnologia",
+      "valor": 39876759073.93,
+      "parte": 0.54
+    },
+    {
+      "codigo": "General Government",
+      "nome": "Administração geral",
+      "valor": 32343463387.61,
+      "parte": 0.44
+    },
+    {
+      "codigo": "Energy",
+      "nome": "Energia",
+      "valor": 20970860009.28,
+      "parte": 0.28
+    }
+  ]
+}

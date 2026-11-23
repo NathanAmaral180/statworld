@@ -16,6 +16,96 @@ const lados = [
 const quadrados = (gs: Grupo[]) => gs.flatMap((g) => Array.from({ length: g.de100 }, () => g));
 const maior = [...dados.saidas].sort((a: Grupo, b: Grupo) => b.valor - a.valor)[0] as Grupo;
 const f = dados.fontes[0];
+const moeda = textos.moeda ?? 'R$'; // símbolo de cada quadradinho (R$ 1, US$ 1)
+---
+<div class="cc" data-cada-cem data-painel-de={painelDe} hidden={oculto}>
+  <div class="cc-principal">
+    <h2>{textos.titulo}</h2>
+    <p class="cc-desc">{dados.periodo}. {textos.descricao}</p>
+    <div class="cc-lados">
+      {lados.map((lado) => (
+        <section class="cc-lado">
+          <p class="cc-cab"><strong>{lado.titulo}</strong><span>{lado.sub}</span></p>
+          <div class="cc-quadro" role="img" aria-label={`${lado.titulo}: ${lado.grupos.map((g) => `${g.rotulo} ${moeda} ${g.de100}`).join(', ')}`}>
+            {quadrados(lado.grupos).map((g) => <i data-cat={g.id} style={`background: var(--${g.cor})`}></i>)}
+          </div>
+          <ul class="cc-lista">
+            {lado.grupos.map((g) => (
+              <li data-cat={g.id} title={g.inclui} tabindex="0">
+                <i style={`background: var(--${g.cor})`}></i>
+                <span><span class="r">{g.rotulo}</span>{g.inclui && <small>{g.inclui}</small>}</span>
+                <b>{moeda} {g.de100}</b>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+  <aside class="cc-resumo">
+    <p class="r-topo">{textos.topo.replace('{periodo}', dados.periodo)}</p>
+    <div class="r-linha"><h3>{textos.gastos}</h3><p class="r-valor"><strong>{tri(dados.totais.gastos)}</strong></p></div>
+    <dl>
+      <div><dt>{textos.receitas}</dt><dd>{tri(dados.totais.receitas)}</dd></div>
+      <div><dt>{textos.novaDivida}</dt><dd>{tri(dados.totais.novaDivida)}</dd></div>
+      <div><dt>{textos.maiorDestino}</dt><dd>{maior.rotulo}, {moeda} {maior.de100} {textos.deCada100}</dd></div>
+    </dl>
+    <p class="r-carimbo"><span class="selo">{dados.frequencia}</span><span>{f.nome}, {f.publicacao}{quandoCurto(f, ctx)}</span></p>
+    <p class="r-nota">{dados.calculo}</p>
+  </aside>
+</div>
+
+<script>
+  // Destaque: passar o mouse (ou focar) num item ou num quadradinho apaga os outros grupos.
+  for (const bloco of document.querySelectorAll<HTMLElement>('[data-cada-cem]')) {
+    const marcar = (cat: string | null) => {
+      bloco.classList.toggle('apagado', !!cat);
+      bloco.querySelectorAll<HTMLElement>('[data-cat]').forEach((el) => el.classList.toggle('aceso', el.dataset.cat === cat));
+    };
+    bloco.addEventListener('pointerover', (e) => { const c = (e.target as Element).closest<HTMLElement>('[data-cat]'); marcar(c?.dataset.cat ?? null); });
+    bloco.addEventListener('pointerleave', () => marcar(null));
+    bloco.addEventListener('focusin', (e) => { const c = (e.target as Element).closest<HTMLElement>('[data-cat]'); marcar(c?.dataset.cat ?? null); });
+    bloco.addEventListener('focusout', () => marcar(null));
+  }
+</script>
+
+<style>
+  .cc { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 56px; align-items: start; }
+  .cc[hidden] { display: none !important; }
+  h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+  .cc-desc { margin: 4px 0 0; color: var(--sub); font-size: 15px; }
+  .cc-lados { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+  .cc-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 0 10px; }
+  .cc-cab strong { font-size: 17px; font-weight: 600; }
+  .cc-cab span { font-size: 13px; color: var(--sub); }
+  .cc-quadro { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; max-width: 400px; }
+  .cc-quadro i { aspect-ratio: 1 / 1; display: block; border-radius: 2px; transition: opacity .15s; }
+  .apagado .cc-quadro i:not(.aceso) { opacity: .22; }
+  .cc-lista { list-style: none; margin: 20px 0 0; padding: 0; max-width: 400px; }
+  .cc-lista li { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 16px; border-radius: 6px; cursor: default; }
+  .cc-lista li:hover, .cc-lista li.aceso { background: var(--surf); }
+  .cc-lista li:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .cc-lista li > i { width: 14px; height: 14px; border-radius: 3px; display: block; }
+  .cc-lista small { display: none; font-size: 13px; color: var(--sub); margin-top: 2px; }
+  .cc-lista li.aceso small { display: block; }
+  .cc-lista .r { display: block; }
+  .cc-lista b { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cc-resumo { background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: grid; gap: 6px; }
+  .cc-resumo p, .cc-resumo h3 { margin: 0; }
+  .r-topo { font-size: 14px; color: var(--sub); }
+  .r-linha { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .r-linha h3 { font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+  .r-valor strong { font-size: 40px; font-weight: 600; letter-spacing: -.03em; line-height: 1; white-space: nowrap; }
+  .cc-resumo dl { margin: 10px 0 0; padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+  .cc-resumo dl div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--sub); }
+  .cc-resumo dd { margin: 0; color: var(--ink); font-weight: 500; text-align: right; }
+  .r-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--faint); margin-top: 6px !important; }
+  .r-nota { font-size: 12px; color: var(--faint); line-height: 1.5; }
+  .selo { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
+  @media (max-width: 1100px) { .cc { grid-template-columns: 1fr; gap: 32px; } }
+  @media (max-width: 640px) { .cc-lados { grid-template-columns: 1fr; gap: 36px; } .cc-quadro, .cc-lista { max-width: none; } .r-valor strong { font-size: 32px; } }
+</style>
+; // símbolo de cada quadradinho (R$ 1, US$ 1)
 ---
 <div class="cc" data-cada-cem data-painel-de={painelDe} hidden={oculto}>
   <div class="cc-principal">

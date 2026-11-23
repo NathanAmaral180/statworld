@@ -1,0 +1,121 @@
+{
+  "_explicacao": "EUA: de onde vem e para onde vai cada US$ 100 do governo federal no último ano fiscal completo. Gerado por scripts/eua-contas-publicas/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-23",
+  "periodo": "ano fiscal 2026",
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Tesouro dos EUA",
+      "publicacao": "Monthly Treasury Statement, tabela 9, ano fiscal de 2026 (out/2025 a set/2026)",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/",
+      "dataConsulta": "2026-11-23"
+    }
+  ],
+  "calculo": "Cálculo do StatWorld com a tabela 9 do Monthly Treasury Statement: gastos = gasto líquido total (inclui juros); receitas = receita total; \"nova dívida\" = gastos − receitas (o déficit). Cada lado é reduzido a US$ 100 e arredondado para somar 100. O ano fiscal dos EUA vai de outubro a setembro.",
+  "totais": {
+    "gastos": 7395799983313.23,
+    "receitas": 5403326758960.81,
+    "novaDivida": 1992473224352.421
+  },
+  "entradas": [
+    {
+      "id": "consumo",
+      "rotulo": "Impostos sobre consumo e importação",
+      "inclui": "Impostos seletivos (combustível, bebida, cigarro…) e tarifas de importação",
+      "cor": "p-leite",
+      "valor": 279213741221.78,
+      "de100": 4
+    },
+    {
+      "id": "renda",
+      "rotulo": "Impostos sobre renda e lucro",
+      "inclui": "Imposto de renda das pessoas e das empresas",
+      "cor": "p-soja",
+      "valor": 3226941555217.17,
+      "de100": 44
+    },
+    {
+      "id": "previdencia",
+      "rotulo": "Contribuições à Previdência",
+      "inclui": "Contribuições para aposentadoria, Medicare e seguro-desemprego",
+      "cor": "p-milho",
+      "valor": 1811794721160.92,
+      "de100": 24
+    },
+    {
+      "id": "outras",
+      "rotulo": "Outras receitas",
+      "inclui": "Impostos sobre herança e doações e receitas diversas (como os lucros do Fed)",
+      "cor": "p-gado",
+      "valor": 85376741360.94,
+      "de100": 1
+    },
+    {
+      "id": "nova-divida",
+      "rotulo": "Nova dívida",
+      "inclui": "O que faltou para pagar tudo: o governo pega emprestado (déficit)",
+      "cor": "p-mandioca",
+      "valor": 1992473224352.421,
+      "de100": 27
+    }
+  ],
+  "saidas": [
+    {
+      "id": "previdencia",
+      "rotulo": "Previdência Social",
+      "inclui": "Aposentadorias e pensões (Social Security)",
+      "cor": "p-leite",
+      "valor": 1667097265194.46,
+      "de100": 23
+    },
+    {
+      "id": "juros",
+      "rotulo": "Juros da dívida",
+      "inclui": "Juros líquidos pagos pela dívida federal",
+      "cor": "p-soja",
+      "valor": 1051753969311.11,
+      "de100": 14
+    },
+    {
+      "id": "saude",
+      "rotulo": "Saúde (Medicare e Medicaid)",
+      "inclui": "Medicare (idosos) e saúde, incluindo Medicaid",
+      "cor": "p-milho",
+      "valor": 2098213253444.84,
+      "de100": 28
+    },
+    {
+      "id": "defesa",
+      "rotulo": "Defesa",
+      "inclui": "Forças armadas e defesa nacional",
+      "cor": "p-gado",
+      "valor": 965160356821.48,
+      "de100": 13
+    },
+    {
+      "id": "assistencia",
+      "rotulo": "Assistência social",
+      "inclui": "Seguro-desemprego, auxílio-alimentação, créditos de imposto para famílias e outros",
+      "cor": "p-mandioca",
+      "valor": 694224470394.36,
+      "de100": 9
+    },
+    {
+      "id": "veteranos",
+      "rotulo": "Veteranos de guerra",
+      "inclui": "Benefícios e saúde dos veteranos",
+      "cor": "p-cana",
+      "valor": 416204104589.87,
+      "de100": 6
+    },
+    {
+      "id": "demais",
+      "rotulo": "Demais funções",
+      "inclui": "Transportes, educação, justiça, ciência, agricultura e as demais funções, menos as receitas compensatórias",
+      "cor": "p-cafe",
+      "valor": 503146563557.1101,
+      "de100": 7
+    }
+  ]
+}

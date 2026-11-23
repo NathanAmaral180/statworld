@@ -4,6 +4,8 @@
 // - um arquivo só, com "totais" por filtro e itens já marcados com o grupo (ex.: EUA/USDA, indústria/IBGE);
 // - agro do Brasil: dois arquivos, lavouras + pecuária (IBGE + MAPA).
 // Os textos de nota (de onde vem cada número) ficam no arquivo do país: pais.<tema>.notas.
+// Quando a medida do país é outra (ex.: EUA mede valor adicionado, o Brasil o valor da transformação), o arquivo do país
+// troca textos, opções, apelidos dos ícones e o produto padrão em pais.<tema>.sobrescrever.
 import { carregarDados } from './dados';
 import { construirVisaoProduto, type DadosProducao, type Produto } from '../componentes/mapa-ranking/construir-producao';
 import type { Valor } from '../componentes/mapa-ranking/visao';
@@ -19,8 +21,14 @@ export function temaAgro(pais: any, tema = 'agro') {
   if (!base) throw new Error(`Tema não encontrado: src/config/temas/${tema}-estados.json`);
   const icones = conjuntosIcones[`../config/icones/${tema}.json`] as any;
   const vars = { caminho: pais.caminho, pais: pais.slug, produto: '{produto}' };
+  const s = pais[tema]?.sobrescrever ?? {};
   return {
     ...base,
+    ...s,
+    textos: { ...base.textos, ...s.textos },
+    textosMolde: { ...base.textosMolde, ...s.textosMolde },
+    opcoes: { ...base.opcoes, ...s.opcoes },
+    apelidos: { ...base.apelidos, ...s.apelidos },
     id: tema,
     icones,
     urlProduto: preencher(base.urlProduto, vars),

@@ -14,9 +14,10 @@ interface Props {
   tipo?: 'linhas' | 'colunas';
   legenda?: { linha?: string; faixa?: string };
   resumo?: Resumo;
+  nota?: string; // observação embaixo do gráfico (ex.: mês sem dado e por quê)
   painelDe?: string; oculto?: boolean; // para o MapaRanking mostrar o painel certo de cada botão
 }
-const { titulo, descricao, series, ctx, tipo = 'linhas', legenda, resumo, painelDe, oculto = false } = Astro.props;
+const { titulo, descricao, series, ctx, tipo = 'linhas', legenda, resumo, painelDe, oculto = false, nota } = Astro.props;
 
 const L = 800, A = tipo === 'colunas' || series.length === 1 ? 300 : 200; // tamanho da área do desenho
 const M = { cima: 18, direita: 56, baixo: 26, esquerda: 0 };
@@ -49,6 +50,7 @@ const desenhos = series.map((s) => {
   });
   // Faixa (ex.: tolerância da meta): degraus que acompanham cada ponto.
   let faixa = '';
+  let linhaMeta = ''; // quando a meta é um número só (sem intervalo), vira linha tracejada
   if (s.faixa) {
     const ok = s.pontos.map((p, i) => ({ i, p })).filter(({ p }) => p.min != null && p.max != null);
     if (ok.length) {
@@ -56,7 +58,8 @@ const desenhos = series.map((s) => {
       const xi = (i: number, lado: -1 | 1) => Math.min(Math.max(x(i) + lado * meio, M.esquerda), M.esquerda + larg);
       const cima = ok.flatMap(({ i, p }) => [`${xi(i, -1).toFixed(1)},${y(p.max!).toFixed(1)}`, `${xi(i, 1).toFixed(1)},${y(p.max!).toFixed(1)}`]);
       const baixo = ok.slice().reverse().flatMap(({ i, p }) => [`${xi(i, 1).toFixed(1)},${y(p.min!).toFixed(1)}`, `${xi(i, -1).toFixed(1)},${y(p.min!).toFixed(1)}`]);
-      faixa = `M${cima.join('L')}L${baixo.join('L')}Z`;
+      if (ok.every(({ p }) => p.min === p.max)) linhaMeta = `M${ok.map(({ i, p }) => `${xi(i, -1).toFixed(1)},${y(p.max!).toFixed(1)}L${xi(i, 1).toFixed(1)},${y(p.max!).toFixed(1)}`).join('L')}`;
+      else faixa = `M${cima.join('L')}L${baixo.join('L')}Z`;
     }
   }
   // Rótulos do eixo de baixo: ano. Até 10 anos, todos; mais que isso, a cada 2 (colunas: a cada 4, e o último).
@@ -96,6 +99,7 @@ const desenhos = series.map((s) => {
     titulo: s.titulo,
     d,
     faixa,
+    linhaMeta,
     colunas: tipo === 'colunas' ? s.pontos.map((p, i) => (p.valor === null ? null : { x: x(i) - passo * 0.36, y: y(Math.max(p.valor, 0)), l: passo * 0.72, a: Math.abs(y(p.valor) - y(0)), ultimo: i === ultimo })) : [],
     rotulos: tipo === 'colunas' ? [primeiro, ultimo].filter((i, k, arr) => i >= 0 && arr.indexOf(i) === k).map((i) => ({ x: x(i), y: y(s.pontos[i].valor!) - 6, texto: formatar(s.pontos[i].valor, fmt, ctx), forte: i === ultimo })) : [],
     grade: ms.map((v) => ({ y: y(v), texto: eixo(v) })),
@@ -115,6 +119,7 @@ const desenhos = series.map((s) => {
         {g.titulo && <figcaption>{g.titulo}</figcaption>}
         <svg viewBox={`0 0 ${L} ${A}`} role="img" aria-label={g.titulo ?? titulo} data-pontos={JSON.stringify(g.pontos)}>
           {g.faixa && <path class="faixa" d={g.faixa} />}
+          {g.linhaMeta && <path class="meta" d={g.linhaMeta} />}
           {g.grade.map((m) => (
             <g><line class="gl" x1={M.esquerda} x2={L - M.direita} y1={m.y} y2={m.y} /><text x={L - M.direita + 8} y={m.y} dominant-baseline="central">{m.texto}</text></g>
           ))}
@@ -132,10 +137,11 @@ const desenhos = series.map((s) => {
         </svg>
       </figure>
     ))}
+    {nota && <p class="gs-nota">{nota}</p>}
     {legenda && (
       <ul class="gs-legenda">
         {legenda.linha && <li><i class={tipo === 'colunas' ? 'l-col' : 'l-linha'}></i>{legenda.linha}</li>}
-        {legenda.faixa && <li><i class="l-faixa"></i>{legenda.faixa}</li>}
+        {legenda.faixa && <li><i class={desenhos.some((d) => d.linhaMeta) ? 'l-meta' : 'l-faixa'}></i>{legenda.faixa}</li>}
       </ul>
     )}
   </div>
@@ -217,6 +223,9 @@ const desenhos = series.map((s) => {
   .l-linha { width: 16px; height: 2px; background: var(--accent); }
   .l-col { width: 12px; height: 12px; background: var(--bar); border-radius: 2px; }
   .l-faixa { width: 16px; height: 10px; background: var(--track); box-shadow: inset 0 0 0 1px var(--line); }
+  .l-meta { width: 16px; height: 0; border-top: 2px dashed var(--sub); }
+  .gs-fig .meta { fill: none; stroke: var(--sub); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .gs-nota { margin: 10px 0 0; font-size: 13px; color: var(--faint); line-height: 1.5; }
   /* Cartão de resumo (mesmo visual da ficha do mapa) */
   .gs-resumo { background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: grid; gap: 6px; }
   .gs-resumo p, .gs-resumo h3 { margin: 0; }

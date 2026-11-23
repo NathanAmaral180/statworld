@@ -32,7 +32,8 @@ const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos:
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
-const tema = CONFIGS[aba];
+// O país pode trocar partes da aba (ex.: EUA medem outro imposto): pais.abas.<aba>.
+const tema = CONFIGS[aba] ? { ...CONFIGS[aba], ...(pais.abas?.[aba] ?? {}) } : undefined;
 if (!tema) throw new Error(`Aba sem configuração: ${aba}`);
 
 const NIVEL = 'estado';
@@ -96,6 +97,7 @@ const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
       props: {
         titulo: preencher(cfg.titulo, { periodo: dados.periodo }), descricao: cfg.descricao,
         itens: dados[cfg.lista], formato: cfg.formato, casas: cfg.casas, compacto: cfg.compacto, moeda: cfg.moeda, cabecalhos: cfg.cabecalhos,
+        observacao: dados.observacao,
         nota: cfg.nota ? preencher(cfg.nota, { periodo: dados.periodo, total: formatar(dados.total, { formato: cfg.formato, casas: cfg.casas, compacto: cfg.compacto }, cfg.moeda ? { ...ctx, moeda: cfg.moeda } : ctx), fonte: `${fl.nome}, ${fl.publicacao}` }) : undefined,
       },
     }];
@@ -114,7 +116,7 @@ const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
       numero: fmtNum(u.valor, 'numero', 2), depois: '%',
       linhas: [
         [cfg.resumo.rotuloMeta, fmtNum(u.meta, 'percentual', 1)],
-        [cfg.resumo.rotuloIntervalo, `${fmtNum(u.min, 'percentual', 1)} a ${fmtNum(u.max, 'percentual', 1)}`],
+        ...(u.min === u.max ? [] : [[cfg.resumo.rotuloIntervalo, `${fmtNum(u.min, 'percentual', 1)} a ${fmtNum(u.max, 'percentual', 1)}`]]),
         [cfg.resumo.rotuloTeto, `${pts} ${Math.abs(u.valor - u.max) === 1 ? 'ponto' : 'pontos'} ${acima ? 'acima' : 'abaixo'}`],
       ],
       carimbos: s0.fontes.map((f: any, i: number) => carimboDe(i === 0 ? s0.frequencia : undefined, [f])),
@@ -127,7 +129,7 @@ const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
       topo: preencher(cfg.resumo.topo, { pais: pais.nome, periodo: fim.nome }), nome: cfg.resumo.nome,
       numero: fmtNum(fim.valor, s0.formato, s0.casas), depois: cfg.resumo.unidade,
       linhas: [
-        ...(cfg.resumo.campos ?? []).map((c: any) => [c.rotulo, fmtNum(pegar(dados, c.caminho), c.formato, c.casas)]),
+        ...(cfg.resumo.campos ?? []).map((c: any) => [preencher(c.rotulo, { data: pegar(dados, c.caminhoData ?? '') ? dataCurta(pegar(dados, c.caminhoData), ctx) : '' }), formatar(pegar(dados, c.caminho), { formato: c.formato, casas: c.casas, compacto: c.compacto }, ctx)]),
         [cfg.resumo.rotuloMaior, `${fmtNum(maior.valor, s0.formato, s0.casas)} em ${maior.nome}`],
         [cfg.resumo.rotuloMenor, `${fmtNum(menor.valor, s0.formato, s0.casas)} em ${menor.nome}`],
       ],
@@ -140,6 +142,7 @@ const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
     opcao: { id: cfg.id, rotulo: cfg.rotulo, visao: tema.medidaPadrao, painel: true, largo: !!cfg.largo, carimbo: carimboDe(s0.frequencia, s0.fontes) },
     props: {
       titulo: preencher(cfg.titulo, { inicio }), descricao: cfg.descricao, tipo: cfg.tipo ?? 'linhas', legenda: cfg.legenda, resumo,
+      nota: cfg.mostrarObservacao ? s0.observacao : undefined,
       series: series.map((x: any) => ({ titulo: x.titulo, formato: x.formato, casas: x.casas, faixa: x.faixa, zero: x.zero, pontos: x.pontos })),
     },
   }];

@@ -15,7 +15,7 @@ interface Props { series: Serie[]; ctx: Contexto; textos: Record<string, string>
 const { series, ctx, textos, inicial } = Astro.props;
 
 const MES = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString(ctx.idioma, { month: 'short', year: 'numeric' }).replace(/[.]/g, '').replace(/ de /g, ' ');
-const diaria = (s: Serie) => s.frequencia === 'diário' || s.frequencia === 'por reunião';
+const diaria = (s: Serie) => s.frequencia === 'diário' || s.frequencia === 'por reunião' || s.frequencia === 'semanal';
 const nomePonto = (s: Serie, d: string) => (diaria(s) ? dataCurta(d, ctx) : MES(d));
 const fmtValor = (s: Serie, v: number) =>
   formatar(v, { formato: s.unidade === '%' ? 'numero' : (s.unidade as any), casas: s.casas, compacto: s.compacto }, ctx) + (s.unidade === '%' ? '%' : '');

@@ -1,5 +1,5 @@
 {
-  "_explicacao": "Configuração dos Estados Unidos (página de teste do molde). Tudo que é exclusivo do país fica aqui.",
+  "_explicacao": "Configuração dos Estados Unidos. Tudo que é exclusivo do país fica aqui. \"abas\" troca partes da configuração de uma aba de Economia; \"<tema>.sobrescrever\" troca textos do molde de produção (agro, indústria, serviços).",
   "codigo": "US",
   "nome": "Estados Unidos",
   "dePais": "dos Estados Unidos",
@@ -7,7 +7,14 @@
   "subtemas": {
     "economia": [
       "visao-geral",
-      "agro"
+      "agro",
+      "industria",
+      "servicos",
+      "impostos",
+      "trabalho-renda",
+      "precos",
+      "dinheiro-juros",
+      "contas-publicas"
     ]
   },
   "idioma": "pt-BR",
@@ -45,6 +52,31 @@
     },
     "agro": {
       "estado": "eua-estados"
+    },
+    "industria": {
+      "estado": "eua-estados"
+    },
+    "servicos": {
+      "estado": "eua-estados"
+    },
+    "impostos": {
+      "estado": "eua-estados"
+    },
+    "trabalho": {
+      "estado": "eua-estados",
+      "series": "eua-series"
+    },
+    "precos": {
+      "estado": "eua-estados",
+      "ipca": "eua-ipca"
+    },
+    "dinheiro": {
+      "series": "eua-series"
+    },
+    "contas-publicas": {
+      "r100": "eua-r100",
+      "divida": "eua-divida",
+      "cofog": "eua-funcoes"
     }
   },
   "cortes": {
@@ -118,6 +150,288 @@
       "tudo": "Receita da venda de produtos agropecuários (cash receipts) do USDA, que inclui produtos florestais e aquicultura. Produtos que o USDA agrupa como \"outros\" entram no total, mas não aparecem sozinhos. Estado sem número para um produto aparece como \"sem dado\": o USDA não diz se não houve venda ou se o número é sigiloso.",
       "lavouras": "Receita da venda das lavouras (cash receipts) do USDA, incluindo flores, feno e produtos florestais.",
       "pecuaria": "Receita da venda de animais e produtos de origem animal (cash receipts) do USDA, incluindo aquicultura."
+    }
+  },
+  "industria": {
+    "notas": {
+      "tudo": "PIB (valor adicionado) de cada setor da indústria, em dólares (BEA, PIB por estado). É uma medida parecida, mas não igual, ao valor da transformação industrial do Brasil. Quando um setor tem poucas empresas num estado, o BEA esconde o número por sigilo: ele aparece como \"sem dado\". Não inclui construção nem energia.",
+      "extrativa": "Indústria extrativa: petróleo e gás, mineração e serviços de apoio (BEA).",
+      "transformacao": "Indústria de transformação: 19 setores do BEA (classificação NAICS)."
+    },
+    "sobrescrever": {
+      "produtoPadrao": "quimicos",
+      "apelidos": {
+        "petroleo-gas": "extracao-petroleo-gas",
+        "mineracao": "extracao-minerais-metalicos",
+        "minerais-nao-metalicos": "cimento-vidro-ceramica",
+        "alimentos-bebidas-fumo": "alimentos",
+        "vestuario-couro": "vestuario"
+      },
+      "opcoes": {
+        "valor": "Valor adicionado"
+      },
+      "textos": {
+        "medidaTotal": "Valor adicionado {grupo} em {periodo}",
+        "medidaCurta": "valor adicionado da indústria",
+        "medidaProdutoValor": "Valor adicionado de {produto} em {periodo}",
+        "subtituloProduto": "{grupoNome} · {valor} de valor adicionado em {periodo}, o {n}º entre os setores da indústria ({fonte})"
+      },
+      "textosMolde": {
+        "valorDaProducao": "Valor adicionado"
+      },
+      "descricao": "A indústria de cada estado {dePais}: setor líder e valor adicionado de cada setor. Mapa, ranking e ficha com dados oficiais."
+    }
+  },
+  "servicos": {
+    "notas": {
+      "tudo": "PIB (valor adicionado) das atividades de serviços, em dólares (BEA, PIB por estado), agrupado nas mesmas 7 atividades usadas para o Brasil, para comparar. \"Outros serviços\" reúne serviços profissionais e empresariais, educação e saúde privadas, artes, lazer, hospedagem e alimentação."
+    }
+  },
+  "abas": {
+    "impostos": {
+      "dados": "impostos",
+      "medidas": [
+        {
+          "id": "impostos-producao",
+          "rotulo": "Impostos sobre a produção (% do PIB)",
+          "titulo": "Impostos sobre a produção, % do PIB, {periodo}",
+          "formato": "percentual",
+          "casas": 1,
+          "sinal": false,
+          "cortes": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "avisoTitulo": "Esta medida não é arrecadação.",
+          "aviso": "Nos EUA, o BEA divide o PIB em salários, lucros e impostos sobre a produção e a importação (menos subsídios). Estes impostos incluem os de vendas e os sobre imóveis de empresas, mas não o imposto de renda. É um conceito mais amplo que o \"impostos sobre produtos\" do Brasil.",
+          "sufixoFicha": " do PIB",
+          "rotuloRanking": "% do PIB",
+          "comparaPais": true
+        }
+      ],
+      "medidaPadrao": "impostos-producao",
+      "cabecalhoMapa": {
+        "titulo": "Impostos sobre a produção, % do PIB de cada estado",
+        "descricao": "Quanto do PIB do estado são impostos sobre a produção e a importação, menos subsídios."
+      },
+      "descricao": "Impostos sobre a produção e a importação como parte do PIB de cada estado {dePais}: mapa e ranking. Dados oficiais do BEA, com fonte e data."
+    },
+    "trabalho-renda": {
+      "medidas": [
+        {
+          "id": "desemprego",
+          "rotulo": "Desemprego por estado",
+          "titulo": "Desemprego, {periodo}",
+          "formato": "percentual",
+          "casas": 1,
+          "sinal": false,
+          "cortes": [
+            3,
+            3.5,
+            4,
+            4.5,
+            5
+          ],
+          "rotuloRanking": "Desemprego",
+          "subtituloFicha": "Desemprego, {periodo}",
+          "comparaPais": true,
+          "extras": [
+            {
+              "indicador": "renda",
+              "rotulo": "Renda por pessoa ({periodo})",
+              "formato": "moeda",
+              "casas": 0,
+              "sufixo": " por ano",
+              "mostrarFonte": true
+            },
+            {
+              "indicador": "empregos",
+              "rotulo": "Empregos criados em {periodo}",
+              "formato": "numero",
+              "casas": 0,
+              "sinal": true,
+              "mostrarFonte": true
+            }
+          ]
+        }
+      ],
+      "paineis": [
+        {
+          "id": "no-tempo",
+          "rotulo": "Desemprego e salário no tempo",
+          "arquivo": "series",
+          "titulo": "Desemprego e salário médio, desde {inicio}",
+          "descricao": "Mês a mês, para o país inteiro. Passe o cursor para ver cada mês nos dois gráficos.",
+          "series": [
+            {
+              "caminho": "series.desemprego",
+              "titulo": "Taxa de desemprego, %",
+              "formato": "percentual",
+              "casas": 1
+            },
+            {
+              "caminho": "series.renda",
+              "titulo": "Salário médio por hora no setor privado, US$ (sem descontar a inflação)",
+              "formato": "moeda",
+              "casas": 2
+            }
+          ]
+        }
+      ],
+      "descricao": "Desemprego por estado, renda por pessoa e empregos criados no mês {dePais}, e o desemprego e o salário médio mês a mês. Dados oficiais do BLS e do BEA."
+    },
+    "precos": {
+      "medidas": [
+        {
+          "id": "custo-vida",
+          "rotulo": "Custo de vida por estado",
+          "titulo": "Custo de vida, {periodo} (EUA = 100)",
+          "formato": "numero",
+          "casas": 1,
+          "sinal": false,
+          "cortes": [
+            90,
+            95,
+            100,
+            105,
+            110
+          ],
+          "rotuloRanking": "Custo de vida",
+          "subtituloFicha": "Custo de vida em {periodo} (média do país = 100)",
+          "comparaPais": true,
+          "extras": [
+            {
+              "indicador": "custo-moradia",
+              "rotulo": "Moradia",
+              "formato": "numero",
+              "casas": 1
+            },
+            {
+              "indicador": "custo-bens",
+              "rotulo": "Bens (comida, roupas, carros…)",
+              "formato": "numero",
+              "casas": 1
+            }
+          ]
+        }
+      ],
+      "medidaPadrao": "custo-vida",
+      "paineis": [
+        {
+          "id": "inflacao",
+          "posicao": "antes",
+          "rotulo": "Inflação em 12 meses",
+          "arquivo": "ipca",
+          "largo": true,
+          "mostrarObservacao": true,
+          "titulo": "Inflação em 12 meses, desde {inicio}",
+          "descricao": "Variação do índice de preços ao consumidor (CPI) nos 12 meses anteriores. A linha tracejada é a meta de 2% do Fed, que o Fed mede por outro índice (PCE); ela não tem intervalo de tolerância.",
+          "series": [
+            {
+              "caminho": "serie",
+              "formato": "percentual",
+              "casas": 2,
+              "faixa": true,
+              "zero": true
+            }
+          ],
+          "legenda": {
+            "linha": "Inflação em 12 meses (CPI)",
+            "faixa": "Meta do Fed: 2% (medida pelo PCE)"
+          },
+          "resumo": {
+            "tipo": "meta",
+            "nome": "Inflação em 12 meses",
+            "rotuloMeta": "Meta do Fed (pelo PCE)",
+            "rotuloTeto": "Em relação à meta"
+          }
+        }
+      ],
+      "opcaoInicial": "inflacao",
+      "descricao": "Inflação em 12 meses com a meta do Fed e o custo de vida de cada estado {dePais}. Dados oficiais do BLS, do BEA e do Fed."
+    },
+    "dinheiro-juros": {
+      "descricao": "Juros do Fed, rendimento dos títulos do Tesouro de 2 e 10 anos e juro da hipoteca de 30 anos {dePais}, com gráficos por período. Dados oficiais, com data."
+    },
+    "contas-publicas": {
+      "paineis": [
+        {
+          "id": "cem",
+          "tipo": "cem",
+          "rotulo": "Cada US$ 100",
+          "arquivo": "r100",
+          "textos": {
+            "titulo": "De onde vem e para onde vai cada US$ 100 do governo federal",
+            "descricao": "Cada quadrado é US$ 1 de cada US$ 100 gastos. Passe o cursor sobre um item para destacá-lo. O ano fiscal dos EUA vai de outubro a setembro.",
+            "deOndeVem": "De onde vem",
+            "deOndeVemSub": "receitas e nova dívida",
+            "paraOndeVai": "Para onde vai",
+            "paraOndeVaiSub": "gastos, incluindo juros",
+            "topo": "Governo federal, {periodo}",
+            "gastos": "Gastos totais",
+            "receitas": "Receitas",
+            "novaDivida": "Diferença coberta com nova dívida (déficit)",
+            "maiorDestino": "Maior destino",
+            "deCada100": "de cada 100",
+            "moeda": "US$"
+          }
+        },
+        {
+          "id": "divida",
+          "rotulo": "Dívida pública",
+          "arquivo": "divida",
+          "largo": true,
+          "titulo": "Dívida do governo federal, desde {inicio}",
+          "descricao": "Dívida do governo federal em mãos do público (fora do próprio governo), em proporção do PIB, no fim de cada ano. Não inclui estados e cidades, por isso não é comparável à dívida bruta do Brasil.",
+          "series": [
+            {
+              "caminho": "serie",
+              "formato": "percentual",
+              "casas": 1
+            }
+          ],
+          "resumo": {
+            "tipo": "ultimo",
+            "topo": "{pais} · fim de {periodo}",
+            "nome": "Dívida pública",
+            "unidade": "do PIB",
+            "campos": [
+              {
+                "rotulo": "Hoje, em dólares ({data})",
+                "caminho": "hoje.valor",
+                "caminhoData": "hoje.data",
+                "formato": "moeda",
+                "casas": 1,
+                "compacto": true
+              }
+            ],
+            "rotuloMaior": "Maior da série",
+            "rotuloMenor": "Menor da série"
+          }
+        },
+        {
+          "id": "funcoes",
+          "tipo": "lista",
+          "rotulo": "Gasto por função",
+          "arquivo": "cofog",
+          "lista": "funcoes",
+          "titulo": "Gasto do governo federal por função, {periodo}",
+          "descricao": "Funções do orçamento federal dos EUA (classificação do próprio país, parecida com a COFOG internacional). Inclui os juros da dívida.",
+          "formato": "moeda",
+          "compacto": true,
+          "casas": 1,
+          "cabecalhos": {
+            "nome": "Função",
+            "valor": "Valor",
+            "parte": "Parte"
+          },
+          "nota": "Fonte: {fonte}. Gasto total: {total}."
+        }
+      ],
+      "descricao": "De onde vem e para onde vai cada US$ 100 do governo federal, a dívida pública e o gasto por função {dePais}. Dados oficiais do Tesouro dos EUA e do BEA."
     }
   }
 }
