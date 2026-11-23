@@ -69,5 +69,6 @@
         }
       ]
     }
-  ]
+  ],
+  "descricao": "Desemprego, renda média e empregos com carteira em cada estado {dePais}, e a evolução do desemprego e da renda mês a mês. Dados oficiais, com fonte e data."
 }

@@ -166,7 +166,7 @@ const fontePrincipal = indPrincipal?.fontes?.[0];
 const abas = abasDe('economia', pais);
 const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a.id === aba)?.nome ?? aba} · ${titulo}`;
 ---
-<Base titulo={tituloPagina} temaAtual="economia" naoIndexar={teste}>
+<Base titulo={tituloPagina} descricao={tema.descricao ? preencher(tema.descricao, vars) : undefined} temaAtual="economia" naoIndexar={teste}>
   <section class="conteudo pagina">
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">{trilha.join(' / ')}</p>

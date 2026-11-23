@@ -73,5 +73,6 @@
       },
       "nota": "Fonte: {fonte}. Total: {total}."
     }
-  ]
+  ],
+  "descricao": "De onde vem e para onde vai cada R$ 100 do governo federal, a dívida pública e o gasto por função {dePais}. Dados oficiais, com fonte e data."
 }

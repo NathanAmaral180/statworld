@@ -6,6 +6,7 @@ import site from '../config/site.json';
 import { temas as todosTemas, temasPorGrupo } from '../lib/catalogo';
 import pais from '../config/paises/brasil.json';
 import { carregarDados, carregarTextos } from '../lib/dados';
+import { carregarAgro } from '../lib/agro';
 import { formatar, formatarEmPartes, type Contexto, type Fonte } from '../componentes/mapa-ranking/visao';
 
 const ctx: Contexto = { idioma: site.idiomaPadrao, moeda: pais.moeda.codigo, textos: carregarTextos(site.idiomaPadrao), nivelSingular: 'país', nivelPlural: 'países' };
@@ -89,24 +90,47 @@ const temas = todosTemas.filter((t) => t.cabecalho).map((t) => {
 
 // ---------- histórias (só o que existe no site) ----------
 const fonteCurta = (f: Fonte) => `${f.nome}, ${f.publicacao.replace(/ \(.*\)$/, '').replace(/, versão.*$/, '')}`;
+// Textos com números: todos vêm dos arquivos de dados (nada digitado aqui).
+const comDado = (v: Record<string, any>) => Object.values(v).filter((x) => x != null).length;
+const nProdutosAgro = carregarAgro(pais, 'estado').todos.length;
+const grupo = (lista: any[], id: string) => lista.find((x) => x.id === id);
+const anoIni = (pontos: any[]) => pontos[0]?.nome.match(/\d{4}/)?.[0] ?? '';
 const historias = [
   {
     k: 'Economia · Brasil · Mapa', lead: true, href: '/economia/agro',
     t: 'O que cada estado mais produz no agro',
-    p: 'Soja no Centro-Oeste, gado no Norte, frango no Sul: o produto líder de cada estado, com lavouras e pecuária, e quanto cada um produz de 79 produtos.',
+    p: `O produto líder de cada um dos ${comDado(economia.indicadores['peso-pib'].valores)} estados, com lavouras e pecuária, e quanto cada estado produz de ${nProdutosAgro} produtos.`,
     m: [...lavouras.fontes, ...pecuaria.fontes].map(fonteCurta).filter((x, i, a) => a.indexOf(x) === i).slice(0, 3),
+  },
+  {
+    k: 'Economia · Brasil · Contas públicas', href: '/economia/contas-publicas',
+    t: 'De onde vem e para onde vai cada R$ 100 do governo',
+    p: `Em ${contasR100.periodo}, de cada R$ 100 gastos pelo governo federal, R$ ${grupo(contasR100.saidas, 'juros').de100} foram para os juros da dívida e R$ ${grupo(contasR100.entradas, 'nova-divida').de100} vieram de nova dívida.`,
+    m: [fonteCurta(contasR100.fontes[0])],
+  },
+  {
+    k: 'Economia · Brasil · Trabalho', href: '/economia/trabalho',
+    t: 'Desemprego e renda, estado por estado',
+    p: `Taxa de desemprego e renda média dos ${comDado(trabalho.indicadores.desemprego.valores)} estados (${trabalho.periodo}) e o Brasil mês a mês desde ${anoIni(trabalhoSeries.series.desemprego.pontos)}.`,
+    m: [fonteCurta(trabalho.indicadores.desemprego.fontes[0])],
   },
   {
     k: 'Economia · Brasil · Guia', href: '/economia',
     t: 'Onde está o PIB do Brasil, estado por estado',
-    p: 'Peso no PIB, PIB por pessoa e crescimento dos 27 estados.',
+    p: `Peso no PIB, PIB por pessoa e crescimento dos ${comDado(economia.indicadores['peso-pib'].valores)} estados.`,
     m: [fonteCurta(economia.indicadores.crescimento.fontes[0])],
   },
   {
-    k: 'Economia · Brasil · Produto', href: '/economia/agro/soja',
-    t: 'Soja: quanto cada estado produz',
-    p: 'Valor da produção e toneladas colhidas, estado por estado.',
-    m: [fonteCurta(lavouras.fontes[0])],
+    k: 'Economia · Brasil · Preços', href: '/economia/precos',
+    t: 'Quanto custa a cesta básica em cada capital',
+    p: `O preço da cesta nas ${comDado(precosEstados.indicadores.cesta.valores)} capitais (${precosEstados.periodo}) e quantas cestas o salário mínimo compra desde ${precosSm.serie.pontos[0].periodo}.`,
+    m: [fonteCurta(precosEstados.indicadores.cesta.fontes[0])],
+  },
+  {
+    k: 'Economia · Brasil · Comércio exterior', href: '/economia/comercio-exterior',
+    t: 'O que o Brasil vende e para quem',
+    p: `Quanto cada estado exportou em ${comercio.periodo}, os dez principais produtos e países compradores, e a balança do ano.`,
+    m: [fonteCurta(comercio.indicadores.exportacoes.fontes[0])],
   },
 ];
 
@@ -120,7 +144,7 @@ const todasFontes: Fonte[] = [
 ];
 const porOrgao = new Map<string, Set<string>>();
 for (const f of todasFontes) {
-  const curta = /\(série \d+ do SGS\)/.test(f.publicacao) ? 'Séries temporais (SGS)' : f.publicacao.replace(/ \(.*$/, '').replace(/^(PNAD Contínua( mensal)?|Novo Caged|IPCA|Pesquisa Nacional da Cesta Básica de Alimentos|Comex Stat|Resultado do Tesouro Nacional|Despesas por Função do Governo Central),.*$/, '$1').replace(/, versão.*$/, '').replace(/\s\d{4}$/, '').replace(/ \d{4} /, ' ');
+  const curta = /\(série \d+ do SGS\)/.test(f.publicacao) ? 'Séries temporais (SGS)' : f.publicacao.replace(/ \(.*$/, '').replace(/^(PNAD Contínua( mensal)?|Novo Caged|IPCA|Pesquisa Nacional da Cesta Básica de Alimentos|Comex Stat|Resultado do Tesouro Nacional|Despesas por Função do Governo Central),.*$/, '$1').replace(/, versão.*$/, '').replace(/\s\d{4}$/, '').replace(/ \d{4} /, ' ').replace(/ \d{4},/, ',');
   if (!porOrgao.has(f.nome)) porOrgao.set(f.nome, new Set());
   porOrgao.get(f.nome)!.add(curta);
 }

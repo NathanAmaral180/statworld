@@ -47,7 +47,7 @@ const abas = [
   { id: 'historia', nome: tema.textos.abaHistoria, ativo: false },
 ];
 ---
-<Base titulo={`${produto.nome} · ${trilha[2]} · ${pais.nome}`} temaAtual="economia" naoIndexar={teste}>
+<Base titulo={`${produto.nome} · ${trilha[2]} · ${pais.nome}`} descricao={tema.descricaoProduto ? preencher(tema.descricaoProduto, { produto: produto.nome, dePais: pais.dePais, pais: pais.nome }) : undefined} temaAtual="economia" naoIndexar={teste}>
   <section class="conteudo pagina">
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">

@@ -60,7 +60,7 @@ const trilha = tema.trilha.map((t) => preencher(t, vars));
 // Abas de Economia (com grupos) vêm do cadastro; as que o país ainda não tem aparecem "em breve".
 const abas = abasDe('economia', pais);
 ---
-<Base titulo={`${trilha.at(-1)} · ${titulo}`} temaAtual="economia" naoIndexar={teste}>
+<Base titulo={`${trilha.at(-1)} · ${titulo}`} descricao={tema.descricao ? preencher(tema.descricao, { dePais: pais.dePais, pais: pais.nome }) : undefined} temaAtual="economia" naoIndexar={teste}>
   <section class="conteudo pagina">
     {teste && <p class="aviso-teste">Página de teste: ainda não aparece no menu do site.</p>}
     <p class="trilha">{trilha.join(' / ')}</p>

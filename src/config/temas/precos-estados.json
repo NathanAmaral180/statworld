@@ -108,5 +108,6 @@
         "rotuloMenor": "Menor da série"
       }
     }
-  ]
+  ],
+  "descricao": "Inflação em 12 meses com a meta, preço da cesta básica em cada capital e quantas cestas o salário mínimo compra {dePais}. Dados oficiais, com fonte e data."
 }

@@ -88,5 +88,6 @@
       },
       "nota": "Fonte: {fonte}. Total exportado em {periodo}: {total}."
     }
-  ]
+  ],
+  "descricao": "Exportações de cada estado {dePais}, principais produtos e países compradores, e a balança comercial do ano. Dados oficiais, com fonte e data."
 }

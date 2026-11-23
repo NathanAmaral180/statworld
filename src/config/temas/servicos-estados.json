@@ -1,7 +1,11 @@
 {
   "_explicacao": "Mapa de Serviços por estado (mesmo molde do Agro e da Indústria). Ícones e cores das atividades vêm do Claude Design (src/config/icones/servicos.json e src/estilos/cores-servicos.css). 'textosMolde' troca as palavras do molde (produto -> atividade). 'cortesParticipacao' = faixas de participação no total do país (%), 5 limites = 6 cores. Notas sobre a fonte ficam no arquivo do país (servicos.notas).",
   "titulo": "A economia {dePais}",
-  "trilha": ["Economia", "{pais}", "Serviços"],
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Serviços"
+  ],
   "opcoes": {
     "lider": "Atividade líder",
     "quanto": "Quanto produz",
@@ -11,16 +15,34 @@
     "mostrar": "Mostrar"
   },
   "filtros": [
-    { "id": "tudo", "rotulo": "Tudo", "grupoTexto": "dos serviços" },
-    { "id": "mercado", "rotulo": "De mercado", "grupoTexto": "dos serviços de mercado" },
-    { "id": "publico", "rotulo": "Públicos", "grupoTexto": "dos serviços públicos" }
+    {
+      "id": "tudo",
+      "rotulo": "Tudo",
+      "grupoTexto": "dos serviços"
+    },
+    {
+      "id": "mercado",
+      "rotulo": "De mercado",
+      "grupoTexto": "dos serviços de mercado"
+    },
+    {
+      "id": "publico",
+      "rotulo": "Públicos",
+      "grupoTexto": "dos serviços públicos"
+    }
   ],
   "grupos": {
     "mercado": "Serviços de mercado",
     "publico": "Serviços públicos"
   },
   "produtoPadrao": "comercio",
-  "cortesParticipacao": [1, 2.5, 5, 10, 20],
+  "cortesParticipacao": [
+    1,
+    2.5,
+    5,
+    10,
+    20
+  ],
   "apelidos": {},
   "iconeOutro": "servicos",
   "urlProduto": "{caminho}/economia/servicos/{produto}",
@@ -51,5 +73,7 @@
     "outrosProdutosBotao": "Outras atividades",
     "buscarProduto": "Buscar atividade",
     "nenhumProduto": "Nenhuma atividade com esse nome."
-  }
+  },
+  "descricao": "Os serviços em cada estado {dePais}: atividade líder e valor de cada atividade. Mapa, ranking e ficha com dados oficiais.",
+  "descricaoProduto": "{produto}: quanto essa atividade de serviços vale em cada estado {dePais}. Mapa, ranking e ficha com dados oficiais, fonte e data."
 }

@@ -60,5 +60,7 @@
   "grupos": {
     "lavouras": "Lavouras",
     "pecuaria": "Pecuária"
-  }
+  },
+  "descricao": "O que cada estado {dePais} mais produz no agro e quanto produz de cada lavoura e criação, em valor. Mapa, ranking e ficha com dados oficiais.",
+  "descricaoProduto": "{produto}: quanto cada estado {dePais} produz, em valor e em quantidade. Mapa, ranking e ficha com dados oficiais, fonte e data."
 }
