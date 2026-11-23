@@ -1,0 +1,120 @@
+{
+  "_explicacao": "Os 10 principais produtos exportados (classificação CUCI/SITC, posição) e os 10 principais países compradores, no último ano completo. Gerado por scripts/comercio/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-23",
+  "periodo": "2025",
+  "total": 348278462500,
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Secex/MDIC",
+      "publicacao": "Comex Stat, exportações de 2025",
+      "url": "https://comexstat.mdic.gov.br",
+      "dataAtualizacao": "2026-11-06"
+    }
+  ],
+  "produtos": [
+    {
+      "nome": "Óleos brutos de petróleo ou de minerais betuminosos, crus",
+      "valor": 44536562333,
+      "parte": 12.79
+    },
+    {
+      "nome": "Soja",
+      "valor": 43535950700,
+      "parte": 12.5
+    },
+    {
+      "nome": "Minério de ferro e seus concentrados",
+      "valor": 28978740006,
+      "parte": 8.32
+    },
+    {
+      "nome": "Carne bovina fresca, refrigerada ou congelada",
+      "valor": 16608461853,
+      "parte": 4.77
+    },
+    {
+      "nome": "Café não torrado",
+      "valor": 14865815978,
+      "parte": 4.27
+    },
+    {
+      "nome": "Açúcares e melaços",
+      "valor": 14129892288,
+      "parte": 4.06
+    },
+    {
+      "nome": "Óleos combustíveis de petróleo ou de minerais betuminosos (exceto óleos brutos)",
+      "valor": 10333387327,
+      "parte": 2.97
+    },
+    {
+      "nome": "Celulose",
+      "valor": 10165119931,
+      "parte": 2.92
+    },
+    {
+      "nome": "Carnes de aves e suas miudezas comestíveis, frescas, refrigeradas ou congeladas",
+      "valor": 8816347122,
+      "parte": 2.53
+    },
+    {
+      "nome": "Farelos de soja e outros alimentos para animais (excluídos cereais não moídos), farinhas de carnes e outros animais",
+      "valor": 8644804013,
+      "parte": 2.48
+    }
+  ],
+  "parceiros": [
+    {
+      "nome": "China",
+      "valor": 99940244710,
+      "parte": 28.7
+    },
+    {
+      "nome": "Estados Unidos",
+      "valor": 37682246914,
+      "parte": 10.82
+    },
+    {
+      "nome": "Argentina",
+      "valor": 18105303283,
+      "parte": 5.2
+    },
+    {
+      "nome": "Países Baixos (Holanda)",
+      "valor": 11726736048,
+      "parte": 3.37
+    },
+    {
+      "nome": "Espanha",
+      "valor": 8783248496,
+      "parte": 2.52
+    },
+    {
+      "nome": "México",
+      "valor": 7728866863,
+      "parte": 2.22
+    },
+    {
+      "nome": "Singapura",
+      "valor": 7353096562,
+      "parte": 2.11
+    },
+    {
+      "nome": "Canadá",
+      "valor": 7251870870,
+      "parte": 2.08
+    },
+    {
+      "nome": "Chile",
+      "valor": 7176227117,
+      "parte": 2.06
+    },
+    {
+      "nome": "Índia",
+      "valor": 6865880767,
+      "parte": 1.97
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+---
+// Cartão "Balança comercial" do ano em curso: exportações, importações (com barras), saldo e o mesmo período do ano anterior.
+// Visual: design da rodada 4 (Comércio exterior). Números vêm de dados/ (nada escrito aqui).
+import { formatar, quandoCurto, type Contexto } from './mapa-ranking/visao';
+
+interface Props { dados: any; ctx: Contexto; textos: { titulo: string; exportacoes: string; importacoes: string; saldo: string; anterior: string } }
+const { dados, ctx, textos } = Astro.props;
+const usd = { ...ctx, moeda: 'USD' };
+const f = (v: number, sinal = false) => formatar(v, { formato: 'moeda', casas: 1, compacto: true, sinal }, usd);
+const maior = Math.max(dados.exportacoes, dados.importacoes);
+const fonte = dados.fontes[0];
+---
+<section class="balanca" aria-label={textos.titulo}>
+  <p class="b-topo">{textos.titulo} · {dados.periodo}</p>
+  <div class="b-linha"><span>{textos.exportacoes}</span><i><b style={`width:${(dados.exportacoes / maior) * 100}%`} class="exp"></b></i><strong>{f(dados.exportacoes)}</strong></div>
+  <div class="b-linha"><span>{textos.importacoes}</span><i><b style={`width:${(dados.importacoes / maior) * 100}%`}></b></i><strong>{f(dados.importacoes)}</strong></div>
+  <div class="b-saldo"><span>{textos.saldo}</span><strong>{f(dados.saldo, true)}</strong></div>
+  <p class="b-ant">{textos.anterior.replace('{ano}', String(dados.anoAnterior))}: {f(dados.saldoAnoAnterior, true)}</p>
+  <p class="b-carimbo"><span class="selo">{dados.frequencia}</span><span>{fonte.nome}, {fonte.publicacao}{quandoCurto(fonte, ctx)}</span></p>
+</section>
+
+<style>
+  .balanca { background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: grid; gap: 10px; }
+  .balanca p { margin: 0; }
+  .b-topo { font-size: 14px; color: var(--sub); }
+  .b-linha { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: 14px; color: var(--sub); }
+  .b-linha i { display: block; height: 12px; background: var(--track); border-radius: 1px; overflow: hidden; }
+  .b-linha b { display: block; height: 100%; background: var(--bar); }
+  .b-linha b.exp { background: var(--accent); }
+  .b-linha strong { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .b-saldo { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--sub); }
+  .b-saldo strong { font-size: 32px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); white-space: nowrap; }
+  .b-ant { font-size: 13px; color: var(--sub); }
+  .b-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--faint); }
+  .selo { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
+</style>

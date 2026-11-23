@@ -1,0 +1,67 @@
+---
+// Lista com barras (ex.: 10 principais produtos exportados): posição, nome, barra, valor e parte do total.
+// Ocupa a largura toda de um painel; ao lado, o cartão da balança comercial (se vier "balanca").
+// Visual: design da rodada 4 (Comércio exterior). Números vêm de dados/ (nada escrito aqui).
+import { formatar, type Contexto, type Formato } from './mapa-ranking/visao';
+import CartaoBalanca from './CartaoBalanca.astro';
+
+interface Item { nome: string; valor: number; parte?: number }
+interface Props {
+  titulo: string; descricao?: string; itens: Item[]; ctx: Contexto;
+  formato: Formato; casas: number; compacto?: boolean; moeda?: string;
+  cabecalhos: { nome: string; valor: string; parte?: string };
+  nota?: string; painelDe?: string; oculto?: boolean;
+  balanca?: any; textosBalanca?: any;
+}
+const { titulo, descricao, itens, ctx, formato, casas, compacto, moeda, cabecalhos, nota, painelDe, oculto = false, balanca, textosBalanca } = Astro.props;
+const c = moeda ? { ...ctx, moeda } : ctx;
+const maior = Math.max(...itens.map((i) => i.valor));
+---
+<div class="lb" data-painel-de={painelDe} hidden={oculto}>
+  <div class="lb-principal">
+    <h2>{titulo}</h2>
+    {descricao && <p class="lb-desc">{descricao}</p>}
+    <table>
+      <thead><tr><th class="n"></th><th class="nm">{cabecalhos.nome}</th><th class="br"></th><th class="v">{cabecalhos.valor}</th>{cabecalhos.parte && <th class="p">{cabecalhos.parte}</th>}</tr></thead>
+      <tbody>
+        {itens.map((i, k) => (
+          <tr>
+            <td class="n">{k + 1}</td>
+            <td class="nm">{i.nome}</td>
+            <td class="br"><i><b style={`width:${(i.valor / maior) * 100}%`}></b></i></td>
+            <td class="v">{formatar(i.valor, { formato, casas, compacto }, c)}</td>
+            {cabecalhos.parte && <td class="p">{i.parte == null ? '' : formatar(i.parte, { formato: 'percentual', casas: 1 }, ctx)}</td>}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {nota && <p class="lb-nota">{nota}</p>}
+  </div>
+  {balanca && <aside class="lb-lado"><CartaoBalanca dados={balanca} ctx={ctx} textos={textosBalanca} /></aside>}
+</div>
+
+<style>
+  .lb { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 56px; align-items: start; }
+  .lb[hidden] { display: none; }
+  h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+  .lb-desc { margin: 4px 0 0; color: var(--sub); font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; font-variant-numeric: tabular-nums; }
+  th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); font-weight: 600; text-align: left; padding: 0 8px 8px; }
+  td { padding: 12px 8px; border-top: 1px solid var(--line); font-size: 16px; vertical-align: middle; }
+  tbody tr:hover { background: var(--surf); }
+  .n { width: 32px; color: var(--faint); font-size: 14px; }
+  .nm { color: var(--ink); }
+  .br { width: 30%; }
+  .br i { display: block; height: 10px; background: var(--track); border-radius: 1px; overflow: hidden; }
+  .br b { display: block; height: 100%; background: var(--bar); }
+  tbody tr:hover .br b { background: var(--accent); }
+  .v { text-align: right; font-weight: 600; white-space: nowrap; }
+  .p { text-align: right; color: var(--sub); font-size: 14px; white-space: nowrap; width: 64px; }
+  th.v, th.p { text-align: right; }
+  .lb-nota { margin: 16px 0 0; font-size: 13px; color: var(--faint); line-height: 1.5; }
+  @media (max-width: 1100px) { .lb { grid-template-columns: 1fr; gap: 28px; } }
+  @media (max-width: 640px) {
+    .br { display: none; }
+    td { font-size: 15px; padding: 10px 4px; }
+  }
+</style>

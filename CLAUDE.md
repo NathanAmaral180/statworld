@@ -112,6 +112,15 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Painéis "largos" (`largo: true` em `paineis`): a vista ocupa a largura toda, com um cartão de resumo próprio (`resumo.tipo`: "meta" ou "ultimo"), porque não há dado por estado. Gráficos: `GraficoSerie.astro` (linhas ou colunas, faixa opcional, cursor ligado).
 - A data da cesta é "atualizada em" (data do Ipeadata), não "divulgada em": o DIEESE não publica a data em formato de dados.
 
+## Comércio exterior
+- Página `/economia/comercio-exterior`: molde `PaginaEconomia` com `aba="comercio-exterior"` (`src/config/temas/comercio-estados.json`, `dados: "comercio"`), script `scripts/comercio/` (API oficial do Comex Stat).
+- Três vistas:
+  - **Exportações por estado** no último ano completo, em US$ (medida com `moeda: "USD"` e `compacto`), mapa, ranking e ficha com a parte do país.
+  - **Principais produtos**: lista dos 10, pela classificação internacional CUCI/SITC, posição.
+  - **Principais parceiros**: lista dos 10 países.
+- O cartão da **balança comercial** do ano em curso (`CartaoBalanca.astro`, config `balanca`) fica no alto da lateral do mapa e ao lado das listas (`ListaBarras.astro`, painéis `tipo: "lista"`).
+- Data = "atualizada em" (a API do Comex Stat informa). Conferido com a notícia oficial do MDIC (jan–out 2026).
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

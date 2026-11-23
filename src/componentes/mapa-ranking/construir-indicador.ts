@@ -32,6 +32,8 @@ export interface Medida {
   // Ficha com a composição (parte da medida × o resto, que soma 100%) e a comparação com o país.
   composicao?: { rotuloParte: string; rotuloResto: string };
   comparaPais?: boolean;
+  moeda?: string; // moeda da medida, se não for a do país (ex.: "USD" no comércio exterior)
+  compacto?: boolean; // número curto (ex.: "US$ 71,4 bi")
   nivelPlural?: string; // troca "estados" na posição da ficha (ex.: "capitais")
   nivelFeminino?: boolean; // concordância: "todas as 27 capitais"
   subtituloFicha?: string; // linha sob o nome na ficha (ex.: "Desemprego, {periodo}")
@@ -39,9 +41,10 @@ export interface Medida {
   extras?: { indicador: string; rotulo: string; formato: Formato; casas: number; sufixo?: string; sinal?: boolean; mostrarFonte?: boolean }[];
 }
 
-export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctx: Contexto, outros: Record<string, Indicador> = {}): Visao {
+export function construirVisaoIndicador(id: string, unidades: Unidade[], ind: Indicador, m: Medida, ctxPais: Contexto, outros: Record<string, Indicador> = {}): Visao {
+  const ctx = m.moeda ? { ...ctxPais, moeda: m.moeda } : ctxPais;
   const t = ctx.textos;
-  const fmt = { formato: m.formato, casas: m.casas, sinal: m.sinal };
+  const fmt = { formato: m.formato, casas: m.casas, sinal: m.sinal, compacto: m.compacto };
   const titulo = preencher(m.titulo, { periodo: ind.periodo });
 
   const comDado = unidades

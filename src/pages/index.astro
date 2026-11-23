@@ -24,6 +24,7 @@ const caged = carregarDados<any>('trabalho', 'brasil-caged');
 const precosEstados = carregarDados<any>('precos', 'brasil-estados');
 const precosIpca = carregarDados<any>('precos', 'brasil-ipca');
 const precosSm = carregarDados<any>('precos', 'brasil-sm-cestas');
+const comercio = carregarDados<any>('comercio', 'brasil-estados');
 
 // ---------- datas ----------
 const dataLonga = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString(ctx.idioma, { day: 'numeric', month: 'short', year: 'numeric' }).replace(/\./g, '').replace(/ de /g, ' ');
@@ -109,20 +110,20 @@ const historias = [
 const todasFontes: Fonte[] = [
   ...Object.values(economia.indicadores).flatMap((i: any) => i.fontes),
   ...Object.values(trabalho.indicadores).flatMap((i: any) => i.fontes), ...Object.values(trabalhoSeries.series).flatMap((i: any) => i.fontes), ...Object.values(caged.indicadores).flatMap((i: any) => i.fontes),
-  ...Object.values(precosEstados.indicadores).flatMap((i: any) => i.fontes), ...precosIpca.serie.fontes, ...precosSm.serie.fontes,
+  ...Object.values(precosEstados.indicadores).flatMap((i: any) => i.fontes), ...precosIpca.serie.fontes, ...precosSm.serie.fontes, ...comercio.indicadores.exportacoes.fontes,
   ...lavouras.fontes, ...pecuaria.fontes, ...industria.fontes, ...servicos.fontes, ...agora.indicadores.flatMap((i: any) => i.fontes),
   ...temasMundo.temas.flatMap((t: any) => t.fontes), mundo.fonte,
 ];
 const porOrgao = new Map<string, Set<string>>();
 for (const f of todasFontes) {
-  const curta = f.publicacao.replace(/ \(.*$/, '').replace(/^(PNAD Contínua( mensal)?|Novo Caged|IPCA|Pesquisa Nacional da Cesta Básica de Alimentos),.*$/, '$1').replace(/, versão.*$/, '').replace(/\s\d{4}$/, '').replace(/ \d{4} /, ' ');
+  const curta = f.publicacao.replace(/ \(.*$/, '').replace(/^(PNAD Contínua( mensal)?|Novo Caged|IPCA|Pesquisa Nacional da Cesta Básica de Alimentos|Comex Stat),.*$/, '$1').replace(/, versão.*$/, '').replace(/\s\d{4}$/, '').replace(/ \d{4} /, ' ');
   if (!porOrgao.has(f.nome)) porOrgao.set(f.nome, new Set());
   porOrgao.get(f.nome)!.add(curta);
 }
 const fontesUsadas = [...porOrgao.entries()].map(([nome, pubs]) => ({ nome, pubs: [...pubs].join('; ') }));
 
 // "Dados conferidos em": a busca mais recente nas fontes.
-const conferido = [economia.baixadoEm, lavouras.baixadoEm, pecuaria.baixadoEm, industria.baixadoEm, servicos.baixadoEm, trabalho.baixadoEm, caged.baixadoEm, precosEstados.baixadoEm, agora.baixadoEm, temasMundo.baixadoEm].filter(Boolean).sort().at(-1);
+const conferido = [economia.baixadoEm, lavouras.baixadoEm, pecuaria.baixadoEm, industria.baixadoEm, servicos.baixadoEm, trabalho.baixadoEm, caged.baixadoEm, precosEstados.baixadoEm, comercio.baixadoEm, agora.baixadoEm, temasMundo.baixadoEm].filter(Boolean).sort().at(-1);
 const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 ---
 <Base temaAtual="">

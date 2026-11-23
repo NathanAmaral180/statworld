@@ -225,7 +225,8 @@
             "id": "comercio-exterior",
             "nome": "Comércio exterior",
             "grupo": "mundo-mercado",
-            "situacao": "em-breve",
+            "situacao": "no-ar",
+            "href": "/economia/comercio-exterior",
             "medidas": [
               "Exportações e importações por estado e produto",
               "Parceiros comerciais",

@@ -191,10 +191,21 @@ export function rotulosCortes(cortes: number[], o: OpcoesNumero, ctx: Contexto):
     return {
       cheio: fm.format(paraFormato(o, v)),
       num: partes.filter((x) => !ehSimb(x.type)).map((x) => x.value).join('').trim(),
+      nu: partes.filter((x) => !ehSimb(x.type) && x.type !== 'compact').map((x) => x.value).join('').trim(),
+      escala: partes.filter((x) => x.type === 'compact').map((x) => x.value).join(''),
       antes: partes.findIndex((x) => x.type === 'currency') === 0,
     };
   };
   const t = ctx.textos;
+  // Moeda com escala igual em todos os cortes (ex.: todos em "bi"): as faixas do meio ficam só com números ("1–3"),
+  // como no design; "US$" e "bi" aparecem na primeira e na última.
+  const escalas = new Set(cortes.map((c) => p(c).escala));
+  if (o.formato === 'moeda' && escalas.size === 1 && [...escalas][0]) {
+    const r = [preencher(t.ate, { v: p(cortes[0]).cheio })];
+    for (let i = 1; i < cortes.length; i++) r.push(preencher(t.entre, { a: p(cortes[i - 1]).nu, b: p(cortes[i]).nu }));
+    r.push(preencher(t.ouMais, { v: p(cortes[cortes.length - 1]).cheio }));
+    return r;
+  }
   const r = [preencher(t.ate, { v: p(cortes[0]).cheio })];
   for (let i = 1; i < cortes.length; i++) {
     const a = p(cortes[i - 1]);

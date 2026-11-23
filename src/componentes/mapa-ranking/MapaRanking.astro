@@ -156,6 +156,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     </div>
 
     <div class="mr-lado">
+      <slot name="lateral" />
       <div class="mr-ficha" aria-live="polite" set:html={htmlFicha(visao.fichas[ativo], visao.svgs)} />
       <div class="mr-tabela">
         <div class="mr-cab"><span>{ctx.nivelSingular}</span><span class="mr-cab-medida">{visao.cabecalhoRanking ?? visao.titulo}</span></div>
@@ -443,6 +444,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   .mr-esq { align-self: stretch; min-width: 0; }
   .so-painel .mr-grade { grid-template-columns: 1fr; }
   .so-painel .mr-lado { display: none; }
+  .mr-lado > :global(:not(.mr-ficha, .mr-tabela, .mr-fonte)) { margin-bottom: 20px; } /* conteúdo do slot "lateral" (ex.: balança) */
   .mr-painel :global([data-painel-de][hidden]) { display: none; }
   .mr-mapa[hidden], .mr-painel[hidden], .mr-carimbo[hidden] { display: none; }
   .mr-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; margin: 0; font-size: 13px; color: var(--faint); line-height: 1.4; }

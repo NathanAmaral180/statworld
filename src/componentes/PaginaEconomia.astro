@@ -7,6 +7,8 @@ import Abas from './Abas.astro';
 import FaixaHoje from './FaixaHoje.astro';
 import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import GraficoSerie from './GraficoSerie.astro';
+import ListaBarras from './ListaBarras.astro';
+import CartaoBalanca from './CartaoBalanca.astro';
 import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher, dataCurta, formatar, quandoCurto } from './mapa-ranking/visao';
@@ -16,11 +18,12 @@ import economiaEstados from '../config/temas/economia-estados.json';
 import impostosEstados from '../config/temas/impostos-estados.json';
 import trabalhoEstados from '../config/temas/trabalho-estados.json';
 import precosEstados from '../config/temas/precos-estados.json';
+import comercioEstados from '../config/temas/comercio-estados.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
 // Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados };
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados };
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -63,10 +66,27 @@ const opcoes: any[] = medidas.map((m) => ({
 // Sem "largo", a ficha e o ranking da medida padrão continuam ao lado; com "largo", o painel ocupa tudo e tem o próprio resumo.
 const pegar = (obj: any, caminho: string) => caminho.split('.').reduce((o, k) => o?.[k], obj);
 const fmtNum = (v: number | null, formato: any, casas: number) => formatar(v, { formato, casas }, ctx);
+// Cartão da balança comercial (config "balanca"): no alto da lateral do mapa e ao lado das listas.
+const arqBalanca = tema.balanca && pais.arquivos[pastaDados]?.[tema.balanca.arquivo];
+const balanca = arqBalanca ? carregarDados<any>(pastaDados, arqBalanca) : null;
 const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
   const arq = pais.arquivos[pastaDados]?.[cfg.arquivo];
   if (!arq) return [];
   const dados = carregarDados<any>(pastaDados, arq);
+  // Painel de lista com barras (ex.: principais produtos).
+  if (cfg.tipo === 'lista') {
+    const fl = dados.fontes[0];
+    return [{
+      cfg,
+      lista: true,
+      opcao: { id: cfg.id, rotulo: cfg.rotulo, visao: tema.medidaPadrao, painel: true, largo: true, carimbo: carimboDe(dados.frequencia, dados.fontes) },
+      props: {
+        titulo: preencher(cfg.titulo, { periodo: dados.periodo }), descricao: cfg.descricao,
+        itens: dados[cfg.lista], formato: cfg.formato, casas: cfg.casas, compacto: cfg.compacto, moeda: cfg.moeda, cabecalhos: cfg.cabecalhos,
+        nota: cfg.nota ? preencher(cfg.nota, { periodo: dados.periodo, total: formatar(dados.total, { formato: cfg.formato, casas: cfg.casas, compacto: cfg.compacto }, cfg.moeda ? { ...ctx, moeda: cfg.moeda } : ctx), fonte: `${fl.nome}, ${fl.publicacao}` }) : undefined,
+      },
+    }];
+  }
   const series = cfg.series.map((c: any) => ({ ...c, ...pegar(dados, c.caminho) }));
   const s0 = series[0];
   const fim = [...s0.pontos].reverse().find((x: any) => x.valor != null);
@@ -151,7 +171,11 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       </div>
     )}
     <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
-      {paineis.map((p: any) => (
+      {balanca && <CartaoBalanca slot="lateral" dados={balanca} ctx={ctx} textos={tema.balanca.textos} />}
+      {paineis.filter((p: any) => p.lista).map((p: any) => (
+        <ListaBarras slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} balanca={balanca} textosBalanca={tema.balanca?.textos} />
+      ))}
+      {paineis.filter((p: any) => !p.lista).map((p: any) => (
         <GraficoSerie slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />
       ))}
     </MapaRanking>

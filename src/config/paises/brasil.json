@@ -68,6 +68,11 @@
       "estado": "brasil-estados",
       "ipca": "brasil-ipca",
       "smCestas": "brasil-sm-cestas"
+    },
+    "comercio": {
+      "estado": "brasil-estados",
+      "listas": "brasil-listas",
+      "balanca": "brasil-balanca"
     }
   },
   "mapa": {
@@ -121,7 +126,8 @@
       "servicos",
       "trabalho-renda",
       "precos",
-      "impostos"
+      "impostos",
+      "comercio-exterior"
     ]
   },
   "slug": "brasil",

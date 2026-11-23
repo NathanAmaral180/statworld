@@ -1,0 +1,20 @@
+{
+  "_explicacao": "Balança comercial do ano em curso (janeiro até o último mês com dado) e o mesmo período do ano anterior, em US$ FOB. Gerado por scripts/comercio/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-23",
+  "periodo": "2026, janeiro a outubro",
+  "frequencia": "mensal",
+  "fontes": [
+    {
+      "nome": "Secex/MDIC",
+      "publicacao": "Comex Stat, balança comercial, 2026, janeiro a outubro",
+      "url": "https://comexstat.mdic.gov.br",
+      "dataAtualizacao": "2026-11-06"
+    }
+  ],
+  "exportacoes": 321884033807,
+  "importacoes": 250844064584,
+  "saldo": 71039969223,
+  "saldoAnoAnterior": 52984606211,
+  "anoAnterior": 2025
+}
