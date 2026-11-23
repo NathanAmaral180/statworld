@@ -7,7 +7,7 @@
 // Precisa de: curl (já vem no Windows 10/11) e do pacote 7zip-bin (instalado com "npm install").
 
 import { writeFile, mkdir, rm } from 'node:fs/promises';
-import { createReadStream } from 'node:fs';
+import { createReadStream, chmodSync } from 'node:fs';
 import { createInterface } from 'node:readline';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -45,6 +45,8 @@ const pasta = join(tmpdir(), `caged-${mes}`);
 await mkdir(pasta, { recursive: true });
 const zip = join(pasta, arquivo);
 execFileSync('curl', ['-s', '-m', '900', '-o', zip, `${FTP}/${ano}/${mes}/${arquivo}`]);
+// No Linux/macOS (ex.: a rotina automática do GitHub), o programa 7za vem sem permissão de execução.
+if (process.platform !== 'win32') chmodSync(sete.path7za, 0o755);
 execFileSync(sete.path7za, ['x', '-y', `-o${pasta}`, zip], { stdio: 'ignore' });
 const txt = join(pasta, `CAGEDMOV${mes}.txt`);
 
