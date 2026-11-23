@@ -69,6 +69,17 @@ const linhas = [
 console.log('\n' + linhas.join('\n'));
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Atualização dos dados\n\n${linhas.join('\n')}\n`);
 
+// No GitHub, cada resultado vira também uma nota na página da execução (fácil de ver sem abrir o registro completo).
+if (process.env.GITHUB_ACTIONS) {
+  for (const r of resultados) {
+    const tipo = r.ok ? (r.avisos.length ? 'warning' : 'notice') : 'error';
+    const msg = r.ok
+      ? `${r.nome}: ok, ${r.mudaram.length ? 'números novos em ' + r.mudaram.join(', ') : 'sem números novos'}${r.avisos.length ? '. ' + r.avisos.join(' ') : ''}`
+      : `${r.nome}: FALHOU (${r.erro})`;
+    console.log(`::${tipo} title=Dados::${msg.replace(/\n/g, ' ')}`);
+  }
+}
+
 const falhas = resultados.filter((r) => !r.ok).length;
 console.log(`\n${resultados.length - falhas} de ${resultados.length} scripts deram certo; ${resultados.reduce((t, r) => t + r.mudaram.length, 0)} arquivos com números novos.`);
 // Só termina com erro se TODOS falharam (aí algo está errado com a rede ou com a máquina).
