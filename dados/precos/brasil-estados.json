@@ -1,0 +1,180 @@
+{
+  "_explicacao": "Cesta básica na capital de cada estado (DIEESE) e quanto ela pesa no salário mínimo. Gerado por scripts/precos/baixar.mjs. Não edite à mão. null = capital fora da pesquisa.",
+  "pais": "BR",
+  "nivel": "estado",
+  "periodo": "outubro de 2026",
+  "baixadoEm": "2026-11-23",
+  "indicadores": {
+    "cesta": {
+      "nome": "Preço da cesta básica na capital",
+      "unidade": "moeda",
+      "periodo": "outubro de 2026",
+      "frequencia": "mensal",
+      "nomes": {
+        "RS": "Porto Alegre (RS)",
+        "MT": "Cuiabá (MT)",
+        "SE": "Aracaju (SE)",
+        "PR": "Curitiba (PR)",
+        "MA": "São Luís (MA)",
+        "AC": "Rio Branco (AC)",
+        "RR": "Boa Vista (RR)",
+        "ES": "Vitória (ES)",
+        "BA": "Salvador (BA)",
+        "MS": "Campo Grande (MS)",
+        "AP": "Macapá (AP)",
+        "TO": "Palmas (TO)",
+        "PA": "Belém (PA)",
+        "SP": "São Paulo (SP)",
+        "RJ": "Rio de Janeiro (RJ)",
+        "AL": "Maceió (AL)",
+        "RN": "Natal (RN)",
+        "RO": "Porto Velho (RO)",
+        "MG": "Belo Horizonte (MG)",
+        "SC": "Florianópolis (SC)",
+        "PI": "Teresina (PI)",
+        "GO": "Goiânia (GO)",
+        "DF": "Brasília (DF)",
+        "PB": "João Pessoa (PB)",
+        "PE": "Recife (PE)",
+        "AM": "Manaus (AM)",
+        "CE": "Fortaleza (CE)"
+      },
+      "fontes": [
+        {
+          "nome": "DIEESE (via Ipeadata)",
+          "publicacao": "Pesquisa Nacional da Cesta Básica de Alimentos, outubro de 2026",
+          "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=CESBTOTAL",
+          "dataAtualizacao": "2026-11-17"
+        }
+      ],
+      "calculo": "Valor publicado pelo DIEESE: custo mensal da cesta básica de alimentos na capital (uma pessoa adulta).",
+      "valores": {
+        "AC": 710.92,
+        "AL": 661.69,
+        "AM": 687.46,
+        "AP": 726.84,
+        "BA": 677.77,
+        "CE": 822.7,
+        "DF": 810.36,
+        "ES": 862.37,
+        "GO": 836.64,
+        "MA": 719.63,
+        "MG": 810.73,
+        "MS": 848.51,
+        "MT": 924.82,
+        "PA": 756.42,
+        "PB": 696.24,
+        "PE": 705.98,
+        "PI": 715.44,
+        "PR": 866.93,
+        "RJ": 939.39,
+        "RN": 678.05,
+        "RO": 698.97,
+        "RR": 701.73,
+        "RS": 919.78,
+        "SC": 927.82,
+        "SE": 618.61,
+        "SP": 951.37,
+        "TO": 779.86
+      }
+    },
+    "cesta-parte-sm": {
+      "nome": "Parte do salário mínimo que a cesta custa",
+      "unidade": "%",
+      "periodo": "outubro de 2026",
+      "frequencia": "mensal",
+      "fontes": [
+        {
+          "nome": "DIEESE (via Ipeadata)",
+          "publicacao": "Pesquisa Nacional da Cesta Básica de Alimentos, outubro de 2026",
+          "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=CESBTOTAL",
+          "dataAtualizacao": "2026-11-17"
+        },
+        {
+          "nome": "Ipeadata",
+          "publicacao": "Salário mínimo vigente (série MTE12_SALMIN12)",
+          "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=MTE12_SALMIN12"
+        }
+      ],
+      "calculo": "Cálculo do StatWorld: preço da cesta ÷ salário mínimo bruto do mês (R$ 1621) × 100. O DIEESE publica a conta com o salário mínimo líquido (descontada a Previdência), que dá um número um pouco maior.",
+      "valores": {
+        "AC": 43.86,
+        "AL": 40.82,
+        "AM": 42.41,
+        "AP": 44.84,
+        "BA": 41.81,
+        "CE": 50.75,
+        "DF": 49.99,
+        "ES": 53.2,
+        "GO": 51.61,
+        "MA": 44.39,
+        "MG": 50.01,
+        "MS": 52.34,
+        "MT": 57.05,
+        "PA": 46.66,
+        "PB": 42.95,
+        "PE": 43.55,
+        "PI": 44.14,
+        "PR": 53.48,
+        "RJ": 57.95,
+        "RN": 41.83,
+        "RO": 43.12,
+        "RR": 43.29,
+        "RS": 56.74,
+        "SC": 57.24,
+        "SE": 38.16,
+        "SP": 58.69,
+        "TO": 48.11
+      }
+    },
+    "cesta-cestas-sm": {
+      "nome": "Cestas que o salário mínimo compra",
+      "unidade": "numero",
+      "periodo": "outubro de 2026",
+      "frequencia": "mensal",
+      "fontes": [
+        {
+          "nome": "DIEESE (via Ipeadata)",
+          "publicacao": "Pesquisa Nacional da Cesta Básica de Alimentos, outubro de 2026",
+          "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=CESBTOTAL",
+          "dataAtualizacao": "2026-11-17"
+        },
+        {
+          "nome": "Ipeadata",
+          "publicacao": "Salário mínimo vigente (série MTE12_SALMIN12)",
+          "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=MTE12_SALMIN12"
+        }
+      ],
+      "calculo": "Cálculo do StatWorld: salário mínimo bruto do mês (R$ 1621) ÷ preço da cesta.",
+      "valores": {
+        "AC": 2.2801,
+        "AL": 2.4498,
+        "AM": 2.358,
+        "AP": 2.2302,
+        "BA": 2.3917,
+        "CE": 1.9703,
+        "DF": 2.0003,
+        "ES": 1.8797,
+        "GO": 1.9375,
+        "MA": 2.2525,
+        "MG": 1.9994,
+        "MS": 1.9104,
+        "MT": 1.7528,
+        "PA": 2.143,
+        "PB": 2.3282,
+        "PE": 2.2961,
+        "PI": 2.2657,
+        "PR": 1.8698,
+        "RJ": 1.7256,
+        "RN": 2.3907,
+        "RO": 2.3191,
+        "RR": 2.31,
+        "RS": 1.7624,
+        "SC": 1.7471,
+        "SE": 2.6204,
+        "SP": 1.7039,
+        "TO": 2.0786
+      }
+    }
+  }
+}

@@ -63,6 +63,11 @@
       "extras": [
         "brasil-caged"
       ]
+    },
+    "precos": {
+      "estado": "brasil-estados",
+      "ipca": "brasil-ipca",
+      "smCestas": "brasil-sm-cestas"
     }
   },
   "mapa": {
@@ -115,6 +120,7 @@
       "industria",
       "servicos",
       "trabalho-renda",
+      "precos",
       "impostos"
     ]
   },

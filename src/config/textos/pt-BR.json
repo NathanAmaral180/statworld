@@ -38,5 +38,6 @@
   "ponto": "{v} ponto",
   "pontos": "{v} pontos",
   "rankingMenos": "Mostrar só os {n} primeiros",
-  "rankingTodos": "Ver todos os {total} {nivel}"
+  "rankingTodos": "Ver todos os {total} {nivel}",
+  "rankingTodas": "Ver todas as {total} {nivel}"
 }

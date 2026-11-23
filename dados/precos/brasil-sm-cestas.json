@@ -1,0 +1,216 @@
+{
+  "_explicacao": "Quantas cestas básicas o salário mínimo compra, média de cada ano. Gerado por scripts/precos/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-23",
+  "salarioMinimo": 1621,
+  "serie": {
+    "nome": "Cestas básicas que o salário mínimo compra",
+    "unidade": "numero",
+    "frequencia": "mensal",
+    "fontes": [
+      {
+        "nome": "DIEESE (via Ipeadata)",
+        "publicacao": "Pesquisa Nacional da Cesta Básica de Alimentos, outubro de 2026",
+        "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=CESBTOTAL",
+        "dataAtualizacao": "2026-11-17"
+      },
+      {
+        "nome": "Ipeadata",
+        "publicacao": "Salário mínimo vigente (série MTE12_SALMIN12)",
+        "url": "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=MTE12_SALMIN12"
+      }
+    ],
+    "calculo": "Cálculo do StatWorld: em cada mês, salário mínimo bruto ÷ preço médio da cesta nas capitais pesquisadas naquele mês; depois, a média dos meses do ano. O número de capitais pesquisadas mudou ao longo do tempo (hoje são 27), o que afeta um pouco a comparação entre anos.",
+    "pontos": [
+      {
+        "periodo": "2000",
+        "nome": "2000",
+        "valor": 1.49,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2001",
+        "nome": "2001",
+        "valor": 1.59,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2002",
+        "nome": "2002",
+        "valor": 1.61,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2003",
+        "nome": "2003",
+        "valor": 1.56,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2004",
+        "nome": "2004",
+        "valor": 1.67,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2005",
+        "nome": "2005",
+        "valor": 1.86,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2006",
+        "nome": "2006",
+        "valor": 2.21,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2007",
+        "nome": "2007",
+        "valor": 2.24,
+        "meses": 12,
+        "capitais": 16
+      },
+      {
+        "periodo": "2008",
+        "nome": "2008",
+        "valor": 1.99,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2009",
+        "nome": "2009",
+        "valor": 2.23,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2010",
+        "nome": "2010",
+        "valor": 2.35,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2011",
+        "nome": "2011",
+        "valor": 2.31,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2012",
+        "nome": "2012",
+        "valor": 2.44,
+        "meses": 12,
+        "capitais": 18
+      },
+      {
+        "periodo": "2013",
+        "nome": "2013",
+        "valor": 2.33,
+        "meses": 12,
+        "capitais": 18
+      },
+      {
+        "periodo": "2014",
+        "nome": "2014",
+        "valor": 2.38,
+        "meses": 12,
+        "capitais": 18
+      },
+      {
+        "periodo": "2015",
+        "nome": "2015",
+        "valor": 2.33,
+        "meses": 12,
+        "capitais": 27
+      },
+      {
+        "periodo": "2016",
+        "nome": "2016",
+        "valor": 2.2,
+        "meses": 12,
+        "capitais": 27
+      },
+      {
+        "periodo": "2017",
+        "nome": "2017",
+        "valor": 2.46,
+        "meses": 12,
+        "capitais": 27
+      },
+      {
+        "periodo": "2018",
+        "nome": "2018",
+        "valor": 2.49,
+        "meses": 12,
+        "capitais": 20
+      },
+      {
+        "periodo": "2019",
+        "nome": "2019",
+        "valor": 2.36,
+        "meses": 12,
+        "capitais": 18
+      },
+      {
+        "periodo": "2020",
+        "nome": "2020",
+        "valor": 2.16,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2021",
+        "nome": "2021",
+        "valor": 1.94,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2022",
+        "nome": "2022",
+        "valor": 1.84,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2023",
+        "nome": "2023",
+        "valor": 1.98,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2024",
+        "nome": "2024",
+        "valor": 2.06,
+        "meses": 12,
+        "capitais": 17
+      },
+      {
+        "periodo": "2025",
+        "nome": "2025",
+        "valor": 2.14,
+        "meses": 12,
+        "capitais": 27
+      },
+      {
+        "periodo": "2026",
+        "nome": "2026 (jan–out)",
+        "valor": 2.19,
+        "meses": 10,
+        "capitais": 27
+      }
+    ]
+  }
+}

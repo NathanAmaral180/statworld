@@ -70,6 +70,8 @@ export interface Visao {
   svgs?: Record<string, string>; // ícone -> desenho (conteúdo do SVG 24x24)
   matiz?: string; // classe de cor (ex.: "p-soja") que tinge o degradê de 6 tons; sem matiz = azul padrão
   iconeTitulo?: string; // ícone ao lado do título da legenda
+  nivelPlural?: string; // troca "estados" nos textos do ranking (ex.: "capitais")
+  nivelFeminino?: boolean; // "todas as 27 capitais" em vez de "todos os 27 estados"
   aviso?: string; // nota sobre a medida, mostrada acima do mapa (ficha repete a versão curta)
   avisoTitulo?: string; // começo da nota, em negrito
   cabecalhoRanking?: string; // título curto da coluna do ranking (sem ele, usa "titulo")
@@ -79,6 +81,13 @@ export interface Visao {
 export function htmlAviso(v: Visao): string {
   if (!v.aviso) return '';
   return `<em class="i" aria-hidden="true">i</em><span>${v.avisoTitulo ? `<b>${escapar(v.avisoTitulo)}</b> ` : ''}${escapar(v.aviso)}</span>`;
+}
+
+// Data da fonte para os carimbos curtos: " · 13 nov 2026" (divulgação) ou " · atualizada em 17 nov 2026".
+export function quandoCurto(f: { dataDivulgacao?: string | null; dataAtualizacao?: string | null }, ctx: Contexto): string {
+  if (f.dataDivulgacao) return ` · ${dataCurta(f.dataDivulgacao, ctx)}`;
+  if (f.dataAtualizacao) return ` · ${preencher(ctx.textos.atualizadaEm, { data: dataCurta(f.dataAtualizacao, ctx) })}`;
+  return '';
 }
 
 // Data curta (ex.: "13 nov 2026").

@@ -1,5 +1,5 @@
 {
-  "_explicacao": "Aba Trabalho e renda (molde PaginaEconomia). Dados: dados/trabalho/ (scripts/trabalho-estados/). 'dados' = pasta de dados/ e chave em arquivos.<pasta> do país. 'extras' = outros números do mesmo arquivo mostrados na ficha. 'serie' = vista com gráficos de série no lugar do mapa (ficha e ranking continuam). Cortes do guia de design (rodada 4).",
+  "_explicacao": "Aba Trabalho e renda (molde PaginaEconomia). Dados: dados/trabalho/ (scripts/trabalho-estados/). 'dados' = pasta de dados/ e chave em arquivos.<pasta> do país. 'extras' = outros números do mesmo arquivo mostrados na ficha. 'paineis' = vistas com gráficos no tempo no lugar do mapa (ficha e ranking continuam; com 'largo', o painel ocupa tudo). Cortes do guia de design (rodada 4).",
   "aba": "trabalho-renda",
   "titulo": "A economia {dePais}",
   "trilha": [
@@ -47,24 +47,27 @@
     }
   ],
   "medidaPadrao": "desemprego",
-  "serie": {
-    "id": "no-tempo",
-    "rotulo": "Desemprego e renda no tempo",
-    "titulo": "Desemprego e renda média, desde {inicio}",
-    "descricao": "Cada ponto é a média de três meses. Passe o cursor para ver cada mês nos dois gráficos.",
-    "series": [
-      {
-        "id": "desemprego",
-        "titulo": "Taxa de desemprego, %",
-        "formato": "percentual",
-        "casas": 1
-      },
-      {
-        "id": "renda",
-        "titulo": "Renda média do trabalho, R$ por mês, corrigida pela inflação",
-        "formato": "moeda",
-        "casas": 0
-      }
-    ]
-  }
+  "paineis": [
+    {
+      "id": "no-tempo",
+      "rotulo": "Desemprego e renda no tempo",
+      "arquivo": "series",
+      "titulo": "Desemprego e renda média, desde {inicio}",
+      "descricao": "Cada ponto é a média de três meses. Passe o cursor para ver cada mês nos dois gráficos.",
+      "series": [
+        {
+          "caminho": "series.desemprego",
+          "titulo": "Taxa de desemprego, %",
+          "formato": "percentual",
+          "casas": 1
+        },
+        {
+          "caminho": "series.renda",
+          "titulo": "Renda média do trabalho, R$ por mês, corrigida pela inflação",
+          "formato": "moeda",
+          "casas": 0
+        }
+      ]
+    }
+  ]
 }

@@ -9,17 +9,18 @@ import MapaRanking from './mapa-ranking/MapaRanking.astro';
 import GraficoSerie from './GraficoSerie.astro';
 import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
-import { preencher, dataCurta } from './mapa-ranking/visao';
+import { preencher, dataCurta, formatar, quandoCurto } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
 import economiaEstados from '../config/temas/economia-estados.json';
 import impostosEstados from '../config/temas/impostos-estados.json';
 import trabalhoEstados from '../config/temas/trabalho-estados.json';
+import precosEstados from '../config/temas/precos-estados.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
 // Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados };
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados };
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -49,7 +50,7 @@ const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndica
 // Carimbo "selo + fonte · data" de um conjunto de fontes.
 const carimboDe = (frequencia: string | undefined, fontes: any[]) => {
   const f = fontes[0];
-  return { selo: frequencia, texto: `${f.nome}, ${f.publicacao}${f.dataDivulgacao ? ` · ${dataCurta(f.dataDivulgacao, ctx)}` : ''}` };
+  return { selo: frequencia, texto: `${f.nome}, ${f.publicacao}${quandoCurto(f, ctx)}` };
 };
 const opcoes: any[] = medidas.map((m) => ({
   id: m.id,
@@ -58,21 +59,65 @@ const opcoes: any[] = medidas.map((m) => ({
   carimbo: tema.carimboNosBotoes ? carimboDe(economia.indicadores[m.id].frequencia, economia.indicadores[m.id].fontes) : undefined,
 }));
 
-// Vista de série (gráficos no tempo no lugar do mapa; ficha e ranking continuam os da medida padrão).
-const cfgSerie = tema.serie;
-const arqSeries = cfgSerie && pais.arquivos[pastaDados]?.series;
-const dadosSeries = arqSeries ? carregarDados<any>(pastaDados, arqSeries) : null;
-const series = dadosSeries ? cfgSerie.series.map((c: any) => ({ ...c, ...dadosSeries.series[c.id] })) : [];
-if (dadosSeries) {
-  opcoes.push({
-    id: cfgSerie.id,
-    rotulo: cfgSerie.rotulo,
-    visao: tema.medidaPadrao,
-    painel: true,
-    carimbo: carimboDe(series[0].frequencia, series[0].fontes),
-  });
-}
-const inicioSerie = series[0]?.pontos?.[0]?.nome.match(/[0-9]{4}$/)?.[0] ?? '';
+// Painéis: vistas com gráficos no tempo no lugar do mapa (config "paineis" da aba).
+// Sem "largo", a ficha e o ranking da medida padrão continuam ao lado; com "largo", o painel ocupa tudo e tem o próprio resumo.
+const pegar = (obj: any, caminho: string) => caminho.split('.').reduce((o, k) => o?.[k], obj);
+const fmtNum = (v: number | null, formato: any, casas: number) => formatar(v, { formato, casas }, ctx);
+const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
+  const arq = pais.arquivos[pastaDados]?.[cfg.arquivo];
+  if (!arq) return [];
+  const dados = carregarDados<any>(pastaDados, arq);
+  const series = cfg.series.map((c: any) => ({ ...c, ...pegar(dados, c.caminho) }));
+  const s0 = series[0];
+  const fim = [...s0.pontos].reverse().find((x: any) => x.valor != null);
+  let resumo;
+  if (cfg.resumo?.tipo === 'meta') {
+    const u = dados.ultimo;
+    const dif = Math.round((u.valor - u.max) * 100) / 100;
+    const acima = dif > 0;
+    const pts = formatar(Math.abs(acima ? dif : u.valor - u.max), { formato: 'numero', casas: 2 }, ctx);
+    resumo = {
+      topo: `${pais.nome} · ${dados.periodo}`, nome: cfg.resumo.nome,
+      numero: fmtNum(u.valor, 'numero', 2), depois: '%',
+      linhas: [
+        [cfg.resumo.rotuloMeta, fmtNum(u.meta, 'percentual', 1)],
+        [cfg.resumo.rotuloIntervalo, `${fmtNum(u.min, 'percentual', 1)} a ${fmtNum(u.max, 'percentual', 1)}`],
+        [cfg.resumo.rotuloTeto, `${pts} ${Math.abs(u.valor - u.max) === 1 ? 'ponto' : 'pontos'} ${acima ? 'acima' : 'abaixo'}`],
+      ],
+      carimbos: s0.fontes.map((f: any, i: number) => carimboDe(i === 0 ? s0.frequencia : undefined, [f])),
+    };
+  } else if (cfg.resumo?.tipo === 'ultimo') {
+    const comValor = s0.pontos.filter((x: any) => x.valor != null);
+    const maior = comValor.reduce((a: any, b: any) => (b.valor > a.valor ? b : a));
+    const menor = comValor.reduce((a: any, b: any) => (b.valor < a.valor ? b : a));
+    resumo = {
+      topo: preencher(cfg.resumo.topo, { pais: pais.nome, periodo: fim.nome }), nome: cfg.resumo.nome,
+      numero: fmtNum(fim.valor, s0.formato, s0.casas), depois: cfg.resumo.unidade,
+      linhas: [
+        ...(cfg.resumo.campos ?? []).map((c: any) => [c.rotulo, fmtNum(pegar(dados, c.caminho), c.formato, c.casas)]),
+        [cfg.resumo.rotuloMaior, `${fmtNum(maior.valor, s0.formato, s0.casas)} em ${maior.nome}`],
+        [cfg.resumo.rotuloMenor, `${fmtNum(menor.valor, s0.formato, s0.casas)} em ${menor.nome}`],
+      ],
+      carimbos: s0.fontes.map((f: any, i: number) => carimboDe(i === 0 ? s0.frequencia : undefined, [f])),
+    };
+  }
+  const inicio = s0.pontos[0]?.nome.match(/[0-9]{4}/)?.[0] ?? '';
+  return [{
+    cfg,
+    opcao: { id: cfg.id, rotulo: cfg.rotulo, visao: tema.medidaPadrao, painel: true, largo: !!cfg.largo, carimbo: carimboDe(s0.frequencia, s0.fontes) },
+    props: {
+      titulo: preencher(cfg.titulo, { inicio }), descricao: cfg.descricao, tipo: cfg.tipo ?? 'linhas', legenda: cfg.legenda, resumo,
+      series: series.map((x: any) => ({ titulo: x.titulo, formato: x.formato, casas: x.casas, faixa: x.faixa, zero: x.zero, pontos: x.pontos })),
+    },
+  }];
+});
+// Ordem dos botões: painéis marcados "antes" vêm antes das medidas do mapa.
+const opcoesFinais = [
+  ...paineis.filter((p: any) => p.cfg.posicao === 'antes').map((p: any) => p.opcao),
+  ...opcoes,
+  ...paineis.filter((p: any) => p.cfg.posicao !== 'antes').map((p: any) => p.opcao),
+];
+const opcaoInicial = tema.opcaoInicial ?? tema.medidaPadrao;
 
 // Faixa "<Assunto> hoje": só aparece se o país tem o arquivo de dados dela.
 const arqHoje = tema.faixaHoje && pais.arquivos?.[tema.faixaHoje.grupo]?.hoje;
@@ -105,11 +150,10 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
         )}
       </div>
     )}
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes} ranking={tema.ranking}>
-      {dadosSeries && (
-        <GraficoSerie slot="painel" titulo={preencher(cfgSerie.titulo, { inicio: inicioSerie })} descricao={cfgSerie.descricao}
-          series={series.map((x: any) => ({ titulo: x.titulo, formato: x.formato, casas: x.casas, pontos: x.pontos }))} ctx={ctx} />
-      )}
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
+      {paineis.map((p: any) => (
+        <GraficoSerie slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />
+      ))}
     </MapaRanking>
     {/* Faixa "<Assunto> hoje": só aparece se a aba tiver "faixaHoje" na configuração (hoje nenhuma tem: o dono tirou). */}
     {hoje && <FaixaHoje rotulo={tema.faixaHoje.rotulo} descricao={tema.faixaHoje.descricao} indicadores={hoje.indicadores} ctx={ctx} />}

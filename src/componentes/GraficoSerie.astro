@@ -1,16 +1,25 @@
 ---
-// Gráficos de série (linha no tempo), um embaixo do outro, com cursor ligado:
-// passar o mouse num gráfico mostra o mesmo mês em todos. Visual: design da rodada 4 (Trabalho e renda).
+// Gráficos de série no tempo, um embaixo do outro, com cursor ligado entre eles
+// (passar o mouse num gráfico mostra o mesmo período em todos). Visual: design da rodada 4.
+// Tipos: "linhas" (ex.: desemprego mês a mês) ou "colunas" (ex.: um valor por ano).
+// Opcional: "faixa" (ex.: intervalo de tolerância da meta de inflação) e um cartão de resumo ao lado.
 // Recebe os pontos prontos (vindos de dados/); nada de número escrito aqui. "Sem dado" (null) quebra a linha, nunca vira zero.
 import { formatar, type Contexto, type Formato } from './mapa-ranking/visao';
 
-interface Ponto { nome: string; valor: number | null }
-interface Serie { titulo: string; formato: Formato; casas: number; pontos: Ponto[] }
-interface Props { titulo: string; descricao?: string; series: Serie[]; ctx: Contexto }
-const { titulo, descricao, series, ctx } = Astro.props;
+interface Ponto { nome: string; valor: number | null; min?: number | null; max?: number | null }
+interface Serie { titulo?: string; formato: Formato; casas: number; pontos: Ponto[]; faixa?: boolean; zero?: boolean }
+interface Resumo { topo: string; nome: string; numero: string; depois?: string; linhas: [string, string][]; carimbos: { selo?: string; texto: string }[] }
+interface Props {
+  titulo: string; descricao?: string; series: Serie[]; ctx: Contexto;
+  tipo?: 'linhas' | 'colunas';
+  legenda?: { linha?: string; faixa?: string };
+  resumo?: Resumo;
+  painelDe?: string; oculto?: boolean; // para o MapaRanking mostrar o painel certo de cada botão
+}
+const { titulo, descricao, series, ctx, tipo = 'linhas', legenda, resumo, painelDe, oculto = false } = Astro.props;
 
-const L = 800, A = 200; // tamanho da área do desenho
-const M = { cima: 12, direita: 56, baixo: 26, esquerda: 0 };
+const L = 800, A = tipo === 'colunas' || series.length === 1 ? 300 : 200; // tamanho da área do desenho
+const M = { cima: 18, direita: 56, baixo: 26, esquerda: 0 };
 const larg = L - M.esquerda - M.direita, alt = A - M.cima - M.baixo;
 
 // Marcas "redondas" do eixo vertical (ex.: 5, 7,5, 10...).
@@ -25,11 +34,12 @@ function marcas(min: number, max: number, n = 4) {
 }
 
 const desenhos = series.map((s) => {
-  const vals = s.pontos.map((p) => p.valor).filter((v): v is number => v !== null);
-  const ms = marcas(Math.min(...vals), Math.max(...vals));
+  const vals = s.pontos.flatMap((p) => [p.valor, s.faixa ? p.min : null, s.faixa ? p.max : null]).filter((v): v is number => v != null);
+  const ms = marcas(s.zero || tipo === 'colunas' ? Math.min(0, ...vals) : Math.min(...vals), Math.max(...vals));
   const y0 = ms[0], y1 = ms.at(-1)!;
   const n = s.pontos.length;
-  const x = (i: number) => M.esquerda + (n === 1 ? 0 : (i / (n - 1)) * larg);
+  const passo = tipo === 'colunas' ? larg / n : n === 1 ? 0 : larg / (n - 1);
+  const x = (i: number) => M.esquerda + (tipo === 'colunas' ? passo * i + passo / 2 : i * passo);
   const y = (v: number) => M.cima + alt - ((v - y0) / (y1 - y0 || 1)) * alt;
   let d = '', aberto = false;
   s.pontos.forEach((p, i) => {
@@ -37,53 +47,93 @@ const desenhos = series.map((s) => {
     d += `${aberto ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.valor).toFixed(1)}`;
     aberto = true;
   });
-  // Rótulos de ano: no primeiro ponto de cada ano par (ex.: "jan-fev-mar 2012").
+  // Faixa (ex.: tolerância da meta): degraus que acompanham cada ponto.
+  let faixa = '';
+  if (s.faixa) {
+    const ok = s.pontos.map((p, i) => ({ i, p })).filter(({ p }) => p.min != null && p.max != null);
+    if (ok.length) {
+      const meio = passo / 2;
+      const xi = (i: number, lado: -1 | 1) => Math.min(Math.max(x(i) + lado * meio, M.esquerda), M.esquerda + larg);
+      const cima = ok.flatMap(({ i, p }) => [`${xi(i, -1).toFixed(1)},${y(p.max!).toFixed(1)}`, `${xi(i, 1).toFixed(1)},${y(p.max!).toFixed(1)}`]);
+      const baixo = ok.slice().reverse().flatMap(({ i, p }) => [`${xi(i, 1).toFixed(1)},${y(p.min!).toFixed(1)}`, `${xi(i, -1).toFixed(1)},${y(p.min!).toFixed(1)}`]);
+      faixa = `M${cima.join('L')}L${baixo.join('L')}Z`;
+    }
+  }
+  // Rótulos do eixo de baixo: ano. Até 10 anos, todos; mais que isso, a cada 2 (colunas: a cada 4, e o último).
   const anos: { x: number; texto: string }[] = [];
+  const doPonto = s.pontos.map((p) => p.nome.match(/\d{4}/)?.[0] ?? '');
+  const distintos = [...new Set(doPonto.filter(Boolean))];
+  const cada = tipo === 'colunas' ? 4 : distintos.length <= 10 ? 1 : 2;
   let ultimoAno = '';
-  s.pontos.forEach((p, i) => {
-    const ano = p.nome.match(/\d{4}$/)?.[0] ?? '';
-    if (ano && ano !== ultimoAno) { ultimoAno = ano; if (Number(ano) % 2 === 0) anos.push({ x: x(i), texto: ano }); }
+  doPonto.forEach((ano, i) => {
+    if (!ano || ano === ultimoAno) return;
+    ultimoAno = ano;
+    const k = distintos.indexOf(ano);
+    if (k % cada === 0 || (tipo === 'colunas' && k === distintos.length - 1)) anos.push({ x: x(i), texto: ano });
   });
   const fmt = { formato: s.formato, casas: s.casas };
-  const fmtEixo = { formato: s.formato, casas: s.formato === 'percentual' ? 0 : 0, minCasas: 0 };
   const ultimo = [...s.pontos.keys()].reverse().find((i) => s.pontos[i].valor !== null) ?? 0;
+  const primeiro = s.pontos.findIndex((p) => p.valor !== null);
+  const eixo = (v: number) => formatar(v, { formato: s.formato, casas: Number.isInteger(v) ? 0 : (String(v).split('.')[1]?.length ?? 1), minCasas: 0 }, ctx).replace(/^R\$\s?/, '');
   return {
     titulo: s.titulo,
     d,
-    grade: ms.map((v) => ({ y: y(v), texto: formatar(v, { ...fmtEixo, casas: Number.isInteger(v) ? 0 : 1 }, ctx).replace(/^R\$\s?/, '') })),
+    faixa,
+    colunas: tipo === 'colunas' ? s.pontos.map((p, i) => (p.valor === null ? null : { x: x(i) - passo * 0.36, y: y(Math.max(p.valor, 0)), l: passo * 0.72, a: Math.abs(y(p.valor) - y(0)), ultimo: i === ultimo })) : [],
+    rotulos: tipo === 'colunas' ? [primeiro, ultimo].filter((i, k, arr) => i >= 0 && arr.indexOf(i) === k).map((i) => ({ x: x(i), y: y(s.pontos[i].valor!) - 6, texto: formatar(s.pontos[i].valor, fmt, ctx), forte: i === ultimo })) : [],
+    grade: ms.map((v) => ({ y: y(v), texto: eixo(v) })),
     anos,
     ultimo: { x: x(ultimo), y: y(s.pontos[ultimo].valor ?? y0) },
-    // Para o cursor (no navegador): posição e texto de cada mês.
+    // Para o cursor (no navegador): posição e texto de cada ponto.
     pontos: s.pontos.map((p, i) => ({ x: +x(i).toFixed(1), y: p.valor === null ? null : +y(p.valor).toFixed(1), t: `${formatar(p.valor, fmt, ctx)} · ${p.nome}` })),
   };
 });
 ---
-<div class="gs" data-grafico-serie>
-  <h2 class="gs-titulo">{titulo}</h2>
-  {descricao && <p class="gs-desc">{descricao}</p>}
-  {desenhos.map((g) => (
-    <figure class="gs-fig">
-      <figcaption>{g.titulo}</figcaption>
-      <svg viewBox={`0 0 ${L} ${A}`} role="img" aria-label={g.titulo} data-pontos={JSON.stringify(g.pontos)}>
-        {g.grade.map((m) => (
-          <g><line class="gl" x1={M.esquerda} x2={L - M.direita} y1={m.y} y2={m.y} /><text x={L - M.direita + 8} y={m.y} dominant-baseline="central">{m.texto}</text></g>
-        ))}
-        {g.anos.map((a) => <text x={a.x} y={A - 6} text-anchor={a.x < 20 ? 'start' : 'middle'}>{a.texto}</text>)}
-        <path class="ln" d={g.d} />
-        <circle class="pt-fim" cx={g.ultimo.x} cy={g.ultimo.y} r="4" />
-        <g class="cursor" visibility="hidden">
-          <line class="xh" y1={M.cima} y2={M.cima + alt} />
-          <circle class="pt" r="4" />
-          <g class="tip"><rect rx="4" height="24" /><text y="16" /></g>
-        </g>
-        <rect class="area" x={M.esquerda} y={M.cima} width={larg} height={alt} fill="transparent" />
-      </svg>
-    </figure>
-  ))}
+<div class={`gs${resumo ? ' com-resumo' : ''}`} data-grafico-serie data-painel-de={painelDe} hidden={oculto}>
+  <div class="gs-graficos">
+    <h2 class="gs-titulo">{titulo}</h2>
+    {descricao && <p class="gs-desc">{descricao}</p>}
+    {desenhos.map((g) => (
+      <figure class="gs-fig">
+        {g.titulo && <figcaption>{g.titulo}</figcaption>}
+        <svg viewBox={`0 0 ${L} ${A}`} role="img" aria-label={g.titulo ?? titulo} data-pontos={JSON.stringify(g.pontos)}>
+          {g.faixa && <path class="faixa" d={g.faixa} />}
+          {g.grade.map((m) => (
+            <g><line class="gl" x1={M.esquerda} x2={L - M.direita} y1={m.y} y2={m.y} /><text x={L - M.direita + 8} y={m.y} dominant-baseline="central">{m.texto}</text></g>
+          ))}
+          {g.anos.map((a) => <text x={a.x} y={A - 6} text-anchor={a.x < 20 ? 'start' : 'middle'}>{a.texto}</text>)}
+          {g.colunas.map((c) => c && <rect class={`col${c.ultimo ? ' forte' : ''}`} x={c.x} y={c.y} width={c.l} height={c.a} />)}
+          {g.rotulos.map((r) => <text class={`vl${r.forte ? ' forte' : ''}`} x={r.x} y={r.y} text-anchor="middle">{r.texto}</text>)}
+          {tipo === 'linhas' && <path class="ln" d={g.d} />}
+          {tipo === 'linhas' && <circle class="pt-fim" cx={g.ultimo.x} cy={g.ultimo.y} r="4" />}
+          <g class="cursor" visibility="hidden">
+            <line class="xh" y1={M.cima} y2={M.cima + alt} />
+            {tipo === 'linhas' && <circle class="pt" r="4" />}
+            <g class="tip"><rect rx="4" height="24" /><text y="16" /></g>
+          </g>
+          <rect class="area" x={M.esquerda} y={M.cima} width={larg} height={alt} fill="transparent" />
+        </svg>
+      </figure>
+    ))}
+    {legenda && (
+      <ul class="gs-legenda">
+        {legenda.linha && <li><i class={tipo === 'colunas' ? 'l-col' : 'l-linha'}></i>{legenda.linha}</li>}
+        {legenda.faixa && <li><i class="l-faixa"></i>{legenda.faixa}</li>}
+      </ul>
+    )}
+  </div>
+  {resumo && (
+    <aside class="gs-resumo">
+      <p class="r-topo">{resumo.topo}</p>
+      <div class="r-linha"><h3>{resumo.nome}</h3><p class="r-valor"><strong>{resumo.numero}</strong>{resumo.depois && <small>{resumo.depois}</small>}</p></div>
+      <dl>{resumo.linhas.map(([a, b]) => <div><dt>{a}</dt><dd>{b}</dd></div>)}</dl>
+      {resumo.carimbos.map((c) => <p class="r-carimbo">{c.selo && <span class="selo">{c.selo}</span>}<span>{c.texto}</span></p>)}
+    </aside>
+  )}
 </div>
 
 <script>
-  // Cursor ligado: a mesma posição (mês) em todos os gráficos do bloco.
+  // Cursor ligado: a mesma posição (período) em todos os gráficos do bloco.
   for (const bloco of document.querySelectorAll<HTMLElement>('[data-grafico-serie]')) {
     const svgs = [...bloco.querySelectorAll<SVGSVGElement>('svg[data-pontos]')];
     const dados = svgs.map((s) => JSON.parse(s.dataset.pontos!) as { x: number; y: number | null; t: string }[]);
@@ -94,9 +144,11 @@ const desenhos = series.map((s) => {
         if (!p) { c.setAttribute('visibility', 'hidden'); return; }
         c.setAttribute('visibility', 'visible');
         const xh = c.querySelector('.xh')!; xh.setAttribute('x1', String(p.x)); xh.setAttribute('x2', String(p.x));
-        const pt = c.querySelector('.pt')!;
-        if (p.y === null) pt.setAttribute('visibility', 'hidden');
-        else { pt.setAttribute('visibility', 'visible'); pt.setAttribute('cx', String(p.x)); pt.setAttribute('cy', String(p.y)); }
+        const pt = c.querySelector('.pt');
+        if (pt) {
+          if (p.y === null) pt.setAttribute('visibility', 'hidden');
+          else { pt.setAttribute('visibility', 'visible'); pt.setAttribute('cx', String(p.x)); pt.setAttribute('cy', String(p.y)); }
+        }
         const txt = c.querySelector<SVGTextElement>('.tip text')!;
         txt.textContent = p.t;
         const w = txt.getComputedTextLength() + 16;
@@ -111,7 +163,9 @@ const desenhos = series.map((s) => {
       area.addEventListener('pointermove', (e) => {
         const r = area.getBoundingClientRect();
         const n = dados[0].length;
-        const i = Math.round(((e.clientX - r.left) / r.width) * (n - 1));
+        const colunas = !svg.querySelector('.ln');
+        const f = (e.clientX - r.left) / r.width;
+        const i = colunas ? Math.floor(f * n) : Math.round(f * (n - 1));
         mostrar(Math.max(0, Math.min(n - 1, i)));
       });
       area.addEventListener('pointerleave', () => mostrar(null));
@@ -120,6 +174,9 @@ const desenhos = series.map((s) => {
 </script>
 
 <style>
+  .gs[hidden] { display: none; }
+  .gs.com-resumo { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 56px; align-items: start; }
+  .gs-graficos { min-width: 0; }
   .gs-titulo { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
   .gs-desc { margin: 4px 0 0; color: var(--sub); font-size: 15px; }
   .gs-fig { margin: 24px 0 0; }
@@ -127,17 +184,44 @@ const desenhos = series.map((s) => {
   .gs-fig svg { width: 100%; height: auto; display: block; margin-top: 8px; overflow: visible; }
   .gs-fig text { font-size: 12px; fill: var(--faint); font-variant-numeric: tabular-nums; }
   .gs-fig .gl { stroke: var(--line); }
+  .gs-fig .faixa { fill: var(--track); }
   .gs-fig .ln { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+  .gs-fig .col { fill: var(--bar); }
+  .gs-fig .col.forte { fill: var(--accent); }
+  .gs-fig .vl { font-size: 13px; fill: var(--ink); font-weight: 600; }
   .gs-fig .pt-fim, .gs-fig .pt { fill: var(--accent); }
   .gs-fig .xh { stroke: var(--line2); }
   .gs-fig .tip rect { fill: var(--ink); }
   .gs-fig .tip text { fill: var(--bg); font-size: 13px; }
   .gs-fig .area { cursor: crosshair; }
+  .gs-legenda { list-style: none; margin: 14px 0 0; padding: 0; display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--sub); }
+  .gs-legenda li { display: flex; align-items: center; gap: 8px; }
+  .gs-legenda i { display: block; }
+  .l-linha { width: 16px; height: 2px; background: var(--accent); }
+  .l-col { width: 12px; height: 12px; background: var(--bar); border-radius: 2px; }
+  .l-faixa { width: 16px; height: 10px; background: var(--track); box-shadow: inset 0 0 0 1px var(--line); }
+  /* Cartão de resumo (mesmo visual da ficha do mapa) */
+  .gs-resumo { background: var(--surf); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: grid; gap: 6px; }
+  .gs-resumo p, .gs-resumo h3 { margin: 0; }
+  .r-topo { font-size: 14px; color: var(--sub); }
+  .r-linha { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .r-linha h3 { font-size: 26px; font-weight: 600; letter-spacing: -.01em; }
+  .r-valor strong { font-size: 48px; font-weight: 600; letter-spacing: -.03em; line-height: 1; white-space: nowrap; }
+  .r-valor small { font-size: 17px; font-weight: 500; color: var(--sub); margin-left: 3px; }
+  .gs-resumo dl { margin: 10px 0 0; padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+  .gs-resumo dl div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--sub); }
+  .gs-resumo dd { margin: 0; color: var(--ink); font-weight: 500; text-align: right; }
+  .r-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--faint); margin-top: 6px !important; }
+  .selo { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); border: 1px solid var(--line2); border-radius: 4px; padding: 2px 6px; line-height: 1.3; white-space: nowrap; }
+  @media (max-width: 1100px) {
+    .gs.com-resumo { grid-template-columns: 1fr; gap: 28px; }
+  }
   /* Celular: o desenho encolhe, então as letras (medidas no tamanho do desenho) crescem para continuar legíveis. */
   @media (max-width: 640px) {
-    .gs-fig text { font-size: 26px; }
-    .gs-fig .tip text { font-size: 26px; }
+    .gs-fig text, .gs-fig .vl { font-size: 26px; }
+    .gs-fig .tip text { font-size: 26px; transform: translateY(12px); }
     .gs-fig .tip rect { height: 40px; }
-    .gs-fig .tip text { transform: translateY(12px); }
+    .r-valor strong { font-size: 38px; }
+    .r-linha h3 { font-size: 22px; }
   }
 </style>

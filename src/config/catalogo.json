@@ -183,7 +183,8 @@
             "id": "precos",
             "nome": "Preços e poder de compra",
             "grupo": "pessoas-governo",
-            "situacao": "em-breve",
+            "situacao": "no-ar",
+            "href": "/economia/precos",
             "medidas": [
               "IPCA e por região",
               "Cesta básica",

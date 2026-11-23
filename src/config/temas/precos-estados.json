@@ -1,0 +1,112 @@
+{
+  "_explicacao": "Aba Preços e poder de compra (molde PaginaEconomia). Dados: dados/precos/ (scripts/precos/). Três vistas: inflação em 12 meses com a meta (painel largo, sem dado por estado), cesta básica por capital (mapa e ranking) e salário mínimo em cestas (painel largo, colunas por ano). Cortes da cesta: faixas de R$ 50 que repartem bem as 27 capitais.",
+  "aba": "precos",
+  "titulo": "A economia {dePais}",
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Preços e poder de compra"
+  ],
+  "dados": "precos",
+  "carimboNosBotoes": true,
+  "opcaoInicial": "inflacao",
+  "medidas": [
+    {
+      "id": "cesta",
+      "rotulo": "Cesta básica por capital",
+      "titulo": "Cesta básica, {periodo}",
+      "formato": "moeda",
+      "casas": 0,
+      "sinal": false,
+      "cortes": [
+        700,
+        750,
+        800,
+        850,
+        900
+      ],
+      "rotuloRanking": "Cesta básica",
+      "nivelPlural": "capitais",
+      "subtituloFicha": "Cesta básica, {periodo}",
+      "extras": [
+        {
+          "indicador": "cesta-parte-sm",
+          "rotulo": "Parte do salário mínimo",
+          "formato": "percentual",
+          "casas": 0
+        },
+        {
+          "indicador": "cesta-cestas-sm",
+          "rotulo": "Cestas que o salário mínimo compra",
+          "formato": "numero",
+          "casas": 2
+        }
+      ],
+      "nivelFeminino": true
+    }
+  ],
+  "medidaPadrao": "cesta",
+  "paineis": [
+    {
+      "id": "inflacao",
+      "posicao": "antes",
+      "rotulo": "Inflação em 12 meses",
+      "arquivo": "ipca",
+      "largo": true,
+      "titulo": "Inflação em 12 meses, desde {inicio}",
+      "descricao": "Variação do índice oficial de preços ao consumidor (IPCA) nos 12 meses anteriores. A faixa cinza é o intervalo de tolerância da meta de cada ano.",
+      "series": [
+        {
+          "caminho": "serie",
+          "formato": "percentual",
+          "casas": 2,
+          "faixa": true,
+          "zero": true
+        }
+      ],
+      "legenda": {
+        "linha": "Inflação em 12 meses",
+        "faixa": "Intervalo de tolerância da meta"
+      },
+      "resumo": {
+        "tipo": "meta",
+        "nome": "Inflação em 12 meses",
+        "rotuloMeta": "Meta",
+        "rotuloIntervalo": "Intervalo de tolerância",
+        "rotuloTeto": "Em relação ao teto"
+      }
+    },
+    {
+      "id": "sm-cestas",
+      "rotulo": "Salário mínimo em cestas",
+      "arquivo": "smCestas",
+      "largo": true,
+      "tipo": "colunas",
+      "titulo": "Quantas cestas básicas o salário mínimo compra",
+      "descricao": "Média de cada ano: salário mínimo dividido pelo preço médio da cesta nas capitais pesquisadas. Valor mais alto significa mais poder de compra. O número de capitais pesquisadas mudou com o tempo (hoje são 27), por isso a comparação entre anos distantes é aproximada.",
+      "series": [
+        {
+          "caminho": "serie",
+          "formato": "numero",
+          "casas": 2
+        }
+      ],
+      "resumo": {
+        "tipo": "ultimo",
+        "topo": "{pais} · média de {periodo}",
+        "nome": "Salário mínimo",
+        "unidade": "cestas",
+        "campos": [
+          {
+            "rotulo": "Salário mínimo",
+            "caminho": "salarioMinimo",
+            "formato": "moeda",
+            "casas": 0
+          }
+        ],
+        "rotuloMaior": "Maior da série",
+        "rotuloMenor": "Menor da série"
+      }
+    }
+  ]
+}

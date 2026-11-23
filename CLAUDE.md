@@ -103,6 +103,15 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Selo de frequência + fonte · data ao lado dos botões (`carimboNosBotoes`), como no design.
 - Empregos com carteira (Novo Caged, Ministério do Trabalho): `scripts/caged-estados/` baixa os **microdados** do mês (FTP oficial, .7z aberto pelo pacote `7zip-bin`) e soma o saldo por estado → `dados/trabalho/brasil-caged.json` (arquivo extra da pasta trabalho: `arquivos.trabalho.extras` no país). Aparece na ficha com o próprio carimbo (mensal). Conferido com a divulgação oficial de set/2026. A data de divulgação de cada mês é digitada no script (`DIVULGACOES`).
 
+## Preços e poder de compra
+- Página `/economia/precos`: molde `PaginaEconomia` com `aba="precos"` (`src/config/temas/precos-estados.json`, `dados: "precos"`), script `scripts/precos/`.
+- Três vistas:
+  - **Inflação em 12 meses** desde 2019 (IBGE, IPCA, tabela 1737), com a faixa do intervalo de tolerância da meta. As metas do CMN estão digitadas no script, conferidas no site do Banco Central.
+  - **Cesta básica por capital** (DIEESE pelo Ipeadata, série CESBTOTAL, 27 capitais): mapa e ranking com o nome da capital; na ficha, a parte do salário mínimo bruto e as cestas que ele compra.
+  - **Salário mínimo em cestas**: média de cada ano desde 2000, em colunas.
+- Painéis "largos" (`largo: true` em `paineis`): a vista ocupa a largura toda, com um cartão de resumo próprio (`resumo.tipo`: "meta" ou "ultimo"), porque não há dado por estado. Gráficos: `GraficoSerie.astro` (linhas ou colunas, faixa opcional, cursor ligado).
+- A data da cesta é "atualizada em" (data do Ipeadata), não "divulgada em": o DIEESE não publica a data em formato de dados.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

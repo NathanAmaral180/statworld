@@ -1,0 +1,784 @@
+{
+  "_explicacao": "Inflação em 12 meses (IPCA) com a meta de cada mês. Gerado por scripts/precos/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-23",
+  "periodo": "outubro de 2026",
+  "ultimo": {
+    "valor": 4.63,
+    "meta": 3,
+    "min": 1.5,
+    "max": 4.5
+  },
+  "serie": {
+    "nome": "Inflação em 12 meses (IPCA), %",
+    "unidade": "%",
+    "frequencia": "mensal",
+    "fontes": [
+      {
+        "nome": "IBGE",
+        "publicacao": "IPCA, outubro de 2026 (tabela 1737 do Sidra)",
+        "url": "https://sidra.ibge.gov.br/tabela/1737",
+        "dataDivulgacao": "2026-11-12"
+      },
+      {
+        "nome": "Banco Central do Brasil",
+        "publicacao": "Metas para a inflação definidas pelo Conselho Monetário Nacional",
+        "url": "https://www.bcb.gov.br/controleinflacao/historicometas"
+      }
+    ],
+    "pontos": [
+      {
+        "periodo": "201901",
+        "nome": "janeiro 2019",
+        "valor": 3.78,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201902",
+        "nome": "fevereiro 2019",
+        "valor": 3.89,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201903",
+        "nome": "março 2019",
+        "valor": 4.58,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201904",
+        "nome": "abril 2019",
+        "valor": 4.94,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201905",
+        "nome": "maio 2019",
+        "valor": 4.66,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201906",
+        "nome": "junho 2019",
+        "valor": 3.37,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201907",
+        "nome": "julho 2019",
+        "valor": 3.22,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201908",
+        "nome": "agosto 2019",
+        "valor": 3.43,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201909",
+        "nome": "setembro 2019",
+        "valor": 2.89,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201910",
+        "nome": "outubro 2019",
+        "valor": 2.54,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201911",
+        "nome": "novembro 2019",
+        "valor": 3.27,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "201912",
+        "nome": "dezembro 2019",
+        "valor": 4.31,
+        "meta": 4.25,
+        "min": 2.75,
+        "max": 5.75
+      },
+      {
+        "periodo": "202001",
+        "nome": "janeiro 2020",
+        "valor": 4.19,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202002",
+        "nome": "fevereiro 2020",
+        "valor": 4.01,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202003",
+        "nome": "março 2020",
+        "valor": 3.3,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202004",
+        "nome": "abril 2020",
+        "valor": 2.4,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202005",
+        "nome": "maio 2020",
+        "valor": 1.88,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202006",
+        "nome": "junho 2020",
+        "valor": 2.13,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202007",
+        "nome": "julho 2020",
+        "valor": 2.31,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202008",
+        "nome": "agosto 2020",
+        "valor": 2.44,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202009",
+        "nome": "setembro 2020",
+        "valor": 3.14,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202010",
+        "nome": "outubro 2020",
+        "valor": 3.92,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202011",
+        "nome": "novembro 2020",
+        "valor": 4.31,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202012",
+        "nome": "dezembro 2020",
+        "valor": 4.52,
+        "meta": 4,
+        "min": 2.5,
+        "max": 5.5
+      },
+      {
+        "periodo": "202101",
+        "nome": "janeiro 2021",
+        "valor": 4.56,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202102",
+        "nome": "fevereiro 2021",
+        "valor": 5.2,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202103",
+        "nome": "março 2021",
+        "valor": 6.1,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202104",
+        "nome": "abril 2021",
+        "valor": 6.76,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202105",
+        "nome": "maio 2021",
+        "valor": 8.06,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202106",
+        "nome": "junho 2021",
+        "valor": 8.35,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202107",
+        "nome": "julho 2021",
+        "valor": 8.99,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202108",
+        "nome": "agosto 2021",
+        "valor": 9.68,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202109",
+        "nome": "setembro 2021",
+        "valor": 10.25,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202110",
+        "nome": "outubro 2021",
+        "valor": 10.67,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202111",
+        "nome": "novembro 2021",
+        "valor": 10.74,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202112",
+        "nome": "dezembro 2021",
+        "valor": 10.06,
+        "meta": 3.75,
+        "min": 2.25,
+        "max": 5.25
+      },
+      {
+        "periodo": "202201",
+        "nome": "janeiro 2022",
+        "valor": 10.38,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202202",
+        "nome": "fevereiro 2022",
+        "valor": 10.54,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202203",
+        "nome": "março 2022",
+        "valor": 11.3,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202204",
+        "nome": "abril 2022",
+        "valor": 12.13,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202205",
+        "nome": "maio 2022",
+        "valor": 11.73,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202206",
+        "nome": "junho 2022",
+        "valor": 11.89,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202207",
+        "nome": "julho 2022",
+        "valor": 10.07,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202208",
+        "nome": "agosto 2022",
+        "valor": 8.73,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202209",
+        "nome": "setembro 2022",
+        "valor": 7.17,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202210",
+        "nome": "outubro 2022",
+        "valor": 6.47,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202211",
+        "nome": "novembro 2022",
+        "valor": 5.9,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202212",
+        "nome": "dezembro 2022",
+        "valor": 5.79,
+        "meta": 3.5,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "periodo": "202301",
+        "nome": "janeiro 2023",
+        "valor": 5.77,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202302",
+        "nome": "fevereiro 2023",
+        "valor": 5.6,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202303",
+        "nome": "março 2023",
+        "valor": 4.65,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202304",
+        "nome": "abril 2023",
+        "valor": 4.18,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202305",
+        "nome": "maio 2023",
+        "valor": 3.94,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202306",
+        "nome": "junho 2023",
+        "valor": 3.16,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202307",
+        "nome": "julho 2023",
+        "valor": 3.99,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202308",
+        "nome": "agosto 2023",
+        "valor": 4.61,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202309",
+        "nome": "setembro 2023",
+        "valor": 5.19,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202310",
+        "nome": "outubro 2023",
+        "valor": 4.82,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202311",
+        "nome": "novembro 2023",
+        "valor": 4.68,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202312",
+        "nome": "dezembro 2023",
+        "valor": 4.62,
+        "meta": 3.25,
+        "min": 1.75,
+        "max": 4.75
+      },
+      {
+        "periodo": "202401",
+        "nome": "janeiro 2024",
+        "valor": 4.51,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202402",
+        "nome": "fevereiro 2024",
+        "valor": 4.5,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202403",
+        "nome": "março 2024",
+        "valor": 3.93,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202404",
+        "nome": "abril 2024",
+        "valor": 3.69,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202405",
+        "nome": "maio 2024",
+        "valor": 3.93,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202406",
+        "nome": "junho 2024",
+        "valor": 4.23,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202407",
+        "nome": "julho 2024",
+        "valor": 4.5,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202408",
+        "nome": "agosto 2024",
+        "valor": 4.24,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202409",
+        "nome": "setembro 2024",
+        "valor": 4.42,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202410",
+        "nome": "outubro 2024",
+        "valor": 4.76,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202411",
+        "nome": "novembro 2024",
+        "valor": 4.87,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202412",
+        "nome": "dezembro 2024",
+        "valor": 4.83,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202501",
+        "nome": "janeiro 2025",
+        "valor": 4.56,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202502",
+        "nome": "fevereiro 2025",
+        "valor": 5.06,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202503",
+        "nome": "março 2025",
+        "valor": 5.48,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202504",
+        "nome": "abril 2025",
+        "valor": 5.53,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202505",
+        "nome": "maio 2025",
+        "valor": 5.32,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202506",
+        "nome": "junho 2025",
+        "valor": 5.35,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202507",
+        "nome": "julho 2025",
+        "valor": 5.23,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202508",
+        "nome": "agosto 2025",
+        "valor": 5.13,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202509",
+        "nome": "setembro 2025",
+        "valor": 5.17,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202510",
+        "nome": "outubro 2025",
+        "valor": 4.68,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202511",
+        "nome": "novembro 2025",
+        "valor": 4.46,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202512",
+        "nome": "dezembro 2025",
+        "valor": 4.26,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202601",
+        "nome": "janeiro 2026",
+        "valor": 4.44,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202602",
+        "nome": "fevereiro 2026",
+        "valor": 3.81,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202603",
+        "nome": "março 2026",
+        "valor": 4.14,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202604",
+        "nome": "abril 2026",
+        "valor": 4.39,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202605",
+        "nome": "maio 2026",
+        "valor": 4.72,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202606",
+        "nome": "junho 2026",
+        "valor": 4.64,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202607",
+        "nome": "julho 2026",
+        "valor": 4.44,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202608",
+        "nome": "agosto 2026",
+        "valor": 4.22,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202609",
+        "nome": "setembro 2026",
+        "valor": 4.58,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      },
+      {
+        "periodo": "202610",
+        "nome": "outubro 2026",
+        "valor": 4.63,
+        "meta": 3,
+        "min": 1.5,
+        "max": 4.5
+      }
+    ]
+  }
+}
