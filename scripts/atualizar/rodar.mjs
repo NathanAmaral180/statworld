@@ -57,7 +57,7 @@ for (const s of escolhidos) {
     if (antes[a] !== null && agora !== null && antes[a] !== agora && semDatas(antes[a]) === semDatas(agora)) writeFileSync(join(RAIZ, a), antes[a]);
     else if (antes[a] !== agora) mudaram.push(a);
   }
-  resultados.push({ nome: s.nome, ok, mudaram, avisos, segundos: Math.round((Date.now() - inicio) / 1000), erro: ok ? '' : saida.split('\n').filter(Boolean).at(-1) ?? `código ${r.status}` });
+  resultados.push({ nome: s.nome, ok, mudaram, avisos, segundos: Math.round((Date.now() - inicio) / 1000), erro: ok ? '' : (saida.split('\n').find((l) => /(Error|Erro)\b|ENOENT|EACCES|ETIMEDOUT|ECONN/.test(l)) ?? saida.split('\n').filter(Boolean).at(-1) ?? `código ${r.status}`).trim().slice(0, 300) });
 }
 
 // Resumo (no terminal e, no GitHub, na página da execução).
