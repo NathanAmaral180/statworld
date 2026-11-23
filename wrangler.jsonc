@@ -1,0 +1,11 @@
+// Configuração da publicação na Cloudflare (Workers, só arquivos estáticos).
+// O site é a pasta dist/, gerada por "npm run build".
+{
+  "name": "statworld",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Endereço que não existe mostra a página de erro do site (src/pages/404.astro), com o código 404.
+    "not_found_handling": "404-page"
+  }
+}
