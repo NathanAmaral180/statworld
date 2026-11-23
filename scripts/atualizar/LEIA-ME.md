@@ -59,6 +59,11 @@ Para incluir o Novo Caged:
 node scripts/atualizar/rodar.mjs --semanal
 ```
 
+## O que os testes mostraram (23 nov 2026)
+- **Funcionam no robô:** Banco Central (dólar, Selic, crédito, dívida), IBGE (PNAD, IPCA), Ipeadata (cesta básica, salário mínimo), Comex Stat e o servidor do Novo Caged.
+- **Site do Tesouro Transparente:** às vezes responde "403" (acesso negado), inclusive de computadores no Brasil, provavelmente uma proteção depois de muitos pedidos. Por isso o script de Contas públicas mantém os arquivos do Tesouro quando o site não responde. Esses dados mudam uma vez por ano, e a dívida, que vem do Banco Central, continua sendo atualizada. O resumo da execução mostra um aviso quando isso acontece.
+- A rotina também roda sozinha sempre que um script de dados é alterado no GitHub. Assim, cada mudança nos scripts é testada na hora.
+
 ## Cuidados
 - O GitHub pausa rotinas automáticas de repositórios sem nenhuma atividade por 60 dias. Se isso acontecer, ele avisa por e-mail; basta clicar para reativar.
 - Alguns sites do governo às vezes bloqueiam ou demoram para responder a computadores fora do Brasil (onde o GitHub roda). Se um script falhar sempre no robô e funcionar no seu computador, é isso. Avise o Claude.
