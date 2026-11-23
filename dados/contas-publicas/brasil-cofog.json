@@ -1,0 +1,90 @@
+{
+  "_explicacao": "Gasto do governo central por função (classificação internacional COFOG). Gerado por scripts/contas-publicas/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-22",
+  "periodo": "2024",
+  "total": 3786067040000,
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Tesouro Nacional",
+      "publicacao": "Despesas por Função do Governo Central, classificação COFOG, 2024",
+      "url": "https://www.tesourotransparente.gov.br/ckan/dataset/despesas-por-funcao-do-governo-central-classificacao-cofog",
+      "dataAtualizacao": "2025-12-18"
+    }
+  ],
+  "funcoes": [
+    {
+      "codigo": "710",
+      "nome": "Proteção social",
+      "valor": 1518547140000,
+      "parte": 40.11
+    },
+    {
+      "codigo": "7017",
+      "nome": "Juros e encargos da dívida pública",
+      "valor": 937681490000,
+      "parte": 24.77
+    },
+    {
+      "codigo": "7018",
+      "nome": "Transferências a estados e municípios",
+      "valor": 548176570000,
+      "parte": 14.48
+    },
+    {
+      "codigo": "709",
+      "nome": "Educação",
+      "valor": 250236360000,
+      "parte": 6.61
+    },
+    {
+      "codigo": "707",
+      "nome": "Saúde",
+      "valor": 247713880000,
+      "parte": 6.54
+    },
+    {
+      "codigo": "704",
+      "nome": "Assuntos econômicos",
+      "valor": 74021450000,
+      "parte": 1.96
+    },
+    {
+      "codigo": "703",
+      "nome": "Ordem pública e segurança",
+      "valor": 71715610000,
+      "parte": 1.89
+    },
+    {
+      "codigo": "701",
+      "nome": "Serviços públicos gerais (demais)",
+      "valor": 68536910000,
+      "parte": 1.81
+    },
+    {
+      "codigo": "702",
+      "nome": "Defesa",
+      "valor": 55843890000,
+      "parte": 1.47
+    },
+    {
+      "codigo": "706",
+      "nome": "Habitação e serviços comunitários",
+      "valor": 6211130000,
+      "parte": 0.16
+    },
+    {
+      "codigo": "708",
+      "nome": "Lazer, cultura e religião",
+      "valor": 3871240000,
+      "parte": 0.1
+    },
+    {
+      "codigo": "705",
+      "nome": "Proteção ambiental",
+      "valor": 3511370000,
+      "parte": 0.09
+    }
+  ]
+}

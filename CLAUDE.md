@@ -127,6 +127,14 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Cada valor mostra a data a que se refere, e a fonte diz "consultado em".
 - **Sem "ao vivo" e sem bolsa:** a série do Ibovespa no SGS parou em 2019 e os dados da B3 exigem licença. Só entram com fonte oficial liberada.
 
+## Contas públicas
+- Página `/economia/contas-publicas`: molde `PaginaEconomia` com `aba="contas-publicas"` (`src/config/temas/contas-publicas-brasil.json`), **sem mapa por estado**: só vistas (`Vistas.astro`, botões + painéis), script `scripts/contas-publicas/`.
+- Três vistas:
+  - **Cada R$ 100** (`CadaCem.astro`, quadradinhos): RTN do Tesouro, governo central, último ano completo. Os grupos são do StatWorld, feitos com as linhas oficiais, e "nova dívida" = gastos − receitas. Cores: tokens `--p-*` do Design System, como no design.
+  - **Dívida bruta** (% do PIB, Banco Central, SGS 13762) em gráfico desde 2008.
+  - **Gasto por função**, classificação internacional COFOG (Tesouro). Juros (701.7) e transferências a estados e municípios (701.8) aparecem separados.
+- Conferido com o Tesouro: resultado primário de 2025 de −R$ 61,7 bi; proteção social em 2024 de R$ 1.518,5 bi. A base COFOG vem em R$ milhões.
+
 ## Página inicial
 - Visual: design da rodada 3 (`design/rodada-3-lugares/`), com as correções (o arquivo corrigido é `StatWorld Inicio (corrigido).html`).
 - Números: mapa-múndi (`scripts/mundo-mapa/`, Natural Earth), faixa "Agora" (`scripts/brasil-agora/`, Banco Central), cartões de tema (`scripts/mundo-temas/`, Banco Mundial). A lista "Fontes usadas" é montada a partir dos próprios arquivos de dados.

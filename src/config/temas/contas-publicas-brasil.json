@@ -1,0 +1,77 @@
+{
+  "_explicacao": "Aba Contas públicas (molde PaginaEconomia, sem mapa por estado: só vistas). Dados: dados/contas-publicas/ (scripts/contas-publicas/: Tesouro Nacional e Banco Central). Cores dos quadradinhos: tokens de categoria do Design System (as mesmas do design da rodada 4).",
+  "aba": "contas-publicas",
+  "titulo": "A economia {dePais}",
+  "trilha": [
+    "Economia",
+    "{pais}",
+    "Contas públicas"
+  ],
+  "dados": "contas-publicas",
+  "medidas": [],
+  "rotuloVistas": "Escolha a vista",
+  "opcaoInicial": "cem",
+  "paineis": [
+    {
+      "id": "cem",
+      "tipo": "cem",
+      "rotulo": "Cada R$ 100",
+      "arquivo": "r100",
+      "textos": {
+        "titulo": "De onde vem e para onde vai cada R$ 100 do governo federal",
+        "descricao": "Cada quadrado é R$ 1 de cada R$ 100 gastos. Passe o cursor sobre um item para destacá-lo.",
+        "deOndeVem": "De onde vem",
+        "deOndeVemSub": "receitas e nova dívida",
+        "paraOndeVai": "Para onde vai",
+        "paraOndeVaiSub": "gastos, repasses e juros",
+        "topo": "Governo federal, {periodo}",
+        "gastos": "Gastos totais",
+        "receitas": "Receitas",
+        "novaDivida": "Diferença coberta com nova dívida",
+        "maiorDestino": "Maior destino",
+        "deCada100": "de cada 100"
+      }
+    },
+    {
+      "id": "divida",
+      "rotulo": "Dívida pública",
+      "arquivo": "divida",
+      "largo": true,
+      "titulo": "Dívida bruta do governo, desde {inicio}",
+      "descricao": "Tudo o que União, estados e municípios devem, em proporção do PIB (governo geral, metodologia do Banco Central).",
+      "series": [
+        {
+          "caminho": "serie",
+          "formato": "percentual",
+          "casas": 1
+        }
+      ],
+      "resumo": {
+        "tipo": "ultimo",
+        "topo": "{pais} · {periodo}",
+        "nome": "Dívida bruta",
+        "unidade": "do PIB",
+        "rotuloMaior": "Maior da série",
+        "rotuloMenor": "Menor da série"
+      }
+    },
+    {
+      "id": "funcoes",
+      "tipo": "lista",
+      "rotulo": "Gasto por função",
+      "arquivo": "cofog",
+      "lista": "funcoes",
+      "titulo": "Gasto do governo federal por função, {periodo}",
+      "descricao": "Classificação internacional COFOG, que permite comparar países. Inclui repasses a estados e municípios e os juros da dívida.",
+      "formato": "moeda",
+      "compacto": true,
+      "casas": 1,
+      "cabecalhos": {
+        "nome": "Função",
+        "valor": "Valor",
+        "parte": "Parte"
+      },
+      "nota": "Fonte: {fonte}. Total: {total}."
+    }
+  ]
+}

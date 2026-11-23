@@ -76,6 +76,11 @@
     },
     "dinheiro": {
       "series": "brasil-series"
+    },
+    "contas-publicas": {
+      "r100": "brasil-r100",
+      "divida": "brasil-divida",
+      "cofog": "brasil-cofog"
     }
   },
   "mapa": {
@@ -131,7 +136,8 @@
       "precos",
       "impostos",
       "comercio-exterior",
-      "dinheiro-juros"
+      "dinheiro-juros",
+      "contas-publicas"
     ]
   },
   "slug": "brasil",

@@ -1,0 +1,126 @@
+{
+  "_explicacao": "De onde vem e para onde vai cada R$ 100 do governo central (União, INSS e Banco Central) no ano. Gerado por scripts/contas-publicas/baixar.mjs. Não edite à mão.",
+  "pais": "BR",
+  "baixadoEm": "2026-11-22",
+  "periodo": "2025",
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Tesouro Nacional",
+      "publicacao": "Resultado do Tesouro Nacional, série histórica (tabela 1.1), ano de 2025",
+      "url": "https://www.tesourotransparente.gov.br/ckan/dataset/resultado-do-tesouro-nacional",
+      "dataAtualizacao": "2026-08-27"
+    }
+  ],
+  "calculo": "Cálculo do StatWorld com o RTN: gastos = despesa total + repasses a estados e municípios + juros nominais; receitas = receita total. \"Nova dívida\" é a diferença entre os dois. Cada lado é reduzido a R$ 100 (proporção do total de gastos) e arredondado para somar 100.",
+  "totais": {
+    "gastos": 3855848763200.7188,
+    "receitas": 2902274564064.5996,
+    "novaDivida": 953574199136.1182
+  },
+  "entradas": [
+    {
+      "id": "consumo",
+      "rotulo": "Impostos sobre consumo e operações",
+      "inclui": "Cofins, PIS/Pasep, IPI, IOF, Imposto de Importação e Cide",
+      "cor": "p-leite",
+      "valor": 765864108012.99,
+      "de100": 20
+    },
+    {
+      "id": "renda",
+      "rotulo": "Impostos sobre renda e lucro",
+      "inclui": "Imposto de Renda e CSLL",
+      "cor": "p-soja",
+      "valor": 1045111218066.5701,
+      "de100": 27
+    },
+    {
+      "id": "previdencia",
+      "rotulo": "Contribuições à Previdência (INSS)",
+      "inclui": "Arrecadação líquida para o Regime Geral de Previdência Social",
+      "cor": "p-milho",
+      "valor": 709714288733.7102,
+      "de100": 18
+    },
+    {
+      "id": "outras",
+      "rotulo": "Outras receitas",
+      "inclui": "Royalties, dividendos de estatais, concessões, outras receitas da Receita Federal",
+      "cor": "p-gado",
+      "valor": 381584949251.33,
+      "de100": 10
+    },
+    {
+      "id": "nova-divida",
+      "rotulo": "Nova dívida",
+      "inclui": "O que faltou para pagar tudo: o governo pega emprestado",
+      "cor": "p-mandioca",
+      "valor": 953574199136.1182,
+      "de100": 25
+    }
+  ],
+  "saidas": [
+    {
+      "id": "inss",
+      "rotulo": "Aposentadorias e pensões do INSS",
+      "inclui": "Benefícios previdenciários do Regime Geral",
+      "cor": "p-leite",
+      "valor": 1026872537930.49,
+      "de100": 27
+    },
+    {
+      "id": "juros",
+      "rotulo": "Juros da dívida",
+      "inclui": "Juros nominais do governo central",
+      "cor": "p-soja",
+      "valor": 891879890155.13,
+      "de100": 23
+    },
+    {
+      "id": "repasses",
+      "rotulo": "Repasses a estados e municípios",
+      "inclui": "FPE, FPM, fundos constitucionais, royalties e outras partilhas de receita",
+      "cor": "p-milho",
+      "valor": 569719262633.1123,
+      "de100": 15
+    },
+    {
+      "id": "servidores",
+      "rotulo": "Servidores",
+      "inclui": "Salários, aposentadorias e encargos do pessoal federal",
+      "cor": "p-gado",
+      "valor": 402553137832.86,
+      "de100": 10
+    },
+    {
+      "id": "beneficios",
+      "rotulo": "BPC, abono e seguro-desemprego",
+      "inclui": "Benefício de Prestação Continuada (LOAS/RMV), abono salarial e seguro-desemprego",
+      "cor": "p-mandioca",
+      "valor": 215079490820.08002,
+      "de100": 6
+    },
+    {
+      "id": "ministerios",
+      "rotulo": "Ministérios (custeio e investimento)",
+      "inclui": "Despesas do Poder Executivo sujeitas à programação financeira, como Bolsa Família, saúde e educação",
+      "cor": "p-cana",
+      "valor": 574271277593.94,
+      "de100": 15
+    },
+    {
+      "id": "outras-obrigatorias",
+      "rotulo": "Outras despesas obrigatórias",
+      "inclui": "Precatórios, Fundeb, subsídios, Legislativo e Judiciário, entre outras",
+      "cor": "p-cafe",
+      "valor": 175473166235.10657,
+      "de100": 4
+    }
+  ],
+  "conferencia": {
+    "resultadoPrimario": -61694308980.98907,
+    "despesaTotal": 2394249610412.4766,
+    "receitaLiquida": 2332555301431.488
+  }
+}

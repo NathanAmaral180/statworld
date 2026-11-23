@@ -10,6 +10,8 @@ import GraficoSerie from './GraficoSerie.astro';
 import ListaBarras from './ListaBarras.astro';
 import CartaoBalanca from './CartaoBalanca.astro';
 import PainelSeries from './PainelSeries.astro';
+import CadaCem from './CadaCem.astro';
+import Vistas from './Vistas.astro';
 import EspacoAnuncio from './EspacoAnuncio.astro';
 import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-indicador';
 import { preencher, dataCurta, formatar, quandoCurto } from './mapa-ranking/visao';
@@ -21,11 +23,12 @@ import trabalhoEstados from '../config/temas/trabalho-estados.json';
 import precosEstados from '../config/temas/precos-estados.json';
 import comercioEstados from '../config/temas/comercio-estados.json';
 import dinheiroBrasil from '../config/temas/dinheiro-brasil.json';
+import contasBrasil from '../config/temas/contas-publicas-brasil.json';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
 // Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados, 'dinheiro-juros': dinheiroBrasil };
+const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados, 'dinheiro-juros': dinheiroBrasil, 'contas-publicas': contasBrasil };
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -37,8 +40,10 @@ const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
 // Pasta de dados da aba (padrão: economia). O nome do arquivo vem do país (arquivos.<pasta>.<nível>).
 const pastaDados = tema.dados ?? 'economia';
 // Abas só com painel de séries (ex.: Dinheiro e juros) não têm dado por estado.
+// Abas sem mapa por estado (só painéis, ex.: Contas públicas): botões de vista sem mapa.
+const semMapa = !tema.medidas?.length;
 const painelSeries = tema.painelSeries ? carregarDados<any>(pastaDados, pais.arquivos[pastaDados][tema.painelSeries.arquivo]) : null;
-const economiaBase = painelSeries ? { indicadores: {} } : carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
+const economiaBase = painelSeries || semMapa ? { indicadores: {} } : carregarDados<any>(pastaDados, pais.arquivos[pastaDados][NIVEL]);
 // Arquivos extras da mesma pasta (ex.: Novo Caged), juntados aos indicadores da aba.
 const extrasDados = (pais.arquivos[pastaDados]?.extras ?? []).map((nome: string) => carregarDados<any>(pastaDados, nome));
 const economia = { ...economiaBase, indicadores: Object.assign({}, economiaBase.indicadores, ...extrasDados.map((x: any) => x.indicadores)) };
@@ -77,6 +82,10 @@ const paineis = (tema.paineis ?? []).flatMap((cfg: any) => {
   const arq = pais.arquivos[pastaDados]?.[cfg.arquivo];
   if (!arq) return [];
   const dados = carregarDados<any>(pastaDados, arq);
+  // "Cada R$ 100" (quadradinhos de onde vem e para onde vai o dinheiro).
+  if (cfg.tipo === 'cem') {
+    return [{ cfg, cem: true, opcao: { id: cfg.id, rotulo: cfg.rotulo, painel: true, largo: true, carimbo: carimboDe(dados.frequencia, dados.fontes) }, props: { dados, textos: cfg.textos } }];
+  }
   // Painel de lista com barras (ex.: principais produtos).
   if (cfg.tipo === 'lista') {
     const fl = dados.fontes[0];
@@ -175,7 +184,14 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
       </div>
     )}
     {painelSeries && <PainelSeries series={painelSeries.series} ctx={ctx} textos={tema.painelSeries.textos} />}
-    {!painelSeries && <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
+    {semMapa && !painelSeries && (
+      <Vistas opcoes={opcoesFinais} inicial={opcaoInicial} rotulo={tema.rotuloVistas ?? ''}>
+        {paineis.filter((p: any) => p.cem).map((p: any) => <CadaCem {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />)}
+        {paineis.filter((p: any) => p.lista).map((p: any) => <ListaBarras {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />)}
+        {paineis.filter((p: any) => !p.lista && !p.cem).map((p: any) => <GraficoSerie {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />)}
+      </Vistas>
+    )}
+    {!painelSeries && !semMapa && <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
       {balanca && <CartaoBalanca slot="lateral" dados={balanca} ctx={ctx} textos={tema.balanca.textos} />}
       {paineis.filter((p: any) => p.lista).map((p: any) => (
         <ListaBarras slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} balanca={balanca} textosBalanca={tema.balanca?.textos} />

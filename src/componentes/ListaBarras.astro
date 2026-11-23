@@ -42,7 +42,7 @@ const maior = Math.max(...itens.map((i) => i.valor));
 
 <style>
   .lb { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 56px; align-items: start; }
-  .lb[hidden] { display: none; }
+  .lb[hidden] { display: none !important; }
   h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
   .lb-desc { margin: 4px 0 0; color: var(--sub); font-size: 15px; }
   table { width: 100%; border-collapse: collapse; margin-top: 16px; font-variant-numeric: tabular-nums; }

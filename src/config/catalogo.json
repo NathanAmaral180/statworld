@@ -262,7 +262,8 @@
             "id": "contas-publicas",
             "nome": "Contas públicas",
             "grupo": "mundo-mercado",
-            "situacao": "em-breve",
+            "situacao": "no-ar",
+            "href": "/economia/contas-publicas",
             "medidas": [
               "Dívida pública",
               "Resultado primário",
