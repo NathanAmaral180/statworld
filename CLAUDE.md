@@ -158,6 +158,11 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Mesmo molde do Agro/Indústria (`temaId="servicos"`, `src/config/temas/servicos-estados.json`); filtros "De mercado" e "Públicos"; cores `sv-*`.
 - Cada atividade tem uma descrição ("Inclui: …") mostrada na ficha e na página — "Outros serviços" é agrupado pelo próprio IBGE e não é detalhado por estado nessa fonte. Detalhar exigiria outra pesquisa (Pesquisa Anual de Serviços), com outra medida: só num mapa separado.
 
+## Atualização automática
+- Rotina do GitHub `.github/workflows/atualizar-dados.yml`: todo dia às 7h (Brasília) roda `scripts/atualizar/rodar.mjs` (scripts frequentes; às segundas, também o Novo Caged), confere o build e, só se algum número mudou, grava em `dados/` e faz push (a Cloudflare publica).
+- O `rodar.mjs` desfaz arquivos em que só mudou a data da consulta (`baixadoEm`, `dataConsulta`). Script novo que deva ser automático entra na lista `SCRIPTS` dele.
+- Continuam à mão: os anuais (constante `ANO`), as datas de divulgação do Caged e as metas de inflação. Ver `scripts/atualizar/LEIA-ME.md`.
+
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321
 - `npm run build` — gera a versão final na pasta `dist/`

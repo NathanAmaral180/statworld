@@ -1,20 +1,20 @@
 {
   "_explicacao": "Indicadores da faixa \"Agora\". Gerado por scripts/brasil-agora/baixar.mjs. Não edite à mão. Cada número traz a data a que se refere.",
   "pais": "BR",
-  "baixadoEm": "2026-11-22",
+  "baixadoEm": "2026-11-23",
   "indicadores": [
     {
       "id": "dolar",
       "rotulo": "Dólar comercial, venda (PTAX)",
       "frequencia": "diário",
-      "valor": 5.8889,
+      "valor": 5.9708,
       "formato": "moeda",
       "casas": 2,
-      "data": "2026-11-19",
+      "data": "2026-11-23",
       "variacao": {
         "tipo": "percentual",
-        "valor": 1.3545144745447546,
-        "desde": "2026-11-18"
+        "valor": 1.3907520929205885,
+        "desde": "2026-11-19"
       },
       "fontes": [
         {
@@ -31,7 +31,7 @@
       "valor": 13.75,
       "formato": "percentual",
       "casas": 2,
-      "data": "2026-11-22",
+      "data": "2026-11-23",
       "variacao": {
         "tipo": "pontos",
         "valor": -0.25,
