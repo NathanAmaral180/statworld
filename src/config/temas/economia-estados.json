@@ -10,6 +10,7 @@
     {
       "id": "peso-pib",
       "rotulo": "Peso no PIB",
+      "rotuloCurto": "Peso",
       "titulo": "Peso no PIB em {periodo}",
       "formato": "percentual",
       "casas": 1,
@@ -25,6 +26,7 @@
     {
       "id": "pib-por-pessoa",
       "rotulo": "PIB por pessoa",
+      "rotuloCurto": "Por pessoa",
       "titulo": "PIB por pessoa em {periodo}",
       "formato": "moeda",
       "casas": 0,
@@ -40,6 +42,7 @@
     {
       "id": "crescimento",
       "rotulo": "Crescimento em {periodo}",
+      "rotuloCurto": "Crescimento",
       "titulo": "Crescimento em {periodo}",
       "formato": "percentual",
       "casas": 1,

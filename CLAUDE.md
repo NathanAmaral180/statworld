@@ -65,6 +65,7 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Layout de referência aprovado: **1c Mapa e ranking** (`design/1c-mapa-ranking.png` e `design/rodada-2-agro/`).
 - **Ranking recolhido em todas as páginas de mapa** (decisão do dono): mostra os 8 primeiros e o botão "Ver todos os 27 estados"; o lugar escolhido no mapa aparece na lista mesmo fora dos 8. **No computador, o mapa fica preso na tela** enquanto a pessoa desce pelo ranking (no celular, não). Tudo em `MapaRanking.astro`.
 - Estados pequenos com linha de chamada (RN, PB, PE, AL, SE, DF, ES, RJ); passar o mouse = prévia, clicar = fixa.
+- **Celular (até 640px): textos curtos, computador: completos.** Abas: `nomeCurto` no catálogo; botões de vista: `rotuloCurto` na config da aba (e no arquivo do país quando ele troca as medidas). Classes `.so-pc` / `.so-cel` em `global.css`. Até 760px, a ficha fica logo abaixo do mapa (antes da legenda). Botão de tema vira ícone. Progresso do projeto: `docs/PAINEL-DE-PROGRESSO.md`.
 
 ## Estrutura de pastas
 - `dados/` — arquivos de dados (JSON) com fonte e data.

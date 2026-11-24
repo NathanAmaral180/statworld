@@ -7,7 +7,7 @@
 // Nunca quebra linha. No computador, o que não couber vai para "Mais (n)" (a aba ativa nunca vai);
 // no celular, o nível 1 usa rótulos curtos e o nível 2 rola na horizontal, já na aba ativa.
 // Sem grupos (ex.: Dados · Ao vivo · História), é um nível só.
-interface Item { id: string; nome: string; href?: string; ativo: boolean; grupo?: string; grupoId?: string; grupoCurto?: string }
+interface Item { id: string; nome: string; nomeCurto?: string; href?: string; ativo: boolean; grupo?: string; grupoId?: string; grupoCurto?: string }
 interface Props { itens: Item[]; atual: string; rotulo: string; emBreve: string }
 const { itens, atual, rotulo, emBreve } = Astro.props;
 
@@ -48,11 +48,11 @@ const seta = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"
       <div class="nv-row">
         {nivel2.map((i) =>
           i.id === atual ? (
-            <span class="nv-i on" aria-current="page">{i.nome}</span>
+            <span class="nv-i on" aria-current="page">{i.nomeCurto ? <><span class="so-pc">{i.nome}</span><span class="so-cel">{i.nomeCurto}</span></> : i.nome}</span>
           ) : i.ativo && i.href ? (
-            <a class="nv-i" href={i.href}>{i.nome}</a>
+            <a class="nv-i" href={i.href}>{i.nomeCurto ? <><span class="so-pc">{i.nome}</span><span class="so-cel">{i.nomeCurto}</span></> : i.nome}</a>
           ) : (
-            <span class="nv-i off" aria-disabled="true">{i.nome}<em class="soon">{emBreve}</em></span>
+            <span class="nv-i off" aria-disabled="true">{i.nomeCurto ? <><span class="so-pc">{i.nome}</span><span class="so-cel">{i.nomeCurto}</span></> : i.nome}<em class="soon">{emBreve}</em></span>
           )
         )}
       </div>
@@ -158,7 +158,7 @@ const seta = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"
   .nv-menu :global(.nv-i.off) { color: var(--faint); }
   /* celular: nível 1 com rótulo curto e sempre visível; nível 2 rola */
   @media (max-width: 640px) {
-    .nv { margin: 28px -16px 24px; }
+    .nv { margin: 16px -16px 20px; }
     .nv1, .nv2 { padding: 0 16px; }
     .nv1 .nv-row { gap: 20px; }
     .nv1 .nv-i { font-size: 15px; min-height: 44px; box-sizing: border-box; align-items: flex-end; }

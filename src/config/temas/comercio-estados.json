@@ -13,6 +13,7 @@
     {
       "id": "exportacoes",
       "rotulo": "Exportações por estado",
+      "rotuloCurto": "Exportações",
       "titulo": "Exportações em {periodo}",
       "formato": "moeda",
       "moeda": "USD",
@@ -54,6 +55,7 @@
       "id": "produtos",
       "tipo": "lista",
       "rotulo": "Principais produtos",
+      "rotuloCurto": "Produtos",
       "arquivo": "listas",
       "lista": "produtos",
       "titulo": "Principais produtos exportados em {periodo}",
@@ -73,6 +75,7 @@
       "id": "parceiros",
       "tipo": "lista",
       "rotulo": "Principais parceiros",
+      "rotuloCurto": "Parceiros",
       "arquivo": "listas",
       "lista": "parceiros",
       "titulo": "Principais destinos das exportações em {periodo}",

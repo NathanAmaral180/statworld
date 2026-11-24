@@ -230,6 +230,7 @@
         {
           "id": "desemprego",
           "rotulo": "Desemprego por estado",
+          "rotuloCurto": "Por estado",
           "titulo": "Desemprego, {periodo}",
           "formato": "percentual",
           "casas": 1,
@@ -268,6 +269,7 @@
         {
           "id": "no-tempo",
           "rotulo": "Desemprego e salário no tempo",
+          "rotuloCurto": "No tempo",
           "arquivo": "series",
           "titulo": "Desemprego e salário médio, desde {inicio}",
           "descricao": "Mês a mês, para o país inteiro. Passe o cursor para ver cada mês nos dois gráficos.",
@@ -294,6 +296,7 @@
         {
           "id": "custo-vida",
           "rotulo": "Custo de vida por estado",
+          "rotuloCurto": "Custo de vida",
           "titulo": "Custo de vida, {periodo} (EUA = 100)",
           "formato": "numero",
           "casas": 1,
@@ -330,6 +333,7 @@
           "id": "inflacao",
           "posicao": "antes",
           "rotulo": "Inflação em 12 meses",
+          "rotuloCurto": "Inflação",
           "arquivo": "ipca",
           "largo": true,
           "mostrarObservacao": true,
@@ -388,6 +392,7 @@
         {
           "id": "divida",
           "rotulo": "Dívida pública",
+          "rotuloCurto": "Dívida",
           "arquivo": "divida",
           "largo": true,
           "titulo": "Dívida do governo federal, desde {inicio}",
@@ -422,6 +427,7 @@
           "id": "funcoes",
           "tipo": "lista",
           "rotulo": "Gasto por função",
+          "rotuloCurto": "Gastos",
           "arquivo": "cofog",
           "lista": "funcoes",
           "titulo": "Gasto do governo federal por função, {periodo}",
@@ -444,6 +450,7 @@
         {
           "id": "exportacoes",
           "rotulo": "Exportações por estado",
+          "rotuloCurto": "Exportações",
           "titulo": "Exportações em {periodo}",
           "formato": "moeda",
           "moeda": "USD",
@@ -474,6 +481,7 @@
           "id": "produtos",
           "tipo": "lista",
           "rotulo": "Principais produtos",
+          "rotuloCurto": "Produtos",
           "arquivo": "listas",
           "lista": "produtos",
           "titulo": "Principais produtos exportados em {periodo}",
@@ -493,6 +501,7 @@
           "id": "parceiros",
           "tipo": "lista",
           "rotulo": "Principais parceiros",
+          "rotuloCurto": "Parceiros",
           "arquivo": "listas",
           "lista": "parceiros",
           "titulo": "Principais destinos das exportações em {periodo}",

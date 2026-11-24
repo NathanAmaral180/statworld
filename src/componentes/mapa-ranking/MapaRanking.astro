@@ -6,6 +6,7 @@ import { htmlRanking, htmlFicha, htmlLegenda, htmlChip, htmlAviso, preencher, ty
 export interface Opcao {
   id: string;
   rotulo: string;
+  rotuloCurto?: string; // versão curta para o celular
   visao?: string; // chave em `visoes`
   lista?: { rotulo: string; itens: { id: string; rotulo: string; url: string; grupo?: string; destaque?: boolean; iconeSvg?: string }[]; padrao: string };
   filtros?: { rotulo: string; itens: { id: string; rotulo: string; visao: string }[]; padrao: string };
@@ -52,7 +53,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       {opcoes.length > 1 && (
         <div class="mr-medidas" role="group" aria-label={ctx.textos.escolhaMedida}>
           {opcoes.map((o) => (
-            <button type="button" data-opcao={o.id} aria-pressed={String(o.id === opcao.id)}>{o.rotulo}</button>
+            <button type="button" data-opcao={o.id} aria-pressed={String(o.id === opcao.id)}>{o.rotuloCurto ? <><span class="so-pc">{o.rotulo}</span><span class="so-cel">{o.rotuloCurto}</span></> : o.rotulo}</button>
           ))}
         </div>
       )}
@@ -169,7 +170,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
             </button>
           </div>
         )}
-        <p class="mr-dica">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</p>
+        <p class="mr-dica"><span class="so-pc">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</span><span class="so-cel">{preencher(ctx.textos.rankingDicaToque ?? ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</span></p>
       </div>
       <p class="mr-fonte" set:html={visao.fonte} />
     </div>
@@ -547,6 +548,21 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 
   @media (max-width: 1100px) {
     .mr-grade { grid-template-columns: 1fr; gap: 32px; }
+  }
+  /* Celular: ordem mapa → ficha → legenda → ranking, para o número do estado tocado aparecer logo abaixo do mapa. */
+  @media (max-width: 760px) {
+    .mr-grade { display: flex; flex-direction: column; gap: 0; }
+    .mr-esq, .mr-lado { display: contents; }
+    .mr-mapa:not([hidden]) { display: contents; }
+    .mr-painel { order: 1; margin-bottom: 20px; }
+    .mr-mapa svg { order: 1; }
+    .mr-lado > .mr-ficha { order: 2; margin: 16px 0 0; }
+    .mr-legenda { order: 3; margin: 16px 0 28px; }
+    .mr-lado > :global(*) { order: 4; }
+    .mr-lado > .mr-tabela { order: 5; }
+    .mr-lado > .mr-fonte { order: 6; }
+    .so-painel .mr-lado { display: none; }
+    .mr-aviso { margin: -12px 0 16px; font-size: 14px; }
   }
   @media (max-width: 560px) {
     .mr-medidas { display: flex; width: 100%; }

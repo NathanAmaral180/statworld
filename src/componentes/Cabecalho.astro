@@ -31,7 +31,11 @@ const { temaAtual = 'economia' } = Astro.props;
       </ul>
     </nav>
 
-    <button id="botao-tema" class="botao-tema" type="button">Tema escuro</button>
+    <button id="botao-tema" class="botao-tema" type="button" aria-label="Tema escuro">
+      <span class="tema-texto so-pc">Tema escuro</span>
+      <svg class="so-cel tema-icone lua" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+      <svg class="so-cel tema-icone sol" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+    </button>
   </div>
 </header>
 
@@ -40,9 +44,13 @@ const { temaAtual = 'economia' } = Astro.props;
   const botao = document.getElementById('botao-tema')!;
   const raiz = document.documentElement;
   const atualizarTexto = () => {
+    // No celular o botão mostra só o ícone (lua = ir para o escuro; sol = ir para o claro).
     const escuro = raiz.dataset.theme === 'dark';
-    botao.textContent = escuro ? 'Tema claro' : 'Tema escuro';
+    const texto = escuro ? 'Tema claro' : 'Tema escuro';
+    botao.querySelector('.tema-texto')!.textContent = texto;
+    botao.setAttribute('aria-label', texto);
     botao.setAttribute('aria-pressed', String(escuro));
+    botao.classList.toggle('escuro', escuro);
   };
   atualizarTexto();
   botao.addEventListener('click', () => {
@@ -68,12 +76,20 @@ const { temaAtual = 'economia' } = Astro.props;
   .botao-tema:hover { background: var(--surf); }
   .botao-tema:focus-visible, nav a:focus-visible, .logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+  .tema-icone { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
   @media (max-width: 760px) {
-    .barra { height: auto; flex-wrap: wrap; gap: 0 16px; padding-top: 12px; }
-    .logo { flex: 1; }
-    nav { order: 3; flex-basis: 100%; overflow-x: auto; }
+    .barra { height: auto; flex-wrap: wrap; gap: 0 16px; padding-top: 10px; }
+    .logo { flex: 1; font-size: 18px; }
+    nav { order: 3; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; }
     nav ul { gap: 20px; }
-    nav a, nav .em-breve { padding: 14px 0 12px; font-size: 15px; }
+    nav a, nav .em-breve { padding: 10px 0 9px; font-size: 15px; white-space: nowrap; }
     .botao-tema { padding: 8px 12px; font-size: 14px; }
+  }
+  @media (max-width: 640px) {
+    /* celular: só o ícone, num botão quadrado de 40px (bom para o dedo) */
+    .botao-tema { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; }
+    .botao-tema .sol, .botao-tema.escuro .lua { display: none; }
+    .botao-tema.escuro .sol { display: block; }
   }
 </style>

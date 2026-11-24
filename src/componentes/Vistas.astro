@@ -2,14 +2,14 @@
 // Botões de vista (ex.: "Cada R$ 100 / Dívida pública / Gasto por função") para abas SEM mapa por estado.
 // Cada botão mostra o painel com data-painel-de=<id> (vindo no slot) e o carimbo "selo + fonte · data" dele.
 // Mesmo visual dos botões do MapaRanking.
-interface Opcao { id: string; rotulo: string; carimbo?: { selo?: string; texto: string } }
+interface Opcao { id: string; rotulo: string; rotuloCurto?: string; carimbo?: { selo?: string; texto: string } }
 interface Props { opcoes: Opcao[]; inicial: string; rotulo: string }
 const { opcoes, inicial, rotulo } = Astro.props;
 ---
 <div class="vs" data-vistas>
   <div class="vs-controles">
     <div class="vs-botoes" role="group" aria-label={rotulo}>
-      {opcoes.map((o) => <button type="button" data-vista={o.id} aria-pressed={String(o.id === inicial)}>{o.rotulo}</button>)}
+      {opcoes.map((o) => <button type="button" data-vista={o.id} aria-pressed={String(o.id === inicial)}>{o.rotuloCurto ? <><span class="so-pc">{o.rotulo}</span><span class="so-cel">{o.rotuloCurto}</span></> : o.rotulo}</button>)}
     </div>
     {opcoes.filter((o) => o.carimbo).map((o) => (
       <p class="vs-carimbo" data-carimbo-de={o.id} hidden={o.id !== inicial}>{o.carimbo!.selo && <span class="selo">{o.carimbo!.selo}</span>}<span>{o.carimbo!.texto}</span></p>

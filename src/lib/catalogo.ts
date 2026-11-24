@@ -25,6 +25,7 @@ export function abasDe(temaId: string, pais: any) {
   return tema.abas.itens.map((a: any) => ({
     id: a.id,
     nome: a.nome,
+    nomeCurto: a.nomeCurto,
     grupo: grupo[a.grupo]?.nome,
     grupoId: a.grupo,
     grupoCurto: grupo[a.grupo]?.nomeCurto ?? grupo[a.grupo]?.nome,

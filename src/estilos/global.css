@@ -74,3 +74,11 @@ a { color: var(--accent); }
   .conteudo { padding: 0 16px; }
 }
 
+
+/* Duas versões de um texto: completa no computador, curta no celular.
+   Uso: <span class="so-pc">Preços e poder de compra</span><span class="so-cel">Preços</span> */
+.so-cel { display: none; }
+@media (max-width: 640px) {
+  .so-pc { display: none; }
+  .so-cel { display: inline; }
+}

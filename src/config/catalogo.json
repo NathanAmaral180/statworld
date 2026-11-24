@@ -161,6 +161,7 @@
           {
             "id": "trabalho-renda",
             "nome": "Trabalho e renda",
+            "nomeCurto": "Trabalho",
             "grupo": "pessoas-governo",
             "situacao": "no-ar",
             "href": "/economia/trabalho",
@@ -182,6 +183,7 @@
           {
             "id": "precos",
             "nome": "Preços e poder de compra",
+            "nomeCurto": "Preços",
             "grupo": "pessoas-governo",
             "situacao": "no-ar",
             "href": "/economia/precos",
@@ -224,6 +226,7 @@
           {
             "id": "comercio-exterior",
             "nome": "Comércio exterior",
+            "nomeCurto": "Comércio",
             "grupo": "mundo-mercado",
             "situacao": "no-ar",
             "href": "/economia/comercio-exterior",
@@ -241,6 +244,7 @@
           {
             "id": "dinheiro-juros",
             "nome": "Dinheiro e juros",
+            "nomeCurto": "Juros",
             "grupo": "mundo-mercado",
             "situacao": "no-ar",
             "href": "/economia/dinheiro-e-juros",
@@ -261,6 +265,7 @@
           {
             "id": "contas-publicas",
             "nome": "Contas públicas",
+            "nomeCurto": "Contas",
             "grupo": "mundo-mercado",
             "situacao": "no-ar",
             "href": "/economia/contas-publicas",

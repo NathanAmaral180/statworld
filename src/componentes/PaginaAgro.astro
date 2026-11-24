@@ -76,4 +76,10 @@ const abas = abasDe('economia', pais);
   .aviso-teste { display: inline-block; margin: 0 0 16px; padding: 6px 12px; font-size: 14px; color: var(--sub); background: var(--surf); border: 1px dashed var(--line2); border-radius: 8px; }
   .trilha { margin: 0 0 12px; color: var(--sub); font-size: 17px; }
   h1 { margin: 0 0 24px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+  /* celular: topo enxuto, para o mapa aparecer logo */
+  @media (max-width: 640px) {
+    .pagina { padding-top: 16px; }
+    .trilha { font-size: 14px; margin-bottom: 4px; }
+    h1 { font-size: 28px; }
+  }
 </style>

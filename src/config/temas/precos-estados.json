@@ -14,6 +14,7 @@
     {
       "id": "cesta",
       "rotulo": "Cesta básica por capital",
+      "rotuloCurto": "Cesta básica",
       "titulo": "Cesta básica, {periodo}",
       "formato": "moeda",
       "casas": 0,
@@ -51,6 +52,7 @@
       "id": "inflacao",
       "posicao": "antes",
       "rotulo": "Inflação em 12 meses",
+      "rotuloCurto": "Inflação",
       "arquivo": "ipca",
       "largo": true,
       "titulo": "Inflação em 12 meses, desde {inicio}",
@@ -79,6 +81,7 @@
     {
       "id": "sm-cestas",
       "rotulo": "Salário mínimo em cestas",
+      "rotuloCurto": "Mínimo em cestas",
       "arquivo": "smCestas",
       "largo": true,
       "tipo": "colunas",

@@ -13,6 +13,7 @@
     {
       "id": "desemprego",
       "rotulo": "Desemprego por estado",
+      "rotuloCurto": "Por estado",
       "titulo": "Desemprego, {periodo}",
       "formato": "percentual",
       "casas": 1,
@@ -51,6 +52,7 @@
     {
       "id": "no-tempo",
       "rotulo": "Desemprego e renda no tempo",
+      "rotuloCurto": "No tempo",
       "arquivo": "series",
       "titulo": "Desemprego e renda média, desde {inicio}",
       "descricao": "Cada ponto é a média de três meses. Passe o cursor para ver cada mês nos dois gráficos.",
