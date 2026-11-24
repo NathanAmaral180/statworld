@@ -16,7 +16,7 @@
   ],
   "historico": [
     { "data": "2026-11-24", "titulo": "Painel do administrador", "de": 51, "para": 52,
-      "itens": ["Contador de visitas próprio, anônimo e sem cookies: país, página, tema, celular ou computador, de onde veio e tempo na página", "Página /admin com senha, com os números de visitas e este painel de progresso", "Política de privacidade atualizada", "Seção Dinheiro: fontes de receita e a lista do que falta para ligar os anúncios"] },
+      "itens": ["Contador de visitas próprio, anônimo e sem cookies: país, página, tema, celular ou computador, de onde veio e tempo na página", "Página /admin com senha, com os números de visitas e este painel de progresso", "Política de privacidade atualizada", "Seção Dinheiro: fontes de receita e a lista do que falta para ligar os anúncios", "Visitas vindas de IA (ChatGPT, Perplexity, Gemini…) reconhecidas; estado e cidade aproximados no painel"] },
     { "data": "2026-11-24", "titulo": "Celular", "de": 47, "para": 51,
       "itens": ["Cabeçalho mais baixo; botão de tema virou ícone no celular", "Nomes curtos no celular e completos no computador (abas e botões), Brasil e EUA", "Topo das páginas enxuto: o mapa aparece inteiro na primeira tela", "Ficha do estado logo abaixo do mapa", "Dica do ranking fala em \"Toque\" no celular"] },
     { "data": "2026-11-21", "titulo": "Até aqui", "de": null, "para": 47,

@@ -69,6 +69,8 @@ const posicoesAnuncio = Object.keys(anuncios.posicoes).length;
 
     <div class="grade2">
       <div class="cartao"><h3>Países</h3><ol id="l-paises" class="barras"></ol></div>
+      <div class="cartao"><h3>Estados e regiões</h3><ol id="l-estados" class="barras"></ol></div>
+      <div class="cartao"><h3>Cidades</h3><ol id="l-cidades" class="barras"></ol><p class="nota">Aproximado: deduzido pela rede de internet. No celular, às vezes aparece a cidade da operadora em vez da cidade da pessoa.</p></div>
       <div class="cartao"><h3>Temas e abas mais vistos</h3><ol id="l-abas" class="barras"></ol></div>
       <div class="cartao"><h3>De onde vêm</h3><ol id="l-origens" class="barras"></ol><p class="nota">"Direto" = digitou o endereço, usou um favorito ou o app não informou.</p></div>
       <div class="cartao"><h3>Celular ou computador</h3><ol id="l-aparelhos" class="barras"></ol></div>
@@ -224,6 +226,8 @@ const posicoesAnuncio = Object.keys(anuncios.posicoes).length;
     graficoDias($('g-dias'), d.porDia, d.desde, d.ate);
     graficoHoras($('g-horas'), d.horas);
     barras($('l-paises'), d.paises.map((p: Linha) => ({ nome: `${bandeira(p.pais)} ${nomePais(p.pais)}`.trim(), valor: p.visitantes })));
+    barras($('l-estados'), (d.estados ?? []).map((e: Linha) => ({ nome: `${bandeira(e.pais)} ${e.estado}`.trim(), valor: e.visitantes })), 'Ainda sem dado de estado.');
+    barras($('l-cidades'), (d.cidades ?? []).map((c: Linha) => ({ nome: `${bandeira(c.pais)} ${c.cidade}${c.estado ? ` · ${c.estado}` : ''}`.trim(), valor: c.visitantes })), 'Ainda sem dado de cidade.');
     const abas: Record<string, { valor: number; tempoSoma: number; tempoN: number }> = {};
     for (const c of d.caminhos) {
       const nome = rotuloDe(c.caminho);

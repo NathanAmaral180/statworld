@@ -11,7 +11,7 @@ Todo o resto do site é entregue direto, sem passar pelo programa (`run_worker_f
 ## O que é guardado (e o que não é)
 
 Banco D1 da Cloudflare chamado `statworld-visitas`, tabela `visitas`, uma linha por página aberta:
-dia, hora (UTC), endereço da página, país (a Cloudflare informa), celular/computador/tablet, nome do site de onde veio (ex.: "Google") e segundos com a página à vista.
+dia, hora (UTC), endereço da página, país, estado e cidade aproximados (a Cloudflare informa, pela rede; nunca o endereço exato), celular/computador/tablet, nome do site de onde veio (ex.: "Google"; se o link tiver a marca `utm_source`, como os do ChatGPT, vale a marca) e segundos com a página à vista.
 
 - **Sem cookies e nada guardado no navegador.**
 - **O IP não é guardado.** Para contar pessoas diferentes no dia, o programa guarda um código embaralhado feito com IP + navegador + um "sal" (chave aleatória) do dia. O sal é apagado no dia seguinte: não dá para voltar ao IP nem reconhecer a pessoa em outro dia.

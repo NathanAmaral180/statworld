@@ -80,6 +80,10 @@ async function prepararBanco(env) {
     env.VISITAS.prepare('CREATE INDEX IF NOT EXISTS visitas_dia ON visitas (dia)'),
     env.VISITAS.prepare('CREATE TABLE IF NOT EXISTS sal (dia TEXT PRIMARY KEY, valor TEXT NOT NULL)'),
   ]);
+  // Colunas acrescentadas depois (24 nov 2026): estado e cidade. Se já existirem, o banco recusa e seguimos.
+  for (const col of ['estado', 'cidade']) {
+    try { await env.VISITAS.prepare(`ALTER TABLE visitas ADD COLUMN ${col} TEXT`).run(); } catch {}
+  }
   tabelasProntas = true;
 }
 
@@ -131,20 +135,32 @@ async function anotarVisita(request, env) {
   const visitante = await resumo(`${await salDoDia(env, dia)}|${ip}|${ua}`);
   const pais = request.cf?.country && request.cf.country !== 'XX' ? request.cf.country : null;
   const aparelho = /Mobi|Android|iPhone/i.test(ua) ? 'celular' : /iPad|Tablet/i.test(ua) ? 'tablet' : 'computador';
-  const origem = deOndeVeio(corpo.origem, new URL(request.url).host);
-  await env.VISITAS.prepare('INSERT OR IGNORE INTO visitas (id, dia, hora, caminho, pais, aparelho, origem, visitante, segundos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)')
-    .bind(corpo.id, dia, new Date().getUTCHours(), caminho, pais, aparelho, origem, visitante).run();
+  // A marca "utm_source" no link (ex.: o ChatGPT põe utm_source=chatgpt.com) vale mais que o referrer,
+  // porque muitos aplicativos de IA não informam de onde a pessoa veio.
+  const marca = typeof corpo.marca === 'string' && corpo.marca ? nomeDaOrigem(corpo.marca.toLowerCase().slice(0, 60)) : null;
+  const origem = marca ?? deOndeVeio(corpo.origem, new URL(request.url).host);
+  // Estado e cidade aproximados, deduzidos pela Cloudflare a partir da rede (podem errar, sobretudo no celular).
+  const estado = pais && typeof request.cf?.region === 'string' ? request.cf.region.slice(0, 60) : null;
+  const cidade = pais && typeof request.cf?.city === 'string' ? request.cf.city.slice(0, 60) : null;
+  await env.VISITAS.prepare('INSERT OR IGNORE INTO visitas (id, dia, hora, caminho, pais, estado, cidade, aparelho, origem, visitante, segundos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)')
+    .bind(corpo.id, dia, new Date().getUTCHours(), caminho, pais, estado, cidade, aparelho, origem, visitante).run();
 }
 
-// Guarda só o nome do site de onde a pessoa veio (ex.: "google"), nunca o endereço completo.
+// Nomes conhecidos de sites de onde as pessoas vêm (buscadores, redes, IAs).
+const CONHECIDOS = { google: 'Google', bing: 'Bing', duckduckgo: 'DuckDuckGo', yahoo: 'Yahoo', whatsapp: 'WhatsApp', wa: 'WhatsApp', facebook: 'Facebook', fb: 'Facebook', instagram: 'Instagram', t: 'X (Twitter)', x: 'X (Twitter)', twitter: 'X (Twitter)', linkedin: 'LinkedIn', reddit: 'Reddit', youtube: 'YouTube', tiktok: 'TikTok', telegram: 'Telegram',
+  chatgpt: 'ChatGPT (IA)', openai: 'ChatGPT (IA)', claude: 'Claude (IA)', perplexity: 'Perplexity (IA)', gemini: 'Gemini (IA)', copilot: 'Copilot (IA)', deepseek: 'DeepSeek (IA)', grok: 'Grok (IA)', meta: 'Meta AI (IA)' };
+function nomeDaOrigem(host) {
+  const base = host.replace(/^www\.|^m\.|^l\./, '').split('.').slice(-3).find((p) => CONHECIDOS[p]);
+  return base ? CONHECIDOS[base] : host.replace(/^www\./, '');
+}
+
+// Guarda só o nome do site de onde a pessoa veio (ex.: "Google"), nunca o endereço completo.
 function deOndeVeio(ref, meuHost) {
   if (typeof ref !== 'string' || !ref) return 'direto';
   let host;
   try { host = new URL(ref).hostname.replace(/^www\.|^m\.|^l\./, ''); } catch { return 'direto'; }
   if (host === meuHost) return 'interno';
-  const conhecidos = { google: 'Google', bing: 'Bing', duckduckgo: 'DuckDuckGo', yahoo: 'Yahoo', whatsapp: 'WhatsApp', wa: 'WhatsApp', facebook: 'Facebook', instagram: 'Instagram', t: 'X (Twitter)', x: 'X (Twitter)', twitter: 'X (Twitter)', linkedin: 'LinkedIn', reddit: 'Reddit', youtube: 'YouTube', tiktok: 'TikTok', telegram: 'Telegram', chatgpt: 'ChatGPT', claude: 'Claude' };
-  const base = host.split('.').slice(-3).find((p) => conhecidos[p]);
-  return base ? conhecidos[base] : host.slice(0, 60);
+  return nomeDaOrigem(host).slice(0, 60);
 }
 
 // ---------- Números do painel ----------
@@ -155,7 +171,7 @@ async function numeros(env, dias) {
   const q = (sql) => env.VISITAS.prepare(sql).bind(desde).all().then((r) => r.results);
   const [total] = await q(`SELECT COUNT(*) AS paginas, COUNT(DISTINCT dia || visitante) AS visitantes,
       ROUND(AVG(CASE WHEN segundos BETWEEN 1 AND 1800 THEN segundos END)) AS tempoMedio FROM visitas WHERE dia >= ?`);
-  const [porDia, paises, caminhos, aparelhos, origens, horas] = await Promise.all([
+  const [porDia, paises, caminhos, aparelhos, origens, horas, estados, cidades] = await Promise.all([
     q('SELECT dia, COUNT(*) AS paginas, COUNT(DISTINCT visitante) AS visitantes FROM visitas WHERE dia >= ? GROUP BY dia ORDER BY dia'),
     q('SELECT pais, COUNT(DISTINCT dia || visitante) AS visitantes, COUNT(*) AS paginas FROM visitas WHERE dia >= ? GROUP BY pais ORDER BY visitantes DESC LIMIT 30'),
     q(`SELECT caminho, COUNT(*) AS paginas, ROUND(AVG(CASE WHEN segundos BETWEEN 1 AND 1800 THEN segundos END)) AS tempoMedio
@@ -163,6 +179,10 @@ async function numeros(env, dias) {
     q('SELECT aparelho, COUNT(DISTINCT dia || visitante) AS visitantes FROM visitas WHERE dia >= ? GROUP BY aparelho ORDER BY visitantes DESC'),
     q(`SELECT origem, COUNT(*) AS paginas FROM visitas WHERE dia >= ? AND origem <> 'interno' GROUP BY origem ORDER BY paginas DESC LIMIT 15`),
     q('SELECT hora, COUNT(*) AS paginas FROM visitas WHERE dia >= ? GROUP BY hora ORDER BY hora'),
+    q(`SELECT pais, estado, COUNT(DISTINCT dia || visitante) AS visitantes FROM visitas WHERE dia >= ? AND estado IS NOT NULL
+       GROUP BY pais, estado ORDER BY visitantes DESC LIMIT 30`),
+    q(`SELECT pais, estado, cidade, COUNT(DISTINCT dia || visitante) AS visitantes FROM visitas WHERE dia >= ? AND cidade IS NOT NULL
+       GROUP BY pais, estado, cidade ORDER BY visitantes DESC LIMIT 30`),
   ]);
-  return { dias, desde, ate: hojeUTC(), total, porDia, paises, caminhos, aparelhos, origens, horas };
+  return { dias, desde, ate: hojeUTC(), total, porDia, paises, caminhos, aparelhos, origens, horas, estados, cidades };
 }
