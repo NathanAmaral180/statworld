@@ -30,12 +30,11 @@
       "nome": "Site bom no celular",
       "detalhe": "Navegação e textos curtos",
       "peso": 15,
-      "pct": 70,
+      "pct": 80,
       "situacao": "Em andamento",
       "falta": [
         "Página inicial: faixa \"Agora\" comprida e nomes do mapa-múndi pequenos",
         "Revisar no dedo a lista \"Outros produtos\" do Agro",
-        "Decidir se as abas ficam presas no topo ao rolar",
         "Mais compacto: cartões de resumo dos gráficos e lista de produtos/parceiros"
       ]
     },
@@ -92,6 +91,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-24",
+      "titulo": "Celular, 3ª rodada",
+      "de": 55,
+      "para": 56,
+      "itens": [
+        "Abas e botões de vista presos no topo ao rolar",
+        "Ranking logo depois da ficha; legenda depois do ranking",
+        "Tocar num estado do ranking sobe a tela até o mapa e a ficha dele",
+        "No toque, sem \"prévia\" presa do mouse"
+      ]
+    },
     {
       "data": "2026-11-24",
       "titulo": "Celular, 2ª rodada (fotos do dono)",

@@ -100,9 +100,20 @@ const seta = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"
     mais.querySelector('.nv-n')!.textContent = ` (${fora.length})`;
   }
 
+  // Celular: a barra de abas fica presa no topo ao rolar, mas só a linha de baixo (nível 2) aparece;
+  // a de cima (grupos) sobe junto com a página. --topo-fixo diz aos botões de vista onde grudar, logo abaixo.
+  function prender(nav: HTMLElement) {
+    const n1 = nav.querySelector<HTMLElement>('.nv1');
+    const n2 = nav.querySelector<HTMLElement>('.nv2');
+    const raiz = document.documentElement;
+    if (!celular() || !n2) { nav.style.removeProperty('top'); raiz.style.setProperty('--topo-fixo', '0px'); return; }
+    nav.style.top = `-${n1?.offsetHeight ?? 0}px`;
+    raiz.style.setProperty('--topo-fixo', `${n2.offsetHeight}px`);
+  }
+
   for (const nav of document.querySelectorAll<HTMLElement>('nav.nv')) {
     const linhas = [...nav.querySelectorAll<HTMLElement>('.nv1, .nv2')];
-    const tudo = () => linhas.forEach(ajustar);
+    const tudo = () => { linhas.forEach(ajustar); prender(nav); };
     tudo();
     new ResizeObserver(tudo).observe(nav);
     nav.addEventListener('click', (e) => {
@@ -158,7 +169,8 @@ const seta = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"
   .nv-menu :global(.nv-i.off) { color: var(--faint); }
   /* celular: nível 1 com rótulo curto e sempre visível; nível 2 rola */
   @media (max-width: 640px) {
-    .nv { margin: 16px -16px 20px; }
+    .nv { margin: 16px -16px 20px; position: sticky; z-index: 25; background: var(--bg); }
+    .nv:not(:has(.nv2)) { position: static; }
     .nv1, .nv2 { padding: 0 16px; }
     .nv1 .nv-row { gap: 20px; }
     .nv1 .nv-i { font-size: 15px; min-height: 44px; box-sizing: border-box; align-items: flex-end; }
