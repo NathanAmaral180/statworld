@@ -1,7 +1,7 @@
 {
   "_explicacao": "Séries do painel \"Dinheiro e juros\" (Banco Central, SGS). Gerado por scripts/dinheiro/baixar.mjs. Não edite à mão. Cada ponto traz a data a que se refere (dia ou mês).",
   "pais": "BR",
-  "baixadoEm": "2026-11-23",
+  "baixadoEm": "2026-11-24",
   "series": [
     {
       "id": "dolar",
@@ -18,14 +18,10 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Taxa de câmbio - Livre - Dólar americano (venda) - diário (PTAX) (série 1 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/1",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
-        {
-          "data": "2021-11-23",
-          "valor": 5.6456
-        },
         {
           "data": "2021-11-24",
           "valor": 5.6027
@@ -5063,14 +5059,10 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Taxa de juros - Meta Selic definida pelo Copom (série 432 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/432",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
-        {
-          "data": "2021-11-23",
-          "valor": 7.75
-        },
         {
           "data": "2021-11-24",
           "valor": 7.75
@@ -12374,6 +12366,10 @@
         {
           "data": "2026-11-23",
           "valor": 13.75
+        },
+        {
+          "data": "2026-11-24",
+          "valor": 13.75
         }
       ]
     },
@@ -12392,7 +12388,7 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Taxa média de juros das operações de crédito - Total (série 20714 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/20714",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
@@ -12889,7 +12885,7 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas - Crédito pessoal não consignado (série 20742 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/20742",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
@@ -13386,7 +13382,7 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Inadimplência da carteira de crédito - Total (série 21082 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/21082",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
@@ -13885,7 +13881,7 @@
           "nome": "Banco Central do Brasil",
           "publicacao": "Saldo da carteira de crédito - Total (série 20539 do SGS)",
           "url": "https://dadosabertos.bcb.gov.br/dataset/20539",
-          "dataConsulta": "2026-11-23"
+          "dataConsulta": "2026-11-24"
         }
       ],
       "pontos": [
