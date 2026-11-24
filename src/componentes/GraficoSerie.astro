@@ -63,7 +63,7 @@ const desenhos = series.map((s) => {
     }
   }
   // Rótulos do eixo de baixo: ano. Até 10 anos, todos; mais que isso, a cada 2 (colunas: a cada 4, e o último).
-  const anos: { x: number; texto: string }[] = [];
+  const anos: { x: number; texto: string; soLarga?: boolean }[] = [];
   const doPonto = s.pontos.map((p) => p.nome.match(/\d{4}/)?.[0] ?? '');
   const distintos = [...new Set(doPonto.filter(Boolean))];
   const cada = tipo === 'colunas' ? 4 : distintos.length <= 10 ? 1 : 2;
@@ -89,8 +89,18 @@ const desenhos = series.map((s) => {
       if (k % cada === 0 || (tipo === 'colunas' && k === distintos.length - 1)) anos.push({ x: x(i), texto: ano });
     });
   }
-  // O primeiro rótulo sai se o seguinte estiver colado nele (no celular as letras crescem e eles se sobrepõem).
-  if (anos.length > 1 && anos[1].x - anos[0].x < 120) anos.shift();
+  // Rótulos que ficariam colados saem: o último (ano mais recente) sempre fica; anda de trás para a frente.
+  // No celular as letras dobram de tamanho (ver CSS), então os que ficam perto demais ali ganham a classe "so-larga" e somem.
+  const espacar = (gap: number) => {
+    const ficam = new Set<number>();
+    let ref = Infinity;
+    for (let i = anos.length - 1; i >= 0; i--) if (ref - anos[i].x >= gap) { ficam.add(i); ref = anos[i].x; }
+    return ficam;
+  };
+  const noPc = espacar(70), noCel = espacar(150);
+  const anosFinal = anos.filter((_, i) => noPc.has(i)).map((a) => ({ ...a, soLarga: !noCel.has(anos.indexOf(a)) }));
+  anos.length = 0;
+  anos.push(...anosFinal);
   const fmt = { formato: s.formato, casas: s.casas };
   const ultimo =[...s.pontos.keys()].reverse().find((i) => s.pontos[i].valor !== null) ?? 0;
   const primeiro = s.pontos.findIndex((p) => p.valor !== null);
@@ -123,7 +133,7 @@ const desenhos = series.map((s) => {
           {g.grade.map((m) => (
             <g><line class="gl" x1={M.esquerda} x2={L - M.direita} y1={m.y} y2={m.y} /><text x={L - M.direita + 8} y={m.y} dominant-baseline="central">{m.texto}</text></g>
           ))}
-          {g.anos.map((a) => <text x={a.x} y={A - 6} text-anchor={a.x < 20 ? 'start' : 'middle'}>{a.texto}</text>)}
+          {g.anos.map((a) => <text class={a.soLarga ? 'so-larga' : undefined} x={a.x} y={A - 6} text-anchor={a.x < 20 ? 'start' : a.x > L - M.direita - 30 ? 'end' : 'middle'}>{a.texto}</text>)}
           {g.colunas.map((c) => c && <rect class={`col${c.ultimo ? ' forte' : ''}`} x={c.x} y={c.y} width={c.l} height={c.a} />)}
           {g.rotulos.map((r) => <text class={`vl${r.forte ? ' forte' : ''}`} x={r.x} y={r.y} text-anchor="middle">{r.texto}</text>)}
           {tipo === 'linhas' && <path class="ln" d={g.d} />}
@@ -247,6 +257,7 @@ const desenhos = series.map((s) => {
     .gs-fig text, .gs-fig .vl { font-size: 26px; }
     .gs-fig .tip text { font-size: 26px; transform: translateY(12px); }
     .gs-fig .tip rect { height: 40px; }
+    .gs-fig .so-larga { display: none; }
     .r-valor strong { font-size: 38px; }
     .r-linha h3 { font-size: 22px; }
   }

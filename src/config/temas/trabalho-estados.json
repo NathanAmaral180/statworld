@@ -55,7 +55,7 @@
       "rotuloCurto": "No tempo",
       "arquivo": "series",
       "titulo": "Desemprego e renda média, desde {inicio}",
-      "descricao": "Cada ponto é a média de três meses. Passe o cursor para ver cada mês nos dois gráficos.",
+      "descricao": "Cada ponto é a média de três meses. Toque ou passe o cursor para ver cada mês nos dois gráficos.",
       "series": [
         {
           "caminho": "series.desemprego",

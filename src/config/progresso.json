@@ -1,25 +1,147 @@
 {
   "_explicacao": "Painel de progresso do projeto, mostrado no /admin. Atualizar no fim de toda sessão: o % de cada etapa, o histórico (do mais novo para o mais antigo) e o que falta. O % geral é calculado pela página: soma de peso × andamento.",
   "etapas": [
-    { "id": "fundacao", "nome": "Fundação", "detalhe": "Site no ar, publicação automática, robô de dados diário", "peso": 10, "pct": 100, "situacao": "Pronta" },
-    { "id": "economia-br", "nome": "Economia · Brasil", "detalhe": "10 abas no ar", "peso": 20, "pct": 85, "situacao": "Faltam páginas de estado e município, ICMS e arrecadação por estado" },
-    { "id": "economia-eua", "nome": "Economia · Estados Unidos", "detalhe": "10 abas no ar", "peso": 15, "pct": 90, "situacao": "No ar" },
-    { "id": "celular", "nome": "Site bom no celular", "detalhe": "Navegação e textos curtos", "peso": 15, "pct": 55, "situacao": "Em andamento",
-      "falta": ["Anos do fim dos gráficos se encostam (ex.: Preços)", "Página inicial: faixa \"Agora\" comprida e nomes do mapa-múndi pequenos", "Revisar no dedo a lista \"Outros produtos\" do Agro", "Decidir se as abas ficam presas no topo ao rolar"] },
-    { "id": "admin", "nome": "Painel do administrador e visitantes", "detalhe": "Contador anônimo próprio e /admin com senha", "peso": 5, "pct": 80, "situacao": "No ar; falta acompanhar os primeiros dias de números" },
-    { "id": "demografia", "nome": "Demografia (2º tema)", "peso": 15, "pct": 0, "situacao": "Próximo grande tema" },
-    { "id": "seletor-pais", "nome": "Seletor de país", "peso": 5, "pct": 0, "situacao": "—" },
-    { "id": "search-console", "nome": "Google Search Console", "detalhe": "Aparecer e ser medido no Google", "peso": 5, "pct": 0, "situacao": "—" },
-    { "id": "dominio", "nome": "Domínio próprio", "peso": 5, "pct": 10, "situacao": "Opções pesquisadas; adiado pelo dono" },
-    { "id": "anuncios", "nome": "Anúncios", "peso": 7, "pct": 25, "situacao": "Espaços reservados, aviso de cookies e política de privacidade prontos; nenhuma rede ativa" },
-    { "id": "app", "nome": "App", "peso": 3, "pct": 0, "situacao": "Futuro" }
+    {
+      "id": "fundacao",
+      "nome": "Fundação",
+      "detalhe": "Site no ar, publicação automática, robô de dados diário",
+      "peso": 10,
+      "pct": 100,
+      "situacao": "Pronta"
+    },
+    {
+      "id": "economia-br",
+      "nome": "Economia · Brasil",
+      "detalhe": "10 abas no ar",
+      "peso": 20,
+      "pct": 85,
+      "situacao": "Faltam páginas de estado e município, ICMS e arrecadação por estado"
+    },
+    {
+      "id": "economia-eua",
+      "nome": "Economia · Estados Unidos",
+      "detalhe": "10 abas no ar",
+      "peso": 15,
+      "pct": 90,
+      "situacao": "No ar"
+    },
+    {
+      "id": "celular",
+      "nome": "Site bom no celular",
+      "detalhe": "Navegação e textos curtos",
+      "peso": 15,
+      "pct": 70,
+      "situacao": "Em andamento",
+      "falta": [
+        "Página inicial: faixa \"Agora\" comprida e nomes do mapa-múndi pequenos",
+        "Revisar no dedo a lista \"Outros produtos\" do Agro",
+        "Decidir se as abas ficam presas no topo ao rolar",
+        "Mais compacto: cartões de resumo dos gráficos e lista de produtos/parceiros"
+      ]
+    },
+    {
+      "id": "admin",
+      "nome": "Painel do administrador e visitantes",
+      "detalhe": "Contador anônimo próprio e /admin com senha",
+      "peso": 5,
+      "pct": 80,
+      "situacao": "No ar; falta acompanhar os primeiros dias de números"
+    },
+    {
+      "id": "demografia",
+      "nome": "Demografia (2º tema)",
+      "peso": 15,
+      "pct": 0,
+      "situacao": "Próximo grande tema"
+    },
+    {
+      "id": "seletor-pais",
+      "nome": "Seletor de país",
+      "peso": 5,
+      "pct": 0,
+      "situacao": "—"
+    },
+    {
+      "id": "search-console",
+      "nome": "Google Search Console",
+      "detalhe": "Aparecer e ser medido no Google",
+      "peso": 5,
+      "pct": 0,
+      "situacao": "—"
+    },
+    {
+      "id": "dominio",
+      "nome": "Domínio próprio",
+      "peso": 5,
+      "pct": 10,
+      "situacao": "Opções pesquisadas; adiado pelo dono"
+    },
+    {
+      "id": "anuncios",
+      "nome": "Anúncios",
+      "peso": 7,
+      "pct": 25,
+      "situacao": "Espaços reservados, aviso de cookies e política de privacidade prontos; nenhuma rede ativa"
+    },
+    {
+      "id": "app",
+      "nome": "App",
+      "peso": 3,
+      "pct": 0,
+      "situacao": "Futuro"
+    }
   ],
   "historico": [
-    { "data": "2026-11-24", "titulo": "Painel do administrador", "de": 51, "para": 52,
-      "itens": ["Contador de visitas próprio, anônimo e sem cookies: país, página, tema, celular ou computador, de onde veio e tempo na página", "Página /admin com senha, com os números de visitas e este painel de progresso", "Política de privacidade atualizada", "Seção Dinheiro: fontes de receita e a lista do que falta para ligar os anúncios", "Visitas vindas de IA (ChatGPT, Perplexity, Gemini…) reconhecidas; estado e cidade aproximados no painel"] },
-    { "data": "2026-11-24", "titulo": "Celular", "de": 47, "para": 51,
-      "itens": ["Cabeçalho mais baixo; botão de tema virou ícone no celular", "Nomes curtos no celular e completos no computador (abas e botões), Brasil e EUA", "Topo das páginas enxuto: o mapa aparece inteiro na primeira tela", "Ficha do estado logo abaixo do mapa", "Dica do ranking fala em \"Toque\" no celular"] },
-    { "data": "2026-11-21", "titulo": "Até aqui", "de": null, "para": 47,
-      "itens": ["Fundação, Economia do Brasil (10 abas), Economia dos EUA (10 abas), robô diário de dados, aviso de cookies e privacidade"] }
+    {
+      "data": "2026-11-24",
+      "titulo": "Celular, 2ª rodada (fotos do dono)",
+      "de": 52,
+      "para": 55,
+      "itens": [
+        "Legenda do mapa compacta: cor e nome lado a lado (de 8 linhas para 3)",
+        "Legenda, ficha e ranking na largura toda (antes ficavam espremidos)",
+        "Ficha mais enxuta; fonte da ficha em até 2 linhas",
+        "\"Fonte e como calculamos\" recolhida num botão no celular",
+        "Quadradinhos de \"Cada R$ 100\" com 1/4 da altura",
+        "Anos dos gráficos sem se encostar; eixo não cobre o último ano",
+        "Corrigido texto estranho que aparecia em Contas públicas",
+        "Textos de \"passe o cursor\" agora falam em tocar"
+      ]
+    },
+    {
+      "data": "2026-11-24",
+      "titulo": "Painel do administrador",
+      "de": 51,
+      "para": 52,
+      "itens": [
+        "Contador de visitas próprio, anônimo e sem cookies: país, página, tema, celular ou computador, de onde veio e tempo na página",
+        "Página /admin com senha, com os números de visitas e este painel de progresso",
+        "Política de privacidade atualizada",
+        "Seção Dinheiro: fontes de receita e a lista do que falta para ligar os anúncios",
+        "Visitas vindas de IA (ChatGPT, Perplexity, Gemini…) reconhecidas; estado e cidade aproximados no painel"
+      ]
+    },
+    {
+      "data": "2026-11-24",
+      "titulo": "Celular",
+      "de": 47,
+      "para": 51,
+      "itens": [
+        "Cabeçalho mais baixo; botão de tema virou ícone no celular",
+        "Nomes curtos no celular e completos no computador (abas e botões), Brasil e EUA",
+        "Topo das páginas enxuto: o mapa aparece inteiro na primeira tela",
+        "Ficha do estado logo abaixo do mapa",
+        "Dica do ranking fala em \"Toque\" no celular"
+      ]
+    },
+    {
+      "data": "2026-11-21",
+      "titulo": "Até aqui",
+      "de": null,
+      "para": 47,
+      "itens": [
+        "Fundação, Economia do Brasil (10 abas), Economia dos EUA (10 abas), robô diário de dados, aviso de cookies e privacidade"
+      ]
+    }
   ]
 }

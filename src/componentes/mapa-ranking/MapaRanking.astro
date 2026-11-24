@@ -172,7 +172,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
         )}
         <p class="mr-dica"><span class="so-pc">{preencher(ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</span><span class="so-cel">{preencher(ctx.textos.rankingDicaToque ?? ctx.textos.rankingDica, { nivel: ctx.nivelSingular })}</span></p>
       </div>
-      <p class="mr-fonte" set:html={visao.fonte} />
+      <details class="mr-fonte-caixa" open><summary>{ctx.textos.fonteEMetodo ?? ctx.textos.fonte}</summary><p class="mr-fonte" set:html={visao.fonte} /></details>
     </div>
   </div>
 
@@ -374,6 +374,14 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 
     escolher(opcaoId);
   }
+
+  // "Fonte e como calculamos": fechada no celular, sempre aberta no computador.
+  {
+    const celular = window.matchMedia('(max-width: 760px)');
+    const ajustarFonte = () => document.querySelectorAll<HTMLDetailsElement>('.mr-fonte-caixa').forEach((d) => { d.open = !celular.matches; });
+    ajustarFonte();
+    celular.addEventListener('change', ajustarFonte);
+  }
 </script>
 
 <style>
@@ -445,7 +453,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   .mr-esq { align-self: stretch; min-width: 0; }
   .so-painel .mr-grade { grid-template-columns: 1fr; }
   .so-painel .mr-lado { display: none; }
-  .mr-lado > :global(:not(.mr-ficha, .mr-tabela, .mr-fonte)) { margin-bottom: 20px; } /* conteúdo do slot "lateral" (ex.: balança) */
+  .mr-lado > :global(:not(.mr-ficha, .mr-tabela, .mr-fonte-caixa)) { margin-bottom: 20px; } /* conteúdo do slot "lateral" (ex.: balança) */
   .mr-painel :global([data-painel-de][hidden]) { display: none; }
   .mr-mapa[hidden], .mr-painel[hidden], .mr-carimbo[hidden] { display: none; }
   .mr-carimbo { display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; margin: 0; font-size: 13px; color: var(--faint); line-height: 1.4; }
@@ -545,6 +553,16 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 
   .mr-fonte { margin: 20px 14px 0; font-size: 14px; line-height: 1.5; color: var(--sub); }
   :global(.mr-fonte a) { color: inherit; }
+  /* "Fonte e como calculamos": no computador sempre aberta (sem o botão); no celular começa fechada. */
+  .mr-fonte-caixa summary { display: none; }
+  @media (max-width: 760px) {
+    .mr-fonte-caixa { margin: 16px 0 0; border-top: 1px solid var(--line); }
+    .mr-fonte-caixa summary { display: flex; align-items: center; justify-content: space-between; padding: 14px 4px; font-size: 14px; color: var(--sub); cursor: pointer; list-style: none; }
+    .mr-fonte-caixa summary::-webkit-details-marker { display: none; }
+    .mr-fonte-caixa summary::after { content: "+"; font-size: 18px; color: var(--faint); }
+    .mr-fonte-caixa[open] summary::after { content: "−"; }
+    .mr-fonte { margin: 0 4px 8px; font-size: 13px; }
+  }
 
   @media (max-width: 1100px) {
     .mr-grade { grid-template-columns: 1fr; gap: 32px; }
@@ -560,16 +578,32 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     .mr-legenda { order: 3; margin: 16px 0 28px; }
     .mr-lado > :global(*) { order: 4; }
     .mr-lado > .mr-tabela { order: 5; }
-    .mr-lado > .mr-fonte { order: 6; }
+    .mr-lado > .mr-fonte-caixa { order: 6; }
     .so-painel .mr-lado { display: none; }
     .mr-aviso { margin: -12px 0 16px; font-size: 14px; }
+    /* tudo na largura toda (sem isso a legenda e o ranking encolhiam) */
+    .mr-grade { align-items: stretch; }
+    /* Legenda compacta: amostra pequena ao lado do nome, várias por linha */
+    .mr-legenda { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 14px 0 24px; font-size: 13px; }
+    .mr-legenda :global(li) { display: inline-flex; align-items: center; gap: 0; }
+    .mr-legenda :global(.amostra) { width: 14px; height: 10px; margin: 0 6px 0 0; border-radius: 2px; flex: none; }
+    .mr-legenda :global(.leg-titulo) { flex-basis: 100%; font-size: 13px; }
+    .mr-legenda :global(.ic) { width: 1em; height: 1em; margin-right: 4px; }
+    /* Ficha mais enxuta: número menor e a fonte em no máximo 2 linhas (a completa fica em "Fonte e como calculamos") */
+    .mr-lado > .mr-ficha { padding: 14px 16px; border-radius: 14px; }
+    :global(.mr-ficha .ficha-topo) { font-size: 13px; margin-bottom: 4px; }
+    :global(.mr-ficha .ficha-nome) { font-size: 22px; }
+    :global(.mr-ficha .ficha-valor strong) { font-size: 34px; }
+    :global(.mr-ficha .ficha-valor small) { font-size: 15px; }
+    :global(.mr-ficha .ficha-sub), :global(.mr-ficha .ficha-detalhes) { font-size: 14px; }
+    :global(.mr-ficha .ficha-detalhes) { margin-top: 10px; padding-top: 8px; }
+    :global(.mr-ficha .ficha-fonte) { font-size: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .mr-cab { padding: 0 8px 8px; font-size: 11px; }
   }
   @media (max-width: 560px) {
     .mr-medidas { display: flex; width: 100%; }
     .mr-medidas button { flex: 1 1 auto; padding: 8px 10px; font-size: 14px; }
     .mr-mais-painel { width: calc(100vw - 32px); }
     :global(.mr-ranking .linha) { grid-template-columns: 26px minmax(0, 1fr) 48px 84px; gap: 8px; padding: 6px 8px; font-size: 15px; }
-    :global(.mr-ficha .ficha-valor strong) { font-size: 40px; }
-    .mr-ficha { padding: 18px; }
   }
 </style>

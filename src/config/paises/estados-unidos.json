@@ -272,7 +272,7 @@
           "rotuloCurto": "No tempo",
           "arquivo": "series",
           "titulo": "Desemprego e salário médio, desde {inicio}",
-          "descricao": "Mês a mês, para o país inteiro. Passe o cursor para ver cada mês nos dois gráficos.",
+          "descricao": "Mês a mês, para o país inteiro. Toque ou passe o cursor para ver cada mês nos dois gráficos.",
           "series": [
             {
               "caminho": "series.desemprego",
@@ -375,7 +375,7 @@
           "arquivo": "r100",
           "textos": {
             "titulo": "De onde vem e para onde vai cada US$ 100 do governo federal",
-            "descricao": "Cada quadrado é US$ 1 de cada US$ 100 gastos. Passe o cursor sobre um item para destacá-lo. O ano fiscal dos EUA vai de outubro a setembro.",
+            "descricao": "Cada quadrado é US$ 1 de cada US$ 100 gastos. Toque num item (ou passe o cursor) para destacá-lo. O ano fiscal dos EUA vai de outubro a setembro.",
             "deOndeVem": "De onde vem",
             "deOndeVemSub": "receitas e nova dívida",
             "paraOndeVai": "Para onde vai",

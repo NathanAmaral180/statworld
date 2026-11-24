@@ -19,7 +19,7 @@
       "arquivo": "r100",
       "textos": {
         "titulo": "De onde vem e para onde vai cada R$ 100 do governo federal",
-        "descricao": "Cada quadrado é R$ 1 de cada R$ 100 gastos. Passe o cursor sobre um item para destacá-lo.",
+        "descricao": "Cada quadrado é R$ 1 de cada R$ 100 gastos. Toque num item (ou passe o cursor) para destacá-lo.",
         "deOndeVem": "De onde vem",
         "deOndeVemSub": "receitas e nova dívida",
         "paraOndeVai": "Para onde vai",
