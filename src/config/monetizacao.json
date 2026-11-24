@@ -1,0 +1,18 @@
+{
+  "_explicacao": "Seção 'Dinheiro' do /admin. Fontes de receita previstas (CLAUDE.md, 'Publicidade e privacidade') e o que falta para ligar os anúncios. Nenhum valor de receita fica escrito aqui: quando uma fonte estiver ativa, os números virão dela (ex.: relatório da rede de anúncios). Atualizar 'feito' quando um item for concluído.",
+  "fontes": [
+    { "nome": "Anúncios", "ativa": false, "situacao": "Espaços reservados no site; nenhuma rede ligada", "proximo": "Cumprir a lista abaixo e pedir aprovação a uma rede (ex.: Google AdSense)" },
+    { "nome": "Páginas patrocinadas", "ativa": false, "situacao": "Previstas, sempre com o selo \"patrocinado\"", "proximo": "Ter audiência para oferecer a empresas" },
+    { "nome": "Dados e API pagos", "ativa": false, "situacao": "Previstos", "proximo": "Definir o que vender (ex.: dados prontos em planilha, acesso por API)" },
+    { "nome": "Apoio de leitores", "ativa": false, "situacao": "Previsto", "proximo": "Escolher a forma (ex.: Pix, assinatura de apoio)" }
+  ],
+  "requisitosAnuncios": [
+    { "item": "Aviso de cookies que pede permissão antes de qualquer anúncio", "feito": true },
+    { "item": "Espaços de anúncio reservados, sem a página pular ao carregar", "feito": true },
+    { "item": "Política de privacidade publicada", "feito": true },
+    { "item": "Política de privacidade com nome, contato e responsável preenchidos (trechos entre [colchetes])", "feito": false },
+    { "item": "Domínio próprio (as redes não aceitam o endereço .workers.dev)", "feito": false },
+    { "item": "Site cadastrado no Google Search Console", "feito": false },
+    { "item": "Bastante conteúdo original e visitantes vindo de buscas", "feito": false, "parcial": true }
+  ]
+}

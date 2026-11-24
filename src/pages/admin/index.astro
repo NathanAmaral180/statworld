@@ -5,6 +5,8 @@
 // e o que o site tem e terá (cadastro src/config/catalogo.json + países).
 import Base from '../../layouts/Base.astro';
 import progresso from '../../config/progresso.json';
+import monetizacao from '../../config/monetizacao.json';
+import anuncios from '../../config/anuncios.json';
 import { temas, abasDe } from '../../lib/catalogo';
 import brasil from '../../config/paises/brasil.json';
 import eua from '../../config/paises/estados-unidos.json';
@@ -26,6 +28,12 @@ for (const p of paises) {
   for (const a of abasDe('economia', p)) if (a.href) rotulos.push({ prefixo: a.href, aba: `Economia · ${a.nome}`, pais: p.nome });
 }
 rotulos.push({ prefixo: '/privacidade', aba: 'Privacidade', pais: '' });
+
+// Dinheiro: fontes de receita e o que falta para ligar os anúncios (src/config/monetizacao.json).
+const fontesAtivas = monetizacao.fontes.filter((f) => f.ativa).length;
+const requisitos = monetizacao.requisitosAnuncios;
+const requisitosFeitos = requisitos.filter((r) => r.feito).length;
+const posicoesAnuncio = Object.keys(anuncios.posicoes).length;
 ---
 <Base titulo="Painel do administrador" temaAtual="" naoIndexar semAnuncios>
   <section class="conteudo adm">
@@ -33,7 +41,7 @@ rotulos.push({ prefixo: '/privacidade', aba: 'Privacidade', pais: '' });
     <h1>Painel do StatWorld</h1>
 
     <nav class="pulos" aria-label="Partes do painel">
-      <a href="#visitas">Visitas</a><a href="#progresso">Progresso</a><a href="#site">O que o site tem</a>
+      <a href="#visitas">Visitas</a><a href="#dinheiro">Dinheiro</a><a href="#progresso">Progresso</a><a href="#site">O que o site tem</a>
     </nav>
 
     <!-- ================= VISITAS ================= -->
@@ -66,6 +74,32 @@ rotulos.push({ prefixo: '/privacidade', aba: 'Privacidade', pais: '' });
       <div class="cartao"><h3>Celular ou computador</h3><ol id="l-aparelhos" class="barras"></ol></div>
       <div class="cartao"><h3>Páginas mais vistas</h3><ol id="l-paginas" class="barras"></ol></div>
       <div class="cartao"><h3>Horário das visitas <small>(Brasília)</small></h3><div id="g-horas" class="grafico-horas"></div></div>
+    </div>
+
+    <!-- ================= DINHEIRO ================= -->
+    <h2 id="dinheiro">Dinheiro</h2>
+    <div class="kpis">
+      <div class="kpi"><span>Receita</span><b>{fontesAtivas ? '—' : 'Ainda não'}</b><small>{fontesAtivas ? 'vem da fonte ativa' : 'nenhuma fonte de receita ligada'}</small></div>
+      <div class="kpi"><span>Fontes ativas</span><b>{fontesAtivas} <small>de {monetizacao.fontes.length}</small></b></div>
+      <div class="kpi"><span>Pronto para anúncios</span><b>{requisitosFeitos} <small>de {requisitos.length}</small></b><small>itens da lista abaixo</small></div>
+      <div class="kpi"><span>Espaços de anúncio</span><b>{posicoesAnuncio}</b><small>{anuncios.ativo ? `rede: ${anuncios.rede}` : 'só reservados, sem rede'}</small></div>
+    </div>
+    <div class="grade2">
+      <div class="cartao">
+        <h3>Fontes de receita</h3>
+        <ul class="fontes">
+          {monetizacao.fontes.map((f) => (
+            <li><p class="f-topo"><strong>{f.nome}</strong><span class={`f-sit${f.ativa ? ' on' : ''}`}>{f.ativa ? 'Ativa' : 'Desligada'}</span></p><p class="f-txt">{f.situacao}. <span>Próximo: {f.proximo}.</span></p></li>
+          ))}
+        </ul>
+      </div>
+      <div class="cartao">
+        <h3>Para ligar os anúncios</h3>
+        <ul class="checklist">
+          {requisitos.map((r) => <li class={r.feito ? 'feito' : (r as any).parcial ? 'parcial' : ''}><span class="marca" aria-hidden="true">{r.feito ? '✓' : (r as any).parcial ? '…' : ''}</span>{r.item}<span class="sr">{r.feito ? ' (feito)' : (r as any).parcial ? ' (em andamento)' : ' (falta)'}</span></li>)}
+        </ul>
+        <p class="nota">Quando uma rede de anúncios for ligada, a receita dela aparece aqui.</p>
+      </div>
     </div>
 
     <!-- ================= PROGRESSO ================= -->
@@ -255,6 +289,19 @@ rotulos.push({ prefixo: '/privacidade', aba: 'Privacidade', pais: '' });
   .barras :global(.b-trilho) { grid-column: 1 / -1; height: 6px; background: var(--track); border-radius: 3px; }
   .barras :global(.b-trilho i) { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
   .barras :global(.vazio) { display: block; color: var(--faint); }
+
+  .fontes, .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .f-topo { margin: 0; display: flex; justify-content: space-between; gap: 12px; }
+  .f-sit { font-size: 11px; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--faint); border: 1px dashed var(--line2); border-radius: 4px; padding: 1px 6px; white-space: nowrap; align-self: center; }
+  .f-sit.on { color: var(--up); border-style: solid; }
+  .f-txt { margin: 4px 0 0; font-size: 14px; color: var(--sub); line-height: 1.45; }
+  .f-txt span { color: var(--faint); }
+  .checklist li { display: flex; gap: 10px; font-size: 14px; line-height: 1.45; color: var(--sub); }
+  .checklist li.feito { color: var(--ink); }
+  .marca { flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--line2); display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+  .feito .marca { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .parcial .marca { border-color: var(--accent); color: var(--accent); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
   .geral { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
   .geral-num b { display: block; font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
