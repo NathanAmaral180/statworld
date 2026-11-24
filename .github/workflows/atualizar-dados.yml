@@ -29,6 +29,7 @@ jobs:
     timeout-minutes: 60
     env:
       TZ: America/Sao_Paulo # datas no horário de Brasília
+      CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }} # chave do Census (EUA), guardada como segredo no GitHub
     steps:
       - name: Pegar o projeto
         uses: actions/checkout@v5

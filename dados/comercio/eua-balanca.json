@@ -1,0 +1,20 @@
+{
+  "_explicacao": "EUA: balança comercial de bens do ano em curso (exportações totais e importações gerais, acumuladas no ano) e o mesmo período do ano anterior. Gerado por scripts/eua-comercio/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-24",
+  "periodo": "2026, janeiro a setembro",
+  "frequencia": "mensal",
+  "fontes": [
+    {
+      "nome": "Census (EUA)",
+      "publicacao": "International Trade, balança de bens, 2026, janeiro a setembro",
+      "url": "https://www.census.gov/foreign-trade/",
+      "dataConsulta": "2026-11-24"
+    }
+  ],
+  "exportacoes": 1847530728674,
+  "importacoes": 2768947019240,
+  "saldo": -921416290566,
+  "saldoAnoAnterior": -978890151628,
+  "anoAnterior": 2025
+}

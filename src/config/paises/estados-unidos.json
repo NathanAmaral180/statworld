@@ -14,7 +14,8 @@
       "trabalho-renda",
       "precos",
       "dinheiro-juros",
-      "contas-publicas"
+      "contas-publicas",
+      "comercio-exterior"
     ]
   },
   "idioma": "pt-BR",
@@ -77,6 +78,11 @@
       "r100": "eua-r100",
       "divida": "eua-divida",
       "cofog": "eua-funcoes"
+    },
+    "comercio": {
+      "estado": "eua-estados",
+      "listas": "eua-listas",
+      "balanca": "eua-balanca"
     }
   },
   "cortes": {
@@ -432,6 +438,78 @@
         }
       ],
       "descricao": "De onde vem e para onde vai cada US$ 100 do governo federal, a dívida pública e o gasto por função {dePais}. Dados oficiais do Tesouro dos EUA e do BEA."
+    },
+    "comercio-exterior": {
+      "medidas": [
+        {
+          "id": "exportacoes",
+          "rotulo": "Exportações por estado",
+          "titulo": "Exportações em {periodo}",
+          "formato": "moeda",
+          "moeda": "USD",
+          "compacto": true,
+          "casas": 1,
+          "sinal": false,
+          "cortes": [
+            5000000000,
+            10000000000,
+            20000000000,
+            40000000000,
+            80000000000
+          ],
+          "rotuloRanking": "Exportações",
+          "subtituloFicha": "Exportações em {periodo}",
+          "extras": [
+            {
+              "indicador": "parte-exportacoes",
+              "rotulo": "Parte das exportações do país",
+              "formato": "percentual",
+              "casas": 1
+            }
+          ]
+        }
+      ],
+      "paineis": [
+        {
+          "id": "produtos",
+          "tipo": "lista",
+          "rotulo": "Principais produtos",
+          "arquivo": "listas",
+          "lista": "produtos",
+          "titulo": "Principais produtos exportados em {periodo}",
+          "descricao": "Os dez maiores, em dólares, e a parte de cada um no total exportado. Produtos pela classificação internacional HS (Sistema Harmonizado), 4 dígitos.",
+          "formato": "moeda",
+          "moeda": "USD",
+          "compacto": true,
+          "casas": 1,
+          "cabecalhos": {
+            "nome": "Produto",
+            "valor": "Valor",
+            "parte": "Parte"
+          },
+          "nota": "Fonte: {fonte}. Total exportado em {periodo}: {total}."
+        },
+        {
+          "id": "parceiros",
+          "tipo": "lista",
+          "rotulo": "Principais parceiros",
+          "arquivo": "listas",
+          "lista": "parceiros",
+          "titulo": "Principais destinos das exportações em {periodo}",
+          "descricao": "Os dez países que mais compraram, em dólares, e a parte de cada um no total exportado.",
+          "formato": "moeda",
+          "moeda": "USD",
+          "compacto": true,
+          "casas": 1,
+          "cabecalhos": {
+            "nome": "País",
+            "valor": "Valor",
+            "parte": "Parte"
+          },
+          "nota": "Fonte: {fonte}. Total exportado em {periodo}: {total}."
+        }
+      ],
+      "descricao": "Exportações de cada estado {dePais}, principais produtos e países compradores, e a balança comercial do ano. Dados oficiais do Census, com fonte e data."
     }
   }
 }

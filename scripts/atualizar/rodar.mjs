@@ -29,6 +29,7 @@ const SCRIPTS = [
   { nome: 'EUA: Trabalho e renda (BLS, BEA)', script: 'eua-trabalho', quando: 'diario', arquivos: ['dados/trabalho/eua-estados.json', 'dados/trabalho/eua-series.json'] },
   { nome: 'EUA: Preços (BLS, BEA)', script: 'eua-precos', quando: 'diario', arquivos: ['dados/precos/eua-ipca.json', 'dados/precos/eua-estados.json'] },
   { nome: 'EUA: Dinheiro e juros (Fed, Tesouro, Freddie Mac)', script: 'eua-dinheiro', quando: 'diario', arquivos: ['dados/dinheiro/eua-series.json'] },
+  { nome: 'EUA: Comércio exterior (Census)', script: 'eua-comercio', quando: 'diario', arquivos: ['dados/comercio/eua-estados.json', 'dados/comercio/eua-listas.json', 'dados/comercio/eua-balanca.json'] },
   { nome: 'EUA: Contas públicas (Tesouro dos EUA, BEA)', script: 'eua-contas-publicas', quando: 'diario', arquivos: ['dados/contas-publicas/eua-r100.json', 'dados/contas-publicas/eua-divida.json', 'dados/contas-publicas/eua-funcoes.json'] },
 ];
 

@@ -85,14 +85,14 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - Cada país tem `src/config/paises/<pais>.json`: nome, `dePais` ("do Brasil", "dos Estados Unidos"), `caminho` do endereço ("" para o Brasil, "/estados-unidos"), moeda, níveis, arquivos de dados, ajustes do mapa (chamadas), `subtemas` disponíveis e `cortes` próprios quando a escala muda.
 - Páginas de um país usam moldes de página (`src/componentes/PaginaEconomia.astro`, `PaginaAgro.astro`, `PaginaProdutoAgro.astro`); o arquivo em `src/pages/` só escolhe o país. Cada país tem também `slug` (usado em `/dados/<slug>/…`) e `agro.notas` (de onde vêm os números do agro daquele país).
 - Scripts de cada país ficam em pastas próprias (ex.: `scripts/eua-pib-estados/`).
-- **EUA no ar** (`/estados-unidos/economia/...`, no mapa-múndi da página inicial e no mapa do site), com 9 das 10 abas:
+- **EUA no ar** (`/estados-unidos/economia/...`, no mapa-múndi da página inicial e no mapa do site), com as 10 abas:
   - Visão geral e Indústria/Serviços/Impostos: BEA, arquivo SAGDP, `scripts/eua-pib-estados/` e `scripts/eua-setores/`.
   - Agro: USDA.
   - Trabalho: BLS + BEA, `scripts/eua-trabalho/`.
   - Preços: CPI do BLS + Regional Price Parities do BEA, `scripts/eua-precos/`.
   - Dinheiro: Fed, Tesouro e Freddie Mac, `scripts/eua-dinheiro/`.
   - Contas públicas: Tesouro dos EUA e BEA, `scripts/eua-contas-publicas/`.
-  - **Falta Comércio exterior:** a API do Census exige chave gratuita, que o dono precisa pedir em api.census.gov/data/key_signup.html.
+  - Comércio exterior: API do Census, `scripts/eua-comercio/`, nomes em português pelo Comex Stat. A API exige chave: no computador fica em `.env` (fora do GitHub); no robô, no segredo `CENSUS_API_KEY` do GitHub. **Nunca escrever a chave em código ou página.**
 - Diferenças de medida ficam no arquivo do país: `abas.<aba>` troca partes da configuração de uma aba (medidas, painéis, textos); `<tema>.sobrescrever` troca textos, apelidos de ícones e o produto padrão dos moldes de produção. Exemplos:
   - EUA medem valor adicionado na indústria;
   - impostos sobre a produção e a importação, mais amplos que os impostos sobre produtos do Brasil;

@@ -1,0 +1,130 @@
+{
+  "_explicacao": "EUA: 10 principais produtos exportados (HS/SH, 4 dígitos; nomes do Comex Stat) e 10 principais países compradores, no último ano completo. Gerado por scripts/eua-comercio/baixar.mjs. Não edite à mão.",
+  "pais": "US",
+  "baixadoEm": "2026-11-24",
+  "periodo": "2025",
+  "total": 2179891445119,
+  "frequencia": "anual",
+  "fontes": [
+    {
+      "nome": "Census (EUA)",
+      "publicacao": "International Trade, exportações de 2025",
+      "url": "https://www.census.gov/foreign-trade/",
+      "dataConsulta": "2026-11-24"
+    }
+  ],
+  "produtos": [
+    {
+      "codigo": "8800",
+      "nome": "Aeronaves civis, motores e partes",
+      "valor": 153483292105,
+      "parte": 7.04
+    },
+    {
+      "codigo": "2710",
+      "nome": "Óleos de petróleo ou de minerais betuminosos, exceto óleos brutos; preparações não especificadas nem compreendidas noutras posições, contendo, em peso, 70 % ou mais de óleos de petróleo ou de minerais betuminosos, os quais devem constituir o seu elemento",
+      "valor": 108103857646,
+      "parte": 4.96
+    },
+    {
+      "codigo": "2709",
+      "nome": "Óleos brutos de petróleo ou de minerais betuminosos",
+      "valor": 99368201742,
+      "parte": 4.56
+    },
+    {
+      "codigo": "7108",
+      "nome": "Ouro (incluído o ouro platinado), em formas brutas ou semimanufacturadas, ou em pó",
+      "valor": 83481600527,
+      "parte": 3.83
+    },
+    {
+      "codigo": "2711",
+      "nome": "Gás de petróleo e outros hidrocarbonetos gasosos",
+      "valor": 80943017135,
+      "parte": 3.71
+    },
+    {
+      "codigo": "8471",
+      "nome": "Máquinas automáticas para processamento de dados e suas unidades; leitores magnéticos ou ópticos, máquinas para registar dados em suporte sob forma codificada, e máquinas para processamento desses dados, não especificadas nem compreendidas em outras posiç",
+      "valor": 61294335245,
+      "parte": 2.81
+    },
+    {
+      "codigo": "3002",
+      "nome": "Sangue humano; sangue animal preparado para usos terapêuticos, profilácticos ou de diagnóstico; anti-soros, outras fracções do sangue, produtos imunológicos modificados, mesmo obtidos por via biotecnológica; vacinas, toxinas, culturas de microrganismos (e",
+      "valor": 57267297535,
+      "parte": 2.63
+    },
+    {
+      "codigo": "9880",
+      "nome": "Remessas de baixo valor (vários produtos)",
+      "valor": 54984602020,
+      "parte": 2.52
+    },
+    {
+      "codigo": "8703",
+      "nome": "Automóveis de passageiros e outros veículos automóveis principalmente concebidos para o transporte de pessoas (exceto os da posição 8702), incluídos os veículos de uso misto (station wagons) e os automóveis de corrida",
+      "valor": 54573803990,
+      "parte": 2.5
+    },
+    {
+      "codigo": "8542",
+      "nome": "Circuitos integrados e microconjuntos electrónicos",
+      "valor": 51434453878,
+      "parte": 2.36
+    }
+  ],
+  "parceiros": [
+    {
+      "nome": "México",
+      "valor": 337281738937,
+      "parte": 15.47
+    },
+    {
+      "nome": "Canadá",
+      "valor": 333619712376,
+      "parte": 15.3
+    },
+    {
+      "nome": "China",
+      "valor": 105977805659,
+      "parte": 4.86
+    },
+    {
+      "nome": "Reino Unido",
+      "valor": 97393769339,
+      "parte": 4.47
+    },
+    {
+      "nome": "Países Baixos (Holanda)",
+      "valor": 93923895362,
+      "parte": 4.31
+    },
+    {
+      "nome": "Alemanha",
+      "valor": 82822071425,
+      "parte": 3.8
+    },
+    {
+      "nome": "Japão",
+      "valor": 81393934099,
+      "parte": 3.73
+    },
+    {
+      "nome": "Suíça",
+      "valor": 73722319320,
+      "parte": 3.38
+    },
+    {
+      "nome": "Coreia do Sul",
+      "valor": 69068639583,
+      "parte": 3.17
+    },
+    {
+      "nome": "Taiwan",
+      "valor": 54760406531,
+      "parte": 2.51
+    }
+  ]
+}
