@@ -182,3 +182,8 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 ## Comandos
 - `npm run dev` — abre o site no computador em http://localhost:4321
 - `npm run build` — gera a versão final na pasta `dist/`
+
+## Visitas e painel do administrador
+- `servidor/index.js` roda na Cloudflare na frente do site (só `/api/*` e `/admin*`; ver `run_worker_first` no `wrangler.jsonc`). LEIA-ME: `servidor/LEIA-ME.md`.
+- Contador de visitas próprio, **anônimo e sem cookies** (script no fim de `src/layouts/Base.astro`): página, país, aparelho, origem (só o nome do site) e tempo à vista. Não guarda IP; "pessoas diferentes" por código embaralhado com sal diário apagado no dia seguinte. Banco D1 `statworld-visitas` (binding `VISITAS`). Descrito na política de privacidade: se mudar o que é guardado, mude a política.
+- `/admin` (`src/pages/admin/index.astro`): só com usuário `admin` e a senha do segredo `SENHA_ADMIN` (criada pelo dono na Cloudflare; nunca no código). Mostra visitas, o **painel de progresso** (`src/config/progresso.json`, atualizar no fim de toda sessão e dizer "de X% para Y%") e o que o site tem e terá. Fora do mapa do site e do robots.

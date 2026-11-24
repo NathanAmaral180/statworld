@@ -1,0 +1,298 @@
+---
+// Painel do administrador (/admin). Só abre com usuário e senha: quem confere é o programa do servidor
+// (servidor/index.js), antes de entregar esta página e os números. Não aparece no menu, no mapa do site nem no Google.
+// Três partes: visitas (números vindos de /api/admin/numeros), progresso do projeto (src/config/progresso.json)
+// e o que o site tem e terá (cadastro src/config/catalogo.json + países).
+import Base from '../../layouts/Base.astro';
+import progresso from '../../config/progresso.json';
+import { temas, abasDe } from '../../lib/catalogo';
+import brasil from '../../config/paises/brasil.json';
+import eua from '../../config/paises/estados-unidos.json';
+
+const paises = [brasil, eua] as any[];
+
+// Geral = soma de peso × andamento ÷ soma dos pesos.
+const somaPesos = progresso.etapas.reduce((s, e) => s + e.peso, 0);
+const geral = Math.round(progresso.etapas.reduce((s, e) => s + e.peso * e.pct, 0) / somaPesos);
+const dataBr = (d: string) => new Date(d + 'T12:00:00Z').toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' });
+
+// O que o site tem: temas do cadastro e abas de Economia por país.
+const temasNoAr = temas.filter((t) => t.situacao === 'no-ar');
+const abasPorPais = paises.map((p) => ({ nome: p.nome, abas: abasDe('economia', p) }));
+
+// Nome legível de cada endereço (para "temas e abas mais vistos"): o endereço mais longo que combina ganha.
+const rotulos: { prefixo: string; aba: string; pais: string }[] = [{ prefixo: '/', aba: 'Página inicial', pais: '' }];
+for (const p of paises) {
+  for (const a of abasDe('economia', p)) if (a.href) rotulos.push({ prefixo: a.href, aba: `Economia · ${a.nome}`, pais: p.nome });
+}
+rotulos.push({ prefixo: '/privacidade', aba: 'Privacidade', pais: '' });
+---
+<Base titulo="Painel do administrador" temaAtual="" naoIndexar semAnuncios>
+  <section class="conteudo adm">
+    <p class="trilha">Só para o administrador</p>
+    <h1>Painel do StatWorld</h1>
+
+    <nav class="pulos" aria-label="Partes do painel">
+      <a href="#visitas">Visitas</a><a href="#progresso">Progresso</a><a href="#site">O que o site tem</a>
+    </nav>
+
+    <!-- ================= VISITAS ================= -->
+    <h2 id="visitas">Visitas</h2>
+    <div class="periodo" role="group" aria-label="Período">
+      <button type="button" data-dias="1">Hoje</button>
+      <button type="button" data-dias="7">7 dias</button>
+      <button type="button" data-dias="30" aria-pressed="true">30 dias</button>
+      <button type="button" data-dias="90">90 dias</button>
+      <button type="button" data-dias="365">1 ano</button>
+    </div>
+    <p class="aviso-v" id="v-aviso" hidden></p>
+
+    <div class="kpis">
+      <div class="kpi"><span>Visitantes</span><b id="k-visitantes">—</b><small>pessoas diferentes, somadas dia a dia</small></div>
+      <div class="kpi"><span>Páginas vistas</span><b id="k-paginas">—</b><small id="k-por">—</small></div>
+      <div class="kpi"><span>Tempo médio na página</span><b id="k-tempo">—</b><small>só o tempo com a página à vista</small></div>
+      <div class="kpi"><span>No celular</span><b id="k-celular">—</b><small>dos visitantes</small></div>
+    </div>
+
+    <div class="cartao">
+      <h3>Visitantes por dia</h3>
+      <div id="g-dias" class="grafico-dias"></div>
+    </div>
+
+    <div class="grade2">
+      <div class="cartao"><h3>Países</h3><ol id="l-paises" class="barras"></ol></div>
+      <div class="cartao"><h3>Temas e abas mais vistos</h3><ol id="l-abas" class="barras"></ol></div>
+      <div class="cartao"><h3>De onde vêm</h3><ol id="l-origens" class="barras"></ol><p class="nota">"Direto" = digitou o endereço, usou um favorito ou o app não informou.</p></div>
+      <div class="cartao"><h3>Celular ou computador</h3><ol id="l-aparelhos" class="barras"></ol></div>
+      <div class="cartao"><h3>Páginas mais vistas</h3><ol id="l-paginas" class="barras"></ol></div>
+      <div class="cartao"><h3>Horário das visitas <small>(Brasília)</small></h3><div id="g-horas" class="grafico-horas"></div></div>
+    </div>
+
+    <!-- ================= PROGRESSO ================= -->
+    <h2 id="progresso">Progresso do projeto</h2>
+    <div class="geral">
+      <div class="geral-num"><b>{geral}%</b><span>do plano feito</span></div>
+      <div class="geral-barra"><i style={`width:${geral}%`}></i></div>
+    </div>
+    <ul class="etapas">
+      {progresso.etapas.map((e) => (
+        <li class={e.pct === 100 ? 'pronta' : e.pct === 0 ? 'zero' : ''}>
+          <div class="et-topo"><strong>{e.nome}</strong><span class="et-pct">{e.pct}%</span></div>
+          <div class="et-barra"><i style={`width:${e.pct}%`}></i></div>
+          <p class="et-sit">{e.detalhe && <>{e.detalhe} · </>}{e.situacao}<span class="et-peso"> · peso {e.peso}</span></p>
+          {(e as any).falta?.length > 0 && <ul class="et-falta">{(e as any).falta.map((f: string) => <li>{f}</li>)}</ul>}
+        </li>
+      ))}
+    </ul>
+    <h3 class="sub">Linha do tempo</h3>
+    <ol class="historico">
+      {progresso.historico.map((h) => (
+        <li>
+          <p class="h-topo"><span class="h-data">{dataBr(h.data)}</span> <strong>{h.titulo}</strong> {h.para != null && <span class="h-pct">{h.de != null ? `${h.de}% → ${h.para}%` : `${h.para}%`}</span>}</p>
+          <ul>{h.itens.map((i) => <li>{i}</li>)}</ul>
+        </li>
+      ))}
+    </ol>
+
+    <!-- ================= O QUE O SITE TEM ================= -->
+    <h2 id="site">O que o site tem e terá</h2>
+    <div class="kpis">
+      <div class="kpi"><span>Temas no ar</span><b>{temasNoAr.length} <small>de {temas.length}</small></b></div>
+      <div class="kpi"><span>Países</span><b>{paises.length}</b><small>{paises.map((p) => p.nome).join(', ')}</small></div>
+      {abasPorPais.map((p) => (
+        <div class="kpi"><span>Abas de Economia · {p.nome}</span><b>{p.abas.filter((a: any) => a.ativo).length} <small>de {p.abas.length}</small></b></div>
+      ))}
+    </div>
+    <div class="cartao">
+      <h3>Os 20 temas</h3>
+      <ul class="temas">
+        {temas.map((t) => <li class={t.situacao === 'no-ar' ? 'on' : ''}><span class="t-sit">{t.situacao === 'no-ar' ? 'No ar' : 'Em breve'}</span>{t.nome}</li>)}
+      </ul>
+    </div>
+
+    <script type="application/json" id="rotulos" set:html={JSON.stringify(rotulos)} />
+  </section>
+</Base>
+
+<script>
+  type Linha = Record<string, any>;
+  const rotulos: { prefixo: string; aba: string; pais: string }[] = JSON.parse(document.getElementById('rotulos')!.textContent!);
+  const nomesPais = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
+  const fmt = new Intl.NumberFormat('pt-BR');
+  const $ = (id: string) => document.getElementById(id)!;
+  const esc = (s: string) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  const tempo = (s: number | null) => (s == null ? '—' : s < 60 ? `${s} s` : `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, '0')} s`);
+  const bandeira = (cc: string) => cc && /^[A-Z]{2}$/.test(cc) ? String.fromCodePoint(...[...cc].map((c) => 127397 + c.charCodeAt(0))) : '';
+  const nomePais = (cc: string | null) => { if (!cc) return 'Desconhecido'; try { return nomesPais.of(cc) ?? cc; } catch { return cc; } };
+  const rotuloDe = (caminho: string) => {
+    let melhor = null as null | (typeof rotulos)[number];
+    for (const r of rotulos) {
+      const ok = r.prefixo === '/' ? caminho === '/' : caminho === r.prefixo || caminho.startsWith(r.prefixo + '/');
+      if (ok && (!melhor || r.prefixo.length > melhor.prefixo.length)) melhor = r;
+    }
+    return melhor ? (melhor.pais ? `${melhor.aba} · ${melhor.pais}` : melhor.aba) : 'Outras';
+  };
+
+  function barras(el: HTMLElement, itens: { nome: string; valor: number; extra?: string }[], vazio = 'Sem visitas no período.') {
+    if (!itens.length) { el.innerHTML = `<li class="vazio">${vazio}</li>`; return; }
+    const max = Math.max(...itens.map((i) => i.valor));
+    const total = itens.reduce((s, i) => s + i.valor, 0);
+    el.innerHTML = itens.map((i) => `<li><span class="b-nome">${esc(i.nome)}</span><span class="b-val">${fmt.format(i.valor)}<em>${Math.round((i.valor / total) * 100)}%</em>${i.extra ? `<small>${esc(i.extra)}</small>` : ''}</span><span class="b-trilho"><i style="width:${(i.valor / max) * 100}%"></i></span></li>`).join('');
+  }
+
+  function graficoDias(el: HTMLElement, porDia: Linha[], desde: string, ate: string) {
+    const dias: string[] = [];
+    for (let d = new Date(desde + 'T00:00:00Z'); d.toISOString().slice(0, 10) <= ate; d.setUTCDate(d.getUTCDate() + 1)) dias.push(d.toISOString().slice(0, 10));
+    const mapa = Object.fromEntries(porDia.map((r) => [r.dia, r.visitantes]));
+    const max = Math.max(1, ...dias.map((d) => mapa[d] ?? 0));
+    const L = 100 / dias.length;
+    const marcas = dias.length <= 8 ? dias : dias.filter((_, i) => i % Math.ceil(dias.length / 6) === 0);
+    el.innerHTML = `<svg viewBox="0 0 100 40" preserveAspectRatio="none" role="img" aria-label="Visitantes por dia">${dias.map((d, i) => {
+      const v = mapa[d] ?? 0, h = (v / max) * 38;
+      return `<rect x="${i * L + L * 0.12}" y="${40 - h}" width="${L * 0.76}" height="${h}"><title>${d.split('-').reverse().join('/')}: ${v} visitantes</title></rect>`;
+    }).join('')}</svg><div class="eixo"><span>${fmt.format(max)}</span></div><div class="datas">${marcas.map((d) => `<span>${d.slice(8)}/${d.slice(5, 7)}</span>`).join('')}</div>`;
+  }
+
+  function graficoHoras(el: HTMLElement, horas: Linha[]) {
+    // O servidor guarda a hora em UTC; Brasília = UTC − 3.
+    const v = Array(24).fill(0);
+    for (const h of horas) v[(h.hora + 21) % 24] += h.paginas;
+    const max = Math.max(1, ...v);
+    el.innerHTML = `<svg viewBox="0 0 96 30" preserveAspectRatio="none" role="img" aria-label="Páginas vistas por hora">${v.map((x, i) => `<rect x="${i * 4 + 0.4}" y="${30 - (x / max) * 29}" width="3.2" height="${(x / max) * 29}"><title>${i}h: ${x} páginas</title></rect>`).join('')}</svg><div class="datas"><span>0h</span><span>6h</span><span>12h</span><span>18h</span><span>23h</span></div>`;
+  }
+
+  async function carregar(dias: number) {
+    document.querySelectorAll('[data-dias]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-dias') === String(dias))));
+    const aviso = $('v-aviso');
+    let d: any;
+    try {
+      // location.origin: endereço sem usuário/senha (o navegador recusa buscar um endereço que os contenha).
+      const r = await fetch(`${location.origin}/api/admin/numeros?dias=${dias}`, { cache: 'no-store' });
+      if (!r.ok) throw new Error(String(r.status));
+      d = await r.json();
+    } catch {
+      aviso.hidden = false;
+      aviso.textContent = 'Os números de visitas só aparecem no site publicado (aqui no computador o contador não roda).';
+      return;
+    }
+    if (d.semBanco) { aviso.hidden = false; aviso.textContent = 'O banco de visitas ainda não está ligado (ver servidor/LEIA-ME.md).'; return; }
+    aviso.hidden = true;
+    const t = d.total ?? {};
+    $('k-visitantes').textContent = fmt.format(t.visitantes ?? 0);
+    $('k-paginas').textContent = fmt.format(t.paginas ?? 0);
+    $('k-por').textContent = t.visitantes ? `${(t.paginas / t.visitantes).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} por visitante` : '—';
+    $('k-tempo').textContent = tempo(t.tempoMedio);
+    const totAp = d.aparelhos.reduce((s: number, a: Linha) => s + a.visitantes, 0);
+    const cel = d.aparelhos.find((a: Linha) => a.aparelho === 'celular')?.visitantes ?? 0;
+    $('k-celular').textContent = totAp ? `${Math.round((cel / totAp) * 100)}%` : '—';
+
+    graficoDias($('g-dias'), d.porDia, d.desde, d.ate);
+    graficoHoras($('g-horas'), d.horas);
+    barras($('l-paises'), d.paises.map((p: Linha) => ({ nome: `${bandeira(p.pais)} ${nomePais(p.pais)}`.trim(), valor: p.visitantes })));
+    const abas: Record<string, { valor: number; tempoSoma: number; tempoN: number }> = {};
+    for (const c of d.caminhos) {
+      const nome = rotuloDe(c.caminho);
+      const a = (abas[nome] ??= { valor: 0, tempoSoma: 0, tempoN: 0 });
+      a.valor += c.paginas;
+      if (c.tempoMedio != null) { a.tempoSoma += c.tempoMedio * c.paginas; a.tempoN += c.paginas; }
+    }
+    barras($('l-abas'), Object.entries(abas).sort((a, b) => b[1].valor - a[1].valor).slice(0, 12)
+      .map(([nome, a]) => ({ nome, valor: a.valor, extra: a.tempoN ? tempo(Math.round(a.tempoSoma / a.tempoN)) : undefined })));
+    barras($('l-paginas'), d.caminhos.slice(0, 12).map((c: Linha) => ({ nome: c.caminho, valor: c.paginas, extra: c.tempoMedio != null ? tempo(c.tempoMedio) : undefined })));
+    barras($('l-origens'), d.origens.map((o: Linha) => ({ nome: o.origem === 'direto' ? 'Direto' : o.origem, valor: o.paginas })));
+    barras($('l-aparelhos'), d.aparelhos.map((a: Linha) => ({ nome: a.aparelho[0].toUpperCase() + a.aparelho.slice(1), valor: a.visitantes })));
+  }
+
+  document.querySelector('.periodo')!.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLElement>('[data-dias]');
+    if (b) carregar(Number(b.dataset.dias));
+  });
+  carregar(30);
+</script>
+
+<style>
+  .adm { padding-top: 32px; padding-bottom: 64px; max-width: 1100px; }
+  .trilha { margin: 0 0 8px; color: var(--sub); font-size: 15px; }
+  h1 { margin: 0 0 16px; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.02em; }
+  h2 { margin: 56px 0 16px; font-size: 26px; letter-spacing: -.01em; scroll-margin-top: 16px; }
+  h3 { margin: 0 0 14px; font-size: 16px; font-weight: 600; }
+  h3 small { font-weight: 400; color: var(--faint); }
+  .sub { margin-top: 32px; }
+  .pulos { display: flex; gap: 20px; font-size: 15px; }
+  .pulos a { color: var(--accent); text-decoration: none; }
+
+  .periodo { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surf); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 20px; }
+  .periodo button { font: inherit; font-size: 15px; color: var(--sub); background: transparent; border: 0; border-radius: 9px; padding: 8px 14px; cursor: pointer; }
+  .periodo button[aria-pressed="true"] { background: var(--bg); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 1px var(--line), 0 1px 3px var(--line); }
+  .aviso-v { padding: 12px 16px; border: 1px dashed var(--line2); border-radius: 10px; color: var(--sub); font-size: 15px; }
+  .aviso-v[hidden] { display: none; }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .kpi { border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 4px; align-content: start; background: var(--bg); }
+  .kpi span { font-size: 13px; color: var(--sub); }
+  .kpi b { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+  .kpi b small { font-size: 15px; font-weight: 500; color: var(--sub); }
+  .kpi > small { font-size: 12px; color: var(--faint); }
+
+  .cartao { border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: var(--bg); min-width: 0; }
+  .grade2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+  .nota { margin: 10px 0 0; font-size: 12px; color: var(--faint); }
+
+  .grafico-dias, .grafico-horas { position: relative; }
+  .grafico-dias :global(svg) { width: 100%; height: 180px; display: block; }
+  .grafico-horas :global(svg) { width: 100%; height: 120px; display: block; }
+  .grafico-dias :global(rect), .grafico-horas :global(rect) { fill: var(--accent); }
+  .grafico-dias :global(.eixo) { position: absolute; top: -4px; left: 0; font-size: 12px; color: var(--faint); }
+  :global(.adm .datas) { display: flex; justify-content: space-between; font-size: 12px; color: var(--faint); margin-top: 6px; }
+
+  .barras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .barras :global(li) { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; font-size: 14px; }
+  .barras :global(.b-nome) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .barras :global(.b-val) { font-weight: 600; white-space: nowrap; }
+  .barras :global(.b-val em) { font-style: normal; font-weight: 400; color: var(--faint); margin-left: 6px; }
+  .barras :global(.b-val small) { font-weight: 400; color: var(--sub); margin-left: 8px; }
+  .barras :global(.b-trilho) { grid-column: 1 / -1; height: 6px; background: var(--track); border-radius: 3px; }
+  .barras :global(.b-trilho i) { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+  .barras :global(.vazio) { display: block; color: var(--faint); }
+
+  .geral { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+  .geral-num b { display: block; font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+  .geral-num span { font-size: 14px; color: var(--sub); }
+  .geral-barra { flex: 1; height: 14px; background: var(--track); border-radius: 7px; overflow: hidden; }
+  .geral-barra i, .et-barra i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+  .etapas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .etapas > li { border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .etapas > li.pronta { background: var(--surf); }
+  .et-topo { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .et-pct { font-size: 22px; font-weight: 700; }
+  .zero .et-pct { color: var(--faint); }
+  .et-barra { height: 8px; background: var(--track); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+  .et-sit { margin: 0; font-size: 14px; color: var(--sub); line-height: 1.45; }
+  .et-peso { color: var(--faint); }
+  .et-falta { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--sub); line-height: 1.5; }
+
+  .historico { list-style: none; margin: 0; padding: 0 0 0 16px; border-left: 2px solid var(--line); display: grid; gap: 20px; }
+  .historico > li { position: relative; }
+  .historico > li::before { content: ""; position: absolute; left: -23px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .h-topo { margin: 0 0 6px; }
+  .h-data { color: var(--faint); font-size: 14px; }
+  .h-pct { margin-left: 6px; font-size: 13px; font-weight: 600; color: var(--accent); border: 1px solid var(--line2); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
+  .historico ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--sub); line-height: 1.55; }
+
+  .temas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px 16px; font-size: 14px; color: var(--faint); }
+  .temas li { display: flex; gap: 8px; align-items: center; }
+  .temas li.on { color: var(--ink); font-weight: 600; }
+  .t-sit { font-size: 10px; letter-spacing: .05em; text-transform: uppercase; border: 1px dashed var(--line2); border-radius: 4px; padding: 1px 5px; font-weight: 600; white-space: nowrap; }
+  .temas li.on .t-sit { border-style: solid; color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .periodo { display: flex; flex-wrap: nowrap; }
+    .periodo button { flex: 1; padding: 8px 4px; font-size: 14px; white-space: nowrap; }
+    .grade2, .etapas { grid-template-columns: minmax(0, 1fr); }
+    .kpi b { font-size: 24px; }
+    .geral-num b { font-size: 44px; }
+    h2 { margin-top: 44px; font-size: 22px; }
+  }
+</style>

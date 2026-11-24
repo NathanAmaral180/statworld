@@ -1,5 +1,7 @@
 # Robôs de busca (Google e outros) podem ler todo o site.
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: https://statworld.nathanjulho180.workers.dev/sitemap-index.xml

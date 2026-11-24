@@ -6,3 +6,7 @@ dist/
 .env.*
 .DS_Store
 Thumbs.db
+
+# Senha do /admin para testar no computador (npx wrangler dev). Nunca vai para o GitHub.
+.dev.vars
+.wrangler/

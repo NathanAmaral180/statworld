@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://statworld.nathanjulho180.workers.dev',
   integrations: [
     // Mapa do site (sitemap-index.xml) para buscadores.
-    sitemap(),
+    // O painel do administrador (/admin) fica fora do mapa do site.
+    sitemap({ filter: (pagina) => !pagina.includes('/admin') }),
   ],
 });

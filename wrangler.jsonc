@@ -1,11 +1,22 @@
-// Configuração da publicação na Cloudflare (Workers, só arquivos estáticos).
-// O site é a pasta dist/, gerada por "npm run build".
+// Configuração da publicação na Cloudflare (Workers).
+// O site é a pasta dist/, gerada por "npm run build". Na frente dele roda um programa pequeno
+// (servidor/index.js) que só cuida do contador de visitas (/api/visita) e do painel com senha (/admin).
+// Ver servidor/LEIA-ME.md.
 {
   "name": "statworld",
+  "main": "servidor/index.js",
   "compatibility_date": "2025-09-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     // Endereço que não existe mostra a página de erro do site (src/pages/404.astro), com o código 404.
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    // Só estes endereços passam pelo programa; o resto do site é entregue direto (mais rápido e grátis).
+    "run_worker_first": ["/api/*", "/admin", "/admin/*"]
+  },
+  // Banco onde ficam as visitas (anônimas). Criado com: npx wrangler d1 create statworld-visitas
+  "d1_databases": [
+    { "binding": "VISITAS", "database_name": "statworld-visitas", "database_id": "f0abc850-f51b-43f8-92fb-5ab0364aa796" }
+  ],
+  "observability": { "enabled": true }
 }

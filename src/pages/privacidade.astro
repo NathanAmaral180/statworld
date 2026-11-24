@@ -4,7 +4,7 @@
 // Data da versão: troque quando o texto mudar.
 import Base from '../layouts/Base.astro';
 import site from '../config/site.json';
-const versao = '22 de novembro de 2026';
+const versao = '24 de novembro de 2026';
 ---
 <Base titulo="Política de privacidade" descricao={`Como o ${site.nome} trata dados pessoais e cookies.`} semAnuncios>
   <article class="conteudo texto">
@@ -15,7 +15,7 @@ const versao = '22 de novembro de 2026';
     <h2>Resumo</h2>
     <ul>
       <li>O {site.nome} mostra números de fontes oficiais. Para ler o site, você não precisa criar conta nem informar nenhum dado pessoal.</li>
-      <li>Hoje o site <strong>não usa cookies de anúncio nem de rastreamento</strong>.</li>
+      <li>Hoje o site <strong>não usa cookies de anúncio nem de rastreamento</strong>. Ele conta as visitas de forma anônima, sem cookies (veja abaixo).</li>
       <li>Se um dia houver anúncios, cookies de anúncio só serão usados <strong>se você aceitar</strong>. Você pode mudar de ideia a qualquer momento.</li>
     </ul>
 
@@ -25,6 +25,7 @@ const versao = '22 de novembro de 2026';
     <h2>Que dados tratamos hoje</h2>
     <ul>
       <li><strong>Preferências guardadas no seu navegador:</strong> o tema escolhido (claro ou escuro) e a sua escolha sobre cookies. Ficam só no seu aparelho (armazenamento local do navegador). Não chegam até nós e não identificam você.</li>
+      <li><strong>Contagem de visitas, anônima:</strong> para saber quais temas interessam mais e melhorar o site, contamos cada página aberta: a página, o dia e a hora, o país (deduzido pela Cloudflare), se é celular ou computador, o site de onde você veio (só o nome, ex.: "Google") e quanto tempo a página ficou aberta. <strong>Não usamos cookies para isso, não guardamos o seu endereço IP nem nada no seu navegador.</strong> Para contar pessoas diferentes num mesmo dia, guardamos só um código embaralhado feito com o IP, o navegador e uma chave que é trocada e apagada todo dia; esse código não permite voltar ao IP nem reconhecer você em outro dia. Base legal: legítimo interesse (art. 7º, IX, da LGPD). Esses números ficam guardados por até 400 dias e só o administrador os vê.</li>
       <li><strong>Dados técnicos de acesso:</strong> o site é hospedado na Cloudflare. Como todo servidor, ela recebe dados técnicos de cada acesso (endereço IP, tipo de navegador, página pedida, data e hora) para entregar as páginas e proteger o site contra ataques. Base legal: legítimo interesse (art. 7º, IX, da LGPD). [Confirmar se há registros ou estatísticas de acesso ligados na conta da Cloudflare e por quanto tempo ficam guardados.]</li>
     </ul>
 
