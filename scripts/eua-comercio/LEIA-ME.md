@@ -12,7 +12,7 @@ Os nomes em português de produtos e países vêm do **Comex Stat** (Brasil), qu
 ## Chave (obrigatória)
 A API do Census exige uma **chave gratuita**, pedida em https://api.census.gov/data/key_signup.html.
 - **No computador:** fica no arquivo `.env` da pasta `statworld` (linha `CENSUS_API_KEY=...`). Esse arquivo **não vai para o GitHub**.
-- **Na rotina automática:** fica no GitHub, em Settings → Secrets and variables → Actions, com o nome `CENSUS_API_KEY`.
+- **Na rotina automática:** fica no GitHub, em Settings → Secrets and variables → Actions, com o nome `CENSUS_API_KEY` (cadastrado em 24 nov 2026).
 - **Nunca** escreva a chave dentro de um script ou de uma página.
 
 ## Como rodar
