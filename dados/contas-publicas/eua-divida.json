@@ -1,11 +1,11 @@
 {
   "_explicacao": "EUA: dívida do governo federal em mãos do público, % do PIB, no fim de cada ano. Gerado por scripts/eua-contas-publicas/baixar.mjs. Não edite à mão.",
   "pais": "US",
-  "baixadoEm": "2026-11-23",
+  "baixadoEm": "2026-11-24",
   "periodo": "2025",
   "hoje": {
-    "data": "2026-11-20",
-    "valor": 32901198701800.97
+    "data": "2026-11-23",
+    "valor": 32902453860814.01
   },
   "serie": {
     "nome": "Dívida em mãos do público, % do PIB",
@@ -16,7 +16,7 @@
         "nome": "Tesouro dos EUA",
         "publicacao": "Debt to the Penny, dívida em mãos do público (último dia de cada ano)",
         "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/",
-        "dataConsulta": "2026-11-23"
+        "dataConsulta": "2026-11-24"
       },
       {
         "nome": "BEA (EUA)",
