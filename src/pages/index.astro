@@ -205,6 +205,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
 
     <section class="now" aria-label="Agora">
       <div class="now-h"><span class="eyebrow">Agora</span><span>Indicadores do Brasil que mudam com frequência. Cada um traz a data a que se refere.</span></div>
+      <div class="now-cards">
       {kpis.map((k: any) => (
         <div class="kpi">
           <div class="kpi-top"><span class="freq">{k.frequencia}</span><span class="sc">Brasil</span></div>
@@ -217,6 +218,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
           <div class="src">{k.fonteCurta} · {k.quando}</div>
         </div>
       ))}
+      </div>
     </section>
 
     <section class="sec" id="temas" aria-labelledby="h-temas">
@@ -235,7 +237,8 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
           return t.ativo ? <a class="th on" href={t.href}>{corpo}</a> : <div class="th off" aria-disabled="true">{corpo}</div>;
         })}
       </div>
-      <div class="todos" id="todos-os-temas">
+      <details class="todos recolhe-no-celular" id="todos-os-temas" open>
+        <summary>Ver todos os {temasPorGrupo().reduce((s, g) => s + g.temas.length, 0)} temas</summary>
         <h3>Todos os temas</h3>
         <div class="todos-grade">
           {temasPorGrupo().map((g) => (
@@ -249,7 +252,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
             </div>
           ))}
         </div>
-      </div>
+      </details>
     </section>
 
     <section class="sec" aria-labelledby="h-hist">
@@ -268,14 +271,16 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
 
     <footer class="pg">
       <div class="ft">
-        <div>
+        <details class="recolhe-no-celular" open>
+          <summary>Fontes usadas</summary>
           <h4>Fontes usadas</h4>
           <ul>{fontesUsadas.map((f) => <li><b>{f.nome}</b>, {f.pubs}</li>)}</ul>
-        </div>
-        <div>
+        </details>
+        <details class="recolhe-no-celular" open>
+          <summary>Como lemos os dados</summary>
           <h4>Como lemos os dados</h4>
           <p>Usamos números publicados por fontes oficiais. Quando fazemos uma conta com eles (por exemplo, PIB por pessoa = PIB ÷ população), dizemos qual foi a conta ao lado do número. Ao lado de cada valor aparecem a fonte, o período a que ele se refere e a data de divulgação. Valores em moeda são correntes, salvo indicação. Os mapas usam seis faixas por medida. Quando a moeda ou a escala muda de um país para outro, as faixas daquele país são ajustadas e aparecem na legenda.</p>
-        </div>
+        </details>
         <div>
           <h4>Sem dado</h4>
           <div class="nd">
@@ -366,6 +371,7 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
   .now { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 200px repeat(3, minmax(0, 1fr)); }
   .now-h { padding: 18px 0; display: flex; flex-direction: column; gap: 8px; }
   .now-h span:last-child { font-size: 13px; color: var(--faint); line-height: 1.4; }
+  .now-cards { display: contents; }
   .kpi { padding: 16px 24px; border-left: 1px solid var(--line); display: grid; gap: 6px; align-content: start; min-width: 0; }
   .kpi-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .kpi .sc { font-size: 13px; color: var(--sub); }
@@ -452,17 +458,42 @@ const seta = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5
     .lede { font-size: 17px; margin-top: 16px; }
     .ctys { margin-top: 24px; }
     .mlegend em { margin-left: 0; width: 100%; }
-    .now { grid-template-columns: minmax(0, 1fr); }
-    .kpi { padding: 14px 0; border-top: 1px solid var(--line); }
-    .sec { margin-top: 56px; }
+    .sec { margin-top: 48px; }
+    .sec-h { margin-bottom: 16px; }
     .sec-h h2 { font-size: 26px; }
-    .themes { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-    .th { min-height: 0; padding: 20px; }
-    .th .big { font-size: 40px; margin-top: 8px; }
-    .stories { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-    .todos-grade { grid-template-columns: minmax(0, 1fr); }
-    .st.lead h3 { font-size: 30px; }
-    .st h3 { font-size: 22px; }
-    .ft { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+
+    /* Mapa-múndi: sem os nomes (ficam ilegíveis de tão pequenos); a lista de países logo acima já diz quais estão no ar. */
+    .wmap .lab, .wmap .lab2, .wmap .cl, .wmap .pt { display: none; }
+
+    /* Carrosséis: "Agora", "Temas" e "Explore" correm para o lado (o próximo cartão aparece na borda, convidando a arrastar). */
+    .now { display: block; border: 0; }
+    .now-h { padding: 0 0 12px; }
+    .now-cards, .themes, .stories { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 0 16px 8px; scroll-padding: 0 16px; scrollbar-width: none; }
+    .now-cards::-webkit-scrollbar, .themes::-webkit-scrollbar, .stories::-webkit-scrollbar { display: none; }
+    .now-cards > *, .themes > *, .stories > * { scroll-snap-align: start; flex: 0 0 82%; }
+    .kpi { flex-basis: 74%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; }
+    .th { min-height: 0; padding: 18px; gap: 8px; }
+    .th .big { font-size: 38px; margin-top: 6px; }
+    .th .ph { font-size: 14px; padding-top: 10px; }
+    .st { padding: 16px; border: 1px solid var(--line); border-radius: 14px; gap: 10px; }
+    .st.lead h3 { font-size: 24px; }
+    .st h3 { font-size: 20px; }
+    .st p { font-size: 15px; }
+
+    /* "Todos os temas": recolhido atrás de um botão */
+    .todos { margin-top: 20px; padding-top: 4px; }
+    .todos > summary { font-size: 16px; color: var(--accent); padding: 10px 0; }
+    .todos h3 { display: none; }
+    .todos-grade { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 8px; }
+
+    /* Rodapé: "Fontes usadas" e "Como lemos os dados" recolhidos */
+    footer.pg { margin-top: 56px; padding-top: 12px; }
+    .ft { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .ft > details { border-bottom: 1px solid var(--line); }
+    .ft > details > summary { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--sub); justify-content: space-between; padding: 12px 0; }
+    .ft > details h4 { display: none; }
+    .ft > details[open] { padding-bottom: 12px; }
+    .ft > div { padding-top: 16px; }
+    .ft-b { margin-top: 24px; }
   }
 </style>

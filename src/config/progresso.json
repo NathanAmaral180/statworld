@@ -30,12 +30,12 @@
       "nome": "Site bom no celular",
       "detalhe": "Navegação e textos curtos",
       "peso": 15,
-      "pct": 83,
-      "situacao": "Em andamento",
+      "pct": 90,
+      "situacao": "Quase pronto",
       "falta": [
-        "Página inicial: faixa \"Agora\" comprida e nomes do mapa-múndi pequenos",
         "Revisar no dedo a lista \"Outros produtos\" do Agro",
-        "Mais compacto: cartões de resumo dos gráficos e lista de produtos/parceiros"
+        "Mais compacto: lista de produtos/parceiros do Comércio e painel de Juros",
+        "Testar tudo num iPhone e num Android de verdade"
       ]
     },
     {
@@ -91,6 +91,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-24",
+      "titulo": "Página inicial no celular",
+      "de": 56,
+      "para": 57,
+      "itens": [
+        "Página inicial de 6.600 para 2.700 pixels de altura no celular (menos da metade)",
+        "\"Agora\", \"Temas\" e \"Explore\" viraram carrosséis de arrastar para o lado",
+        "\"Todos os temas\", \"Fontes usadas\" e \"Como lemos os dados\" recolhidos em botões",
+        "Mapa-múndi sem os nomes ilegíveis"
+      ]
+    },
     {
       "data": "2026-11-24",
       "titulo": "Celular, 3ª rodada",
