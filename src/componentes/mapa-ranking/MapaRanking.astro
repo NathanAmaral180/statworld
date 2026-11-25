@@ -47,7 +47,7 @@ const viewBox = `${-margem.esquerda} ${-margem.cima} ${geo.largura + margem.esqu
 const opcoesCliente = opcoes.map((o) => (o.lista ? { ...o, lista: { ...o.lista, itens: o.lista.itens.map(({ iconeSvg, ...resto }) => resto) } } : o));
 const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
 ---
-<div class={`mr${visao.icones ? ' com-icones' : ''}${opcao.largo ? ' so-painel' : ''}`} data-mapa-ranking data-matiz={visao.matiz} style={visao.matiz ? `--matiz: var(--${visao.matiz})` : undefined}>
+<div class={`mr${visao.icones ? ' com-icones' : ''}${opcao.largo ? ' so-painel' : ''}`} data-mapa-ranking data-matiz={visao.matiz} style={`--rotulo-fonte: "${ctx.textos.fonteEData ?? ctx.textos.fonte}";${visao.matiz ? ` --matiz: var(--${visao.matiz})` : ""}`}>
   {(opcoes.length > 1 || listaOpcao || filtroOpcao) && (
     <div class="mr-controles">
       {opcoes.length > 1 && (
@@ -325,6 +325,9 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     function destacar() {
       const sigla = previa ?? fixado ?? visao.linhas[0].uf;
       ficha.innerHTML = htmlFicha(visao.fichas[sigla], visao.svgs);
+      const botaoFonte = ficha.querySelector<HTMLElement>('.ficha-fonte-botao');
+      botaoFonte?.setAttribute('aria-expanded', String(raiz.classList.contains('fontes-abertas')));
+      botaoFonte?.setAttribute('aria-label', getComputedStyle(raiz).getPropertyValue('--rotulo-fonte').replace(/"/g, '').trim());
       const caminho = raiz.querySelector(`#mr-uf-${sigla}`)?.getAttribute('d');
       if (caminho) destaque.setAttribute('d', caminho);
       ranking.querySelectorAll<HTMLElement>('.linha').forEach((b) => {
@@ -347,6 +350,14 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
       if (previa && !ufDe(e.relatedTarget)) { previa = null; destacar(); }
     });
     raiz.addEventListener('click', (e) => {
+      // "Fonte e data +" da ficha (só aparece no celular): abre e fecha, e continua assim ao trocar de estado.
+      const botaoFonte = (e.target as Element).closest<HTMLElement>('.ficha-fonte-botao');
+      if (botaoFonte) {
+        const abrir = !raiz.classList.contains('fontes-abertas');
+        raiz.classList.toggle('fontes-abertas', abrir);
+        botaoFonte.setAttribute('aria-expanded', String(abrir));
+        return;
+      }
       const maisRanking = (e.target as Element).closest<HTMLElement>('[data-ranking-mais]');
       if (maisRanking) {
         const recolher = !ranking.classList.contains('recolhido');
@@ -553,6 +564,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
   .mr-ranking-mais button { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; font: inherit; font-size: 15px; font-weight: 500; }
   .mr-ranking-mais button:hover { text-decoration: underline; }
   :global(.mr-ficha .ficha-fonte) { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
+  :global(.mr-ficha .ficha-fonte-botao) { display: none; }
 
   /* Ranking */
   .mr-cab { display: flex; justify-content: space-between; gap: 12px; padding: 0 14px 10px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); }
@@ -622,7 +634,14 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes };
     :global(.mr-ficha .ficha-valor small) { font-size: 15px; }
     :global(.mr-ficha .ficha-sub), :global(.mr-ficha .ficha-detalhes) { font-size: 14px; }
     :global(.mr-ficha .ficha-detalhes) { margin-top: 10px; padding-top: 8px; }
-    :global(.mr-ficha .ficha-fonte) { font-size: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    :global(.mr-ficha .ficha-fonte) { font-size: 12px; }
+    /* Fonte e data da ficha: escondidas atrás de um botão "Fonte e data +" (abre e fecha para todos os estados) */
+    :global(.mr-ficha .ficha-fontes) { display: none; }
+    .mr.fontes-abertas :global(.ficha-fontes) { display: block; }
+    :global(.mr-ficha .ficha-fonte-botao) { display: flex; align-items: center; gap: 6px; margin: 10px 0 0; padding: 4px 0; border: 0; background: none; font: inherit; font-size: 13px; color: var(--faint); cursor: pointer; }
+    :global(.mr-ficha .ficha-fonte-botao)::before { content: var(--rotulo-fonte); }
+    :global(.mr-ficha .ficha-fonte-botao)::after { content: "+"; font-size: 16px; }
+    .mr.fontes-abertas :global(.ficha-fonte-botao)::after { content: "−"; }
     .mr-cab { padding: 0 8px 8px; font-size: 11px; }
   }
   @media (max-width: 560px) {

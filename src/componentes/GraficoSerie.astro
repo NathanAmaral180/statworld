@@ -160,7 +160,7 @@ const desenhos = series.map((s) => {
       <p class="r-topo">{resumo.topo}</p>
       <div class="r-linha"><h3>{resumo.nome}</h3><p class="r-valor"><strong>{resumo.numero}</strong>{resumo.depois && <small>{resumo.depois}</small>}</p></div>
       <dl>{resumo.linhas.map(([a, b]) => <div><dt>{a}</dt><dd>{b}</dd></div>)}</dl>
-      {resumo.carimbos.map((c) => <p class="r-carimbo">{c.selo && <span class="selo">{c.selo}</span>}<span>{c.texto}</span></p>)}
+      <details class="recolhe-no-celular" open><summary>{ctx.textos.fonteEData ?? ctx.textos.fonte}</summary>{resumo.carimbos.map((c) => <p class="r-carimbo">{c.selo && <span class="selo">{c.selo}</span>}<span>{c.texto}</span></p>)}</details>
     </aside>
   )}
 </div>

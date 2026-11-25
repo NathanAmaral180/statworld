@@ -50,8 +50,8 @@ const moeda = textos.moeda ?? 'R$'; // símbolo de cada quadradinho (R$ 1, US$ 1
       <div><dt>{textos.novaDivida}</dt><dd>{tri(dados.totais.novaDivida)}</dd></div>
       <div><dt>{textos.maiorDestino}</dt><dd>{maior.rotulo}, {moeda} {maior.de100} {textos.deCada100}</dd></div>
     </dl>
-    <p class="r-carimbo"><span class="selo">{dados.frequencia}</span><span>{f.nome}, {f.publicacao}{quandoCurto(f, ctx)}</span></p>
-    <p class="r-nota">{dados.calculo}</p>
+    <details class="recolhe-no-celular" open><summary>{ctx.textos.fonteEData ?? ctx.textos.fonte}</summary><p class="r-carimbo"><span class="selo">{dados.frequencia}</span><span>{f.nome}, {f.publicacao}{quandoCurto(f, ctx)}</span></p>
+    <p class="r-nota">{dados.calculo}</p></details>
   </aside>
 </div>
 

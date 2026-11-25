@@ -82,3 +82,14 @@ a { color: var(--accent); }
   .so-pc { display: none; }
   .so-cel { display: inline; }
 }
+
+/* Bloco que fica recolhido no celular atrás de um botão "… +" e sempre aberto no computador
+   (ex.: fonte e data nos cartões de resumo). Uso: <details class="recolhe-no-celular" open><summary>Fonte e data</summary>…</details>
+   Quem abre/fecha conforme a tela é o script no fim de src/layouts/Base.astro. */
+.recolhe-no-celular > summary { display: none; }
+@media (max-width: 760px) {
+  .recolhe-no-celular > summary { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 13px; color: var(--faint); cursor: pointer; list-style: none; }
+  .recolhe-no-celular > summary::-webkit-details-marker { display: none; }
+  .recolhe-no-celular > summary::after { content: "+"; font-size: 16px; }
+  .recolhe-no-celular[open] > summary::after { content: "−"; }
+}

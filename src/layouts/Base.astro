@@ -61,6 +61,15 @@ const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} · $
     </footer>
     <AvisoCookies />
     <script is:inline>
+      // Blocos "recolhe-no-celular" (ver global.css): fechados no celular, abertos no computador.
+      (function () {
+        var cel = window.matchMedia('(max-width: 760px)');
+        var ajustar = function () { document.querySelectorAll('details.recolhe-no-celular').forEach(function (d) { d.open = !cel.matches; }); };
+        ajustar();
+        if (cel.addEventListener) cel.addEventListener('change', ajustar);
+      })();
+    </script>
+    <script is:inline>
       // Contador de visitas anônimo do próprio StatWorld (servidor/index.js): sem cookies e sem guardar nada no navegador.
       // Manda a página e de onde a pessoa veio; ao sair, manda só quanto tempo ficou (contando só o tempo com a aba à vista).
       (function () {

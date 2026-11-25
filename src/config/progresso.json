@@ -30,7 +30,7 @@
       "nome": "Site bom no celular",
       "detalhe": "Navegação e textos curtos",
       "peso": 15,
-      "pct": 80,
+      "pct": 83,
       "situacao": "Em andamento",
       "falta": [
         "Página inicial: faixa \"Agora\" comprida e nomes do mapa-múndi pequenos",
@@ -100,7 +100,8 @@
         "Abas e botões de vista presos no topo ao rolar",
         "Ranking logo depois da ficha; legenda depois do ranking",
         "Tocar num estado do ranking sobe a tela até o mapa e a ficha dele",
-        "No toque, sem \"prévia\" presa do mouse"
+        "No toque, sem \"prévia\" presa do mouse",
+        "Fonte e data da ficha e dos cartões de resumo recolhidas num botão \"Fonte e data +\" no celular"
       ]
     },
     {

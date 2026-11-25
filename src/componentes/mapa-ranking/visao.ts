@@ -262,9 +262,10 @@ export function htmlFicha(f: Ficha, svgs?: Record<string, string>): string {
     : `<p class="ficha-fonte">${escapar(f.nota)}</p>`;
   const extras = (f.carimbosExtras ?? []).map((c) => `<p class="ficha-fonte ficha-carimbo">${c.selo ? `<span class="selo-freq">${escapar(c.selo)}</span>` : ''}<span>${escapar(c.texto)}</span></p>`).join('');
   const link = f.link ? `<a class="ficha-link" href="${escapar(f.link.url)}">${escapar(f.link.texto)} →</a>` : '';
+  // Fonte e data: no celular ficam atrás de um botão (o texto do botão vem do CSS, ver MapaRanking.astro).
   return `<p class="ficha-topo">${escapar(f.topo)}</p>
 <div class="ficha-linha"><h2 class="ficha-nome">${escapar(f.nome)}</h2><p class="ficha-valor${f.apagado ? ' sem' : ''}">${valor}</p></div>
-${sub}${comp}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}${fonte}${extras}`;
+${sub}${comp}${det}${link}${f.aviso ? `<p class="ficha-aviso">${escapar(f.aviso)}</p>` : ''}<button type="button" class="ficha-fonte-botao" aria-expanded="false"></button><div class="ficha-fontes">${fonte}${extras}</div>`;
 }
 
 export function htmlLegenda(v: Visao): string {
