@@ -11,9 +11,12 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
     "@sigma/edge-curve": "3.1.0",
+    "3d-force-graph": "1.80.2",
     "astro": "^7.4.13",
     "graphology": "0.26.0",
-    "sigma": "3.0.2"
+    "sigma": "3.0.2",
+    "three": "0.187.0",
+    "three-spritetext": "1.10.0"
   },
   "devDependencies": {
     "7zip-bin": "^5.2.0",

@@ -2,13 +2,13 @@
 // Universo dos Fios: um emaranhado de criações, descobertas e pessoas ligadas entre si.
 // De longe é só uma teia brilhando; aproximando aparecem as regiões, depois os itens; tocar num item foca nele,
 // acende os fios dele e abre o cartão; dá para seguir de vizinho em vizinho, voltar pelo caminho ou sair por outro galho.
-// Desenho: Sigma.js (placa de vídeo). Posições e regiões já vêm calculadas de scripts/fios-universo/ (dados/fios/universo.json).
+// Desenho: 3D (3d-force-graph + three.js), com brilho neon (bloom), poeira de estrelas e rotação lenta.
+// Posições (x, y, z) e regiões já vêm calculadas de scripts/fios-universo/ (dados/fios/universo.json).
 interface Props { universo: any; textos: Record<string, string> }
 const { universo, textos } = Astro.props;
 ---
 <div class="fu" data-fios-universo>
   <div class="fu-palco" data-palco></div>
-  <div class="fu-regioes" data-regioes aria-hidden="true"></div>
 
   <div class="fu-topo">
     <label class="fu-busca">
@@ -38,9 +38,10 @@ const { universo, textos } = Astro.props;
 </div>
 
 <script>
-  import Graph from 'graphology';
-  import Sigma from 'sigma';
-  import EdgeCurveProgram from '@sigma/edge-curve';
+  import ForceGraph3D from '3d-force-graph';
+  import * as THREE from 'three';
+  import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+  import SpriteText from 'three-spritetext';
 
   const raiz = document.querySelector<HTMLElement>('[data-fios-universo]');
   if (raiz) iniciar(raiz);
@@ -51,94 +52,172 @@ const { universo, textos } = Astro.props;
     const esc = (s: string) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
     const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const celular = () => matchMedia('(max-width: 760px)').matches;
+    const tempo = (ms: number) => (reduzir ? 0 : ms);
 
-    // ---------- Grafo ----------
-    const g = new Graph({ type: 'undirected', multi: false });
-    U.nos.forEach((n: any, i: number) => {
-      const cor = U.regioes[n.r]?.cor ?? '#6ea8ff';
-      g.addNode(String(i), { x: n.x, y: n.y, label: n.n, size: n.t === 'p' ? n.s * 0.75 : n.s, color: n.t === 'p' ? '#c9d3e6' : cor, corBase: n.t === 'p' ? '#c9d3e6' : cor, dados: n });
-    });
-    for (const [a, b] of U.arestas) if (!g.hasEdge(String(a), String(b))) g.addEdge(String(a), String(b), { size: 0.5, color: '#1a3566', type: 'curva', curvature: 0.25 + ((a * 7 + b * 13) % 10) / 40 });
+    // ---------- Dados: posições fixas (calculadas em scripts/fios-universo/) ----------
+    const COR_PESSOA = '#dfe7f7';
+    const nos = U.nos.map((n: any, i: number) => ({ ...n, idx: i, fx: n.x, fy: n.y, fz: n.z ?? 0, cor: n.t === 'p' ? COR_PESSOA : U.regioes[n.r]?.cor ?? '#6ea8ff' }));
+    const links = U.arestas.map(([a, b]: [number, number]) => ({ source: a, target: b }));
+    const viz: Set<number>[] = nos.map(() => new Set<number>());
+    for (const [a, b] of U.arestas) { viz[a].add(b); viz[b].add(a); }
 
     // ---------- Estado ----------
-    let foco: string | null = null;
-    let passar: string | null = null;
-    const caminho: string[] = [];
-    const vizinhos = (id: string) => new Set(g.neighbors(id));
+    let foco: number | null = null;
+    const caminho: number[] = [];
+    const ehCaminho = (a: number, b: number) => caminho.some((c, i) => i > 0 && ((caminho[i - 1] === a && c === b) || (caminho[i - 1] === b && c === a)));
 
-    const sigma = new Sigma(g, $('[data-palco]'), {
-      renderEdgeLabels: false,
-      defaultEdgeType: 'curva',
-      edgeProgramClasses: { curva: EdgeCurveProgram },
-      labelColor: { color: '#dbe6ff' },
-      labelSize: 12,
-      labelWeight: '500',
-      labelFont: 'ui-sans-serif, system-ui, sans-serif',
-      labelRenderedSizeThreshold: 7,
-      labelDensity: 0.6,
-      defaultEdgeColor: '#1a3566',
-      minCameraRatio: 0.03,
-      maxCameraRatio: 1.6,
-      zIndex: true,
-      nodeReducer: (no, a) => {
-        const r: any = { ...a };
-        const alvo = foco ?? passar;
-        if (!alvo) return r;
-        const viz = vizinhos(alvo);
-        if (no === alvo) { r.size = a.size * 2.6 + 4; r.zIndex = 3; r.forceLabel = true; }
-        else if (viz.has(no)) { r.size = a.size * 1.4 + 1; r.zIndex = 2; r.forceLabel = !!foco; }
-        else if (caminho.includes(no)) { r.zIndex = 2; r.forceLabel = true; r.color = '#ffffff'; }
-        else { r.color = 'rgba(120,140,180,0.16)'; r.label = ''; r.zIndex = 0; }
-        return r;
-      },
-      edgeReducer: (aresta, a) => {
-        const r: any = { ...a };
-        const [s, t] = g.extremities(aresta);
-        const noCaminho = caminho.some((c, i) => i > 0 && ((caminho[i - 1] === s && c === t) || (caminho[i - 1] === t && c === s)));
-        if (noCaminho) { r.color = 'rgba(255,255,255,0.95)'; r.size = 2.4; r.zIndex = 3; return r; }
-        const alvo = foco ?? passar;
-        if (!alvo) return r;
-        if (s === alvo || t === alvo) { r.color = 'rgba(140,195,255,0.85)'; r.size = 1.4; r.zIndex = 2; }
-        else r.hidden = true;
-        return r;
-      },
+    // ---------- Pontos de luz (sprite com halo; o brilho soma com os vizinhos) ----------
+    const halo = (() => {
+      const c = document.createElement('canvas');
+      c.width = c.height = 128;
+      const ctx = c.getContext('2d')!;
+      const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+      g.addColorStop(0, 'rgba(255,255,255,1)');
+      g.addColorStop(0.12, 'rgba(255,255,255,0.95)');
+      g.addColorStop(0.3, 'rgba(255,255,255,0.35)');
+      g.addColorStop(0.6, 'rgba(255,255,255,0.08)');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(c);
+    })();
+    const tamanhoDe = (n: any) => (n.t === 'p' ? 0.75 : 1) * n.s * 9 + (n.c ? 8 : 0);
+    function ponto(n: any) {
+      const m = new THREE.SpriteMaterial({ map: halo, color: n.cor, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, opacity: n.t === 'p' ? 0.55 : 0.9 });
+      const s = new THREE.Sprite(m);
+      const t = tamanhoDe(n);
+      s.scale.set(t, t, 1);
+      n.__s = s;
+      return s;
+    }
+
+    // ---------- Fios: linhas neon (somam luz) ----------
+    const linha = (cor: string, op: number) => new THREE.LineBasicMaterial({ color: cor, transparent: true, opacity: op, blending: THREE.AdditiveBlending, depthWrite: false });
+    const FIO = { base: linha('#2f6bff', 0.045), aceso: linha('#9fd0ff', 0.9), caminho: linha('#ffffff', 1), apagado: linha('#2f6bff', 0.012) };
+    const materialDoFio = (l: any) => {
+      const a = typeof l.source === 'object' ? l.source.idx : l.source;
+      const b = typeof l.target === 'object' ? l.target.idx : l.target;
+      if (ehCaminho(a, b)) return FIO.caminho;
+      if (foco === null) return FIO.base;
+      return a === foco || b === foco ? FIO.aceso : FIO.apagado;
+    };
+
+    const palco = $('[data-palco]');
+    const G = (ForceGraph3D as any)({ controlType: 'orbit', rendererConfig: { antialias: true, powerPreference: 'high-performance' } })(palco)
+      .backgroundColor('#000004')
+      .showNavInfo(false)
+      .enableNodeDrag(false)
+      .nodeId('idx')
+      .cooldownTicks(0)
+      .warmupTicks(0)
+      .graphData({ nodes: nos, links })
+      .nodeThreeObject(ponto)
+      .nodeLabel((n: any) => `<div class="fu-tip"><b>${esc(n.n)}</b>${n.a != null ? `<span>${n.a < 0 ? -n.a + ' a.C.' : n.a}</span>` : ''}</div>`)
+      .linkMaterial(materialDoFio)
+      .linkWidth(0)
+      .onNodeClick((n: any) => focar(n.idx))
+      .onBackgroundClick(() => { if (foco !== null) soltar(); });
+
+    const renderer = G.renderer() as THREE.WebGLRenderer;
+    renderer.setPixelRatio(Math.min(devicePixelRatio, celular() ? 1.5 : 2));
+    const ajustarTamanho = () => G.width(palco.clientWidth).height(palco.clientHeight);
+    ajustarTamanho();
+    new ResizeObserver(ajustarTamanho).observe(palco);
+
+    // brilho (bloom): o que é claro "vaza" luz, como neon
+    const brilhoLonge = celular() ? 0.75 : 0.95;
+    const bloom = new UnrealBloomPass(new THREE.Vector2(palco.clientWidth, palco.clientHeight), brilhoLonge, 0.45, 0.22);
+    G.postProcessingComposer().addPass(bloom);
+
+    // poeira de estrelas ao fundo
+    const cena = G.scene() as THREE.Scene;
+    {
+      const n = celular() ? 900 : 1800, pos = new Float32Array(n * 3);
+      for (let i = 0; i < n; i++) {
+        const r = 4000 + Math.random() * 5000, t = Math.random() * Math.PI * 2, f = Math.acos(2 * Math.random() - 1);
+        pos.set([r * Math.sin(f) * Math.cos(t), r * Math.sin(f) * Math.sin(t), r * Math.cos(f)], i * 3);
+      }
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      cena.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: '#8fb4ff', size: 6, sizeAttenuation: true, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false })));
+    }
+
+    // nomes das galáxias (some no foco)
+    const raioAprox = Math.max(...nos.map((n: any) => Math.hypot(n.x, n.y, n.z ?? 0)));
+    const nomesGalaxias = U.regioes.map((r: any) => {
+      const s = new SpriteText(r.nome.toUpperCase(), raioAprox * (celular() ? 0.06 : 0.04), r.cor);
+      s.fontWeight = '600';
+      s.fontFace = 'ui-sans-serif, system-ui, sans-serif';
+      (s.material as THREE.SpriteMaterial).depthWrite = false;
+      (s.material as THREE.SpriteMaterial).opacity = 0.85;
+      s.position.set(r.x, r.y + raioAprox * 0.05, (r.z ?? 0));
+      s.renderOrder = 10;
+      cena.add(s);
+      return s;
     });
-    const camera = sigma.getCamera();
 
-    // ---------- Regiões: nomes grandes que aparecem de longe e somem de perto ----------
-    const camadaRegioes = $('[data-regioes]');
-    camadaRegioes.innerHTML = U.regioes.map((r: any, i: number) => `<span data-r="${i}" style="--cor:${r.cor}">${esc(r.nome)}</span>`).join('');
-    function desenharRegioes() {
-      const ratio = camera.getState().ratio;
-      // longe (ratio alto): regiões visíveis; perto: somem para dar lugar aos itens
-      const op = foco ? 0 : Math.max(0, Math.min(1, (ratio - 0.22) / 0.35));
-      camadaRegioes.style.opacity = String(op);
-      U.regioes.forEach((r: any, i: number) => {
-        const p = sigma.graphToViewport({ x: r.x, y: r.y });
-        const el = camadaRegioes.children[i] as HTMLElement;
-        el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -50%)`;
+    // nomes do item focado e dos vizinhos
+    let rotulos: THREE.Object3D[] = [];
+    function rotular(ids: number[]) {
+      for (const r of rotulos) cena.remove(r);
+      rotulos = ids.map((i) => {
+        const n = nos[i];
+        const principal = i === foco;
+        const s = new SpriteText(n.n, principal ? 30 : 18, principal ? '#f2f6ff' : '#a9bfe6');
+        s.fontFace = 'ui-sans-serif, system-ui, sans-serif';
+        s.fontWeight = principal ? '700' : '500';
+        // fundo escuro atrás do nome: o brilho não "estoura" as letras
+        s.backgroundColor = principal ? 'rgba(2,6,20,0.82)' : 'rgba(2,6,20,0.6)';
+        s.padding = principal ? [6, 3] : [4, 2];
+        s.borderRadius = 4;
+        (s.material as THREE.SpriteMaterial).depthWrite = false;
+        s.position.set(n.x, n.y + tamanhoDe(n) * (principal ? 1.1 : 0.7) + 14, n.z ?? 0);
+        s.renderOrder = 11;
+        cena.add(s);
+        return s;
       });
     }
-    sigma.on('afterRender', desenharRegioes);
+
+    // brilho de cada ponto conforme o foco
+    function pintar() {
+      const perto = foco !== null ? viz[foco] : null;
+      for (const n of nos) {
+        const m = n.__s?.material as THREE.SpriteMaterial | undefined;
+        if (!m) continue;
+        const t = tamanhoDe(n);
+        if (foco === null) { m.opacity = n.t === 'p' ? 0.55 : 0.9; n.__s.scale.set(t, t, 1); continue; }
+        if (n.idx === foco) { m.opacity = 0.95; n.__s.scale.set(t * 1.8, t * 1.8, 1); }
+        else if (perto!.has(n.idx) || caminho.includes(n.idx)) { m.opacity = 0.7; n.__s.scale.set(t * 1.1, t * 1.1, 1); }
+        else { m.opacity = 0.07; n.__s.scale.set(t, t, 1); }
+      }
+      for (const s of nomesGalaxias) s.visible = foco === null;
+      bloom.strength = foco === null ? brilhoLonge : brilhoLonge * 0.5;
+      G.linkMaterial(materialDoFio);
+    }
+
+    // rotação lenta quando ninguém mexe
+    const controles = G.controls() as any;
+    controles.autoRotate = !reduzir;
+    controles.autoRotateSpeed = 0.35;
+    controles.enableDamping = true;
 
     // ---------- Cartão ----------
     const cartao = $('.fu-cartao');
-    function mostrarCartao(id: string) {
-      const n = g.getNodeAttribute(id, 'dados');
-      const viz = [...vizinhos(id)].map((v) => ({ ...g.getNodeAttribute(v, 'dados'), no: v }));
-      const pessoas = viz.filter((v: any) => v.t === 'p').sort((a: any, b: any) => b.s - a.s);
-      const coisas = viz.filter((v: any) => v.t !== 'p').sort((a: any, b: any) => (a.a ?? 9999) - (b.a ?? 9999));
+    function mostrarCartao(i: number) {
+      const n = nos[i];
+      const vs = [...viz[i]].map((v) => nos[v]);
+      const pessoas = vs.filter((v) => v.t === 'p').sort((a, b) => b.s - a.s);
+      const coisas = vs.filter((v) => v.t !== 'p').sort((a, b) => (a.a ?? 9999) - (b.a ?? 9999));
       const regiao = U.regioes[n.r];
-      const lista = (itens: any[], titulo: string) => itens.length ? `<h3>${esc(titulo)} <small>${itens.length}</small></h3><ul>${itens.slice(0, 40).map((v) => `<li><button type="button" data-ir="${v.no}"><b>${esc(v.n)}</b>${v.a != null ? `<span>${v.a < 0 ? -v.a + ' a.C.' : v.a}</span>` : ''}</button></li>`).join('')}</ul>` : '';
-      const wiki = n.w ? `<a class="fu-wiki" href="${esc(n.w)}" rel="noopener" target="_blank">${esc(T.lerNaWikipedia)} ↗</a>` : '';
+      const lista = (itens: any[], titulo: string) => itens.length ? `<h3>${esc(titulo)} <small>${itens.length}</small></h3><ul>${itens.slice(0, 40).map((v) => `<li><button type="button" data-ir="${v.idx}"><b>${esc(v.n)}</b>${v.a != null ? `<span>${v.a < 0 ? -v.a + ' a.C.' : v.a}</span>` : ''}</button></li>`).join('')}</ul>` : '';
       const quando = n.t === 'p' ? [n.nasc, n.morte].filter((x: any) => x != null).join('–') : n.a != null ? (n.a < 0 ? `${-n.a} a.C.` : String(n.a)) : '';
       cartao.querySelector('.fu-cartao-corpo')!.innerHTML = `
-        <p class="fu-c-topo"><span class="fu-c-regiao" style="--cor:${regiao?.cor ?? '#6ea8ff'}">${esc(n.t === 'p' ? T.pessoa : regiao?.nome ?? '')}</span>${quando ? `<span>${esc(quando)}</span>` : ''}${n.c ? `<span class="fu-conferido">${esc(T.conferido)}</span>` : ''}</p>
+        <p class="fu-c-topo"><span class="fu-c-regiao" style="--cor:${n.t === 'p' ? COR_PESSOA : regiao?.cor ?? '#6ea8ff'}">${esc(n.t === 'p' ? T.pessoa : regiao?.nome ?? '')}</span>${quando ? `<span>${esc(quando)}</span>` : ''}${n.c ? `<span class="fu-conferido">${esc(T.conferido)}</span>` : ''}</p>
         <h2>${esc(n.n)}</h2>
         ${n.d ? `<p class="fu-c-desc">${esc(n.d)}</p>` : ''}
         ${n.c && n.resumo ? `<p class="fu-c-resumo">${esc(n.resumo)}</p>` : ''}
         ${n.c && n.trilha ? `<a class="fu-trilha" href="/fios/${esc(n.trilha)}#${esc(n.k)}">${esc(T.verNaTrilha)} →</a>` : ''}
-        ${wiki}
+        ${n.w ? `<a class="fu-wiki" href="${esc(n.w)}" rel="noopener" target="_blank">${esc(T.lerNaWikipedia)} ↗</a>` : ''}
         <p class="fu-fonte">${esc(n.c ? T.fonteConferida : T.fonteWikidata)}</p>
         ${lista(coisas, n.t === 'p' ? T.criouOuLigado : T.ligadoA)}
         ${lista(pessoas, T.pessoas)}`;
@@ -150,65 +229,85 @@ const { universo, textos } = Astro.props;
     function desenharCaminho() {
       const nav = $('.fu-caminho');
       nav.hidden = caminho.length < 1;
-      nav.querySelector('ol')!.innerHTML = caminho.map((c, i) => `<li><button type="button" data-ir="${c}" ${c === foco ? 'aria-current="step"' : ''}>${esc(g.getNodeAttribute(c, 'label'))}</button>${i < caminho.length - 1 ? '<span aria-hidden="true">›</span>' : ''}</li>`).join('');
+      nav.querySelector('ol')!.innerHTML = caminho.map((c, i) => `<li><button type="button" data-ir="${c}" ${c === foco ? 'aria-current="step"' : ''}>${esc(nos[c].n)}</button>${i < caminho.length - 1 ? '<span aria-hidden="true">›</span>' : ''}</li>`).join('');
       const ol = nav.querySelector('ol')!;
       ol.scrollLeft = ol.scrollWidth;
       $<HTMLButtonElement>('[data-acao="voltar"]').disabled = caminho.length < 2;
     }
 
-    // ---------- Focar (voar até o item) ----------
-    function focar(id: string, { guardar = true } = {}) {
-      if (!g.hasNode(id)) return;
-      foco = id;
+    // ---------- Focar: a câmera voa até o item ----------
+    function focar(i: number, { guardar = true } = {}) {
+      const n = nos[i];
+      if (!n) return;
+      foco = i;
+      controles.autoRotate = false;
       if (guardar) {
-        const i = caminho.indexOf(id);
-        if (i >= 0) caminho.splice(i + 1); else caminho.push(id);
+        const k = caminho.indexOf(i);
+        if (k >= 0) caminho.splice(k + 1); else caminho.push(i);
       }
-      const pos = sigma.getNodeDisplayData(id)!;
-      // no celular, o cartão cobre a metade de baixo: o item fica um pouco acima do centro
-      const desloc = celular() ? 0.09 : 0;
-      camera.animate({ x: pos.x, y: pos.y - desloc, ratio: celular() ? 0.32 : 0.18 }, { duration: reduzir ? 0 : 900, easing: 'quadraticInOut' });
-      mostrarCartao(id);
+      // a câmera fica a uma distância fixa do item, na direção de onde já estava (o movimento parece um voo)
+      const cam = G.camera() as THREE.PerspectiveCamera;
+      const alvo = new THREE.Vector3(n.x, n.y, n.z ?? 0);
+      const dir = cam.position.clone().sub(alvo).normalize();
+      const dist = celular() ? 1500 : 1150;
+      const pos = alvo.clone().add(dir.multiplyScalar(dist));
+      // no celular o cartão cobre a parte de baixo: mira um pouco abaixo do item, para ele ficar mais para cima
+      const mira = celular() ? alvo.clone().add(new THREE.Vector3(0, -380, 0)) : alvo;
+      G.cameraPosition({ x: pos.x, y: pos.y, z: pos.z }, { x: mira.x, y: mira.y, z: mira.z }, tempo(1400));
+      pintar();
+      rotular([i, ...[...viz[i]].sort((a, b) => nos[b].s - nos[a].s).slice(0, 14)]);
+      mostrarCartao(i);
       desenharCaminho();
-      sigma.refresh();
       $('[data-dica]').hidden = true;
-      history.replaceState(null, '', `#${encodeURIComponent(g.getNodeAttribute(id, 'dados').id)}`);
+      history.replaceState(null, '', `#${encodeURIComponent(n.id)}`);
     }
     function soltar() {
       foco = null;
       cartao.hidden = true;
-      sigma.refresh();
+      rotular([]);
+      pintar();
     }
-
-    sigma.on('clickNode', ({ node }) => focar(node));
-    sigma.on('clickStage', () => { if (foco) soltar(); });
-    sigma.on('enterNode', ({ node }) => { if (!foco && !celular()) { passar = node; sigma.refresh(); } raiz.style.cursor = 'pointer'; });
-    sigma.on('leaveNode', () => { if (passar) { passar = null; sigma.refresh(); } raiz.style.cursor = ''; });
+    function afastar() {
+      soltar();
+      verTudo(tempo(1200));
+      controles.autoRotate = !reduzir;
+    }
 
     raiz.addEventListener('click', (e) => {
       const ir = (e.target as Element).closest<HTMLElement>('[data-ir]');
-      if (ir) { focar(ir.dataset.ir!); return; }
+      if (ir) { focar(Number(ir.dataset.ir)); return; }
       const acao = (e.target as Element).closest<HTMLElement>('[data-acao]')?.dataset.acao;
       if (acao === 'fechar') soltar();
-      if (acao === 'afastar') { soltar(); camera.animate({ x: 0.5, y: 0.5, ratio: 1, angle: 0 }, { duration: reduzir ? 0 : 900 }); }
+      if (acao === 'afastar') afastar();
       if (acao === 'voltar' && caminho.length > 1) { caminho.pop(); focar(caminho.at(-1)!, { guardar: false }); }
     });
 
     // ---------- Busca ----------
-    const porNome = new Map<string, string>();
-    g.forEachNode((id, a) => porNome.set(a.label.toLowerCase(), id));
-    $('#fu-lista').innerHTML = [...porNome.keys()].sort().map((n) => `<option value="${esc(g.getNodeAttribute(porNome.get(n)!, 'label'))}">`).join('');
+    const porNome = new Map<string, number>();
+    for (const n of nos) porNome.set(n.n.toLowerCase(), n.idx);
+    $('#fu-lista').innerHTML = [...porNome.keys()].sort().map((k) => `<option value="${esc(nos[porNome.get(k)!].n)}">`).join('');
     const busca = $<HTMLInputElement>('.fu-busca input');
     busca.addEventListener('change', () => {
-      const id = porNome.get(busca.value.trim().toLowerCase());
-      if (id) { focar(id); busca.blur(); }
+      const i = porNome.get(busca.value.trim().toLowerCase());
+      if (i != null) { focar(i); busca.blur(); }
     });
 
-    // ---------- Começo: item do endereço (#Q123) ou visão de longe ----------
+    // ---------- Começo: visão de longe; ou o item do endereço (#Q123) ----------
+    // Enquadramento "de longe": câmera afastada o bastante para caber o universo inteiro (calculado pelos próprios pontos).
+    const centro = nos.reduce((a: any, n: any) => ({ x: a.x + n.x / nos.length, y: a.y + n.y / nos.length, z: a.z + (n.z ?? 0) / nos.length }), { x: 0, y: 0, z: 0 });
+    const raioUniverso = Math.max(...nos.map((n: any) => Math.hypot(n.x - centro.x, n.y - centro.y, (n.z ?? 0) - centro.z)));
+    const verTudo = (ms: number) => {
+      const cam = G.camera() as THREE.PerspectiveCamera;
+      const aspecto = palco.clientWidth / Math.max(1, palco.clientHeight);
+      const fov = (cam.fov * Math.PI) / 180;
+      const dist = (raioUniverso / Math.sin(Math.min(fov, fov * aspecto) / 2)) * 0.92;
+      G.cameraPosition({ x: centro.x, y: centro.y - dist * 0.15, z: centro.z + dist }, centro, ms);
+    };
+    verTudo(0);
     const doEndereco = decodeURIComponent(location.hash.slice(1));
-    const inicial = doEndereco ? g.findNode((_, a) => a.dados.id === doEndereco) : undefined;
-    if (inicial) setTimeout(() => focar(inicial), 300);
-    desenharRegioes();
+    const ini = doEndereco ? nos.find((n: any) => n.id === doEndereco) : undefined;
+    if (ini) setTimeout(() => focar(ini.idx), 700);
+    (window as any).__universo = G; // para testes no navegador
   }
 </script>
 
@@ -216,6 +315,9 @@ const { universo, textos } = Astro.props;
   .fu { position: relative; height: calc(100dvh - 160px); min-height: 520px; overflow: hidden; border-radius: 18px; background: radial-gradient(ellipse at 50% 40%, #101a2e 0%, #070a12 60%, #04060b 100%); color: #e8eefc; isolation: isolate; }
   .fu-palco { position: absolute; inset: 0; }
   .fu-palco :global(canvas) { outline: none; }
+  .fu :global(.scene-tooltip) { color: #e8eefc; }
+  .fu :global(.fu-tip) { display: flex; gap: 8px; align-items: baseline; padding: 4px 8px; border-radius: 8px; background: rgba(8, 12, 24, .85); border: 1px solid rgba(140, 180, 255, .3); font: 13px ui-sans-serif, system-ui, sans-serif; }
+  .fu :global(.fu-tip span) { color: rgba(220, 230, 255, .6); font-size: 12px; }
 
   .fu-regioes { position: absolute; inset: 0; pointer-events: none; transition: opacity .25s; z-index: 1; }
   .fu-regioes :global(span) { position: absolute; left: 0; top: 0; white-space: nowrap; font-size: clamp(13px, 1.6vw, 20px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cor); text-shadow: 0 0 18px color-mix(in oklch, var(--cor) 70%, transparent), 0 0 2px #000; opacity: .85; }

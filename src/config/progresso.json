@@ -43,8 +43,8 @@
       "nome": "Fios (trilhas da história)",
       "detalhe": "Criações e fatos ligados: uma coisa puxa a outra",
       "peso": 8,
-      "pct": 35,
-      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; Universo dos Fios no ar (809 itens, 6.001 fios, 13 galáxias)",
+      "pct": 40,
+      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; Universo dos Fios no ar em 3D com brilho (809 itens, 6.001 fios, 13 galáxias)",
       "falta": [
         "Dono testar a sensação no celular",
         "Cartão com o visual do Claude Design (fotos, molduras, surpresas)",
@@ -117,6 +117,17 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-25",
+      "titulo": "Universo dos Fios em 3D",
+      "de": 56,
+      "para": 56,
+      "itens": [
+        "Motor trocado: agora 3D com brilho neon, poeira de estrelas e rotação lenta (3d-force-graph + three.js)",
+        "Foco com a câmera voando até o item; nomes com fundo escuro para não estourar no brilho",
+        "Testado no celular: cartão embaixo, seguir vizinho e voltar funcionando"
+      ]
+    },
     {
       "data": "2026-11-25",
       "titulo": "Universo dos Fios (protótipo)",

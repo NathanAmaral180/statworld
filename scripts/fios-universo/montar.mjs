@@ -119,9 +119,17 @@ for (let passo = 0; passo < 200; passo++) {
   if (!encosta) break;
   escala *= 1.08;
 }
+// Profundidade (3D): cada galáxia ganha uma altura própria; os pontos se espalham em volta dela, como uma nuvem.
+let alcance = 0;
+for (let i = 0; i < nReg; i++) { const c = centro(i); alcance = Math.max(alcance, Math.hypot(c.x * escala, c.y * escala)); }
+const alturaReg = Array.from({ length: nReg }, () => (Math.random() - 0.5) * alcance * 0.7);
 g.forEachNode((id, a) => {
   const c = centro(regiaoDe[id]);
-  g.mergeNodeAttributes(id, { x: c.x * escala + a.lx, y: c.y * escala + a.ly });
+  const r = raio[regiaoDe[id]];
+  // nuvem achatada: mais espalhada no meio, mais fina nas bordas
+  const dist = Math.hypot(a.lx, a.ly) / r;
+  const z = alturaReg[regiaoDe[id]] + (Math.random() - 0.5) * 2 * r * 0.55 * (1 - dist * 0.6);
+  g.mergeNodeAttributes(id, { x: c.x * escala + a.lx, y: c.y * escala + a.ly, z });
 });
 
 // Nome de cada região: escolhido à mão em regioes.json pelo item mais ligado dela (o script mostra quais são).
@@ -136,7 +144,8 @@ const regioes = grandes.map((c, i) => {
   if (nomesRegioes[chave]) usados.add(nomesRegioes[chave]);
   const x = ids.reduce((s, id) => s + g.getNodeAttribute(id, 'x'), 0) / ids.length;
   const y = ids.reduce((s, id) => s + g.getNodeAttribute(id, 'y'), 0) / ids.length;
-  return { nome: nomesRegioes[chave] ?? `[${topo.slice(0, 3).map((id) => g.getNodeAttribute(id, 'e').nome).join(' · ')}]`, chave, cor: CORES[i % CORES.length], x, y, n: ids.length };
+  const z = ids.reduce((s, id) => s + g.getNodeAttribute(id, 'z'), 0) / ids.length;
+  return { nome: nomesRegioes[chave] ?? `[${topo.slice(0, 3).map((id) => g.getNodeAttribute(id, 'e').nome).join(' · ')}]`, chave, cor: CORES[i % CORES.length], x, y, z, n: ids.length };
 });
 
 // ---------- Saída ----------
@@ -150,7 +159,7 @@ const nos = g.nodes().map((id) => {
   return {
     id, n: c?.n.nome ?? e.nome, t: pessoa ? 'p' : 'i',
     a: c?.n.ano ?? e.ano ?? undefined, nasc: pessoa ? e.nasc ?? undefined : undefined, morte: pessoa ? e.morte ?? undefined : undefined,
-    x: Math.round(a.x * 10) / 10, y: Math.round(a.y * 10) / 10, s: Math.round((1.6 + Math.sqrt(g.degree(id)) * 1.15) * 10) / 10,
+    x: Math.round(a.x * 10) / 10, y: Math.round(a.y * 10) / 10, z: Math.round(a.z * 10) / 10, s: Math.round((1.6 + Math.sqrt(g.degree(id)) * 1.15) * 10) / 10,
     r: regiaoDe[id], d: e.desc ?? undefined, w: wikiDe(e) ?? undefined,
     ...(c ? { c: 1, k: c.n.id, trilha: c.trilha, resumo: c.n.resumo } : {}),
   };
@@ -159,7 +168,7 @@ const arestas = g.edges().map((ed) => g.extremities(ed).map((id) => indice.get(i
 const saida = {
   _explicacao: 'Universo dos Fios (protótipo). Gerado por scripts/fios-universo/montar.mjs. Itens e pessoas: Wikidata (CC0); fios: links entre artigos da Wikipédia e inventores do Wikidata; itens com c=1 foram conferidos à mão nas trilhas de dados/fios/. Não edite à mão.',
   geradoEm: new Date().toISOString().slice(0, 10),
-  regioes: regioes.map(({ nome, cor, x, y }) => ({ nome, cor, x: Math.round(x), y: Math.round(y) })),
+  regioes: regioes.map(({ nome, cor, x, y, z }) => ({ nome, cor, x: Math.round(x), y: Math.round(y), z: Math.round(z) })),
   nos, arestas,
 };
 fs.writeFileSync(new URL('../../dados/fios/universo.json', import.meta.url), JSON.stringify(saida));
