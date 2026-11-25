@@ -7,14 +7,14 @@
       "id": "dolar",
       "rotulo": "Dólar comercial, venda (PTAX)",
       "frequencia": "diário",
-      "valor": 5.8573,
+      "valor": 5.8825,
       "formato": "moeda",
       "casas": 2,
-      "data": "2026-11-24",
+      "data": "2026-11-25",
       "variacao": {
         "tipo": "percentual",
-        "valor": -1.9009177999597893,
-        "desde": "2026-11-23"
+        "valor": 0.43023235961960893,
+        "desde": "2026-11-24"
       },
       "fontes": [
         {
