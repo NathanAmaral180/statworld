@@ -1,0 +1,252 @@
+---
+// "Fios": trilhas de criações e fatos ligados (uma coisa puxa a outra). Visual próprio, com as cores do guia.
+// Computador: mapa com a linha do tempo (anos em colunas, assuntos em faixas) + cartão do item escolhido ao lado.
+// Celular: trilha de cartões ("veio de" em cima, "levou a" embaixo) e o caminho percorrido; o mapa abre num botão.
+// Dados: dados/fios/<trilha>.json (nada escrito aqui). Entrar por qualquer item: /fios/<trilha>#<id-do-item>.
+interface No { id: string; nome: string; ano: number; faixa: string; lugar?: string; pessoas?: string; resumo: string; brasil?: boolean; fontes: { nome: string; url: string }[] }
+interface Trilha { id: string; titulo: string; descricao: string; inicio: string; conferidoEm: string; faixas: { id: string; nome: string }[]; tipos: Record<string, string>; nos: No[]; ligacoes: { de: string; para: string; tipo: string }[] }
+interface Props { trilha: Trilha; textos: Record<string, string> }
+const { trilha, textos } = Astro.props;
+
+// ---------- Desenho do mapa ----------
+// Colunas = anos (só os que têm item, em ordem; assim 1837–2022 cabe sem buracos). Faixas = assuntos.
+// Dois itens no mesmo ano e na mesma faixa ficam um embaixo do outro.
+const COL = 150, NO_L = 132, NO_A = 56, LINHA = 66, TOPO = 36, ESQ = 140;
+const anos = [...new Set(trilha.nos.map((n) => n.ano))].sort((a, b) => a - b);
+const col = (ano: number) => anos.indexOf(ano);
+const pilha: Record<string, number> = {};
+const nivel: Record<string, number> = {};
+for (const n of [...trilha.nos].sort((a, b) => a.ano - b.ano)) {
+  const k = `${n.faixa}|${n.ano}`;
+  nivel[n.id] = pilha[k] ?? 0;
+  pilha[k] = nivel[n.id] + 1;
+}
+const alturaFaixa = Object.fromEntries(trilha.faixas.map((f) => [f.id, Math.max(1, ...trilha.nos.filter((n) => n.faixa === f.id).map((n) => nivel[n.id] + 1))]));
+const topoFaixa: Record<string, number> = {};
+let y = TOPO;
+for (const f of trilha.faixas) { topoFaixa[f.id] = y; y += alturaFaixa[f.id] * LINHA + 18; }
+const largura = ESQ + anos.length * COL + 20;
+const altura = y;
+const pos = Object.fromEntries(trilha.nos.map((n) => [n.id, { x: ESQ + col(n.ano) * COL, y: topoFaixa[n.faixa] + nivel[n.id] * LINHA }]));
+// Curvas das ligações: da direita de um item à esquerda do outro (ou de cima/baixo, se estiverem na mesma coluna).
+const curva = (de: string, para: string) => {
+  const a = pos[de], b = pos[para];
+  if (a.x === b.x) {
+    const x = a.x + NO_L / 2, y1 = a.y + (b.y > a.y ? NO_A : 0), y2 = b.y + (b.y > a.y ? 0 : NO_A);
+    return `M${x},${y1} C${x + 28},${(y1 + y2) / 2} ${x + 28},${(y1 + y2) / 2} ${x},${y2}`;
+  }
+  const x1 = a.x + NO_L, y1 = a.y + NO_A / 2, x2 = b.x, y2 = b.y + NO_A / 2, m = (x1 + x2) / 2;
+  return `M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}`;
+};
+const dadosCliente = { ...trilha };
+const portas = [trilha.inicio, 'telefone', 'transistor', 'iphone', 'pix'].filter((id, i, a) => trilha.nos.some((n) => n.id === id) && a.indexOf(id) === i);
+const nomeDe = (id: string) => trilha.nos.find((n) => n.id === id)!.nome;
+---
+<div class="fios" data-fios>
+  <div class="fi-portas">
+    <span>{textos.comecePor}</span>
+    {portas.map((id) => <button type="button" data-ir={id}>{nomeDe(id)}</button>)}
+  </div>
+
+  <div class="fi-modos" role="group" aria-label={textos.modo}>
+    <button type="button" data-modo="trilha" aria-pressed="true">{textos.trilha}</button>
+    <button type="button" data-modo="mapa" aria-pressed="false">{textos.mapa}</button>
+  </div>
+
+  <div class="fi-corpo">
+    <div class="fi-mapa-caixa" data-mapa>
+      <div class="fi-mapa" style={`width:${largura}px;height:${altura}px`}>
+        <svg class="fi-linhas" width={largura} height={altura} aria-hidden="true">
+          <defs><marker id="fi-seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" /></marker></defs>
+          {trilha.faixas.map((f) => <rect class="fi-faixa-fundo" x="0" y={topoFaixa[f.id] - 9} width={largura} height={alturaFaixa[f.id] * LINHA} />)}
+          {anos.map((a) => <text class="fi-ano" x={ESQ + col(a) * COL + NO_L / 2} y="20" text-anchor="middle">{a}</text>)}
+          {trilha.ligacoes.map((l) => <path class="fi-lig" d={curva(l.de, l.para)} data-de={l.de} data-para={l.para} marker-end="url(#fi-seta)" />)}
+        </svg>
+        {trilha.faixas.map((f) => <span class="fi-faixa-nome" style={`top:${topoFaixa[f.id]}px`}>{f.nome}</span>)}
+        {trilha.nos.map((n) => (
+          <button type="button" class={`fi-no${n.brasil ? ' br' : ''}`} data-no={n.id} style={`left:${pos[n.id].x}px;top:${pos[n.id].y}px`}>
+            <span class="fi-no-ano">{n.ano}{n.brasil && <em>Brasil</em>}</span>
+            <span class="fi-no-nome">{n.nome}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <aside class="fi-lado">
+      <nav class="fi-caminho" aria-label={textos.seuCaminho}>
+        <span class="fi-caminho-rot">{textos.seuCaminho}</span>
+        <ol class="fi-caminho-lista"></ol>
+      </nav>
+      <section class="fi-antes" aria-label={textos.veioDe}><h3>{textos.veioDe}</h3><ul></ul></section>
+      <article class="fi-cartao" aria-live="polite"></article>
+      <section class="fi-depois" aria-label={textos.levouA}><h3>{textos.levouA}</h3><ul></ul></section>
+    </aside>
+  </div>
+
+  <p class="fi-nota">{textos.notaFios.replace('{data}', new Date(trilha.conferidoEm + 'T12:00:00Z').toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }))}</p>
+  <script type="application/json" class="fi-dados" set:html={JSON.stringify({ trilha: dadosCliente, textos }).replace(/</g, '\\u003c')} />
+</div>
+
+<script>
+  for (const raiz of document.querySelectorAll<HTMLElement>('[data-fios]')) {
+    const { trilha, textos } = JSON.parse(raiz.querySelector('.fi-dados')!.textContent!);
+    const nos: Record<string, any> = Object.fromEntries(trilha.nos.map((n: any) => [n.id, n]));
+    const esc = (s: string) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+    const $ = <T extends Element = HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+    const caminho: string[] = [];
+    let atual = '';
+
+    // "De onde veio": nome e, embaixo, a frase ("Telefone / chegou ao Brasil: …"); "O que veio depois": a frase em cima ("Telefone inspirou") e o nome.
+    const botaoNo = (id: string, frase: string, fraseDepois = false) =>
+      `<li><button type="button" data-ir="${id}"><span class="fi-rel${fraseDepois ? ' depois' : ''}">${esc(frase)}</span><b>${esc(nos[id].nome)}</b><span class="fi-rel-ano">${nos[id].ano}${nos[id].brasil ? ' · Brasil' : ''}</span></button></li>`;
+
+    function mostrar(id: string, { rolar = true, guardar = true, suave = true } = {}) {
+      const n = nos[id];
+      if (!n) return;
+      atual = id;
+      // cartão
+      $('.fi-cartao').innerHTML = `
+        <p class="fi-c-topo">${n.ano}${n.lugar ? ' · ' + esc(n.lugar) : ''}${n.brasil ? ' <span class="fi-br">Brasil</span>' : ''}</p>
+        <h2>${esc(n.nome)}</h2>
+        ${n.pessoas ? `<p class="fi-c-pessoas">${esc(n.pessoas)}</p>` : ''}
+        <p class="fi-c-resumo">${esc(n.resumo)}</p>
+        <details class="fi-c-fontes"><summary>${esc(textos.fontes)}</summary><ul>${n.fontes.map((f: any) => `<li><a href="${esc(f.url)}" rel="noopener" target="_blank">${esc(f.nome)}</a></li>`).join('')}</ul></details>`;
+      // de onde veio / o que veio depois (com a frase da ligação)
+      const antes = trilha.ligacoes.filter((l: any) => l.para === id).sort((a: any, b: any) => nos[a.de].ano - nos[b.de].ano);
+      const depois = trilha.ligacoes.filter((l: any) => l.de === id).sort((a: any, b: any) => nos[a.para].ano - nos[b.para].ano);
+      $('.fi-antes ul').innerHTML = antes.map((l: any) => botaoNo(l.de, `${trilha.tipos[l.tipo]} ${n.nome}`, true)).join('') || `<li class="fi-vazio">${esc(textos.semAntes)}</li>`;
+      $('.fi-depois ul').innerHTML = depois.map((l: any) => botaoNo(l.para, `${n.nome} ${trilha.tipos[l.tipo]}`)).join('') || `<li class="fi-vazio">${esc(textos.semDepois)}</li>`;
+      // caminho percorrido (voltar a um ponto corta o que veio depois dele)
+      if (guardar) {
+        const i = caminho.indexOf(id);
+        if (i >= 0) caminho.splice(i + 1); else caminho.push(id);
+      }
+      $('.fi-caminho-lista').innerHTML = caminho.map((c, i) => `<li><button type="button" data-ir="${c}" ${c === id ? 'aria-current="step"' : ''}>${esc(nos[c].nome)}</button>${i < caminho.length - 1 ? '<span aria-hidden="true">›</span>' : ''}</li>`).join('');
+      const lista = $('.fi-caminho-lista');
+      lista.scrollLeft = lista.scrollWidth;
+      // mapa: acende o item, os vizinhos e as ligações dele
+      const viz = new Set([id, ...antes.map((l: any) => l.de), ...depois.map((l: any) => l.para)]);
+      raiz.classList.add('com-escolha');
+      raiz.querySelectorAll<HTMLElement>('.fi-no').forEach((b) => { b.classList.toggle('on', b.dataset.no === id); b.classList.toggle('viz', viz.has(b.dataset.no!)); });
+      raiz.querySelectorAll<SVGPathElement>('.fi-lig').forEach((p) => p.classList.toggle('viz', p.dataset.de === id || p.dataset.para === id));
+      if (rolar) {
+        const b = raiz.querySelector<HTMLElement>(`.fi-no[data-no="${id}"]`)!;
+        const caixa = $('[data-mapa]');
+        caixa.scrollTo({ left: b.offsetLeft - caixa.clientWidth / 2 + b.offsetWidth / 2, behavior: suave ? 'smooth' : 'auto' });
+      }
+      history.replaceState(null, '', `#${id}`);
+    }
+
+    raiz.addEventListener('click', (e) => {
+      const ir = (e.target as Element).closest<HTMLElement>('[data-ir], [data-no]');
+      if (ir) {
+        const id = ir.dataset.ir ?? ir.dataset.no!;
+        mostrar(id);
+        // no celular, depois de escolher no mapa ou numa lista, volta para o cartão
+        if (window.matchMedia('(max-width: 899px)').matches) {
+          if (ir.matches('.fi-no')) definirModo('trilha');
+          $('.fi-lado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      const modo = (e.target as Element).closest<HTMLElement>('[data-modo]');
+      if (modo) definirModo(modo.dataset.modo!);
+    });
+    function definirModo(m: string) {
+      raiz.dataset.modo = m;
+      raiz.querySelectorAll('[data-modo]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-modo') === m)));
+      // o mapa acabou de aparecer: espera ele ser desenhado para rolar até o item atual
+      if (m === 'mapa' && atual) requestAnimationFrame(() => mostrar(atual, { guardar: false, suave: false }));
+    }
+    // Teclado no mapa: setas andam pelas ligações (→ o que veio depois, ← o que veio antes).
+    raiz.addEventListener('keydown', (e) => {
+      if (!(e.target as Element).closest('.fi-no')) return;
+      const lado = e.key === 'ArrowRight' ? 'de' : e.key === 'ArrowLeft' ? 'para' : null;
+      if (!lado) return;
+      const l = trilha.ligacoes.find((x: any) => x[lado] === atual);
+      if (l) { const id = lado === 'de' ? l.para : l.de; mostrar(id); raiz.querySelector<HTMLElement>(`.fi-no[data-no="${id}"]`)!.focus(); e.preventDefault(); }
+    });
+
+    const doEndereco = decodeURIComponent(location.hash.slice(1));
+    raiz.dataset.modo = 'trilha';
+    // Os nomes das faixas acompanham a rolagem para o lado (ficam sempre visíveis à esquerda).
+    const caixaMapa = $('[data-mapa]');
+    caixaMapa.addEventListener('scroll', () => { $('.fi-mapa').style.setProperty('--rolagem', `${caixaMapa.scrollLeft}px`); }, { passive: true });
+    mostrar(nos[doEndereco] ? doEndereco : trilha.inicio, { suave: false });
+  }
+</script>
+
+<style>
+  .fios { --no-l: 132px; }
+  .fi-portas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 16px; font-size: 14px; color: var(--sub); }
+  .fi-portas button, .fi-modos button { font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .fi-portas button:hover { background: var(--surf); }
+  .fi-modos { display: none; }
+
+  .fi-corpo { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: start; }
+
+  /* Mapa */
+  .fi-mapa-caixa { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); scrollbar-width: thin; }
+  .fi-mapa { position: relative; }
+  .fi-linhas { position: absolute; inset: 0; }
+  .fi-faixa-fundo { fill: var(--surf); opacity: .5; }
+  .fi-ano { font-size: 12px; fill: var(--faint); font-variant-numeric: tabular-nums; }
+  .fi-lig { fill: none; stroke: var(--line2); stroke-width: 1.4; transition: stroke .15s, opacity .15s; }
+  #fi-seta path, :global(.fios marker path) { fill: var(--line2); }
+  .com-escolha .fi-lig { opacity: .25; }
+  .com-escolha .fi-lig.viz { opacity: 1; stroke: var(--accent); stroke-width: 2.2; }
+  .fi-faixa-nome { position: absolute; left: 0; z-index: 3; transform: translateX(var(--rolagem, 0px)); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); max-width: 124px; line-height: 1.3; padding: 4px 8px 4px 12px; background: color-mix(in oklch, var(--bg) 88%, transparent); border-radius: 0 8px 8px 0; pointer-events: none; }
+  .fi-no { position: absolute; width: var(--no-l); height: 56px; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 6px 10px; text-align: left; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line2); border-radius: 10px; cursor: pointer; z-index: 2; transition: opacity .15s, border-color .15s, box-shadow .15s; }
+  .fi-no:hover { border-color: var(--accent); }
+  .fi-no:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .fi-no-ano { display: flex; gap: 6px; align-items: center; font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; }
+  .fi-no-ano em, :global(.fi-br) { font-style: normal; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--up); border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; }
+  .fi-no-nome { font-size: 13px; line-height: 1.2; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .com-escolha .fi-no { opacity: .35; }
+  .com-escolha .fi-no.viz { opacity: 1; }
+  .com-escolha .fi-no.on { opacity: 1; background: var(--ink); color: var(--bg); border-color: var(--ink); box-shadow: 0 4px 16px rgba(0, 0, 0, .18); }
+  .com-escolha .fi-no.on .fi-no-ano { color: var(--bg); opacity: .8; }
+
+  /* Lado: caminho, de onde veio, cartão, o que veio depois */
+  .fi-lado { position: sticky; top: 16px; display: grid; gap: 12px; }
+  .fi-caminho { display: grid; gap: 6px; }
+  .fi-caminho-rot { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); }
+  .fi-caminho-lista { list-style: none; margin: 0; padding: 0 0 4px; display: flex; gap: 4px; align-items: center; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .fi-caminho-lista :global(li) { display: flex; align-items: center; gap: 4px; color: var(--faint); }
+  .fi-caminho-lista :global(button) { font: inherit; font-size: 13px; color: var(--sub); background: none; border: 0; padding: 2px 4px; cursor: pointer; border-radius: 6px; }
+  .fi-caminho-lista :global(button[aria-current]) { color: var(--ink); font-weight: 600; }
+  .fi-antes h3, .fi-depois h3 { margin: 0 0 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--sub); }
+  .fi-antes ul, .fi-depois ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .fi-antes :global(button), .fi-depois :global(button) { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 8px; align-items: baseline; text-align: left; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; cursor: pointer; }
+  .fi-antes :global(button:hover), .fi-depois :global(button:hover) { border-color: var(--accent); }
+  :global(.fi-rel) { grid-column: 1 / -1; font-size: 12px; color: var(--faint); }
+  :global(.fi-rel.depois) { order: 3; }
+  .fi-antes :global(b), .fi-depois :global(b) { font-size: 15px; font-weight: 600; }
+  :global(.fi-rel-ano) { font-size: 12px; color: var(--sub); font-variant-numeric: tabular-nums; }
+  :global(.fi-vazio) { font-size: 13px; color: var(--faint); }
+  .fi-cartao { background: var(--surf); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .fi-cartao :global(.fi-c-topo) { margin: 0; font-size: 13px; color: var(--sub); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .fi-cartao :global(h2) { margin: 4px 0 2px; font-size: 26px; line-height: 1.1; letter-spacing: -.01em; }
+  .fi-cartao :global(.fi-c-pessoas) { margin: 0; font-size: 14px; color: var(--sub); }
+  .fi-cartao :global(.fi-c-resumo) { margin: 12px 0 0; font-size: 16px; line-height: 1.5; }
+  .fi-cartao :global(.fi-c-fontes) { margin-top: 12px; font-size: 13px; color: var(--sub); }
+  .fi-cartao :global(.fi-c-fontes summary) { cursor: pointer; color: var(--faint); }
+  .fi-cartao :global(.fi-c-fontes ul) { margin: 6px 0 0; padding-left: 18px; }
+  .fi-cartao :global(.fi-c-fontes a) { color: var(--accent); }
+  .fi-nota { margin: 20px 0 0; font-size: 13px; color: var(--faint); max-width: 80ch; line-height: 1.5; }
+
+  /* Celular (e telas estreitas): trilha de cartões; o mapa abre no botão "Mapa" */
+  @media (max-width: 899px) {
+    .fi-modos { display: flex; gap: 6px; margin: 0 0 14px; }
+    .fi-modos button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .fi-corpo { grid-template-columns: minmax(0, 1fr); }
+    .fios[data-modo="trilha"] .fi-mapa-caixa { display: none; }
+    .fios[data-modo="mapa"] .fi-lado { display: none; }
+    .fi-mapa-caixa { margin: 0 -16px; border-radius: 0; border-left: 0; border-right: 0; }
+    .fi-lado { position: static; }
+    .fi-portas { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px 12px; padding: 0 16px; scrollbar-width: none; }
+    .fi-portas span { flex: none; }
+    .fi-portas button { flex: none; }
+    .fi-cartao :global(h2) { font-size: 24px; }
+  }
+</style>

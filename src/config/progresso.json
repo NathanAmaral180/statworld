@@ -39,6 +39,19 @@
       ]
     },
     {
+      "id": "fios",
+      "nome": "Fios (trilhas da história)",
+      "detalhe": "Criações e fatos ligados: uma coisa puxa a outra",
+      "peso": 8,
+      "pct": 15,
+      "situacao": "Piloto no ar: \"Do telégrafo ao smartphone\" (36 itens)",
+      "falta": [
+        "Testar o jeito de navegar com pessoas de verdade",
+        "Mais trilhas: História do Brasil desde 1500, Medicina, Energia…",
+        "Ligar as trilhas entre si e com os dados do site"
+      ]
+    },
+    {
       "id": "celular",
       "nome": "Site bom no celular",
       "detalhe": "Navegação e textos curtos",
@@ -104,6 +117,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-25",
+      "titulo": "Fios: primeira trilha",
+      "de": 57,
+      "para": 54,
+      "itens": [
+        "Nova seção /fios: criações e fatos ligados, entrando por qualquer item",
+        "Piloto \"Do telégrafo ao smartphone\": 36 itens de 1837 a 2022, cada data conferida na fonte",
+        "Computador: mapa com linha do tempo; celular: trilha de cartões e o caminho percorrido",
+        "Destaque na página inicial"
+      ]
+    },
     {
       "data": "2026-11-25",
       "titulo": "Anos no Agro e na Indústria",

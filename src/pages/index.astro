@@ -95,9 +95,18 @@ const comDado = (v: Record<string, any>) => Object.values(v).filter((x) => x != 
 const nProdutosAgro = carregarAgro(pais, 'estado').todos.length;
 const grupo = (lista: any[], id: string) => lista.find((x) => x.id === id);
 const anoIni = (pontos: any[]) => pontos[0]?.nome.match(/\d{4}/)?.[0] ?? '';
+// Trilha de "Fios" em destaque (dados/fios/): título, descrição e quem publicou as fontes vêm do arquivo.
+const fio = carregarDados<any>('fios', 'telegrafo-ao-smartphone');
+const fontesFio = [...new Set(fio.nos.flatMap((n: any) => n.fontes.map((f: any) => f.nome.split(',')[0].replace(' (inglês)', '').replace(/^Prêmio Nobel.*/, 'Prêmio Nobel'))))] as string[];
 const historias = [
   {
-    k: 'Economia · Brasil · Mapa', lead: true, href: '/economia/agro',
+    k: 'Fios · História · Novo', lead: true, href: `/fios/${fio.id}`,
+    t: fio.titulo,
+    p: `${fio.descricao} São ${fio.nos.length} criações e fatos ligados entre si, de ${Math.min(...fio.nos.map((n: any) => n.ano))} a ${Math.max(...fio.nos.map((n: any) => n.ano))}.`,
+    m: fontesFio.slice(0, 3),
+  },
+  {
+    k: 'Economia · Brasil · Mapa', href: '/economia/agro',
     t: 'O que cada estado mais produz no agro',
     p: `O produto líder de cada um dos ${comDado(economia.indicadores['peso-pib'].valores)} estados, com lavouras e pecuária, e quanto cada estado produz de ${nProdutosAgro} produtos.`,
     m: [...lavouras.fontes, ...pecuaria.fontes].map(fonteCurta).filter((x, i, a) => a.indexOf(x) === i).slice(0, 3),

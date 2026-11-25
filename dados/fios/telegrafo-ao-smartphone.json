@@ -1,0 +1,832 @@
+{
+  "_explicacao": "Trilha \"Do telégrafo ao smartphone\" (seção Fios). Cada nó é uma criação ou um fato, com ano, lugar, pessoas, resumo e fontes; cada ligação diz como um nó levou a outro (lê-se: \"<de> <tipo> <para>\"). Datas conferidas em 25/11/2026 nas fontes indicadas (frase do artigo com o ano). Escrito à mão pelo StatWorld: ao mudar, confira de novo na fonte.",
+  "id": "telegrafo-ao-smartphone",
+  "titulo": "Do telégrafo ao smartphone",
+  "descricao": "Como uma mensagem em pontos e traços, em 1837, virou o celular no seu bolso: quem criou o quê, o que tornou cada passo possível e quando isso chegou ao Brasil.",
+  "conferidoEm": "2026-11-25",
+  "inicio": "codigo-morse",
+  "faixas": [
+    {
+      "id": "fio",
+      "nome": "Telégrafo e telefone"
+    },
+    {
+      "id": "radio",
+      "nome": "Rádio"
+    },
+    {
+      "id": "eletronica",
+      "nome": "Eletrônica"
+    },
+    {
+      "id": "celular",
+      "nome": "Redes de celular"
+    },
+    {
+      "id": "internet",
+      "nome": "Internet"
+    },
+    {
+      "id": "aparelhos",
+      "nome": "Aparelhos e apps"
+    }
+  ],
+  "tipos": {
+    "levou-a": "levou a",
+    "tornou-possivel": "tornou possível",
+    "usado-em": "foi usado em",
+    "inspirou": "inspirou",
+    "substituido-por": "deu lugar a",
+    "chegou-ao-brasil": "chegou ao Brasil:",
+    "abriu-caminho": "abriu caminho para",
+    "concorrente": "ganhou como concorrente o"
+  },
+  "nos": [
+    {
+      "id": "codigo-morse",
+      "nome": "Código Morse",
+      "ano": 1837,
+      "faixa": "fio",
+      "lugar": "Estados Unidos",
+      "pessoas": "Samuel Morse",
+      "resumo": "Um jeito de escrever letras e números com sinais curtos e longos (pontos e traços), feito para mandar mensagens por um fio elétrico.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Código Morse",
+          "url": "https://pt.wikipedia.org/wiki/Código_Morse"
+        }
+      ]
+    },
+    {
+      "id": "telegrafo",
+      "nome": "Telégrafo elétrico",
+      "ano": 1844,
+      "faixa": "fio",
+      "lugar": "Estados Unidos",
+      "pessoas": "Samuel Morse",
+      "resumo": "Mensagens de texto por fio, de cidade em cidade. Em 1844 Morse enviou \"What hath God wrought\" de Washington a Baltimore. Foi a primeira telecomunicação elétrica usada em larga escala.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Telégrafo elétrico",
+          "url": "https://pt.wikipedia.org/wiki/Telégrafo_elétrico"
+        }
+      ]
+    },
+    {
+      "id": "cabo-transatlantico",
+      "nome": "Cabo telegráfico sob o Atlântico",
+      "ano": 1858,
+      "faixa": "fio",
+      "lugar": "Irlanda – Canadá (Terra Nova)",
+      "resumo": "Um cabo no fundo do mar ligou a Europa à América. O de 1858 funcionou pouco tempo; o de 1866 ficou de vez. Notícias que levavam semanas de navio passaram a levar minutos.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Transatlantic telegraph cable",
+          "url": "https://en.wikipedia.org/wiki/Transatlantic_telegraph_cable"
+        }
+      ]
+    },
+    {
+      "id": "telefone",
+      "nome": "Telefone",
+      "ano": 1876,
+      "faixa": "fio",
+      "lugar": "Estados Unidos",
+      "pessoas": "Alexander Graham Bell",
+      "resumo": "A voz passou a ir pelo fio. Bell, que pesquisava como mandar vários sinais de telégrafo ao mesmo tempo, recebeu a primeira patente americana de um telefone em 7 de março de 1876.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Alexander Graham Bell",
+          "url": "https://pt.wikipedia.org/wiki/Alexander_Graham_Bell"
+        }
+      ]
+    },
+    {
+      "id": "telefone-brasil",
+      "nome": "Primeiros telefones no Brasil",
+      "ano": 1877,
+      "faixa": "fio",
+      "brasil": true,
+      "lugar": "Rio de Janeiro e Petrópolis",
+      "pessoas": "D. Pedro II",
+      "resumo": "D. Pedro II conheceu o telefone numa viagem aos Estados Unidos em 1876 e fez questão de que o Brasil estivesse entre os primeiros países a ter um: os primeiros aparelhos foram instalados no Rio e em Petrópolis em 1877.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Pedro II do Brasil",
+          "url": "https://pt.wikipedia.org/wiki/Pedro_II_do_Brasil"
+        }
+      ]
+    },
+    {
+      "id": "central-automatica",
+      "nome": "Central telefônica automática",
+      "ano": 1891,
+      "faixa": "fio",
+      "lugar": "Estados Unidos",
+      "pessoas": "Almon Strowger",
+      "resumo": "Uma máquina que liga uma chamada à outra sem telefonista. A patente de Strowger é de 1891. É o avô das centrais que conectam as ligações de celular hoje.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Almon Brown Strowger",
+          "url": "https://en.wikipedia.org/wiki/Almon_Brown_Strowger"
+        },
+        {
+          "nome": "Wikipédia, Central telefônica",
+          "url": "https://pt.wikipedia.org/wiki/Central_telefônica"
+        }
+      ]
+    },
+    {
+      "id": "hertz",
+      "nome": "Ondas de rádio comprovadas",
+      "ano": 1887,
+      "faixa": "radio",
+      "lugar": "Alemanha",
+      "pessoas": "Heinrich Hertz",
+      "resumo": "Entre 1886 e 1889 Hertz mostrou, com aparelhos que emitiam e detectavam ondas, que elas atravessam o ar, como previa a teoria. A unidade de frequência (hertz) leva o nome dele.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Heinrich Hertz",
+          "url": "https://en.wikipedia.org/wiki/Heinrich_Hertz"
+        },
+        {
+          "nome": "Wikipédia, Heinrich Hertz",
+          "url": "https://pt.wikipedia.org/wiki/Heinrich_Hertz"
+        }
+      ]
+    },
+    {
+      "id": "marconi",
+      "nome": "Telégrafo sem fio (rádio)",
+      "ano": 1896,
+      "faixa": "radio",
+      "lugar": "Itália – Reino Unido",
+      "pessoas": "Guglielmo Marconi",
+      "resumo": "O primeiro sistema prático de telegrafia sem fio, de 1896. Em 12 de dezembro de 1901 Marconi recebeu do outro lado do Atlântico a letra \"S\" em código Morse, sem cabo nenhum.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Guglielmo Marconi",
+          "url": "https://pt.wikipedia.org/wiki/Guglielmo_Marconi"
+        },
+        {
+          "nome": "Wikipédia (inglês), Guglielmo Marconi",
+          "url": "https://en.wikipedia.org/wiki/Guglielmo_Marconi"
+        }
+      ]
+    },
+    {
+      "id": "landell",
+      "nome": "Padre Landell de Moura",
+      "ano": 1901,
+      "faixa": "radio",
+      "brasil": true,
+      "lugar": "Brasil",
+      "pessoas": "Roberto Landell de Moura",
+      "resumo": "Padre e cientista gaúcho que fez experiências de transmissão de voz sem fio. Em 9 de março de 1901 obteve a primeira patente brasileira para um aparelho de \"transmissão fonética à distância, com fio ou sem fio\".",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Roberto Landell de Moura",
+          "url": "https://pt.wikipedia.org/wiki/Roberto_Landell_de_Moura"
+        }
+      ]
+    },
+    {
+      "id": "valvula",
+      "nome": "Válvula eletrônica",
+      "ano": 1904,
+      "faixa": "eletronica",
+      "lugar": "Reino Unido – Estados Unidos",
+      "pessoas": "John Ambrose Fleming; Lee de Forest",
+      "resumo": "Uma ampola de vidro que controla a eletricidade. Fleming patenteou a válvula em 1904; de Forest criou em 1906 o Audion, que amplificava sinais. Rádios, TVs e os primeiros computadores funcionavam com válvulas.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Válvula termiônica",
+          "url": "https://pt.wikipedia.org/wiki/Válvula_termiônica"
+        },
+        {
+          "nome": "Wikipédia (inglês), Lee de Forest",
+          "url": "https://en.wikipedia.org/wiki/Lee_de_Forest"
+        }
+      ]
+    },
+    {
+      "id": "transistor",
+      "nome": "Transistor",
+      "ano": 1947,
+      "faixa": "eletronica",
+      "lugar": "Estados Unidos (Bell Labs)",
+      "pessoas": "John Bardeen, Walter Brattain, William Shockley",
+      "resumo": "Faz o mesmo que a válvula, mas é minúsculo, gasta pouca energia e não queima. Foi o que permitiu aparelhos eletrônicos pequenos e portáteis. Os três inventores ganharam o Nobel de Física de 1956.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Transístor",
+          "url": "https://pt.wikipedia.org/wiki/Transístor"
+        },
+        {
+          "nome": "Prêmio Nobel de Física de 1956",
+          "url": "https://www.nobelprize.org/prizes/physics/1956/summary/"
+        }
+      ]
+    },
+    {
+      "id": "circuito-integrado",
+      "nome": "Chip (circuito integrado)",
+      "ano": 1958,
+      "faixa": "eletronica",
+      "lugar": "Estados Unidos",
+      "pessoas": "Jack Kilby; Robert Noyce",
+      "resumo": "Muitos transistores num só pedaço de material. Kilby mostrou o primeiro em setembro de 1958; em 1959 Noyce fez a versão plana em silício, a base de quase todos os chips de hoje. Kilby ganhou o Nobel de Física de 2000.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Integrated circuit",
+          "url": "https://en.wikipedia.org/wiki/Integrated_circuit"
+        },
+        {
+          "nome": "Prêmio Nobel de Física de 2000",
+          "url": "https://www.nobelprize.org/prizes/physics/2000/summary/"
+        }
+      ]
+    },
+    {
+      "id": "microprocessador",
+      "nome": "Microprocessador",
+      "ano": 1971,
+      "faixa": "eletronica",
+      "lugar": "Estados Unidos (Intel)",
+      "pessoas": "Federico Faggin e equipe",
+      "resumo": "Um computador inteiro (a parte que faz as contas) num único chip: o Intel 4004, o primeiro vendido comercialmente. Todo celular hoje tem um descendente dele.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Intel 4004",
+          "url": "https://pt.wikipedia.org/wiki/Intel_4004"
+        }
+      ]
+    },
+    {
+      "id": "rede-celular",
+      "nome": "Ideia da rede celular",
+      "ano": 1947,
+      "faixa": "celular",
+      "lugar": "Estados Unidos (Bell Labs)",
+      "resumo": "Em 11 de dezembro de 1947 foi proposta a ideia de dividir a cidade em \"células\", cada uma com a sua antena, reaproveitando as mesmas frequências. É daí que vem o nome \"celular\".",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Cellular network",
+          "url": "https://en.wikipedia.org/wiki/Cellular_network"
+        }
+      ]
+    },
+    {
+      "id": "primeira-ligacao",
+      "nome": "Primeira ligação de celular portátil",
+      "ano": 1973,
+      "faixa": "celular",
+      "lugar": "Nova York",
+      "pessoas": "Martin Cooper (Motorola)",
+      "resumo": "Em 3 de abril de 1973, numa calçada de Manhattan, Cooper ligou de um protótipo de celular de mão para o concorrente, a Bell Labs. O aparelho à venda, o DynaTAC, só chegou às lojas em 1983.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Martin Cooper",
+          "url": "https://en.wikipedia.org/wiki/Martin_Cooper_(inventor)"
+        },
+        {
+          "nome": "Wikipédia (inglês), DynaTAC",
+          "url": "https://en.wikipedia.org/wiki/DynaTAC"
+        }
+      ]
+    },
+    {
+      "id": "1g",
+      "nome": "1G: primeira rede de celular comercial",
+      "ano": 1979,
+      "faixa": "celular",
+      "lugar": "Tóquio, Japão",
+      "pessoas": "NTT",
+      "resumo": "A primeira rede de celular aberta ao público foi lançada pela NTT em Tóquio, em 1979. Era analógica: só voz, e fácil de grampear.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), 1G",
+          "url": "https://en.wikipedia.org/wiki/1G"
+        }
+      ]
+    },
+    {
+      "id": "celular-brasil",
+      "nome": "Celular chega ao Brasil",
+      "ano": 1990,
+      "faixa": "celular",
+      "brasil": true,
+      "lugar": "Rio de Janeiro, depois Salvador",
+      "pessoas": "Telerj",
+      "resumo": "A primeira rede de telefonia celular do Brasil foi lançada pela Telerj, no Rio de Janeiro, em 1990, seguida por Salvador.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Telefone celular",
+          "url": "https://pt.wikipedia.org/wiki/Telefone_celular"
+        }
+      ]
+    },
+    {
+      "id": "gsm",
+      "nome": "2G digital (GSM)",
+      "ano": 1991,
+      "faixa": "celular",
+      "lugar": "Finlândia",
+      "resumo": "A voz passou a ser digital: melhor qualidade, menos grampo e o chip (SIM) para trocar de aparelho. O padrão GSM entrou em operação na Finlândia em dezembro de 1991.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), GSM",
+          "url": "https://en.wikipedia.org/wiki/GSM"
+        }
+      ]
+    },
+    {
+      "id": "sms",
+      "nome": "Mensagem de texto (SMS)",
+      "ano": 1992,
+      "faixa": "celular",
+      "lugar": "Reino Unido",
+      "pessoas": "Neil Papworth",
+      "resumo": "Em 3 de dezembro de 1992 foi enviada a primeira mensagem de texto: \"Merry Christmas\" (Feliz Natal). O \"torpedo\" virou mania antes dos apps de conversa.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), SMS",
+          "url": "https://en.wikipedia.org/wiki/SMS"
+        }
+      ]
+    },
+    {
+      "id": "ion-litio",
+      "nome": "Bateria de íon-lítio",
+      "ano": 1991,
+      "faixa": "eletronica",
+      "lugar": "Japão (Sony e Asahi Kasei)",
+      "pessoas": "Akira Yoshino; John Goodenough; Stanley Whittingham",
+      "resumo": "Bateria leve, que guarda muita energia e aguenta muitas recargas. O protótipo moderno é de 1985 e chegou ao mercado em 1991. É ela que deixa o celular fino e com bateria para o dia todo. Nobel de Química de 2019.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Lithium-ion battery",
+          "url": "https://en.wikipedia.org/wiki/Lithium-ion_battery"
+        },
+        {
+          "nome": "Prêmio Nobel de Química de 2019",
+          "url": "https://www.nobelprize.org/prizes/chemistry/2019/summary/"
+        }
+      ]
+    },
+    {
+      "id": "arpanet",
+      "nome": "ARPANET",
+      "ano": 1969,
+      "faixa": "internet",
+      "lugar": "Estados Unidos",
+      "resumo": "A rede de computadores que deu origem à internet, ligando centros de pesquisa americanos a partir de 1969.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, ARPANET",
+          "url": "https://pt.wikipedia.org/wiki/ARPANET"
+        }
+      ]
+    },
+    {
+      "id": "tcp-ip",
+      "nome": "TCP/IP: a língua da internet",
+      "ano": 1983,
+      "faixa": "internet",
+      "lugar": "Estados Unidos",
+      "pessoas": "Vint Cerf e Bob Kahn",
+      "resumo": "As regras que fazem redes diferentes conversarem entre si. Foram ligadas na ARPANET em 1983, e é por isso que se diz que a internet \"nasceu\" nesse ano.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Internet protocol suite",
+          "url": "https://en.wikipedia.org/wiki/Internet_protocol_suite"
+        }
+      ]
+    },
+    {
+      "id": "www",
+      "nome": "World Wide Web (sites e links)",
+      "ano": 1991,
+      "faixa": "internet",
+      "lugar": "CERN, Suíça",
+      "pessoas": "Tim Berners-Lee",
+      "resumo": "Páginas ligadas por links, abertas num navegador. Inventada em 1989 e aberta a toda a internet em 23 de agosto de 1991.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), World Wide Web",
+          "url": "https://en.wikipedia.org/wiki/World_Wide_Web"
+        }
+      ]
+    },
+    {
+      "id": "internet-brasil",
+      "nome": "Internet comercial no Brasil",
+      "ano": 1995,
+      "faixa": "internet",
+      "brasil": true,
+      "lugar": "Brasil",
+      "resumo": "Depois de anos só em universidades, em 1995 a internet foi liberada para uso comercial no Brasil.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, Internet no Brasil",
+          "url": "https://pt.wikipedia.org/wiki/Internet_no_Brasil"
+        }
+      ]
+    },
+    {
+      "id": "touchscreen",
+      "nome": "Tela sensível ao toque",
+      "ano": 1965,
+      "faixa": "eletronica",
+      "lugar": "Reino Unido",
+      "pessoas": "E. A. Johnson",
+      "resumo": "Uma tela que sente o dedo. O primeiro artigo sobre a tela de toque capacitiva (a que o celular usa) é de 1965.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Touchscreen",
+          "url": "https://en.wikipedia.org/wiki/Touchscreen"
+        }
+      ]
+    },
+    {
+      "id": "gps",
+      "nome": "GPS",
+      "ano": 1995,
+      "faixa": "radio",
+      "lugar": "Estados Unidos",
+      "resumo": "Satélites que dizem onde você está. O sistema ficou completo em abril de 1995; depois virou peça comum nos celulares, nos mapas e nos apps de transporte.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Global Positioning System",
+          "url": "https://en.wikipedia.org/wiki/Global_Positioning_System"
+        }
+      ]
+    },
+    {
+      "id": "ibm-simon",
+      "nome": "IBM Simon, o primeiro smartphone",
+      "ano": 1994,
+      "faixa": "aparelhos",
+      "lugar": "Estados Unidos",
+      "pessoas": "IBM",
+      "resumo": "Celular com tela de toque, agenda, e-mail e calendário, lançado em 1994. É considerado o primeiro smartphone, 13 anos antes do iPhone.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), IBM Simon",
+          "url": "https://en.wikipedia.org/wiki/IBM_Simon"
+        }
+      ]
+    },
+    {
+      "id": "3g",
+      "nome": "3G: internet no celular",
+      "ano": 2001,
+      "faixa": "celular",
+      "lugar": "Japão",
+      "pessoas": "NTT DoCoMo",
+      "resumo": "Rede rápida o bastante para internet de verdade no celular. O primeiro lançamento comercial foi da NTT DoCoMo, em 1º de outubro de 2001.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), 3G",
+          "url": "https://en.wikipedia.org/wiki/3G"
+        }
+      ]
+    },
+    {
+      "id": "iphone",
+      "nome": "iPhone",
+      "ano": 2007,
+      "faixa": "aparelhos",
+      "lugar": "Estados Unidos",
+      "pessoas": "Steve Jobs (Apple)",
+      "resumo": "Apresentado por Steve Jobs em 9 de janeiro de 2007: tela grande de toque usada com o dedo, internet de verdade e quase nenhum botão. Mudou o que as pessoas esperavam de um celular.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), iPhone (1st generation)",
+          "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+        }
+      ]
+    },
+    {
+      "id": "android",
+      "nome": "Android",
+      "ano": 2008,
+      "faixa": "aparelhos",
+      "lugar": "Estados Unidos",
+      "pessoas": "Andy Rubin; Google",
+      "resumo": "Sistema para celulares que qualquer fabricante pode usar. O Google comprou a empresa Android em 2005; o primeiro aparelho, o HTC Dream, saiu em 2008. Foi o que espalhou o smartphone por todas as faixas de preço.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), Android (operating system)",
+          "url": "https://en.wikipedia.org/wiki/Android_(operating_system)"
+        }
+      ]
+    },
+    {
+      "id": "app-store",
+      "nome": "Loja de aplicativos",
+      "ano": 2008,
+      "faixa": "aparelhos",
+      "lugar": "Estados Unidos",
+      "pessoas": "Apple",
+      "resumo": "Uma loja para instalar programas no celular. A App Store abriu em 10 de julho de 2008 com 500 aplicativos. O celular virou uma plataforma para qualquer um criar serviços.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), App Store (Apple)",
+          "url": "https://en.wikipedia.org/wiki/App_Store_(Apple)"
+        }
+      ]
+    },
+    {
+      "id": "4g",
+      "nome": "4G (LTE)",
+      "ano": 2009,
+      "faixa": "celular",
+      "lugar": "Oslo e Estocolmo",
+      "pessoas": "TeliaSonera",
+      "resumo": "Internet rápida o bastante para vídeo no celular. O primeiro serviço LTE aberto ao público foi lançado em 14 de dezembro de 2009.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), LTE",
+          "url": "https://en.wikipedia.org/wiki/LTE_(telecommunication)"
+        }
+      ]
+    },
+    {
+      "id": "whatsapp",
+      "nome": "WhatsApp",
+      "ano": 2009,
+      "faixa": "aparelhos",
+      "lugar": "Estados Unidos",
+      "pessoas": "Jan Koum e Brian Acton",
+      "resumo": "Aplicativo de mensagens pela internet, lançado em maio de 2009. No Brasil, tomou o lugar do SMS e virou o jeito principal de conversar.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), WhatsApp",
+          "url": "https://en.wikipedia.org/wiki/WhatsApp"
+        }
+      ]
+    },
+    {
+      "id": "5g",
+      "nome": "5G",
+      "ano": 2019,
+      "faixa": "celular",
+      "lugar": "Coreia do Sul e outros países",
+      "resumo": "Rede ainda mais rápida e com resposta quase instantânea. As grandes implantações comerciais começaram em 2019, com a Coreia do Sul.",
+      "fontes": [
+        {
+          "nome": "Wikipédia (inglês), 5G",
+          "url": "https://en.wikipedia.org/wiki/5G"
+        }
+      ]
+    },
+    {
+      "id": "pix",
+      "nome": "Pix",
+      "ano": 2020,
+      "faixa": "aparelhos",
+      "brasil": true,
+      "lugar": "Brasil",
+      "pessoas": "Banco Central do Brasil",
+      "resumo": "Pagamento instantâneo, a qualquer hora, feito quase sempre pelo celular. Lançado oficialmente em 16 de novembro de 2020.",
+      "fontes": [
+        {
+          "nome": "Banco Central do Brasil, Pix",
+          "url": "https://www.bcb.gov.br/estabilidadefinanceira/pix"
+        },
+        {
+          "nome": "Wikipédia, Pix",
+          "url": "https://pt.wikipedia.org/wiki/Pix"
+        }
+      ]
+    },
+    {
+      "id": "5g-brasil",
+      "nome": "5G chega ao Brasil",
+      "ano": 2022,
+      "faixa": "celular",
+      "brasil": true,
+      "lugar": "Brasília",
+      "resumo": "Em 6 de julho de 2022, Brasília foi a primeira cidade do país a ter o 5G ligado.",
+      "fontes": [
+        {
+          "nome": "Wikipédia, 5G",
+          "url": "https://pt.wikipedia.org/wiki/5G"
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "de": "codigo-morse",
+      "para": "telegrafo",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "telegrafo",
+      "para": "cabo-transatlantico",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "telegrafo",
+      "para": "telefone",
+      "tipo": "inspirou"
+    },
+    {
+      "de": "telefone",
+      "para": "telefone-brasil",
+      "tipo": "chegou-ao-brasil"
+    },
+    {
+      "de": "telefone",
+      "para": "central-automatica",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "hertz",
+      "para": "marconi",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "hertz",
+      "para": "landell",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "codigo-morse",
+      "para": "marconi",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "marconi",
+      "para": "valvula",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "valvula",
+      "para": "transistor",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "transistor",
+      "para": "circuito-integrado",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "circuito-integrado",
+      "para": "microprocessador",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "marconi",
+      "para": "rede-celular",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "rede-celular",
+      "para": "primeira-ligacao",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "transistor",
+      "para": "primeira-ligacao",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "central-automatica",
+      "para": "1g",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "primeira-ligacao",
+      "para": "1g",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "1g",
+      "para": "celular-brasil",
+      "tipo": "chegou-ao-brasil"
+    },
+    {
+      "de": "1g",
+      "para": "gsm",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "gsm",
+      "para": "sms",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "gsm",
+      "para": "3g",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "3g",
+      "para": "4g",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "4g",
+      "para": "5g",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "5g",
+      "para": "5g-brasil",
+      "tipo": "chegou-ao-brasil"
+    },
+    {
+      "de": "arpanet",
+      "para": "tcp-ip",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "tcp-ip",
+      "para": "www",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "www",
+      "para": "internet-brasil",
+      "tipo": "chegou-ao-brasil"
+    },
+    {
+      "de": "www",
+      "para": "iphone",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "microprocessador",
+      "para": "ibm-simon",
+      "tipo": "tornou-possivel"
+    },
+    {
+      "de": "touchscreen",
+      "para": "ibm-simon",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "touchscreen",
+      "para": "iphone",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "ibm-simon",
+      "para": "iphone",
+      "tipo": "abriu-caminho"
+    },
+    {
+      "de": "ion-litio",
+      "para": "iphone",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "ion-litio",
+      "para": "android",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "gps",
+      "para": "android",
+      "tipo": "usado-em"
+    },
+    {
+      "de": "iphone",
+      "para": "android",
+      "tipo": "concorrente"
+    },
+    {
+      "de": "iphone",
+      "para": "app-store",
+      "tipo": "levou-a"
+    },
+    {
+      "de": "app-store",
+      "para": "whatsapp",
+      "tipo": "abriu-caminho"
+    },
+    {
+      "de": "sms",
+      "para": "whatsapp",
+      "tipo": "substituido-por"
+    },
+    {
+      "de": "android",
+      "para": "pix",
+      "tipo": "abriu-caminho"
+    },
+    {
+      "de": "iphone",
+      "para": "pix",
+      "tipo": "abriu-caminho"
+    },
+    {
+      "de": "3g",
+      "para": "android",
+      "tipo": "usado-em"
+    }
+  ]
+}

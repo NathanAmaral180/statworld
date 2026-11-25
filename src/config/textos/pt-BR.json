@@ -49,5 +49,16 @@
   "pontos": "{v} pontos",
   "rankingMenos": "Mostrar só os {n} primeiros",
   "rankingTodos": "Ver todos os {total} {nivel}",
-  "rankingTodas": "Ver todas as {total} {nivel}"
+  "rankingTodas": "Ver todas as {total} {nivel}",
+  "comecePor": "Comece por",
+  "modo": "Como ver",
+  "trilha": "Trilha",
+  "mapa": "Mapa",
+  "seuCaminho": "Seu caminho",
+  "veioDe": "De onde veio",
+  "levouA": "O que veio depois",
+  "fontes": "Fontes",
+  "semAntes": "Nesta trilha, é um ponto de partida.",
+  "semDepois": "Nesta trilha, o caminho para aqui (por enquanto).",
+  "notaFios": "Fatos e datas conferidos em {data} nas fontes de cada item (enciclopédias e sites oficiais). As ligações dizem como uma criação ajudou outra; uma invenção quase sempre tem muitos pais, e aqui estão os principais. Achou algo a corrigir? Conte para a gente."
 }
