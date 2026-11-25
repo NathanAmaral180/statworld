@@ -2,12 +2,14 @@
 // "Fios": lista das trilhas (cada uma é um arquivo em dados/fios/).
 import Base from '../../layouts/Base.astro';
 import { carregarDados, listarDados } from '../../lib/dados';
-const trilhas = listarDados('fios', '').map((nome) => carregarDados<any>('fios', nome));
+const trilhas = listarDados('fios', '').filter((nome) => nome !== 'universo').map((nome) => carregarDados<any>('fios', nome));
 ---
 <Base titulo="Fios" descricao="Trilhas de criações e fatos da humanidade: uma coisa puxa a outra.">
   <section class="conteudo pagina">
     <h1>Fios</h1>
     <p class="desc">Criações e fatos da humanidade ligados uns aos outros: o que tornou cada coisa possível e o que ela abriu de caminho. Escolha uma trilha e puxe um fio.</p>
+    <a class="universo" href="/fios/universo"><strong>Entrar no universo</strong><span>Centenas de criações, descobertas e pessoas num emaranhado só. Aproxime, toque num ponto e puxe o fio. <em>protótipo</em></span></a>
+    <h2 class="sub">Trilhas conferidas</h2>
     <ul class="lista">
       {trilhas.map((t) => (
         <li><a href={`/fios/${t.id}`}><strong>{t.titulo}</strong><span>{t.descricao}</span><small>{t.nos.length} itens · {Math.min(...t.nos.map((n: any) => n.ano))}–{Math.max(...t.nos.map((n: any) => n.ano))}</small></a></li>
@@ -21,6 +23,11 @@ const trilhas = listarDados('fios', '').map((nome) => carregarDados<any>('fios',
   .pagina { padding-top: 32px; padding-bottom: 64px; max-width: 900px; }
   h1 { margin: 0 0 8px; font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.02em; }
   .desc { margin: 0 0 24px; color: var(--sub); font-size: 18px; line-height: 1.5; }
+  .universo { display: grid; gap: 6px; margin: 0 0 32px; padding: 28px 24px; border-radius: 18px; text-decoration: none; color: #e8eefc; background: radial-gradient(ellipse at 30% 30%, #1a2d52 0%, #0a1020 60%, #05070d 100%); border: 1px solid rgba(140, 180, 255, .3); }
+  .universo strong { font-size: 26px; color: #fff; }
+  .universo span { color: rgba(220, 230, 255, .8); line-height: 1.5; }
+  .universo em { font-style: normal; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; border: 1px dashed rgba(220, 230, 255, .4); border-radius: 4px; padding: 1px 6px; margin-left: 6px; }
+  .sub { margin: 0 0 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); }
   .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
   .lista a { display: grid; gap: 6px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--surf); color: var(--ink); text-decoration: none; }
   .lista a:hover { border-color: var(--accent); }

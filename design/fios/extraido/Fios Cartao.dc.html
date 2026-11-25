@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="fios-data.js"></script><style>
+@keyframes fz-ring{from{transform:translate(-50%,-50%) scale(.15);opacity:.95}to{transform:translate(-50%,-50%) scale(3.4);opacity:0}}
+@keyframes fz-fall{from{top:-8%}to{top:108%}}
+@keyframes fz-fallrot{from{top:-8%;transform:rotate(0)}to{top:108%;transform:rotate(600deg)}}
+@keyframes fz-coin{0%{transform:translate(0,0) scale(.5);opacity:0}12%{opacity:1}45%{transform:translate(var(--dx),-110px) scale(1)}100%{transform:translate(var(--dx2),30px) scale(1);opacity:0}}
+@keyframes fz-pop{0%{transform:translate(-50%,0) scale(0);opacity:0}18%{transform:translate(-50%,0) scale(1.15);opacity:1}28%{transform:translate(-50%,0) scale(1)}80%{opacity:1}100%{opacity:0}}
+@keyframes fz-float{0%{transform:translate(0,0);opacity:0}20%{opacity:1}100%{transform:translate(var(--dx),-150px);opacity:0}}
+@keyframes fz-tape{from{transform:translateX(-102%)}to{transform:translateX(0)}}
+@keyframes fz-blink{50%{opacity:0}}
+@keyframes fz-type{from{width:0}to{width:2.1ch}}
+@keyframes fz-burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.3);opacity:0}}
+@keyframes fz-toast{0%{opacity:0;transform:translateY(-6px)}10%{opacity:1;transform:none}86%{opacity:1}100%{opacity:0}}
+@keyframes fz-arc{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes fz-glitch{0%,100%{transform:none}30%{transform:translateX(2px)}60%{transform:translateX(-2px)}}
+</style></helmet>
+<article ref="{{ cardRef }}" style="{{ cardStyle }}">
+  <div style="position:relative">
+    <sc-if value="{{ it.br }}" hint-placeholder-val="{{ false }}"><i title="Brasil" style="position:absolute;z-index:3;top:-3px;left:16px;width:30px;height:6px;border-radius:1px;background:linear-gradient(90deg,var(--br-g) 0 50%,var(--br-y) 50% 100%)"></i></sc-if>
+    <div style="{{ frame }}">
+      <div style="{{ win }}">
+        <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ img }}" alt="{{ it.name }}" onError="{{ onErr }}" style="{{ imgStyle }}"></sc-if>
+        <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ true }}">
+          <div style="{{ plateStyle }}">
+            <svg width="44" height="44" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.8"><path d="{{ laneD }}"></path></svg>
+            <span style="{{ plateYear }}">{{ it.y }}</span>
+          </div>
+        </sc-if>
+        <div style="{{ overStyle }}"></div>
+        <sc-if value="{{ corners }}" hint-placeholder-val="{{ false }}">
+          <i style="position:absolute;top:0;left:0;width:16px;height:16px;background:#2B2B2B;clip-path:polygon(0 0,100% 0,0 100%)"></i>
+          <i style="position:absolute;top:0;right:0;width:16px;height:16px;background:#2B2B2B;clip-path:polygon(0 0,100% 0,100% 100%)"></i>
+          <i style="position:absolute;bottom:0;left:0;width:16px;height:16px;background:#2B2B2B;clip-path:polygon(0 0,0 100%,100% 100%)"></i>
+          <i style="position:absolute;bottom:0;right:0;width:16px;height:16px;background:#2B2B2B;clip-path:polygon(100% 0,0 100%,100% 100%)"></i>
+        </sc-if>
+        {{ eggLayer }}
+      </div>
+      <sc-if value="{{ bezel }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:14px;right:14px;bottom:6px;display:flex;justify-content:space-between;align-items:center;font:10.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);letter-spacing:.08em"><span>{{ it.y }}</span><i style="width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.17 145);box-shadow:0 0 4px oklch(0.72 0.17 145)"></i></div>
+      </sc-if>
+    </div>
+    {{ toast }}
+  </div>
+  <p style="margin:-6px 0 0;font-size:11.5px;line-height:1.4;color:var(--faint);text-wrap:pretty">
+    <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><span>Foto: {{ it.photo.by }}, {{ it.photo.lic }} · <a href="{{ page }}" target="_blank" style="color:var(--faint);text-decoration:underline;text-underline-offset:2px">Wikimedia Commons</a></span></sc-if>
+    <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ true }}"><span>Ainda sem foto livre deste fato. Conhece uma no Wikimedia Commons? <a href="#" style="color:var(--accent)">Conte para a gente</a>.</span></sc-if>
+  </p>
+  <div style="display:grid;gap:6px">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;color:var(--sub)">
+      <span style="{{ yearStyle }}">{{ it.y }}</span><span>·</span><span>{{ it.place }}</span>
+      <sc-if value="{{ it.br }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:var(--br-g);border:1px solid var(--br-g);border-radius:4px;padding:1px 6px 1px 5px"><i style="width:7px;height:7px;background:var(--br-y);transform:rotate(45deg);display:block"></i>BRASIL</span></sc-if>
+    </div>
+    <h2 style="margin:0;font-size:26px;line-height:1.1;letter-spacing:-.015em;font-weight:600;color:var(--ink);text-wrap:balance">{{ it.name }}</h2>
+    <div style="font-size:14.5px;color:var(--sub)">{{ it.people }}</div>
+  </div>
+  <p style="margin:0;font-size:16px;line-height:1.55;color:var(--ink);text-wrap:pretty">{{ it.sum }}</p>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px">
+    <button onClick="{{ toggleSrc }}" style="display:flex;align-items:center;gap:6px;background:none;border:0;padding:4px 0;font:inherit;font-size:13.5px;color:var(--sub);cursor:pointer"><svg width="12" height="12" viewBox="0 0 24 24" style="{{ chevStyle }}"><path d="M9 5l7 7-7 7"></path></svg>Fontes ({{ srcCount }})</button>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--faint)"><svg width="14" height="14" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ laneD }}"></path></svg>{{ laneName }}</span>
+  </div>
+  <sc-if value="{{ srcOpen }}" hint-placeholder-val="{{ false }}">
+    <ul style="margin:-6px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13.5px">
+      <sc-for list="{{ it.src }}" as="s" hint-placeholder-count="2"><li><a href="{{ s.1 }}" target="_blank" style="color:var(--accent)">{{ s.0 }}</a></li></sc-for>
+    </ul>
+  </sc-if>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:380,&quot;height&quot;:640},&quot;id&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;telbr2&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;egg&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;play&quot;,&quot;still&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;eggKey&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;found&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;tsType&quot;:&quot;number&quot;},&quot;total&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;tsType&quot;:&quot;number&quot;},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;srcOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;noToast&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const h = React.createElement;
+const rnd = i => { const x = Math.sin(i * 91.7 + 3.1) * 10000; return x - Math.floor(x); };
+const ab = (st) => Object.assign({ position: 'absolute', pointerEvents: 'none' }, st);
+function egg(kind, still) {
+  const A = (a) => still ? 'none' : a;
+  const kids = [];
+  if (kind === 'ondas') {
+    if (still) [0.7, 1.4, 2.1].forEach((s, i) => kids.push(h('i', { key: i, style: ab({ left: '70%', top: '40%', width: 60, height: 60, borderRadius: '50%', border: '2px solid rgba(255,255,255,.9)', transform: `translate(-50%,-50%) scale(${s})`, opacity: 1 - i * .28, boxShadow: '0 0 0 1px rgba(0,0,0,.15)' }) })));
+    else [0, 1, 2, 3].forEach(i => kids.push(h('i', { key: i, style: ab({ left: '70%', top: '40%', width: 60, height: 60, borderRadius: '50%', border: '2px solid rgba(255,255,255,.95)', boxShadow: '0 0 0 1px rgba(0,0,0,.15)', animation: `fz-ring 1.6s ${i * .3}s ease-out both` }) })));
+  } else if (kind === 'neve' || kind === 'confete') {
+    const n = still ? 14 : 34;
+    for (let i = 0; i < n; i++) {
+      const s = kind === 'neve' ? 3 + rnd(i) * 5 : 5 + rnd(i) * 4;
+      const st = { left: (rnd(i + 7) * 100) + '%', width: s, height: kind === 'neve' ? s : s * 1.6, borderRadius: kind === 'neve' ? '50%' : 1,
+        background: kind === 'neve' ? 'rgba(255,255,255,.95)' : (i % 2 ? 'var(--br-g)' : 'var(--br-y)'), boxShadow: kind === 'neve' ? '0 0 2px rgba(0,0,0,.25)' : 'none' };
+      if (still) { st.top = (rnd(i + 13) * 90) + '%'; st.transform = `rotate(${rnd(i) * 180}deg)`; }
+      else st.animation = `${kind === 'neve' ? 'fz-fall' : 'fz-fallrot'} ${1.6 + rnd(i + 3) * 1}s ${rnd(i + 5) * .9}s linear both`;
+      kids.push(h('i', { key: i, style: ab(st) }));
+    }
+  } else if (kind === 'moedas') {
+    for (let i = 0; i < (still ? 4 : 12); i++) {
+      const dx = (rnd(i) - .5) * 220;
+      const st = { left: '50%', bottom: still ? 18 + (i % 2) * 34 : 6, width: 22, height: 22, marginLeft: still ? -60 + i * 30 : -11, borderRadius: '50%', background: 'var(--coin)', boxShadow: 'inset 0 0 0 2px rgba(0,0,0,.18), inset 0 -3px 0 rgba(0,0,0,.12)', display: 'grid', placeItems: 'center', font: '700 9px/1 ui-sans-serif,system-ui', color: 'rgba(0,0,0,.55)' };
+      if (!still) Object.assign(st, { '--dx': dx + 'px', '--dx2': dx * 1.3 + 'px', animation: `fz-coin 1.8s ${i * .07}s cubic-bezier(.2,.7,.4,1) both` });
+      kids.push(h('i', { key: i, style: ab(st) }, 'R$'));
+    }
+    kids.push(h('b', { key: 'p', style: ab({ left: '50%', top: '18%', transform: 'translate(-50%,0)', padding: '6px 14px', borderRadius: 999, background: 'var(--br-g)', color: '#fff', font: '600 16px/1 ui-sans-serif,system-ui', letterSpacing: '.02em', animation: A('fz-pop 2.4s .2s both') }) }, 'plim!'));
+  } else if (kind === 'notas') {
+    for (let i = 0; i < (still ? 4 : 9); i++) {
+      const st = { left: (20 + rnd(i) * 60) + '%', bottom: still ? (15 + rnd(i + 2) * 55) + '%' : '6%', color: '#fff', textShadow: '0 1px 3px rgba(0,0,0,.5)', font: `${18 + rnd(i + 1) * 12}px/1 ui-serif,Georgia,serif` };
+      if (!still) Object.assign(st, { '--dx': (rnd(i + 4) - .5) * 60 + 'px', animation: `fz-float 2.2s ${i * .16}s ease-out both` });
+      kids.push(h('i', { key: i, style: ab(st) }, i % 2 ? '♫' : '♪'));
+    }
+  } else if (kind === 'morse') {
+    const marks = '·−−·  ·−  ·−·−·  −−·  −−−  −··'.split('');
+    kids.push(h('div', { key: 't', style: ab({ left: 0, right: 0, bottom: 10, height: 26, overflow: 'hidden' }) },
+      h('div', { style: { height: '100%', background: 'var(--paper)', borderTop: '1px solid var(--paper-line)', borderBottom: '1px solid var(--paper-line)', display: 'flex', alignItems: 'center', gap: 2, padding: '0 10px', color: 'var(--paper-ink)', font: '700 18px/1 ui-monospace,monospace', letterSpacing: '.12em', animation: A('fz-tape 2.2s steps(22) both'), whiteSpace: 'nowrap' } }, marks.join(''))));
+  } else if (kind === 'lo') {
+    kids.push(h('div', { key: 't', style: ab({ left: 12, bottom: 12, padding: '8px 12px', background: '#0B0F0B', color: '#7CF29A', borderRadius: 4, font: '600 15px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace', boxShadow: '0 0 0 1px rgba(124,242,154,.3)', animation: A('fz-glitch .15s 1.6s 3') }) },
+      h('div', null, '> ', h('span', { style: { display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', width: still ? '2.1ch' : 0, animation: A('fz-type .9s .2s steps(2) forwards') } }, 'LO'), h('span', { style: { animation: A('fz-blink .5s step-end 6') } }, '▌')),
+      h('div', { style: { fontSize: 11, opacity: .75, marginTop: 2 } }, 'conexão perdida')));
+  } else if (kind === 'toque') {
+    [0, 1, 2].forEach(i => kids.push(h('i', { key: i, style: ab({ right: 18 - i * 9, top: 20 - i * 9, width: 26 + i * 18, height: 26 + i * 18, borderRadius: '50%', border: '2.5px solid transparent', borderTopColor: '#fff', borderRightColor: '#fff', filter: 'drop-shadow(0 0 1px rgba(0,0,0,.6))', animation: A(`fz-arc .5s ${i * .12}s ease-in-out 5`) }) })));
+  } else if (kind === 'fogos') {
+    [[30, 34], [68, 26], [52, 58]].forEach(([x, y], b) => {
+      for (let i = 0; i < 14; i++) {
+        const a = i / 14 * Math.PI * 2, r = still ? 26 : 70;
+        const st = { left: x + '%', top: y + '%', width: 5, height: 5, borderRadius: '50%', background: i % 2 ? 'var(--br-g)' : 'var(--br-y)', boxShadow: '0 0 4px rgba(255,255,255,.5)' };
+        if (still) st.transform = `translate(${Math.cos(a) * r}px,${Math.sin(a) * r}px)`;
+        else Object.assign(st, { '--dx': Math.cos(a) * r + 'px', '--dy': Math.sin(a) * r + 'px', animation: `fz-burst 1.2s ${b * .45}s cubic-bezier(.1,.7,.3,1) both` });
+        kids.push(h('i', { key: b + '-' + i, style: ab(st) }));
+      }
+    });
+  }
+  return h('div', { style: ab({ inset: 0, overflow: 'hidden', zIndex: 2 }) }, kids);
+}
+const spark = (c) => h('svg', { width: 12, height: 12, viewBox: '0 0 24 24', style: { flex: 'none' } }, h('path', { d: 'M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z', fill: c }));
+class Component extends DCLogic {
+  state = { err: {}, srcOpen: false, playing: false };
+  cardRef = React.createRef();
+  componentDidMount() {
+    if (!window.FIOS) this._t = setInterval(() => { if (window.FIOS) { clearInterval(this._t); this.forceUpdate(); } }, 40);
+    this.maybePlay();
+  }
+  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._e); }
+  componentDidUpdate(pp) { if (pp.eggKey !== this.props.eggKey || pp.id !== this.props.id) this.maybePlay(); if (pp.id !== this.props.id && this.state.srcOpen && !this.props.srcOpen) this.setState({ srcOpen: false }); }
+  maybePlay() {
+    if (this.props.egg !== 'play') return;
+    const F = window.FIOS; const it = F && F.get(this.props.id);
+    if (!it || !it.egg) return;
+    this.setState({ playing: true });
+    clearTimeout(this._e); this._e = setTimeout(() => this.setState({ playing: false }), 2900);
+    if (it.egg === 'toque' && this.cardRef.current && this.cardRef.current.animate) {
+      const k = []; for (let i = 0; i <= 12; i++) k.push({ transform: i === 12 ? 'none' : `translateX(${i % 2 ? 3 : -3}px) rotate(${i % 2 ? .5 : -.5}deg)` });
+      this.cardRef.current.animate(k, { duration: 520, iterations: 2, easing: 'linear' });
+      setTimeout(() => this.cardRef.current && this.cardRef.current.animate(k, { duration: 520, iterations: 1 }), 1400);
+    }
+  }
+  renderVals() {
+    const F = window.FIOS;
+    if (!F) return { it: {}, cardStyle: {}, frame: {}, win: {}, noPhoto: true };
+    const it = F.get(this.props.id) || F.items[0];
+    const era = F.era(it.y), compact = !!this.props.compact;
+    const hasPhoto = !!it.photo && !this.state.err[it.id];
+    const still = this.props.egg === 'still';
+    const showEgg = it.egg && (still || this.state.playing);
+    const found = this.props.found ?? 0, total = this.props.total ?? F.eggIds.length;
+    return {
+      it, hasPhoto, noPhoto: !hasPhoto, corners: !!era.corners, bezel: !!era.bezel,
+      img: hasPhoto ? F.img(it.photo.f, 720) : '', page: hasPhoto ? F.page(it.photo.f) : '',
+      onErr: () => this.setState(s => ({ err: Object.assign({}, s.err, { [it.id]: 1 }) })),
+      cardRef: this.cardRef,
+      cardStyle: { position: 'relative', display: 'grid', gap: 14, padding: compact ? 12 : 14, paddingBottom: 14, background: era.card, border: '1px solid var(--line)', borderRadius: 14, boxShadow: '0 1px 2px rgba(0,0,0,.04), 0 8px 28px -12px rgba(0,0,0,.18)', color: 'var(--ink)', fontFamily: 'ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif', fontVariantNumeric: 'tabular-nums' },
+      frame: Object.assign({ position: 'relative' }, era.frame),
+      win: Object.assign({ position: 'relative', overflow: 'hidden', aspectRatio: compact ? '16 / 10' : '4 / 3', background: 'var(--surf)' }, era.win),
+      imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%', filter: era.img, display: 'block' },
+      overStyle: { position: 'absolute', inset: 0, background: era.over, mixBlendMode: era.id === 'gravura' ? 'multiply' : 'normal', pointerEvents: 'none' },
+      plateStyle: { position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', alignContent: 'center', gap: 6, background: era.plate, backgroundColor: era.id === 'gravura' ? 'var(--paper)' : 'var(--surf)', color: era.id === 'gravura' ? 'var(--paper-ink)' : 'var(--sub)' },
+      plateYear: { font: `600 ${compact ? 30 : 40}px/1 ${era.yf === 'inherit' ? 'ui-sans-serif,system-ui' : era.yf}`, letterSpacing: era.id === 'tela' ? '.04em' : '-.01em' },
+      yearStyle: { fontFamily: era.yf, fontWeight: 600, fontSize: 15, color: era.id === 'gravura' ? 'var(--paper-ink)' : 'var(--ink)' },
+      laneD: F.lane(it.lane).d, laneName: F.lane(it.lane).name,
+      eggLayer: showEgg ? h('div', { key: (this.props.eggKey || 0) + it.id, style: ab({ inset: 0 }) }, egg(it.egg, still)) : null,
+      toast: (showEgg && !this.props.noToast) ? h('div', { key: 't' + (this.props.eggKey || 0), style: { position: 'absolute', zIndex: 4, top: 10, left: 10, right: 10, display: 'flex', justifyContent: 'center', pointerEvents: 'none' } },
+        h('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 10px 5px 8px', borderRadius: 999, background: 'var(--ink)', color: 'var(--bg)', font: '500 12.5px/1.2 ui-sans-serif,system-ui', boxShadow: '0 4px 14px rgba(0,0,0,.25)', animation: still ? 'none' : 'fz-toast 2.9s both' } }, spark('var(--br-y)'), `Surpresa encontrada · ${found} de ${total}`)) : null,
+      srcOpen: this.state.srcOpen || !!this.props.srcOpen, srcCount: it.src.length,
+      toggleSrc: () => this.setState(s => ({ srcOpen: !s.srcOpen })),
+      chevStyle: { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', transform: (this.state.srcOpen || this.props.srcOpen) ? 'rotate(90deg)' : 'none', transition: 'transform .2s' }
+    };
+  }
+}
+window.FIOS_EGG = egg;
+</script>
+</body>
+</html>

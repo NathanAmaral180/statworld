@@ -10,3 +10,9 @@ Thumbs.db
 # Senha do /admin para testar no computador (npx wrangler dev). Nunca vai para o GitHub.
 .dev.vars
 .wrangler/
+
+# Arquivos temporários de teste (não publicar)
+public/_temp/
+
+# Cache dos downloads do Universo dos Fios (grande; refeito por scripts/fios-universo/baixar.mjs)
+scripts/fios-universo/cache/

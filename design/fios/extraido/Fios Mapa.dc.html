@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="fios-data.js"></script></helmet>
+<div style="{{ rootStyle }}">
+  <div style="position:relative;border-right:1px solid var(--line);background:var(--bg);z-index:2">
+    <div style="{{ headPad }}"></div>
+    <sc-for list="{{ laneRows }}" as="l" hint-placeholder-count="6">
+      <div title="{{ l.name }}" style="{{ l.label }}">
+        <svg width="16" height="16" viewBox="0 0 24 24" style="flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ l.d }}"></path></svg>
+        <sc-if value="{{ showNames }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.25">{{ l.name }}</span></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div ref="{{ scroller }}" onPointerDown="{{ down }}" onPointerMove="{{ move }}" onPointerUp="{{ up }}" onPointerCancel="{{ up }}" style="overflow-x:auto;overflow-y:hidden;cursor:grab;scrollbar-width:thin;touch-action:pan-x;user-select:none">
+    <div style="{{ canvas }}">
+      <sc-for list="{{ eraBands }}" as="e" hint-placeholder-count="5">
+        <div style="{{ e.style }}"><span style="position:sticky;left:8px">{{ e.name }} · {{ e.label }}</span></div>
+      </sc-for>
+      <sc-for list="{{ laneRows }}" as="l" hint-placeholder-count="6"><div style="{{ l.row }}"></div></sc-for>
+      <sc-for list="{{ yearCols }}" as="c" hint-placeholder-count="12"><span style="{{ c.style }}">{{ c.y }}</span></sc-for>
+      <svg style="{{ svgStyle }}">
+        <sc-for list="{{ links }}" as="k" hint-placeholder-count="0"><path d="{{ k.d }}" style="{{ k.style }}"></path></sc-for>
+      </svg>
+      <sc-for list="{{ phraseChips }}" as="p" hint-placeholder-count="0"><span style="{{ p.style }}">{{ p.r }}</span></sc-for>
+      <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="0">
+        <button data-fnode="1" onClick="{{ n.pick }}" title="{{ n.title }}" style="{{ n.box }}">
+          <sc-if value="{{ n.br }}" hint-placeholder-val="{{ false }}"><i style="position:absolute;top:-1px;left:8px;width:18px;height:3px;background:linear-gradient(90deg,var(--br-g) 0 50%,var(--br-y) 50% 100%)"></i></sc-if>
+          <sc-if value="{{ n.thumb }}" hint-placeholder-val="{{ false }}"><img src="{{ n.thumb }}" alt="" loading="lazy" style="{{ n.thumbStyle }}"></sc-if>
+          <sc-if value="{{ n.noThumb }}" hint-placeholder-val="{{ false }}"><span style="{{ n.iconBox }}"><svg width="14" height="14" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ n.d }}"></path></svg></span></sc-if>
+          <span style="display:grid;min-width:0;text-align:left;gap:1px">
+            <span style="{{ n.yStyle }}">{{ n.y }}</span>
+            <span style="{{ n.nameStyle }}">{{ n.name }}</span>
+          </span>
+          <sc-if value="{{ n.egg }}" hint-placeholder-val="{{ false }}"><svg width="10" height="10" viewBox="0 0 24 24" style="position:absolute;top:4px;right:4px"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" style="{{ n.eggStyle }}"></path></svg></sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:560},&quot;selected&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;telbr2&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;phrases&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onSelect&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(id:string)=&gt;void&quot;},&quot;found&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;reduced&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  scroller = React.createRef();
+  drag = null;
+  componentDidMount() {
+    const go = () => { this.forceUpdate(() => { this.center(false); this.floatNodes(); }); };
+    if (!window.FIOS) this._t = setInterval(() => { if (window.FIOS) { clearInterval(this._t); go(); } }, 40); else setTimeout(go, 30);
+  }
+  componentWillUnmount() { clearInterval(this._t); cancelAnimationFrame(this._raf); }
+  componentDidUpdate(pp) { if (pp.selected !== this.props.selected) this.center(true); }
+  reduced() { return this.props.reduced || (window.FIOS && window.FIOS.reduced()); }
+  dims() { const c = !!this.props.compact; return { colW: this.props.colW || (c ? 132 : 142), laneH: c ? 64 : 76, nodeH: c ? 50 : 56, head: 50, labelW: c ? 40 : 132 }; }
+  center(smooth) {
+    const F = window.FIOS, el = this.scroller.current; if (!F || !el) return;
+    const it = F.get(this.props.selected); if (!it) return;
+    const d = this.dims(); const x = 12 + it.col * d.colW + d.colW / 2 - el.clientWidth / 2;
+    el.scrollTo({ left: Math.max(0, x), behavior: smooth && !this.reduced() ? 'smooth' : 'auto' });
+  }
+  floatNodes() {
+    if (this.reduced() || this.props.still) return; const el = this.scroller.current; if (!el) return;
+    el.querySelectorAll('[data-fnode]').forEach((n, i) => { if (!n.animate) return; const a = 1.5 + (i % 3) * .6;
+      n.animate([{ translate: '0 0' }, { translate: `0 ${-a}px` }, { translate: '0 0' }], { duration: 4200 + (i * 373) % 2600, iterations: Infinity, delay: -(i * 611) % 4000, easing: 'ease-in-out' }); });
+  }
+  renderVals() {
+    const F = window.FIOS; if (!F) return { laneRows: [], nodes: [], links: [], yearCols: [], eraBands: [], phraseChips: [] };
+    const d = this.dims(), sel = this.props.selected, found = this.props.found || [];
+    const W = 24 + F.cols.length * d.colW, H = d.head + F.lanes.length * d.laneH + 6;
+    const nb = {}; F.links.forEach(l => { if (l.a === sel) nb[l.b] = 1; if (l.b === sel) nb[l.a] = 1; });
+    const S = F.get(sel); const pos = {};
+    const nw = d.colW - 14;
+    F.items.forEach(it => {
+      let x = 12 + it.col * d.colW, y = d.head + F.lane(it.lane).i * d.laneH + (d.laneH - d.nodeH) / 2, ox = 0, oy = 0;
+      if (S && nb[it.id]) { const sx = 12 + S.col * d.colW, sy = d.head + F.lane(S.lane).i * d.laneH; ox = Math.sign(sx - x) * 10; oy = Math.sign(sy - (y - (d.laneH - d.nodeH) / 2)) * 5; }
+      pos[it.id] = { x, y, ox, oy };
+    });
+    const tr = this.reduced() ? 'none' : 'transform .75s cubic-bezier(.34,1.56,.64,1), opacity .35s, background-color .25s, box-shadow .25s';
+    const nodes = F.items.map(it => {
+      const p = pos[it.id], on = it.id === sel, n = !!nb[it.id], dim = S && !on && !n, era = F.era(it.y);
+      return {
+        id: it.id, y: it.y, name: it.name, br: it.br, egg: !!it.egg, d: F.lane(it.lane).d, title: `${it.y} · ${it.name}`,
+        thumb: it.photo ? F.img(it.photo.f, 80) : '', noThumb: !it.photo,
+        pick: (e) => { if (this.drag && this.drag.moved) return; this.props.onSelect && this.props.onSelect(it.id); },
+        box: { position: 'absolute', left: p.x, top: p.y, width: nw, height: d.nodeH, display: 'flex', alignItems: 'center', gap: 7, padding: '0 8px 0 6px', borderRadius: 9, font: 'inherit', cursor: 'pointer', textAlign: 'left',
+          background: on ? 'var(--ink)' : 'var(--bg)', color: on ? 'var(--bg)' : 'var(--ink)', border: n ? '1.5px solid var(--accent)' : '1px solid var(--line2)',
+          boxShadow: on ? '0 6px 20px -6px rgba(0,0,0,.45)' : n ? '0 4px 14px -8px var(--accent)' : 'none',
+          opacity: dim ? .36 : 1, transform: `translate(${p.ox}px,${p.oy}px) scale(${on ? 1.06 : 1})`, transition: tr, zIndex: on ? 3 : n ? 2 : 1 },
+        thumbStyle: { width: this.props.compact ? 26 : d.nodeH - 14, height: this.props.compact ? 26 : d.nodeH - 14, flex: 'none', objectFit: 'cover', borderRadius: era.id === 'digital' || era.id === 'filme' ? 6 : 2, filter: era.img, background: 'var(--surf)' },
+        iconBox: { width: this.props.compact ? 26 : d.nodeH - 14, height: this.props.compact ? 26 : d.nodeH - 14, flex: 'none', display: 'grid', placeItems: 'center', borderRadius: 4, background: on ? 'rgba(127,127,127,.25)' : 'var(--surf)', color: on ? 'var(--bg)' : 'var(--sub)' },
+        yStyle: { fontSize: 10.5, lineHeight: 1.1, color: on ? 'var(--bg)' : 'var(--faint)', fontFamily: era.yf, opacity: on ? .75 : 1 },
+        nameStyle: { fontSize: this.props.compact ? 11.5 : 12.5, fontWeight: 500, lineHeight: 1.2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' },
+        eggStyle: { fill: found.includes(it.id) ? 'var(--br-y)' : 'none', stroke: on ? 'var(--bg)' : 'var(--faint)', strokeWidth: 2 }
+      };
+    });
+    const links = [], phraseChips = [];
+    F.links.forEach((l, i) => {
+      const A = pos[l.a], B = pos[l.b], act = l.a === sel || l.b === sel;
+      const x1 = A.x + A.ox + nw, y1 = A.y + A.oy + d.nodeH / 2, x2 = B.x + B.ox, y2 = B.y + B.oy + d.nodeH / 2;
+      const s = act ? 0 : 10 + Math.min(26, Math.abs(x2 - x1) * .05), cx = (x2 - x1) * .5;
+      const path = `M${x1} ${y1} C${x1 + cx} ${y1 + s} ${x2 - cx} ${y2 + s} ${x2} ${y2}`;
+      links.push({ d: path, style: { d: `path("${path}")`, fill: 'none', stroke: act ? 'var(--accent)' : 'var(--line2)', strokeWidth: act ? 1.8 : 1, opacity: S && !act ? .5 : 1, transition: this.reduced() ? 'none' : 'd .75s cubic-bezier(.34,1.56,.64,1), stroke .3s' } });
+      if (act && this.props.phrases) phraseChips.push({ r: l.r.replace(':', ''), style: { position: 'absolute', zIndex: 4, left: (x1 + x2) / 2, top: (y1 + y2) / 2, transform: 'translate(-50%,-50%)', fontSize: 10.5, lineHeight: 1, padding: '3px 6px', borderRadius: 4, background: 'var(--bg)', color: 'var(--accent)', border: '1px solid var(--accent)', whiteSpace: 'nowrap', pointerEvents: 'none' } });
+    });
+    const eraBands = F.eras.map(e => { const cs = F.items.filter(i => i.y >= e.from && i.y <= e.to).map(i => i.col); if (!cs.length) return null; const a = Math.min(...cs), b = Math.max(...cs);
+      return { name: e.name, label: e.label, style: { position: 'absolute', top: 0, height: 20, left: 12 + a * d.colW - 6, width: (b - a + 1) * d.colW, borderTop: '2px solid var(--line2)', fontSize: 10.5, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--faint)', paddingTop: 4, whiteSpace: 'nowrap', overflow: 'visible' } }; }).filter(Boolean);
+    const yearCols = F.cols.map((y, i) => ({ y: (i > 0 && F.cols[i - 1] === y) ? '' : y, style: { position: 'absolute', top: 26, left: 12 + i * d.colW + 6, fontSize: 12, color: S && S.col === i ? 'var(--ink)' : 'var(--sub)', fontWeight: S && S.col === i ? 600 : 400 } }));
+    const laneRows = F.lanes.map((l, i) => ({ name: l.name, d: l.d,
+      label: { height: d.laneH, display: 'flex', alignItems: 'center', gap: 8, padding: this.props.compact ? '0 12px' : '0 12px 0 14px', color: S && S.lane === l.id ? 'var(--ink)' : 'var(--sub)', background: i % 2 ? 'var(--bg)' : 'var(--surf)' },
+      row: { position: 'absolute', left: 0, right: 0, top: d.head + i * d.laneH, height: d.laneH, background: i % 2 ? 'transparent' : 'var(--surf)' } }));
+    return {
+      rootStyle: { display: 'grid', gridTemplateColumns: `${d.labelW}px minmax(0,1fr)`, border: '1px solid var(--line)', borderRadius: 12, overflow: 'hidden', background: 'var(--bg)', color: 'var(--ink)', fontFamily: 'ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif', fontVariantNumeric: 'tabular-nums' },
+      headPad: { height: d.head, borderBottom: '1px solid var(--line)' }, showNames: !this.props.compact,
+      canvas: { position: 'relative', width: W, height: H }, svgStyle: { position: 'absolute', left: 0, top: 0, width: W, height: H, overflow: 'visible', pointerEvents: 'none' },
+      laneRows, nodes, links, phraseChips, eraBands, yearCols, scroller: this.scroller,
+      down: (e) => { if (e.pointerType !== 'mouse') return; cancelAnimationFrame(this._raf); this.drag = { x: e.clientX, l: this.scroller.current.scrollLeft, moved: false, v: 0, t: performance.now(), lx: e.clientX }; },
+      move: (e) => { const g = this.drag; if (!g) return; const dx = e.clientX - g.x; if (Math.abs(dx) > 5) g.moved = true; const now = performance.now(); g.v = (e.clientX - g.lx) / Math.max(1, now - g.t); g.t = now; g.lx = e.clientX; this.scroller.current.scrollLeft = g.l - dx; },
+      up: () => { const g = this.drag; if (!g) return; let v = g.v * 16; const el = this.scroller.current;
+        const step = () => { if (Math.abs(v) < .3 || this.reduced()) return; el.scrollLeft -= v; v *= .93; this._raf = requestAnimationFrame(step); }; step();
+        setTimeout(() => { this.drag = null; }, 0); }
+    };
+  }
+}
+</script>
+</body>
+</html>

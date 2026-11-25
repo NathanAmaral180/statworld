@@ -60,5 +60,19 @@
   "fontes": "Fontes",
   "semAntes": "Nesta trilha, é um ponto de partida.",
   "semDepois": "Nesta trilha, o caminho para aqui (por enquanto).",
-  "notaFios": "Fatos e datas conferidos em {data} nas fontes de cada item (enciclopédias e sites oficiais). As ligações dizem como uma criação ajudou outra; uma invenção quase sempre tem muitos pais, e aqui estão os principais. Achou algo a corrigir? Conte para a gente."
+  "notaFios": "Fatos e datas conferidos em {data} nas fontes de cada item (enciclopédias e sites oficiais). As ligações dizem como uma criação ajudou outra; uma invenção quase sempre tem muitos pais, e aqui estão os principais. Achou algo a corrigir? Conte para a gente.",
+  "buscarNoUniverso": "Buscar uma criação ou pessoa…",
+  "voltar": "Voltar no caminho",
+  "verTudo": "Afastar e ver tudo",
+  "fechar": "Fechar",
+  "dicaUniverso": "Aproxime com os dedos (ou a rodinha do mouse) e toque num ponto para puxar o fio.",
+  "pessoa": "Pessoa",
+  "conferido": "conferido",
+  "verNaTrilha": "Ver na trilha conferida",
+  "lerNaWikipedia": "Ler na Wikipédia",
+  "fonteConferida": "Conferido à mão na trilha (fontes na trilha).",
+  "fonteWikidata": "Dados do Wikidata; ligações pelos links da Wikipédia.",
+  "criouOuLigado": "Criações e fatos ligados",
+  "ligadoA": "Ligado a",
+  "pessoas": "Pessoas"
 }

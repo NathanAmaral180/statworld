@@ -1,0 +1,264 @@
+---
+// Universo dos Fios: um emaranhado de criações, descobertas e pessoas ligadas entre si.
+// De longe é só uma teia brilhando; aproximando aparecem as regiões, depois os itens; tocar num item foca nele,
+// acende os fios dele e abre o cartão; dá para seguir de vizinho em vizinho, voltar pelo caminho ou sair por outro galho.
+// Desenho: Sigma.js (placa de vídeo). Posições e regiões já vêm calculadas de scripts/fios-universo/ (dados/fios/universo.json).
+interface Props { universo: any; textos: Record<string, string> }
+const { universo, textos } = Astro.props;
+---
+<div class="fu" data-fios-universo>
+  <div class="fu-palco" data-palco></div>
+  <div class="fu-regioes" data-regioes aria-hidden="true"></div>
+
+  <div class="fu-topo">
+    <label class="fu-busca">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3.5a7 7 0 1 0 0 14a7 7 0 1 0 0-14M15.5 15.5 21 21" /></svg>
+      <input type="search" placeholder={textos.buscarNoUniverso} aria-label={textos.buscarNoUniverso} list="fu-lista" autocomplete="off" />
+      <datalist id="fu-lista"></datalist>
+    </label>
+    <div class="fu-botoes">
+      <button type="button" data-acao="voltar" aria-label={textos.voltar} title={textos.voltar} disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
+      <button type="button" data-acao="afastar" aria-label={textos.verTudo} title={textos.verTudo}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="fu-caminho" aria-label={textos.seuCaminho} hidden><ol></ol></nav>
+
+  <aside class="fu-cartao" aria-live="polite" hidden>
+    <button type="button" class="fu-fechar" data-acao="fechar" aria-label={textos.fechar}>×</button>
+    <div class="fu-cartao-corpo"></div>
+  </aside>
+
+  <p class="fu-dica" data-dica>{textos.dicaUniverso}</p>
+  <script type="application/json" class="fu-dados" set:html={JSON.stringify({ universo, textos }).replace(/</g, '\\u003c')} />
+</div>
+
+<script>
+  import Graph from 'graphology';
+  import Sigma from 'sigma';
+  import EdgeCurveProgram from '@sigma/edge-curve';
+
+  const raiz = document.querySelector<HTMLElement>('[data-fios-universo]');
+  if (raiz) iniciar(raiz);
+
+  function iniciar(raiz: HTMLElement) {
+    const { universo: U, textos: T } = JSON.parse(raiz.querySelector('.fu-dados')!.textContent!);
+    const $ = <E extends Element = HTMLElement>(s: string) => raiz.querySelector<E>(s)!;
+    const esc = (s: string) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+    const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const celular = () => matchMedia('(max-width: 760px)').matches;
+
+    // ---------- Grafo ----------
+    const g = new Graph({ type: 'undirected', multi: false });
+    U.nos.forEach((n: any, i: number) => {
+      const cor = U.regioes[n.r]?.cor ?? '#6ea8ff';
+      g.addNode(String(i), { x: n.x, y: n.y, label: n.n, size: n.t === 'p' ? n.s * 0.75 : n.s, color: n.t === 'p' ? '#c9d3e6' : cor, corBase: n.t === 'p' ? '#c9d3e6' : cor, dados: n });
+    });
+    for (const [a, b] of U.arestas) if (!g.hasEdge(String(a), String(b))) g.addEdge(String(a), String(b), { size: 0.5, color: '#1a3566', type: 'curva', curvature: 0.25 + ((a * 7 + b * 13) % 10) / 40 });
+
+    // ---------- Estado ----------
+    let foco: string | null = null;
+    let passar: string | null = null;
+    const caminho: string[] = [];
+    const vizinhos = (id: string) => new Set(g.neighbors(id));
+
+    const sigma = new Sigma(g, $('[data-palco]'), {
+      renderEdgeLabels: false,
+      defaultEdgeType: 'curva',
+      edgeProgramClasses: { curva: EdgeCurveProgram },
+      labelColor: { color: '#dbe6ff' },
+      labelSize: 12,
+      labelWeight: '500',
+      labelFont: 'ui-sans-serif, system-ui, sans-serif',
+      labelRenderedSizeThreshold: 7,
+      labelDensity: 0.6,
+      defaultEdgeColor: '#1a3566',
+      minCameraRatio: 0.03,
+      maxCameraRatio: 1.6,
+      zIndex: true,
+      nodeReducer: (no, a) => {
+        const r: any = { ...a };
+        const alvo = foco ?? passar;
+        if (!alvo) return r;
+        const viz = vizinhos(alvo);
+        if (no === alvo) { r.size = a.size * 2.6 + 4; r.zIndex = 3; r.forceLabel = true; }
+        else if (viz.has(no)) { r.size = a.size * 1.4 + 1; r.zIndex = 2; r.forceLabel = !!foco; }
+        else if (caminho.includes(no)) { r.zIndex = 2; r.forceLabel = true; r.color = '#ffffff'; }
+        else { r.color = 'rgba(120,140,180,0.16)'; r.label = ''; r.zIndex = 0; }
+        return r;
+      },
+      edgeReducer: (aresta, a) => {
+        const r: any = { ...a };
+        const [s, t] = g.extremities(aresta);
+        const noCaminho = caminho.some((c, i) => i > 0 && ((caminho[i - 1] === s && c === t) || (caminho[i - 1] === t && c === s)));
+        if (noCaminho) { r.color = 'rgba(255,255,255,0.95)'; r.size = 2.4; r.zIndex = 3; return r; }
+        const alvo = foco ?? passar;
+        if (!alvo) return r;
+        if (s === alvo || t === alvo) { r.color = 'rgba(140,195,255,0.85)'; r.size = 1.4; r.zIndex = 2; }
+        else r.hidden = true;
+        return r;
+      },
+    });
+    const camera = sigma.getCamera();
+
+    // ---------- Regiões: nomes grandes que aparecem de longe e somem de perto ----------
+    const camadaRegioes = $('[data-regioes]');
+    camadaRegioes.innerHTML = U.regioes.map((r: any, i: number) => `<span data-r="${i}" style="--cor:${r.cor}">${esc(r.nome)}</span>`).join('');
+    function desenharRegioes() {
+      const ratio = camera.getState().ratio;
+      // longe (ratio alto): regiões visíveis; perto: somem para dar lugar aos itens
+      const op = foco ? 0 : Math.max(0, Math.min(1, (ratio - 0.22) / 0.35));
+      camadaRegioes.style.opacity = String(op);
+      U.regioes.forEach((r: any, i: number) => {
+        const p = sigma.graphToViewport({ x: r.x, y: r.y });
+        const el = camadaRegioes.children[i] as HTMLElement;
+        el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -50%)`;
+      });
+    }
+    sigma.on('afterRender', desenharRegioes);
+
+    // ---------- Cartão ----------
+    const cartao = $('.fu-cartao');
+    function mostrarCartao(id: string) {
+      const n = g.getNodeAttribute(id, 'dados');
+      const viz = [...vizinhos(id)].map((v) => ({ ...g.getNodeAttribute(v, 'dados'), no: v }));
+      const pessoas = viz.filter((v: any) => v.t === 'p').sort((a: any, b: any) => b.s - a.s);
+      const coisas = viz.filter((v: any) => v.t !== 'p').sort((a: any, b: any) => (a.a ?? 9999) - (b.a ?? 9999));
+      const regiao = U.regioes[n.r];
+      const lista = (itens: any[], titulo: string) => itens.length ? `<h3>${esc(titulo)} <small>${itens.length}</small></h3><ul>${itens.slice(0, 40).map((v) => `<li><button type="button" data-ir="${v.no}"><b>${esc(v.n)}</b>${v.a != null ? `<span>${v.a < 0 ? -v.a + ' a.C.' : v.a}</span>` : ''}</button></li>`).join('')}</ul>` : '';
+      const wiki = n.w ? `<a class="fu-wiki" href="${esc(n.w)}" rel="noopener" target="_blank">${esc(T.lerNaWikipedia)} ↗</a>` : '';
+      const quando = n.t === 'p' ? [n.nasc, n.morte].filter((x: any) => x != null).join('–') : n.a != null ? (n.a < 0 ? `${-n.a} a.C.` : String(n.a)) : '';
+      cartao.querySelector('.fu-cartao-corpo')!.innerHTML = `
+        <p class="fu-c-topo"><span class="fu-c-regiao" style="--cor:${regiao?.cor ?? '#6ea8ff'}">${esc(n.t === 'p' ? T.pessoa : regiao?.nome ?? '')}</span>${quando ? `<span>${esc(quando)}</span>` : ''}${n.c ? `<span class="fu-conferido">${esc(T.conferido)}</span>` : ''}</p>
+        <h2>${esc(n.n)}</h2>
+        ${n.d ? `<p class="fu-c-desc">${esc(n.d)}</p>` : ''}
+        ${n.c && n.resumo ? `<p class="fu-c-resumo">${esc(n.resumo)}</p>` : ''}
+        ${n.c && n.trilha ? `<a class="fu-trilha" href="/fios/${esc(n.trilha)}#${esc(n.k)}">${esc(T.verNaTrilha)} →</a>` : ''}
+        ${wiki}
+        <p class="fu-fonte">${esc(n.c ? T.fonteConferida : T.fonteWikidata)}</p>
+        ${lista(coisas, n.t === 'p' ? T.criouOuLigado : T.ligadoA)}
+        ${lista(pessoas, T.pessoas)}`;
+      cartao.hidden = false;
+      cartao.scrollTop = 0;
+    }
+
+    // ---------- Caminho ----------
+    function desenharCaminho() {
+      const nav = $('.fu-caminho');
+      nav.hidden = caminho.length < 1;
+      nav.querySelector('ol')!.innerHTML = caminho.map((c, i) => `<li><button type="button" data-ir="${c}" ${c === foco ? 'aria-current="step"' : ''}>${esc(g.getNodeAttribute(c, 'label'))}</button>${i < caminho.length - 1 ? '<span aria-hidden="true">›</span>' : ''}</li>`).join('');
+      const ol = nav.querySelector('ol')!;
+      ol.scrollLeft = ol.scrollWidth;
+      $<HTMLButtonElement>('[data-acao="voltar"]').disabled = caminho.length < 2;
+    }
+
+    // ---------- Focar (voar até o item) ----------
+    function focar(id: string, { guardar = true } = {}) {
+      if (!g.hasNode(id)) return;
+      foco = id;
+      if (guardar) {
+        const i = caminho.indexOf(id);
+        if (i >= 0) caminho.splice(i + 1); else caminho.push(id);
+      }
+      const pos = sigma.getNodeDisplayData(id)!;
+      // no celular, o cartão cobre a metade de baixo: o item fica um pouco acima do centro
+      const desloc = celular() ? 0.09 : 0;
+      camera.animate({ x: pos.x, y: pos.y - desloc, ratio: celular() ? 0.32 : 0.18 }, { duration: reduzir ? 0 : 900, easing: 'quadraticInOut' });
+      mostrarCartao(id);
+      desenharCaminho();
+      sigma.refresh();
+      $('[data-dica]').hidden = true;
+      history.replaceState(null, '', `#${encodeURIComponent(g.getNodeAttribute(id, 'dados').id)}`);
+    }
+    function soltar() {
+      foco = null;
+      cartao.hidden = true;
+      sigma.refresh();
+    }
+
+    sigma.on('clickNode', ({ node }) => focar(node));
+    sigma.on('clickStage', () => { if (foco) soltar(); });
+    sigma.on('enterNode', ({ node }) => { if (!foco && !celular()) { passar = node; sigma.refresh(); } raiz.style.cursor = 'pointer'; });
+    sigma.on('leaveNode', () => { if (passar) { passar = null; sigma.refresh(); } raiz.style.cursor = ''; });
+
+    raiz.addEventListener('click', (e) => {
+      const ir = (e.target as Element).closest<HTMLElement>('[data-ir]');
+      if (ir) { focar(ir.dataset.ir!); return; }
+      const acao = (e.target as Element).closest<HTMLElement>('[data-acao]')?.dataset.acao;
+      if (acao === 'fechar') soltar();
+      if (acao === 'afastar') { soltar(); camera.animate({ x: 0.5, y: 0.5, ratio: 1, angle: 0 }, { duration: reduzir ? 0 : 900 }); }
+      if (acao === 'voltar' && caminho.length > 1) { caminho.pop(); focar(caminho.at(-1)!, { guardar: false }); }
+    });
+
+    // ---------- Busca ----------
+    const porNome = new Map<string, string>();
+    g.forEachNode((id, a) => porNome.set(a.label.toLowerCase(), id));
+    $('#fu-lista').innerHTML = [...porNome.keys()].sort().map((n) => `<option value="${esc(g.getNodeAttribute(porNome.get(n)!, 'label'))}">`).join('');
+    const busca = $<HTMLInputElement>('.fu-busca input');
+    busca.addEventListener('change', () => {
+      const id = porNome.get(busca.value.trim().toLowerCase());
+      if (id) { focar(id); busca.blur(); }
+    });
+
+    // ---------- Começo: item do endereço (#Q123) ou visão de longe ----------
+    const doEndereco = decodeURIComponent(location.hash.slice(1));
+    const inicial = doEndereco ? g.findNode((_, a) => a.dados.id === doEndereco) : undefined;
+    if (inicial) setTimeout(() => focar(inicial), 300);
+    desenharRegioes();
+  }
+</script>
+
+<style>
+  .fu { position: relative; height: calc(100dvh - 160px); min-height: 520px; overflow: hidden; border-radius: 18px; background: radial-gradient(ellipse at 50% 40%, #101a2e 0%, #070a12 60%, #04060b 100%); color: #e8eefc; isolation: isolate; }
+  .fu-palco { position: absolute; inset: 0; }
+  .fu-palco :global(canvas) { outline: none; }
+
+  .fu-regioes { position: absolute; inset: 0; pointer-events: none; transition: opacity .25s; z-index: 1; }
+  .fu-regioes :global(span) { position: absolute; left: 0; top: 0; white-space: nowrap; font-size: clamp(13px, 1.6vw, 20px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cor); text-shadow: 0 0 18px color-mix(in oklch, var(--cor) 70%, transparent), 0 0 2px #000; opacity: .85; }
+
+  .fu-topo { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 8px; z-index: 3; }
+  .fu-busca { flex: 1; max-width: 420px; display: flex; align-items: center; gap: 8px; padding: 0 12px; height: 42px; border-radius: 12px; background: rgba(12, 18, 32, .78); border: 1px solid rgba(140, 180, 255, .25); backdrop-filter: blur(6px); }
+  .fu-busca svg, .fu-botoes svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; opacity: .8; }
+  .fu-busca input { flex: 1; min-width: 0; background: none; border: 0; color: inherit; font: inherit; font-size: 15px; outline: none; }
+  .fu-busca input::placeholder { color: rgba(220, 230, 255, .55); }
+  .fu-botoes { display: flex; gap: 8px; }
+  .fu-botoes button { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: rgba(12, 18, 32, .78); border: 1px solid rgba(140, 180, 255, .25); color: inherit; cursor: pointer; backdrop-filter: blur(6px); }
+  .fu-botoes button:disabled { opacity: .35; cursor: default; }
+
+  .fu-caminho { position: absolute; left: 12px; right: 12px; top: 62px; z-index: 3; }
+  .fu-caminho ol { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .fu-caminho :global(li) { display: flex; align-items: center; gap: 4px; color: rgba(220, 230, 255, .5); }
+  .fu-caminho :global(button) { font: inherit; font-size: 13px; color: rgba(225, 235, 255, .8); background: rgba(12, 18, 32, .7); border: 1px solid rgba(140, 180, 255, .18); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+  .fu-caminho :global(button[aria-current]) { color: #fff; border-color: rgba(255, 255, 255, .7); font-weight: 600; }
+
+  .fu-cartao { position: absolute; z-index: 4; top: 104px; right: 12px; bottom: 12px; width: min(380px, calc(100% - 24px)); overflow-y: auto; padding: 18px 18px 20px; border-radius: 16px; background: rgba(10, 15, 27, .9); border: 1px solid rgba(140, 180, 255, .25); backdrop-filter: blur(10px); box-shadow: 0 12px 40px rgba(0, 0, 0, .5); }
+  .fu-fechar { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; border: 0; background: none; color: inherit; font-size: 24px; cursor: pointer; opacity: .7; }
+  .fu-cartao :global(.fu-c-topo) { margin: 0 28px 6px 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13px; color: rgba(220, 230, 255, .7); }
+  .fu-cartao :global(.fu-c-regiao) { color: var(--cor); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; }
+  .fu-cartao :global(.fu-conferido) { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8fe3a8; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; }
+  .fu-cartao :global(h2) { margin: 0; font-size: 24px; line-height: 1.15; color: #fff; }
+  .fu-cartao :global(.fu-c-desc) { margin: 6px 0 0; font-size: 14px; color: rgba(220, 230, 255, .75); }
+  .fu-cartao :global(.fu-c-resumo) { margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: #eef3ff; }
+  .fu-cartao :global(.fu-trilha), .fu-cartao :global(.fu-wiki) { display: inline-block; margin: 10px 12px 0 0; font-size: 14px; color: #9cc2ff; }
+  .fu-cartao :global(.fu-fonte) { margin: 8px 0 0; font-size: 11px; color: rgba(220, 230, 255, .5); }
+  .fu-cartao :global(h3) { margin: 16px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(220, 230, 255, .6); }
+  .fu-cartao :global(h3 small) { font-size: 11px; opacity: .7; }
+  .fu-cartao :global(ul) { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .fu-cartao :global(li button) { width: 100%; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; text-align: left; font: inherit; color: #e8eefc; background: rgba(255, 255, 255, .04); border: 1px solid rgba(140, 180, 255, .14); border-radius: 10px; padding: 7px 10px; cursor: pointer; }
+  .fu-cartao :global(li button:hover) { border-color: rgba(156, 194, 255, .7); }
+  .fu-cartao :global(li b) { font-weight: 500; font-size: 14px; }
+  .fu-cartao :global(li span) { font-size: 12px; color: rgba(220, 230, 255, .55); font-variant-numeric: tabular-nums; }
+
+  .fu-dica { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 2; margin: 0; padding: 8px 14px; border-radius: 999px; background: rgba(12, 18, 32, .75); border: 1px solid rgba(140, 180, 255, .2); font-size: 13px; color: rgba(225, 235, 255, .8); white-space: nowrap; }
+
+  @media (max-width: 760px) {
+    .fu { height: calc(100dvh - 120px); border-radius: 0; margin: 0 -16px; }
+    .fu-cartao { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 52%; border-radius: 18px 18px 0 0; }
+    .fu-dica { white-space: normal; text-align: center; width: calc(100% - 32px); font-size: 12px; }
+    .fu-regioes :global(span) { font-size: 10px; letter-spacing: .1em; }
+  }
+</style>

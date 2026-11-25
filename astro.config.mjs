@@ -8,6 +8,6 @@ export default defineConfig({
   integrations: [
     // Mapa do site (sitemap-index.xml) para buscadores.
     // O painel do administrador (/admin) fica fora do mapa do site.
-    sitemap({ filter: (pagina) => !pagina.includes('/admin') }),
+    sitemap({ filter: (pagina) => !pagina.includes('/admin') && !pagina.includes('/fios/universo') }),
   ],
 });

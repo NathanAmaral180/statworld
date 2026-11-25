@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="fios-data.js"></script><style>a{color:var(--accent)}a:hover{color:var(--ink)}</style></helmet>
+<div style="{{ rootStyle }}">
+  <header style="border-bottom:1px solid var(--line)">
+    <div style="{{ headIn }}">
+      <span style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;letter-spacing:-.01em"><span style="display:grid;grid-template-columns:8px 8px;gap:2px"><i style="width:8px;height:8px;background:var(--r2)"></i><i style="width:8px;height:8px;background:var(--r4)"></i><i style="width:8px;height:8px;background:var(--r4)"></i><i style="width:8px;height:8px;background:var(--r2)"></i></span>StatWorld</span>
+      <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;gap:28px;height:100%">
+          <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Brasil</a>
+          <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Mundo</a>
+          <a href="#" style="{{ fiosTab }}">Fios</a>
+          <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Sobre os dados</a>
+        </nav>
+      </sc-if>
+    </div>
+  </header>
+  <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+    <main style="{{ mainStyle }}">
+      <div style="display:flex;align-items:center;gap:14px;color:var(--accent)">
+        <svg width="{{ logoW }}" height="{{ logoH }}" viewBox="0 0 24 24" style="overflow:visible"><path d="M3 17.5c3.2 0 4.2-11 9-11s5.8 11 9 11" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round"></path><circle cx="3" cy="17.5" r="1.9" style="fill:currentColor"></circle><circle cx="12" cy="6.5" r="1.9" style="fill:var(--bg);stroke:currentColor;stroke-width:1.5"></circle><circle cx="21" cy="17.5" r="1.9" style="fill:currentColor"></circle></svg>
+        <h1 style="{{ h1Style }}">Fios</h1>
+      </div>
+      <p style="margin:12px 0 0;max-width:680px;font-size:18px;line-height:1.5;color:var(--sub);text-wrap:pretty">Trilhas de criações e fatos ligados entre si: uma coisa puxa a outra. Entre por qualquer item e siga o fio para o que veio antes ou depois. Cada passo tem fonte e data.</p>
+      <article style="{{ heroCard }}">
+        <div style="display:grid;gap:14px;align-content:start">
+          <div style="display:flex;gap:8px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)"><i style="width:7px;height:7px;border-radius:50%;background:var(--accent)"></i>Trilha aberta</div>
+          <h2 style="margin:0;font-size:34px;line-height:1.08;letter-spacing:-.02em;font-weight:600">Do telégrafo ao smartphone</h2>
+          <div style="font-size:15px;color:var(--sub)">36 itens · 1837–2022 · 6 faixas · 8 fatos do Brasil</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;color:var(--sub)">
+            <sc-for list="{{ lanes }}" as="l" hint-placeholder-count="6"><span title="{{ l.name }}" style="display:flex;align-items:center;gap:6px;font-size:13px"><svg width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ l.d }}"></path></svg>{{ l.name }}</span></sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--sub)"><span style="display:flex;gap:3px"><sc-for list="{{ pips }}" as="p" hint-placeholder-count="8"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" style="{{ p }}"></path></svg></sc-for></span>{{ foundN }} de 8 surpresas encontradas · você visitou 6 itens</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+            <a href="#" style="height:44px;padding:0 18px;border-radius:10px;background:var(--ink);color:var(--bg);display:flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none">Continuar de onde parei</a>
+            <a href="#" style="height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--line2);color:var(--ink);display:flex;align-items:center;font-size:15px;text-decoration:none">Ver o mapa inteiro</a>
+          </div>
+        </div>
+        <div style="display:grid;gap:14px;min-width:0">
+          <svg viewBox="{{ mini.vb }}" style="width:100%;height:auto;display:block;overflow:visible">
+            <sc-for list="{{ mini.rows }}" as="r" hint-placeholder-count="6"><rect x="0" y="{{ r.y }}" width="{{ mini.w }}" height="22" style="{{ r.st }}"></rect></sc-for>
+            <sc-for list="{{ mini.links }}" as="k" hint-placeholder-count="0"><path d="{{ k }}" style="fill:none;stroke:var(--line2);stroke-width:1"></path></sc-for>
+            <sc-for list="{{ mini.dots }}" as="d" hint-placeholder-count="0"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" style="{{ d.st }}"></circle></sc-for>
+          </svg>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+            <sc-for list="{{ frames }}" as="f" hint-placeholder-count="4">
+              <figure style="margin:0;display:grid;gap:6px">
+                <div style="{{ f.frame }}"><div style="{{ f.win }}"><img src="{{ f.img }}" alt="{{ f.name }}" style="{{ f.imgSt }}"></div></div>
+                <figcaption style="font-size:12px;line-height:1.3;color:var(--sub)"><b style="color:var(--ink);font-weight:600">{{ f.y }}</b> {{ f.name }}</figcaption>
+              </figure>
+            </sc-for>
+          </div>
+        </div>
+      </article>
+      <h3 style="margin:44px 0 14px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)">Próximas trilhas</h3>
+      <div style="{{ soonGrid }}">
+        <sc-for list="{{ soon }}" as="t" hint-placeholder-count="4">
+          <article style="border:1px dashed var(--line2);border-radius:14px;padding:18px;display:grid;gap:10px;align-content:start">
+            <svg width="100%" height="34" viewBox="0 0 200 34" preserveAspectRatio="none" style="display:block"><path d="M2 26 C 40 26, 50 8, 100 8 S 160 26, 198 26" style="fill:none;stroke:var(--line2);stroke-width:1.5;stroke-dasharray:4 4"></path><circle cx="2" cy="26" r="3" style="fill:var(--line2)"></circle><circle cx="100" cy="8" r="3" style="fill:var(--bg);stroke:var(--line2);stroke-width:1.5"></circle><circle cx="198" cy="26" r="3" style="fill:var(--line2)"></circle></svg>
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><b style="font-size:18px;font-weight:600;letter-spacing:-.01em">{{ t.title }}</b><span style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;border:1px dashed var(--line2);border-radius:4px;padding:1px 5px;color:var(--faint);flex:none">Em breve</span></div>
+            <span style="font-size:14px;line-height:1.45;color:var(--sub);text-wrap:pretty">{{ t.sub }}</span>
+          </article>
+        </sc-for>
+      </div>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+    <main style="{{ mainStyle }}">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Página inicial · destaque</div>
+      <article style="{{ homeCard }}">
+        <div style="display:grid;gap:12px;align-content:start">
+          <div style="display:flex;align-items:center;gap:8px;color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><svg width="30" height="20" viewBox="0 0 24 24" style="overflow:visible"><path d="M3 17.5c3.2 0 4.2-11 9-11s5.8 11 9 11" style="fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round"></path><circle cx="3" cy="17.5" r="2.1" style="fill:currentColor"></circle><circle cx="12" cy="6.5" r="2.1" style="fill:var(--bg);stroke:currentColor;stroke-width:1.6"></circle><circle cx="21" cy="17.5" r="2.1" style="fill:currentColor"></circle></svg>Fios</div>
+          <h2 style="{{ homeH }}">Uma coisa puxa a outra</h2>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:var(--sub);text-wrap:pretty">Siga o fio do telégrafo ao smartphone: 36 criações ligadas entre si, com fonte e data em cada uma. Tem surpresas escondidas pelo caminho.</p>
+          <a href="#" style="justify-self:start;height:44px;padding:0 18px;border-radius:10px;background:var(--ink);color:var(--bg);display:flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;margin-top:4px">Puxe um fio</a>
+        </div>
+        <div style="{{ chainWrap }}">
+          <sc-for list="{{ chain }}" as="c" hint-placeholder-count="3">
+            <div style="{{ c.cell }}">
+              <sc-if value="{{ c.hasRel }}" hint-placeholder-val="{{ false }}"><div style="{{ c.relBox }}"><i style="{{ c.relLine }}"></i><span style="font-size:12px;color:var(--accent);white-space:nowrap;background:var(--bg);padding:0 4px;position:relative">{{ c.rel }}</span></div></sc-if>
+              <figure style="margin:0;display:grid;gap:6px;flex:1;min-width:0">
+                <div style="{{ c.frame }}"><div style="{{ c.win }}">
+                  <sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><img src="{{ c.img }}" alt="{{ c.name }}" style="{{ c.imgSt }}"></sc-if>
+                  <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ false }}"><span style="{{ c.plate }}"><svg width="26" height="26" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round"><path d="{{ c.d }}"></path></svg></span></sc-if>
+                </div></div>
+                <figcaption style="font-size:12.5px;line-height:1.3;color:var(--sub)"><b style="color:var(--ink);font-weight:600">{{ c.y }}</b> {{ c.name }}</figcaption>
+              </figure>
+            </div>
+          </sc-for>
+        </div>
+      </article>
+    </main>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;phone&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;lista&quot;,&quot;home&quot;],&quot;default&quot;:&quot;lista&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { if (!window.FIOS) this._t = setInterval(() => { if (window.FIOS) { clearInterval(this._t); this.forceUpdate(); } }, 40); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const F = window.FIOS, th = this.props.theme === 'dark' ? 'dark' : 'light', desk = this.props.device !== 'phone', view = this.props.view || 'lista';
+    const rootStyle = Object.assign({}, F ? F.vars[th] : {}, { width: desk ? '100%' : 390, minWidth: desk ? 1100 : 0, background: 'var(--bg)', color: 'var(--ink)', fontFamily: 'ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif', fontVariantNumeric: 'tabular-nums', WebkitFontSmoothing: 'antialiased', borderRadius: desk ? 0 : 40, overflow: 'hidden', boxShadow: desk ? 'none' : '0 0 0 10px #15171B, 0 30px 60px -20px rgba(0,0,0,.4)' });
+    const base = { rootStyle, desk, isList: view === 'lista', isHome: view === 'home', lanes: [], pips: [], frames: [], soon: [], chain: [], mini: { rows: [], links: [], dots: [] },
+      headIn: { maxWidth: 1440, margin: '0 auto', padding: desk ? '0 56px' : '0 18px', display: 'flex', alignItems: 'center', gap: 56, height: desk ? 72 : 60 },
+      fiosTab: { display: 'flex', alignItems: 'center', color: 'var(--ink)', fontSize: 16, textDecoration: 'none', borderBottom: '2px solid var(--accent)', marginBottom: -1 },
+      mainStyle: { maxWidth: 1440, margin: '0 auto', padding: desk ? '40px 56px 64px' : '24px 18px 36px' },
+      logoW: desk ? 56 : 40, logoH: desk ? 40 : 30, h1Style: { margin: 0, fontSize: desk ? 56 : 40, lineHeight: 1, letterSpacing: '-.03em', fontWeight: 600, color: 'var(--ink)' },
+      heroCard: { marginTop: 28, display: 'grid', gridTemplateColumns: desk ? 'minmax(0,5fr) minmax(0,6fr)' : '1fr', gap: desk ? 40 : 24, padding: desk ? 28 : 18, border: '1px solid var(--line)', borderRadius: 18, background: 'var(--bg)', boxShadow: '0 1px 2px rgba(0,0,0,.04), 0 18px 40px -24px rgba(0,0,0,.3)' },
+      soonGrid: { display: 'grid', gridTemplateColumns: desk ? 'repeat(4,minmax(0,1fr))' : '1fr', gap: 14 },
+      homeCard: { display: 'grid', gridTemplateColumns: desk ? 'minmax(0,4fr) minmax(0,7fr)' : '1fr', gap: desk ? 40 : 22, padding: desk ? 28 : 18, border: '1px solid var(--line)', borderRadius: 18, background: 'var(--surf)' },
+      homeH: { margin: 0, fontSize: desk ? 36 : 28, lineHeight: 1.08, letterSpacing: '-.02em', fontWeight: 600 },
+      chainWrap: { display: 'flex', flexDirection: desk ? 'row' : 'column', gap: desk ? 0 : 0, alignItems: 'stretch' } };
+    if (!F) return base;
+    const fr = (it, w) => { const e = F.era(it.y); return { frame: Object.assign({ position: 'relative' }, e.frame, { padding: e.id === 'digital' ? 0 : e.id === 'tela' ? '6px 6px 12px' : '6px' }), win: Object.assign({ position: 'relative', overflow: 'hidden', aspectRatio: '4 / 5', background: 'var(--surf)' }, e.win),
+      img: it.photo ? F.img(it.photo.f, w || 300) : '', noImg: !it.photo, imgSt: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 25%', filter: e.img },
+      plate: { position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: e.plate, backgroundColor: e.id === 'gravura' ? 'var(--paper)' : 'var(--surf)', color: e.id === 'gravura' ? 'var(--paper-ink)' : 'var(--sub)' }, y: it.y, name: it.name, d: F.lane(it.lane).d }; };
+    const n = 3, W = 520, cw = W / F.cols.length;
+    const P = it => ({ x: 6 + it.col * cw, y: 11 + F.lane(it.lane).i * 22 });
+    const mini = { vb: `0 0 ${W} 132`, w: W, rows: F.lanes.map((l, i) => ({ y: i * 22, st: { fill: i % 2 ? 'transparent' : 'var(--surf)' } })),
+      links: F.links.map(l => { const a = P(F.get(l.a)), b = P(F.get(l.b)), m = (b.x - a.x) / 2; return `M${a.x} ${a.y} C${a.x + m} ${a.y} ${b.x - m} ${b.y} ${b.x} ${b.y}`; }),
+      dots: F.items.map(it => { const p = P(it), v = ['morse', 'telegrafo', 'telefone', 'telbr2', 'hertz', 'marconi'].includes(it.id); return { x: p.x, y: p.y, r: it.br ? 4 : 3.2, st: { fill: it.br ? 'var(--br-g)' : v ? 'var(--accent)' : 'var(--bg)', stroke: it.br ? 'var(--br-y)' : v ? 'var(--accent)' : 'var(--sub)', strokeWidth: 1.3 } }; }) };
+    const chainIds = [['telegrafo'], ['telefone', 'inspirou'], ['telbr2', 'chegou ao Brasil:']];
+    return Object.assign(base, {
+      lanes: F.lanes, foundN: n,
+      pips: F.eggIds.map((id, i) => ({ fill: i < n ? 'var(--br-y)' : 'none', stroke: i < n ? 'var(--br-y)' : 'var(--line2)', strokeWidth: 2 })),
+      mini, frames: ['telbr2', 'atlantico', 'celular', 'dynatac'].map(id => fr(F.get(id))),
+      soon: [{ title: 'História do Brasil', sub: 'De 1500 até hoje: fatos que levaram a outros, com fonte e data.' }, { title: 'Esporte', sub: 'Copas do Mundo, recordes e as invenções que mudaram cada jogo.' }, { title: 'Medicina', sub: 'Descobertas que abriram caminho para outras, de vacinas a exames.' }, { title: 'Energia', sub: 'Do carvão e do vapor às usinas e às fontes renováveis.' }],
+      chain: chainIds.map(([id, rel], i) => { const o = fr(F.get(id), 360); if (!desk) o.win.aspectRatio = '16 / 8'; return o; }).map((o, i) => Object.assign(o, { hasRel: !!chainIds[i][1], rel: chainIds[i][1],
+        cell: { display: 'flex', flexDirection: desk ? 'row' : 'column', alignItems: desk ? 'center' : 'stretch', flex: 1, minWidth: 0 },
+        relBox: { position: 'relative', display: 'grid', placeItems: 'center', width: desk ? 118 : 'auto', height: desk ? 'auto' : 40, flex: 'none', alignSelf: desk ? 'center' : 'stretch', marginTop: desk ? -24 : 0 },
+        relLine: desk ? { position: 'absolute', left: 4, right: 4, top: '50%', height: 1.5, background: 'var(--accent)' } : { position: 'absolute', top: 4, bottom: 4, left: '50%', width: 1.5, background: 'var(--accent)' } }))
+    });
+  }
+}
+</script>
+</body>
+</html>

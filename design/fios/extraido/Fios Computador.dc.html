@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="fios-data.js"></script><style>a{color:var(--accent)}a:hover{color:var(--ink)}</style></helmet>
+<div style="{{ rootStyle }}">
+  <header style="border-bottom:1px solid var(--line)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:56px;height:72px">
+      <span style="display:flex;align-items:center;gap:12px;font-weight:600;font-size:20px;letter-spacing:-.01em"><span style="display:grid;grid-template-columns:9px 9px;gap:2px"><i style="width:9px;height:9px;background:var(--r2)"></i><i style="width:9px;height:9px;background:var(--r4)"></i><i style="width:9px;height:9px;background:var(--r4)"></i><i style="width:9px;height:9px;background:var(--r2)"></i></span>StatWorld</span>
+      <nav style="display:flex;gap:28px;height:100%">
+        <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Brasil</a>
+        <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Mundo</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;color:var(--ink);font-size:16px;text-decoration:none;border-bottom:2px solid var(--accent);margin-bottom:-1px"><svg width="22" height="16" viewBox="0 0 24 24" style="overflow:visible"><path d="M3 17.5c3.2 0 4.2-11 9-11s5.8 11 9 11" style="fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round"></path><circle cx="3" cy="17.5" r="2.3" style="fill:var(--accent)"></circle><circle cx="12" cy="6.5" r="2.3" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"></circle><circle cx="21" cy="17.5" r="2.3" style="fill:var(--accent)"></circle></svg>Fios</a>
+        <a href="#" style="display:flex;align-items:center;color:var(--sub);font-size:16px;text-decoration:none">Sobre os dados</a>
+      </nav>
+      <button style="margin-left:auto;background:var(--bg);border:1px solid var(--line2);border-radius:8px;height:40px;padding:0 16px;font:inherit;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round"><path d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M15.5 15.5 20 20"></path></svg>Buscar</button>
+    </div>
+  </header>
+  <main style="max-width:1440px;margin:0 auto;padding:0 56px 56px">
+    <div style="margin-top:32px;font-size:14px;color:var(--sub);display:flex;gap:6px"><a href="#" style="color:var(--sub);text-decoration:none">Fios</a><span>/</span><span>Do telégrafo ao smartphone</span></div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:12px">
+      <div style="display:grid;gap:12px;max-width:760px">
+        <h1 style="margin:0;font-size:52px;line-height:1.05;letter-spacing:-.025em;font-weight:600">Do telégrafo ao smartphone</h1>
+        <p style="margin:0;font-size:18px;line-height:1.5;color:var(--sub);text-wrap:pretty">185 anos de comunicação em 36 passos: quem criou o quê, o que tornou cada passo possível e quando isso chegou ao Brasil. <span style="color:var(--ink)">Puxe um fio: toque num item e siga para onde ele leva.</span></p>
+      </div>
+      <div style="display:grid;gap:6px;justify-items:end;padding-bottom:4px">
+        <span style="display:flex;gap:4px"><sc-for list="{{ pips }}" as="p" hint-placeholder-count="8"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" style="{{ p }}"></path></svg></sc-for></span>
+        <span style="font-size:14px;color:var(--sub)"><b style="color:var(--ink);font-weight:600">{{ foundN }} de {{ totalN }}</b> surpresas encontradas nesta trilha</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:24px">
+      <span style="font-size:15px;color:var(--sub);margin-right:4px">Comece por</span>
+      <sc-for list="{{ starts }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.go }}" style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font:inherit;font-size:15px;cursor:pointer">{{ s.name }}</button></sc-for>
+      <span style="flex:1"></span>
+      <span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-right:6px">Seu caminho</span>
+      <sc-for list="{{ pathV }}" as="p" hint-placeholder-count="3">
+        <span style="display:flex;align-items:center"><sc-if value="{{ p.notFirst }}" hint-placeholder-val="{{ false }}"><i style="width:12px;height:1.5px;background:var(--accent);display:block"></i></sc-if><button onClick="{{ p.go }}" style="{{ p.style }}">{{ p.name }}</button></span>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:28px;margin-top:22px;align-items:start">
+      <div style="display:grid;gap:10px;position:sticky;top:16px">
+        <dc-import name="Fios Mapa" selected="{{ cur }}" on-select="{{ pick }}" found="{{ foundIds }}" phrases="{{ true }}" hint-size="100%,510px"></dc-import>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--faint)">
+          <span>Arraste para os lados para andar no tempo.</span>
+          <span style="display:flex;align-items:center;gap:5px"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" style="fill:none;stroke:currentColor;stroke-width:2"></path></svg>tem surpresa (descubra qual)</span>
+          <span style="display:flex;align-items:center;gap:5px"><i style="width:14px;height:3px;background:linear-gradient(90deg,var(--br-g) 0 50%,var(--br-y) 50%)"></i>fato do Brasil</span>
+          <span style="display:flex;align-items:center;gap:5px"><i style="width:16px;height:1.8px;background:var(--accent)"></i>fio esticado: ligações do item escolhido</span>
+        </div>
+      </div>
+      <aside style="display:grid;gap:14px">
+        <div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:8px">De onde veio</div>
+          <sc-if value="{{ noPrev }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:var(--faint)">Nesta trilha, é um ponto de partida.</p></sc-if>
+          <div style="display:grid;gap:6px">
+            <sc-for list="{{ prevV }}" as="r" hint-placeholder-count="1">
+              <button onClick="{{ r.go }}" style="display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;padding:7px 12px 7px 7px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer">
+                <sc-if value="{{ r.thumb }}" hint-placeholder-val="{{ false }}"><img src="{{ r.thumb }}" alt="" style="{{ r.tStyle }}"></sc-if>
+                <sc-if value="{{ r.noThumb }}" hint-placeholder-val="{{ true }}"><span style="width:36px;height:36px;border-radius:6px;background:var(--surf);color:var(--sub);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ r.d }}"></path></svg></span></sc-if>
+                <span style="display:grid;gap:1px;min-width:0"><b style="font-size:14.5px;font-weight:600">{{ r.name }}</b><span style="font-size:12px;color:var(--sub)">{{ r.phrase }}</span></span>
+                <span style="font-size:12.5px;color:var(--faint)">{{ r.y }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <dc-import name="Fios Cartao" id="{{ cur }}" egg="{{ eggMode }}" egg-key="{{ eggKey }}" found="{{ foundN }}" total="{{ totalN }}" compact="{{ true }}" hint-size="100%,520px"></dc-import>
+        <div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:8px">O que veio depois</div>
+          <sc-if value="{{ noNext }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:var(--faint)">Por enquanto, o fio termina aqui.</p></sc-if>
+          <div style="display:grid;gap:6px">
+            <sc-for list="{{ nextV }}" as="r" hint-placeholder-count="2">
+              <button onClick="{{ r.go }}" style="display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;padding:7px 12px 7px 7px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer">
+                <sc-if value="{{ r.thumb }}" hint-placeholder-val="{{ false }}"><img src="{{ r.thumb }}" alt="" style="{{ r.tStyle }}"></sc-if>
+                <sc-if value="{{ r.noThumb }}" hint-placeholder-val="{{ true }}"><span style="width:36px;height:36px;border-radius:6px;background:var(--surf);color:var(--sub);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ r.d }}"></path></svg></span></sc-if>
+                <span style="display:grid;gap:1px;min-width:0"><span style="font-size:12px;color:var(--sub)">{{ r.phrase }}</span><b style="font-size:14.5px;font-weight:600">{{ r.name }}</b></span>
+                <span style="font-size:12.5px;color:var(--faint)">{{ r.y }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <p style="margin:32px 0 0;max-width:640px;font-size:13px;line-height:1.55;color:var(--faint);text-wrap:pretty">Fatos e datas conferidos em 25 de novembro de 2026 nas fontes de cada item (enciclopédias e sites oficiais). As ligações dizem como uma criação ajudou outra; uma invenção quase sempre tem muitos pais, e aqui estão os principais. Fotos do Wikimedia Commons, com autor e licença em cada cartão. Achou algo a corrigir? <a href="#">Conte para a gente</a>.</p>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;start&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;atlantico&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;path&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;morse,marconi,atlantico&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;found&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;tsType&quot;:&quot;number&quot;},&quot;eggDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reduced&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  constructor(p) { super(p); const pre = (p.path || '').split(',').filter(Boolean); this.state = { cur: p.start || 'atlantico', path: pre.length ? pre : [p.start || 'atlantico'], found: null, eggKey: 0, playing: false }; }
+  componentDidMount() {
+    const init = () => { const F = window.FIOS, n = this.props.found; this.setState({ found: n != null ? F.eggIds.slice(0, n) : F.loadFound(), playing: !!this.props.eggDemo });
+      if (this.props.eggDemo) this._d = setInterval(() => this.setState(s => ({ eggKey: s.eggKey + 1 })), 4600); };
+    if (!window.FIOS) this._t = setInterval(() => { if (window.FIOS) { clearInterval(this._t); init(); } }, 40); else init();
+  }
+  componentWillUnmount() { clearInterval(this._t); clearInterval(this._d); }
+  go(id) { const F = window.FIOS, it = F.get(id);
+    this.setState(s => { const path = s.path.includes(id) ? s.path : [...s.path, id]; let found = s.found || [];
+      if (it.egg && !found.includes(id)) { found = [...found, id]; if (this.props.found == null) F.saveFound(found); }
+      return { cur: id, path, found, playing: !!it.egg, eggKey: s.eggKey + 1 }; }); }
+  renderVals() {
+    const F = window.FIOS, th = this.props.theme === 'dark' ? 'dark' : 'light';
+    const rootStyle = Object.assign({}, F ? F.vars[th] : {}, { width: '100%', minWidth: 1280, background: 'var(--bg)', color: 'var(--ink)', fontFamily: 'ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif', fontVariantNumeric: 'tabular-nums', WebkitFontSmoothing: 'antialiased' });
+    if (!F) return { rootStyle, pips: [], starts: [], pathV: [], prevV: [], nextV: [] };
+    const s = this.state, it = F.get(s.cur), found = s.found || [], reduced = !!this.props.reduced || F.reduced();
+    const row = (x, phrase) => Object.assign({ name: x.name, y: x.y, phrase, d: F.lane(x.lane).d, go: () => this.go(x.id) },
+      x.photo ? { thumb: F.img(x.photo.f, 100), noThumb: false, tStyle: { width: 36, height: 36, objectFit: 'cover', objectPosition: 'center 25%', borderRadius: 6, filter: F.era(x.y).img, background: 'var(--surf)' } } : { thumb: '', noThumb: true });
+    const prev = F.prev(s.cur), next = F.next(s.cur);
+    return {
+      rootStyle, cur: s.cur, eggKey: s.eggKey, foundIds: found, foundN: found.length, totalN: F.eggIds.length,
+      eggMode: it.egg && s.playing ? (reduced ? 'still' : 'play') : 'none', pick: (id) => this.go(id),
+      pips: F.eggIds.map((id, i) => ({ fill: i < found.length ? 'var(--br-y)' : 'none', stroke: i < found.length ? 'var(--br-y)' : 'var(--line2)', strokeWidth: 2 })),
+      starts: F.start.map(id => ({ name: F.get(id).name, go: () => this.go(id) })),
+      pathV: s.path.map((id, i) => { const on = id === s.cur; return { name: F.get(id).name, notFirst: i > 0, go: () => this.go(id), style: { height: 30, padding: '0 11px', borderRadius: 999, font: 'inherit', fontSize: 13, cursor: 'pointer', whiteSpace: 'nowrap', border: on ? '1px solid var(--ink)' : '1px solid var(--accent)', background: on ? 'var(--ink)' : 'var(--bg)', color: on ? 'var(--bg)' : 'var(--accent)' } }; }),
+      prevV: prev.map(p => row(p.it, `${p.r} ${it.name}`)), noPrev: !prev.length,
+      nextV: next.map(n => row(n.it, `${it.name} ${n.r}`)), noNext: !next.length
+    };
+  }
+}
+</script>
+</body>
+</html>

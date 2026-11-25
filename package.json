@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
-    "astro": "^7.4.13"
+    "@sigma/edge-curve": "3.1.0",
+    "astro": "^7.4.13",
+    "graphology": "0.26.0",
+    "sigma": "3.0.2"
   },
   "devDependencies": {
     "7zip-bin": "^5.2.0",
     "d3-geo": "^3.1.1",
+    "graphology-communities-louvain": "2.0.2",
+    "graphology-layout-forceatlas2": "0.10.1",
     "topojson-client": "^3.1.0",
     "wrangler": "4.162.0",
     "xlsx": "^0.18.5"

@@ -7,7 +7,8 @@ import { carregarTextos } from '../../lib/dados';
 import site from '../../config/site.json';
 
 export function getStaticPaths() {
-  return listarDados('fios', '').map((nome) => ({ params: { trilha: nome } }));
+  // o universo (dados/fios/universo.json) tem página própria (src/pages/fios/universo.astro)
+  return listarDados('fios', '').filter((nome) => nome !== 'universo').map((nome) => ({ params: { trilha: nome } }));
 }
 const { trilha: id } = Astro.params;
 const trilha = carregarDados<any>('fios', id!);

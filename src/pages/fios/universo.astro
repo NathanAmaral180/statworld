@@ -1,0 +1,24 @@
+---
+// Universo dos Fios (protótipo): o emaranhado de criações, descobertas e pessoas.
+// Fora do Google e do mapa do site enquanto for protótipo (naoIndexar + filtro no astro.config.mjs).
+import Base from '../../layouts/Base.astro';
+import FiosUniverso from '../../componentes/FiosUniverso.astro';
+import { carregarDados, carregarTextos } from '../../lib/dados';
+import site from '../../config/site.json';
+const universo = carregarDados<any>('fios', 'universo');
+const textos = carregarTextos(site.idiomaPadrao);
+---
+<Base titulo="Universo dos Fios (protótipo)" descricao="Criações, descobertas e pessoas da humanidade ligadas entre si." naoIndexar semAnuncios temaAtual="">
+  <section class="conteudo pagina">
+    <p class="topo"><a href="/fios">Fios</a> / Universo <span class="proto">protótipo</span></p>
+    <FiosUniverso universo={universo} textos={textos} />
+    <p class="nota">{universo.nos.length} criações, descobertas e pessoas, {universo.arestas.length} fios. Itens e datas do Wikidata; fios: links entre artigos da Wikipédia e inventores. Os itens marcados "conferido" foram checados um a um nas trilhas. Protótipo: pode haver erros da base.</p>
+  </section>
+</Base>
+<style>
+  .pagina { padding-top: 12px; padding-bottom: 24px; }
+  .topo { margin: 0 0 10px; font-size: 14px; color: var(--sub); display: flex; gap: 8px; align-items: center; }
+  .topo a { color: inherit; }
+  .proto { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border: 1px dashed var(--line2); border-radius: 4px; padding: 1px 6px; color: var(--faint); }
+  .nota { margin: 10px 0 0; font-size: 12px; color: var(--faint); max-width: 90ch; }
+</style>
