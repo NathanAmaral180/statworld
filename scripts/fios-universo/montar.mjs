@@ -63,7 +63,7 @@ g.forEachNode((id, a) => { if (a.e.tipos.includes('Q5') && g.degree(id) < 2 && !
 g.forEachNode((id) => { if (g.degree(id) === 0) g.dropNode(id); });
 
 // ---------- Regiões (comunidades) e posições ----------
-const comunidade = louvain(g, { resolution: 0.9, randomWalk: false, rng: Math.random });
+const comunidade = louvain(g, { resolution: 1.15, randomWalk: false, rng: Math.random });
 // Regiões grandes viram "galáxias" com nome; as pequenas se juntam na mais ligada a elas.
 const tamanho = {};
 for (const c of Object.values(comunidade)) tamanho[c] = (tamanho[c] ?? 0) + 1;

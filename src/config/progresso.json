@@ -43,10 +43,9 @@
       "nome": "Fios (trilhas da história)",
       "detalhe": "Criações e fatos ligados: uma coisa puxa a outra",
       "peso": 8,
-      "pct": 30,
-      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; protótipo do Universo dos Fios no ar (~700 itens)",
+      "pct": 35,
+      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; Universo dos Fios no ar (809 itens, 6.001 fios, 13 galáxias)",
       "falta": [
-        "Terminar o download dos fios e publicar o universo completo",
         "Dono testar a sensação no celular",
         "Cartão com o visual do Claude Design (fotos, molduras, surpresas)",
         "Mais trilhas conferidas (História do Brasil, Medicina, Energia…)"
@@ -122,12 +121,13 @@
       "data": "2026-11-25",
       "titulo": "Universo dos Fios (protótipo)",
       "de": 54,
-      "para": 55,
+      "para": 56,
       "itens": [
         "Emaranhado com zoom: ~700 criações, descobertas e pessoas, ~3.000 fios, 10 galáxias com nome",
         "Tocar foca e amplia; seguir de vizinho em vizinho; caminho desenhado; voltar e afastar; busca",
         "Os 36 itens conferidos entram com selo e levam à trilha",
-        "Dados: cronologias da Wikipédia + Wikidata; fios pelos links entre artigos"
+        "Dados: cronologias da Wikipédia + Wikidata; fios pelos links entre artigos",
+        "Versão cheia: 809 itens, 6.001 fios, 13 galáxias (download completo); limpos prêmios, universidades, editoras e cidades que só apareciam pelas referências"
       ]
     },
     {
