@@ -4,16 +4,20 @@
 // Como rodar (na pasta statworld):  node scripts/industria-estados/baixar.mjs
 
 import { writeFile, mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 // ---- O que muda a cada ano (confira no LEIA-ME) ----------------------------
-const ANO = 2024;
+const ANO = Number(process.env.ANO ?? 2024); // ano mais recente; o programa dos anos antigos passa outro em ANO
 // ----------------------------------------------------------------------------
 
-const TABELA = 10457;
+// 2024 em diante: série nova da PIA (tabela 10457). 2007–2023: série anterior (tabela 1849), mesma medida e mesmos setores.
+const TABELA = ANO >= 2024 ? 10457 : 1849;
 const URL_DADOS = `https://apisidra.ibge.gov.br/values/t/${TABELA}/n3/all/v/811,631/p/${ANO}/c12762/all`;
 const URL_PERIODOS = `https://servicodados.ibge.gov.br/api/v3/agregados/${TABELA}/periodos`;
 const URL_ESTADOS = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
-const SAIDA = new URL('../../dados/industria/brasil-estados.json', import.meta.url);
+// SAIDA pode ser trocada pelo programa dos anos antigos (scripts/anos-producao/), que roda este script ano a ano.
+const SAIDA = process.env.SAIDA ? pathToFileURL(resolve(process.env.SAIDA)) : new URL('../../dados/industria/brasil-estados.json', import.meta.url);
 
 // Divisão da CNAE (2 primeiros dígitos) -> [identificador = nome do ícone, nome curto, grupo]
 const E = 'extrativa', T = 'transformacao';

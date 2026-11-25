@@ -30,11 +30,12 @@
       "nome": "Escolher o ano / ver a evolução",
       "detalhe": "Seletor de ano e ▶ nos mapas",
       "peso": 6,
-      "pct": 25,
-      "situacao": "Piloto no ar: Visão geral e Impostos do Brasil, 2002–2024",
+      "pct": 55,
+      "situacao": "No ar: Visão geral e Impostos (2002–2024), Agro (2017–2025) e Indústria (2007–2024) do Brasil",
       "falta": [
-        "Agro, Indústria, Serviços, Comércio e Trabalho com anos",
-        "Estados Unidos com anos"
+        "Serviços, Comércio e Trabalho com anos",
+        "Estados Unidos com anos",
+        "Páginas de cada produto/setor com anos"
       ]
     },
     {
@@ -103,6 +104,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-25",
+      "titulo": "Anos no Agro e na Indústria",
+      "de": 56,
+      "para": 57,
+      "itens": [
+        "Agro com 9 anos (2017–2025): produto líder (tudo, lavouras, pecuária) e quanto cada estado produz de cada produto",
+        "Indústria com 18 anos (2007–2024): setor líder e quanto cada estado produz de cada setor",
+        "Botão ▶ e faixa de anos nas duas abas; a ficha mostra onde o estado estava no ano mais recente",
+        "Aviso na indústria: o IBGE mudou a pesquisa em 2024 (série nova)"
+      ]
+    },
     {
       "data": "2026-11-25",
       "titulo": "Escolher o ano (piloto)",

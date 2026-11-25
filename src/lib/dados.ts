@@ -16,3 +16,11 @@ export function carregarTextos(idioma: string): Record<string, string> {
   if (!arq) throw new Error(`Textos não encontrados para o idioma ${idioma} (src/config/textos/${idioma}.json)`);
   return arq as Record<string, string>;
 }
+
+// Nomes dos arquivos de uma pasta de dados que começam com um prefixo (ex.: os anos antigos em dados/agro/anos/).
+export function listarDados(grupo: string, prefixo: string): string[] {
+  const base = `../../dados/${grupo}/`;
+  return Object.keys(arquivosDados)
+    .filter((k) => k.startsWith(base + prefixo))
+    .map((k) => k.slice(base.length, -'.json'.length));
+}

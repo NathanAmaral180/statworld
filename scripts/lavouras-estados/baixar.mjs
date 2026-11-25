@@ -4,16 +4,19 @@
 // Como rodar (na pasta statworld):  node scripts/lavouras-estados/baixar.mjs
 
 import { writeFile, mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 // ---- O que muda a cada ano (confira no LEIA-ME) ----------------------------
-const ANO = 2025;
+const ANO = Number(process.env.ANO ?? 2025); // ano mais recente; o programa dos anos antigos passa outro em ANO
 // ----------------------------------------------------------------------------
 
 const TABELA = 5457;
 const URL_DADOS = `https://apisidra.ibge.gov.br/values/t/${TABELA}/n3/all/v/214,215/p/${ANO}/c782/all`;
 const URL_PERIODOS = `https://servicodados.ibge.gov.br/api/v3/agregados/${TABELA}/periodos`;
 const URL_ESTADOS = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
-const SAIDA = new URL('../../dados/agro/brasil-estados-lavouras.json', import.meta.url);
+// SAIDA pode ser trocada pelo programa dos anos antigos (scripts/anos-producao/), que roda este script ano a ano.
+const SAIDA = process.env.SAIDA ? pathToFileURL(resolve(process.env.SAIDA)) : new URL('../../dados/agro/brasil-estados-lavouras.json', import.meta.url);
 
 // Subdivisões que já estão somadas em outro item (não podem contar duas vezes).
 const SUBDIVISOES = ['Café (em grão) Arábica', 'Café (em grão) Canephora'];

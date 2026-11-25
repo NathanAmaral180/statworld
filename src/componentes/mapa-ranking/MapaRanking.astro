@@ -26,7 +26,7 @@ interface Props {
   ranking?: { mostrar: number; aberto: boolean };
   // Seletor de ano / "ver a evolução": anos da série, anos de cada medida e o endereço do arquivo de cada ano ("{ano}" é trocado).
   // O ano mais recente é o que já vem nas "visões"; os outros são baixados quando a pessoa pede.
-  anos?: { lista: string[]; porMedida: Record<string, string[]>; url: string };
+  anos?: { lista: string[]; porMedida: Record<string, string[]>; url: string; urlProduto?: string };
 }
 // Ranking: por padrão mostra só os 8 primeiros, com botão para ver todos (decisão do dono).
 const { geo, mapa, ctx, opcoes, opcaoInicial, visoes, ranking = { mostrar: 8, aberto: false }, anos } = Astro.props;
@@ -63,7 +63,7 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes, an
         </div>
       )}
       {anos && (
-        <div class="mr-anos" data-anos hidden={!anos.porMedida[opcao.visao ?? '']?.length}>
+        <div class="mr-anos" data-anos hidden={!anos.porMedida[opcao.id]?.length}>
           <button type="button" class="mr-play" aria-label={ctx.textos.verEvolucao} data-rotulo-play={ctx.textos.verEvolucao} data-rotulo-pausa={ctx.textos.pausar} set:html={iconePlay} />
           <input type="range" class="mr-ano-faixa" min="0" max={anos.lista.length - 1} step="1" value={anos.lista.length - 1} aria-label={ctx.textos.ano} />
           <output class="mr-ano" aria-live="polite">{ultimoAno}</output>
@@ -310,18 +310,24 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes, an
       if (o.filtros) {
         const f = filtroEscolhido[id];
         raiz.querySelectorAll('[data-filtro]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-filtro') === f)));
-        aplicar(cache[o.filtros.itens.find((i: any) => i.id === f).visao]);
-      } else if (o.lista) {
-        const item = itensLista().find((li) => li.dataset.valor === produtoAtual)!;
-        aplicar(await carregar(`lista:${produtoAtual}`, item.dataset.url));
-      } else {
-        ajustarAnos(o.visao);
-        aplicar(await visaoNoAno(o.visao, anoAtual));
       }
+      ajustarAnos(id);
+      const meu = ++pedido;
+      const v = await visaoNoAno(chaveDe(o), anoAtual);
+      if (meu === pedido) aplicar(v);
+    }
+
+    // Chave da visão que a opção mostra agora: medida ("peso-pib"), filtro ("lider-tudo") ou produto ("lista:soja").
+    function chaveDe(o: any): string {
+      if (o.filtros) return o.filtros.itens.find((i: any) => i.id === filtroEscolhido[o.id]).visao;
+      if (o.lista) return `lista:${produtoAtual}`;
+      return o.visao;
     }
 
     // ---------- Ano: seletor (faixa de arrastar) e "ver a evolução" (passa ano a ano sozinho) ----------
-    const anos: { lista: string[]; porMedida: Record<string, string[]>; url: string } | undefined = d.anos;
+    // anos.porMedida: anos de cada opção (chave = id da opção). anos.url: arquivo com as visões de um ano;
+    // anos.urlProduto: arquivo de um produto num ano (opção "quanto produz").
+    const anos: { lista: string[]; porMedida: Record<string, string[]>; url: string; urlProduto?: string } | undefined = d.anos;
     const barraAnos = $<HTMLElement>('[data-anos]');
     const faixa = barraAnos?.querySelector<HTMLInputElement>('.mr-ano-faixa');
     const rotuloAno = barraAnos?.querySelector<HTMLOutputElement>('.mr-ano');
@@ -329,33 +335,44 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes, an
     const ultimo = anos?.lista.at(-1) ?? '';
     let anoAtual = ultimo;
     let pedido = 0; // só a última escolha vale (o "ver a evolução" pede vários anos seguidos)
-    const anoBaixado: Record<string, Promise<void>> = {};
+    const baixando: Record<string, Promise<void>> = {};
 
-    // O ano mais recente já está na página; os outros vêm de /dados/<país>/economia/<aba>/<ano>.json (todas as medidas do ano).
-    function baixarAno(ano: string) {
-      if (!anos || ano === ultimo) return Promise.resolve();
-      return (anoBaixado[ano] ??= fetch(anos.url.replace('{ano}', ano))
-        .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
-        .then((j) => { for (const [id, v] of Object.entries(j.visoes)) cache[`${ano}:${id}`] = v as Visao; })
-        .catch((e) => { delete anoBaixado[ano]; throw e; }));
-    }
-    async function visaoNoAno(medida: string, ano: string): Promise<Visao> {
-      if (!anos || ano === ultimo || !anos.porMedida[medida]) return cache[medida];
-      if (!cache[`${ano}:${medida}`]) {
-        raiz.classList.add('carregando');
-        try { await baixarAno(ano); } finally { raiz.classList.remove('carregando'); }
+    // Baixa (uma vez) o que falta para mostrar a chave no ano. O ano mais recente já está na página
+    // (produto do ano mais recente: o arquivo do próprio produto, como antes).
+    function baixar(chave: string, ano: string): Promise<void> {
+      const produto = chave.startsWith('lista:') ? chave.slice(6) : null;
+      if (ano === ultimo || !anos) {
+        if (!produto || cache[chave]) return Promise.resolve();
+        const item = itensLista().find((li) => li.dataset.valor === produto)!;
+        return carregar(chave, item.dataset.url).then(() => {});
       }
-      return cache[`${ano}:${medida}`] ?? cache[medida];
+      const url = produto ? anos.urlProduto!.replace('{produto}', produto).replace('{ano}', ano) : anos.url.replace('{ano}', ano);
+      return (baixando[url] ??= fetch(url)
+        .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+        .then((j) => {
+          if (produto) cache[`${ano}:${chave}`] = j as Visao;
+          else for (const [id, v] of Object.entries(j.visoes)) cache[`${ano}:${id}`] = v as Visao;
+        })
+        .catch((e) => { delete baixando[url]; throw e; }));
     }
-    // Mostra a barra só para medidas com série; limita a faixa aos anos que a medida tem (ex.: crescimento começa um ano depois).
-    function ajustarAnos(medida?: string) {
+    async function visaoNoAno(chave: string, ano: string): Promise<Visao> {
+      const k = !anos || ano === ultimo ? chave : `${ano}:${chave}`;
+      if (!cache[k]) {
+        raiz.classList.add('carregando');
+        try { await baixar(chave, ano); } finally { raiz.classList.remove('carregando'); }
+      }
+      return cache[k] ?? cache[chave];
+    }
+    // Mostra a barra só para opções com série; limita a faixa aos anos que a opção tem (ex.: crescimento começa um ano depois).
+    // Opção sem série (ex.: um gráfico no tempo) volta para o ano mais recente.
+    function ajustarAnos(opcao?: string) {
       if (!anos || !barraAnos || !faixa) return;
-      const daMedida = medida ? anos.porMedida[medida] ?? [] : [];
-      barraAnos.hidden = daMedida.length < 2;
-      if (barraAnos.hidden) { pararEvolucao(); return; }
-      if (!daMedida.includes(anoAtual)) anoAtual = daMedida.reduce((a, b) => (Math.abs(+b - +anoAtual) < Math.abs(+a - +anoAtual) ? b : a));
-      faixa.min = String(anos.lista.indexOf(daMedida[0]));
-      faixa.max = String(anos.lista.indexOf(daMedida.at(-1)!));
+      const daOpcao = opcao ? anos.porMedida[opcao] ?? [] : [];
+      barraAnos.hidden = daOpcao.length < 2;
+      if (barraAnos.hidden) { pararEvolucao(); anoAtual = ultimo; return; }
+      if (!daOpcao.includes(anoAtual)) anoAtual = daOpcao.reduce((a, b) => (Math.abs(+b - +anoAtual) < Math.abs(+a - +anoAtual) ? b : a));
+      faixa.min = String(anos.lista.indexOf(daOpcao[0]));
+      faixa.max = String(anos.lista.indexOf(daOpcao.at(-1)!));
       mostrarAno();
     }
     function mostrarAno() {
@@ -370,37 +387,37 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes, an
     }
     async function irParaAno(ano: string) {
       const o = d.opcoes.find((x: any) => x.id === opcaoId);
-      if (!o?.visao) return;
+      if (!o || o.painel) return;
       anoAtual = ano;
       mostrarAno();
       const meu = ++pedido;
-      const v = await visaoNoAno(o.visao, ano);
+      const v = await visaoNoAno(chaveDe(o), ano);
       if (meu === pedido) aplicar(v);
     }
     let relogio: number | undefined;
     function pararEvolucao() {
-      if (relogio === undefined) return;
       clearInterval(relogio);
       relogio = undefined;
       barraAnos?.classList.remove('tocando');
-      play?.setAttribute('aria-label', play.dataset.rotuloPlay!);
+      if (play) play.setAttribute('aria-label', play.dataset.rotuloPlay!);
     }
     async function verEvolucao() {
       const o = d.opcoes.find((x: any) => x.id === opcaoId);
-      const daMedida: string[] = anos?.porMedida[o?.visao] ?? [];
-      if (!daMedida.length) return;
+      const daOpcao: string[] = anos?.porMedida[o?.id] ?? [];
+      if (!daOpcao.length) return;
+      const chave = chaveDe(o);
       barraAnos!.classList.add('tocando');
       play?.setAttribute('aria-label', play.dataset.rotuloPausa!);
       // Do começo, se já estiver no último ano; senão, continua de onde está.
-      let i = anoAtual === daMedida.at(-1) ? 0 : daMedida.indexOf(anoAtual);
+      let i = anoAtual === daOpcao.at(-1) ? 0 : daOpcao.indexOf(anoAtual);
       raiz.classList.add('carregando');
-      try { await Promise.all(daMedida.map(baixarAno)); } catch { pararEvolucao(); return; } finally { raiz.classList.remove('carregando'); }
+      try { await Promise.all(daOpcao.map((a) => baixar(chave, a))); } catch { pararEvolucao(); return; } finally { raiz.classList.remove('carregando'); }
       if (!barraAnos!.classList.contains('tocando')) return; // pausado enquanto baixava
-      await irParaAno(daMedida[i]);
+      await irParaAno(daOpcao[i]);
       relogio = window.setInterval(() => {
         i += 1;
-        if (i >= daMedida.length) { pararEvolucao(); return; }
-        irParaAno(daMedida[i]);
+        if (i >= daOpcao.length) { pararEvolucao(); return; }
+        irParaAno(daOpcao[i]);
       }, 850);
     }
     play?.addEventListener('click', () => (barraAnos!.classList.contains('tocando') ? pararEvolucao() : verEvolucao()));

@@ -156,7 +156,8 @@
     "notas": {
       "tudo": "Empresas industriais com 5 ou mais pessoas ocupadas (IBGE). Valor da transformação industrial = valor da produção menos o custo das operações industriais. Quando um setor tem poucas empresas num estado, o IBGE esconde o número por sigilo: ele aparece como \"sem dado\", e o setor líder é o maior entre os setores publicados. Não inclui construção nem energia.",
       "extrativa": "Indústrias extrativas: carvão, petróleo e gás, minerais e serviços de apoio (IBGE).",
-      "transformacao": "Indústrias de transformação: alimentos, químicos, veículos, metalurgia e outros 20 setores (IBGE)."
+      "transformacao": "Indústrias de transformação: alimentos, químicos, veículos, metalurgia e outros 20 setores (IBGE).",
+      "avisoAnosAntigos": "A partir de 2024 o IBGE usa uma série nova da pesquisa (tabela 10457); os anos até 2023 vêm da série anterior (tabela 1849). Compare com cuidado."
     }
   },
   "servicos": {

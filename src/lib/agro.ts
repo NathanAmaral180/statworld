@@ -6,8 +6,8 @@
 // Os textos de nota (de onde vem cada número) ficam no arquivo do país: pais.<tema>.notas.
 // Quando a medida do país é outra (ex.: EUA mede valor adicionado, o Brasil o valor da transformação), o arquivo do país
 // troca textos, opções, apelidos dos ícones e o produto padrão em pais.<tema>.sobrescrever.
-import { carregarDados } from './dados';
-import { construirVisaoProduto, type DadosProducao, type Produto } from '../componentes/mapa-ranking/construir-producao';
+import { carregarDados, listarDados } from './dados';
+import { construirVisaoProduto, construirVisaoLider, type DadosProducao, type Produto } from '../componentes/mapa-ranking/construir-producao';
 import type { Valor } from '../componentes/mapa-ranking/visao';
 import { contextoDoPais } from './contexto';
 import { preencher } from '../componentes/mapa-ranking/visao';
@@ -36,10 +36,28 @@ export function temaAgro(pais: any, tema = 'agro') {
   };
 }
 
-export function carregarAgro(pais: any, nivel: string, tema = 'agro') {
+// Anos disponíveis de um tema: os antigos (dados/<tema>/anos/<arquivo>-<ano>.json, de scripts/anos-producao/) + o mais recente.
+// No agro do Brasil, um ano só entra se tiver lavouras e pecuária.
+export function anosProducao(pais: any, nivel: string, tema = 'agro'): string[] {
+  const arq = pais.arquivos[tema][nivel];
+  const ultimo = carregarDados<any>(tema, arq).periodo as string;
+  const deArquivo = (nome: string) => new Set(listarDados(tema, `anos/${nome}-`).map((n) => n.slice(-4)));
+  let antigos = deArquivo(arq);
+  if (pais.arquivos.pecuaria?.[nivel] && tema === 'agro') {
+    const pec = deArquivo(pais.arquivos.pecuaria[nivel]);
+    antigos = new Set([...antigos].filter((a) => pec.has(a)));
+  }
+  return [...antigos].filter((a) => a < ultimo).sort().concat(ultimo);
+}
+
+// ano: um ano antigo (ver anosProducao); sem ano, o mais recente.
+export function carregarAgro(pais: any, nivel: string, tema = 'agro', ano?: string) {
   const cfg = temaAgro(pais, tema);
   const notas = pais[tema]?.notas ?? {};
-  const principal = carregarDados<any>(tema, pais.arquivos[tema][nivel]);
+  const nomeDe = (nome: string) => (ano ? `anos/${nome}-${ano}` : nome);
+  const atual = carregarDados<any>(tema, pais.arquivos[tema][nivel]);
+  const principal = ano && ano !== atual.periodo ? carregarDados<any>(tema, nomeDe(pais.arquivos[tema][nivel])) : atual;
+  const doAno = principal !== atual;
   const periodo: string = principal.periodo;
   const filtros: string[] = cfg.filtros.map((f: any) => f.id);
 
@@ -54,7 +72,7 @@ export function carregarAgro(pais: any, nivel: string, tema = 'agro') {
     fontes = Object.fromEntries(filtros.map((f) => [f, principal.fontes]));
   } else {
     // Agro do Brasil: lavouras + pecuária em arquivos separados.
-    const pec = carregarDados<any>(tema, pais.arquivos.pecuaria[nivel]);
+    const pec = carregarDados<any>(tema, doAno ? nomeDe(pais.arquivos.pecuaria[nivel]) : pais.arquivos.pecuaria[nivel]);
     if (periodo !== pec.periodo) throw new Error(`Lavouras (${periodo}) e pecuária (${pec.periodo}) são de anos diferentes`);
     const lavouras = principal.produtos.map((p: Produto) => ({ ...p, grupo: 'lavouras', fontes: principal.fontes }));
     const pecuaria = pec.produtos.map((p: Produto) => ({
@@ -97,4 +115,49 @@ export function respostaProduto(pais: any, id: string, tema = 'agro'): Response 
   const ctxTema = { ...ctx, textos: { ...ctx.textos, ...(cfg.textosMolde ?? {}) } };
   const visao = construirVisaoProduto(p.id, unidades, porFiltro.tudo, p, 'valor', cfg, ctxTema, true);
   return new Response(JSON.stringify(visao), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+}
+
+// ---------- Anos antigos (seletor de ano / "ver a evolução") ----------
+// Ficha de um ano antigo: aviso de que os reais são daquele ano e onde o lugar estava no ano mais recente.
+// avisoExtra: nota do país para anos antigos (ex.: mudança de série da pesquisa da indústria).
+function compararComUltimo(v: any, vu: any, ctx: any, ano: string, ultimo: string, avisoExtra?: string) {
+  const t = ctx.textos;
+  const linhaUltimo = Object.fromEntries(vu.linhas.map((l: any) => [l.uf, l]));
+  for (const [uf, f] of Object.entries(v.fichas) as [string, any][]) {
+    const l = linhaUltimo[uf];
+    if (l) f.detalhes = [...(f.detalhes ?? []), [preencher(t.emAno, { ano: ultimo }), l.pos ? `${l.pos}º · ${l.texto}` : l.texto]];
+    if (!f.apagado) f.aviso = [f.aviso, preencher(t.reaisDoAno, { ano }), avisoExtra].filter(Boolean).join(' ');
+  }
+  return v;
+}
+
+// Visões "produto líder" (tudo / lavouras / pecuária…) de um ano.
+export function visoesLiderDoAno(pais: any, tema: string, ano: string) {
+  const cfg = temaAgro(pais, tema);
+  const { ctx: ctxPais, unidades } = contextoDoPais(pais, 'estado');
+  const ctx = { ...ctxPais, textos: { ...ctxPais.textos, ...(cfg.textosMolde ?? {}) } };
+  const anos = anosProducao(pais, 'estado', tema);
+  const ultimo = anos.at(-1)!;
+  const { porFiltro } = carregarAgro(pais, 'estado', tema, ano);
+  const atual = ano === ultimo ? null : carregarAgro(pais, 'estado', tema).porFiltro;
+  return Object.fromEntries(cfg.filtros.map((f: any) => {
+    const v = construirVisaoLider(`lider-${f.id}`, unidades, porFiltro[f.id], cfg, ctx, f.grupoTexto);
+    return [`lider-${f.id}`, atual ? compararComUltimo(v, construirVisaoLider(`lider-${f.id}`, unidades, atual[f.id], cfg, ctx, f.grupoTexto), ctx, ano, ultimo, pais[tema]?.notas?.avisoAnosAntigos) : v];
+  }));
+}
+
+// Visão "quanto produz" de um produto num ano. Produto que não aparece naquele ano: todos os lugares "sem dado".
+export function visaoProdutoDoAno(pais: any, tema: string, id: string, ano: string) {
+  const cfg = temaAgro(pais, tema);
+  const { ctx: ctxPais, unidades } = contextoDoPais(pais, 'estado');
+  const ctx = { ...ctxPais, textos: { ...ctxPais.textos, ...(cfg.textosMolde ?? {}) } };
+  const ultimo = anosProducao(pais, 'estado', tema).at(-1)!;
+  const atual = carregarAgro(pais, 'estado', tema);
+  const pAtual = atual.todos.find((x) => x.id === id)!;
+  const doAno = carregarAgro(pais, 'estado', tema, ano);
+  const vazio = Object.fromEntries(unidades.map((u) => [u.sigla, null]));
+  const p = doAno.todos.find((x) => x.id === id) ?? { ...pAtual, valores: vazio, quantidades: vazio, valorPais: null, quantidadePais: null };
+  const v = construirVisaoProduto(p.id, unidades, doAno.porFiltro.tudo, p, 'valor', cfg, ctx, true);
+  if (ano === ultimo) return v;
+  return compararComUltimo(v, construirVisaoProduto(pAtual.id, unidades, atual.porFiltro.tudo, pAtual, 'valor', cfg, ctx, true), ctx, ano, ultimo, pais[tema]?.notas?.avisoAnosAntigos);
 }

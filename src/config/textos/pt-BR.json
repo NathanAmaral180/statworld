@@ -14,6 +14,7 @@
   "emAno": "Em {ano}",
   "naEpoca": "Na época (sem correção)",
   "corrigidoIPCA": "Corrigido pela inflação (IPCA), em R$ de {ano}.",
+  "reaisDoAno": "Valores em R$ de {ano}, sem correção pela inflação.",
   "ano": "Ano",
   "verEvolucao": "Ver a evolução",
   "pausar": "Pausar",

@@ -184,9 +184,10 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
 - `npm run build` — gera a versão final na pasta `dist/`
 
 ## Escolher o ano / ver a evolução
-- Abas com série de anos ganham, acima do mapa, um botão ▶ ("ver a evolução": passa ano a ano sozinho), uma faixa de arrastar e o ano escolhido. Hoje: **Visão geral e Impostos do Brasil, 2002–2024** (EUA e outras abas ainda não).
+- Abas com série de anos ganham, acima do mapa, um botão ▶ ("ver a evolução": passa ano a ano sozinho), uma faixa de arrastar e o ano escolhido. Hoje: **Visão geral e Impostos do Brasil, 2002–2024; Agro 2017–2025; Indústria 2007–2024** (Serviços, Comércio, Trabalho e EUA ainda não).
 - Dados: o país declara `arquivos.economia.anos` (ex.: `brasil-estados-anos`, gerado por `scripts/pib-estados/`). `src/lib/economia-abas.ts` monta as visões de cada ano (mesma lógica da página) e `src/pages/dados/[pais]/economia/[aba]/[ano].json.ts` gera um arquivo por ano, baixado só quando a pessoa pede. O ano mais recente já vem na página.
 - Cortes de cor iguais em todos os anos (a mesma cor = o mesmo valor). Dinheiro de anos antigos é **corrigido pela inflação (IPCA)** para reais do ano mais recente; a ficha mostra também "Na época (sem correção)" e "Em <ano mais recente>: posição · valor".
+- **Agro e Indústria** (molde `PaginaAgro`): anos antigos em `dados/<tema>/anos/<arquivo>-<ano>.json`, gerados por `scripts/anos-producao/` (roda os scripts de sempre com `ANO` e `SAIDA`). `src/lib/agro.ts`: `anosProducao`, `visoesLiderDoAno`, `visaoProdutoDoAno`; arquivos `/dados/brasil/<tema>/anos/<ano>.json` (líder) e `/dados/brasil/<tema>/<produto>/<ano>.json` (quanto produz). Cores por participação (não sofrem com a inflação); a ficha avisa "Valores em R$ de <ano>, sem correção" e, na indústria, a mudança de série da PIA em 2024 (`industria.notas.avisoAnosAntigos` no país).
 - Textos que dizem o ano fora do mapa usam `data-periodo-do-ano` (acompanham a escolha). Medida sem dado num ano (ex.: crescimento em 2002; PIB por pessoa em 2023, sem população do IBGE) aparece como "sem dado", nunca zero.
 
 ## Visitas e painel do administrador

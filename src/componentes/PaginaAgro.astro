@@ -10,7 +10,7 @@ import { preencher } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
 import { contextoDoPais } from '../lib/contexto';
-import { carregarAgro, temaAgro } from '../lib/agro';
+import { carregarAgro, temaAgro, anosProducao } from '../lib/agro';
 
 interface Props { pais: any; teste?: boolean; temaId?: string }
 const { pais, teste = false, temaId = 'agro' } = Astro.props;
@@ -54,6 +54,12 @@ const opcoes = [
   },
 ];
 
+// Seletor de ano / "ver a evolução": só quando há anos antigos baixados (scripts/anos-producao/).
+const listaAnos = anosProducao(pais, NIVEL, temaId);
+const anos = listaAnos.length > 1
+  ? { lista: listaAnos, porMedida: { lider: listaAnos, quanto: listaAnos }, url: `/dados/${pais.slug}/${temaId}/anos/{ano}.json`, urlProduto: `/dados/${pais.slug}/${temaId}/{produto}/{ano}.json` }
+  : undefined;
+
 const vars = { pais: pais.nome, dePais: pais.dePais };
 const titulo = preencher(tema.titulo, vars);
 const trilha = tema.trilha.map((t) => preencher(t, vars));
@@ -66,7 +72,7 @@ const abas = abasDe('economia', pais);
     <p class="trilha">{trilha.join(' / ')}</p>
     <h1>{titulo}</h1>
     <Abas itens={abas} atual={temaId} rotulo="Economia" emBreve={site.textos.emBreve} />
-    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial="lider" visoes={visoes} anos={anos} />
     <EspacoAnuncio posicao="abaixo-ranking" />
   </section>
 </Base>
