@@ -26,6 +26,18 @@
       "situacao": "No ar"
     },
     {
+      "id": "anos",
+      "nome": "Escolher o ano / ver a evolução",
+      "detalhe": "Seletor de ano e ▶ nos mapas",
+      "peso": 6,
+      "pct": 25,
+      "situacao": "Piloto no ar: Visão geral e Impostos do Brasil, 2002–2024",
+      "falta": [
+        "Agro, Indústria, Serviços, Comércio e Trabalho com anos",
+        "Estados Unidos com anos"
+      ]
+    },
+    {
       "id": "celular",
       "nome": "Site bom no celular",
       "detalhe": "Navegação e textos curtos",
@@ -91,6 +103,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-25",
+      "titulo": "Escolher o ano (piloto)",
+      "de": 57,
+      "para": 56,
+      "itens": [
+        "Visão geral e Impostos do Brasil com 23 anos (2002–2024), mesma metodologia do IBGE",
+        "Botão ▶ \"ver a evolução\" e faixa de arrastar o ano",
+        "PIB por pessoa de anos antigos corrigido pela inflação (IPCA); a ficha mostra também o valor da época",
+        "Ficha mostra onde o estado estava no ano mais recente (posição e valor)"
+      ]
+    },
     {
       "data": "2026-11-24",
       "titulo": "Página inicial no celular",

@@ -17,24 +17,14 @@ import { construirVisaoIndicador, type Medida } from './mapa-ranking/construir-i
 import { preencher, dataCurta, formatar, quandoCurto } from './mapa-ranking/visao';
 import site from '../config/site.json';
 import { abasDe } from '../lib/catalogo';
-import economiaEstados from '../config/temas/economia-estados.json';
-import impostosEstados from '../config/temas/impostos-estados.json';
-import trabalhoEstados from '../config/temas/trabalho-estados.json';
-import precosEstados from '../config/temas/precos-estados.json';
-import comercioEstados from '../config/temas/comercio-estados.json';
-import dinheiroBrasil from '../config/temas/dinheiro-brasil.json';
-import contasBrasil from '../config/temas/contas-publicas-brasil.json';
+import { temaDaAba, medidasDaAba, temAnos, anosPorMedida } from '../lib/economia-abas';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
 
-// Configuração de cada aba feita com este molde.
-const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados, 'dinheiro-juros': dinheiroBrasil, 'contas-publicas': contasBrasil };
-
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
-// O país pode trocar partes da aba (ex.: EUA medem outro imposto): pais.abas.<aba>.
-const tema = CONFIGS[aba] ? { ...CONFIGS[aba], ...(pais.abas?.[aba] ?? {}) } : undefined;
-if (!tema) throw new Error(`Aba sem configuração: ${aba}`);
+// Configuração da aba, com as trocas do país (ex.: EUA medem outro imposto): src/lib/economia-abas.ts.
+const tema = temaDaAba(pais, aba);
 
 const NIVEL = 'estado';
 const { geo, ctx, unidades, mapa } = contextoDoPais(pais, NIVEL);
@@ -49,16 +39,10 @@ const economiaBase = painelSeries || semMapa ? { indicadores: {} } : carregarDad
 const extrasDados = (pais.arquivos[pastaDados]?.extras ?? []).map((nome: string) => carregarDados<any>(pastaDados, nome));
 const economia = { ...economiaBase, indicadores: Object.assign({}, economiaBase.indicadores, ...extrasDados.map((x: any) => x.indicadores)) };
 
-// As medidas podem ser escritas na própria aba ou escolhidas pelo id entre as da Visão geral.
-const todasMedidas = economiaEstados.medidas as Medida[];
-const medidasDaAba: Medida[] = tema.medidas.map((m: any) =>
-  typeof m === 'string' ? todasMedidas.find((x) => x.id === m) ?? (() => { throw new Error(`Medida desconhecida: ${m}`); })() : m
-);
-// Cortes das cores: os do tema, a não ser que o país tenha os seus (moeda e escala mudam).
-const cortesPais = pais.cortes?.['economia-estados'] ?? {};
-const medidas = medidasDaAba
-  .filter((m) => economia.indicadores[m.id])
-  .map((m) => ({ ...m, cortes: cortesPais[m.id] ?? m.cortes }));
+// Medidas da aba (escritas nela ou escolhidas pelo id entre as da Visão geral, com os cortes de cor do país), só as que têm dado.
+const medidas = semMapa ? [] : medidasDaAba(pais, tema).filter((m) => economia.indicadores[m.id]);
+// Seletor de ano / "ver a evolução": só nas abas com série de anos (src/lib/economia-abas.ts).
+const anos = temAnos(pais, aba) ? { ...anosPorMedida(pais, aba), url: `/dados/${pais.slug}/economia/${aba}/{ano}.json` } : undefined;
 const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx, economia.indicadores)]));
 // Carimbo "selo + fonte · data" de um conjunto de fontes.
 const carimboDe = (frequencia: string | undefined, fontes: any[]) => {
@@ -178,7 +162,7 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
     <Abas itens={abas} atual={aba} rotulo="Economia" emBreve={site.textos.emBreve} />
     {cabMapa && (
       <div class="cab-mapa">
-        <div><h2>{cabMapa.titulo}</h2><p>{indPrincipal?.periodo}. {cabMapa.descricao}</p></div>
+        <div><h2>{cabMapa.titulo}</h2><p><span data-periodo-do-ano>{indPrincipal?.periodo}</span>. {cabMapa.descricao}</p></div>
         {fontePrincipal && (
           <p class="carimbo">
             {indPrincipal.frequencia && <span class="selo">{indPrincipal.frequencia}</span>}
@@ -195,7 +179,7 @@ const tituloPagina = aba === 'visao-geral' ? titulo : `${abas.find((a: any) => a
         {paineis.filter((p: any) => !p.lista && !p.cem).map((p: any) => <GraficoSerie {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} />)}
       </Vistas>
     )}
-    {!painelSeries && !semMapa && <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking}>
+    {!painelSeries && !semMapa && <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoesFinais} opcaoInicial={opcaoInicial} visoes={visoes} ranking={tema.ranking} anos={anos}>
       {balanca && <CartaoBalanca slot="lateral" dados={balanca} ctx={ctx} textos={tema.balanca.textos} />}
       {paineis.filter((p: any) => p.lista).map((p: any) => (
         <ListaBarras slot="painel" {...p.props} ctx={ctx} painelDe={p.cfg.id} oculto={p.cfg.id !== opcaoInicial} balanca={balanca} textosBalanca={tema.balanca?.textos} />

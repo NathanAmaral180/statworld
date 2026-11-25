@@ -3,7 +3,7 @@
   "pais": "BR",
   "nivel": "estado",
   "periodo": "2024",
-  "baixadoEm": "2026-11-22",
+  "baixadoEm": "2026-11-25",
   "indicadores": {
     "peso-pib": {
       "nome": "Participação no PIB do Brasil",
@@ -14,7 +14,7 @@
           "nome": "IBGE",
           "publicacao": "Contas Regionais do Brasil 2024",
           "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
-          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2002_2024_xls.zip",
           "dataDivulgacao": "2026-11-13"
         }
       ],
@@ -58,7 +58,7 @@
           "nome": "IBGE",
           "publicacao": "Contas Regionais do Brasil 2024",
           "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
-          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2002_2024_xls.zip",
           "dataDivulgacao": "2026-11-13"
         },
         {
@@ -67,7 +67,7 @@
           "url": "https://sidra.ibge.gov.br/tabela/6579"
         }
       ],
-      "calculo": "Cálculo do StatWorld: PIB do estado (Tabela 1 das Contas Regionais) dividido pela população estimada pelo IBGE para o mesmo ano.",
+      "calculo": "Cálculo do StatWorld: PIB do estado (Tabela 1 das Contas Regionais) dividido pela população do IBGE no mesmo ano (estimativa anual; em anos de Censo ou Contagem, a própria contagem).",
       "valores": {
         "AC": 32161,
         "AL": 30442,
@@ -108,7 +108,7 @@
           "nome": "IBGE",
           "publicacao": "Contas Regionais do Brasil 2024",
           "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
-          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2002_2024_xls.zip",
           "dataDivulgacao": "2026-11-13"
         }
       ],
@@ -153,7 +153,7 @@
           "nome": "IBGE",
           "publicacao": "Contas Regionais do Brasil 2024",
           "url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/48614-pib-cresceu-em-25-das-27-unidades-da-federacao-em-2024.html",
-          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2010_2024_xls.zip",
+          "arquivo": "https://ftp.ibge.gov.br/Contas_Regionais/2024/xls/Especiais_2002_2024_xls.zip",
           "dataDivulgacao": "2026-11-13"
         }
       ],

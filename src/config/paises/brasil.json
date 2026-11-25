@@ -40,7 +40,8 @@
       "estado": "brasil-estados"
     },
     "economia": {
-      "estado": "brasil-estados"
+      "estado": "brasil-estados",
+      "anos": "brasil-estados-anos"
     },
     "agro": {
       "estado": "brasil-estados-lavouras"

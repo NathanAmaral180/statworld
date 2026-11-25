@@ -41,7 +41,7 @@
     },
     {
       "id": "crescimento",
-      "rotulo": "Crescimento em {periodo}",
+      "rotulo": "Crescimento",
       "rotuloCurto": "Crescimento",
       "titulo": "Crescimento em {periodo}",
       "formato": "percentual",
