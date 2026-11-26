@@ -14,8 +14,15 @@
       "nome": "Economia · Brasil",
       "detalhe": "10 abas no ar",
       "peso": 20,
-      "pct": 85,
-      "situacao": "Faltam páginas de estado e município, ICMS e arrecadação por estado"
+      "pct": 93,
+      "situacao": "Página de São Paulo no ar no molde do design (rodada 5): mapa dos 645 municípios, busca, região, ranking longo; 4 abas com mapa. Faltam outros estados, abas Agro/Indústria/Serviços/Preços/Contas por município, bloco \"Agora\", página de município, ICMS e arrecadação",
+      "falta": [
+        "Outros 26 estados (dados + cadastro)",
+        "Agro, Indústria, Serviços, Preços e Contas públicas por município",
+        "Bloco \"Agora\" (pedir ao Claude Design)",
+        "Página de cada município",
+        "ICMS e arrecadação federal por estado"
+      ]
     },
     {
       "id": "economia-eua",
@@ -118,6 +125,47 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-26",
+      "titulo": "Página de São Paulo",
+      "de": 57.3,
+      "para": 58,
+      "itens": [
+        "/sp/economia no molde do Claude Design: mapa dos 645 municípios com zoom e regiões, busca sem acento, filtro por região, ranking com \"Ver todos\" e \"Sua cidade\", ficha com posição no estado e no Brasil",
+        "Abas com mapa: Visão geral, Trabalho (empregos de 2026), Impostos e Comércio exterior (exportações de 2026); as outras \"em breve\" ou \"sem dado\"",
+        "Linha \"PIB em 2026: +1,5% até agosto\" no topo",
+        "No mapa do Brasil, a ficha de SP leva aos municípios",
+        "Testado no computador e no celular",
+        "Clicar numa cidade (no mapa ou no ranking) aproxima o mapa até ela, com o nome das vizinhas; no computador, o mapa fica preso na tela ao descer o ranking",
+        "Mapa dos municípios em cinzas, com a cidade escolhida na cor da bandeira do estado (SP: vermelho); tema escuro também",
+        "Bandeiras: a de SP no título e a de 616 cidades na ficha, com crédito (só licença livre)"
+      ]
+    },
+    {
+      "data": "2026-11-26",
+      "titulo": "São Paulo: números de 2026",
+      "de": 57,
+      "para": 57.3,
+      "itens": [
+        "PIB mensal de SP (Fundação Seade) até agosto de 2026, com agro, indústria e serviços: +1,5% no ano",
+        "Índice de atividade do Banco Central para SP (IBCR-SP) até setembro de 2026",
+        "Exportações e importações de cada cidade de SP em 2026 (Comex Stat)",
+        "Empregos com carteira de cada cidade do Brasil, mês a mês em 2026 (Novo Caged)",
+        "Os três entram na atualização automática"
+      ]
+    },
+    {
+      "data": "2026-11-26",
+      "titulo": "São Paulo: molde pedido e dados adiantados",
+      "de": 57,
+      "para": 57,
+      "itens": [
+        "Pedido do molde da página de estado ao Claude Design (design/PEDIDO-molde-estado.md)",
+        "Mapa dos 645 municípios de SP e das 11 regiões do IBGE (scripts/mapa-municipios/)",
+        "PIB, peso no estado, PIB por pessoa e posição no Brasil (2023) e setores (2021) de cada município (scripts/pib-municipios/), conferidos com o Sidra e a notícia do IBGE",
+        "Série 2010–2023 guardada para o futuro \"ver a evolução\""
+      ]
+    },
     {
       "data": "2026-11-25",
       "titulo": "Pequeno universo dos Fios",

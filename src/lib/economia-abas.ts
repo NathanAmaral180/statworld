@@ -13,6 +13,7 @@ import { construirVisaoIndicador, type Medida } from '../componentes/mapa-rankin
 import { preencher, formatar, type Visao } from '../componentes/mapa-ranking/visao';
 import { carregarDados } from './dados';
 import { contextoDoPais } from './contexto';
+import { ligarEstados } from './estado';
 
 export const CONFIGS: Record<string, any> = { 'visao-geral': economiaEstados, impostos: impostosEstados, 'trabalho-renda': trabalhoEstados, precos: precosEstados, 'comercio-exterior': comercioEstados, 'dinheiro-juros': dinheiroBrasil, 'contas-publicas': contasBrasil };
 
@@ -64,7 +65,7 @@ export function visoesDoAno(pais: any, aba: string, ano: string): Record<string,
   const indUltimo = serie.porAno[ultimo];
   if (!ind) throw new Error(`Ano sem dados: ${ano}`);
   const medidas = medidasDaAba(pais, temaDaAba(pais, aba)).filter((m) => ind[m.id]);
-  return Object.fromEntries(medidas.map((m) => {
+  return ligarEstados(pais, Object.fromEntries(medidas.map((m) => {
     const v = construirVisaoIndicador(m.id, unidades, ind[m.id], m, ctx, ind);
     if (ano !== ultimo && indUltimo?.[m.id]) {
       const vu = construirVisaoIndicador(m.id, unidades, indUltimo[m.id], m, ctx, indUltimo);
@@ -84,5 +85,5 @@ export function visoesDoAno(pais: any, aba: string, ano: string): Record<string,
       }
     }
     return [m.id, v];
-  }));
+  })), aba);
 }

@@ -166,5 +166,69 @@
       "mercado": "Serviços oferecidos por empresas e profissionais: comércio, transporte, informação, finanças, imobiliárias e outros serviços (IBGE).",
       "publico": "Administração pública, defesa, seguridade social e educação e saúde públicas (IBGE)."
     }
+  },
+  "estados": {
+    "_explicacao": "Páginas de estado (mapa dos municípios), endereço /<uf>/economia. Só ganham página os estados em \"comPagina\", com os arquivos de dados de cada um. \"preposicao\" monta \"A economia de São Paulo\". \"abas\" de um estado troca a situação de uma aba só para ele (ver src/config/temas/economia-municipios.json). \"destaque\": cor de destaque do estado (contorno da cidade escolhida e barra dela no ranking), tirada da bandeira, com uma versão para o tema claro e outra para o escuro.",
+    "nivel": {
+      "singular": "município",
+      "plural": "municípios",
+      "Singular": "Município",
+      "totalPais": 5570
+    },
+    "preposicao": {
+      "AC": "do",
+      "AL": "de",
+      "AP": "do",
+      "AM": "do",
+      "BA": "da",
+      "CE": "do",
+      "DF": "do",
+      "ES": "do",
+      "GO": "de",
+      "MA": "do",
+      "MT": "de",
+      "MS": "de",
+      "MG": "de",
+      "PA": "do",
+      "PB": "da",
+      "PR": "do",
+      "PE": "de",
+      "PI": "do",
+      "RJ": "do",
+      "RN": "do",
+      "RS": "do",
+      "RO": "de",
+      "RR": "de",
+      "SC": "de",
+      "SP": "de",
+      "SE": "de",
+      "TO": "do"
+    },
+    "regioesPais": [
+      "Norte",
+      "Nordeste",
+      "Centro-Oeste",
+      "Sudeste",
+      "Sul"
+    ],
+    "fonteRegioes": "IBGE, Divisão regional do Brasil em regiões geográficas intermediárias (2017)",
+    "comPagina": {
+      "SP": {
+        "capital": "3550308",
+        "destaque": {
+          "claro": "#D21F2B",
+          "escuro": "#FF6B70",
+          "origem": "vermelho da bandeira de São Paulo"
+        },
+        "arquivos": {
+          "geo": "brasil-sp-municipios",
+          "economia": "brasil-sp-municipios",
+          "comercio": "brasil-sp-municipios",
+          "caged": "brasil-municipios-caged",
+          "atividade": "brasil-sp-atividade",
+          "bandeiras": "brasil-sp-bandeiras"
+        }
+      }
+    }
   }
 }

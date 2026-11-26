@@ -33,3 +33,10 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `industria/brasil-estados.json` | Indústria por estado e setor (valor da transformação e pessoas ocupadas) | `scripts/industria-estados/` |
 | `servicos/brasil-estados.json` | Serviços por estado e atividade (valor adicionado e crescimento real) | `scripts/servicos-estados/` |
 | `economia/brasil-estados.json` | Peso no PIB, PIB por pessoa e crescimento por estado | `scripts/pib-estados/` |
+| `geo/brasil-sp-municipios.json` | Contorno dos 645 municípios de SP e das 11 regiões intermediárias do IBGE | `scripts/mapa-municipios/` |
+| `economia/brasil-sp-municipios.json` | PIB, peso no PIB do estado, PIB por pessoa (2023) e setores (2021) por município de SP | `scripts/pib-municipios/` |
+| `economia/brasil-sp-municipios-anos.json` | PIB e PIB por pessoa dos municípios de SP, 2010–2023, sem correção pela inflação | `scripts/pib-municipios/` |
+| `economia/brasil-sp-atividade.json` | PIB mensal de SP (Seade) e IBCR-SP (Banco Central), mês a mês | `scripts/atividade-estado/` |
+| `comercio/brasil-sp-municipios.json` | Exportações e importações por município de SP (ano em curso e último ano completo) | `scripts/comercio-municipios/` |
+| `trabalho/brasil-municipios-caged.json` | Saldo de empregos com carteira por município do Brasil, mês a mês no ano | `scripts/caged-municipios/` |
+| `geo/brasil-sp-bandeiras.json` | Bandeiras de SP e de 616 municípios: arquivo em public/bandeiras/br/sp/, autor e licença | `scripts/bandeiras-municipios/` |

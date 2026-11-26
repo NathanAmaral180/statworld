@@ -1,0 +1,3716 @@
+{
+ "_explicacao": "Bandeiras de São Paulo e dos seus municípios (chave = código do IBGE; \"estado\" = a do estado). Só licenças livres. Gerado por scripts/bandeiras-municipios/baixar.mjs. Não edite à mão. Município sem bandeira aqui = sem bandeira na página.",
+ "fonte": {
+  "nome": "Wikidata (P41) e Wikimedia Commons",
+  "url": "https://commons.wikimedia.org",
+  "baixadoEm": "2026-11-26"
+ },
+ "estado": "SP",
+ "bandeiras": {
+  "3500105": {
+   "arquivo": "/bandeiras/br/sp/3500105.png",
+   "credito": "Municipal Prefecture of Adamantina, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Adamantina.jpg"
+  },
+  "3500303": {
+   "arquivo": "/bandeiras/br/sp/3500303.png",
+   "credito": "Aguaí City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-agua%C3%AD.png"
+  },
+  "3500402": {
+   "arquivo": "/bandeiras/br/sp/3500402.png",
+   "credito": "Artistas municipais, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_aguasdaprata.jpg"
+  },
+  "3500501": {
+   "arquivo": "/bandeiras/br/sp/3500501.png",
+   "credito": "Águas de Lindóia City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-aguasdelindoia.png"
+  },
+  "3500550": {
+   "arquivo": "/bandeiras/br/sp/3500550.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_%C3%81guas_de_Santa_B%C3%A1rbara.png"
+  },
+  "3500600": {
+   "arquivo": "/bandeiras/br/sp/3500600.png",
+   "credito": "Eduardo Shiroma (Agente Rolf): only edited the original image., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_%C3%81guas_de_S%C3%A3o_Pedro.png"
+  },
+  "3500709": {
+   "arquivo": "/bandeiras/br/sp/3500709.png",
+   "credito": "Agudos City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-agudos.png"
+  },
+  "3500758": {
+   "arquivo": "/bandeiras/br/sp/3500758.png",
+   "credito": "City Hall of Alambari, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Alambari_SP.png"
+  },
+  "3500808": {
+   "arquivo": "/bandeiras/br/sp/3500808.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Alfredo_Marcondes.png"
+  },
+  "3501004": {
+   "arquivo": "/bandeiras/br/sp/3501004.png",
+   "credito": "Prefeitura Municipal de Altinópolis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraaltinopolis.jpg"
+  },
+  "3501103": {
+   "arquivo": "/bandeiras/br/sp/3501103.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Alto_Alegre.png"
+  },
+  "3501152": {
+   "arquivo": "/bandeiras/br/sp/3501152.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Alum%C3%ADnio.jpg"
+  },
+  "3501202": {
+   "arquivo": "/bandeiras/br/sp/3501202.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_%C3%81lvares_Florence.png"
+  },
+  "3501301": {
+   "arquivo": "/bandeiras/br/sp/3501301.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_%C3%81lvares_Machado.jpg"
+  },
+  "3501400": {
+   "arquivo": "/bandeiras/br/sp/3501400.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_%C3%81lvaro_de_Carvalho.png"
+  },
+  "3501509": {
+   "arquivo": "/bandeiras/br/sp/3501509.png",
+   "credito": "PrefeituradeAlvinlandia, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Alvinlandia.jpg"
+  },
+  "3501608": {
+   "arquivo": "/bandeiras/br/sp/3501608.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Americana_-_SP.svg"
+  },
+  "3501707": {
+   "arquivo": "/bandeiras/br/sp/3501707.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_americo_brasiliense.png"
+  },
+  "3501806": {
+   "arquivo": "/bandeiras/br/sp/3501806.png",
+   "credito": "Prefeitura de Américo de Campos, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_americo_de_campos.JPG"
+  },
+  "3501905": {
+   "arquivo": "/bandeiras/br/sp/3501905.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:AmparoBand.jpg"
+  },
+  "3502002": {
+   "arquivo": "/bandeiras/br/sp/3502002.png",
+   "credito": "Manoel V. Lisboa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraanalandia.jpg"
+  },
+  "3502101": {
+   "arquivo": "/bandeiras/br/sp/3502101.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Andradina_-_SP.svg"
+  },
+  "3502200": {
+   "arquivo": "/bandeiras/br/sp/3502200.png",
+   "credito": "The original uploader was GronkOkara at Portuguese Wikipedia., fornecida pela prefeitura do município de Angatuba pelo funcionário Sr. João (\"João da junta\") joaopma@ig.com.br., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Angatuba.jpg"
+  },
+  "3502309": {
+   "arquivo": "/bandeiras/br/sp/3502309.png",
+   "credito": "Prefeitura de Anhembi, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Anhembi_bandeira.jpg"
+  },
+  "3502408": {
+   "arquivo": "/bandeiras/br/sp/3502408.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Anhumas.png"
+  },
+  "3502507": {
+   "arquivo": "/bandeiras/br/sp/3502507.png",
+   "credito": "Município de Aparecida, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Aparecida-SP.png"
+  },
+  "3502606": {
+   "arquivo": "/bandeiras/br/sp/3502606.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Aparecida_d%27Oeste.png"
+  },
+  "3502705": {
+   "arquivo": "/bandeiras/br/sp/3502705.png",
+   "credito": "Evandroapiai, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_apiai.jpg"
+  },
+  "3502754": {
+   "arquivo": "/bandeiras/br/sp/3502754.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ara%C3%A7ariguama.png"
+  },
+  "3502804": {
+   "arquivo": "/bandeiras/br/sp/3502804.png",
+   "credito": "Abyssmanx, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ara%C3%A7atuba.svg"
+  },
+  "3502903": {
+   "arquivo": "/bandeiras/br/sp/3502903.png",
+   "credito": "Euskadirlz, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ara%C3%A7oiaba_da_serra.JPG"
+  },
+  "3503000": {
+   "arquivo": "/bandeiras/br/sp/3503000.png",
+   "credito": "Prefeitura Municipal de Aramina., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_aramina.png"
+  },
+  "3503109": {
+   "arquivo": "/bandeiras/br/sp/3503109.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Arandu.png"
+  },
+  "3503158": {
+   "arquivo": "/bandeiras/br/sp/3503158.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Arapei_bandeira.png"
+  },
+  "3503208": {
+   "arquivo": "/bandeiras/br/sp/3503208.png",
+   "credito": "Own work, José Romeu Ferraz, Guilherme de Almeida &amp; Lauro Ribeiro Escobar, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraAraraquara.svg"
+  },
+  "3503307": {
+   "arquivo": "/bandeiras/br/sp/3503307.png",
+   "credito": "Enzo Silveira, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Araras.svg"
+  },
+  "3503356": {
+   "arquivo": "/bandeiras/br/sp/3503356.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Arco-%C3%8Dris.png"
+  },
+  "3503406": {
+   "arquivo": "/bandeiras/br/sp/3503406.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Arealva.png"
+  },
+  "3503505": {
+   "arquivo": "/bandeiras/br/sp/3503505.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Areias_bandeira.png"
+  },
+  "3503604": {
+   "arquivo": "/bandeiras/br/sp/3503604.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Arei%C3%B3polis.png"
+  },
+  "3503703": {
+   "arquivo": "/bandeiras/br/sp/3503703.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ariranha.jpg"
+  },
+  "3503802": {
+   "arquivo": "/bandeiras/br/sp/3503802.png",
+   "credito": "Governo braileiro, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Artur_Nogueira.jpg"
+  },
+  "3503901": {
+   "arquivo": "/bandeiras/br/sp/3503901.png",
+   "credito": "Prefeitura Municipal de Arujá, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Aruj%C3%A1_nova.gif"
+  },
+  "3503950": {
+   "arquivo": "/bandeiras/br/sp/3503950.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Asp%C3%A1sia.png"
+  },
+  "3504008": {
+   "arquivo": "/bandeiras/br/sp/3504008.png",
+   "credito": "Prefeitura de Assis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Assis.Bandeira.jpg"
+  },
+  "3504107": {
+   "arquivo": "/bandeiras/br/sp/3504107.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Atibaia.jpg"
+  },
+  "3504206": {
+   "arquivo": "/bandeiras/br/sp/3504206.png",
+   "credito": "Fermino, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_auriflama.png"
+  },
+  "3504305": {
+   "arquivo": "/bandeiras/br/sp/3504305.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Ava%C3%AD_-_SP.png"
+  },
+  "3504404": {
+   "arquivo": "/bandeiras/br/sp/3504404.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Avanhandava.jpg"
+  },
+  "3504503": {
+   "arquivo": "/bandeiras/br/sp/3504503.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Avar%C3%A9.jpg"
+  },
+  "3504602": {
+   "arquivo": "/bandeiras/br/sp/3504602.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_BadyBassit_SaoPaulo_Brasil.svg"
+  },
+  "3504701": {
+   "arquivo": "/bandeiras/br/sp/3504701.png",
+   "credito": "Balbinos City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-balbinossp.jpg"
+  },
+  "3504800": {
+   "arquivo": "/bandeiras/br/sp/3504800.png",
+   "credito": "Prefeitura Municipal de Bálsamo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_B%C3%A1lsamo.png"
+  },
+  "3504909": {
+   "arquivo": "/bandeiras/br/sp/3504909.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bananal_bandeira.png"
+  },
+  "3505104": {
+   "arquivo": "/bandeiras/br/sp/3505104.png",
+   "credito": "Prefeitura Municipal de Barbosa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Barbosa.jpg"
+  },
+  "3505203": {
+   "arquivo": "/bandeiras/br/sp/3505203.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Bariri_-_SP.jpg"
+  },
+  "3505302": {
+   "arquivo": "/bandeiras/br/sp/3505302.png",
+   "credito": "Prefeitura de Barra Bonita, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Barra_Bonita_SP.jpg"
+  },
+  "3505351": {
+   "arquivo": "/bandeiras/br/sp/3505351.png",
+   "credito": "City Hall of Barra do Chapéu, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Barra_do_Chapeu_SP.png"
+  },
+  "3505401": {
+   "arquivo": "/bandeiras/br/sp/3505401.png",
+   "credito": "Confederação Nacional dos Municípios, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_barra_do_turvo_bandeira.png"
+  },
+  "3505500": {
+   "arquivo": "/bandeiras/br/sp/3505500.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Barretos_SaoPaulo_Brasil.svg"
+  },
+  "3505609": {
+   "arquivo": "/bandeiras/br/sp/3505609.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Barrinha.png"
+  },
+  "3505708": {
+   "arquivo": "/bandeiras/br/sp/3505708.png",
+   "credito": "Prefeitura de Barueri, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Barueri.jpg"
+  },
+  "3505807": {
+   "arquivo": "/bandeiras/br/sp/3505807.png",
+   "credito": "Domaleixo, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_bastos.PNG"
+  },
+  "3505906": {
+   "arquivo": "/bandeiras/br/sp/3505906.png",
+   "credito": "ViniciusBR11; Prefeitura de Batatais, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraBatatais.svg"
+  },
+  "3506003": {
+   "arquivo": "/bandeiras/br/sp/3506003.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Bauru_-_SP.svg"
+  },
+  "3506102": {
+   "arquivo": "/bandeiras/br/sp/3506102.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraBebedouro.jpg"
+  },
+  "3506201": {
+   "arquivo": "/bandeiras/br/sp/3506201.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Bento_de_Abreu.png"
+  },
+  "3506300": {
+   "arquivo": "/bandeiras/br/sp/3506300.png",
+   "credito": "Prefeitura do Município de Bernardino de Campos São Paulo, Brasil, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_bernardino_de_campos.jpg"
+  },
+  "3506359": {
+   "arquivo": "/bandeiras/br/sp/3506359.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Bertioga.jpg"
+  },
+  "3506409": {
+   "arquivo": "/bandeiras/br/sp/3506409.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Bilac.jpg"
+  },
+  "3506508": {
+   "arquivo": "/bandeiras/br/sp/3506508.png",
+   "credito": "Município de Birigüi, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Birig%C3%BCi.svg"
+  },
+  "3506607": {
+   "arquivo": "/bandeiras/br/sp/3506607.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Biritiba-Mirim.jpg"
+  },
+  "3506706": {
+   "arquivo": "/bandeiras/br/sp/3506706.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Boa_Esperan%C3%A7a_do_Sul.jpg"
+  },
+  "3506805": {
+   "arquivo": "/bandeiras/br/sp/3506805.png",
+   "credito": "Prefeitura Municipal de Bocaina, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Bocaina.jpg"
+  },
+  "3506904": {
+   "arquivo": "/bandeiras/br/sp/3506904.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Bofete.png"
+  },
+  "3507001": {
+   "arquivo": "/bandeiras/br/sp/3507001.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Boituva.jpg"
+  },
+  "3507100": {
+   "arquivo": "/bandeiras/br/sp/3507100.png",
+   "credito": "Lauro Ribeiro Escobar, dr., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BJP_bandeira_2.jpg"
+  },
+  "3507159": {
+   "arquivo": "/bandeiras/br/sp/3507159.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Bom_Sucesso_de_Itarar%C3%A9.jpg"
+  },
+  "3507308": {
+   "arquivo": "/bandeiras/br/sp/3507308.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Boraceia.png"
+  },
+  "3507407": {
+   "arquivo": "/bandeiras/br/sp/3507407.png",
+   "credito": "Municipal Prefecture of Borborema, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_borborema.png"
+  },
+  "3507456": {
+   "arquivo": "/bandeiras/br/sp/3507456.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Borebi.png"
+  },
+  "3507506": {
+   "arquivo": "/bandeiras/br/sp/3507506.png",
+   "credito": "Prefeitura Municipal de Botucatu, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Botucatu_SaoPaulo_Brasil.svg"
+  },
+  "3507605": {
+   "arquivo": "/bandeiras/br/sp/3507605.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Bragan%C3%A7a_Paulista.jpg"
+  },
+  "3507704": {
+   "arquivo": "/bandeiras/br/sp/3507704.png",
+   "credito": "Prefeitura Municipal de Brauna, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Bra%C3%BAna.png"
+  },
+  "3507753": {
+   "arquivo": "/bandeiras/br/sp/3507753.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Brejo_Alegre.png"
+  },
+  "3507803": {
+   "arquivo": "/bandeiras/br/sp/3507803.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Brodowski.png"
+  },
+  "3507902": {
+   "arquivo": "/bandeiras/br/sp/3507902.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Brotas.png"
+  },
+  "3508009": {
+   "arquivo": "/bandeiras/br/sp/3508009.png",
+   "credito": "pm buri, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraburi.jpg"
+  },
+  "3508108": {
+   "arquivo": "/bandeiras/br/sp/3508108.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Buritama_-_SP.svg"
+  },
+  "3508207": {
+   "arquivo": "/bandeiras/br/sp/3508207.png",
+   "credito": "Prefeitura Municipal de Buritizal., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Buritizal.png"
+  },
+  "3508306": {
+   "arquivo": "/bandeiras/br/sp/3508306.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Cabr%C3%A1lia_Paulista.png"
+  },
+  "3508405": {
+   "arquivo": "/bandeiras/br/sp/3508405.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cabreuva.jpg"
+  },
+  "3508504": {
+   "arquivo": "/bandeiras/br/sp/3508504.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cacapava_bandeira.png"
+  },
+  "3508603": {
+   "arquivo": "/bandeiras/br/sp/3508603.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cachoeirapaulista_bandeira.png"
+  },
+  "3508702": {
+   "arquivo": "/bandeiras/br/sp/3508702.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiradeCaconde.jpg"
+  },
+  "3508801": {
+   "arquivo": "/bandeiras/br/sp/3508801.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cafel%C3%A2ndia.png"
+  },
+  "3508900": {
+   "arquivo": "/bandeiras/br/sp/3508900.png",
+   "credito": "Prefeitura Municipal de Caiabu, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Caiabu.jpg"
+  },
+  "3509007": {
+   "arquivo": "/bandeiras/br/sp/3509007.png",
+   "credito": "Município de Caieiras, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Caieiras.png"
+  },
+  "3509106": {
+   "arquivo": "/bandeiras/br/sp/3509106.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Caiu%C3%A1.png"
+  },
+  "3509205": {
+   "arquivo": "/bandeiras/br/sp/3509205.png",
+   "credito": "Prefeitura Municipal de Cajamar - SP Brazil, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Cajamar.jpg"
+  },
+  "3509254": {
+   "arquivo": "/bandeiras/br/sp/3509254.png",
+   "credito": "Prefeitura Municipal de Cajati, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Cajati.jpg"
+  },
+  "3509304": {
+   "arquivo": "/bandeiras/br/sp/3509304.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cajobi.png"
+  },
+  "3509403": {
+   "arquivo": "/bandeiras/br/sp/3509403.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cajuru.png"
+  },
+  "3509452": {
+   "arquivo": "/bandeiras/br/sp/3509452.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiracma.jpg"
+  },
+  "3509502": {
+   "arquivo": "/bandeiras/br/sp/3509502.png",
+   "credito": "Guilherme de Almeida, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Campinas_city_flag.svg"
+  },
+  "3509601": {
+   "arquivo": "/bandeiras/br/sp/3509601.png",
+   "credito": "Arcinóe Antonio Peixoto de Faria, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_campo_limpo_paulista.png"
+  },
+  "3509700": {
+   "arquivo": "/bandeiras/br/sp/3509700.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_CamposdoJordao_SaoPaulo_Brasil_2.svg"
+  },
+  "3509809": {
+   "arquivo": "/bandeiras/br/sp/3509809.png",
+   "credito": "Prefeitura Municipal de Campos Novos Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraCamposNovosPta.jpg"
+  },
+  "3509908": {
+   "arquivo": "/bandeiras/br/sp/3509908.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cananeia_SaoPaulo_Brasil.svg"
+  },
+  "3509957": {
+   "arquivo": "/bandeiras/br/sp/3509957.png",
+   "credito": "Prefeitura de Canas, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Canas_-_SP.jpg"
+  },
+  "3510005": {
+   "arquivo": "/bandeiras/br/sp/3510005.png",
+   "credito": "Prefeitura Municipal de Cândido Mota, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraCandidoMota.jpg"
+  },
+  "3510104": {
+   "arquivo": "/bandeiras/br/sp/3510104.png",
+   "credito": "Prefeitura Municipal de Cândido Rodrigues., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_C%C3%A2ndido_Rodrigues.jpg"
+  },
+  "3510203": {
+   "arquivo": "/bandeiras/br/sp/3510203.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Cap%C3%A3o_Bonito.jpg"
+  },
+  "3510302": {
+   "arquivo": "/bandeiras/br/sp/3510302.png",
+   "credito": "City Hall of Capela do Alto, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Capela_do_Alto_SP.png"
+  },
+  "3510401": {
+   "arquivo": "/bandeiras/br/sp/3510401.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Capivari.jpg"
+  },
+  "3510500": {
+   "arquivo": "/bandeiras/br/sp/3510500.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Caraguatatuba_SaoPaulo_Brasil_v2.svg"
+  },
+  "3510609": {
+   "arquivo": "/bandeiras/br/sp/3510609.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Carapicuiba_bandeira.jpg"
+  },
+  "3510708": {
+   "arquivo": "/bandeiras/br/sp/3510708.png",
+   "credito": "Prefeitura Municipal de Cardoso/SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiracardososp.JPG"
+  },
+  "3510807": {
+   "arquivo": "/bandeiras/br/sp/3510807.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiracasabranca.jpg"
+  },
+  "3510906": {
+   "arquivo": "/bandeiras/br/sp/3510906.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Cassia_dos_Coqueiros_-_SP.png"
+  },
+  "3511003": {
+   "arquivo": "/bandeiras/br/sp/3511003.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Castilho.png"
+  },
+  "3511102": {
+   "arquivo": "/bandeiras/br/sp/3511102.png",
+   "credito": "The original uploader was Laudison at Portuguese Wikipedia., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_catanduva.jpg"
+  },
+  "3511201": {
+   "arquivo": "/bandeiras/br/sp/3511201.png",
+   "credito": "Plinio Fuzaro, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Catigu%C3%A1.jpg"
+  },
+  "3511300": {
+   "arquivo": "/bandeiras/br/sp/3511300.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cedral.png"
+  },
+  "3511409": {
+   "arquivo": "/bandeiras/br/sp/3511409.png",
+   "credito": "Prefeitura de Cerqueira César, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Munic%C3%ADpio_Cerqueira_C%C3%A9sar.jpg"
+  },
+  "3511508": {
+   "arquivo": "/bandeiras/br/sp/3511508.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Band_cerq.png"
+  },
+  "3511607": {
+   "arquivo": "/bandeiras/br/sp/3511607.png",
+   "credito": "Prefeitura Municipal de Cesário Lange - SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ces%C3%A1rio_Lange.png"
+  },
+  "3511706": {
+   "arquivo": "/bandeiras/br/sp/3511706.png",
+   "credito": "Charqueada municipality., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Charqueada.jpg"
+  },
+  "3511904": {
+   "arquivo": "/bandeiras/br/sp/3511904.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Clementina.jpg"
+  },
+  "3512001": {
+   "arquivo": "/bandeiras/br/sp/3512001.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiracolina.jpg"
+  },
+  "3512100": {
+   "arquivo": "/bandeiras/br/sp/3512100.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Col%C3%B4mbia.png"
+  },
+  "3512209": {
+   "arquivo": "/bandeiras/br/sp/3512209.png",
+   "credito": "Prefeitura do Município de Conchal - SP |Upload: Ademirazevedo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiradeconchal.jpg"
+  },
+  "3512308": {
+   "arquivo": "/bandeiras/br/sp/3512308.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Conchas.png"
+  },
+  "3512407": {
+   "arquivo": "/bandeiras/br/sp/3512407.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cordeir%C3%B3polis.png"
+  },
+  "3512506": {
+   "arquivo": "/bandeiras/br/sp/3512506.png",
+   "credito": "Prefeitura Municipal de Coroados, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Coroados.png"
+  },
+  "3512605": {
+   "arquivo": "/bandeiras/br/sp/3512605.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Coronel_Macedo.png"
+  },
+  "3512704": {
+   "arquivo": "/bandeiras/br/sp/3512704.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Corumbata%C3%AD.png"
+  },
+  "3512803": {
+   "arquivo": "/bandeiras/br/sp/3512803.png",
+   "credito": "Gilson de Moura, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cosmopolis-bandeira.jpg"
+  },
+  "3512902": {
+   "arquivo": "/bandeiras/br/sp/3512902.png",
+   "credito": "Gilson de Moura, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cosmorama-bandeira.jpg"
+  },
+  "3513108": {
+   "arquivo": "/bandeiras/br/sp/3513108.png",
+   "credito": "Cravinhos City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-cravinhos.png"
+  },
+  "3513207": {
+   "arquivo": "/bandeiras/br/sp/3513207.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Cristais_Paulista.png"
+  },
+  "3513306": {
+   "arquivo": "/bandeiras/br/sp/3513306.png",
+   "credito": "Prefeitura Municipal de Cruzália, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraCruzalia.jpg"
+  },
+  "3513405": {
+   "arquivo": "/bandeiras/br/sp/3513405.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Cruzeiro_(SP).svg"
+  },
+  "3513504": {
+   "arquivo": "/bandeiras/br/sp/3513504.png",
+   "credito": "Humbertosousasilva 01:31, 6 February 2008 (UTC), CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cubatao_bandeira.png"
+  },
+  "3513603": {
+   "arquivo": "/bandeiras/br/sp/3513603.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cunha_bandeira.png"
+  },
+  "3513702": {
+   "arquivo": "/bandeiras/br/sp/3513702.png",
+   "credito": "Prefeitura de Descalvado, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Descalvado-SP.jpg"
+  },
+  "3513801": {
+   "arquivo": "/bandeiras/br/sp/3513801.png",
+   "credito": "Marcos Elias de Oliveira Júnior, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Diadema-SP,_Brasil.png"
+  },
+  "3513850": {
+   "arquivo": "/bandeiras/br/sp/3513850.png",
+   "credito": "Prefeitura de Dirce Reis sp, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Dircereisspflag.jpg"
+  },
+  "3513900": {
+   "arquivo": "/bandeiras/br/sp/3513900.png",
+   "credito": "Prefeitura Municipal de Divinolândia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Divinol%C3%A2ndia.png"
+  },
+  "3514007": {
+   "arquivo": "/bandeiras/br/sp/3514007.png",
+   "credito": "Prefeitura Municipal de Dobrada, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Dobrada.png"
+  },
+  "3514106": {
+   "arquivo": "/bandeiras/br/sp/3514106.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Dois_C%C3%B3rregos.png"
+  },
+  "3514205": {
+   "arquivo": "/bandeiras/br/sp/3514205.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Dolcin%C3%B3polis.png"
+  },
+  "3514304": {
+   "arquivo": "/bandeiras/br/sp/3514304.png",
+   "credito": "http://www.dourado.sp.gov.br/, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Dourado_SP.jpg"
+  },
+  "3514403": {
+   "arquivo": "/bandeiras/br/sp/3514403.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Dracena_SaoPaulo_Brasil.svg"
+  },
+  "3514502": {
+   "arquivo": "/bandeiras/br/sp/3514502.png",
+   "credito": "Prefeitura Municipal de Duartina - SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Duartina.jpg"
+  },
+  "3514601": {
+   "arquivo": "/bandeiras/br/sp/3514601.png",
+   "credito": "Eftibali (talk), Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Dumont_SaoPaulo_Brasil.jpg"
+  },
+  "3514700": {
+   "arquivo": "/bandeiras/br/sp/3514700.png",
+   "credito": "Prefeitura de Echaporã, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Echapor%C3%A3-SP,Brasil.jpg"
+  },
+  "3514809": {
+   "arquivo": "/bandeiras/br/sp/3514809.png",
+   "credito": "Curiosidades do Vale do Ribeira e Suas Cidades, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Eldorado_SP.png"
+  },
+  "3514908": {
+   "arquivo": "/bandeiras/br/sp/3514908.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Elias_Fausto.png"
+  },
+  "3514924": {
+   "arquivo": "/bandeiras/br/sp/3514924.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Elisi%C3%A1rio.png"
+  },
+  "3515004": {
+   "arquivo": "/bandeiras/br/sp/3515004.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraEmbu.jpg"
+  },
+  "3515103": {
+   "arquivo": "/bandeiras/br/sp/3515103.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_embu-guacu.jpg"
+  },
+  "3515129": {
+   "arquivo": "/bandeiras/br/sp/3515129.png",
+   "credito": "Prefeitura Municipal de Emilianópolis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Emilian%C3%B3polis.png"
+  },
+  "3515152": {
+   "arquivo": "/bandeiras/br/sp/3515152.png",
+   "credito": "Prefeitura Municipal de Engenheiro Coelho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira.engenheiro.coelho.jpg"
+  },
+  "3515186": {
+   "arquivo": "/bandeiras/br/sp/3515186.png",
+   "credito": "Unknown authorUnknown author, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Espirito_Santo_do_Pinhal.jpg"
+  },
+  "3515194": {
+   "arquivo": "/bandeiras/br/sp/3515194.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Esp%C3%ADrito_Santo_do_Turvo.png"
+  },
+  "3515202": {
+   "arquivo": "/bandeiras/br/sp/3515202.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Estrela_d%27Oeste.png"
+  },
+  "3515301": {
+   "arquivo": "/bandeiras/br/sp/3515301.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Estrela_do_Norte.jpg"
+  },
+  "3515400": {
+   "arquivo": "/bandeiras/br/sp/3515400.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Fartura.png"
+  },
+  "3515509": {
+   "arquivo": "/bandeiras/br/sp/3515509.png",
+   "credito": "Prefeitura Municipal de Fernandópolis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Fernand%C3%B3polis,_SP.jpg"
+  },
+  "3515608": {
+   "arquivo": "/bandeiras/br/sp/3515608.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Fernando_Prestes_-.jpg"
+  },
+  "3515657": {
+   "arquivo": "/bandeiras/br/sp/3515657.png",
+   "credito": "Prefeitura Municipal de Fernão, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Fern%C3%A3o.png"
+  },
+  "3515707": {
+   "arquivo": "/bandeiras/br/sp/3515707.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_ferrazdevasconcelos.jpg"
+  },
+  "3515806": {
+   "arquivo": "/bandeiras/br/sp/3515806.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Flora_Rica.png"
+  },
+  "3515905": {
+   "arquivo": "/bandeiras/br/sp/3515905.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Floreal.png"
+  },
+  "3516002": {
+   "arquivo": "/bandeiras/br/sp/3516002.png",
+   "credito": "No machine-readable author provided. Tarnoschi assumed (based on copyright claims)., CC BY 2.5",
+   "licenca": "CC BY 2.5",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Fl%C3%B3rida_Paulista.jpg"
+  },
+  "3516101": {
+   "arquivo": "/bandeiras/br/sp/3516101.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Flor%C3%ADnea.png"
+  },
+  "3516200": {
+   "arquivo": "/bandeiras/br/sp/3516200.png",
+   "credito": "Thiagoleal1993, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_da_cidade_de_Franca.jpg"
+  },
+  "3516309": {
+   "arquivo": "/bandeiras/br/sp/3516309.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraFranciscoMorato.png"
+  },
+  "3516408": {
+   "arquivo": "/bandeiras/br/sp/3516408.png",
+   "credito": "Municipal Prefecture of, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Franco_da_Rocha.jpg"
+  },
+  "3516507": {
+   "arquivo": "/bandeiras/br/sp/3516507.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Gabriel_Monteiro.png"
+  },
+  "3516606": {
+   "arquivo": "/bandeiras/br/sp/3516606.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_G%C3%A1lia.jpg"
+  },
+  "3516705": {
+   "arquivo": "/bandeiras/br/sp/3516705.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Gar%C3%A7a.png"
+  },
+  "3516804": {
+   "arquivo": "/bandeiras/br/sp/3516804.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Gast%C3%A3o_Vidigal.png"
+  },
+  "3516853": {
+   "arquivo": "/bandeiras/br/sp/3516853.png",
+   "credito": "Prefeitura Municipal de Gavião Peixoto, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Gavi%C3%A3o_Peixoto.png"
+  },
+  "3516903": {
+   "arquivo": "/bandeiras/br/sp/3516903.png",
+   "credito": "Prefeitura Municipal de General Salgado, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_General_Salgado.png"
+  },
+  "3517000": {
+   "arquivo": "/bandeiras/br/sp/3517000.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Getulina.png"
+  },
+  "3517109": {
+   "arquivo": "/bandeiras/br/sp/3517109.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Glic%C3%A9rio.png"
+  },
+  "3517208": {
+   "arquivo": "/bandeiras/br/sp/3517208.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guai%C3%A7ara.png"
+  },
+  "3517307": {
+   "arquivo": "/bandeiras/br/sp/3517307.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guaimb%C3%AA.jpg"
+  },
+  "3517406": {
+   "arquivo": "/bandeiras/br/sp/3517406.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraguaira.jpg"
+  },
+  "3517505": {
+   "arquivo": "/bandeiras/br/sp/3517505.png",
+   "credito": "Dr. Lauro Ribeiro Escobar, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guapia%C3%A7u,_SP.jpg"
+  },
+  "3517604": {
+   "arquivo": "/bandeiras/br/sp/3517604.png",
+   "credito": "Prefeitura Municipal de Guapiara, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guapiara.png"
+  },
+  "3517703": {
+   "arquivo": "/bandeiras/br/sp/3517703.png",
+   "credito": "Prefeitura Municipal de Guará, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guar%C3%A1_(SP).png"
+  },
+  "3517802": {
+   "arquivo": "/bandeiras/br/sp/3517802.png",
+   "credito": "Prefeitura Municipal de Guaraçaí, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guaracai.jpg"
+  },
+  "3517901": {
+   "arquivo": "/bandeiras/br/sp/3517901.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guaraci.png"
+  },
+  "3518008": {
+   "arquivo": "/bandeiras/br/sp/3518008.png",
+   "credito": "Município de Guarani d'Oeste, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Munic%C3%ADpio_de_Guarani_d%27Oeste.png"
+  },
+  "3518107": {
+   "arquivo": "/bandeiras/br/sp/3518107.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guarant%C3%A3.png"
+  },
+  "3518206": {
+   "arquivo": "/bandeiras/br/sp/3518206.png",
+   "credito": "Prefeitura Municipal de Guararapes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guararapes.png"
+  },
+  "3518305": {
+   "arquivo": "/bandeiras/br/sp/3518305.png",
+   "credito": "Município de Guararema, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Guararema-SP.png"
+  },
+  "3518404": {
+   "arquivo": "/bandeiras/br/sp/3518404.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guaratingueta_SaoPaulo_Brasil_2.svg"
+  },
+  "3518503": {
+   "arquivo": "/bandeiras/br/sp/3518503.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guare%C3%AD.png"
+  },
+  "3518602": {
+   "arquivo": "/bandeiras/br/sp/3518602.png",
+   "credito": "Guariba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Guaribafl.jpg"
+  },
+  "3518701": {
+   "arquivo": "/bandeiras/br/sp/3518701.png",
+   "credito": "Prefeitura do Guarujá, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Guaruj%C3%A1.png"
+  },
+  "3518800": {
+   "arquivo": "/bandeiras/br/sp/3518800.png",
+   "credito": "Prefeitura de Guarulhos, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guarulhos.svg"
+  },
+  "3518859": {
+   "arquivo": "/bandeiras/br/sp/3518859.png",
+   "credito": "Site oficial da Prefeitura (http://www.guatapara.sp.gov.br/)., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guatapar%C3%A1.png"
+  },
+  "3518909": {
+   "arquivo": "/bandeiras/br/sp/3518909.png",
+   "credito": "Prefeitura Municipal de Guzolândia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Guzol%C3%A2ndia,_SP.jpg"
+  },
+  "3519006": {
+   "arquivo": "/bandeiras/br/sp/3519006.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Hercul%C3%A2ndia.png"
+  },
+  "3519055": {
+   "arquivo": "/bandeiras/br/sp/3519055.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Holambra.jpg"
+  },
+  "3519071": {
+   "arquivo": "/bandeiras/br/sp/3519071.png",
+   "credito": "own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Hortolandia_SaoPaulo_Brasil.svg"
+  },
+  "3519105": {
+   "arquivo": "/bandeiras/br/sp/3519105.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Iacanga.jpg"
+  },
+  "3519204": {
+   "arquivo": "/bandeiras/br/sp/3519204.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Iacri_-_SP.png"
+  },
+  "3519303": {
+   "arquivo": "/bandeiras/br/sp/3519303.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Ibat%C3%A9_-_SP.png"
+  },
+  "3519402": {
+   "arquivo": "/bandeiras/br/sp/3519402.png",
+   "credito": "Arcinóe Antonio Peixoto de Faria, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Sp-ibira-bandeira.jpg"
+  },
+  "3519501": {
+   "arquivo": "/bandeiras/br/sp/3519501.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ibirarema.jpg"
+  },
+  "3519600": {
+   "arquivo": "/bandeiras/br/sp/3519600.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ibitinga.jpg"
+  },
+  "3519709": {
+   "arquivo": "/bandeiras/br/sp/3519709.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Band_ibiuna.jpg"
+  },
+  "3519907": {
+   "arquivo": "/bandeiras/br/sp/3519907.png",
+   "credito": "Prefeitura Municipal de Iepê, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraIepe.jpg"
+  },
+  "3520004": {
+   "arquivo": "/bandeiras/br/sp/3520004.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Igara%C3%A7u_do_Tiet%C3%AA.jpg"
+  },
+  "3520103": {
+   "arquivo": "/bandeiras/br/sp/3520103.png",
+   "credito": "ViniciusBR11, Prefeitura de Igarapava, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraIgarapava.png"
+  },
+  "3520202": {
+   "arquivo": "/bandeiras/br/sp/3520202.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Igarata_SaoPaulo_Brasil.svg"
+  },
+  "3520301": {
+   "arquivo": "/bandeiras/br/sp/3520301.png",
+   "credito": "Prefeitura Municipal de Iguape/SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_iguape.JPG"
+  },
+  "3520400": {
+   "arquivo": "/bandeiras/br/sp/3520400.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ilhabela_bandeira.gif"
+  },
+  "3520426": {
+   "arquivo": "/bandeiras/br/sp/3520426.png",
+   "credito": "Sidnei Oliveira Pinho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_IlhaComprida_SaoPaulo_Brasil.svg"
+  },
+  "3520442": {
+   "arquivo": "/bandeiras/br/sp/3520442.png",
+   "credito": "Own Work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ilha_Solteira.jpg"
+  },
+  "3520509": {
+   "arquivo": "/bandeiras/br/sp/3520509.png",
+   "credito": "Rbalieiro, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Indaiatuba_bandeira.svg"
+  },
+  "3520608": {
+   "arquivo": "/bandeiras/br/sp/3520608.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Indiana.jpg"
+  },
+  "3520707": {
+   "arquivo": "/bandeiras/br/sp/3520707.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Indiapor%C3%A3.png"
+  },
+  "3520806": {
+   "arquivo": "/bandeiras/br/sp/3520806.png",
+   "credito": "Prefeitura, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_In%C3%BAbia_Paulista_(SP).png"
+  },
+  "3520905": {
+   "arquivo": "/bandeiras/br/sp/3520905.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ipaussu.png"
+  },
+  "3521002": {
+   "arquivo": "/bandeiras/br/sp/3521002.png",
+   "credito": "Marcelo Américo Correa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Iper%C3%B3.jpg"
+  },
+  "3521101": {
+   "arquivo": "/bandeiras/br/sp/3521101.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ipe%C3%BAna.jpg"
+  },
+  "3521150": {
+   "arquivo": "/bandeiras/br/sp/3521150.png",
+   "credito": "Tiello67, CC BY 3.0",
+   "licenca": "CC BY 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_ipigua.jpg"
+  },
+  "3521200": {
+   "arquivo": "/bandeiras/br/sp/3521200.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Iporanga.png"
+  },
+  "3521309": {
+   "arquivo": "/bandeiras/br/sp/3521309.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ipu%C3%A3.png"
+  },
+  "3521408": {
+   "arquivo": "/bandeiras/br/sp/3521408.png",
+   "credito": "Euskadirlz, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Iracem%C3%A1polis.gif"
+  },
+  "3521507": {
+   "arquivo": "/bandeiras/br/sp/3521507.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Irapu%C3%A3.png"
+  },
+  "3521606": {
+   "arquivo": "/bandeiras/br/sp/3521606.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Irapuru.png"
+  },
+  "3521804": {
+   "arquivo": "/bandeiras/br/sp/3521804.png",
+   "credito": "Municipal Prefecture of Itaí; converted to PNG by Andrew_pmk, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itai.png"
+  },
+  "3521903": {
+   "arquivo": "/bandeiras/br/sp/3521903.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itajobi.png"
+  },
+  "3522000": {
+   "arquivo": "/bandeiras/br/sp/3522000.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itaju.png"
+  },
+  "3522109": {
+   "arquivo": "/bandeiras/br/sp/3522109.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itanha%C3%A9m.png"
+  },
+  "3522158": {
+   "arquivo": "/bandeiras/br/sp/3522158.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itaoca.jpg"
+  },
+  "3522208": {
+   "arquivo": "/bandeiras/br/sp/3522208.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itapecerica_da_Serra.svg"
+  },
+  "3522307": {
+   "arquivo": "/bandeiras/br/sp/3522307.png",
+   "credito": "Unknown authorUnknown author, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itapetininga.jpg"
+  },
+  "3522406": {
+   "arquivo": "/bandeiras/br/sp/3522406.png",
+   "credito": "Prefeitura Itapeva, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itapeva.jpg"
+  },
+  "3522505": {
+   "arquivo": "/bandeiras/br/sp/3522505.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itapevi.png"
+  },
+  "3522604": {
+   "arquivo": "/bandeiras/br/sp/3522604.png",
+   "credito": "Municipal Prefecture of Itapira, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itapira_SaoPaulo_Brasil.svg"
+  },
+  "3522653": {
+   "arquivo": "/bandeiras/br/sp/3522653.png",
+   "credito": "Prefeitura Municipal de Itapirapuã Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_-_Itapirapu%C3%A3_Paulista.jpg"
+  },
+  "3522802": {
+   "arquivo": "/bandeiras/br/sp/3522802.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itaporanga.png"
+  },
+  "3522901": {
+   "arquivo": "/bandeiras/br/sp/3522901.png",
+   "credito": "Luis Gabriel Moraes Dias, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Itapu%C3%AD.gif"
+  },
+  "3523008": {
+   "arquivo": "/bandeiras/br/sp/3523008.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itapura.png"
+  },
+  "3523107": {
+   "arquivo": "/bandeiras/br/sp/3523107.png",
+   "credito": "Público, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itaquaquecetuba.png"
+  },
+  "3523206": {
+   "arquivo": "/bandeiras/br/sp/3523206.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itarar%C3%A9.png"
+  },
+  "3523305": {
+   "arquivo": "/bandeiras/br/sp/3523305.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_itariri.png"
+  },
+  "3523404": {
+   "arquivo": "/bandeiras/br/sp/3523404.png",
+   "credito": "Nilson Silva, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Munic%C3%ADpio_de_Itatiba-SP.svg"
+  },
+  "3523503": {
+   "arquivo": "/bandeiras/br/sp/3523503.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itatinga.jpg"
+  },
+  "3523602": {
+   "arquivo": "/bandeiras/br/sp/3523602.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itirapina_SP_..jpg"
+  },
+  "3523701": {
+   "arquivo": "/bandeiras/br/sp/3523701.png",
+   "credito": "Confederação Nacional de Municípios, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itirapu%C3%A3,_S%C3%A3o_Paulo,_Brasil.png"
+  },
+  "3523800": {
+   "arquivo": "/bandeiras/br/sp/3523800.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itobi.png"
+  },
+  "3523909": {
+   "arquivo": "/bandeiras/br/sp/3523909.png",
+   "credito": "Torimem, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Itu.svg"
+  },
+  "3524006": {
+   "arquivo": "/bandeiras/br/sp/3524006.png",
+   "credito": "Site Oficial da Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Itupeva.png"
+  },
+  "3524105": {
+   "arquivo": "/bandeiras/br/sp/3524105.png",
+   "credito": "Prefeitura Municipal de Ituverava., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ituverava.png"
+  },
+  "3524204": {
+   "arquivo": "/bandeiras/br/sp/3524204.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jaborandi.png"
+  },
+  "3524303": {
+   "arquivo": "/bandeiras/br/sp/3524303.png",
+   "credito": "Own work; Dorival Martins de Andrade &amp; José Francisco Espanhol, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraJaboticabal.svg"
+  },
+  "3524402": {
+   "arquivo": "/bandeiras/br/sp/3524402.png",
+   "credito": "Municipio de Jacareí, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Jacarei_flag.png"
+  },
+  "3524501": {
+   "arquivo": "/bandeiras/br/sp/3524501.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jaci.png"
+  },
+  "3524600": {
+   "arquivo": "/bandeiras/br/sp/3524600.png",
+   "credito": "Prefeitura Municipal de Jacupiranga, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jacupiranga.png"
+  },
+  "3524709": {
+   "arquivo": "/bandeiras/br/sp/3524709.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jaguariuna.png"
+  },
+  "3524808": {
+   "arquivo": "/bandeiras/br/sp/3524808.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Jales_Bandeira.gif"
+  },
+  "3524907": {
+   "arquivo": "/bandeiras/br/sp/3524907.png",
+   "credito": "Diego Campos, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_municipal_de_Jambeiro.png"
+  },
+  "3525003": {
+   "arquivo": "/bandeiras/br/sp/3525003.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jandira.jpg"
+  },
+  "3525102": {
+   "arquivo": "/bandeiras/br/sp/3525102.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraJardinopolisSP.svg"
+  },
+  "3525201": {
+   "arquivo": "/bandeiras/br/sp/3525201.png",
+   "credito": "Vitor.castillo (talk), Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Jarinu.jpg"
+  },
+  "3525300": {
+   "arquivo": "/bandeiras/br/sp/3525300.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ja%C3%BA.jpg"
+  },
+  "3525409": {
+   "arquivo": "/bandeiras/br/sp/3525409.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Jeriquara.jpg"
+  },
+  "3525508": {
+   "arquivo": "/bandeiras/br/sp/3525508.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Joan%C3%B3polis.jpg"
+  },
+  "3525607": {
+   "arquivo": "/bandeiras/br/sp/3525607.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jo%C3%A3o_Ramalho.png"
+  },
+  "3525706": {
+   "arquivo": "/bandeiras/br/sp/3525706.png",
+   "credito": "PMJB, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirajb.jpg"
+  },
+  "3525805": {
+   "arquivo": "/bandeiras/br/sp/3525805.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_J%C3%BAlio_Mesquita.png"
+  },
+  "3525854": {
+   "arquivo": "/bandeiras/br/sp/3525854.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Jumirim.png"
+  },
+  "3525904": {
+   "arquivo": "/bandeiras/br/sp/3525904.png",
+   "credito": "ViniciusBR11; Prefeitura de Jundiaí., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraJundiai.svg"
+  },
+  "3526001": {
+   "arquivo": "/bandeiras/br/sp/3526001.png",
+   "credito": "Municipal Prefecture of Junqueirópolis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Junqueiropolis_SaoPaulo_Brasil.svg"
+  },
+  "3526100": {
+   "arquivo": "/bandeiras/br/sp/3526100.png",
+   "credito": "Marcio Benvenuto de Lima, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Juquia.jpg"
+  },
+  "3526209": {
+   "arquivo": "/bandeiras/br/sp/3526209.png",
+   "credito": "município de juquitiba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_juquitiba.jpg"
+  },
+  "3526308": {
+   "arquivo": "/bandeiras/br/sp/3526308.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Lagoinha_SaoPaulo_Brasil_2.svg"
+  },
+  "3526407": {
+   "arquivo": "/bandeiras/br/sp/3526407.png",
+   "credito": "Igor Eliezer Borges, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Laranjal_Paulista.svg"
+  },
+  "3526506": {
+   "arquivo": "/bandeiras/br/sp/3526506.png",
+   "credito": "Prefeitura Municipal de Lavínia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Lav%C3%ADnia.png"
+  },
+  "3526605": {
+   "arquivo": "/bandeiras/br/sp/3526605.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Lavrinhas_bandeira.png"
+  },
+  "3526704": {
+   "arquivo": "/bandeiras/br/sp/3526704.png",
+   "credito": "Municipal Prefecture of Leme, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Leme_SaoPaulo_Brasil.svg"
+  },
+  "3526803": {
+   "arquivo": "/bandeiras/br/sp/3526803.png",
+   "credito": "Prefeitura Municipal de Lençóis Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraLencoisPaulista.png"
+  },
+  "3526902": {
+   "arquivo": "/bandeiras/br/sp/3526902.png",
+   "credito": "Srfortes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Limeira_SaoPaulo_Brasil.svg"
+  },
+  "3527009": {
+   "arquivo": "/bandeiras/br/sp/3527009.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Lind%C3%B3ia.jpg"
+  },
+  "3527108": {
+   "arquivo": "/bandeiras/br/sp/3527108.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Lins_-_SP.svg"
+  },
+  "3527207": {
+   "arquivo": "/bandeiras/br/sp/3527207.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Lorena_SaoPaulo_Brasil_2.svg"
+  },
+  "3527256": {
+   "arquivo": "/bandeiras/br/sp/3527256.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Lourdes.png"
+  },
+  "3527306": {
+   "arquivo": "/bandeiras/br/sp/3527306.png",
+   "credito": "Domínio Publico, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Louveira.jpg"
+  },
+  "3527405": {
+   "arquivo": "/bandeiras/br/sp/3527405.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Luc%C3%A9lia_-_SP.svg"
+  },
+  "3527603": {
+   "arquivo": "/bandeiras/br/sp/3527603.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Lu%C3%ADs_Ant%C3%B4nio.png"
+  },
+  "3527702": {
+   "arquivo": "/bandeiras/br/sp/3527702.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Luizi%C3%A2nia.jpg"
+  },
+  "3527801": {
+   "arquivo": "/bandeiras/br/sp/3527801.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Lup%C3%A9rcio.jpg"
+  },
+  "3527900": {
+   "arquivo": "/bandeiras/br/sp/3527900.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Lut%C3%A9cia.png"
+  },
+  "3528007": {
+   "arquivo": "/bandeiras/br/sp/3528007.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Macatuba.jpg"
+  },
+  "3528106": {
+   "arquivo": "/bandeiras/br/sp/3528106.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Macaubal.png"
+  },
+  "3528205": {
+   "arquivo": "/bandeiras/br/sp/3528205.png",
+   "credito": "Prefeitura Municipal de Macedônia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Maced%C3%B4nia.png"
+  },
+  "3528304": {
+   "arquivo": "/bandeiras/br/sp/3528304.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Magda.jpg"
+  },
+  "3528403": {
+   "arquivo": "/bandeiras/br/sp/3528403.png",
+   "credito": "CJIIIoestado50-80, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_mairinque.jpg"
+  },
+  "3528502": {
+   "arquivo": "/bandeiras/br/sp/3528502.png",
+   "credito": "BrCaLeTo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mairipor%C3%A3_-_SP.svg"
+  },
+  "3528601": {
+   "arquivo": "/bandeiras/br/sp/3528601.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Manduri.png"
+  },
+  "3528700": {
+   "arquivo": "/bandeiras/br/sp/3528700.png",
+   "credito": "Prefeitura de Marabá Paulista, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BANDEIRAMARABAPAULISTA.png"
+  },
+  "3528809": {
+   "arquivo": "/bandeiras/br/sp/3528809.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Maraca%C3%AD.jpg"
+  },
+  "3528858": {
+   "arquivo": "/bandeiras/br/sp/3528858.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Marapoama.png"
+  },
+  "3528908": {
+   "arquivo": "/bandeiras/br/sp/3528908.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Mari%C3%A1polis.png"
+  },
+  "3529005": {
+   "arquivo": "/bandeiras/br/sp/3529005.png",
+   "credito": "Prefeitura de Marília, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mar%C3%ADlia.svg"
+  },
+  "3529104": {
+   "arquivo": "/bandeiras/br/sp/3529104.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Marin%C3%B3polis.png"
+  },
+  "3529203": {
+   "arquivo": "/bandeiras/br/sp/3529203.png",
+   "credito": "Municipal Prefecture of Martinópolis, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Martin%C3%B3polis.jpg"
+  },
+  "3529302": {
+   "arquivo": "/bandeiras/br/sp/3529302.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Matao_Bandeira.jpg"
+  },
+  "3529401": {
+   "arquivo": "/bandeiras/br/sp/3529401.png",
+   "credito": "Srfortes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Maua_SaoPaulo_Brasil.svg"
+  },
+  "3529609": {
+   "arquivo": "/bandeiras/br/sp/3529609.png",
+   "credito": "Município de Meridiano, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraMeridiano.png"
+  },
+  "3529658": {
+   "arquivo": "/bandeiras/br/sp/3529658.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Mes%C3%B3polis_-_SP.png"
+  },
+  "3529708": {
+   "arquivo": "/bandeiras/br/sp/3529708.png",
+   "credito": "NosLida, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Miguel%C3%B3polis.JPG"
+  },
+  "3529807": {
+   "arquivo": "/bandeiras/br/sp/3529807.png",
+   "credito": "Prefeitura Municipal de Mineiros do Tietê, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mineiros_do_Tiet%C3%AA.png"
+  },
+  "3529906": {
+   "arquivo": "/bandeiras/br/sp/3529906.png",
+   "credito": "Prefeitura Municipal de MIracatu, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Miracatu.jpg"
+  },
+  "3530003": {
+   "arquivo": "/bandeiras/br/sp/3530003.png",
+   "credito": "City Hall of Mira Estrela, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Mira_Estrela_SP.png"
+  },
+  "3530102": {
+   "arquivo": "/bandeiras/br/sp/3530102.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Mirand%C3%B3polis.png"
+  },
+  "3530201": {
+   "arquivo": "/bandeiras/br/sp/3530201.png",
+   "credito": "Prefeitura Municipal de Mirante do Paranapanema (uploaded by Soumirantense), Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mirante_do_Paranapanema_.jpg"
+  },
+  "3530300": {
+   "arquivo": "/bandeiras/br/sp/3530300.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Br-sp-ms.png"
+  },
+  "3530409": {
+   "arquivo": "/bandeiras/br/sp/3530409.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Mirassolandia_-_SP.png"
+  },
+  "3530508": {
+   "arquivo": "/bandeiras/br/sp/3530508.png",
+   "credito": "Prefeitura de Mococa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flagmococa.jpg"
+  },
+  "3530607": {
+   "arquivo": "/bandeiras/br/sp/3530607.png",
+   "credito": "Prefeitura Municipal de Mogi das Cruzes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Band_MCruzes.jpg"
+  },
+  "3530706": {
+   "arquivo": "/bandeiras/br/sp/3530706.png",
+   "credito": "Elias Gonçalves Jr, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Img_bandeira_municipio_mogi_guacu_sp.jpg"
+  },
+  "3530805": {
+   "arquivo": "/bandeiras/br/sp/3530805.png",
+   "credito": "http://www.nossosaopaulo.com.br/, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mogi_Mirim.jpg"
+  },
+  "3530904": {
+   "arquivo": "/bandeiras/br/sp/3530904.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mombuca.jpg"
+  },
+  "3531001": {
+   "arquivo": "/bandeiras/br/sp/3531001.png",
+   "credito": "Município de Monções, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Munic%C3%ADpio_de_Mon%C3%A7%C3%B5es.png"
+  },
+  "3531100": {
+   "arquivo": "/bandeiras/br/sp/3531100.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Mongagu%C3%A1.jpg"
+  },
+  "3531308": {
+   "arquivo": "/bandeiras/br/sp/3531308.png",
+   "credito": "Abrazilianwikieditor, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiramontealto2.svg"
+  },
+  "3531407": {
+   "arquivo": "/bandeiras/br/sp/3531407.png",
+   "credito": "Prefeitura Municipal de Monte Aprazível, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Monte_Apraz%C3%ADvel,_SP.jpg"
+  },
+  "3531506": {
+   "arquivo": "/bandeiras/br/sp/3531506.png",
+   "credito": "Official Flag of a City, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Monte_Azul_Paulista.jpg"
+  },
+  "3531605": {
+   "arquivo": "/bandeiras/br/sp/3531605.png",
+   "credito": "City Hall of Monte Castelo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Monte_Castelo_SP.png"
+  },
+  "3531704": {
+   "arquivo": "/bandeiras/br/sp/3531704.png",
+   "credito": "Prefeitura Municipal de Monteiro Lobato, Brasil, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Monteiro_Lobato.jpg"
+  },
+  "3531803": {
+   "arquivo": "/bandeiras/br/sp/3531803.png",
+   "credito": "Municipal Prefecture of Monte Mor, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Monte_Mor.JPG"
+  },
+  "3531902": {
+   "arquivo": "/bandeiras/br/sp/3531902.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Morro_Agudo.jpg"
+  },
+  "3532009": {
+   "arquivo": "/bandeiras/br/sp/3532009.png",
+   "credito": "Prefeitura Municipal de Morungaba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Morungaba.png"
+  },
+  "3532058": {
+   "arquivo": "/bandeiras/br/sp/3532058.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Motuca.jpg"
+  },
+  "3532108": {
+   "arquivo": "/bandeiras/br/sp/3532108.png",
+   "credito": "Prefeitura Municipal de Murutinga do Sul, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Murutinga_do_Sul.jpg"
+  },
+  "3532157": {
+   "arquivo": "/bandeiras/br/sp/3532157.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nantes.png"
+  },
+  "3532207": {
+   "arquivo": "/bandeiras/br/sp/3532207.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Narandiba.jpg"
+  },
+  "3532306": {
+   "arquivo": "/bandeiras/br/sp/3532306.png",
+   "credito": "Prefeitura de Natividade da Serra, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Natividade_da_Serra.jpg"
+  },
+  "3532405": {
+   "arquivo": "/bandeiras/br/sp/3532405.png",
+   "credito": "Paulo Vinicius da Silva, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Nazar%C3%A9_Paulista.png"
+  },
+  "3532504": {
+   "arquivo": "/bandeiras/br/sp/3532504.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Neves_Paulista.png"
+  },
+  "3532603": {
+   "arquivo": "/bandeiras/br/sp/3532603.png",
+   "credito": "Prefeitura do Município de Nhandeara, SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Nhandeara,_SP.jpg"
+  },
+  "3532702": {
+   "arquivo": "/bandeiras/br/sp/3532702.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Nipo%C3%A3_-_SP.png"
+  },
+  "3532801": {
+   "arquivo": "/bandeiras/br/sp/3532801.png",
+   "credito": "Radical na, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_municipio_nova_alianca.JPG"
+  },
+  "3532827": {
+   "arquivo": "/bandeiras/br/sp/3532827.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nova_Campina.png"
+  },
+  "3532843": {
+   "arquivo": "/bandeiras/br/sp/3532843.png",
+   "credito": "Prefeitura Municipal de Nova Canaã Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Nova_Cana%C3%A3_Paulista.png"
+  },
+  "3532868": {
+   "arquivo": "/bandeiras/br/sp/3532868.png",
+   "credito": "Prefeitura municípal de Nova Castilho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Nova_Castilho-SP.jpg"
+  },
+  "3532900": {
+   "arquivo": "/bandeiras/br/sp/3532900.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nova_Europa.png"
+  },
+  "3533007": {
+   "arquivo": "/bandeiras/br/sp/3533007.png",
+   "credito": "Prefeitura de Nova Granada, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Nova_Granada,_SP.png"
+  },
+  "3533106": {
+   "arquivo": "/bandeiras/br/sp/3533106.png",
+   "credito": "Nova Guataporanga City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-novaguataporanga.jpg"
+  },
+  "3533205": {
+   "arquivo": "/bandeiras/br/sp/3533205.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nova_Independ%C3%AAncia.png"
+  },
+  "3533254": {
+   "arquivo": "/bandeiras/br/sp/3533254.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Novais_-_SP.png"
+  },
+  "3533304": {
+   "arquivo": "/bandeiras/br/sp/3533304.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nova_Luzit%C3%A2nia.png"
+  },
+  "3533403": {
+   "arquivo": "/bandeiras/br/sp/3533403.png",
+   "credito": "Municipal Prefecture of Nova Odessa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Nova_Odessa.jpg"
+  },
+  "3533502": {
+   "arquivo": "/bandeiras/br/sp/3533502.png",
+   "credito": "Jonas Faccio, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Novo_Horizonte_Flag.jpg"
+  },
+  "3533601": {
+   "arquivo": "/bandeiras/br/sp/3533601.png",
+   "credito": "ViniciusBR11, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraNuporanga.svg"
+  },
+  "3533700": {
+   "arquivo": "/bandeiras/br/sp/3533700.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ocau%C3%A7u.png"
+  },
+  "3533809": {
+   "arquivo": "/bandeiras/br/sp/3533809.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_%C3%93leo.png"
+  },
+  "3533908": {
+   "arquivo": "/bandeiras/br/sp/3533908.png",
+   "credito": "Prefeitura Municipal de Olímpia-SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ol%C3%ADmpia,_SP.jpg"
+  },
+  "3534005": {
+   "arquivo": "/bandeiras/br/sp/3534005.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Onda_Verde.png"
+  },
+  "3534104": {
+   "arquivo": "/bandeiras/br/sp/3534104.png",
+   "credito": "Prefeitura Municipal de Oriente, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Oriente.png"
+  },
+  "3534302": {
+   "arquivo": "/bandeiras/br/sp/3534302.png",
+   "credito": "ViniciusBR11, Prefeitura de Orlândia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraOrlandia.svg"
+  },
+  "3534401": {
+   "arquivo": "/bandeiras/br/sp/3534401.png",
+   "credito": "Prefeitura de Osasco, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Osasco.svg"
+  },
+  "3534500": {
+   "arquivo": "/bandeiras/br/sp/3534500.png",
+   "credito": "Prefeitura Municipal de Oscar Bressane, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraoscarbressane.jpg"
+  },
+  "3534609": {
+   "arquivo": "/bandeiras/br/sp/3534609.png",
+   "credito": "Prefeitura municípal de Osvaldo Cruz-SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Osvaldo_Cruz-SP.jpg"
+  },
+  "3534708": {
+   "arquivo": "/bandeiras/br/sp/3534708.png",
+   "credito": "Prefeitura, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Ourinhos_SP.png"
+  },
+  "3534757": {
+   "arquivo": "/bandeiras/br/sp/3534757.png",
+   "credito": "Prefeitura de Ouroeste, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ouroeste_-_SP.jpg"
+  },
+  "3534807": {
+   "arquivo": "/bandeiras/br/sp/3534807.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ouro_Verde.png"
+  },
+  "3534906": {
+   "arquivo": "/bandeiras/br/sp/3534906.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pacaembu.png"
+  },
+  "3535002": {
+   "arquivo": "/bandeiras/br/sp/3535002.png",
+   "credito": "Prefeitura Municipal de Palestina, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Palestina,_SP.jpg"
+  },
+  "3535101": {
+   "arquivo": "/bandeiras/br/sp/3535101.png",
+   "credito": "City Hall of Palmares Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Palmares_Paulista_SP.png"
+  },
+  "3535200": {
+   "arquivo": "/bandeiras/br/sp/3535200.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Palmeira_d%27Oeste.png"
+  },
+  "3535309": {
+   "arquivo": "/bandeiras/br/sp/3535309.png",
+   "credito": "Brazilian government, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirapalmitalsp.jpg"
+  },
+  "3535408": {
+   "arquivo": "/bandeiras/br/sp/3535408.png",
+   "credito": "RodolfoPironato, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Panomara-sp.jpg"
+  },
+  "3535507": {
+   "arquivo": "/bandeiras/br/sp/3535507.png",
+   "credito": "Prefeitura de Paraguaçu Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Band_muni.jpg"
+  },
+  "3535606": {
+   "arquivo": "/bandeiras/br/sp/3535606.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:ParaibunaBandeira.gif"
+  },
+  "3535705": {
+   "arquivo": "/bandeiras/br/sp/3535705.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Para%C3%ADso.png"
+  },
+  "3535804": {
+   "arquivo": "/bandeiras/br/sp/3535804.png",
+   "credito": "Prefeitura Municipal de Paranapanema, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Paranapanema.png"
+  },
+  "3536000": {
+   "arquivo": "/bandeiras/br/sp/3536000.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Parapu%C3%A3.png"
+  },
+  "3536257": {
+   "arquivo": "/bandeiras/br/sp/3536257.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Parisi.png"
+  },
+  "3536307": {
+   "arquivo": "/bandeiras/br/sp/3536307.png",
+   "credito": "Prefeitura Municipal de Patrocínio Paulista -, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirapatro.jpg"
+  },
+  "3536406": {
+   "arquivo": "/bandeiras/br/sp/3536406.png",
+   "credito": "Prefeitura Municipal de Pauliceia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pauliceia.png"
+  },
+  "3536505": {
+   "arquivo": "/bandeiras/br/sp/3536505.png",
+   "credito": "Prefeitura Municipal de Paulínia., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Paul%C3%ADnia.png"
+  },
+  "3536570": {
+   "arquivo": "/bandeiras/br/sp/3536570.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Paulist%C3%A2nia.png"
+  },
+  "3536604": {
+   "arquivo": "/bandeiras/br/sp/3536604.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Paulo_de_Faria.png"
+  },
+  "3536703": {
+   "arquivo": "/bandeiras/br/sp/3536703.png",
+   "credito": "Srfortes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pederneiras_SaoPaulo_Brasil.svg"
+  },
+  "3536802": {
+   "arquivo": "/bandeiras/br/sp/3536802.png",
+   "credito": "Paulo Vinicius da Silva, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pedra_Bela.png"
+  },
+  "3536901": {
+   "arquivo": "/bandeiras/br/sp/3536901.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pedran%C3%B3polis.png"
+  },
+  "3537008": {
+   "arquivo": "/bandeiras/br/sp/3537008.png",
+   "credito": "Página da prefeitura de Pedregulho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pedregulho.jpg"
+  },
+  "3537107": {
+   "arquivo": "/bandeiras/br/sp/3537107.png",
+   "credito": "Pedreirense, CC BY 3.0",
+   "licenca": "CC BY 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_pedreira_sp.png"
+  },
+  "3537156": {
+   "arquivo": "/bandeiras/br/sp/3537156.png",
+   "credito": "Prefeitura Municipal de Pedrinhas Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pedrinhas_Paulista.jpg"
+  },
+  "3537206": {
+   "arquivo": "/bandeiras/br/sp/3537206.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_pedro_toledo.png"
+  },
+  "3537305": {
+   "arquivo": "/bandeiras/br/sp/3537305.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_penapolis.png"
+  },
+  "3537404": {
+   "arquivo": "/bandeiras/br/sp/3537404.png",
+   "credito": "Prefeitura da Estância Turística de Pereira Barreto (uploaded by Rafaelbassorapbto), Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_da_Est%C3%A2ncia_Tur%C3%ADstica_de_Pereira_Barreto.png"
+  },
+  "3537503": {
+   "arquivo": "/bandeiras/br/sp/3537503.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pereiras.png"
+  },
+  "3537602": {
+   "arquivo": "/bandeiras/br/sp/3537602.png",
+   "credito": "Srfortes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Peruibe_SaoPaulo_Brasil2.svg"
+  },
+  "3537701": {
+   "arquivo": "/bandeiras/br/sp/3537701.png",
+   "credito": "Bruno manhani, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Piacatu.jpg"
+  },
+  "3537800": {
+   "arquivo": "/bandeiras/br/sp/3537800.png",
+   "credito": "Euskadirlz, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_piedade.JPG"
+  },
+  "3537909": {
+   "arquivo": "/bandeiras/br/sp/3537909.png",
+   "credito": "Domínio Público, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pilar_do_Sul.jpg"
+  },
+  "3538006": {
+   "arquivo": "/bandeiras/br/sp/3538006.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pindamonhangaba_SaoPaulo_Brasil.svg"
+  },
+  "3538105": {
+   "arquivo": "/bandeiras/br/sp/3538105.png",
+   "credito": "Prefeitura Municipal de Pindorama, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pindorama,_SP.jpg"
+  },
+  "3538204": {
+   "arquivo": "/bandeiras/br/sp/3538204.png",
+   "credito": "Pinhal86, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandpinh.jpg"
+  },
+  "3538303": {
+   "arquivo": "/bandeiras/br/sp/3538303.png",
+   "credito": "Prefeitura Municipal de Piquerobi, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Piquerobi.png"
+  },
+  "3538501": {
+   "arquivo": "/bandeiras/br/sp/3538501.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Piquete_bandeira.png"
+  },
+  "3538600": {
+   "arquivo": "/bandeiras/br/sp/3538600.png",
+   "credito": "Prefeitura de Piracaia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Piracaia-SP,_Brasil.jpg"
+  },
+  "3538709": {
+   "arquivo": "/bandeiras/br/sp/3538709.png",
+   "credito": "Ron Lahav (located), Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_piracicaba.gif"
+  },
+  "3538808": {
+   "arquivo": "/bandeiras/br/sp/3538808.png",
+   "credito": "Unknown authorUnknown author, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_piraju.JPG"
+  },
+  "3538907": {
+   "arquivo": "/bandeiras/br/sp/3538907.png",
+   "credito": "Prefeitura Municipal de Pirajuí, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Piraju%C3%AD.png"
+  },
+  "3539004": {
+   "arquivo": "/bandeiras/br/sp/3539004.png",
+   "credito": "Prefeitura Municipal de Pirangi., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pirangi.png"
+  },
+  "3539103": {
+   "arquivo": "/bandeiras/br/sp/3539103.png",
+   "credito": "Biuick; Municipality of Pirapora do bom Jesus; Arcinóe Antonio Peixoto de Faria; Honório José de Brito, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Piraporadobomjesus_bandeira.png"
+  },
+  "3539202": {
+   "arquivo": "/bandeiras/br/sp/3539202.png",
+   "credito": "Prefeitura municipal de pirapozinho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pirapozinho,_SP.jpg"
+  },
+  "3539301": {
+   "arquivo": "/bandeiras/br/sp/3539301.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pirassununga_Bandeira.gif"
+  },
+  "3539400": {
+   "arquivo": "/bandeiras/br/sp/3539400.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Piratininga.png"
+  },
+  "3539509": {
+   "arquivo": "/bandeiras/br/sp/3539509.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pitangueiras,_SP.png"
+  },
+  "3539608": {
+   "arquivo": "/bandeiras/br/sp/3539608.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Planalto_-_SP.png"
+  },
+  "3539707": {
+   "arquivo": "/bandeiras/br/sp/3539707.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Platina.png"
+  },
+  "3539806": {
+   "arquivo": "/bandeiras/br/sp/3539806.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_poa.png"
+  },
+  "3539905": {
+   "arquivo": "/bandeiras/br/sp/3539905.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Poloni.png"
+  },
+  "3540002": {
+   "arquivo": "/bandeiras/br/sp/3540002.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pompeia.png"
+  },
+  "3540101": {
+   "arquivo": "/bandeiras/br/sp/3540101.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ponga%C3%AD.png"
+  },
+  "3540200": {
+   "arquivo": "/bandeiras/br/sp/3540200.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pontal.png"
+  },
+  "3540259": {
+   "arquivo": "/bandeiras/br/sp/3540259.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Pontalinda.png"
+  },
+  "3540408": {
+   "arquivo": "/bandeiras/br/sp/3540408.png",
+   "credito": "Populina City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-populina.png"
+  },
+  "3540507": {
+   "arquivo": "/bandeiras/br/sp/3540507.png",
+   "credito": "Prefeitura Municipal de Porangaba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Porangaba.png"
+  },
+  "3540606": {
+   "arquivo": "/bandeiras/br/sp/3540606.png",
+   "credito": "Prefeitura, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Porto_Feliz_SP.png"
+  },
+  "3540754": {
+   "arquivo": "/bandeiras/br/sp/3540754.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Potim_bandeira.png"
+  },
+  "3540804": {
+   "arquivo": "/bandeiras/br/sp/3540804.png",
+   "credito": "Prefeitura Municipal de Potirendaba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Potirendaba,_SP.jpg"
+  },
+  "3540903": {
+   "arquivo": "/bandeiras/br/sp/3540903.png",
+   "credito": "Prefeitura Municipal de Pradópolis., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Prad%C3%B3polis.png"
+  },
+  "3541000": {
+   "arquivo": "/bandeiras/br/sp/3541000.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-Praia_Grande.png"
+  },
+  "3541059": {
+   "arquivo": "/bandeiras/br/sp/3541059.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Prat%C3%A2nia.png"
+  },
+  "3541109": {
+   "arquivo": "/bandeiras/br/sp/3541109.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Presidente_Alves_-_SP.png"
+  },
+  "3541208": {
+   "arquivo": "/bandeiras/br/sp/3541208.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Presidente_Bernardes.jpg"
+  },
+  "3541307": {
+   "arquivo": "/bandeiras/br/sp/3541307.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Presidente_Epit%C3%A1cio.jpg"
+  },
+  "3541406": {
+   "arquivo": "/bandeiras/br/sp/3541406.png",
+   "credito": "Daniiitheconqueror, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Presidente_Prudente.svg"
+  },
+  "3541505": {
+   "arquivo": "/bandeiras/br/sp/3541505.png",
+   "credito": "Prefeitura municipal de Presidente Venceslau, SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Presidente_Venceslau_(SP).png"
+  },
+  "3541604": {
+   "arquivo": "/bandeiras/br/sp/3541604.png",
+   "credito": "Prefeitura de Promissão, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Promiss%C3%A3o-SP.jpg"
+  },
+  "3541653": {
+   "arquivo": "/bandeiras/br/sp/3541653.png",
+   "credito": "Prefeitura Municipal de Quadra, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraquadra.jpg"
+  },
+  "3541703": {
+   "arquivo": "/bandeiras/br/sp/3541703.png",
+   "credito": "Original uploader was El Rapha at pt.wikipedia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandqt.jpg"
+  },
+  "3541802": {
+   "arquivo": "/bandeiras/br/sp/3541802.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Queiroz_-_SP.png"
+  },
+  "3541901": {
+   "arquivo": "/bandeiras/br/sp/3541901.png",
+   "credito": "Prefeitura municipal de Queluz, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Queluz_bandeira.png"
+  },
+  "3542008": {
+   "arquivo": "/bandeiras/br/sp/3542008.png",
+   "credito": "City Hall of Quintana, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Quintana_SP.png"
+  },
+  "3542107": {
+   "arquivo": "/bandeiras/br/sp/3542107.png",
+   "credito": "The original uploader was Tiagotto at Portuguese Wikipedia., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirarafard.jpg"
+  },
+  "3542206": {
+   "arquivo": "/bandeiras/br/sp/3542206.png",
+   "credito": "Arquivo próprio, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rancharia.jpg"
+  },
+  "3542305": {
+   "arquivo": "/bandeiras/br/sp/3542305.png",
+   "credito": "Prefeitura Municipal de Redenção da Serra, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Reden%C3%A7ao_da_Serra.jpg"
+  },
+  "3542404": {
+   "arquivo": "/bandeiras/br/sp/3542404.png",
+   "credito": "LTS LTS, CC BY 3.0",
+   "licenca": "CC BY 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Regente_Feij%C3%B3.jpg"
+  },
+  "3542503": {
+   "arquivo": "/bandeiras/br/sp/3542503.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Regin%C3%B3polis.png"
+  },
+  "3542602": {
+   "arquivo": "/bandeiras/br/sp/3542602.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiraregistro.png"
+  },
+  "3542701": {
+   "arquivo": "/bandeiras/br/sp/3542701.png",
+   "credito": "Prefeitura Municipal de Restinga., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Restinga.png"
+  },
+  "3542800": {
+   "arquivo": "/bandeiras/br/sp/3542800.png",
+   "credito": "Prefeitura Municipal de Ribeira, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ribeira.png"
+  },
+  "3542909": {
+   "arquivo": "/bandeiras/br/sp/3542909.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ribeir%C3%A3o_Bonito.png"
+  },
+  "3543006": {
+   "arquivo": "/bandeiras/br/sp/3543006.png",
+   "credito": "Prefeitura Municipal de Ribeirão Branco, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ribeir%C3%A3o_Branco.png"
+  },
+  "3543105": {
+   "arquivo": "/bandeiras/br/sp/3543105.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_ribeirao_corrente.png"
+  },
+  "3543204": {
+   "arquivo": "/bandeiras/br/sp/3543204.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ribeir%C3%A3o_do_Sul.png"
+  },
+  "3543238": {
+   "arquivo": "/bandeiras/br/sp/3543238.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ribeir%C3%A3o_dos_%C3%8Dndios.png"
+  },
+  "3543253": {
+   "arquivo": "/bandeiras/br/sp/3543253.png",
+   "credito": "Prefeitura de Ribeirão Grande, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraRibeiraoGrandeSP.png"
+  },
+  "3543303": {
+   "arquivo": "/bandeiras/br/sp/3543303.png",
+   "credito": "Ribeirão Pires City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-ribeiraopires.jpg"
+  },
+  "3543402": {
+   "arquivo": "/bandeiras/br/sp/3543402.png",
+   "credito": "Prefeitura de Ribeirão Preto, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ribeir%C3%A3o_Preto.svg"
+  },
+  "3543501": {
+   "arquivo": "/bandeiras/br/sp/3543501.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Riversul.jpg"
+  },
+  "3543600": {
+   "arquivo": "/bandeiras/br/sp/3543600.png",
+   "credito": "Prefeitura Municipal de Rifaina., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Rifaina.png"
+  },
+  "3543709": {
+   "arquivo": "/bandeiras/br/sp/3543709.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rinc%C3%A3o.png"
+  },
+  "3543808": {
+   "arquivo": "/bandeiras/br/sp/3543808.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rin%C3%B3polis.png"
+  },
+  "3543907": {
+   "arquivo": "/bandeiras/br/sp/3543907.png",
+   "credito": "GumSL, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rio_Claro_(S%C3%A3o_Paulo).svg"
+  },
+  "3544004": {
+   "arquivo": "/bandeiras/br/sp/3544004.png",
+   "credito": "Culturardp, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rio_das_Pedras_Flag.PNG"
+  },
+  "3544103": {
+   "arquivo": "/bandeiras/br/sp/3544103.png",
+   "credito": "Rio Gde. da Serra City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-riograndedaserra.png"
+  },
+  "3544202": {
+   "arquivo": "/bandeiras/br/sp/3544202.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Riol%C3%A2ndia.png"
+  },
+  "3544251": {
+   "arquivo": "/bandeiras/br/sp/3544251.png",
+   "credito": "Câmara Municipal de Rosana, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Rosana-SP.JPG"
+  },
+  "3544301": {
+   "arquivo": "/bandeiras/br/sp/3544301.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Roseira_bandeira.png"
+  },
+  "3544400": {
+   "arquivo": "/bandeiras/br/sp/3544400.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rubi%C3%A1cea.png"
+  },
+  "3544509": {
+   "arquivo": "/bandeiras/br/sp/3544509.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Rubineia.png"
+  },
+  "3544608": {
+   "arquivo": "/bandeiras/br/sp/3544608.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sabino.jpg"
+  },
+  "3544707": {
+   "arquivo": "/bandeiras/br/sp/3544707.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sagres.jpg"
+  },
+  "3544806": {
+   "arquivo": "/bandeiras/br/sp/3544806.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sales.png"
+  },
+  "3544905": {
+   "arquivo": "/bandeiras/br/sp/3544905.png",
+   "credito": "ViniciusBR11, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSalesOliveira.png"
+  },
+  "3545001": {
+   "arquivo": "/bandeiras/br/sp/3545001.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Salesopolis_SaoPaulo_Brasil.svg"
+  },
+  "3545100": {
+   "arquivo": "/bandeiras/br/sp/3545100.png",
+   "credito": "City Hall of Salmourão, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Salmour%C3%A3o_SP.png"
+  },
+  "3545159": {
+   "arquivo": "/bandeiras/br/sp/3545159.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Saltinho.png"
+  },
+  "3545209": {
+   "arquivo": "/bandeiras/br/sp/3545209.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_salto.png"
+  },
+  "3545308": {
+   "arquivo": "/bandeiras/br/sp/3545308.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_salto_de_pirapora.png"
+  },
+  "3545407": {
+   "arquivo": "/bandeiras/br/sp/3545407.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Salto_Grande.jpg"
+  },
+  "3545506": {
+   "arquivo": "/bandeiras/br/sp/3545506.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sandovalina.png"
+  },
+  "3545605": {
+   "arquivo": "/bandeiras/br/sp/3545605.png",
+   "credito": "Sta. Adélia City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-santaad%C3%A9lia.png"
+  },
+  "3545704": {
+   "arquivo": "/bandeiras/br/sp/3545704.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Albertina.png"
+  },
+  "3545803": {
+   "arquivo": "/bandeiras/br/sp/3545803.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_SantaBarbaradOeste_SaoPaulo_Brasil.svg"
+  },
+  "3546009": {
+   "arquivo": "/bandeiras/br/sp/3546009.png",
+   "credito": "Prefeitura Municipal de Santa Branca, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Santa_Branca-SP.png"
+  },
+  "3546108": {
+   "arquivo": "/bandeiras/br/sp/3546108.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Clara_d%27Oeste.png"
+  },
+  "3546256": {
+   "arquivo": "/bandeiras/br/sp/3546256.png",
+   "credito": "Municipio de Santa Cruz da Esperança, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Santa_Cruz_da_Esperan%C3%A7a.png"
+  },
+  "3546306": {
+   "arquivo": "/bandeiras/br/sp/3546306.png",
+   "credito": "PMSCP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-stacruzdaspalmeiras.PNG"
+  },
+  "3546405": {
+   "arquivo": "/bandeiras/br/sp/3546405.png",
+   "credito": "SCRP City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santa_Cruz_do_Rio_Pardo_(SP).jpg"
+  },
+  "3546504": {
+   "arquivo": "/bandeiras/br/sp/3546504.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Ernestina.png"
+  },
+  "3546603": {
+   "arquivo": "/bandeiras/br/sp/3546603.png",
+   "credito": "Prefeitura de Santa Fé do Sul, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santa_F%C3%A9_do_Sul-SP,_Brasil.jpg"
+  },
+  "3546702": {
+   "arquivo": "/bandeiras/br/sp/3546702.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Gertrudes.jpg"
+  },
+  "3546801": {
+   "arquivo": "/bandeiras/br/sp/3546801.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santa_Isabel.jpg"
+  },
+  "3546900": {
+   "arquivo": "/bandeiras/br/sp/3546900.png",
+   "credito": "Prefeitura Municipal de Santa Lúcia, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santa_L%C3%BAcia,_SP.jpg"
+  },
+  "3547007": {
+   "arquivo": "/bandeiras/br/sp/3547007.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Maria_da_Serra.jpg"
+  },
+  "3547106": {
+   "arquivo": "/bandeiras/br/sp/3547106.png",
+   "credito": "Município de Santa Mercedes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_santa_mercedes.jpg"
+  },
+  "3547205": {
+   "arquivo": "/bandeiras/br/sp/3547205.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santana_da_Ponte_Pensa.png"
+  },
+  "3547304": {
+   "arquivo": "/bandeiras/br/sp/3547304.png",
+   "credito": "Prefeitura de Santana de Parnaíba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santana_de_Parna%C3%ADba.png"
+  },
+  "3547403": {
+   "arquivo": "/bandeiras/br/sp/3547403.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Rita_d%27Oeste.png"
+  },
+  "3547502": {
+   "arquivo": "/bandeiras/br/sp/3547502.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Rita_do_Passa_Quatro.png"
+  },
+  "3547601": {
+   "arquivo": "/bandeiras/br/sp/3547601.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santa_Rosa_de_Viterbo.jpg"
+  },
+  "3547700": {
+   "arquivo": "/bandeiras/br/sp/3547700.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santo_Anast%C3%A1cio.png"
+  },
+  "3547809": {
+   "arquivo": "/bandeiras/br/sp/3547809.png",
+   "credito": "ViniciusBR11, Prefeitura de Santo André, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSantoAndre.svg"
+  },
+  "3547908": {
+   "arquivo": "/bandeiras/br/sp/3547908.png",
+   "credito": "Domaleixo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_SAA.PNG"
+  },
+  "3548005": {
+   "arquivo": "/bandeiras/br/sp/3548005.png",
+   "credito": "Prefeitura de Santo Antônio de Posse, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santo_Ant%C3%B4nio_de_Posse-SP,_Brasil.jpg"
+  },
+  "3548054": {
+   "arquivo": "/bandeiras/br/sp/3548054.png",
+   "credito": "Prefeitura Municipal de Santo Antônio do Aracanguá, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santo_Ant%C3%B4nio_do_Aracangu%C3%A1.jpg"
+  },
+  "3548104": {
+   "arquivo": "/bandeiras/br/sp/3548104.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Santo_Ant%C3%B4nio_do_Jardim.png"
+  },
+  "3548203": {
+   "arquivo": "/bandeiras/br/sp/3548203.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Santoantoniodopinhal_bandeira.png"
+  },
+  "3548302": {
+   "arquivo": "/bandeiras/br/sp/3548302.png",
+   "credito": "City Hall of Santo Expedito, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Santo_Expedito_SP.png"
+  },
+  "3548500": {
+   "arquivo": "/bandeiras/br/sp/3548500.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santos_(S%C3%A3o_Paulo).svg"
+  },
+  "3548609": {
+   "arquivo": "/bandeiras/br/sp/3548609.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Saobentodosapucai_bandeira.png"
+  },
+  "3548708": {
+   "arquivo": "/bandeiras/br/sp/3548708.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_SBC.jpg"
+  },
+  "3548807": {
+   "arquivo": "/bandeiras/br/sp/3548807.png",
+   "credito": "Srfortes, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_S%C3%A3o_Caetano_do_Sul.svg"
+  },
+  "3548906": {
+   "arquivo": "/bandeiras/br/sp/3548906.png",
+   "credito": "Own work, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_S%C3%A3o_Carlos.svg"
+  },
+  "3549102": {
+   "arquivo": "/bandeiras/br/sp/3549102.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_s%C3%A3o_jo%C3%A3o_da_boa_vista.png"
+  },
+  "3549250": {
+   "arquivo": "/bandeiras/br/sp/3549250.png",
+   "credito": "Prefeitura de São João de Iracema, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_S%C3%A3o_Jo%C3%A3o_de_Iracema,_SP.jpg"
+  },
+  "3549300": {
+   "arquivo": "/bandeiras/br/sp/3549300.png",
+   "credito": "Município de São João do Pau-d'Alho, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-paudalho.jpg"
+  },
+  "3549409": {
+   "arquivo": "/bandeiras/br/sp/3549409.png",
+   "credito": "ViniciusBR11; Prefeitura de São Joaquim da Barra, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSaoJoaquimDaBarra.svg"
+  },
+  "3549508": {
+   "arquivo": "/bandeiras/br/sp/3549508.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_S%C3%A3o_Jos%C3%A9_da_Bela_Vista.png"
+  },
+  "3549607": {
+   "arquivo": "/bandeiras/br/sp/3549607.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Saojosedobarreiro_bandeira.png"
+  },
+  "3549706": {
+   "arquivo": "/bandeiras/br/sp/3549706.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirasaojosedoriopardo.jpg"
+  },
+  "3549805": {
+   "arquivo": "/bandeiras/br/sp/3549805.png",
+   "credito": "HVL, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_S%C3%A3o_Jos%C3%A9_do_Rio_Preto_SP.png"
+  },
+  "3549904": {
+   "arquivo": "/bandeiras/br/sp/3549904.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_S%C3%A3o_Jos%C3%A9_dos_Campos.svg"
+  },
+  "3549953": {
+   "arquivo": "/bandeiras/br/sp/3549953.png",
+   "credito": "São Lourenço da Serra City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-saolourencodaserra.png"
+  },
+  "3550001": {
+   "arquivo": "/bandeiras/br/sp/3550001.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Saoluizdoparaitinga_bandeira.png"
+  },
+  "3550100": {
+   "arquivo": "/bandeiras/br/sp/3550100.png",
+   "credito": "autor desconhecido, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_sao_manuel.jpg"
+  },
+  "3550209": {
+   "arquivo": "/bandeiras/br/sp/3550209.png",
+   "credito": "antonio correa, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_municipio_de_s%C3%A3o_miguel_arcanjo.jpg"
+  },
+  "3550308": {
+   "arquivo": "/bandeiras/br/sp/3550308.png",
+   "credito": "Pedro Cardoso de Carvalho e Freitas, Srfortes and Giro720, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_da_cidade_de_S%C3%A3o_Paulo.svg"
+  },
+  "3550407": {
+   "arquivo": "/bandeiras/br/sp/3550407.png",
+   "credito": "São Pedro City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-saopedrosp.png"
+  },
+  "3550506": {
+   "arquivo": "/bandeiras/br/sp/3550506.png",
+   "credito": "Prefeitura Municipal de São Pedro do Turvo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_S%C3%A3o_Pedro_do_Turvo.jpg"
+  },
+  "3550605": {
+   "arquivo": "/bandeiras/br/sp/3550605.png",
+   "credito": "Não Informado, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirasroquesp.jpg"
+  },
+  "3550704": {
+   "arquivo": "/bandeiras/br/sp/3550704.png",
+   "credito": "São Sebastião City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-saosebastiao.png"
+  },
+  "3550803": {
+   "arquivo": "/bandeiras/br/sp/3550803.png",
+   "credito": "município de são sebastião da grama, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_saosebastiaodagrama.jpg"
+  },
+  "3550902": {
+   "arquivo": "/bandeiras/br/sp/3550902.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_S%C3%A3o_Sim%C3%A3o.png"
+  },
+  "3551009": {
+   "arquivo": "/bandeiras/br/sp/3551009.png",
+   "credito": "ChrisDHDR, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_S%C3%A3o_Vicente,_S%C3%A3o_Paulo.svg"
+  },
+  "3551108": {
+   "arquivo": "/bandeiras/br/sp/3551108.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sarapu%C3%AD.png"
+  },
+  "3551207": {
+   "arquivo": "/bandeiras/br/sp/3551207.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Saratui%C3%A1.png"
+  },
+  "3551306": {
+   "arquivo": "/bandeiras/br/sp/3551306.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sebastian%C3%B3polis_do_Sul.jpg"
+  },
+  "3551405": {
+   "arquivo": "/bandeiras/br/sp/3551405.png",
+   "credito": "Prefeitura Municipal de Serra Azul., Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Serra_Azul.png"
+  },
+  "3551504": {
+   "arquivo": "/bandeiras/br/sp/3551504.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Serrana.png"
+  },
+  "3551603": {
+   "arquivo": "/bandeiras/br/sp/3551603.png",
+   "credito": "Serra Negra City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-serranegra.png"
+  },
+  "3551702": {
+   "arquivo": "/bandeiras/br/sp/3551702.png",
+   "credito": "Own work; José Arnaldo de Azevedo, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSertaozinhoSP.svg"
+  },
+  "3551801": {
+   "arquivo": "/bandeiras/br/sp/3551801.png",
+   "credito": "http://www.setebarras.sp.gov.br/images/Bandeira_sete_barras.gif Unknown authorUnknown author, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sete_Barras.png"
+  },
+  "3551900": {
+   "arquivo": "/bandeiras/br/sp/3551900.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Severinia_-_SP.png"
+  },
+  "3552007": {
+   "arquivo": "/bandeiras/br/sp/3552007.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Silveiras_bandeira.png"
+  },
+  "3552106": {
+   "arquivo": "/bandeiras/br/sp/3552106.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_socorro_sp.jpg"
+  },
+  "3552205": {
+   "arquivo": "/bandeiras/br/sp/3552205.png",
+   "credito": "Prefeitura de Sorocaba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSorocaba.svg"
+  },
+  "3552304": {
+   "arquivo": "/bandeiras/br/sp/3552304.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Sud_Menucci.png"
+  },
+  "3552403": {
+   "arquivo": "/bandeiras/br/sp/3552403.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraSumare.png"
+  },
+  "3552502": {
+   "arquivo": "/bandeiras/br/sp/3552502.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Suzano.png"
+  },
+  "3552551": {
+   "arquivo": "/bandeiras/br/sp/3552551.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Suzanapolis_-_SP.png"
+  },
+  "3552601": {
+   "arquivo": "/bandeiras/br/sp/3552601.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Tabapu%C3%A3_-_SP.png"
+  },
+  "3552700": {
+   "arquivo": "/bandeiras/br/sp/3552700.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Tabatinga.png"
+  },
+  "3552809": {
+   "arquivo": "/bandeiras/br/sp/3552809.png",
+   "credito": "Domínio Público, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Tabo%C3%A3o_da_Serra.jpg"
+  },
+  "3552908": {
+   "arquivo": "/bandeiras/br/sp/3552908.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Taciba.png"
+  },
+  "3553005": {
+   "arquivo": "/bandeiras/br/sp/3553005.png",
+   "credito": "Matheusitai26, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Tagua%C3%AD.jpg"
+  },
+  "3553104": {
+   "arquivo": "/bandeiras/br/sp/3553104.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Taia%C3%A7u.jpg"
+  },
+  "3553203": {
+   "arquivo": "/bandeiras/br/sp/3553203.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Taiuva.png"
+  },
+  "3553302": {
+   "arquivo": "/bandeiras/br/sp/3553302.png",
+   "credito": "Santista1982, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiratambau.jpg"
+  },
+  "3553401": {
+   "arquivo": "/bandeiras/br/sp/3553401.png",
+   "credito": "Antonio Caprio, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Tanabi_SP.jpg"
+  },
+  "3553500": {
+   "arquivo": "/bandeiras/br/sp/3553500.png",
+   "credito": "Tapiraí City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-tapira%C3%AD.png"
+  },
+  "3553609": {
+   "arquivo": "/bandeiras/br/sp/3553609.png",
+   "credito": "Marcelo Altosi, CC0",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Tapiratiba.png"
+  },
+  "3553658": {
+   "arquivo": "/bandeiras/br/sp/3553658.png",
+   "credito": "Upload: Biuick, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Taquaral.png"
+  },
+  "3553708": {
+   "arquivo": "/bandeiras/br/sp/3553708.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_taquaritinga.jpg"
+  },
+  "3553807": {
+   "arquivo": "/bandeiras/br/sp/3553807.png",
+   "credito": "Prefeitura Taquarituba, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_taqua.jpg"
+  },
+  "3553856": {
+   "arquivo": "/bandeiras/br/sp/3553856.png",
+   "credito": "Prefeitura Municipal de Taquarivaí, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Taquariva%C3%AD.png"
+  },
+  "3553906": {
+   "arquivo": "/bandeiras/br/sp/3553906.png",
+   "credito": "Prefeitura Municipal de Tarabai, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Tarabai.png"
+  },
+  "3553955": {
+   "arquivo": "/bandeiras/br/sp/3553955.png",
+   "credito": "Prefeitura Municipal de Tarumã, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraTarum%C3%A3.png"
+  },
+  "3554003": {
+   "arquivo": "/bandeiras/br/sp/3554003.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Tatu%C3%AD.png"
+  },
+  "3554102": {
+   "arquivo": "/bandeiras/br/sp/3554102.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeirataubate.png"
+  },
+  "3554201": {
+   "arquivo": "/bandeiras/br/sp/3554201.png",
+   "credito": "Prefeitura Municipal do Tejupá, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Tejup%C3%A1_SP.png"
+  },
+  "3554300": {
+   "arquivo": "/bandeiras/br/sp/3554300.png",
+   "credito": "Domínio público, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_teodoro.jpg"
+  },
+  "3554409": {
+   "arquivo": "/bandeiras/br/sp/3554409.png",
+   "credito": "Dr. Lauro Escobar, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Terra_Roxa_sao_paulo_brasil.jpg"
+  },
+  "3554508": {
+   "arquivo": "/bandeiras/br/sp/3554508.png",
+   "credito": "Mysid, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Tiet%C3%AA.svg"
+  },
+  "3554607": {
+   "arquivo": "/bandeiras/br/sp/3554607.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Timburi.png"
+  },
+  "3554656": {
+   "arquivo": "/bandeiras/br/sp/3554656.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Torre_de_Pedra_-_SP.png"
+  },
+  "3554706": {
+   "arquivo": "/bandeiras/br/sp/3554706.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Torrinha.png"
+  },
+  "3554755": {
+   "arquivo": "/bandeiras/br/sp/3554755.png",
+   "credito": "Eloylaurino Prefeitura Municipal de Trabiju Brasil, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Municipio_de_Trabiju-SP.jpg"
+  },
+  "3554805": {
+   "arquivo": "/bandeiras/br/sp/3554805.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Tremembe_bandeira.png"
+  },
+  "3554904": {
+   "arquivo": "/bandeiras/br/sp/3554904.png",
+   "credito": "Eltonepol, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Tres_Fronteiras.jpg"
+  },
+  "3554953": {
+   "arquivo": "/bandeiras/br/sp/3554953.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Tuiuti_-_SP.png"
+  },
+  "3555000": {
+   "arquivo": "/bandeiras/br/sp/3555000.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BandeiraTupa.svg"
+  },
+  "3555109": {
+   "arquivo": "/bandeiras/br/sp/3555109.png",
+   "credito": "Sgoncalves, CC BY 3.0",
+   "licenca": "CC BY 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeiratupi_paulista.jpg"
+  },
+  "3555208": {
+   "arquivo": "/bandeiras/br/sp/3555208.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Turi%C3%BAba.png"
+  },
+  "3555307": {
+   "arquivo": "/bandeiras/br/sp/3555307.png",
+   "credito": "Município de Turmalina-SP, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Munic%C3%ADpio_de_Turmalina.png"
+  },
+  "3555406": {
+   "arquivo": "/bandeiras/br/sp/3555406.png",
+   "credito": "FORTES, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Ubatuba.svg"
+  },
+  "3555505": {
+   "arquivo": "/bandeiras/br/sp/3555505.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ubirajara.png"
+  },
+  "3555604": {
+   "arquivo": "/bandeiras/br/sp/3555604.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Uchoa.png"
+  },
+  "3555703": {
+   "arquivo": "/bandeiras/br/sp/3555703.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Uni%C3%A3o_Paulista_-_SP.png"
+  },
+  "3555802": {
+   "arquivo": "/bandeiras/br/sp/3555802.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Ur%C3%A2nia.png"
+  },
+  "3555901": {
+   "arquivo": "/bandeiras/br/sp/3555901.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Uru.png"
+  },
+  "3556008": {
+   "arquivo": "/bandeiras/br/sp/3556008.png",
+   "credito": "Lfernandoslv, CC BY-SA 4.0",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Urup%C3%AAs.svg"
+  },
+  "3556107": {
+   "arquivo": "/bandeiras/br/sp/3556107.png",
+   "credito": "Município de Valentim Gentil, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_valentim_gentil.jpg"
+  },
+  "3556206": {
+   "arquivo": "/bandeiras/br/sp/3556206.png",
+   "credito": "victorwestmann, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-Valinhos.svg"
+  },
+  "3556305": {
+   "arquivo": "/bandeiras/br/sp/3556305.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Valpara%C3%ADso.png"
+  },
+  "3556354": {
+   "arquivo": "/bandeiras/br/sp/3556354.png",
+   "credito": "City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Vargem_-_SP.png"
+  },
+  "3556404": {
+   "arquivo": "/bandeiras/br/sp/3556404.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_vgsul.jpg"
+  },
+  "3556453": {
+   "arquivo": "/bandeiras/br/sp/3556453.png",
+   "credito": "Prefeitura de Vargem Grande Paulista, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Vargem_Grande_Paulista.jpg"
+  },
+  "3556503": {
+   "arquivo": "/bandeiras/br/sp/3556503.png",
+   "credito": "Brazilian government, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_V%C3%A1rzea_Paulista.png"
+  },
+  "3556602": {
+   "arquivo": "/bandeiras/br/sp/3556602.png",
+   "credito": "VeraCruz City Hall, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira-veracruz.png"
+  },
+  "3556701": {
+   "arquivo": "/bandeiras/br/sp/3556701.png",
+   "credito": "Câmara Municipal de Vinhedo; vectorization by SiBr4, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Vinhedo_-_SP.svg"
+  },
+  "3556800": {
+   "arquivo": "/bandeiras/br/sp/3556800.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Viradouro.png"
+  },
+  "3556909": {
+   "arquivo": "/bandeiras/br/sp/3556909.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Vista_Alegre_do_Alto.jpg"
+  },
+  "3556958": {
+   "arquivo": "/bandeiras/br/sp/3556958.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Vit%C3%B3ria_Brasil.png"
+  },
+  "3557006": {
+   "arquivo": "/bandeiras/br/sp/3557006.png",
+   "credito": "Prefeitura de Votorantim, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Votorantim_Bandeira.jpg"
+  },
+  "3557105": {
+   "arquivo": "/bandeiras/br/sp/3557105.png",
+   "credito": "Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Votuporanga_Bandeira.gif"
+  },
+  "3557204": {
+   "arquivo": "/bandeiras/br/sp/3557204.png",
+   "credito": "Prefeitura Municipal, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Chavantes.png"
+  },
+  "3557303": {
+   "arquivo": "/bandeiras/br/sp/3557303.png",
+   "credito": "Yon10, CC BY-SA 3.0",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_Estiva_Gerbi.jpg"
+  },
+  "estado": {
+   "arquivo": "/bandeiras/br/sp/estado.png",
+   "credito": "Felipe Micaroni Lalli, Giro720, Public domain",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bandeira_do_estado_de_S%C3%A3o_Paulo.svg"
+  }
+ },
+ "recusadas": [
+  "3522703 (Copyrighted free use)"
+ ]
+}

@@ -20,6 +20,9 @@ A rotina está em `.github/workflows/atualizar-dados.yml`. O programa que roda o
 | Comércio exterior (Comex Stat) | todo dia | mensal |
 | Contas públicas (Tesouro, Banco Central) | todo dia | mensal e anual |
 | Empregos com carteira (Novo Caged) | segundas-feiras (arquivo grande) | mensal |
+| SP: atividade econômica mensal (Seade, Banco Central) | todo dia | mensal |
+| SP: exportações e importações por município (Comex Stat) | todo dia | mensal |
+| Empregos com carteira por município (Novo Caged) | segundas-feiras (só baixa os meses novos) | mensal |
 
 Rodar todo dia não faz mal: se a fonte ainda não publicou nada novo, nada muda no site.
 

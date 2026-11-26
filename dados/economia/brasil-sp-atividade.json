@@ -1,0 +1,3562 @@
+{
+ "_explicacao": "Atividade econômica de São Paulo, mês a mês. Gerado por scripts/atividade-estado/baixar.mjs. Não edite à mão. null = sem dado.",
+ "estado": "SP",
+ "baixadoEm": "2026-11-26",
+ "pibMensal": {
+  "nome": "PIB mensal",
+  "frequencia": "mensal",
+  "fontes": [
+   {
+    "nome": "Fundação Seade",
+    "publicacao": "PIB mensal do Estado de São Paulo",
+    "url": "https://repositorio.seade.gov.br/dataset/pib-mensal",
+    "arquivo": "https://repositorio.seade.gov.br/dataset/90ae5a90-7638-409c-be21-c3049daa4a55/resource/abf25069-ceeb-4115-8945-e0c4d0508588/download/08-2026_tabelas-relatorio_site.xlsx",
+    "dataAtualizacao": "2026-10-29"
+   }
+  ],
+  "observacao": "Dados preliminares e sujeitos a revisão (Seade). Crescimento já descontada a inflação (volume).",
+  "ultimoMes": "2026-08",
+  "periodo": "agosto de 2026",
+  "ultimo": {
+   "mesAnterior": {
+    "pib": -0.45,
+    "agro": -3.3,
+    "industria": -0.32,
+    "servicos": -0.03
+   },
+   "anoAnterior": {
+    "pib": 0.87,
+    "agro": 3.71,
+    "industria": -1.32,
+    "servicos": 1.96
+   },
+   "noAno": {
+    "pib": 1.5,
+    "agro": 2.77,
+    "industria": -0.11,
+    "servicos": 2.41
+   },
+   "em12Meses": {
+    "pib": 1.02,
+    "agro": 4.32,
+    "industria": -0.93,
+    "servicos": 1.92
+   }
+  },
+  "textos": {
+   "mesAnterior": "Em relação ao mês anterior, com ajuste sazonal (%)",
+   "anoAnterior": "Em relação ao mesmo mês do ano anterior (%)",
+   "noAno": "Acumulado no ano, em relação ao mesmo período do ano anterior (%)",
+   "em12Meses": "Acumulado em 12 meses (%)"
+  },
+  "serie": [
+   {
+    "mes": "2002-01",
+    "nome": "janeiro de 2002",
+    "indice": 72.42,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-02",
+    "nome": "fevereiro de 2002",
+    "indice": 72.63,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-03",
+    "nome": "março de 2002",
+    "indice": 72.61,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-04",
+    "nome": "abril de 2002",
+    "indice": 73.49,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-05",
+    "nome": "maio de 2002",
+    "indice": 71.59,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-06",
+    "nome": "junho de 2002",
+    "indice": 71.02,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-07",
+    "nome": "julho de 2002",
+    "indice": 71,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-08",
+    "nome": "agosto de 2002",
+    "indice": 70.01,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-09",
+    "nome": "setembro de 2002",
+    "indice": 70.41,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-10",
+    "nome": "outubro de 2002",
+    "indice": 71.34,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-11",
+    "nome": "novembro de 2002",
+    "indice": 71.57,
+    "em12Meses": null
+   },
+   {
+    "mes": "2002-12",
+    "nome": "dezembro de 2002",
+    "indice": 69.55,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-01",
+    "nome": "janeiro de 2003",
+    "indice": 70.67,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-02",
+    "nome": "fevereiro de 2003",
+    "indice": 70.46,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-03",
+    "nome": "março de 2003",
+    "indice": 69.93,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-04",
+    "nome": "abril de 2003",
+    "indice": 69.91,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-05",
+    "nome": "maio de 2003",
+    "indice": 70.04,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-06",
+    "nome": "junho de 2003",
+    "indice": 70.51,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-07",
+    "nome": "julho de 2003",
+    "indice": 69.89,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-08",
+    "nome": "agosto de 2003",
+    "indice": 71.27,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-09",
+    "nome": "setembro de 2003",
+    "indice": 71.95,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-10",
+    "nome": "outubro de 2003",
+    "indice": 73.3,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-11",
+    "nome": "novembro de 2003",
+    "indice": 72.83,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-12",
+    "nome": "dezembro de 2003",
+    "indice": 72.25,
+    "em12Meses": -0.5
+   },
+   {
+    "mes": "2004-01",
+    "nome": "janeiro de 2004",
+    "indice": 72.85,
+    "em12Meses": -0.09
+   },
+   {
+    "mes": "2004-02",
+    "nome": "fevereiro de 2004",
+    "indice": 72.87,
+    "em12Meses": 0.38
+   },
+   {
+    "mes": "2004-03",
+    "nome": "março de 2004",
+    "indice": 74.6,
+    "em12Meses": 1.5
+   },
+   {
+    "mes": "2004-04",
+    "nome": "abril de 2004",
+    "indice": 74.76,
+    "em12Meses": 2.61
+   },
+   {
+    "mes": "2004-05",
+    "nome": "maio de 2004",
+    "indice": 74.62,
+    "em12Meses": 3.25
+   },
+   {
+    "mes": "2004-06",
+    "nome": "junho de 2004",
+    "indice": 75.66,
+    "em12Meses": 3.99
+   },
+   {
+    "mes": "2004-07",
+    "nome": "julho de 2004",
+    "indice": 75.58,
+    "em12Meses": 4.79
+   },
+   {
+    "mes": "2004-08",
+    "nome": "agosto de 2004",
+    "indice": 76.07,
+    "em12Meses": 5.34
+   },
+   {
+    "mes": "2004-09",
+    "nome": "setembro de 2004",
+    "indice": 76.45,
+    "em12Meses": 5.62
+   },
+   {
+    "mes": "2004-10",
+    "nome": "outubro de 2004",
+    "indice": 75.98,
+    "em12Meses": 5.59
+   },
+   {
+    "mes": "2004-11",
+    "nome": "novembro de 2004",
+    "indice": 76.26,
+    "em12Meses": 6.01
+   },
+   {
+    "mes": "2004-12",
+    "nome": "dezembro de 2004",
+    "indice": 77.09,
+    "em12Meses": 6.2
+   },
+   {
+    "mes": "2005-01",
+    "nome": "janeiro de 2005",
+    "indice": 77.18,
+    "em12Meses": 6.36
+   },
+   {
+    "mes": "2005-02",
+    "nome": "fevereiro de 2005",
+    "indice": 77.65,
+    "em12Meses": 6.25
+   },
+   {
+    "mes": "2005-03",
+    "nome": "março de 2005",
+    "indice": 77.83,
+    "em12Meses": 5.71
+   },
+   {
+    "mes": "2005-04",
+    "nome": "abril de 2005",
+    "indice": 77.63,
+    "em12Meses": 5.51
+   },
+   {
+    "mes": "2005-05",
+    "nome": "maio de 2005",
+    "indice": 78.49,
+    "em12Meses": 5.42
+   },
+   {
+    "mes": "2005-06",
+    "nome": "junho de 2005",
+    "indice": 78.06,
+    "em12Meses": 5.13
+   },
+   {
+    "mes": "2005-07",
+    "nome": "julho de 2005",
+    "indice": 78.42,
+    "em12Meses": 4.72
+   },
+   {
+    "mes": "2005-08",
+    "nome": "agosto de 2005",
+    "indice": 78.91,
+    "em12Meses": 4.48
+   },
+   {
+    "mes": "2005-09",
+    "nome": "setembro de 2005",
+    "indice": 78.79,
+    "em12Meses": 4.22
+   },
+   {
+    "mes": "2005-10",
+    "nome": "outubro de 2005",
+    "indice": 78.79,
+    "em12Meses": 4.32
+   },
+   {
+    "mes": "2005-11",
+    "nome": "novembro de 2005",
+    "indice": 80.17,
+    "em12Meses": 4.24
+   },
+   {
+    "mes": "2005-12",
+    "nome": "dezembro de 2005",
+    "indice": 80.5,
+    "em12Meses": 4.02
+   },
+   {
+    "mes": "2006-01",
+    "nome": "janeiro de 2006",
+    "indice": 81.13,
+    "em12Meses": 4.07
+   },
+   {
+    "mes": "2006-02",
+    "nome": "fevereiro de 2006",
+    "indice": 80.92,
+    "em12Meses": 4.13
+   },
+   {
+    "mes": "2006-03",
+    "nome": "março de 2006",
+    "indice": 80.33,
+    "em12Meses": 4.25
+   },
+   {
+    "mes": "2006-04",
+    "nome": "abril de 2006",
+    "indice": 81.07,
+    "em12Meses": 4.05
+   },
+   {
+    "mes": "2006-05",
+    "nome": "maio de 2006",
+    "indice": 81.08,
+    "em12Meses": 4.12
+   },
+   {
+    "mes": "2006-06",
+    "nome": "junho de 2006",
+    "indice": 80.88,
+    "em12Meses": 3.96
+   },
+   {
+    "mes": "2006-07",
+    "nome": "julho de 2006",
+    "indice": 81.53,
+    "em12Meses": 4.05
+   },
+   {
+    "mes": "2006-08",
+    "nome": "agosto de 2006",
+    "indice": 81.54,
+    "em12Meses": 3.96
+   },
+   {
+    "mes": "2006-09",
+    "nome": "setembro de 2006",
+    "indice": 81.53,
+    "em12Meses": 3.93
+   },
+   {
+    "mes": "2006-10",
+    "nome": "outubro de 2006",
+    "indice": 82.67,
+    "em12Meses": 4.09
+   },
+   {
+    "mes": "2006-11",
+    "nome": "novembro de 2006",
+    "indice": 82.76,
+    "em12Meses": 3.95
+   },
+   {
+    "mes": "2006-12",
+    "nome": "dezembro de 2006",
+    "indice": 83.77,
+    "em12Meses": 3.86
+   },
+   {
+    "mes": "2007-01",
+    "nome": "janeiro de 2007",
+    "indice": 84.43,
+    "em12Meses": 3.8
+   },
+   {
+    "mes": "2007-02",
+    "nome": "fevereiro de 2007",
+    "indice": 84.91,
+    "em12Meses": 3.85
+   },
+   {
+    "mes": "2007-03",
+    "nome": "março de 2007",
+    "indice": 84.04,
+    "em12Meses": 3.84
+   },
+   {
+    "mes": "2007-04",
+    "nome": "abril de 2007",
+    "indice": 86.4,
+    "em12Meses": 4.23
+   },
+   {
+    "mes": "2007-05",
+    "nome": "maio de 2007",
+    "indice": 86.83,
+    "em12Meses": 4.4
+   },
+   {
+    "mes": "2007-06",
+    "nome": "junho de 2007",
+    "indice": 87.48,
+    "em12Meses": 4.83
+   },
+   {
+    "mes": "2007-07",
+    "nome": "julho de 2007",
+    "indice": 87.67,
+    "em12Meses": 5.18
+   },
+   {
+    "mes": "2007-08",
+    "nome": "agosto de 2007",
+    "indice": 88.66,
+    "em12Meses": 5.64
+   },
+   {
+    "mes": "2007-09",
+    "nome": "setembro de 2007",
+    "indice": 89.59,
+    "em12Meses": 6.15
+   },
+   {
+    "mes": "2007-10",
+    "nome": "outubro de 2007",
+    "indice": 89.98,
+    "em12Meses": 6.51
+   },
+   {
+    "mes": "2007-11",
+    "nome": "novembro de 2007",
+    "indice": 89.6,
+    "em12Meses": 6.95
+   },
+   {
+    "mes": "2007-12",
+    "nome": "dezembro de 2007",
+    "indice": 91.64,
+    "em12Meses": 7.46
+   },
+   {
+    "mes": "2008-01",
+    "nome": "janeiro de 2008",
+    "indice": 90.02,
+    "em12Meses": 7.63
+   },
+   {
+    "mes": "2008-02",
+    "nome": "fevereiro de 2008",
+    "indice": 88.42,
+    "em12Meses": 7.87
+   },
+   {
+    "mes": "2008-03",
+    "nome": "março de 2008",
+    "indice": 92.52,
+    "em12Meses": 8.14
+   },
+   {
+    "mes": "2008-04",
+    "nome": "abril de 2008",
+    "indice": 91.88,
+    "em12Meses": 8.27
+   },
+   {
+    "mes": "2008-05",
+    "nome": "maio de 2008",
+    "indice": 93.66,
+    "em12Meses": 8.16
+   },
+   {
+    "mes": "2008-06",
+    "nome": "junho de 2008",
+    "indice": 94.08,
+    "em12Meses": 8.22
+   },
+   {
+    "mes": "2008-07",
+    "nome": "julho de 2008",
+    "indice": 95.18,
+    "em12Meses": 8.34
+   },
+   {
+    "mes": "2008-08",
+    "nome": "agosto de 2008",
+    "indice": 94.21,
+    "em12Meses": 8
+   },
+   {
+    "mes": "2008-09",
+    "nome": "setembro de 2008",
+    "indice": 96.95,
+    "em12Meses": 8.05
+   },
+   {
+    "mes": "2008-10",
+    "nome": "outubro de 2008",
+    "indice": 94.02,
+    "em12Meses": 7.62
+   },
+   {
+    "mes": "2008-11",
+    "nome": "novembro de 2008",
+    "indice": 93.29,
+    "em12Meses": 7.15
+   },
+   {
+    "mes": "2008-12",
+    "nome": "dezembro de 2008",
+    "indice": 88.96,
+    "em12Meses": 6.2
+   },
+   {
+    "mes": "2009-01",
+    "nome": "janeiro de 2009",
+    "indice": 88.64,
+    "em12Meses": 5.51
+   },
+   {
+    "mes": "2009-02",
+    "nome": "fevereiro de 2009",
+    "indice": 90.3,
+    "em12Meses": 4.75
+   },
+   {
+    "mes": "2009-03",
+    "nome": "março de 2009",
+    "indice": 89.32,
+    "em12Meses": 4
+   },
+   {
+    "mes": "2009-04",
+    "nome": "abril de 2009",
+    "indice": 91.29,
+    "em12Meses": 3.14
+   },
+   {
+    "mes": "2009-05",
+    "nome": "maio de 2009",
+    "indice": 91.36,
+    "em12Meses": 2.42
+   },
+   {
+    "mes": "2009-06",
+    "nome": "junho de 2009",
+    "indice": 92.39,
+    "em12Meses": 1.54
+   },
+   {
+    "mes": "2009-07",
+    "nome": "julho de 2009",
+    "indice": 92.81,
+    "em12Meses": 0.51
+   },
+   {
+    "mes": "2009-08",
+    "nome": "agosto de 2009",
+    "indice": 93.24,
+    "em12Meses": 0
+   },
+   {
+    "mes": "2009-09",
+    "nome": "setembro de 2009",
+    "indice": 94.73,
+    "em12Meses": -1
+   },
+   {
+    "mes": "2009-10",
+    "nome": "outubro de 2009",
+    "indice": 95.98,
+    "em12Meses": -1.23
+   },
+   {
+    "mes": "2009-11",
+    "nome": "novembro de 2009",
+    "indice": 97.84,
+    "em12Meses": -1.01
+   },
+   {
+    "mes": "2009-12",
+    "nome": "dezembro de 2009",
+    "indice": 97.02,
+    "em12Meses": -0.11
+   },
+   {
+    "mes": "2010-01",
+    "nome": "janeiro de 2010",
+    "indice": 98.92,
+    "em12Meses": 0.83
+   },
+   {
+    "mes": "2010-02",
+    "nome": "fevereiro de 2010",
+    "indice": 98.38,
+    "em12Meses": 1.62
+   },
+   {
+    "mes": "2010-03",
+    "nome": "março de 2010",
+    "indice": 99.58,
+    "em12Meses": 2.73
+   },
+   {
+    "mes": "2010-04",
+    "nome": "abril de 2010",
+    "indice": 99.53,
+    "em12Meses": 3.63
+   },
+   {
+    "mes": "2010-05",
+    "nome": "maio de 2010",
+    "indice": 98.88,
+    "em12Meses": 4.49
+   },
+   {
+    "mes": "2010-06",
+    "nome": "junho de 2010",
+    "indice": 100.17,
+    "em12Meses": 5.38
+   },
+   {
+    "mes": "2010-07",
+    "nome": "julho de 2010",
+    "indice": 99.07,
+    "em12Meses": 6.17
+   },
+   {
+    "mes": "2010-08",
+    "nome": "agosto de 2010",
+    "indice": 101.56,
+    "em12Meses": 7.11
+   },
+   {
+    "mes": "2010-09",
+    "nome": "setembro de 2010",
+    "indice": 100.15,
+    "em12Meses": 7.85
+   },
+   {
+    "mes": "2010-10",
+    "nome": "outubro de 2010",
+    "indice": 100.91,
+    "em12Meses": 8.06
+   },
+   {
+    "mes": "2010-11",
+    "nome": "novembro de 2010",
+    "indice": 101.42,
+    "em12Meses": 7.99
+   },
+   {
+    "mes": "2010-12",
+    "nome": "dezembro de 2010",
+    "indice": 101.74,
+    "em12Meses": 7.62
+   },
+   {
+    "mes": "2011-01",
+    "nome": "janeiro de 2011",
+    "indice": 103.25,
+    "em12Meses": 7.13
+   },
+   {
+    "mes": "2011-02",
+    "nome": "fevereiro de 2011",
+    "indice": 103.89,
+    "em12Meses": 7.01
+   },
+   {
+    "mes": "2011-03",
+    "nome": "março de 2011",
+    "indice": 103.29,
+    "em12Meses": 6.19
+   },
+   {
+    "mes": "2011-04",
+    "nome": "abril de 2011",
+    "indice": 101.95,
+    "em12Meses": 5.59
+   },
+   {
+    "mes": "2011-05",
+    "nome": "maio de 2011",
+    "indice": 105.08,
+    "em12Meses": 5.48
+   },
+   {
+    "mes": "2011-06",
+    "nome": "junho de 2011",
+    "indice": 103.48,
+    "em12Meses": 5.07
+   },
+   {
+    "mes": "2011-07",
+    "nome": "julho de 2011",
+    "indice": 105.17,
+    "em12Meses": 4.97
+   },
+   {
+    "mes": "2011-08",
+    "nome": "agosto de 2011",
+    "indice": 102.91,
+    "em12Meses": 4.33
+   },
+   {
+    "mes": "2011-09",
+    "nome": "setembro de 2011",
+    "indice": 104.79,
+    "em12Meses": 4.25
+   },
+   {
+    "mes": "2011-10",
+    "nome": "outubro de 2011",
+    "indice": 103.6,
+    "em12Meses": 4.12
+   },
+   {
+    "mes": "2011-11",
+    "nome": "novembro de 2011",
+    "indice": 104.59,
+    "em12Meses": 3.99
+   },
+   {
+    "mes": "2011-12",
+    "nome": "dezembro de 2011",
+    "indice": 104.99,
+    "em12Meses": 3.82
+   },
+   {
+    "mes": "2012-01",
+    "nome": "janeiro de 2012",
+    "indice": 103.89,
+    "em12Meses": 3.58
+   },
+   {
+    "mes": "2012-02",
+    "nome": "fevereiro de 2012",
+    "indice": 102.18,
+    "em12Meses": 3.02
+   },
+   {
+    "mes": "2012-03",
+    "nome": "março de 2012",
+    "indice": 104.64,
+    "em12Meses": 3.06
+   },
+   {
+    "mes": "2012-04",
+    "nome": "abril de 2012",
+    "indice": 103.87,
+    "em12Meses": 3.02
+   },
+   {
+    "mes": "2012-05",
+    "nome": "maio de 2012",
+    "indice": 104.14,
+    "em12Meses": 2.45
+   },
+   {
+    "mes": "2012-06",
+    "nome": "junho de 2012",
+    "indice": 104.66,
+    "em12Meses": 2.24
+   },
+   {
+    "mes": "2012-07",
+    "nome": "julho de 2012",
+    "indice": 106.21,
+    "em12Meses": 1.91
+   },
+   {
+    "mes": "2012-08",
+    "nome": "agosto de 2012",
+    "indice": 106.93,
+    "em12Meses": 2.08
+   },
+   {
+    "mes": "2012-09",
+    "nome": "setembro de 2012",
+    "indice": 105.64,
+    "em12Meses": 1.64
+   },
+   {
+    "mes": "2012-10",
+    "nome": "outubro de 2012",
+    "indice": 106.58,
+    "em12Meses": 1.77
+   },
+   {
+    "mes": "2012-11",
+    "nome": "novembro de 2012",
+    "indice": 105.92,
+    "em12Meses": 1.64
+   },
+   {
+    "mes": "2012-12",
+    "nome": "dezembro de 2012",
+    "indice": 106.99,
+    "em12Meses": 1.47
+   },
+   {
+    "mes": "2013-01",
+    "nome": "janeiro de 2013",
+    "indice": 106.16,
+    "em12Meses": 1.62
+   },
+   {
+    "mes": "2013-02",
+    "nome": "fevereiro de 2013",
+    "indice": 106.5,
+    "em12Meses": 1.64
+   },
+   {
+    "mes": "2013-03",
+    "nome": "março de 2013",
+    "indice": 107.16,
+    "em12Meses": 1.44
+   },
+   {
+    "mes": "2013-04",
+    "nome": "abril de 2013",
+    "indice": 108.76,
+    "em12Meses": 1.87
+   },
+   {
+    "mes": "2013-05",
+    "nome": "maio de 2013",
+    "indice": 108.12,
+    "em12Meses": 2.17
+   },
+   {
+    "mes": "2013-06",
+    "nome": "junho de 2013",
+    "indice": 108.85,
+    "em12Meses": 2.42
+   },
+   {
+    "mes": "2013-07",
+    "nome": "julho de 2013",
+    "indice": 108.76,
+    "em12Meses": 2.57
+   },
+   {
+    "mes": "2013-08",
+    "nome": "agosto de 2013",
+    "indice": 109.9,
+    "em12Meses": 2.42
+   },
+   {
+    "mes": "2013-09",
+    "nome": "setembro de 2013",
+    "indice": 110.25,
+    "em12Meses": 2.87
+   },
+   {
+    "mes": "2013-10",
+    "nome": "outubro de 2013",
+    "indice": 109.44,
+    "em12Meses": 2.78
+   },
+   {
+    "mes": "2013-11",
+    "nome": "novembro de 2013",
+    "indice": 109.32,
+    "em12Meses": 2.86
+   },
+   {
+    "mes": "2013-12",
+    "nome": "dezembro de 2013",
+    "indice": 106.71,
+    "em12Meses": 2.79
+   },
+   {
+    "mes": "2014-01",
+    "nome": "janeiro de 2014",
+    "indice": 108.88,
+    "em12Meses": 2.76
+   },
+   {
+    "mes": "2014-02",
+    "nome": "fevereiro de 2014",
+    "indice": 108.69,
+    "em12Meses": 3.01
+   },
+   {
+    "mes": "2014-03",
+    "nome": "março de 2014",
+    "indice": 111.36,
+    "em12Meses": 3.27
+   },
+   {
+    "mes": "2014-04",
+    "nome": "abril de 2014",
+    "indice": 107.15,
+    "em12Meses": 2.47
+   },
+   {
+    "mes": "2014-05",
+    "nome": "maio de 2014",
+    "indice": 107.24,
+    "em12Meses": 2.13
+   },
+   {
+    "mes": "2014-06",
+    "nome": "junho de 2014",
+    "indice": 105.29,
+    "em12Meses": 1.56
+   },
+   {
+    "mes": "2014-07",
+    "nome": "julho de 2014",
+    "indice": 105.31,
+    "em12Meses": 1.04
+   },
+   {
+    "mes": "2014-08",
+    "nome": "agosto de 2014",
+    "indice": 105.97,
+    "em12Meses": 0.41
+   },
+   {
+    "mes": "2014-09",
+    "nome": "setembro de 2014",
+    "indice": 105.5,
+    "em12Meses": -0.28
+   },
+   {
+    "mes": "2014-10",
+    "nome": "outubro de 2014",
+    "indice": 106.32,
+    "em12Meses": -0.78
+   },
+   {
+    "mes": "2014-11",
+    "nome": "novembro de 2014",
+    "indice": 106.41,
+    "em12Meses": -1.28
+   },
+   {
+    "mes": "2014-12",
+    "nome": "dezembro de 2014",
+    "indice": 105.13,
+    "em12Meses": -1.38
+   },
+   {
+    "mes": "2015-01",
+    "nome": "janeiro de 2015",
+    "indice": 105.8,
+    "em12Meses": -1.81
+   },
+   {
+    "mes": "2015-02",
+    "nome": "fevereiro de 2015",
+    "indice": 105.04,
+    "em12Meses": -2.48
+   },
+   {
+    "mes": "2015-03",
+    "nome": "março de 2015",
+    "indice": 104.67,
+    "em12Meses": -3.09
+   },
+   {
+    "mes": "2015-04",
+    "nome": "abril de 2015",
+    "indice": 103.2,
+    "em12Meses": -3.16
+   },
+   {
+    "mes": "2015-05",
+    "nome": "maio de 2015",
+    "indice": 102.77,
+    "em12Meses": -3.51
+   },
+   {
+    "mes": "2015-06",
+    "nome": "junho de 2015",
+    "indice": 102.96,
+    "em12Meses": -3.35
+   },
+   {
+    "mes": "2015-07",
+    "nome": "julho de 2015",
+    "indice": 101.46,
+    "em12Meses": -3.41
+   },
+   {
+    "mes": "2015-08",
+    "nome": "agosto de 2015",
+    "indice": 101.33,
+    "em12Meses": -3.4
+   },
+   {
+    "mes": "2015-09",
+    "nome": "setembro de 2015",
+    "indice": 100.62,
+    "em12Meses": -3.5
+   },
+   {
+    "mes": "2015-10",
+    "nome": "outubro de 2015",
+    "indice": 101.47,
+    "em12Meses": -3.68
+   },
+   {
+    "mes": "2015-11",
+    "nome": "novembro de 2015",
+    "indice": 100.04,
+    "em12Meses": -3.86
+   },
+   {
+    "mes": "2015-12",
+    "nome": "dezembro de 2015",
+    "indice": 100.73,
+    "em12Meses": -4.13
+   },
+   {
+    "mes": "2016-01",
+    "nome": "janeiro de 2016",
+    "indice": 99.51,
+    "em12Meses": -4.41
+   },
+   {
+    "mes": "2016-02",
+    "nome": "fevereiro de 2016",
+    "indice": 97.85,
+    "em12Meses": -4.28
+   },
+   {
+    "mes": "2016-03",
+    "nome": "março de 2016",
+    "indice": 100.57,
+    "em12Meses": -4.34
+   },
+   {
+    "mes": "2016-04",
+    "nome": "abril de 2016",
+    "indice": 100.26,
+    "em12Meses": -4.2
+   },
+   {
+    "mes": "2016-05",
+    "nome": "maio de 2016",
+    "indice": 100.03,
+    "em12Meses": -4.07
+   },
+   {
+    "mes": "2016-06",
+    "nome": "junho de 2016",
+    "indice": 99.76,
+    "em12Meses": -4.13
+   },
+   {
+    "mes": "2016-07",
+    "nome": "julho de 2016",
+    "indice": 100.48,
+    "em12Meses": -3.99
+   },
+   {
+    "mes": "2016-08",
+    "nome": "agosto de 2016",
+    "indice": 98.42,
+    "em12Meses": -3.77
+   },
+   {
+    "mes": "2016-09",
+    "nome": "setembro de 2016",
+    "indice": 98.63,
+    "em12Meses": -3.51
+   },
+   {
+    "mes": "2016-10",
+    "nome": "outubro de 2016",
+    "indice": 97.89,
+    "em12Meses": -3.47
+   },
+   {
+    "mes": "2016-11",
+    "nome": "novembro de 2016",
+    "indice": 97.76,
+    "em12Meses": -3.12
+   },
+   {
+    "mes": "2016-12",
+    "nome": "dezembro de 2016",
+    "indice": 98,
+    "em12Meses": -3.03
+   },
+   {
+    "mes": "2017-01",
+    "nome": "janeiro de 2017",
+    "indice": 99.72,
+    "em12Meses": -2.45
+   },
+   {
+    "mes": "2017-02",
+    "nome": "fevereiro de 2017",
+    "indice": 100.53,
+    "em12Meses": -2.26
+   },
+   {
+    "mes": "2017-03",
+    "nome": "março de 2017",
+    "indice": 98.24,
+    "em12Meses": -1.98
+   },
+   {
+    "mes": "2017-04",
+    "nome": "abril de 2017",
+    "indice": 98.8,
+    "em12Meses": -2.11
+   },
+   {
+    "mes": "2017-05",
+    "nome": "maio de 2017",
+    "indice": 98.82,
+    "em12Meses": -1.78
+   },
+   {
+    "mes": "2017-06",
+    "nome": "junho de 2017",
+    "indice": 99.65,
+    "em12Meses": -1.72
+   },
+   {
+    "mes": "2017-07",
+    "nome": "julho de 2017",
+    "indice": 100.01,
+    "em12Meses": -1.58
+   },
+   {
+    "mes": "2017-08",
+    "nome": "agosto de 2017",
+    "indice": 99.66,
+    "em12Meses": -1.3
+   },
+   {
+    "mes": "2017-09",
+    "nome": "setembro de 2017",
+    "indice": 100.19,
+    "em12Meses": -1.06
+   },
+   {
+    "mes": "2017-10",
+    "nome": "outubro de 2017",
+    "indice": 99.8,
+    "em12Meses": -0.46
+   },
+   {
+    "mes": "2017-11",
+    "nome": "novembro de 2017",
+    "indice": 100.3,
+    "em12Meses": -0.11
+   },
+   {
+    "mes": "2017-12",
+    "nome": "dezembro de 2017",
+    "indice": 100.59,
+    "em12Meses": 0.29
+   },
+   {
+    "mes": "2018-01",
+    "nome": "janeiro de 2018",
+    "indice": 100.31,
+    "em12Meses": 0.34
+   },
+   {
+    "mes": "2018-02",
+    "nome": "fevereiro de 2018",
+    "indice": 99.81,
+    "em12Meses": 0.36
+   },
+   {
+    "mes": "2018-03",
+    "nome": "março de 2018",
+    "indice": 101.06,
+    "em12Meses": 0.54
+   },
+   {
+    "mes": "2018-04",
+    "nome": "abril de 2018",
+    "indice": 101.46,
+    "em12Meses": 1.19
+   },
+   {
+    "mes": "2018-05",
+    "nome": "maio de 2018",
+    "indice": 97.19,
+    "em12Meses": 1.01
+   },
+   {
+    "mes": "2018-06",
+    "nome": "junho de 2018",
+    "indice": 102.5,
+    "em12Meses": 1.29
+   },
+   {
+    "mes": "2018-07",
+    "nome": "julho de 2018",
+    "indice": 101.73,
+    "em12Meses": 1.53
+   },
+   {
+    "mes": "2018-08",
+    "nome": "agosto de 2018",
+    "indice": 102,
+    "em12Meses": 1.62
+   },
+   {
+    "mes": "2018-09",
+    "nome": "setembro de 2018",
+    "indice": 101.33,
+    "em12Meses": 1.56
+   },
+   {
+    "mes": "2018-10",
+    "nome": "outubro de 2018",
+    "indice": 100.89,
+    "em12Meses": 1.51
+   },
+   {
+    "mes": "2018-11",
+    "nome": "novembro de 2018",
+    "indice": 101.88,
+    "em12Meses": 1.44
+   },
+   {
+    "mes": "2018-12",
+    "nome": "dezembro de 2018",
+    "indice": 103.09,
+    "em12Meses": 1.49
+   },
+   {
+    "mes": "2019-01",
+    "nome": "janeiro de 2019",
+    "indice": 102.3,
+    "em12Meses": 1.55
+   },
+   {
+    "mes": "2019-02",
+    "nome": "fevereiro de 2019",
+    "indice": 102.99,
+    "em12Meses": 1.99
+   },
+   {
+    "mes": "2019-03",
+    "nome": "março de 2019",
+    "indice": 101.88,
+    "em12Meses": 1.87
+   },
+   {
+    "mes": "2019-04",
+    "nome": "abril de 2019",
+    "indice": 103.67,
+    "em12Meses": 1.64
+   },
+   {
+    "mes": "2019-05",
+    "nome": "maio de 2019",
+    "indice": 103.12,
+    "em12Meses": 2.26
+   },
+   {
+    "mes": "2019-06",
+    "nome": "junho de 2019",
+    "indice": 102.07,
+    "em12Meses": 1.96
+   },
+   {
+    "mes": "2019-07",
+    "nome": "julho de 2019",
+    "indice": 102.12,
+    "em12Meses": 1.86
+   },
+   {
+    "mes": "2019-08",
+    "nome": "agosto de 2019",
+    "indice": 102.93,
+    "em12Meses": 1.71
+   },
+   {
+    "mes": "2019-09",
+    "nome": "setembro de 2019",
+    "indice": 103.25,
+    "em12Meses": 1.87
+   },
+   {
+    "mes": "2019-10",
+    "nome": "outubro de 2019",
+    "indice": 104.66,
+    "em12Meses": 2.07
+   },
+   {
+    "mes": "2019-11",
+    "nome": "novembro de 2019",
+    "indice": 103.11,
+    "em12Meses": 1.97
+   },
+   {
+    "mes": "2019-12",
+    "nome": "dezembro de 2019",
+    "indice": 102.52,
+    "em12Meses": 1.75
+   },
+   {
+    "mes": "2020-01",
+    "nome": "janeiro de 2020",
+    "indice": 104.63,
+    "em12Meses": 1.75
+   },
+   {
+    "mes": "2020-02",
+    "nome": "fevereiro de 2020",
+    "indice": 101.88,
+    "em12Meses": 1.41
+   },
+   {
+    "mes": "2020-03",
+    "nome": "março de 2020",
+    "indice": 101.27,
+    "em12Meses": 1.58
+   },
+   {
+    "mes": "2020-04",
+    "nome": "abril de 2020",
+    "indice": 92.64,
+    "em12Meses": 0.58
+   },
+   {
+    "mes": "2020-05",
+    "nome": "maio de 2020",
+    "indice": 94.04,
+    "em12Meses": -0.75
+   },
+   {
+    "mes": "2020-06",
+    "nome": "junho de 2020",
+    "indice": 99.51,
+    "em12Meses": -0.77
+   },
+   {
+    "mes": "2020-07",
+    "nome": "julho de 2020",
+    "indice": 103.35,
+    "em12Meses": -0.74
+   },
+   {
+    "mes": "2020-08",
+    "nome": "agosto de 2020",
+    "indice": 104.07,
+    "em12Meses": -0.77
+   },
+   {
+    "mes": "2020-09",
+    "nome": "setembro de 2020",
+    "indice": 106.58,
+    "em12Meses": -0.63
+   },
+   {
+    "mes": "2020-10",
+    "nome": "outubro de 2020",
+    "indice": 107.92,
+    "em12Meses": -0.71
+   },
+   {
+    "mes": "2020-11",
+    "nome": "novembro de 2020",
+    "indice": 108.82,
+    "em12Meses": -0.34
+   },
+   {
+    "mes": "2020-12",
+    "nome": "dezembro de 2020",
+    "indice": 109.15,
+    "em12Meses": 0.28
+   },
+   {
+    "mes": "2021-01",
+    "nome": "janeiro de 2021",
+    "indice": 110.29,
+    "em12Meses": 0.43
+   },
+   {
+    "mes": "2021-02",
+    "nome": "fevereiro de 2021",
+    "indice": 110.93,
+    "em12Meses": 0.8
+   },
+   {
+    "mes": "2021-03",
+    "nome": "março de 2021",
+    "indice": 110.35,
+    "em12Meses": 1.49
+   },
+   {
+    "mes": "2021-04",
+    "nome": "abril de 2021",
+    "indice": 110.03,
+    "em12Meses": 3.76
+   },
+   {
+    "mes": "2021-05",
+    "nome": "maio de 2021",
+    "indice": 110.29,
+    "em12Meses": 5.97
+   },
+   {
+    "mes": "2021-06",
+    "nome": "junho de 2021",
+    "indice": 111.16,
+    "em12Meses": 7.05
+   },
+   {
+    "mes": "2021-07",
+    "nome": "julho de 2021",
+    "indice": 110.26,
+    "em12Meses": 7.5
+   },
+   {
+    "mes": "2021-08",
+    "nome": "agosto de 2021",
+    "indice": 110.76,
+    "em12Meses": 8.09
+   },
+   {
+    "mes": "2021-09",
+    "nome": "setembro de 2021",
+    "indice": 110.03,
+    "em12Meses": 8.01
+   },
+   {
+    "mes": "2021-10",
+    "nome": "outubro de 2021",
+    "indice": 109.11,
+    "em12Meses": 7.76
+   },
+   {
+    "mes": "2021-11",
+    "nome": "novembro de 2021",
+    "indice": 110.27,
+    "em12Meses": 7.47
+   },
+   {
+    "mes": "2021-12",
+    "nome": "dezembro de 2021",
+    "indice": 112.09,
+    "em12Meses": 7.05
+   },
+   {
+    "mes": "2022-01",
+    "nome": "janeiro de 2022",
+    "indice": 111.47,
+    "em12Meses": 6.78
+   },
+   {
+    "mes": "2022-02",
+    "nome": "fevereiro de 2022",
+    "indice": 112.88,
+    "em12Meses": 6.47
+   },
+   {
+    "mes": "2022-03",
+    "nome": "março de 2022",
+    "indice": 113.94,
+    "em12Meses": 5.95
+   },
+   {
+    "mes": "2022-04",
+    "nome": "abril de 2022",
+    "indice": 113.91,
+    "em12Meses": 4.8
+   },
+   {
+    "mes": "2022-05",
+    "nome": "maio de 2022",
+    "indice": 114.6,
+    "em12Meses": 3.87
+   },
+   {
+    "mes": "2022-06",
+    "nome": "junho de 2022",
+    "indice": 114.22,
+    "em12Meses": 3.18
+   },
+   {
+    "mes": "2022-07",
+    "nome": "julho de 2022",
+    "indice": 115.69,
+    "em12Meses": 3
+   },
+   {
+    "mes": "2022-08",
+    "nome": "agosto de 2022",
+    "indice": 115.15,
+    "em12Meses": 2.82
+   },
+   {
+    "mes": "2022-09",
+    "nome": "setembro de 2022",
+    "indice": 115.15,
+    "em12Meses": 2.95
+   },
+   {
+    "mes": "2022-10",
+    "nome": "outubro de 2022",
+    "indice": 115.84,
+    "em12Meses": 3.43
+   },
+   {
+    "mes": "2022-11",
+    "nome": "novembro de 2022",
+    "indice": 115.34,
+    "em12Meses": 3.62
+   },
+   {
+    "mes": "2022-12",
+    "nome": "dezembro de 2022",
+    "indice": 114.47,
+    "em12Meses": 3.54
+   },
+   {
+    "mes": "2023-01",
+    "nome": "janeiro de 2023",
+    "indice": 114.54,
+    "em12Meses": 3.72
+   },
+   {
+    "mes": "2023-02",
+    "nome": "fevereiro de 2023",
+    "indice": 114.73,
+    "em12Meses": 3.7
+   },
+   {
+    "mes": "2023-03",
+    "nome": "março de 2023",
+    "indice": 115.23,
+    "em12Meses": 3.5
+   },
+   {
+    "mes": "2023-04",
+    "nome": "abril de 2023",
+    "indice": 114.95,
+    "em12Meses": 3.28
+   },
+   {
+    "mes": "2023-05",
+    "nome": "maio de 2023",
+    "indice": 115.43,
+    "em12Meses": 3.03
+   },
+   {
+    "mes": "2023-06",
+    "nome": "junho de 2023",
+    "indice": 115.45,
+    "em12Meses": 2.89
+   },
+   {
+    "mes": "2023-07",
+    "nome": "julho de 2023",
+    "indice": 114.52,
+    "em12Meses": 2.45
+   },
+   {
+    "mes": "2023-08",
+    "nome": "agosto de 2023",
+    "indice": 115.78,
+    "em12Meses": 2.1
+   },
+   {
+    "mes": "2023-09",
+    "nome": "setembro de 2023",
+    "indice": 115.42,
+    "em12Meses": 1.66
+   },
+   {
+    "mes": "2023-10",
+    "nome": "outubro de 2023",
+    "indice": 115.67,
+    "em12Meses": 1.18
+   },
+   {
+    "mes": "2023-11",
+    "nome": "novembro de 2023",
+    "indice": 116.74,
+    "em12Meses": 0.92
+   },
+   {
+    "mes": "2023-12",
+    "nome": "dezembro de 2023",
+    "indice": 116.96,
+    "em12Meses": 0.88
+   },
+   {
+    "mes": "2024-01",
+    "nome": "janeiro de 2024",
+    "indice": 116.93,
+    "em12Meses": 0.85
+   },
+   {
+    "mes": "2024-02",
+    "nome": "fevereiro de 2024",
+    "indice": 114.72,
+    "em12Meses": 1.02
+   },
+   {
+    "mes": "2024-03",
+    "nome": "março de 2024",
+    "indice": 117.72,
+    "em12Meses": 0.89
+   },
+   {
+    "mes": "2024-04",
+    "nome": "abril de 2024",
+    "indice": 118.58,
+    "em12Meses": 1.35
+   },
+   {
+    "mes": "2024-05",
+    "nome": "maio de 2024",
+    "indice": 118.16,
+    "em12Meses": 1.41
+   },
+   {
+    "mes": "2024-06",
+    "nome": "junho de 2024",
+    "indice": 121.25,
+    "em12Meses": 1.65
+   },
+   {
+    "mes": "2024-07",
+    "nome": "julho de 2024",
+    "indice": 119.72,
+    "em12Meses": 2.22
+   },
+   {
+    "mes": "2024-08",
+    "nome": "agosto de 2024",
+    "indice": 119.61,
+    "em12Meses": 2.42
+   },
+   {
+    "mes": "2024-09",
+    "nome": "setembro de 2024",
+    "indice": 120.78,
+    "em12Meses": 2.81
+   },
+   {
+    "mes": "2024-10",
+    "nome": "outubro de 2024",
+    "indice": 120.67,
+    "em12Meses": 3.22
+   },
+   {
+    "mes": "2024-11",
+    "nome": "novembro de 2024",
+    "indice": 120.12,
+    "em12Meses": 3.32
+   },
+   {
+    "mes": "2024-12",
+    "nome": "dezembro de 2024",
+    "indice": 118.16,
+    "em12Meses": 3.34
+   },
+   {
+    "mes": "2025-01",
+    "nome": "janeiro de 2025",
+    "indice": 120.94,
+    "em12Meses": 3.41
+   },
+   {
+    "mes": "2025-02",
+    "nome": "fevereiro de 2025",
+    "indice": 121.09,
+    "em12Meses": 3.37
+   },
+   {
+    "mes": "2025-03",
+    "nome": "março de 2025",
+    "indice": 120.97,
+    "em12Meses": 3.59
+   },
+   {
+    "mes": "2025-04",
+    "nome": "abril de 2025",
+    "indice": 120.71,
+    "em12Meses": 3.15
+   },
+   {
+    "mes": "2025-05",
+    "nome": "maio de 2025",
+    "indice": 120.52,
+    "em12Meses": 3.14
+   },
+   {
+    "mes": "2025-06",
+    "nome": "junho de 2025",
+    "indice": 120.4,
+    "em12Meses": 2.73
+   },
+   {
+    "mes": "2025-07",
+    "nome": "julho de 2025",
+    "indice": 121.04,
+    "em12Meses": 2.35
+   },
+   {
+    "mes": "2025-08",
+    "nome": "agosto de 2025",
+    "indice": 120.9,
+    "em12Meses": 2.1
+   },
+   {
+    "mes": "2025-09",
+    "nome": "setembro de 2025",
+    "indice": 118.87,
+    "em12Meses": 1.68
+   },
+   {
+    "mes": "2025-10",
+    "nome": "outubro de 2025",
+    "indice": 120.63,
+    "em12Meses": 1.25
+   },
+   {
+    "mes": "2025-11",
+    "nome": "novembro de 2025",
+    "indice": 119.2,
+    "em12Meses": 0.91
+   },
+   {
+    "mes": "2025-12",
+    "nome": "dezembro de 2025",
+    "indice": 121.02,
+    "em12Meses": 1.05
+   },
+   {
+    "mes": "2026-01",
+    "nome": "janeiro de 2026",
+    "indice": 122.15,
+    "em12Meses": 0.83
+   },
+   {
+    "mes": "2026-02",
+    "nome": "fevereiro de 2026",
+    "indice": 120.54,
+    "em12Meses": 0.54
+   },
+   {
+    "mes": "2026-03",
+    "nome": "março de 2026",
+    "indice": 123.88,
+    "em12Meses": 0.59
+   },
+   {
+    "mes": "2026-04",
+    "nome": "abril de 2026",
+    "indice": 123.22,
+    "em12Meses": 0.72
+   },
+   {
+    "mes": "2026-05",
+    "nome": "maio de 2026",
+    "indice": 123.17,
+    "em12Meses": 0.65
+   },
+   {
+    "mes": "2026-06",
+    "nome": "junho de 2026",
+    "indice": 122.81,
+    "em12Meses": 0.95
+   },
+   {
+    "mes": "2026-07",
+    "nome": "julho de 2026",
+    "indice": 122.65,
+    "em12Meses": 0.95
+   },
+   {
+    "mes": "2026-08",
+    "nome": "agosto de 2026",
+    "indice": 122.1,
+    "em12Meses": 1.02
+   }
+  ]
+ },
+ "ibcr": {
+  "nome": "Índice de Atividade Econômica Regional (IBCR-SP)",
+  "frequencia": "mensal",
+  "fontes": [
+   {
+    "nome": "Banco Central",
+    "publicacao": "IBCR-SP, séries 25392 e 25394 do SGS",
+    "url": "https://dadosabertos.bcb.gov.br/dataset/25392-sgs",
+    "dataConsulta": "2026-11-26"
+   }
+  ],
+  "calculo": "Índice publicado pelo Banco Central. O crescimento em 12 meses é cálculo do StatWorld: soma dos últimos 12 meses do índice sem ajuste ÷ soma dos 12 meses anteriores.",
+  "ultimoMes": "2026-09",
+  "periodo": "setembro de 2026",
+  "ultimo": {
+   "indice": 104.45,
+   "em12Meses": 0.26
+  },
+  "serie": [
+   {
+    "mes": "2003-01",
+    "nome": "janeiro de 2003",
+    "indice": 66.71,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-02",
+    "nome": "fevereiro de 2003",
+    "indice": 67.3,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-03",
+    "nome": "março de 2003",
+    "indice": 67.41,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-04",
+    "nome": "abril de 2003",
+    "indice": 66.54,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-05",
+    "nome": "maio de 2003",
+    "indice": 66.43,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-06",
+    "nome": "junho de 2003",
+    "indice": 66.72,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-07",
+    "nome": "julho de 2003",
+    "indice": 66.35,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-08",
+    "nome": "agosto de 2003",
+    "indice": 66.78,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-09",
+    "nome": "setembro de 2003",
+    "indice": 67.23,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-10",
+    "nome": "outubro de 2003",
+    "indice": 67.44,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-11",
+    "nome": "novembro de 2003",
+    "indice": 67.88,
+    "em12Meses": null
+   },
+   {
+    "mes": "2003-12",
+    "nome": "dezembro de 2003",
+    "indice": 68.53,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-01",
+    "nome": "janeiro de 2004",
+    "indice": 69.25,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-02",
+    "nome": "fevereiro de 2004",
+    "indice": 69.84,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-03",
+    "nome": "março de 2004",
+    "indice": 70.61,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-04",
+    "nome": "abril de 2004",
+    "indice": 70.67,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-05",
+    "nome": "maio de 2004",
+    "indice": 70.9,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-06",
+    "nome": "junho de 2004",
+    "indice": 71.5,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-07",
+    "nome": "julho de 2004",
+    "indice": 72.12,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-08",
+    "nome": "agosto de 2004",
+    "indice": 72.76,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-09",
+    "nome": "setembro de 2004",
+    "indice": 73.74,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-10",
+    "nome": "outubro de 2004",
+    "indice": 72.95,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-11",
+    "nome": "novembro de 2004",
+    "indice": 74.72,
+    "em12Meses": null
+   },
+   {
+    "mes": "2004-12",
+    "nome": "dezembro de 2004",
+    "indice": 74.23,
+    "em12Meses": 7.21
+   },
+   {
+    "mes": "2005-01",
+    "nome": "janeiro de 2005",
+    "indice": 74.4,
+    "em12Meses": 7.48
+   },
+   {
+    "mes": "2005-02",
+    "nome": "fevereiro de 2005",
+    "indice": 74.33,
+    "em12Meses": 7.8
+   },
+   {
+    "mes": "2005-03",
+    "nome": "março de 2005",
+    "indice": 74.5,
+    "em12Meses": 7.48
+   },
+   {
+    "mes": "2005-04",
+    "nome": "abril de 2005",
+    "indice": 74.92,
+    "em12Meses": 7.44
+   },
+   {
+    "mes": "2005-05",
+    "nome": "maio de 2005",
+    "indice": 75.54,
+    "em12Meses": 7.45
+   },
+   {
+    "mes": "2005-06",
+    "nome": "junho de 2005",
+    "indice": 75.08,
+    "em12Meses": 7.32
+   },
+   {
+    "mes": "2005-07",
+    "nome": "julho de 2005",
+    "indice": 74.92,
+    "em12Meses": 6.82
+   },
+   {
+    "mes": "2005-08",
+    "nome": "agosto de 2005",
+    "indice": 75.53,
+    "em12Meses": 6.43
+   },
+   {
+    "mes": "2005-09",
+    "nome": "setembro de 2005",
+    "indice": 75.42,
+    "em12Meses": 5.88
+   },
+   {
+    "mes": "2005-10",
+    "nome": "outubro de 2005",
+    "indice": 75.87,
+    "em12Meses": 5.74
+   },
+   {
+    "mes": "2005-11",
+    "nome": "novembro de 2005",
+    "indice": 76.84,
+    "em12Meses": 5.13
+   },
+   {
+    "mes": "2005-12",
+    "nome": "dezembro de 2005",
+    "indice": 76.99,
+    "em12Meses": 4.69
+   },
+   {
+    "mes": "2006-01",
+    "nome": "janeiro de 2006",
+    "indice": 77.54,
+    "em12Meses": 4.57
+   },
+   {
+    "mes": "2006-02",
+    "nome": "fevereiro de 2006",
+    "indice": 77.75,
+    "em12Meses": 4.49
+   },
+   {
+    "mes": "2006-03",
+    "nome": "março de 2006",
+    "indice": 78.24,
+    "em12Meses": 4.6
+   },
+   {
+    "mes": "2006-04",
+    "nome": "abril de 2006",
+    "indice": 78.76,
+    "em12Meses": 4.32
+   },
+   {
+    "mes": "2006-05",
+    "nome": "maio de 2006",
+    "indice": 80.61,
+    "em12Meses": 4.47
+   },
+   {
+    "mes": "2006-06",
+    "nome": "junho de 2006",
+    "indice": 78.56,
+    "em12Meses": 4.25
+   },
+   {
+    "mes": "2006-07",
+    "nome": "julho de 2006",
+    "indice": 79.67,
+    "em12Meses": 4.55
+   },
+   {
+    "mes": "2006-08",
+    "nome": "agosto de 2006",
+    "indice": 79.45,
+    "em12Meses": 4.61
+   },
+   {
+    "mes": "2006-09",
+    "nome": "setembro de 2006",
+    "indice": 79.33,
+    "em12Meses": 4.76
+   },
+   {
+    "mes": "2006-10",
+    "nome": "outubro de 2006",
+    "indice": 80.12,
+    "em12Meses": 4.92
+   },
+   {
+    "mes": "2006-11",
+    "nome": "novembro de 2006",
+    "indice": 80.61,
+    "em12Meses": 5.09
+   },
+   {
+    "mes": "2006-12",
+    "nome": "dezembro de 2006",
+    "indice": 81.38,
+    "em12Meses": 5.05
+   },
+   {
+    "mes": "2007-01",
+    "nome": "janeiro de 2007",
+    "indice": 81.55,
+    "em12Meses": 5.04
+   },
+   {
+    "mes": "2007-02",
+    "nome": "fevereiro de 2007",
+    "indice": 82.36,
+    "em12Meses": 5.07
+   },
+   {
+    "mes": "2007-03",
+    "nome": "março de 2007",
+    "indice": 81.82,
+    "em12Meses": 4.97
+   },
+   {
+    "mes": "2007-04",
+    "nome": "abril de 2007",
+    "indice": 83.16,
+    "em12Meses": 5.28
+   },
+   {
+    "mes": "2007-05",
+    "nome": "maio de 2007",
+    "indice": 83.4,
+    "em12Meses": 4.93
+   },
+   {
+    "mes": "2007-06",
+    "nome": "junho de 2007",
+    "indice": 84.26,
+    "em12Meses": 5.18
+   },
+   {
+    "mes": "2007-07",
+    "nome": "julho de 2007",
+    "indice": 85.29,
+    "em12Meses": 5.29
+   },
+   {
+    "mes": "2007-08",
+    "nome": "agosto de 2007",
+    "indice": 85.2,
+    "em12Meses": 5.49
+   },
+   {
+    "mes": "2007-09",
+    "nome": "setembro de 2007",
+    "indice": 86.39,
+    "em12Meses": 5.79
+   },
+   {
+    "mes": "2007-10",
+    "nome": "outubro de 2007",
+    "indice": 87.18,
+    "em12Meses": 6.13
+   },
+   {
+    "mes": "2007-11",
+    "nome": "novembro de 2007",
+    "indice": 86.87,
+    "em12Meses": 6.37
+   },
+   {
+    "mes": "2007-12",
+    "nome": "dezembro de 2007",
+    "indice": 87.19,
+    "em12Meses": 6.66
+   },
+   {
+    "mes": "2008-01",
+    "nome": "janeiro de 2008",
+    "indice": 88,
+    "em12Meses": 6.9
+   },
+   {
+    "mes": "2008-02",
+    "nome": "fevereiro de 2008",
+    "indice": 88.12,
+    "em12Meses": 7.13
+   },
+   {
+    "mes": "2008-03",
+    "nome": "março de 2008",
+    "indice": 88.81,
+    "em12Meses": 7.24
+   },
+   {
+    "mes": "2008-04",
+    "nome": "abril de 2008",
+    "indice": 89.82,
+    "em12Meses": 7.48
+   },
+   {
+    "mes": "2008-05",
+    "nome": "maio de 2008",
+    "indice": 90.02,
+    "em12Meses": 7.69
+   },
+   {
+    "mes": "2008-06",
+    "nome": "junho de 2008",
+    "indice": 90.88,
+    "em12Meses": 7.84
+   },
+   {
+    "mes": "2008-07",
+    "nome": "julho de 2008",
+    "indice": 91.24,
+    "em12Meses": 7.88
+   },
+   {
+    "mes": "2008-08",
+    "nome": "agosto de 2008",
+    "indice": 90.51,
+    "em12Meses": 7.62
+   },
+   {
+    "mes": "2008-09",
+    "nome": "setembro de 2008",
+    "indice": 91.09,
+    "em12Meses": 7.66
+   },
+   {
+    "mes": "2008-10",
+    "nome": "outubro de 2008",
+    "indice": 89.3,
+    "em12Meses": 7.13
+   },
+   {
+    "mes": "2008-11",
+    "nome": "novembro de 2008",
+    "indice": 88.63,
+    "em12Meses": 6.64
+   },
+   {
+    "mes": "2008-12",
+    "nome": "dezembro de 2008",
+    "indice": 85.68,
+    "em12Meses": 6.01
+   },
+   {
+    "mes": "2009-01",
+    "nome": "janeiro de 2009",
+    "indice": 86.81,
+    "em12Meses": 5.22
+   },
+   {
+    "mes": "2009-02",
+    "nome": "fevereiro de 2009",
+    "indice": 87.27,
+    "em12Meses": 4.4
+   },
+   {
+    "mes": "2009-03",
+    "nome": "março de 2009",
+    "indice": 87.4,
+    "em12Meses": 3.9
+   },
+   {
+    "mes": "2009-04",
+    "nome": "abril de 2009",
+    "indice": 87.48,
+    "em12Meses": 2.84
+   },
+   {
+    "mes": "2009-05",
+    "nome": "maio de 2009",
+    "indice": 89.15,
+    "em12Meses": 2.24
+   },
+   {
+    "mes": "2009-06",
+    "nome": "junho de 2009",
+    "indice": 89.45,
+    "em12Meses": 1.39
+   },
+   {
+    "mes": "2009-07",
+    "nome": "julho de 2009",
+    "indice": 88.26,
+    "em12Meses": 0.41
+   },
+   {
+    "mes": "2009-08",
+    "nome": "agosto de 2009",
+    "indice": 89.15,
+    "em12Meses": -0.14
+   },
+   {
+    "mes": "2009-09",
+    "nome": "setembro de 2009",
+    "indice": 90.48,
+    "em12Meses": -0.96
+   },
+   {
+    "mes": "2009-10",
+    "nome": "outubro de 2009",
+    "indice": 91.18,
+    "em12Meses": -1.23
+   },
+   {
+    "mes": "2009-11",
+    "nome": "novembro de 2009",
+    "indice": 91.36,
+    "em12Meses": -1.13
+   },
+   {
+    "mes": "2009-12",
+    "nome": "dezembro de 2009",
+    "indice": 92.98,
+    "em12Meses": -0.4
+   },
+   {
+    "mes": "2010-01",
+    "nome": "janeiro de 2010",
+    "indice": 93.37,
+    "em12Meses": 0.22
+   },
+   {
+    "mes": "2010-02",
+    "nome": "fevereiro de 2010",
+    "indice": 94.07,
+    "em12Meses": 0.98
+   },
+   {
+    "mes": "2010-03",
+    "nome": "março de 2010",
+    "indice": 94.59,
+    "em12Meses": 1.73
+   },
+   {
+    "mes": "2010-04",
+    "nome": "abril de 2010",
+    "indice": 94.92,
+    "em12Meses": 2.72
+   },
+   {
+    "mes": "2010-05",
+    "nome": "maio de 2010",
+    "indice": 94.82,
+    "em12Meses": 3.37
+   },
+   {
+    "mes": "2010-06",
+    "nome": "junho de 2010",
+    "indice": 94.99,
+    "em12Meses": 4.04
+   },
+   {
+    "mes": "2010-07",
+    "nome": "julho de 2010",
+    "indice": 94.73,
+    "em12Meses": 4.92
+   },
+   {
+    "mes": "2010-08",
+    "nome": "agosto de 2010",
+    "indice": 95.78,
+    "em12Meses": 5.78
+   },
+   {
+    "mes": "2010-09",
+    "nome": "setembro de 2010",
+    "indice": 96,
+    "em12Meses": 6.5
+   },
+   {
+    "mes": "2010-10",
+    "nome": "outubro de 2010",
+    "indice": 96.01,
+    "em12Meses": 6.8
+   },
+   {
+    "mes": "2010-11",
+    "nome": "novembro de 2010",
+    "indice": 97.24,
+    "em12Meses": 7.09
+   },
+   {
+    "mes": "2010-12",
+    "nome": "dezembro de 2010",
+    "indice": 96.95,
+    "em12Meses": 6.79
+   },
+   {
+    "mes": "2011-01",
+    "nome": "janeiro de 2011",
+    "indice": 97.98,
+    "em12Meses": 6.71
+   },
+   {
+    "mes": "2011-02",
+    "nome": "fevereiro de 2011",
+    "indice": 98.83,
+    "em12Meses": 6.66
+   },
+   {
+    "mes": "2011-03",
+    "nome": "março de 2011",
+    "indice": 98.67,
+    "em12Meses": 6.09
+   },
+   {
+    "mes": "2011-04",
+    "nome": "abril de 2011",
+    "indice": 97.9,
+    "em12Meses": 5.57
+   },
+   {
+    "mes": "2011-05",
+    "nome": "maio de 2011",
+    "indice": 98.62,
+    "em12Meses": 5.42
+   },
+   {
+    "mes": "2011-06",
+    "nome": "junho de 2011",
+    "indice": 98.55,
+    "em12Meses": 5.24
+   },
+   {
+    "mes": "2011-07",
+    "nome": "julho de 2011",
+    "indice": 98.7,
+    "em12Meses": 4.9
+   },
+   {
+    "mes": "2011-08",
+    "nome": "agosto de 2011",
+    "indice": 98.27,
+    "em12Meses": 4.52
+   },
+   {
+    "mes": "2011-09",
+    "nome": "setembro de 2011",
+    "indice": 97.93,
+    "em12Meses": 4.16
+   },
+   {
+    "mes": "2011-10",
+    "nome": "outubro de 2011",
+    "indice": 97.74,
+    "em12Meses": 3.96
+   },
+   {
+    "mes": "2011-11",
+    "nome": "novembro de 2011",
+    "indice": 98.35,
+    "em12Meses": 3.52
+   },
+   {
+    "mes": "2011-12",
+    "nome": "dezembro de 2011",
+    "indice": 98.8,
+    "em12Meses": 3.27
+   },
+   {
+    "mes": "2012-01",
+    "nome": "janeiro de 2012",
+    "indice": 97.29,
+    "em12Meses": 2.87
+   },
+   {
+    "mes": "2012-02",
+    "nome": "fevereiro de 2012",
+    "indice": 99.43,
+    "em12Meses": 2.32
+   },
+   {
+    "mes": "2012-03",
+    "nome": "março de 2012",
+    "indice": 98.49,
+    "em12Meses": 2.23
+   },
+   {
+    "mes": "2012-04",
+    "nome": "abril de 2012",
+    "indice": 98.34,
+    "em12Meses": 2.08
+   },
+   {
+    "mes": "2012-05",
+    "nome": "maio de 2012",
+    "indice": 98.58,
+    "em12Meses": 1.66
+   },
+   {
+    "mes": "2012-06",
+    "nome": "junho de 2012",
+    "indice": 98.87,
+    "em12Meses": 1.34
+   },
+   {
+    "mes": "2012-07",
+    "nome": "julho de 2012",
+    "indice": 100.82,
+    "em12Meses": 1.29
+   },
+   {
+    "mes": "2012-08",
+    "nome": "agosto de 2012",
+    "indice": 101.06,
+    "em12Meses": 1.26
+   },
+   {
+    "mes": "2012-09",
+    "nome": "setembro de 2012",
+    "indice": 100.62,
+    "em12Meses": 1.14
+   },
+   {
+    "mes": "2012-10",
+    "nome": "outubro de 2012",
+    "indice": 101.9,
+    "em12Meses": 1.46
+   },
+   {
+    "mes": "2012-11",
+    "nome": "novembro de 2012",
+    "indice": 101.35,
+    "em12Meses": 1.61
+   },
+   {
+    "mes": "2012-12",
+    "nome": "dezembro de 2012",
+    "indice": 101.62,
+    "em12Meses": 1.5
+   },
+   {
+    "mes": "2013-01",
+    "nome": "janeiro de 2013",
+    "indice": 102.13,
+    "em12Meses": 1.87
+   },
+   {
+    "mes": "2013-02",
+    "nome": "fevereiro de 2013",
+    "indice": 102.19,
+    "em12Meses": 2.01
+   },
+   {
+    "mes": "2013-03",
+    "nome": "março de 2013",
+    "indice": 102.66,
+    "em12Meses": 2.04
+   },
+   {
+    "mes": "2013-04",
+    "nome": "abril de 2013",
+    "indice": 103.81,
+    "em12Meses": 2.67
+   },
+   {
+    "mes": "2013-05",
+    "nome": "maio de 2013",
+    "indice": 103.88,
+    "em12Meses": 3.03
+   },
+   {
+    "mes": "2013-06",
+    "nome": "junho de 2013",
+    "indice": 103.28,
+    "em12Meses": 3.42
+   },
+   {
+    "mes": "2013-07",
+    "nome": "julho de 2013",
+    "indice": 103.16,
+    "em12Meses": 3.5
+   },
+   {
+    "mes": "2013-08",
+    "nome": "agosto de 2013",
+    "indice": 103.97,
+    "em12Meses": 3.44
+   },
+   {
+    "mes": "2013-09",
+    "nome": "setembro de 2013",
+    "indice": 104.58,
+    "em12Meses": 3.8
+   },
+   {
+    "mes": "2013-10",
+    "nome": "outubro de 2013",
+    "indice": 103.51,
+    "em12Meses": 3.54
+   },
+   {
+    "mes": "2013-11",
+    "nome": "novembro de 2013",
+    "indice": 104.46,
+    "em12Meses": 3.54
+   },
+   {
+    "mes": "2013-12",
+    "nome": "dezembro de 2013",
+    "indice": 103.62,
+    "em12Meses": 3.68
+   },
+   {
+    "mes": "2014-01",
+    "nome": "janeiro de 2014",
+    "indice": 103.15,
+    "em12Meses": 3.37
+   },
+   {
+    "mes": "2014-02",
+    "nome": "fevereiro de 2014",
+    "indice": 103.05,
+    "em12Meses": 3.46
+   },
+   {
+    "mes": "2014-03",
+    "nome": "março de 2014",
+    "indice": 102.7,
+    "em12Meses": 3.22
+   },
+   {
+    "mes": "2014-04",
+    "nome": "abril de 2014",
+    "indice": 102.86,
+    "em12Meses": 2.29
+   },
+   {
+    "mes": "2014-05",
+    "nome": "maio de 2014",
+    "indice": 102.79,
+    "em12Meses": 1.87
+   },
+   {
+    "mes": "2014-06",
+    "nome": "junho de 2014",
+    "indice": 101.81,
+    "em12Meses": 1.33
+   },
+   {
+    "mes": "2014-07",
+    "nome": "julho de 2014",
+    "indice": 100.55,
+    "em12Meses": 0.85
+   },
+   {
+    "mes": "2014-08",
+    "nome": "agosto de 2014",
+    "indice": 101.18,
+    "em12Meses": 0.28
+   },
+   {
+    "mes": "2014-09",
+    "nome": "setembro de 2014",
+    "indice": 100.66,
+    "em12Meses": -0.34
+   },
+   {
+    "mes": "2014-10",
+    "nome": "outubro de 2014",
+    "indice": 100.72,
+    "em12Meses": -0.72
+   },
+   {
+    "mes": "2014-11",
+    "nome": "novembro de 2014",
+    "indice": 100.17,
+    "em12Meses": -1.32
+   },
+   {
+    "mes": "2014-12",
+    "nome": "dezembro de 2014",
+    "indice": 100.59,
+    "em12Meses": -1.7
+   },
+   {
+    "mes": "2015-01",
+    "nome": "janeiro de 2015",
+    "indice": 101.41,
+    "em12Meses": -1.97
+   },
+   {
+    "mes": "2015-02",
+    "nome": "fevereiro de 2015",
+    "indice": 100.57,
+    "em12Meses": -2.5
+   },
+   {
+    "mes": "2015-03",
+    "nome": "março de 2015",
+    "indice": 100.08,
+    "em12Meses": -2.46
+   },
+   {
+    "mes": "2015-04",
+    "nome": "abril de 2015",
+    "indice": 98.67,
+    "em12Meses": -2.53
+   },
+   {
+    "mes": "2015-05",
+    "nome": "maio de 2015",
+    "indice": 97.69,
+    "em12Meses": -2.98
+   },
+   {
+    "mes": "2015-06",
+    "nome": "junho de 2015",
+    "indice": 98.19,
+    "em12Meses": -3.03
+   },
+   {
+    "mes": "2015-07",
+    "nome": "julho de 2015",
+    "indice": 95.53,
+    "em12Meses": -3.23
+   },
+   {
+    "mes": "2015-08",
+    "nome": "agosto de 2015",
+    "indice": 96.34,
+    "em12Meses": -3.33
+   },
+   {
+    "mes": "2015-09",
+    "nome": "setembro de 2015",
+    "indice": 95.77,
+    "em12Meses": -3.63
+   },
+   {
+    "mes": "2015-10",
+    "nome": "outubro de 2015",
+    "indice": 96.14,
+    "em12Meses": -3.97
+   },
+   {
+    "mes": "2015-11",
+    "nome": "novembro de 2015",
+    "indice": 94.12,
+    "em12Meses": -4.13
+   },
+   {
+    "mes": "2015-12",
+    "nome": "dezembro de 2015",
+    "indice": 94.61,
+    "em12Meses": -4.4
+   },
+   {
+    "mes": "2016-01",
+    "nome": "janeiro de 2016",
+    "indice": 94.7,
+    "em12Meses": -4.82
+   },
+   {
+    "mes": "2016-02",
+    "nome": "fevereiro de 2016",
+    "indice": 94.21,
+    "em12Meses": -4.9
+   },
+   {
+    "mes": "2016-03",
+    "nome": "março de 2016",
+    "indice": 93.94,
+    "em12Meses": -5.39
+   },
+   {
+    "mes": "2016-04",
+    "nome": "abril de 2016",
+    "indice": 95.52,
+    "em12Meses": -5.31
+   },
+   {
+    "mes": "2016-05",
+    "nome": "maio de 2016",
+    "indice": 93.44,
+    "em12Meses": -5.15
+   },
+   {
+    "mes": "2016-06",
+    "nome": "junho de 2016",
+    "indice": 93.02,
+    "em12Meses": -5.27
+   },
+   {
+    "mes": "2016-07",
+    "nome": "julho de 2016",
+    "indice": 93.49,
+    "em12Meses": -5.16
+   },
+   {
+    "mes": "2016-08",
+    "nome": "agosto de 2016",
+    "indice": 91.98,
+    "em12Meses": -5.03
+   },
+   {
+    "mes": "2016-09",
+    "nome": "setembro de 2016",
+    "indice": 92.78,
+    "em12Meses": -4.75
+   },
+   {
+    "mes": "2016-10",
+    "nome": "outubro de 2016",
+    "indice": 92.46,
+    "em12Meses": -4.67
+   },
+   {
+    "mes": "2016-11",
+    "nome": "novembro de 2016",
+    "indice": 92.92,
+    "em12Meses": -4.28
+   },
+   {
+    "mes": "2016-12",
+    "nome": "dezembro de 2016",
+    "indice": 92.08,
+    "em12Meses": -3.95
+   },
+   {
+    "mes": "2017-01",
+    "nome": "janeiro de 2017",
+    "indice": 93.02,
+    "em12Meses": -3.39
+   },
+   {
+    "mes": "2017-02",
+    "nome": "fevereiro de 2017",
+    "indice": 93.05,
+    "em12Meses": -3.14
+   },
+   {
+    "mes": "2017-03",
+    "nome": "março de 2017",
+    "indice": 93.4,
+    "em12Meses": -2.6
+   },
+   {
+    "mes": "2017-04",
+    "nome": "abril de 2017",
+    "indice": 93.65,
+    "em12Meses": -2.71
+   },
+   {
+    "mes": "2017-05",
+    "nome": "maio de 2017",
+    "indice": 94.11,
+    "em12Meses": -2.22
+   },
+   {
+    "mes": "2017-06",
+    "nome": "junho de 2017",
+    "indice": 96.16,
+    "em12Meses": -1.68
+   },
+   {
+    "mes": "2017-07",
+    "nome": "julho de 2017",
+    "indice": 96.2,
+    "em12Meses": -1.12
+   },
+   {
+    "mes": "2017-08",
+    "nome": "agosto de 2017",
+    "indice": 95.57,
+    "em12Meses": -0.47
+   },
+   {
+    "mes": "2017-09",
+    "nome": "setembro de 2017",
+    "indice": 97.11,
+    "em12Meses": 0.08
+   },
+   {
+    "mes": "2017-10",
+    "nome": "outubro de 2017",
+    "indice": 96.26,
+    "em12Meses": 0.89
+   },
+   {
+    "mes": "2017-11",
+    "nome": "novembro de 2017",
+    "indice": 96.68,
+    "em12Meses": 1.33
+   },
+   {
+    "mes": "2017-12",
+    "nome": "dezembro de 2017",
+    "indice": 97.51,
+    "em12Meses": 1.78
+   },
+   {
+    "mes": "2018-01",
+    "nome": "janeiro de 2018",
+    "indice": 96.45,
+    "em12Meses": 2.09
+   },
+   {
+    "mes": "2018-02",
+    "nome": "fevereiro de 2018",
+    "indice": 95.68,
+    "em12Meses": 2.42
+   },
+   {
+    "mes": "2018-03",
+    "nome": "março de 2018",
+    "indice": 97.24,
+    "em12Meses": 2.66
+   },
+   {
+    "mes": "2018-04",
+    "nome": "abril de 2018",
+    "indice": 98.3,
+    "em12Meses": 3.59
+   },
+   {
+    "mes": "2018-05",
+    "nome": "maio de 2018",
+    "indice": 93.21,
+    "em12Meses": 3.27
+   },
+   {
+    "mes": "2018-06",
+    "nome": "junho de 2018",
+    "indice": 97.2,
+    "em12Meses": 3.19
+   },
+   {
+    "mes": "2018-07",
+    "nome": "julho de 2018",
+    "indice": 97.19,
+    "em12Meses": 3.06
+   },
+   {
+    "mes": "2018-08",
+    "nome": "agosto de 2018",
+    "indice": 96.94,
+    "em12Meses": 2.84
+   },
+   {
+    "mes": "2018-09",
+    "nome": "setembro de 2018",
+    "indice": 96.59,
+    "em12Meses": 2.38
+   },
+   {
+    "mes": "2018-10",
+    "nome": "outubro de 2018",
+    "indice": 95.71,
+    "em12Meses": 2.04
+   },
+   {
+    "mes": "2018-11",
+    "nome": "novembro de 2018",
+    "indice": 97.14,
+    "em12Meses": 1.75
+   },
+   {
+    "mes": "2018-12",
+    "nome": "dezembro de 2018",
+    "indice": 98.01,
+    "em12Meses": 1.49
+   },
+   {
+    "mes": "2019-01",
+    "nome": "janeiro de 2019",
+    "indice": 97.53,
+    "em12Meses": 1.32
+   },
+   {
+    "mes": "2019-02",
+    "nome": "fevereiro de 2019",
+    "indice": 98.59,
+    "em12Meses": 1.52
+   },
+   {
+    "mes": "2019-03",
+    "nome": "março de 2019",
+    "indice": 98.34,
+    "em12Meses": 1.21
+   },
+   {
+    "mes": "2019-04",
+    "nome": "abril de 2019",
+    "indice": 99.28,
+    "em12Meses": 0.76
+   },
+   {
+    "mes": "2019-05",
+    "nome": "maio de 2019",
+    "indice": 99.4,
+    "em12Meses": 1.57
+   },
+   {
+    "mes": "2019-06",
+    "nome": "junho de 2019",
+    "indice": 99.26,
+    "em12Meses": 1.41
+   },
+   {
+    "mes": "2019-07",
+    "nome": "julho de 2019",
+    "indice": 97.78,
+    "em12Meses": 1.41
+   },
+   {
+    "mes": "2019-08",
+    "nome": "agosto de 2019",
+    "indice": 98.63,
+    "em12Meses": 1.39
+   },
+   {
+    "mes": "2019-09",
+    "nome": "setembro de 2019",
+    "indice": 98.45,
+    "em12Meses": 1.78
+   },
+   {
+    "mes": "2019-10",
+    "nome": "outubro de 2019",
+    "indice": 99.15,
+    "em12Meses": 2.13
+   },
+   {
+    "mes": "2019-11",
+    "nome": "novembro de 2019",
+    "indice": 98.45,
+    "em12Meses": 2.2
+   },
+   {
+    "mes": "2019-12",
+    "nome": "dezembro de 2019",
+    "indice": 97.86,
+    "em12Meses": 2.2
+   },
+   {
+    "mes": "2020-01",
+    "nome": "janeiro de 2020",
+    "indice": 98.99,
+    "em12Meses": 2.22
+   },
+   {
+    "mes": "2020-02",
+    "nome": "fevereiro de 2020",
+    "indice": 99.05,
+    "em12Meses": 1.78
+   },
+   {
+    "mes": "2020-03",
+    "nome": "março de 2020",
+    "indice": 94.21,
+    "em12Meses": 1.69
+   },
+   {
+    "mes": "2020-04",
+    "nome": "abril de 2020",
+    "indice": 84.26,
+    "em12Meses": 0.26
+   },
+   {
+    "mes": "2020-05",
+    "nome": "maio de 2020",
+    "indice": 86.35,
+    "em12Meses": -1.66
+   },
+   {
+    "mes": "2020-06",
+    "nome": "junho de 2020",
+    "indice": 91.58,
+    "em12Meses": -2.19
+   },
+   {
+    "mes": "2020-07",
+    "nome": "julho de 2020",
+    "indice": 94.2,
+    "em12Meses": -2.62
+   },
+   {
+    "mes": "2020-08",
+    "nome": "agosto de 2020",
+    "indice": 95.22,
+    "em12Meses": -3.16
+   },
+   {
+    "mes": "2020-09",
+    "nome": "setembro de 2020",
+    "indice": 98.18,
+    "em12Meses": -3.39
+   },
+   {
+    "mes": "2020-10",
+    "nome": "outubro de 2020",
+    "indice": 98.1,
+    "em12Meses": -3.9
+   },
+   {
+    "mes": "2020-11",
+    "nome": "novembro de 2020",
+    "indice": 98.18,
+    "em12Meses": -4.02
+   },
+   {
+    "mes": "2020-12",
+    "nome": "dezembro de 2020",
+    "indice": 98.84,
+    "em12Meses": -3.91
+   },
+   {
+    "mes": "2021-01",
+    "nome": "janeiro de 2021",
+    "indice": 99.37,
+    "em12Meses": -4.13
+   },
+   {
+    "mes": "2021-02",
+    "nome": "fevereiro de 2021",
+    "indice": 98.81,
+    "em12Meses": -4.16
+   },
+   {
+    "mes": "2021-03",
+    "nome": "março de 2021",
+    "indice": 97.38,
+    "em12Meses": -3.65
+   },
+   {
+    "mes": "2021-04",
+    "nome": "abril de 2021",
+    "indice": 96.59,
+    "em12Meses": -1.35
+   },
+   {
+    "mes": "2021-05",
+    "nome": "maio de 2021",
+    "indice": 97.82,
+    "em12Meses": 0.96
+   },
+   {
+    "mes": "2021-06",
+    "nome": "junho de 2021",
+    "indice": 98.49,
+    "em12Meses": 2.11
+   },
+   {
+    "mes": "2021-07",
+    "nome": "julho de 2021",
+    "indice": 97.37,
+    "em12Meses": 2.69
+   },
+   {
+    "mes": "2021-08",
+    "nome": "agosto de 2021",
+    "indice": 98.07,
+    "em12Meses": 3.44
+   },
+   {
+    "mes": "2021-09",
+    "nome": "setembro de 2021",
+    "indice": 97.52,
+    "em12Meses": 3.4
+   },
+   {
+    "mes": "2021-10",
+    "nome": "outubro de 2021",
+    "indice": 95.9,
+    "em12Meses": 3.26
+   },
+   {
+    "mes": "2021-11",
+    "nome": "novembro de 2021",
+    "indice": 97.88,
+    "em12Meses": 3.26
+   },
+   {
+    "mes": "2021-12",
+    "nome": "dezembro de 2021",
+    "indice": 99.18,
+    "em12Meses": 3.18
+   },
+   {
+    "mes": "2022-01",
+    "nome": "janeiro de 2022",
+    "indice": 98.98,
+    "em12Meses": 3.3
+   },
+   {
+    "mes": "2022-02",
+    "nome": "fevereiro de 2022",
+    "indice": 99.17,
+    "em12Meses": 3.52
+   },
+   {
+    "mes": "2022-03",
+    "nome": "março de 2022",
+    "indice": 101.41,
+    "em12Meses": 3.41
+   },
+   {
+    "mes": "2022-04",
+    "nome": "abril de 2022",
+    "indice": 99.84,
+    "em12Meses": 2.52
+   },
+   {
+    "mes": "2022-05",
+    "nome": "maio de 2022",
+    "indice": 99.01,
+    "em12Meses": 1.65
+   },
+   {
+    "mes": "2022-06",
+    "nome": "junho de 2022",
+    "indice": 99.58,
+    "em12Meses": 1.16
+   },
+   {
+    "mes": "2022-07",
+    "nome": "julho de 2022",
+    "indice": 100.31,
+    "em12Meses": 1.07
+   },
+   {
+    "mes": "2022-08",
+    "nome": "agosto de 2022",
+    "indice": 99.9,
+    "em12Meses": 1.02
+   },
+   {
+    "mes": "2022-09",
+    "nome": "setembro de 2022",
+    "indice": 99.57,
+    "em12Meses": 1.27
+   },
+   {
+    "mes": "2022-10",
+    "nome": "outubro de 2022",
+    "indice": 100.41,
+    "em12Meses": 1.94
+   },
+   {
+    "mes": "2022-11",
+    "nome": "novembro de 2022",
+    "indice": 101.56,
+    "em12Meses": 2.27
+   },
+   {
+    "mes": "2022-12",
+    "nome": "dezembro de 2022",
+    "indice": 99.65,
+    "em12Meses": 2.23
+   },
+   {
+    "mes": "2023-01",
+    "nome": "janeiro de 2023",
+    "indice": 99.49,
+    "em12Meses": 2.34
+   },
+   {
+    "mes": "2023-02",
+    "nome": "fevereiro de 2023",
+    "indice": 99.99,
+    "em12Meses": 2.16
+   },
+   {
+    "mes": "2023-03",
+    "nome": "março de 2023",
+    "indice": 100.35,
+    "em12Meses": 1.96
+   },
+   {
+    "mes": "2023-04",
+    "nome": "abril de 2023",
+    "indice": 100.27,
+    "em12Meses": 1.71
+   },
+   {
+    "mes": "2023-05",
+    "nome": "maio de 2023",
+    "indice": 101.04,
+    "em12Meses": 1.7
+   },
+   {
+    "mes": "2023-06",
+    "nome": "junho de 2023",
+    "indice": 100.89,
+    "em12Meses": 1.71
+   },
+   {
+    "mes": "2023-07",
+    "nome": "julho de 2023",
+    "indice": 100.8,
+    "em12Meses": 1.58
+   },
+   {
+    "mes": "2023-08",
+    "nome": "agosto de 2023",
+    "indice": 101.35,
+    "em12Meses": 1.48
+   },
+   {
+    "mes": "2023-09",
+    "nome": "setembro de 2023",
+    "indice": 101.93,
+    "em12Meses": 1.41
+   },
+   {
+    "mes": "2023-10",
+    "nome": "outubro de 2023",
+    "indice": 101.81,
+    "em12Meses": 1.15
+   },
+   {
+    "mes": "2023-11",
+    "nome": "novembro de 2023",
+    "indice": 103.3,
+    "em12Meses": 0.98
+   },
+   {
+    "mes": "2023-12",
+    "nome": "dezembro de 2023",
+    "indice": 103.9,
+    "em12Meses": 1.1
+   },
+   {
+    "mes": "2024-01",
+    "nome": "janeiro de 2024",
+    "indice": 103.2,
+    "em12Meses": 1.27
+   },
+   {
+    "mes": "2024-02",
+    "nome": "fevereiro de 2024",
+    "indice": 103.15,
+    "em12Meses": 1.66
+   },
+   {
+    "mes": "2024-03",
+    "nome": "março de 2024",
+    "indice": 103.49,
+    "em12Meses": 1.66
+   },
+   {
+    "mes": "2024-04",
+    "nome": "abril de 2024",
+    "indice": 103.8,
+    "em12Meses": 2.3
+   },
+   {
+    "mes": "2024-05",
+    "nome": "maio de 2024",
+    "indice": 104.06,
+    "em12Meses": 2.32
+   },
+   {
+    "mes": "2024-06",
+    "nome": "junho de 2024",
+    "indice": 106.76,
+    "em12Meses": 2.64
+   },
+   {
+    "mes": "2024-07",
+    "nome": "julho de 2024",
+    "indice": 105.11,
+    "em12Meses": 3.1
+   },
+   {
+    "mes": "2024-08",
+    "nome": "agosto de 2024",
+    "indice": 105.07,
+    "em12Meses": 3.27
+   },
+   {
+    "mes": "2024-09",
+    "nome": "setembro de 2024",
+    "indice": 106.13,
+    "em12Meses": 3.49
+   },
+   {
+    "mes": "2024-10",
+    "nome": "outubro de 2024",
+    "indice": 106.43,
+    "em12Meses": 3.89
+   },
+   {
+    "mes": "2024-11",
+    "nome": "novembro de 2024",
+    "indice": 105.4,
+    "em12Meses": 3.91
+   },
+   {
+    "mes": "2024-12",
+    "nome": "dezembro de 2024",
+    "indice": 103.93,
+    "em12Meses": 3.76
+   },
+   {
+    "mes": "2025-01",
+    "nome": "janeiro de 2025",
+    "indice": 105.67,
+    "em12Meses": 3.7
+   },
+   {
+    "mes": "2025-02",
+    "nome": "fevereiro de 2025",
+    "indice": 105.75,
+    "em12Meses": 3.59
+   },
+   {
+    "mes": "2025-03",
+    "nome": "março de 2025",
+    "indice": 106.32,
+    "em12Meses": 3.7
+   },
+   {
+    "mes": "2025-04",
+    "nome": "abril de 2025",
+    "indice": 105.96,
+    "em12Meses": 3.09
+   },
+   {
+    "mes": "2025-05",
+    "nome": "maio de 2025",
+    "indice": 105.57,
+    "em12Meses": 3.07
+   },
+   {
+    "mes": "2025-06",
+    "nome": "junho de 2025",
+    "indice": 105.74,
+    "em12Meses": 2.49
+   },
+   {
+    "mes": "2025-07",
+    "nome": "julho de 2025",
+    "indice": 106.28,
+    "em12Meses": 2.11
+   },
+   {
+    "mes": "2025-08",
+    "nome": "agosto de 2025",
+    "indice": 106.06,
+    "em12Meses": 1.78
+   },
+   {
+    "mes": "2025-09",
+    "nome": "setembro de 2025",
+    "indice": 105.76,
+    "em12Meses": 1.52
+   },
+   {
+    "mes": "2025-10",
+    "nome": "outubro de 2025",
+    "indice": 105.02,
+    "em12Meses": 0.94
+   },
+   {
+    "mes": "2025-11",
+    "nome": "novembro de 2025",
+    "indice": 104.32,
+    "em12Meses": 0.67
+   },
+   {
+    "mes": "2025-12",
+    "nome": "dezembro de 2025",
+    "indice": 103.94,
+    "em12Meses": 0.69
+   },
+   {
+    "mes": "2026-01",
+    "nome": "janeiro de 2026",
+    "indice": 106.76,
+    "em12Meses": 0.51
+   },
+   {
+    "mes": "2026-02",
+    "nome": "fevereiro de 2026",
+    "indice": 107.05,
+    "em12Meses": 0.23
+   },
+   {
+    "mes": "2026-03",
+    "nome": "março de 2026",
+    "indice": 106.75,
+    "em12Meses": 0.31
+   },
+   {
+    "mes": "2026-04",
+    "nome": "abril de 2026",
+    "indice": 107.55,
+    "em12Meses": 0.45
+   },
+   {
+    "mes": "2026-05",
+    "nome": "maio de 2026",
+    "indice": 107.23,
+    "em12Meses": 0.33
+   },
+   {
+    "mes": "2026-06",
+    "nome": "junho de 2026",
+    "indice": 106.71,
+    "em12Meses": 0.62
+   },
+   {
+    "mes": "2026-07",
+    "nome": "julho de 2026",
+    "indice": 106.51,
+    "em12Meses": 0.54
+   },
+   {
+    "mes": "2026-08",
+    "nome": "agosto de 2026",
+    "indice": 106.29,
+    "em12Meses": 0.56
+   },
+   {
+    "mes": "2026-09",
+    "nome": "setembro de 2026",
+    "indice": 104.45,
+    "em12Meses": 0.26
+   }
+  ]
+ }
+}

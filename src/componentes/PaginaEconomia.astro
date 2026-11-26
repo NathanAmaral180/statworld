@@ -20,6 +20,7 @@ import { abasDe } from '../lib/catalogo';
 import { temaDaAba, medidasDaAba, temAnos, anosPorMedida } from '../lib/economia-abas';
 import { carregarDados } from '../lib/dados';
 import { contextoDoPais } from '../lib/contexto';
+import { ligarEstados } from '../lib/estado';
 
 interface Props { pais: any; aba?: string; teste?: boolean }
 const { pais, aba = 'visao-geral', teste = false } = Astro.props;
@@ -43,7 +44,7 @@ const economia = { ...economiaBase, indicadores: Object.assign({}, economiaBase.
 const medidas = semMapa ? [] : medidasDaAba(pais, tema).filter((m) => economia.indicadores[m.id]);
 // Seletor de ano / "ver a evolução": só nas abas com série de anos (src/lib/economia-abas.ts).
 const anos = temAnos(pais, aba) ? { ...anosPorMedida(pais, aba), url: `/dados/${pais.slug}/economia/${aba}/{ano}.json` } : undefined;
-const visoes = Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx, economia.indicadores)]));
+const visoes = ligarEstados(pais, Object.fromEntries(medidas.map((m) => [m.id, construirVisaoIndicador(m.id, unidades, economia.indicadores[m.id], m, ctx, economia.indicadores)])), aba);
 // Carimbo "selo + fonte · data" de um conjunto de fontes.
 const carimboDe = (frequencia: string | undefined, fontes: any[]) => {
   const f = fontes[0];

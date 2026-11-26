@@ -1,0 +1,19 @@
+---
+// Economia de um estado do Brasil, com o mapa dos municípios: /sp/economia e /sp/economia/<aba>.
+// Só ganham página os estados com dados (pais.estados.comPagina em src/config/paises/brasil.json).
+// O conteúdo vem do molde PaginaEstado; aqui só se escolhem o país, o estado e a aba.
+import PaginaEstado from '../../../componentes/estado/PaginaEstado.astro';
+import pais from '../../../config/paises/brasil.json';
+import { CFG, enderecoEstado } from '../../../lib/estado';
+
+export function getStaticPaths() {
+  return Object.keys(pais.estados.comPagina).flatMap((uf) =>
+    Object.keys(CFG.abas).map((aba) => {
+      const fim = enderecoEstado(uf, aba).replace(`/${uf.toLowerCase()}/economia`, '').replace(/^\//, '');
+      return { params: { uf: uf.toLowerCase(), aba: fim || undefined }, props: { uf, aba } };
+    })
+  );
+}
+const { uf, aba } = Astro.props;
+---
+<PaginaEstado pais={pais} uf={uf} aba={aba} />

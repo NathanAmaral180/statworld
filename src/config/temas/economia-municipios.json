@@ -1,0 +1,71 @@
+{
+  "_explicacao": "Página de estado (mapa dos municípios). Design: design/rodada-5-estado/. Para cada aba de Economia, diz como ela fica no nível de estado: 'mun' = mapa dos municípios; 'estado' = só o número do estado (ainda não usado); 'sem' = sem dado neste nível (só existe para o país); 'breve' = em breve (fonte existe, página ainda não feita). Medidas: de onde vem o número (pasta + arquivo do estado + indicador) e como mostrar. Um estado pode trocar partes disto em src/config/paises/<pais>.json, em estados.<UF>.abas. Os cortes de cor são calculados dos próprios dados (6 faixas com o mesmo número de municípios).",
+  "titulo": "A economia {deEstado}",
+  "descricao": "A economia {deEstado} município por município: {medidas}. Mapa, ranking com busca e ficha de cada cidade, com dados oficiais, fonte e data.",
+  "abas": {
+    "visao-geral": {
+      "situacao": "mun",
+      "medidas": [
+        { "id": "pib-por-pessoa", "rotulo": "PIB por pessoa", "rotuloCurto": "Por pessoa", "coluna": "PIB por pessoa", "titulo": "PIB por pessoa em {periodo}", "subtitulo": "Valor produzido no ano dividido pela população.", "dados": { "pasta": "economia", "arquivo": "economia", "indicador": "pib-por-pessoa" }, "formato": "moeda", "casas": 0, "referencia": "razao", "razaoCom": "pib" },
+        { "id": "pib", "rotulo": "Tamanho da economia", "rotuloCurto": "PIB", "coluna": "PIB", "titulo": "PIB em {periodo}", "subtitulo": "Valor de tudo o que foi produzido no município no ano.", "dados": { "pasta": "economia", "arquivo": "economia", "indicador": "pib" }, "formato": "moeda", "casas": 1, "compacto": true, "referencia": "media" },
+        { "id": "peso-agro", "rotulo": "Peso do agro", "rotuloCurto": "Agro", "coluna": "Agro no valor", "titulo": "Parte do agro no valor produzido em {periodo}", "subtitulo": "Agropecuária como parte do valor adicionado do município.", "dados": { "pasta": "economia", "arquivo": "economia", "setor": "agro" }, "formato": "percentual", "casas": 1, "referencia": "estado" }
+      ]
+    },
+    "agro": { "situacao": "breve", "fonte": "IBGE, Produção Agrícola Municipal e Pesquisa da Pecuária Municipal" },
+    "industria": { "situacao": "breve", "fonte": "IBGE, PIB dos Municípios (valor adicionado da indústria)" },
+    "servicos": { "situacao": "breve", "fonte": "IBGE, PIB dos Municípios (valor adicionado dos serviços)" },
+    "trabalho-renda": {
+      "situacao": "mun",
+      "aviso": "O desemprego e a renda média vêm da PNAD Contínua, que só tem número para o estado inteiro. Por município, o dado mais recente é o dos empregos com carteira (Novo Caged).",
+      "medidas": [
+        { "id": "caged-no-ano", "rotulo": "Empregos com carteira no ano", "rotuloCurto": "No ano", "coluna": "Saldo no ano", "titulo": "Empregos com carteira criados de {periodo}", "subtitulo": "Admissões menos desligamentos, somados mês a mês.", "dados": { "pasta": "trabalho", "arquivo": "caged", "caged": "noAno" }, "formato": "numero", "casas": 0, "sinal": true, "referencia": "media", "divergente": true },
+        { "id": "caged-mes", "rotulo": "Empregos com carteira no mês", "rotuloCurto": "No mês", "coluna": "Saldo no mês", "titulo": "Empregos com carteira criados em {periodo}", "subtitulo": "Admissões menos desligamentos no mês.", "dados": { "pasta": "trabalho", "arquivo": "caged", "caged": "mes" }, "formato": "numero", "casas": 0, "sinal": true, "referencia": "media", "divergente": true }
+      ]
+    },
+    "precos": { "situacao": "breve", "fonte": "IBGE, IPCA da região metropolitana da capital; DIEESE, cesta básica da capital" },
+    "impostos": {
+      "situacao": "mun",
+      "aviso": "Não é arrecadação: é o peso dos impostos sobre produtos no PIB do município, calculado pelo StatWorld com os números do IBGE.",
+      "medidas": [
+        { "id": "impostos-pib", "rotulo": "Impostos sobre produtos (% do PIB)", "rotuloCurto": "Impostos", "coluna": "Impostos / PIB", "titulo": "Impostos sobre produtos no PIB em {periodo}", "subtitulo": "Peso dos impostos sobre produtos na economia do município. Não é a arrecadação.", "dados": { "pasta": "economia", "arquivo": "economia", "setor": "impostos" }, "formato": "percentual", "casas": 1, "referencia": "estado" }
+      ]
+    },
+    "comercio-exterior": {
+      "situacao": "mun",
+      "aviso": "No Comex Stat, o município é onde fica a empresa que exportou, não necessariamente onde o produto foi feito. Por isso a soma das cidades é diferente do total do estado no mapa do Brasil.",
+      "medidas": [
+        { "id": "exportacoes-no-ano", "rotulo": "Exportações no ano", "rotuloCurto": "No ano", "coluna": "Exportações", "titulo": "Exportações de {periodo}", "subtitulo": "Valor vendido ao exterior por empresas do município, em dólares.", "dados": { "pasta": "comercio", "arquivo": "comercio", "indicador": "exportacoes-no-ano" }, "formato": "moeda", "moeda": "USD", "casas": 1, "compacto": true, "referencia": "media" },
+        { "id": "exportacoes-variacao", "rotulo": "Variação das exportações", "rotuloCurto": "Variação", "coluna": "Variação", "titulo": "Exportações: variação de {periodo} sobre o mesmo período do ano anterior", "subtitulo": "Em dólares. Sem dado quando o município não exportou no ano anterior.", "dados": { "pasta": "comercio", "arquivo": "comercio", "indicador": "exportacoes-variacao" }, "formato": "percentual", "casas": 1, "sinal": true, "referencia": "nenhuma", "divergente": true },
+        { "id": "exportacoes-ano-fechado", "rotulo": "Exportações no último ano", "rotuloCurto": "Último ano", "coluna": "Exportações", "titulo": "Exportações em {periodo}", "subtitulo": "Valor vendido ao exterior por empresas do município, em dólares.", "dados": { "pasta": "comercio", "arquivo": "comercio", "indicador": "exportacoes-ano-fechado" }, "formato": "moeda", "moeda": "USD", "casas": 1, "compacto": true, "referencia": "media" }
+      ]
+    },
+    "dinheiro-juros": { "situacao": "sem", "motivo": "Câmbio, Selic e juros do crédito são números do país inteiro. Nenhuma dessas séries é medida por estado ou por cidade." },
+    "contas-publicas": { "situacao": "breve", "fonte": "Tesouro Nacional, Siconfi: contas do governo do estado e das prefeituras" }
+  },
+  "textos": {
+    "buscar": "Digite sua cidade",
+    "buscarRotulo": "Buscar município {emEstado}",
+    "buscaVazia": "Nenhum município com esse nome {emEstado}.",
+    "todoEstado": "Todo o estado · {n}",
+    "regiao": "Região de {nome} · {n}",
+    "verEstadoInteiro": "Ver o estado inteiro",
+    "verSoRegiao": "ver só esta região",
+    "posicaoEstado": "Posição no estado",
+    "posicaoRegiao": "Posição na região",
+    "posicaoBrasil": "Posição no Brasil",
+    "diferenca": "Diferença",
+    "paginaCidade": "Ver página de {nome}",
+    "dicaPc": "Clique duas vezes ou use + e − para aproximar. Arraste para mover.",
+    "dicaCel": "Pinça ou + e − para aproximar. Tocou em cidade pequena? Abre a lista do ponto.",
+    "semDadoCidade": "a fonte não traz este município",
+    "breveTexto": "A fonte existe, a página ainda não foi feita.",
+    "fontePrevista": "Fonte prevista:",
+    "enquantoIsso": "Enquanto isso, ver {aba} do Brasil",
+    "semDadoTitulo": "{aba} não tem dado por estado",
+    "verDoBrasil": "Ver {aba} do Brasil",
+    "comMapa": "Com mapa dos municípios {deEstado}:",
+    "verMunicipios": "Ver os municípios {deEstado}",
+    "agora": "PIB em {ano}",
+    "agoraTexto": "{valor} até {mes}"
+  }
+}
