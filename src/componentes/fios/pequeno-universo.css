@@ -1,0 +1,209 @@
+/* Pequeno universo (direção de arte v2, design/fios/pequeno-universo-v2.html).
+   Duas camadas: a cena é escura e de luz; a interface por cima (cartão, caminho) usa papel e tinta. Âmbar = único acento quente. */
+.pu {
+  --pu-vazio: #02040a;
+  --pu-papel: #f3f0e8;
+  --pu-tinta: #111318;
+  --pu-ambar: #e9a23b;
+  --pu-link: #1f5fd6;
+  --pu-titulo: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --pu-serifa: 'Source Serif 4 Variable', Georgia, serif;
+  position: absolute; inset: 0; z-index: 6; overflow: hidden;
+  background: var(--pu-vazio); color: #e8eefc; font-family: var(--pu-titulo);
+}
+.pu[hidden] { display: none; }
+.pu-ceu {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 50%, rgba(12, 35, 69, .55), transparent 70%),
+    radial-gradient(1px 1px at 12% 18%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 12%, #cfe0ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 34% 72%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 64%, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 88%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 6% 52%, #cfe0ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 46% 6%, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 38%, #9fd0ff 50%, transparent 51%);
+  opacity: .9;
+}
+
+.pu-rolagem { position: absolute; inset: 0; overflow: auto; scrollbar-width: none; outline: none; }
+.pu-rolagem::-webkit-scrollbar { display: none; }
+.pu-mapa { position: relative; min-width: 100%; min-height: 100%; }
+.pu-fios { position: absolute; left: 0; top: 0; pointer-events: none; }
+.pu-niveis {
+  position: relative; display: flex; flex-direction: row; align-items: center; justify-content: center;
+  gap: 56px; min-width: max-content; min-height: 100%; padding: 84px 72px 48px; box-sizing: border-box; margin: 0 auto;
+}
+.pu-nivel { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.pu-nivel-0 { gap: 14px; padding: 0 12px; }
+
+/* ---------- Ícones ---------- */
+.pu-ic {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; width: 96px;
+}
+.pu-disco {
+  --t: 64px; position: relative; display: grid; place-items: center; width: var(--t); height: var(--t); border-radius: 50%; overflow: hidden;
+  background: #0c1426; border: 3px solid var(--cor);
+  box-shadow: 0 0 0 1px rgba(2, 4, 10, .9), 0 0 28px color-mix(in oklch, var(--cor) 55%, transparent);
+  transition: transform .2s, box-shadow .2s;
+}
+.pu-longe .pu-disco { --t: 48px; border-width: 2px; }
+.pu-centro { width: auto; }
+.pu-centro .pu-disco { --t: clamp(132px, 16vw, 168px); border-width: 4px; box-shadow: 0 0 0 1px rgba(2, 4, 10, .9), 0 0 60px color-mix(in oklch, var(--cor) 60%, transparent), 0 0 120px rgba(159, 208, 255, .18); }
+.pu-ic:hover .pu-disco, .pu-ic:focus-visible .pu-disco { transform: scale(1.07); box-shadow: 0 0 0 2px var(--pu-ambar), 0 0 34px color-mix(in oklch, var(--cor) 70%, transparent); }
+.pu-ic:focus-visible { outline: none; }
+.pu-disco img { width: 100%; height: 100%; object-fit: cover; }
+.pu-pessoa .pu-disco { outline: 2px solid var(--cor); outline-offset: 3px; }
+.pu-pessoa .pu-disco img { filter: grayscale(1) contrast(1.05); }
+.pu-marca .pu-disco { background: #fff; }
+.pu-marca .pu-disco img { object-fit: contain; padding: 16%; box-sizing: border-box; }
+.pu-sem-foto { font-weight: 900; font-stretch: 125%; font-size: calc(var(--t) * .42); color: var(--cor); }
+.ep-gravura .pu-disco img { filter: sepia(.55) contrast(1.05); }
+.ep-vitoriana .pu-disco img { filter: sepia(.35); }
+.ep-deco .pu-disco img { filter: grayscale(.4); }
+.pu-pessoa.ep-gravura .pu-disco img, .pu-pessoa.ep-vitoriana .pu-disco img, .pu-pessoa.ep-deco .pu-disco img { filter: grayscale(1) sepia(.25); }
+
+.pu-check {
+  position: absolute; top: -2px; left: calc(50% + var(--t, 64px) * .28); width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center; background: #fff; color: #000; font-size: 12px; font-weight: 900; box-shadow: 0 0 0 2px var(--pu-vazio);
+}
+.pu-vizinho .pu-check { --t: 64px; }
+.pu-longe .pu-check { --t: 48px; width: 17px; height: 17px; font-size: 10px; }
+.pu-centro .pu-check { --t: 150px; top: 4px; width: 28px; height: 28px; font-size: 16px; }
+.pu-ano {
+  margin-top: -16px; position: relative; padding: 1px 8px; border-radius: 999px; background: var(--pu-tinta); border: 1.5px solid rgba(232, 238, 252, .85);
+  font-size: 11.5px; font-weight: 800; font-stretch: 125%; font-variant-numeric: tabular-nums; letter-spacing: .02em; color: #fff;
+}
+.pu-centro .pu-ano { margin-top: -20px; font-size: 15px; padding: 2px 12px; }
+.pu-nome {
+  max-width: 96px; font-size: 12.5px; font-weight: 650; line-height: 1.15; text-align: center; color: #e8eefc;
+  text-shadow: 0 0 4px var(--pu-vazio), 0 0 8px var(--pu-vazio);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.pu-longe .pu-nome { font-size: 11.5px; color: #c7dbea; }
+
+.pu-titulo { text-align: center; max-width: 360px; }
+.pu-titulo h2 { margin: 0; font-size: clamp(30px, 4.2vw, 44px); font-weight: 900; font-stretch: 125%; line-height: 1; letter-spacing: -.01em; color: #fff; text-shadow: 0 0 24px rgba(159, 208, 255, .35); }
+.pu-titulo p { margin: 8px 0 0; font-size: 13px; font-weight: 600; color: #9fd0ff; }
+
+.pu-resto { width: 56px; height: 56px; border-radius: 50%; border: 1.5px dashed rgba(159, 208, 255, .5); background: rgba(12, 20, 38, .7); color: #cfe0ff; font: inherit; font-weight: 800; font-stretch: 125%; font-size: 15px; cursor: pointer; }
+.pu-resto:hover { border-color: var(--pu-ambar); color: #fff; }
+.pu-puxar {
+  align-self: center; white-space: nowrap; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(159, 208, 255, .35); background: rgba(12, 20, 38, .85);
+  color: #e8eefc; font: inherit; font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+}
+.pu-puxar:hover { border-color: var(--pu-ambar); }
+
+/* ---------- Topo e eixos ---------- */
+.pu-topo { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; gap: 8px; z-index: 3; pointer-events: none; }
+.pu-topo button {
+  pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 12px; border: 0;
+  background: var(--pu-papel); color: var(--pu-tinta); font: inherit; font-size: 14px; font-weight: 750; cursor: pointer; box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+.pu-topo button span { font-size: 18px; }
+.pu-meu-caminho b { min-width: 22px; height: 22px; border-radius: 999px; display: grid; place-items: center; background: var(--pu-ambar); color: var(--pu-tinta); font-size: 12px; font-weight: 900; }
+.pu-eixo { position: absolute; z-index: 2; margin: 0; padding: 5px 10px; border-radius: 999px; background: rgba(2, 4, 10, .8); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(199, 219, 234, .7); pointer-events: none; }
+.pu-eixo-antes { left: 12px; bottom: 12px; }
+.pu-eixo-antes::before { content: '◀ '; }
+.pu-eixo-depois { right: 12px; bottom: 12px; }
+.pu-eixo-depois::after { content: ' ▶'; }
+
+/* ---------- Cartão em papel ---------- */
+.pu-veu { position: absolute; inset: 0; z-index: 4; background: rgba(2, 4, 10, .55); backdrop-filter: blur(3px); }
+.pu-cartao {
+  position: absolute; z-index: 5; top: 68px; right: 16px; bottom: 16px; width: min(400px, calc(100% - 32px)); overflow-y: auto; box-sizing: border-box;
+  padding: 16px 18px 20px; border-radius: 18px; background: var(--pu-papel); color: var(--pu-tinta); box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+  animation: pu-cartao-entra .42s cubic-bezier(.16, 1, .3, 1);
+}
+.pu-cartao[hidden] { display: none; }
+.pu-fechar { position: absolute; top: 10px; right: 10px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--pu-tinta); color: var(--pu-papel); font-size: 22px; line-height: 1; cursor: pointer; }
+.pu-c-foto { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; background: #1a1c22; }
+.pu-c-foto img { width: 100%; height: 100%; object-fit: cover; }
+.pu-c-foto.pu-marca { background: #fff; }
+.pu-c-foto.pu-marca img { object-fit: contain; padding: 14%; box-sizing: border-box; }
+.pu-c-foto.pu-pessoa img { filter: grayscale(1); object-position: 50% 25%; }
+.pu-c-sem { padding: 16px; text-align: center; font-size: 32px; font-weight: 900; font-stretch: 125%; line-height: 1; color: var(--pu-papel); }
+.pu-c-epoca { position: absolute; top: 10px; left: 10px; z-index: 1; padding: 3px 8px; background: var(--pu-tinta); color: #e8d9b0; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; }
+/* molduras por época: só CSS (bordas, sombras internas e cantos) */
+.pu-c-foto.ep-gravura { border: 10px solid #3b2a1a; outline: 1px solid #c9a66b; outline-offset: -6px; border-radius: 2px; }
+.pu-c-foto.ep-gravura img { filter: sepia(.6) contrast(1.05); }
+.pu-c-foto.ep-vitoriana { border: 12px solid #2a1d14; box-shadow: inset 0 0 0 2px #b8924f, inset 0 0 0 6px #2a1d14, inset 0 0 0 7px #b8924f; border-radius: 2px; }
+.pu-c-foto.ep-vitoriana img { filter: sepia(.35); }
+.pu-c-foto.ep-deco { border: 8px solid #14161b; outline: 2px solid #c8a656; outline-offset: -4px; border-radius: 0; }
+.pu-c-foto.ep-deco img { filter: grayscale(.45); }
+.pu-c-foto.ep-atomica { border: 8px solid #e7e0cf; border-radius: 22px; box-shadow: 0 0 0 2px #d0632b; }
+.pu-c-foto.ep-digital { border: 6px solid var(--pu-tinta); border-radius: 14px; }
+.pu-c-foto.ep-neutra { border: 8px solid #e2dccd; }
+.pu-c-reg { margin: 14px 0 0; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: color-mix(in oklch, var(--cor) 45%, var(--pu-tinta)); }
+.pu-c-ano { margin: 4px 0 0; font-size: 44px; font-weight: 900; font-stretch: 125%; line-height: 1; font-variant-numeric: tabular-nums; }
+.pu-cartao h3 { margin: 4px 0 0; font-size: 26px; font-weight: 800; font-stretch: 112%; line-height: 1.1; }
+.pu-c-frase { margin: 10px 0 0; font-family: var(--pu-serifa); font-size: 18px; line-height: 1.45; }
+.pu-c-lig { margin: 12px 0 0; font-size: 13px; color: #4a4d55; }
+.pu-c-lig b { display: block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--pu-tinta); }
+.pu-c-conf { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; padding: 4px 10px 4px 4px; border-radius: 999px; background: var(--pu-tinta); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.pu-c-conf span { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: #000; font-size: 11px; }
+.pu-c-fonte { margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: #4a4d55; }
+.pu-c-fonte a { color: var(--pu-link); }
+.pu-seguir {
+  margin-top: 16px; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border: 0; border-radius: 12px;
+  background: var(--pu-tinta); color: #fff; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer;
+}
+.pu-seguir span { color: var(--pu-ambar); font-size: 20px; }
+.pu-seguir:hover { background: #23262e; }
+
+/* ---------- Seu caminho ---------- */
+.pu-lista-caminho {
+  position: absolute; z-index: 5; top: 64px; right: 12px; width: min(320px, calc(100% - 24px)); max-height: calc(100% - 80px); overflow-y: auto; box-sizing: border-box;
+  padding: 14px; border-radius: 16px; background: var(--pu-papel); color: var(--pu-tinta); box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+}
+.pu-lista-caminho[hidden] { display: none; }
+.pu-lista-caminho h3 { margin: 0 0 8px; font-size: 18px; font-weight: 900; font-stretch: 115%; }
+.pu-lista-caminho h3 small { font-size: 12px; font-weight: 600; color: #6a6d75; }
+.pu-lista-caminho ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--pu-ambar); display: grid; gap: 6px; }
+.pu-lista-caminho button { width: 100%; display: flex; align-items: center; gap: 10px; padding: 6px 8px; border: 0; border-radius: 10px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.pu-lista-caminho button:hover, .pu-lista-caminho button[aria-current] { background: rgba(233, 162, 59, .18); }
+.pu-lista-caminho button > span:nth-child(2) { flex: 1; display: grid; }
+.pu-lista-caminho b { font-size: 14px; font-weight: 750; }
+.pu-lista-caminho small { font-size: 12px; color: #6a6d75; }
+.pu-lista-caminho em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #8a6a2c; }
+.pu-mini { width: 36px; height: 36px; flex: none; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: #1a1c22; color: #fff; font-weight: 900; }
+.pu-mini img { width: 100%; height: 100%; object-fit: cover; }
+.pu-mini.pu-pessoa img { filter: grayscale(1); }
+.pu-mini.pu-marca { background: #fff; }
+.pu-mini.pu-marca img { object-fit: contain; padding: 14%; box-sizing: border-box; }
+
+/* ---------- Entrada (mergulho) e saída ---------- */
+.pu-entrando { animation: pu-abre 1.1s cubic-bezier(.16, 1, .3, 1); }
+.pu-entrando .pu-ic:not(.pu-centro) { animation: pu-cresce .7s .45s cubic-bezier(.16, 1, .3, 1) backwards; }
+.pu-entrando .pu-fios { animation: pu-aparece .6s .6s backwards; }
+.pu-saindo { animation: pu-fecha .45s cubic-bezier(.7, 0, .84, 0) forwards; }
+@keyframes pu-abre { from { clip-path: circle(0 at var(--ox) var(--oy)); } to { clip-path: circle(150% at var(--ox) var(--oy)); } }
+@keyframes pu-fecha { to { opacity: 0; transform: scale(.92); filter: blur(6px); } }
+@keyframes pu-cresce { from { opacity: 0; transform: scale(.4); } }
+@keyframes pu-aparece { from { opacity: 0; } }
+@keyframes pu-cartao-entra { from { opacity: 0; transform: translateX(24px); } }
+
+@media (max-width: 760px) {
+  .pu-niveis { flex-direction: column; gap: 40px; min-width: 0; width: 100%; padding: 76px 12px 40px; }
+  .pu-nivel { flex-direction: row; flex-wrap: wrap; gap: 14px 6px; max-width: 360px; }
+  .pu-nivel-0 { flex-direction: column; flex-wrap: nowrap; }
+  .pu-ic { width: 82px; }
+  .pu-nome { max-width: 82px; }
+  .pu-disco { --t: 58px; }
+  .pu-longe .pu-disco { --t: 44px; }
+  .pu-vizinho .pu-check { --t: 58px; }
+  .pu-longe .pu-check { --t: 44px; }
+  .pu-centro .pu-check { --t: 132px; }
+  .pu-eixo { display: none; }
+  .pu-topo button { height: 40px; padding: 0 12px; font-size: 13px; }
+  .pu-cartao { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 86%; border-radius: 20px 20px 0 0; padding-top: 22px; animation-name: pu-folha-sobe; }
+  .pu-cartao::before { content: ''; position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 4px; background: #c9c3b4; }
+  .pu-c-ano { font-size: 38px; }
+}
+@keyframes pu-folha-sobe { from { transform: translateY(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pu-entrando, .pu-entrando .pu-ic, .pu-entrando .pu-fios, .pu-saindo, .pu-cartao { animation: none !important; }
+}

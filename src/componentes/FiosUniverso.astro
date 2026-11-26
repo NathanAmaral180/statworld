@@ -4,8 +4,8 @@
 // acende os fios dele e abre o cartão; dá para seguir de vizinho em vizinho, voltar pelo caminho ou sair por outro galho.
 // Desenho: 3D (3d-force-graph + three.js), com brilho neon (bloom), poeira de estrelas e rotação lenta.
 // Posições (x, y, z) e regiões já vêm calculadas de scripts/fios-universo/ (dados/fios/universo.json).
-interface Props { universo: any; textos: Record<string, string> }
-const { universo, textos } = Astro.props;
+interface Props { universo: any; fotos: Record<string, any>; textos: Record<string, string> }
+const { universo, fotos, textos } = Astro.props;
 ---
 <div class="fu" data-fios-universo>
   <div class="fu-palco" data-palco></div>
@@ -34,7 +34,7 @@ const { universo, textos } = Astro.props;
   </aside>
 
   <p class="fu-dica" data-dica>{textos.dicaUniverso}</p>
-  <script type="application/json" class="fu-dados" set:html={JSON.stringify({ universo, textos }).replace(/</g, '\\u003c')} />
+  <script type="application/json" class="fu-dados" set:html={JSON.stringify({ universo, fotos, textos }).replace(/</g, '\\u003c')} />
 </div>
 
 <script>
@@ -42,12 +42,13 @@ const { universo, textos } = Astro.props;
   import * as THREE from 'three';
   import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
   import SpriteText from 'three-spritetext';
+  import { criarPequenoUniverso } from './fios/pequeno-universo';
 
   const raiz = document.querySelector<HTMLElement>('[data-fios-universo]');
   if (raiz) iniciar(raiz);
 
   function iniciar(raiz: HTMLElement) {
-    const { universo: U, textos: T } = JSON.parse(raiz.querySelector('.fu-dados')!.textContent!);
+    const { universo: U, fotos: F, textos: T } = JSON.parse(raiz.querySelector('.fu-dados')!.textContent!);
     const $ = <E extends Element = HTMLElement>(s: string) => raiz.querySelector<E>(s)!;
     const esc = (s: string) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
     const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -115,7 +116,7 @@ const { universo, textos } = Astro.props;
       .nodeLabel((n: any) => `<div class="fu-tip"><b>${esc(n.n)}</b>${n.a != null ? `<span>${n.a < 0 ? -n.a + ' a.C.' : n.a}</span>` : ''}</div>`)
       .linkMaterial(materialDoFio)
       .linkWidth(0)
-      .onNodeClick((n: any) => focar(n.idx))
+      .onNodeClick((n: any) => (n.idx === foco ? mergulhar(n.idx) : focar(n.idx)))
       .onBackgroundClick(() => { if (foco !== null) soltar(); });
 
     const renderer = G.renderer() as THREE.WebGLRenderer;
@@ -214,6 +215,7 @@ const { universo, textos } = Astro.props;
       cartao.querySelector('.fu-cartao-corpo')!.innerHTML = `
         <p class="fu-c-topo"><span class="fu-c-regiao" style="--cor:${n.t === 'p' ? COR_PESSOA : regiao?.cor ?? '#6ea8ff'}">${esc(n.t === 'p' ? T.pessoa : regiao?.nome ?? '')}</span>${quando ? `<span>${esc(quando)}</span>` : ''}${n.c ? `<span class="fu-conferido">${esc(T.conferido)}</span>` : ''}</p>
         <h2>${esc(n.n)}</h2>
+        <button type="button" class="fu-entrar" data-acao="entrar"><span class="fu-entrar-anel" aria-hidden="true"></span>${esc(T.entrarPequeno)} <span aria-hidden="true">→</span></button>
         ${n.d ? `<p class="fu-c-desc">${esc(n.d)}</p>` : ''}
         ${n.c && n.resumo ? `<p class="fu-c-resumo">${esc(n.resumo)}</p>` : ''}
         ${n.c && n.trilha ? `<a class="fu-trilha" href="/fios/${esc(n.trilha)}#${esc(n.k)}">${esc(T.verNaTrilha)} →</a>` : ''}
@@ -261,6 +263,23 @@ const { universo, textos } = Astro.props;
       $('[data-dica]').hidden = true;
       history.replaceState(null, '', `#${encodeURIComponent(n.id)}`);
     }
+    // ---------- Pequeno universo: 2º toque (ou o botão "Entrar") mergulha no item ----------
+    const pequeno = criarPequenoUniverso({
+      raiz, nos, viz, regioes: U.regioes, fotos: F, textos: T, caminho,
+      aoSair: (i) => {
+        G.resumeAnimation();
+        palco.classList.remove('fu-mergulho');
+        focar(i, { guardar: false });
+      },
+    });
+    function mergulhar(i: number) {
+      const n = nos[i];
+      const p = G.graph2ScreenCoords(n.x, n.y, n.z ?? 0);
+      palco.classList.add('fu-mergulho');
+      setTimeout(() => G.pauseAnimation(), tempo(700));
+      cartao.hidden = true;
+      pequeno.entrar(i, { x: p.x, y: p.y });
+    }
     function soltar() {
       foco = null;
       cartao.hidden = true;
@@ -278,6 +297,7 @@ const { universo, textos } = Astro.props;
       if (ir) { focar(Number(ir.dataset.ir)); return; }
       const acao = (e.target as Element).closest<HTMLElement>('[data-acao]')?.dataset.acao;
       if (acao === 'fechar') soltar();
+      if (acao === 'entrar' && foco !== null) mergulhar(foco);
       if (acao === 'afastar') afastar();
       if (acao === 'voltar' && caminho.length > 1) { caminho.pop(); focar(caminho.at(-1)!, { guardar: false }); }
     });
@@ -304,9 +324,10 @@ const { universo, textos } = Astro.props;
       G.cameraPosition({ x: centro.x, y: centro.y - dist * 0.15, z: centro.z + dist }, centro, ms);
     };
     verTudo(0);
-    const doEndereco = decodeURIComponent(location.hash.slice(1));
+    const doEndereco = decodeURIComponent(location.hash.slice(1)).replace(/[+]$/, '');
     const ini = doEndereco ? nos.find((n: any) => n.id === doEndereco) : undefined;
-    if (ini) setTimeout(() => focar(ini.idx), 700);
+    const direto = location.hash.endsWith('+');
+    if (ini) setTimeout(() => { focar(ini.idx); if (direto) mergulhar(ini.idx); }, 700);
     (window as any).__universo = G; // para testes no navegador
   }
 </script>
@@ -355,6 +376,13 @@ const { universo, textos } = Astro.props;
   .fu-cartao :global(li b) { font-weight: 500; font-size: 14px; }
   .fu-cartao :global(li span) { font-size: 12px; color: rgba(220, 230, 255, .55); font-variant-numeric: tabular-nums; }
 
+  .fu-cartao :global(.fu-entrar) { position: relative; margin: 12px 0 2px; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border: 0; border-radius: 12px; background: #f3f0e8; color: #111318; font: inherit; font-size: 14px; font-weight: 750; cursor: pointer; }
+  .fu-cartao :global(.fu-entrar > span:last-child) { color: #b57514; font-size: 17px; }
+  .fu-cartao :global(.fu-entrar-anel) { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #e9a23b; animation: fu-pulsa 1.6s infinite; }
+  @keyframes fu-pulsa { 0% { box-shadow: 0 0 0 0 rgba(233, 162, 59, .7); } 100% { box-shadow: 0 0 0 10px rgba(233, 162, 59, 0); } }
+  .fu-palco { transition: transform .8s cubic-bezier(.7, 0, .84, 0), filter .8s, opacity .8s; }
+  .fu-palco.fu-mergulho { transform: scale(2.2); filter: blur(8px); opacity: 0; }
+  @media (prefers-reduced-motion: reduce) { .fu-palco { transition: none; } .fu-cartao :global(.fu-entrar-anel) { animation: none; } }
   .fu-dica { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 2; margin: 0; padding: 8px 14px; border-radius: 999px; background: rgba(12, 18, 32, .75); border: 1px solid rgba(140, 180, 255, .2); font-size: 13px; color: rgba(225, 235, 255, .8); white-space: nowrap; }
 
   @media (max-width: 760px) {

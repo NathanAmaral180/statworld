@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
     "@sigma/edge-curve": "3.1.0",
     "3d-force-graph": "1.80.2",
     "astro": "^7.4.13",

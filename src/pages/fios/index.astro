@@ -2,7 +2,7 @@
 // "Fios": lista das trilhas (cada uma é um arquivo em dados/fios/).
 import Base from '../../layouts/Base.astro';
 import { carregarDados, listarDados } from '../../lib/dados';
-const trilhas = listarDados('fios', '').filter((nome) => nome !== 'universo').map((nome) => carregarDados<any>('fios', nome));
+const trilhas = listarDados('fios', '').filter((nome) => !['universo', 'fotos'].includes(nome)).map((nome) => carregarDados<any>('fios', nome));
 ---
 <Base titulo="Fios" descricao="Trilhas de criações e fatos da humanidade: uma coisa puxa a outra.">
   <section class="conteudo pagina">

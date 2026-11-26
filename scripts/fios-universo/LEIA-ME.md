@@ -9,6 +9,7 @@ São três programas:
 |---|---|
 | `baixar.mjs` | Baixa a matéria-prima e guarda em `cache/` (fora do GitHub). Rodar de novo só baixa o que falta. |
 | `montar.mjs` | Escolhe os itens, liga uns aos outros, calcula a posição de cada ponto e as regiões, junta as trilhas conferidas. Gera `dados/fios/universo.json`. |
+| `fotos.mjs` | Para cada item, pega a foto principal (ou o logo, para marcas e programas) no Wikidata e o autor e a licença no Wikimedia Commons. Só entram licenças livres. Gera `dados/fios/fotos.json`. Rodar depois do `montar.mjs`. |
 | `escolher.mjs` | A regra de quem entra (usada pelos dois): criações, descobertas e ideias com ano, e as pessoas. Saem lugares, países, épocas, empresas, obras de arte, dinastias etc. |
 
 E um arquivo para preencher à mão: `regioes.json` (o nome de cada região; ver abaixo).
@@ -33,6 +34,7 @@ O primeiro demora (de 15 minutos a mais de 1 hora): a Wikimedia limita o ritmo d
 
 ## O que ele cria
 - `scripts/fios-universo/cache/` (fora do GitHub): títulos, itens do Wikidata, links.
+- `dados/fios/fotos.json`: arquivo de foto de cada item no Wikimedia Commons, autor e licença (aparecem no cartão: "Foto: autor, licença"). Os itens das trilhas conferidas que não existem no Wikidata ficam sem foto (mostram a inicial).
 - `dados/fios/universo.json`: pontos (nome, ano, tipo, posição, tamanho, região, descrição, link da Wikipédia), fios e regiões. Não edite à mão.
 
 ## Nomes das regiões

@@ -6,13 +6,14 @@ import FiosUniverso from '../../componentes/FiosUniverso.astro';
 import { carregarDados, carregarTextos } from '../../lib/dados';
 import site from '../../config/site.json';
 const universo = carregarDados<any>('fios', 'universo');
+const fotos = carregarDados<any>('fios', 'fotos').fotos;
 const textos = carregarTextos(site.idiomaPadrao);
 ---
 <Base titulo="Universo dos Fios (protótipo)" descricao="Criações, descobertas e pessoas da humanidade ligadas entre si." naoIndexar semAnuncios temaAtual="">
   <section class="conteudo pagina">
     <p class="topo"><a href="/fios">Fios</a> / Universo <span class="proto">protótipo</span></p>
-    <FiosUniverso universo={universo} textos={textos} />
-    <p class="nota">{universo.nos.length} criações, descobertas e pessoas, {universo.arestas.length} fios. Itens e datas do Wikidata; fios: links entre artigos da Wikipédia e inventores. Os itens marcados "conferido" foram checados um a um nas trilhas. Protótipo: pode haver erros da base.</p>
+    <FiosUniverso universo={universo} fotos={fotos} textos={textos} />
+    <p class="nota">{universo.nos.length} criações, descobertas e pessoas, {universo.arestas.length} fios. Itens e datas do Wikidata; fotos do Wikimedia Commons (autor e licença em cada cartão); fios: links entre artigos da Wikipédia e inventores. Os itens marcados "conferido" foram checados um a um nas trilhas. Protótipo: pode haver erros da base.</p>
   </section>
 </Base>
 <style>

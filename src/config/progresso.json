@@ -43,12 +43,13 @@
       "nome": "Fios (trilhas da história)",
       "detalhe": "Criações e fatos ligados: uma coisa puxa a outra",
       "peso": 8,
-      "pct": 40,
-      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; Universo dos Fios no ar em 3D com brilho (809 itens, 6.001 fios, 13 galáxias)",
+      "pct": 48,
+      "situacao": "Trilha conferida \"Do telégrafo ao smartphone\" no ar; Universo dos Fios em 3D; pequeno universo de cada item com fotos reais e linha do tempo",
       "falta": [
-        "Dono testar a sensação no celular",
-        "Cartão com o visual do Claude Design (fotos, molduras, surpresas)",
-        "Mais trilhas conferidas (História do Brasil, Medicina, Energia…)"
+        "Dono testar o pequeno universo no celular",
+        "Surpresas escondidas (confete do penta, gravidade da Lua…)",
+        "Visual do universo grande da direção de arte v1 (fios finíssimos, pulsos, névoa)",
+        "Mais trilhas conferidas e itens que faltam (ex.: celular, smartphone)"
       ]
     },
     {
@@ -117,6 +118,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-25",
+      "titulo": "Pequeno universo dos Fios",
+      "de": 56,
+      "para": 57,
+      "itens": [
+        "Tocar duas vezes num item mergulha no pequeno universo dele: foto no centro, o que veio antes e o que veio depois",
+        "629 fotos reais do Wikimedia Commons, com autor e licença em cada cartão",
+        "Fios com corrente elétrica correndo do passado para o futuro",
+        "Cartão em papel com moldura da época; seguir de item em item; seu caminho"
+      ]
+    },
     {
       "data": "2026-11-25",
       "titulo": "Universo dos Fios em 3D",
