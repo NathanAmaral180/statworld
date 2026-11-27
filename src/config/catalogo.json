@@ -333,29 +333,33 @@
       "grupo": "economia-infraestrutura",
       "situacao": "em-breve",
       "subdivisoes": [
-        "Rodovias",
-        "Ferrovias",
-        "Portos",
-        "Aeroportos",
+        "Rodovias (BRs e estaduais)",
+        "Ferrovias (carga e passageiros, concessões, projetos)",
+        "Portos e hidrovias",
+        "Aeroportos e rotas",
         "Frota",
         "Acidentes",
-        "Logística"
+        "Logística",
+        "Perto de você"
       ],
       "fontesCandidatas": [
+        "DNIT (SNV)",
         "ANTT",
         "ANTAQ",
         "ANAC",
-        "DNIT",
+        "PRF",
+        "ONTL",
         "Senatran"
       ],
-      "nivelMaisFino": "Município"
+      "nivelMaisFino": "Município",
+      "ideias": "docs/IDEIAS-infraestrutura.md"
     },
     {
       "id": "demografia",
       "numero": 5,
       "nome": "Demografia",
       "grupo": "pessoas",
-      "situacao": "em-breve",
+      "situacao": "no-ar",
       "cabecalho": true,
       "subdivisoes": [
         "População",
@@ -370,7 +374,105 @@
       ],
       "nivelMaisFino": "Município",
       "numeroDoMundo": "demografia",
-      "resumo": "População, idade, nascimentos e migração."
+      "resumo": "População, idade, nascimentos e migração.",
+      "href": "/demografia",
+      "abas": {
+        "grupos": [
+          {
+            "id": "visao-geral",
+            "nome": "Visão geral"
+          },
+          {
+            "id": "quantos-somos",
+            "nome": "Quantos somos",
+            "nomeCurto": "Quantos"
+          },
+          {
+            "id": "idade-vida",
+            "nome": "Idade e vida",
+            "nomeCurto": "Idade"
+          },
+          {
+            "id": "quem-somos",
+            "nome": "Quem somos",
+            "nomeCurto": "Quem"
+          },
+          {
+            "id": "onde-moramos",
+            "nome": "Onde moramos",
+            "nomeCurto": "Onde"
+          }
+        ],
+        "itens": [
+          {
+            "id": "visao-geral",
+            "nome": "Visão geral",
+            "grupo": "visao-geral",
+            "situacao": "no-ar",
+            "href": "/demografia"
+          },
+          {
+            "id": "crescimento",
+            "nome": "Crescimento",
+            "grupo": "quantos-somos",
+            "situacao": "no-ar",
+            "href": "/demografia/crescimento"
+          },
+          {
+            "id": "piramide",
+            "nome": "Pirâmide etária",
+            "nomeCurto": "Pirâmide",
+            "grupo": "idade-vida",
+            "situacao": "no-ar",
+            "href": "/demografia/piramide"
+          },
+          {
+            "id": "nascimentos-mortes",
+            "nome": "Nascimentos e mortes",
+            "nomeCurto": "Nascimentos",
+            "grupo": "idade-vida",
+            "situacao": "no-ar",
+            "href": "/demografia/nascimentos-e-mortes"
+          },
+          {
+            "id": "esperanca-vida",
+            "nome": "Esperança de vida",
+            "nomeCurto": "Esperança",
+            "grupo": "idade-vida",
+            "situacao": "no-ar",
+            "href": "/demografia/esperanca-de-vida"
+          },
+          {
+            "id": "cor-raca",
+            "nome": "Cor ou raça",
+            "grupo": "quem-somos",
+            "situacao": "no-ar",
+            "href": "/demografia/cor-ou-raca"
+          },
+          {
+            "id": "indigenas-quilombolas",
+            "nome": "Indígenas e quilombolas",
+            "nomeCurto": "Indígenas e quilombolas",
+            "grupo": "quem-somos",
+            "situacao": "no-ar",
+            "href": "/demografia/indigenas-e-quilombolas"
+          },
+          {
+            "id": "domicilios",
+            "nome": "Domicílios",
+            "grupo": "onde-moramos",
+            "situacao": "no-ar",
+            "href": "/demografia/domicilios"
+          },
+          {
+            "id": "migracao",
+            "nome": "Migração",
+            "grupo": "onde-moramos",
+            "situacao": "no-ar",
+            "href": "/demografia/migracao"
+          }
+        ]
+      }
     },
     {
       "id": "saude",
@@ -605,17 +707,21 @@
       "situacao": "em-breve",
       "subdivisoes": [
         "Acesso à internet",
-        "Celular",
+        "Celular (antenas 4G/5G)",
         "Banda larga",
+        "Cabos submarinos",
+        "Pontos de troca de tráfego (IX.br)",
         "Comércio eletrônico",
         "Governo digital"
       ],
       "fontesCandidatas": [
         "Anatel",
         "CETIC.br",
+        "NIC.br (IX.br)",
         "IBGE"
       ],
-      "nivelMaisFino": "Município"
+      "nivelMaisFino": "Município",
+      "ideias": "docs/IDEIAS-infraestrutura.md"
     },
     {
       "id": "ciencia-inovacao",

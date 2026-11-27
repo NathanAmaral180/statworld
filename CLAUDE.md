@@ -101,6 +101,21 @@ O mapa do site é o esqueleto completo: princípios, molde de página, 20 temas 
   - custo de vida no lugar da cesta básica.
 - Fontes dos EUA sem chave: BEA (arquivos .zip), BLS API v1 (limite de 25 consultas por dia), Tesouro (fiscaldata), Fed (Data Download Program, em desativação), Freddie Mac. O FRED não respondeu daqui.
 
+## Temas novos (regra do dono)
+- **Todo tema novo passa antes pelo Claude Design**, com liberdade criativa: o pedido lista os dados disponíveis e ideias, mas deixa o design propor a melhor forma para cada dado (não só mapa + ranking). O dono escolhe depois o que entra.
+- **Demografia: design recebido** em `design/rodada-6-demografia/` (LEIA-ME lá: 9 abas em 4 grupos, formas novas: população estimada ao vivo com selo, pirâmide 1980–2060 com ▶, mapa divergente, dispersão de municípios, halteres, barras 100%, círculos proporcionais, arcos de migração; tabelas do IBGE que faltam puxar). Pedido: `design/PEDIDO-tema-demografia.md` (próximo). `design/PEDIDO-tema-politica.md` (eleições) ficou guardado para depois: o dono disse que eleições não são agora.
+
+- **Infraestrutura (ideia do dono, 26 nov 2026):** mapas de linhas e pontos (BRs e estaduais, ferrovias por situação e concessão, com zoom em regiões como Porto Alegre, portos, hidrovias, aeroportos, cabos submarinos, IX.br, antenas, usinas). Ideias e fontes em `docs/IDEIAS-infraestrutura.md`; pedido em `design/PEDIDO-tema-infraestrutura.md` (→ `design/rodada-8-infraestrutura/`). Catálogo atualizado (Transporte e infraestrutura; Tecnologia e conectividade).
+- **Dados já puxados antes do design** (sem página ainda): Demografia (`scripts/populacao/`) e ferrovias (`scripts/ferrovias/`).
+
+## Demografia (no ar desde 27 nov 2026)
+- Design: `design/rodada-6-demografia/` (LEIA-ME lá). Catálogo: tema `demografia`, **9 abas em 4 grupos, todas no ar** no Brasil.
+- **Brasil por estado** (`/demografia/...`): molde `src/componentes/demografia/PaginaDemografia.astro` (+ `demografia-cliente.ts`, `demografia.css`), config `src/config/temas/demografia-estados.json` (por aba: medidas do mapa com cortes e selo Censo/Estimativa/Projeção/Anual, e `paineis`). Indicadores juntados em `src/lib/demografia.ts` (população + Censo + séries; calcula esperança de vida, filhos por mulher, nascimentos por morte, migração). Reusa `MapaRanking`; o mapa avisa o lugar escolhido pelo evento `statworld:lugar`.
+  - Painéis: população **"ao vivo"** (selo Estimativa, "não é contagem"), **cada 100 pessoas** (idade, cor ou raça, área), **pirâmide** (2022 com o Brasil para comparar; na aba Pirâmide, **▶ de 1980 a 2070**, projeção com barras claras), **nascimentos e mortes** (Registro Civil 2015–2024 + projeção tracejada, ano em que as mortes passam os nascimentos), **halteres** da esperança de vida (seletor de ano), **barras 100%** de cor ou raça (ordenáveis), **maiores caminhos de migração** (lista; os arcos do design ainda não).
+- **Estado por município** (`/sp/demografia/...`): `PaginaEstado` com `temaId="demografia"` e `src/config/temas/demografia-municipios.json`; com mapa: Visão geral, Crescimento, Pirâmide (medidas de idade), Nascimentos e mortes (2024), Cor ou raça, Indígenas e quilombolas, Domicílios; Esperança de vida = "sem dado por município"; Migração = em breve. `lerMedida` (estado.ts) entende `dados.vital` (Registro Civil por município).
+- Dados: `scripts/populacao/`, `scripts/demografia-censo/` (inclui indicadores em %), `scripts/demografia-series/` (Projeções **revisão 2024** do FTP do IBGE, Censos 1980–2010, Registro Civil, migração). Termos e ordem do IBGE para cor ou raça; linguagem neutra.
+- **Ainda não feito do design:** dispersão de municípios (Crescimento de SP), mapa com cores divergentes, círculos proporcionais (indígenas e quilombolas), arcos de migração, ficha completa do município (tela 12), pirâmide do município × estado.
+
 ## Abas novas de Economia (design)
 - Design aprovado das 6 abas novas e da Visão geral refeita: `design/rodada-4-economia/` (vale a v2, com navegação em dois níveis) (o LEIA-ME de lá resume cada tela). Números das telas são exemplos.
 - Padrão de cada aba: faixa "<Assunto> hoje" com 3 números nacionais (selo de frequência, fonte, data) + seletor de vistas + mapa/ficha/ranking ou gráfico de série.

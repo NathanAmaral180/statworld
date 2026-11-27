@@ -1,0 +1,168 @@
+---
+// Tema Demografia de um país, por estado. Design: design/rodada-6-demografia/.
+// Mapa + ficha + ranking (o molde de sempre) e, conforme a aba ("paineis" na config), as formas próprias do tema:
+// população "ao vivo" (estimativa, com selo), "cada 100 pessoas", pirâmide (e pirâmide no tempo com ▶),
+// nascimentos e mortes no tempo, halteres da esperança de vida, barras 100% de cor ou raça e os maiores fluxos de migração.
+import Base from '../../layouts/Base.astro';
+import Abas from '../Abas.astro';
+import EspacoAnuncio from '../EspacoAnuncio.astro';
+import MapaRanking from '../mapa-ranking/MapaRanking.astro';
+import { construirVisaoIndicador } from '../mapa-ranking/construir-indicador';
+import { preencher, quandoCurto } from '../mapa-ranking/visao';
+import site from '../../config/site.json';
+import cfg from '../../config/temas/demografia-estados.json';
+import { abasDe } from '../../lib/catalogo';
+import { contextoDoPais } from '../../lib/contexto';
+import { ligarEstados } from '../../lib/estado';
+import { arquivosDemografia, indicadoresDemografia, anoAtual } from '../../lib/demografia';
+import './demografia.css';
+
+interface Props { pais: any; aba?: string }
+const { pais, aba = 'visao-geral' } = Astro.props;
+const C: any = cfg;
+const tema = C.abas[aba];
+const paineis: string[] = tema.paineis ?? [];
+const { geo, ctx, unidades, mapa } = contextoDoPais(pais, 'estado');
+const { pop, censo, series } = arquivosDemografia(pais);
+const ind = indicadoresDemografia(pais);
+// Selo do tema (Censo, Estimativa, Projeção) no lugar da frequência; valor do país para comparar na ficha.
+const indicador = (id: string, m: any) => ({ ...ind[id], frequencia: C.selos[m.selo] ?? ind[id].frequencia, valorPais: ind[id].valores.BR ?? null });
+const medidas = tema.medidas.filter((m: any) => ind[m.id]);
+const visoes = ligarEstados(pais, Object.fromEntries(medidas.map((m: any) => [m.id, construirVisaoIndicador(m.id, unidades, indicador(m.id, m), m, ctx, ind)])), aba, 'demografia');
+const opcoes = medidas.map((m: any) => {
+  const i = indicador(m.id, m); const f = i.fontes[0];
+  return { id: m.id, rotulo: m.rotulo, rotuloCurto: m.rotuloCurto, visao: m.id, carimbo: { selo: i.frequencia, texto: `${f.nome}, ${f.publicacao}${quandoCurto(f, ctx)}` } };
+});
+
+// Dados para as partes do navegador, por lugar: o país (BR) e cada estado. Só vai o que a aba usa.
+const lugares = ['BR', ...unidades.map((u: any) => u.sigla)];
+const nomes: Record<string, string> = { BR: pais.nome, ...Object.fromEntries(unidades.map((u: any) => [u.sigla, u.nome])) };
+const pir = pop.piramides;
+const usa = (p: string) => paineis.includes(p);
+const est = ind.estimativa, estAnt = ind['estimativa-anterior'];
+const fEst = est.fontes[0];
+const so = (obj: any) => Object.fromEntries(lugares.map((l) => [l, obj?.[l] ?? null]));
+const cliente: any = {
+  idioma: pais.idioma, nomes, lugares, aba,
+  de: Object.fromEntries(lugares.map((l) => [l, l === 'BR' ? pais.dePais : `${pais.estados?.preposicao?.[l] ?? 'de'} ${nomes[l]}`])),
+  textos: C.textos,
+};
+if (aba === 'visao-geral') cliente.aoVivo = { ano: est.periodo, anoAnt: estAnt.periodo, base: est.valores, anterior: estAnt.valores };
+if (usa('cem') || usa('piramide')) { cliente.grupos = pir.grupos; cliente.piramides = so(pir.valores); }
+if ((usa('cem') || usa('cem-situacao') || usa('barras-raca')) && censo) cliente.censo = Object.fromEntries(lugares.map((l) => [l, censo.lugares[l] ? { raca: censo.lugares[l].raca, situacao: censo.lugares[l].situacao } : null]));
+if (usa('piramide-tempo') && series) cliente.tempo = { grupos: series.piramides.grupos, anos: series.piramides.anos, tipo: series.piramides.tipo, valores: so(series.piramides.valores) };
+if (usa('vital') && series) cliente.vital = { anos: series.registroCivil.anos, nascimentos: so(series.registroCivil.nascimentos), obitos: so(series.registroCivil.obitos), projecao: Object.fromEntries(lugares.map((l) => [l, Object.fromEntries(Object.entries(series.projecao.valores[l] ?? {}).map(([a, v]: [string, any]) => [a, { n: v.nascimentos, o: v.obitos, f: v.filhosPorMulher }]))])) };
+if (usa('halteres') && series) cliente.halteres = { anos: series.projecao.anos, atual: anoAtual(), valores: Object.fromEntries(lugares.map((l) => [l, Object.fromEntries(Object.entries(series.projecao.valores[l] ?? {}).map(([a, v]: [string, any]) => [a, [v.e0Homens, v.e0Mulheres]]))])) };
+if (usa('fluxos') && series) cliente.fluxos = series.migracao.maioresFluxos.slice(0, 12);
+
+const fonte = (f: any) => (f ? `${f.nome}, ${f.publicacao}${quandoCurto(f, ctx)}` : '');
+const fontePir = pir.fontes[0];
+const fonteCenso = censo ? `${censo.fontes.raca.nome}, ${censo.fontes.raca.publicacao.replace(' (tabela 9605)', '')}, tabelas 9605 e 9923` : '';
+
+const vars = { pais: pais.nome, dePais: pais.dePais };
+const titulo = preencher(C.titulo, vars);
+const trilha = C.trilha.map((t: string) => preencher(t, vars));
+const abas = abasDe('demografia', pais);
+const nomeAba = abas.find((a: any) => a.id === aba)?.nome ?? aba;
+const tituloPagina = aba === 'visao-geral' ? titulo : `${nomeAba} · ${titulo}`;
+---
+<Base titulo={tituloPagina} descricao={preencher(C.descricao, vars)} temaAtual="demografia">
+  <section class="conteudo pagina demo">
+    <p class="trilha">{trilha.join(' / ')}{aba !== 'visao-geral' && ` / ${nomeAba}`}</p>
+    <h1>{titulo}</h1>
+    <Abas itens={abas} atual={aba} rotulo="Demografia" emBreve={site.textos.emBreve} />
+    <MapaRanking geo={geo} mapa={mapa} ctx={ctx} opcoes={opcoes} opcaoInicial={tema.medidaPadrao} visoes={visoes}>
+      {aba === 'visao-geral' && (
+        <div slot="lateral" class="dm-vivo" aria-live="off">
+          <p class="dm-vivo-topo"><span class="selo selo-est">{C.textos.aoVivoSelo}</span><span>{C.textos.aoVivoTitulo} · <b data-vivo-lugar>{pais.nome}</b></span></p>
+          <p class="dm-vivo-n" data-vivo-n aria-hidden="true">—</p>
+          <p class="sr" data-vivo-sr></p>
+          <p class="dm-vivo-nota"><span class="so-pc">{preencher(C.textos.aoVivoNota, { ano: est.periodo, anoAnt: estAnt.periodo })}</span><span class="so-cel">{C.textos.aoVivoNotaCurta}</span> {fonte(fEst)}.</p>
+        </div>
+      )}
+    </MapaRanking>
+
+    {paineis.length > 0 && (
+      <div class={`dm-baixo${paineis.length === 1 ? ' um' : ''}`}>
+        {usa('cem') && (
+          <section class="dm-cem" aria-labelledby="dm-cem-t">
+            <div class="dm-cab"><h2 id="dm-cem-t" data-titulo-cem>{preencher(C.textos.cadaCem, { deLugar: pais.dePais })}</h2><span>{C.textos.cadaCemNota}</span></div>
+            <div class="dm-seg" role="tablist" aria-label="Dividir por">
+              <button type="button" role="tab" data-cem="idade" class="on" aria-selected="true">Idade</button>
+              {censo && <button type="button" role="tab" data-cem="raca" aria-selected="false">Cor ou raça</button>}
+              {censo && <button type="button" role="tab" data-cem="situacao" aria-selected="false">Área</button>}
+            </div>
+            <div data-cem-grade></div>
+            <p class="dm-fonte" data-cem-fonte data-fonte-idade={fonte(fontePir)} data-fonte-censo={fonteCenso}></p>
+          </section>
+        )}
+        {usa('cem-situacao') && (
+          <section class="dm-cem" aria-labelledby="dm-cem-t" data-cem-fixo="situacao">
+            <div class="dm-cab"><h2 id="dm-cem-t" data-titulo-cem>{preencher(C.textos.cadaCem, { deLugar: pais.dePais })}</h2><span>{C.textos.cadaCemNota}</span></div>
+            <div data-cem-grade></div>
+            <p class="dm-fonte" data-cem-fonte data-fonte-idade={fonte(fontePir)} data-fonte-censo={fonteCenso}></p>
+          </section>
+        )}
+        {usa('piramide') && (
+          <section class="dm-pir" aria-labelledby="dm-pir-t">
+            <div class="dm-cab"><h2 id="dm-pir-t" data-titulo-pir>{preencher(C.textos.piramideTitulo, { deLugar: pais.dePais })}</h2></div>
+            <p class="dm-sub">{C.textos.piramideNota}</p>
+            <div data-piramide></div>
+            <p class="dm-fonte"><span class="selo">Censo</span> {fonte(fontePir)}.</p>
+          </section>
+        )}
+        {usa('piramide-tempo') && series && (
+          <section class="dm-pir dm-largo" aria-labelledby="dm-pir-t">
+            <div class="dm-cab"><h2 id="dm-pir-t" data-titulo-pir>{preencher(C.textos.piramideTitulo, { deLugar: pais.dePais })}</h2></div>
+            <p class="dm-sub">{C.textos.piramideNota} {C.textos.piramideAnoNota}</p>
+            <div class="dm-anos">
+              <button type="button" class="dm-play" data-play aria-label="Ver a evolução">▶</button>
+              <input type="range" data-ano min="0" max={series.piramides.anos.length - 1} step="1" value={series.piramides.anos.indexOf(2022)} aria-label="Ano" />
+              <b data-ano-txt></b><span class="selo" data-ano-selo></span>
+            </div>
+            <div data-piramide></div>
+            <p class="dm-fonte">{fonte(series.fontes.censos)}; {fonte(series.fontes.censo2022)}; {fonte(series.fontes.projecao)}.</p>
+          </section>
+        )}
+        {usa('vital') && series && (
+          <section class="dm-largo" aria-labelledby="dm-vit-t">
+            <div class="dm-cab"><h2 id="dm-vit-t" data-titulo-vital>{preencher(C.textos.vitalTitulo, { deLugar: pais.dePais })}</h2></div>
+            <p class="dm-sub">{C.textos.vitalNota}</p>
+            <div data-vital></div>
+            <p class="dm-fonte">{fonte(series.fontes.nascimentos)}; {fonte(series.fontes.obitos)}; {fonte(series.fontes.projecao)}.</p>
+          </section>
+        )}
+        {usa('halteres') && series && (
+          <section class="dm-largo" aria-labelledby="dm-hal-t">
+            <div class="dm-cab"><h2 id="dm-hal-t">{C.textos.halteresTitulo}</h2>
+              <label class="dm-ano-sel">Ano <select data-hal-ano>{series.projecao.anos.filter((a: number) => a % 5 === 0 || String(a) === anoAtual()).map((a: number) => <option value={a} selected={String(a) === anoAtual()}>{a}</option>)}</select></label>
+            </div>
+            <div data-halteres></div>
+            <p class="dm-fonte"><span class="selo">Projeção</span> {fonte(series.fontes.projecao)}.</p>
+          </section>
+        )}
+        {usa('barras-raca') && censo && (
+          <section class="dm-largo" aria-labelledby="dm-bar-t">
+            <div class="dm-cab"><h2 id="dm-bar-t">{C.textos.barrasRacaTitulo}</h2><span>Clique numa cor para ordenar</span></div>
+            <div data-barras-raca></div>
+            <p class="dm-fonte"><span class="selo">Censo</span> {fonteCenso}.</p>
+          </section>
+        )}
+        {usa('fluxos') && series && (
+          <section class="dm-largo" aria-labelledby="dm-flu-t">
+            <div class="dm-cab"><h2 id="dm-flu-t">{C.textos.fluxosTitulo}</h2></div>
+            <p class="dm-sub">{C.textos.fluxosNota}</p>
+            <div data-fluxos></div>
+            <p class="dm-fonte"><span class="selo">Censo</span> {fonte(series.fontes.migracao)}.</p>
+          </section>
+        )}
+      </div>
+    )}
+    <EspacoAnuncio posicao="abaixo-ranking" />
+  </section>
+  <script type="application/json" id="dados-demografia" set:html={JSON.stringify(cliente).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  import './demografia-cliente';
+</script>

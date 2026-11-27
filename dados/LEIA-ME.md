@@ -40,3 +40,10 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `comercio/brasil-sp-municipios.json` | Exportações e importações por município de SP (ano em curso e último ano completo) | `scripts/comercio-municipios/` |
 | `trabalho/brasil-municipios-caged.json` | Saldo de empregos com carteira por município do Brasil, mês a mês no ano | `scripts/caged-municipios/` |
 | `geo/brasil-sp-bandeiras.json` | Bandeiras de SP e de 616 municípios: arquivo em public/bandeiras/br/sp/, autor e licença | `scripts/bandeiras-municipios/` |
+| `demografia/brasil-estados.json` | População, crescimento, densidade, estimativas e idade (com pirâmides) do Brasil e dos estados | `scripts/populacao/` |
+| `demografia/brasil-municipios.json` | O mesmo para os 5.570 municípios (sem a pirâmide completa) | `scripts/populacao/` |
+| `demografia/brasil-estados-censo.json` | Cor ou raça, indígenas, quilombolas, domicílios e urbana × rural do Brasil e dos estados (Censo 2022) | `scripts/demografia-censo/` |
+| `demografia/brasil-municipios-censo.json` | O mesmo para os 5.570 municípios | `scripts/demografia-censo/` |
+| `demografia/brasil-series.json` | Pirâmides 1980–2070, projeção 2000–2070, Registro Civil 2015–2024 e migração (Brasil e estados) | `scripts/demografia-series/` |
+| `demografia/brasil-municipios-vital.json` | Nascimentos e óbitos do último ano, por município | `scripts/demografia-series/` |
+| `infraestrutura/brasil-ferrovias.json` | Ferrovias: traçado (GeoJSON) e situação, bitola, concessão de cada trecho | `scripts/ferrovias/` |

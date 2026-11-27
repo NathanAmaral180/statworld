@@ -1,0 +1,19 @@
+---
+// Demografia de um estado do Brasil, com o mapa dos municípios: /sp/demografia e /sp/demografia/<aba>.
+// Mesmo molde da página de estado da Economia (PaginaEstado), com temaId="demografia".
+import PaginaEstado from '../../../componentes/estado/PaginaEstado.astro';
+import pais from '../../../config/paises/brasil.json';
+import { cfgDe, enderecoEstado } from '../../../lib/estado';
+
+export function getStaticPaths() {
+  const C = cfgDe('demografia');
+  return Object.keys(pais.estados.comPagina).flatMap((uf) =>
+    Object.keys(C.abas).map((aba) => {
+      const fim = enderecoEstado(uf, aba, 'demografia').replace(`/${uf.toLowerCase()}/demografia`, '').replace(/^\//, '');
+      return { params: { uf: uf.toLowerCase(), aba: fim || undefined }, props: { uf, aba } };
+    })
+  );
+}
+const { uf, aba } = Astro.props;
+---
+<PaginaEstado pais={pais} uf={uf} aba={aba} temaId="demografia" />

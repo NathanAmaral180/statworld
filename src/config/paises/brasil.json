@@ -82,6 +82,11 @@
       "r100": "brasil-r100",
       "divida": "brasil-divida",
       "cofog": "brasil-cofog"
+    },
+    "demografia": {
+      "estado": "brasil-estados",
+      "censo": "brasil-estados-censo",
+      "series": "brasil-series"
     }
   },
   "mapa": {
@@ -139,6 +144,17 @@
       "comercio-exterior",
       "dinheiro-juros",
       "contas-publicas"
+    ],
+    "demografia": [
+      "visao-geral",
+      "crescimento",
+      "piramide",
+      "nascimentos-mortes",
+      "esperanca-vida",
+      "cor-raca",
+      "indigenas-quilombolas",
+      "domicilios",
+      "migracao"
     ]
   },
   "slug": "brasil",
@@ -226,7 +242,10 @@
           "comercio": "brasil-sp-municipios",
           "caged": "brasil-municipios-caged",
           "atividade": "brasil-sp-atividade",
-          "bandeiras": "brasil-sp-bandeiras"
+          "bandeiras": "brasil-sp-bandeiras",
+          "demografia": "brasil-municipios",
+          "demografiaCenso": "brasil-municipios-censo",
+          "demografiaVital": "brasil-municipios-vital"
         }
       }
     }

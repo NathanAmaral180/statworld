@@ -1,0 +1,498 @@
+{
+  "_explicacao": "Tema Demografia no nível de estado (mapa dos municípios), no molde da página de estado (src/componentes/estado/). Design: design/rodada-6-demografia/ (telas 10 a 12). Situações: 'mun' = mapa dos municípios; 'sem' = sem dado neste nível; 'breve' = em breve. Medidas lidas de dados/demografia/brasil-municipios.json (arquivo 'demografia' em estados.comPagina.<UF>.arquivos).",
+  "titulo": "A população {deEstado}",
+  "descricao": "A população {deEstado} município por município: {medidas}. Mapa, ranking com busca e ficha de cada cidade, com dados do IBGE, fonte e data.",
+  "abas": {
+    "visao-geral": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "estimativa",
+          "rotulo": "População",
+          "rotuloCurto": "População",
+          "coluna": "Pessoas",
+          "titulo": "População estimada em {periodo}",
+          "subtitulo": "Estimativa do IBGE para 1º de julho (não é contagem).",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "estimativa"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        },
+        {
+          "id": "densidade",
+          "rotulo": "Densidade",
+          "rotuloCurto": "Densidade",
+          "coluna": "hab/km²",
+          "titulo": "Habitantes por km² (Censo {periodo})",
+          "subtitulo": "População do Censo dividida pela área do município.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "densidade"
+          },
+          "formato": "numero",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "crescimento-ano",
+          "rotulo": "Crescimento",
+          "rotuloCurto": "Crescimento",
+          "coluna": "% ao ano",
+          "titulo": "Crescimento da população por ano, {periodo}",
+          "subtitulo": "Taxa média ao ano entre os Censos de 2010 e 2022 (IBGE).",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "crescimento-ano"
+          },
+          "formato": "percentual",
+          "casas": 2,
+          "sinal": true,
+          "referencia": "nenhuma",
+          "divergente": true
+        },
+        {
+          "id": "idade-mediana",
+          "rotulo": "Idade mediana",
+          "rotuloCurto": "Idade",
+          "coluna": "Anos",
+          "titulo": "Idade mediana (Censo {periodo})",
+          "subtitulo": "Metade da população tem menos que esta idade (aproximação do StatWorld com os grupos de 5 anos do Censo).",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "idade-mediana"
+          },
+          "formato": "numero",
+          "casas": 1,
+          "referencia": "nenhuma"
+        }
+      ]
+    },
+    "crescimento": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "crescimento-ano",
+          "rotulo": "2010 a 2022, por ano",
+          "rotuloCurto": "2010–2022",
+          "coluna": "% ao ano",
+          "titulo": "Crescimento da população por ano, {periodo}",
+          "subtitulo": "Taxa média ao ano entre os Censos (IBGE). Negativo = a cidade encolheu.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "crescimento-ano"
+          },
+          "formato": "percentual",
+          "casas": 2,
+          "sinal": true,
+          "referencia": "nenhuma",
+          "divergente": true
+        },
+        {
+          "id": "variacao-2010",
+          "rotulo": "Pessoas a mais desde 2010",
+          "rotuloCurto": "Pessoas",
+          "coluna": "Pessoas",
+          "titulo": "Pessoas a mais (ou a menos) entre {periodo}",
+          "subtitulo": "Diferença entre os Censos de 2010 e 2022, publicada pelo IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "variacao-2010"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "sinal": true,
+          "referencia": "nenhuma",
+          "divergente": true
+        },
+        {
+          "id": "crescimento-estimativa",
+          "rotulo": "Último ano (estimativas)",
+          "rotuloCurto": "Último ano",
+          "coluna": "%",
+          "titulo": "Crescimento da população, {periodo}",
+          "subtitulo": "Cálculo do StatWorld com as duas estimativas mais recentes do IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "crescimento-estimativa"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "sinal": true,
+          "referencia": "nenhuma",
+          "divergente": true
+        }
+      ]
+    },
+    "piramide": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "idade-mediana",
+          "rotulo": "Idade mediana",
+          "rotuloCurto": "Mediana",
+          "coluna": "Anos",
+          "titulo": "Idade mediana (Censo {periodo})",
+          "subtitulo": "Aproximação do StatWorld com os grupos de 5 anos do Censo.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "idade-mediana"
+          },
+          "formato": "numero",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "idade-idosos",
+          "rotulo": "Idosos (60+)",
+          "rotuloCurto": "Idosos",
+          "coluna": "% 60+",
+          "titulo": "Pessoas de 60 anos ou mais (Censo {periodo})",
+          "subtitulo": "Parte da população com 60 anos ou mais.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "idade-idosos"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "idade-envelhecimento",
+          "rotulo": "Índice de envelhecimento",
+          "rotuloCurto": "Envelhecimento",
+          "coluna": "Por 100 crianças",
+          "titulo": "Idosos (60+) para cada 100 crianças (0 a 14), Censo {periodo}",
+          "subtitulo": "Acima de 100, há mais idosos do que crianças.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "idade-envelhecimento"
+          },
+          "formato": "numero",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "idade-criancas",
+          "rotulo": "Crianças (0 a 14)",
+          "rotuloCurto": "Crianças",
+          "coluna": "% 0–14",
+          "titulo": "Crianças de 0 a 14 anos (Censo {periodo})",
+          "subtitulo": "Parte da população com até 14 anos.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografia",
+            "indicador": "idade-criancas"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        }
+      ]
+    },
+    "nascimentos-mortes": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "nascimentos",
+          "rotulo": "Nascimentos",
+          "rotuloCurto": "Nascimentos",
+          "coluna": "Nascidos",
+          "titulo": "Nascidos vivos registrados em {periodo}",
+          "subtitulo": "Pelo município onde a mãe mora (Registro Civil).",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaVital",
+            "vital": "nascimentos"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        },
+        {
+          "id": "obitos",
+          "rotulo": "Mortes",
+          "rotuloCurto": "Mortes",
+          "coluna": "Óbitos",
+          "titulo": "Óbitos em {periodo}",
+          "subtitulo": "Pelo município onde a pessoa morava (Registro Civil).",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaVital",
+            "vital": "obitos"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        },
+        {
+          "id": "nascimentos-por-obito",
+          "rotulo": "Nascimentos por morte",
+          "rotuloCurto": "Por morte",
+          "coluna": "Nasc. por morte",
+          "titulo": "Nascimentos para cada morte em {periodo}",
+          "subtitulo": "Abaixo de 1, morre mais gente do que nasce. Em cidades pequenas varia muito de ano para ano.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaVital",
+            "vital": "razao"
+          },
+          "formato": "numero",
+          "casas": 2,
+          "referencia": "nenhuma"
+        }
+      ]
+    },
+    "esperanca-vida": {
+      "situacao": "sem",
+      "motivo": "O IBGE calcula a esperança de vida só para o Brasil e os estados, não por município."
+    },
+    "cor-raca": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "raca-preta-parda",
+          "rotulo": "Pretos e pardos",
+          "rotuloCurto": "Pretos e pardos",
+          "coluna": "%",
+          "titulo": "Pretos e pardos, % da população (Censo {periodo})",
+          "subtitulo": "Termos do IBGE. O IBGE soma pretos e pardos como população negra.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "raca-preta-parda"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "raca-branca",
+          "rotulo": "Branca",
+          "rotuloCurto": "Branca",
+          "coluna": "%",
+          "titulo": "Cor ou raça branca, % da população (Censo {periodo})",
+          "subtitulo": "Termos do IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "raca-branca"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "raca-preta",
+          "rotulo": "Preta",
+          "rotuloCurto": "Preta",
+          "coluna": "%",
+          "titulo": "Cor ou raça preta, % da população (Censo {periodo})",
+          "subtitulo": "Termos do IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "raca-preta"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "raca-parda",
+          "rotulo": "Parda",
+          "rotuloCurto": "Parda",
+          "coluna": "%",
+          "titulo": "Cor ou raça parda, % da população (Censo {periodo})",
+          "subtitulo": "Termos do IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "raca-parda"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "raca-amarela",
+          "rotulo": "Amarela",
+          "rotuloCurto": "Amarela",
+          "coluna": "%",
+          "titulo": "Cor ou raça amarela, % da população (Censo {periodo})",
+          "subtitulo": "Termos do IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "raca-amarela"
+          },
+          "formato": "percentual",
+          "casas": 2,
+          "referencia": "nenhuma"
+        }
+      ]
+    },
+    "indigenas-quilombolas": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "indigenas",
+          "rotulo": "Indígenas",
+          "rotuloCurto": "Indígenas",
+          "coluna": "Pessoas",
+          "titulo": "Pessoas indígenas (Censo {periodo})",
+          "subtitulo": "Zero = o Censo não registrou pessoas indígenas no município.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "indigenas"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        },
+        {
+          "id": "indigenas-pct",
+          "rotulo": "Indígenas (%)",
+          "rotuloCurto": "Indígenas %",
+          "coluna": "%",
+          "titulo": "Pessoas indígenas, % da população (Censo {periodo})",
+          "subtitulo": "Parte da população do município.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "indigenas-pct"
+          },
+          "formato": "percentual",
+          "casas": 2,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "quilombolas",
+          "rotulo": "Quilombolas",
+          "rotuloCurto": "Quilombolas",
+          "coluna": "Pessoas",
+          "titulo": "Pessoas quilombolas (Censo {periodo})",
+          "subtitulo": "Zero = o Censo não registrou pessoas quilombolas no município.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "quilombolas"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        },
+        {
+          "id": "quilombolas-pct",
+          "rotulo": "Quilombolas (%)",
+          "rotuloCurto": "Quilombolas %",
+          "coluna": "%",
+          "titulo": "Pessoas quilombolas, % da população (Censo {periodo})",
+          "subtitulo": "Parte da população do município.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "quilombolas-pct"
+          },
+          "formato": "percentual",
+          "casas": 2,
+          "referencia": "nenhuma"
+        }
+      ]
+    },
+    "domicilios": {
+      "situacao": "mun",
+      "medidas": [
+        {
+          "id": "urbana-pct",
+          "rotulo": "Área urbana",
+          "rotuloCurto": "Urbana",
+          "coluna": "%",
+          "titulo": "População em área urbana, % (Censo {periodo})",
+          "subtitulo": "Parte dos moradores que vive em área urbana.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "urbana-pct"
+          },
+          "formato": "percentual",
+          "casas": 1,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "moradores-por-domicilio",
+          "rotulo": "Pessoas por domicílio",
+          "rotuloCurto": "Por domicílio",
+          "coluna": "Moradores",
+          "titulo": "Moradores por domicílio (Censo {periodo})",
+          "subtitulo": "Média publicada pelo IBGE.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "moradores-por-domicilio"
+          },
+          "formato": "numero",
+          "casas": 2,
+          "referencia": "nenhuma"
+        },
+        {
+          "id": "domicilios",
+          "rotulo": "Domicílios",
+          "rotuloCurto": "Domicílios",
+          "coluna": "Domicílios",
+          "titulo": "Domicílios ocupados (Censo {periodo})",
+          "subtitulo": "Domicílios particulares permanentes ocupados.",
+          "dados": {
+            "pasta": "demografia",
+            "arquivo": "demografiaCenso",
+            "indicador": "domicilios"
+          },
+          "formato": "numero",
+          "casas": 0,
+          "referencia": "media"
+        }
+      ]
+    },
+    "migracao": {
+      "situacao": "breve",
+      "fonte": "IBGE, Censo 2022 (migração por município, a publicar)"
+    }
+  },
+  "textos": {
+    "buscar": "Digite sua cidade",
+    "buscarRotulo": "Buscar município {emEstado}",
+    "buscaVazia": "Nenhum município com esse nome {emEstado}.",
+    "todoEstado": "Todo o estado · {n}",
+    "regiao": "Região de {nome} · {n}",
+    "verEstadoInteiro": "Ver o estado inteiro",
+    "verSoRegiao": "ver só esta região",
+    "posicaoEstado": "Posição no estado",
+    "posicaoRegiao": "Posição na região",
+    "posicaoBrasil": "Posição no Brasil",
+    "diferenca": "Diferença",
+    "paginaCidade": "Ver página de {nome}",
+    "dicaPc": "Clique duas vezes ou use + e − para aproximar. Arraste para mover.",
+    "dicaCel": "Pinça ou + e − para aproximar. Tocou em cidade pequena? Abre a lista do ponto.",
+    "semDadoCidade": "a fonte não traz este município",
+    "breveTexto": "A fonte existe, a página ainda não foi feita.",
+    "fontePrevista": "Fonte prevista:",
+    "enquantoIsso": "Enquanto isso, ver {aba} do Brasil",
+    "semDadoTitulo": "{aba} não tem dado por município",
+    "verDoBrasil": "Ver {aba} do Brasil",
+    "comMapa": "Com mapa dos municípios {deEstado}:",
+    "verMunicipios": "Ver os municípios {deEstado}"
+  }
+}

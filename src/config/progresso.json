@@ -84,8 +84,8 @@
       "id": "demografia",
       "nome": "Demografia (2º tema)",
       "peso": 15,
-      "pct": 0,
-      "situacao": "Próximo grande tema"
+      "pct": 80,
+      "situacao": "No ar: 9 abas do Brasil e 7 de SP por município; faltam formas extras do design (dispersão, arcos, círculos, ficha do município)"
     },
     {
       "id": "seletor-pais",
@@ -125,6 +125,61 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-27",
+      "titulo": "Demografia completa no ar",
+      "de": 61.8,
+      "para": 68.1,
+      "itens": [
+        "9 abas do Brasil: Visão geral, Crescimento, Pirâmide (▶ 1980–2070), Nascimentos e mortes, Esperança de vida (halteres), Cor ou raça (barras 100%), Indígenas e quilombolas, Domicílios, Migração (maiores caminhos)",
+        "São Paulo por município: 7 abas com mapa",
+        "Dados: Projeções do IBGE revisão 2024, Censos 1980–2010, Registro Civil 2015–2024, migração do Censo 2022"
+      ]
+    },
+    {
+      "data": "2026-11-27",
+      "titulo": "Demografia: primeiras páginas",
+      "de": 58,
+      "para": 61.8,
+      "itens": [
+        "/demografia: mapa com população, densidade, crescimento e idade; população \"ao vivo\" com selo Estimativa; cada 100 pessoas (idade, cor ou raça, área); pirâmide etária com o Brasil para comparar",
+        "Abas Crescimento e Pirâmide etária",
+        "São Paulo por município (/sp/demografia), no mesmo molde da página de estado",
+        "Dados do Censo 2022: cor ou raça, indígenas, quilombolas, domicílios, urbano × rural (Brasil, estados, 5.570 cidades)"
+      ]
+    },
+    {
+      "data": "2026-11-27",
+      "titulo": "Design de Demografia recebido",
+      "de": 58.5,
+      "para": 58.5,
+      "itens": [
+        "12 telas guardadas em design/rodada-6-demografia, com o código e um LEIA-ME",
+        "Lista das tabelas do IBGE que ainda faltam (cor ou raça, indígenas, quilombolas, domicílios, migração, nascimentos e mortes, projeções)"
+      ]
+    },
+    {
+      "data": "2026-11-26",
+      "titulo": "Infraestrutura no projeto e primeiros dados de Demografia e ferrovias",
+      "de": 58,
+      "para": 58.5,
+      "itens": [
+        "Ideias de infraestrutura no projeto (docs/IDEIAS-infraestrutura.md) e pedido ao Claude Design (BRs, ferrovias, portos, aeroportos, cabos submarinos, internet, energia)",
+        "Demografia: população (Censo 2022 e estimativa 2026), crescimento, densidade e idade do Brasil, estados e 5.570 municípios",
+        "Ferrovias: traçado oficial com situação (operação, desativada, obra, planejada, estudo), bitola e concessão"
+      ]
+    },
+    {
+      "data": "2026-11-26",
+      "titulo": "Próximos temas: pedidos ao Claude Design",
+      "de": 58,
+      "para": 58,
+      "itens": [
+        "Pedido do tema Demografia (população, idade, nascimentos e mortes, cor ou raça, migração; Brasil, estados e municípios)",
+        "Pedido do tema Política e eleições escrito e guardado para depois (não é agora)",
+        "Regra nova: todo tema passa pelo design, com liberdade criativa"
+      ]
+    },
     {
       "data": "2026-11-26",
       "titulo": "Página de São Paulo",

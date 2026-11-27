@@ -441,6 +441,8 @@ const dadosCliente = { opcoes: opcoesCliente, opcaoInicial: opcao.id, visoes, an
     function destacar() {
       const sigla = previa ?? fixado ?? visao.linhas[0].uf;
       ficha.innerHTML = htmlFicha(visao.fichas[sigla], visao.svgs);
+      // Avisa outras partes da página (ex.: pirâmide e população ao vivo da Demografia) qual lugar está na ficha.
+      raiz.dispatchEvent(new CustomEvent('statworld:lugar', { bubbles: true, detail: { sigla, fixado: fixado ?? null } }));
       const botaoFonte = ficha.querySelector<HTMLElement>('.ficha-fonte-botao');
       botaoFonte?.setAttribute('aria-expanded', String(raiz.classList.contains('fontes-abertas')));
       botaoFonte?.setAttribute('aria-label', getComputedStyle(raiz).getPropertyValue('--rotulo-fonte').replace(/"/g, '').trim());

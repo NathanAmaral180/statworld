@@ -2,11 +2,15 @@
 // Nada aqui é exclusivo de São Paulo: o estado e os arquivos vêm de pais.estados.comPagina (src/config/paises/<pais>.json)
 // e as abas e medidas de src/config/temas/economia-municipios.json. Design: design/rodada-5-estado/.
 import cfg from '../config/temas/economia-municipios.json';
+import cfgDemografia from '../config/temas/demografia-municipios.json';
 import { carregarDados, carregarTextos } from './dados';
 import { formatar, preencher, quandoCurto, type Contexto, type OpcoesNumero } from '../componentes/mapa-ranking/visao';
 import { temas } from './catalogo';
 
 export const CFG: any = cfg;
+// Configuração de cada tema no nível de estado (o mesmo molde serve Economia, Demografia...).
+const CFGS: Record<string, any> = { economia: cfg, demografia: cfgDemografia };
+export const cfgDe = (temaId = 'economia'): any => CFGS[temaId];
 type Valores = Record<string, number | null>;
 
 // Nome do estado e a preposição ("de São Paulo", "da Bahia", "em São Paulo").
@@ -31,30 +35,31 @@ export function listaEstados(pais: any) {
 }
 
 // Situação de cada aba neste estado (com as trocas do próprio estado).
-export function abaDoEstado(pais: any, uf: string, aba: string) {
-  const base = CFG.abas[aba] ?? { situacao: 'sem' };
-  const troca = pais.estados.comPagina[uf]?.abas?.[aba];
+export function abaDoEstado(pais: any, uf: string, aba: string, temaId = 'economia') {
+  const base = cfgDe(temaId).abas[aba] ?? { situacao: 'sem' };
+  const troca = temaId === 'economia' ? pais.estados.comPagina[uf]?.abas?.[aba] : pais.estados.comPagina[uf]?.abasPorTema?.[temaId]?.[aba];
   return troca ? { ...base, ...troca } : base;
 }
 
-// Endereço da página do estado: /sp/economia e /sp/economia/<aba> (o mesmo final do endereço da aba no Brasil).
-export function enderecoEstado(uf: string, aba = 'visao-geral') {
-  const economia = temas.find((t) => t.id === 'economia') as any;
-  const item = economia.abas.itens.find((a: any) => a.id === aba);
-  const fim = aba === 'visao-geral' || !item?.href ? '' : item.href.replace(/^\/economia/, '');
-  return `/${uf.toLowerCase()}/economia${fim}`;
+// Endereço da página do estado: /sp/economia e /sp/economia/<aba> (o mesmo final do endereço da aba no Brasil); idem /sp/demografia.
+export function enderecoEstado(uf: string, aba = 'visao-geral', temaId = 'economia') {
+  const tema = temas.find((t) => t.id === temaId) as any;
+  const item = tema.abas.itens.find((a: any) => a.id === aba);
+  const fim = aba === 'visao-geral' || !item?.href ? '' : item.href.replace(new RegExp(`^/${temaId}`), '');
+  return `/${uf.toLowerCase()}/${temaId}${fim}`;
 }
 
 // Abas no formato do componente Abas: todas que têm configuração no nível de estado ganham página.
-export function abasDoEstado(pais: any, uf: string) {
-  const economia = temas.find((t) => t.id === 'economia') as any;
+export function abasDoEstado(pais: any, uf: string, temaId = 'economia') {
+  const economia = temas.find((t) => t.id === temaId) as any;
+  const C = cfgDe(temaId);
   const grupo = Object.fromEntries(economia.abas.grupos.map((g: any) => [g.id, g]));
   return economia.abas.itens.map((a: any) => ({
     id: a.id, nome: a.nome, nomeCurto: a.nomeCurto,
     grupo: grupo[a.grupo]?.nome, grupoId: a.grupo, grupoCurto: grupo[a.grupo]?.nomeCurto ?? grupo[a.grupo]?.nome,
-    href: CFG.abas[a.id] ? enderecoEstado(uf, a.id) : undefined,
-    ativo: !!CFG.abas[a.id],
-    hrefBrasil: a.href ? pais.caminho + a.href : undefined,
+    href: C.abas[a.id] ? enderecoEstado(uf, a.id, temaId) : undefined,
+    ativo: !!C.abas[a.id],
+    hrefBrasil: a.href && a.situacao === 'no-ar' ? pais.caminho + a.href : undefined, // só aponta para página do país que existe
   }));
 }
 
@@ -116,6 +121,15 @@ function lerMedida(pais: any, uf: string, m: any, codigos: string[]) {
     }
     refEstado = den ? Math.round((num / den) * 10000) / 100 : null;
     periodo = s.periodo; fontes = s.fontes; frequencia = s.frequencia; observacao = s.observacao;
+  } else if (m.dados.vital) {
+    // Registro Civil por município (scripts/demografia-series/): nascimentos, óbitos ou nascimentos por óbito.
+    const n = arq.nascimentos, o = arq.obitos;
+    for (const c of codigos) {
+      const vn = n[c] ?? null, vo = o[c] ?? null;
+      valores[c] = m.dados.vital === 'nascimentos' ? vn : m.dados.vital === 'obitos' ? vo : vn != null && vo ? Math.round((vn / vo) * 100) / 100 : null;
+    }
+    periodo = arq.periodo; fontes = arq.fontes; frequencia = arq.frequencia;
+    observacao = m.dados.vital === 'razao' ? 'Cálculo do StatWorld: nascidos vivos registrados ÷ óbitos do ano, pelo município de residência (Registro Civil). Em cidades pequenas, varia muito de um ano para outro.' : 'Pelo município de residência (Registro Civil).';
   } else if (m.dados.caged) {
     // Chave do Caged: código do município com 6 dígitos. Município sem movimentação declarada = 0 (não é "sem dado").
     for (const c of codigos) {
@@ -161,9 +175,9 @@ function cortesDe(vals: number[], divergente: boolean): number[] {
   return [1, 2, 3, 4, 5].map((i) => q(i / 6));
 }
 
-export function medidasDoEstado(pais: any, uf: string, aba: string, codigos: string[]) {
+export function medidasDoEstado(pais: any, uf: string, aba: string, codigos: string[], temaId = 'economia') {
   const ctxBase = contextoEstado(pais);
-  const tema = abaDoEstado(pais, uf, aba);
+  const tema = abaDoEstado(pais, uf, aba, temaId);
   return (tema.medidas ?? []).map((m: any) => {
     const d = lerMedida(pais, uf, m, codigos);
     const ctx = m.moeda ? { ...ctxBase, moeda: m.moeda } : ctxBase;
@@ -220,14 +234,15 @@ export function agoraDoEstado(pais: any, uf: string) {
 
 // Entrada pelo mapa do Brasil: na ficha de cada estado com página, o botão "Ver os municípios de <estado>"
 // (na mesma aba, quando ela tem mapa dos municípios; senão, a Visão geral do estado).
-export function ligarEstados(pais: any, visoes: Record<string, any>, aba: string) {
+export function ligarEstados(pais: any, visoes: Record<string, any>, aba: string, temaId = 'economia') {
   const com = pais.estados?.comPagina ?? {};
   for (const uf of Object.keys(com)) {
     const N = nomesDoEstado(pais, uf);
-    const destino = abaDoEstado(pais, uf, aba).situacao === 'mun' ? aba : 'visao-geral';
+    if (!cfgDe(temaId)) continue;
+    const destino = abaDoEstado(pais, uf, aba, temaId).situacao === 'mun' ? aba : 'visao-geral';
     for (const v of Object.values(visoes)) {
       const f = v?.fichas?.[uf];
-      if (f && !f.link) f.link = { texto: preencher(CFG.textos.verMunicipios, { deEstado: N.de }), url: enderecoEstado(uf, destino) };
+      if (f && !f.link) f.link = { texto: preencher(cfgDe(temaId).textos.verMunicipios, { deEstado: N.de }), url: enderecoEstado(uf, destino, temaId) };
     }
   }
   return visoes;

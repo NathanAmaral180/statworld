@@ -1,22 +1,25 @@
 ---
 // Página de Economia de um estado, com o mapa dos seus municípios. Design: design/rodada-5-estado/.
-// Serve para qualquer estado com dados (pais.estados.comPagina) e qualquer aba de src/config/temas/economia-municipios.json.
+// Serve para qualquer estado com dados (pais.estados.comPagina) e qualquer tema com configuração no nível de estado (src/config/temas/<tema>-municipios.json: economia, demografia).
 // Cada aba fica de um jeito: mapa dos municípios ('mun'), sem dado neste nível ('sem') ou em breve ('breve').
 import Base from '../../layouts/Base.astro';
 import Abas from '../Abas.astro';
 import EspacoAnuncio from '../EspacoAnuncio.astro';
 import './estado.css';
 import site from '../../config/site.json';
+import { temas } from '../../lib/catalogo';
 import { preencher } from '../mapa-ranking/visao';
-import { CFG, nomesDoEstado, listaEstados, abaDoEstado, abasDoEstado, enderecoEstado, malhaDoEstado, medidasDoEstado, agoraDoEstado, bandeirasDoEstado } from '../../lib/estado';
+import { cfgDe, nomesDoEstado, listaEstados, abaDoEstado, abasDoEstado, enderecoEstado, malhaDoEstado, medidasDoEstado, agoraDoEstado, bandeirasDoEstado } from '../../lib/estado';
 
-interface Props { pais: any; uf: string; aba?: string }
-const { pais, uf, aba = 'visao-geral' } = Astro.props;
+interface Props { pais: any; uf: string; aba?: string; temaId?: string }
+const { pais, uf, aba = 'visao-geral', temaId = 'economia' } = Astro.props;
+const CFG = cfgDe(temaId);
+const nomeTema = (temas.find((x) => x.id === temaId) as any)?.nome ?? temaId;
 const N = nomesDoEstado(pais, uf);
 const nivel = pais.estados.nivel;
 const t = CFG.textos;
-const tema = abaDoEstado(pais, uf, aba);
-const abas = abasDoEstado(pais, uf);
+const tema = abaDoEstado(pais, uf, aba, temaId);
+const abas = abasDoEstado(pais, uf, temaId);
 const abaAtual = abas.find((a: any) => a.id === aba);
 const vars = { deEstado: N.de, emEstado: N.em };
 const titulo = preencher(CFG.titulo, vars);
@@ -24,18 +27,18 @@ const G = malhaDoEstado(pais, uf);
 const codigos = Object.keys(G.mun);
 const nRegioes = Object.keys(G.regioes).length;
 const capital = pais.estados.comPagina[uf].capital;
-const agora = agoraDoEstado(pais, uf);
+const agora = temaId === 'economia' ? agoraDoEstado(pais, uf) : null;
 const bandeiras = bandeirasDoEstado(pais, uf);
 const bandeiraEstado = bandeiras.estado;
 const bandeirasCidades = Object.fromEntries(Object.entries(bandeiras).filter(([k]) => k !== 'estado').map(([k, b]) => [k, { a: b.arquivo, c: b.credito, p: b.pagina }]));
 const estados = listaEstados(pais);
-const medidas = tema.situacao === 'mun' ? medidasDoEstado(pais, uf, aba, codigos) : [];
+const medidas = tema.situacao === 'mun' ? medidasDoEstado(pais, uf, aba, codigos, temaId) : [];
 const dados = tema.situacao === 'mun' ? {
   ...G, capital, inicial: capital, bandeiras: bandeirasCidades, idioma: pais.idioma, medidas, t, nivel, emEstado: N.em, deEstado: N.de,
   nomePais: pais.nome, totalPais: nivel.totalPais, fonteRegioes: pais.estados.fonteRegioes, fonteMalha: `${G.fonte.nome}, ${G.fonte.publicacao}`,
 } : null;
 // Abas com mapa dos municípios deste estado (para as páginas "sem dado" e "em breve").
-const comMapa = abas.filter((a: any) => a.id !== aba && abaDoEstado(pais, uf, a.id).situacao === 'mun');
+const comMapa = abas.filter((a: any) => a.id !== aba && abaDoEstado(pais, uf, a.id, temaId).situacao === 'mun');
 const nomeAba = abaAtual?.nome ?? aba;
 const tituloPagina = aba === 'visao-geral' ? titulo : `${nomeAba} · ${titulo}`;
 const descricao = preencher(CFG.descricao, { ...vars, medidas: medidas.length ? medidas.map((m: any) => m.rotulo.toLowerCase()).join(', ') : nomeAba.toLowerCase() });
@@ -46,10 +49,10 @@ const nf = (n: number) => n.toLocaleString(pais.idioma);
 const destaque = pais.estados.comPagina[uf].destaque;
 const estiloCores = destaque ? `--est-destaque-claro:${destaque.claro};--est-destaque-escuro:${destaque.escuro}` : undefined;
 ---
-<Base titulo={tituloPagina} descricao={descricao} temaAtual="economia">
+<Base titulo={tituloPagina} descricao={descricao} temaAtual={temaId}>
   <section class="conteudo pagina est" style={estiloCores} data-estado-mun={tema.situacao === 'mun' ? '' : undefined}>
     <nav class="trilha" aria-label="Você está em">
-      <span>Economia</span><span aria-hidden="true">/</span><a href={abaAtual?.hrefBrasil ?? '/economia'}>{pais.nome}</a><span aria-hidden="true">/</span>
+      <span>{nomeTema}</span><span aria-hidden="true">/</span><a href={abaAtual?.hrefBrasil ?? `/${temaId}`}>{pais.nome}</a><span aria-hidden="true">/</span>
       <div class="pk">
         <button type="button" class="pk-b" aria-haspopup="dialog" aria-expanded="false" aria-controls="pk-pop">{N.nome}<Fragment set:html={chev} /><span class="sr">, trocar de estado</span></button>
         <div class="pk-pop" id="pk-pop" role="dialog" aria-label="Trocar de estado" hidden>
@@ -59,7 +62,7 @@ const estiloCores = destaque ? `--est-destaque-claro:${destaque.claro};--est-des
               <div role="group" aria-label={g.regiao}>
                 <div class="pk-g" aria-hidden="true">{g.regiao}</div>
                 {g.estados.map((e: any) => e.temPagina
-                  ? <a href={enderecoEstado(e.uf, aba)} data-nome={e.nome} data-uf={e.uf} aria-current={e.uf === uf ? 'page' : undefined}>{e.nome}<span>{e.uf === uf ? 'atual' : e.uf}</span></a>
+                  ? <a href={enderecoEstado(e.uf, aba, temaId)} data-nome={e.nome} data-uf={e.uf} aria-current={e.uf === uf ? 'page' : undefined}>{e.nome}<span>{e.uf === uf ? 'atual' : e.uf}</span></a>
                   : <span class="pk-off" data-nome={e.nome} data-uf={e.uf}>{e.nome}<em class="soon">{site.textos.emBreve}</em></span>)}
               </div>
             ))}
@@ -77,7 +80,7 @@ const estiloCores = destaque ? `--est-destaque-claro:${destaque.claro};--est-des
       <span>Região {N.regiaoPais}</span>
       {agora && <span class="est-agora" title={`${agora.fonte}. ${agora.observacao}`}>{preencher(t.agora, { ano: agora.ano })}: <b>{preencher(t.agoraTexto, { valor: agora.valor, mes: agora.mes })}</b> <span class="selo">{agora.frequencia}</span></span>}
     </div>
-    <Abas itens={abas} atual={aba} rotulo="Economia" emBreve={site.textos.emBreve} />
+    <Abas itens={abas} atual={aba} rotulo={nomeTema} emBreve={site.textos.emBreve} />
 
     {tema.situacao === 'mun' && (
       <>

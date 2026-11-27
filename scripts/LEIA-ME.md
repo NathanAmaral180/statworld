@@ -18,6 +18,10 @@ Scripts existentes:
 - `comercio-municipios/`: exportações e importações por município (Comex Stat), piloto SP
 - `caged-municipios/`: empregos com carteira por município, mês a mês no ano (Novo Caged), Brasil inteiro
 - `bandeiras-municipios/`: bandeiras do estado e dos municípios (Wikidata + Wikimedia Commons, só licença livre), piloto SP
+- `populacao/`: população, crescimento, densidade e idade (Censo 2022 e estimativas do IBGE), Brasil, estados e municípios (tema Demografia)
+- `demografia-censo/`: cor ou raça, indígenas, quilombolas, domicílios e urbana × rural (Censo 2022), Brasil, estados e municípios
+- `demografia-series/`: pirâmides 1980–2070, nascimentos e mortes, esperança de vida, filhos por mulher (Projeções 2024 e Registro Civil) e migração entre estados
+- `ferrovias/`: traçado e situação das ferrovias (Ministério dos Transportes), tema Transporte e infraestrutura
 - `lavouras-estados/`: agro, lavouras por estado e produto
 - `pecuaria-estados/`: agro, pecuária (IBGE + MAPA)
 - `icones-agro/`: ícones e cores dos produtos, vindos do Claude Design
