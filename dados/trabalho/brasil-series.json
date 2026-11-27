@@ -1,7 +1,7 @@
 {
   "_explicacao": "Desemprego e renda do Brasil, mês a mês (trimestre móvel: cada ponto é a média dos 3 meses que terminam naquele mês). Gerado por scripts/trabalho-estados/baixar.mjs. Não edite à mão.",
   "pais": "BR",
-  "baixadoEm": "2026-11-22",
+  "baixadoEm": "2026-11-27",
   "series": {
     "desemprego": {
       "nome": "Taxa de desemprego, %",
@@ -10,9 +10,9 @@
       "fontes": [
         {
           "nome": "IBGE",
-          "publicacao": "PNAD Contínua mensal, até jul-ago-set 2026 (tabela 6381 do Sidra)",
+          "publicacao": "PNAD Contínua mensal, até ago-set-out 2026 (tabela 6381 do Sidra)",
           "url": "https://sidra.ibge.gov.br/tabela/6381",
-          "dataDivulgacao": "2026-10-30"
+          "dataDivulgacao": "2026-11-27"
         }
       ],
       "pontos": [
@@ -890,6 +890,11 @@
           "periodo": "202609",
           "nome": "jul-ago-set 2026",
           "valor": 5.2
+        },
+        {
+          "periodo": "202610",
+          "nome": "ago-set-out 2026",
+          "valor": 5.1
         }
       ]
     },
@@ -897,890 +902,895 @@
       "nome": "Renda média do trabalho, R$ por mês",
       "unidade": "moeda",
       "frequencia": "mensal",
-      "observacao": "Valores corrigidos pela inflação até jul-ago-set 2026.",
+      "observacao": "Valores corrigidos pela inflação até ago-set-out 2026.",
       "fontes": [
         {
           "nome": "IBGE",
-          "publicacao": "PNAD Contínua mensal, até jul-ago-set 2026 (tabela 6390 do Sidra)",
+          "publicacao": "PNAD Contínua mensal, até ago-set-out 2026 (tabela 6390 do Sidra)",
           "url": "https://sidra.ibge.gov.br/tabela/6390",
-          "dataDivulgacao": "2026-10-30"
+          "dataDivulgacao": "2026-11-27"
         }
       ],
       "pontos": [
         {
           "periodo": "201203",
           "nome": "jan-fev-mar 2012",
-          "valor": 3179
+          "valor": 3186
         },
         {
           "periodo": "201204",
           "nome": "fev-mar-abr 2012",
-          "valor": 3190
+          "valor": 3197
         },
         {
           "periodo": "201205",
           "nome": "mar-abr-mai 2012",
-          "valor": 3182
+          "valor": 3189
         },
         {
           "periodo": "201206",
           "nome": "abr-mai-jun 2012",
-          "valor": 3189
+          "valor": 3196
         },
         {
           "periodo": "201207",
           "nome": "mai-jun-jul 2012",
-          "valor": 3205
+          "valor": 3212
         },
         {
           "periodo": "201208",
           "nome": "jun-jul-ago 2012",
-          "valor": 3215
+          "valor": 3222
         },
         {
           "periodo": "201209",
           "nome": "jul-ago-set 2012",
-          "valor": 3209
+          "valor": 3216
         },
         {
           "periodo": "201210",
           "nome": "ago-set-out 2012",
-          "valor": 3205
+          "valor": 3212
         },
         {
           "periodo": "201211",
           "nome": "set-out-nov 2012",
-          "valor": 3203
+          "valor": 3209
         },
         {
           "periodo": "201212",
           "nome": "out-nov-dez 2012",
-          "valor": 3195
+          "valor": 3202
         },
         {
           "periodo": "201301",
           "nome": "nov-dez-jan 2013",
-          "valor": 3208
+          "valor": 3215
         },
         {
           "periodo": "201302",
           "nome": "dez-jan-fev 2013",
-          "valor": 3227
+          "valor": 3234
         },
         {
           "periodo": "201303",
           "nome": "jan-fev-mar 2013",
-          "valor": 3245
+          "valor": 3252
         },
         {
           "periodo": "201304",
           "nome": "fev-mar-abr 2013",
-          "valor": 3253
+          "valor": 3260
         },
         {
           "periodo": "201305",
           "nome": "mar-abr-mai 2013",
-          "valor": 3255
+          "valor": 3262
         },
         {
           "periodo": "201306",
           "nome": "abr-mai-jun 2013",
-          "valor": 3282
+          "valor": 3289
         },
         {
           "periodo": "201307",
           "nome": "mai-jun-jul 2013",
-          "valor": 3303
+          "valor": 3310
         },
         {
           "periodo": "201308",
           "nome": "jun-jul-ago 2013",
-          "valor": 3325
+          "valor": 3332
         },
         {
           "periodo": "201309",
           "nome": "jul-ago-set 2013",
-          "valor": 3325
+          "valor": 3332
         },
         {
           "periodo": "201310",
           "nome": "ago-set-out 2013",
-          "valor": 3334
+          "valor": 3342
         },
         {
           "periodo": "201311",
           "nome": "set-out-nov 2013",
-          "valor": 3321
+          "valor": 3328
         },
         {
           "periodo": "201312",
           "nome": "out-nov-dez 2013",
-          "valor": 3295
+          "valor": 3302
         },
         {
           "periodo": "201401",
           "nome": "nov-dez-jan 2014",
-          "valor": 3291
+          "valor": 3298
         },
         {
           "periodo": "201402",
           "nome": "dez-jan-fev 2014",
-          "valor": 3323
+          "valor": 3330
         },
         {
           "periodo": "201403",
           "nome": "jan-fev-mar 2014",
-          "valor": 3361
+          "valor": 3368
         },
         {
           "periodo": "201404",
           "nome": "fev-mar-abr 2014",
-          "valor": 3358
+          "valor": 3366
         },
         {
           "periodo": "201405",
           "nome": "mar-abr-mai 2014",
-          "valor": 3352
+          "valor": 3359
         },
         {
           "periodo": "201406",
           "nome": "abr-mai-jun 2014",
-          "valor": 3334
+          "valor": 3341
         },
         {
           "periodo": "201407",
           "nome": "mai-jun-jul 2014",
-          "valor": 3328
+          "valor": 3335
         },
         {
           "periodo": "201408",
           "nome": "jun-jul-ago 2014",
-          "valor": 3351
+          "valor": 3358
         },
         {
           "periodo": "201409",
           "nome": "jul-ago-set 2014",
-          "valor": 3363
+          "valor": 3370
         },
         {
           "periodo": "201410",
           "nome": "ago-set-out 2014",
-          "valor": 3376
+          "valor": 3383
         },
         {
           "periodo": "201411",
           "nome": "set-out-nov 2014",
-          "valor": 3353
+          "valor": 3360
         },
         {
           "periodo": "201412",
           "nome": "out-nov-dez 2014",
-          "valor": 3354
+          "valor": 3362
         },
         {
           "periodo": "201501",
           "nome": "nov-dez-jan 2015",
-          "valor": 3359
+          "valor": 3366
         },
         {
           "periodo": "201502",
           "nome": "dez-jan-fev 2015",
-          "valor": 3353
+          "valor": 3360
         },
         {
           "periodo": "201503",
           "nome": "jan-fev-mar 2015",
-          "valor": 3354
+          "valor": 3361
         },
         {
           "periodo": "201504",
           "nome": "fev-mar-abr 2015",
-          "valor": 3346
+          "valor": 3353
         },
         {
           "periodo": "201505",
           "nome": "mar-abr-mai 2015",
-          "valor": 3331
+          "valor": 3338
         },
         {
           "periodo": "201506",
           "nome": "abr-mai-jun 2015",
-          "valor": 3340
+          "valor": 3347
         },
         {
           "periodo": "201507",
           "nome": "mai-jun-jul 2015",
-          "valor": 3317
+          "valor": 3324
         },
         {
           "periodo": "201508",
           "nome": "jun-jul-ago 2015",
-          "valor": 3301
+          "valor": 3308
         },
         {
           "periodo": "201509",
           "nome": "jul-ago-set 2015",
-          "valor": 3299
+          "valor": 3307
         },
         {
           "periodo": "201510",
           "nome": "ago-set-out 2015",
-          "valor": 3286
+          "valor": 3293
         },
         {
           "periodo": "201511",
           "nome": "set-out-nov 2015",
-          "valor": 3262
+          "valor": 3269
         },
         {
           "periodo": "201512",
           "nome": "out-nov-dez 2015",
-          "valor": 3245
+          "valor": 3252
         },
         {
           "periodo": "201601",
           "nome": "nov-dez-jan 2016",
-          "valor": 3256
+          "valor": 3262
         },
         {
           "periodo": "201602",
           "nome": "dez-jan-fev 2016",
-          "valor": 3236
+          "valor": 3243
         },
         {
           "periodo": "201603",
           "nome": "jan-fev-mar 2016",
-          "valor": 3251
+          "valor": 3258
         },
         {
           "periodo": "201604",
           "nome": "fev-mar-abr 2016",
-          "valor": 3235
+          "valor": 3242
         },
         {
           "periodo": "201605",
           "nome": "mar-abr-mai 2016",
-          "valor": 3246
+          "valor": 3253
         },
         {
           "periodo": "201606",
           "nome": "abr-mai-jun 2016",
-          "valor": 3212
+          "valor": 3218
         },
         {
           "periodo": "201607",
           "nome": "mai-jun-jul 2016",
-          "valor": 3213
+          "valor": 3220
         },
         {
           "periodo": "201608",
           "nome": "jun-jul-ago 2016",
-          "valor": 3241
+          "valor": 3248
         },
         {
           "periodo": "201609",
           "nome": "jul-ago-set 2016",
-          "valor": 3238
+          "valor": 3245
         },
         {
           "periodo": "201610",
           "nome": "ago-set-out 2016",
-          "valor": 3243
+          "valor": 3250
         },
         {
           "periodo": "201611",
           "nome": "set-out-nov 2016",
-          "valor": 3249
+          "valor": 3256
         },
         {
           "periodo": "201612",
           "nome": "out-nov-dez 2016",
-          "valor": 3266
+          "valor": 3273
         },
         {
           "periodo": "201701",
           "nome": "nov-dez-jan 2017",
-          "valor": 3277
+          "valor": 3284
         },
         {
           "periodo": "201702",
           "nome": "dez-jan-fev 2017",
-          "valor": 3288
+          "valor": 3295
         },
         {
           "periodo": "201703",
           "nome": "jan-fev-mar 2017",
-          "valor": 3306
+          "valor": 3313
         },
         {
           "periodo": "201704",
           "nome": "fev-mar-abr 2017",
-          "valor": 3291
+          "valor": 3298
         },
         {
           "periodo": "201705",
           "nome": "mar-abr-mai 2017",
-          "valor": 3286
+          "valor": 3293
         },
         {
           "periodo": "201706",
           "nome": "abr-mai-jun 2017",
-          "valor": 3273
+          "valor": 3280
         },
         {
           "periodo": "201707",
           "nome": "mai-jun-jul 2017",
-          "valor": 3275
+          "valor": 3282
         },
         {
           "periodo": "201708",
           "nome": "jun-jul-ago 2017",
-          "valor": 3270
+          "valor": 3277
         },
         {
           "periodo": "201709",
           "nome": "jul-ago-set 2017",
-          "valor": 3286
+          "valor": 3293
         },
         {
           "periodo": "201710",
           "nome": "ago-set-out 2017",
-          "valor": 3297
+          "valor": 3304
         },
         {
           "periodo": "201711",
           "nome": "set-out-nov 2017",
-          "valor": 3311
+          "valor": 3318
         },
         {
           "periodo": "201712",
           "nome": "out-nov-dez 2017",
-          "valor": 3312
+          "valor": 3319
         },
         {
           "periodo": "201801",
           "nome": "nov-dez-jan 2018",
-          "valor": 3324
+          "valor": 3331
         },
         {
           "periodo": "201802",
           "nome": "dez-jan-fev 2018",
-          "valor": 3337
+          "valor": 3344
         },
         {
           "periodo": "201803",
           "nome": "jan-fev-mar 2018",
-          "valor": 3336
+          "valor": 3343
         },
         {
           "periodo": "201804",
           "nome": "fev-mar-abr 2018",
-          "valor": 3347
+          "valor": 3354
         },
         {
           "periodo": "201805",
           "nome": "mar-abr-mai 2018",
-          "valor": 3348
+          "valor": 3355
         },
         {
           "periodo": "201806",
           "nome": "abr-mai-jun 2018",
-          "valor": 3343
+          "valor": 3351
         },
         {
           "periodo": "201807",
           "nome": "mai-jun-jul 2018",
-          "valor": 3332
+          "valor": 3339
         },
         {
           "periodo": "201808",
           "nome": "jun-jul-ago 2018",
-          "valor": 3346
+          "valor": 3353
         },
         {
           "periodo": "201809",
           "nome": "jul-ago-set 2018",
-          "valor": 3332
+          "valor": 3339
         },
         {
           "periodo": "201810",
           "nome": "ago-set-out 2018",
-          "valor": 3335
+          "valor": 3342
         },
         {
           "periodo": "201811",
           "nome": "set-out-nov 2018",
-          "valor": 3338
+          "valor": 3345
         },
         {
           "periodo": "201812",
           "nome": "out-nov-dez 2018",
-          "valor": 3357
+          "valor": 3364
         },
         {
           "periodo": "201901",
           "nome": "nov-dez-jan 2019",
-          "valor": 3377
+          "valor": 3384
         },
         {
           "periodo": "201902",
           "nome": "dez-jan-fev 2019",
-          "valor": 3389
+          "valor": 3396
         },
         {
           "periodo": "201903",
           "nome": "jan-fev-mar 2019",
-          "valor": 3375
+          "valor": 3382
         },
         {
           "periodo": "201904",
           "nome": "fev-mar-abr 2019",
-          "valor": 3358
+          "valor": 3365
         },
         {
           "periodo": "201905",
           "nome": "mar-abr-mai 2019",
-          "valor": 3334
+          "valor": 3341
         },
         {
           "periodo": "201906",
           "nome": "abr-mai-jun 2019",
-          "valor": 3334
+          "valor": 3341
         },
         {
           "periodo": "201907",
           "nome": "mai-jun-jul 2019",
-          "valor": 3326
+          "valor": 3333
         },
         {
           "periodo": "201908",
           "nome": "jun-jul-ago 2019",
-          "valor": 3339
+          "valor": 3347
         },
         {
           "periodo": "201909",
           "nome": "jul-ago-set 2019",
-          "valor": 3339
+          "valor": 3346
         },
         {
           "periodo": "201910",
           "nome": "ago-set-out 2019",
-          "valor": 3363
+          "valor": 3370
         },
         {
           "periodo": "201911",
           "nome": "set-out-nov 2019",
-          "valor": 3378
+          "valor": 3385
         },
         {
           "periodo": "201912",
           "nome": "out-nov-dez 2019",
-          "valor": 3367
+          "valor": 3374
         },
         {
           "periodo": "202001",
           "nome": "nov-dez-jan 2020",
-          "valor": 3375
+          "valor": 3382
         },
         {
           "periodo": "202002",
           "nome": "dez-jan-fev 2020",
-          "valor": 3378
+          "valor": 3385
         },
         {
           "periodo": "202003",
           "nome": "jan-fev-mar 2020",
-          "valor": 3406
+          "valor": 3413
         },
         {
           "periodo": "202004",
           "nome": "fev-mar-abr 2020",
-          "valor": 3443
+          "valor": 3450
         },
         {
           "periodo": "202005",
           "nome": "mar-abr-mai 2020",
-          "valor": 3499
+          "valor": 3506
         },
         {
           "periodo": "202006",
           "nome": "abr-mai-jun 2020",
-          "valor": 3553
+          "valor": 3560
         },
         {
           "periodo": "202007",
           "nome": "mai-jun-jul 2020",
-          "valor": 3595
+          "valor": 3602
         },
         {
           "periodo": "202008",
           "nome": "jun-jul-ago 2020",
-          "valor": 3590
+          "valor": 3597
         },
         {
           "periodo": "202009",
           "nome": "jul-ago-set 2020",
-          "valor": 3592
+          "valor": 3600
         },
         {
           "periodo": "202010",
           "nome": "ago-set-out 2020",
-          "valor": 3539
+          "valor": 3547
         },
         {
           "periodo": "202011",
           "nome": "set-out-nov 2020",
-          "valor": 3501
+          "valor": 3509
         },
         {
           "periodo": "202012",
           "nome": "out-nov-dez 2020",
-          "valor": 3448
+          "valor": 3455
         },
         {
           "periodo": "202101",
           "nome": "nov-dez-jan 2021",
-          "valor": 3440
+          "valor": 3447
         },
         {
           "periodo": "202102",
           "nome": "dez-jan-fev 2021",
-          "valor": 3409
+          "valor": 3416
         },
         {
           "periodo": "202103",
           "nome": "jan-fev-mar 2021",
-          "valor": 3418
+          "valor": 3425
         },
         {
           "periodo": "202104",
           "nome": "fev-mar-abr 2021",
-          "valor": 3377
+          "valor": 3385
         },
         {
           "periodo": "202105",
           "nome": "mar-abr-mai 2021",
-          "valor": 3374
+          "valor": 3381
         },
         {
           "periodo": "202106",
           "nome": "abr-mai-jun 2021",
-          "valor": 3322
+          "valor": 3329
         },
         {
           "periodo": "202107",
           "nome": "mai-jun-jul 2021",
-          "valor": 3291
+          "valor": 3298
         },
         {
           "periodo": "202108",
           "nome": "jun-jul-ago 2021",
-          "valor": 3244
+          "valor": 3251
         },
         {
           "periodo": "202109",
           "nome": "jul-ago-set 2021",
-          "valor": 3187
+          "valor": 3194
         },
         {
           "periodo": "202110",
           "nome": "ago-set-out 2021",
-          "valor": 3140
+          "valor": 3147
         },
         {
           "periodo": "202111",
           "nome": "set-out-nov 2021",
-          "valor": 3099
+          "valor": 3105
         },
         {
           "periodo": "202112",
           "nome": "out-nov-dez 2021",
-          "valor": 3074
+          "valor": 3080
         },
         {
           "periodo": "202201",
           "nome": "nov-dez-jan 2022",
-          "valor": 3102
+          "valor": 3109
         },
         {
           "periodo": "202202",
           "nome": "dez-jan-fev 2022",
-          "valor": 3106
+          "valor": 3113
         },
         {
           "periodo": "202203",
           "nome": "jan-fev-mar 2022",
-          "valor": 3119
+          "valor": 3125
         },
         {
           "periodo": "202204",
           "nome": "fev-mar-abr 2022",
-          "valor": 3107
+          "valor": 3113
         },
         {
           "periodo": "202205",
           "nome": "mar-abr-mai 2022",
-          "valor": 3126
+          "valor": 3133
         },
         {
           "periodo": "202206",
           "nome": "abr-mai-jun 2022",
-          "valor": 3149
+          "valor": 3156
         },
         {
           "periodo": "202207",
           "nome": "mai-jun-jul 2022",
-          "valor": 3194
+          "valor": 3201
         },
         {
           "periodo": "202208",
           "nome": "jun-jul-ago 2022",
-          "valor": 3221
+          "valor": 3228
         },
         {
           "periodo": "202209",
           "nome": "jul-ago-set 2022",
-          "valor": 3265
+          "valor": 3272
         },
         {
           "periodo": "202210",
           "nome": "ago-set-out 2022",
-          "valor": 3285
+          "valor": 3292
         },
         {
           "periodo": "202211",
           "nome": "set-out-nov 2022",
-          "valor": 3316
+          "valor": 3323
         },
         {
           "periodo": "202212",
           "nome": "out-nov-dez 2022",
-          "valor": 3324
+          "valor": 3331
         },
         {
           "periodo": "202301",
           "nome": "nov-dez-jan 2023",
-          "valor": 3338
+          "valor": 3345
         },
         {
           "periodo": "202302",
           "nome": "dez-jan-fev 2023",
-          "valor": 3336
+          "valor": 3343
         },
         {
           "periodo": "202303",
           "nome": "jan-fev-mar 2023",
-          "valor": 3344
+          "valor": 3351
         },
         {
           "periodo": "202304",
           "nome": "fev-mar-abr 2023",
-          "valor": 3334
+          "valor": 3341
         },
         {
           "periodo": "202305",
           "nome": "mar-abr-mai 2023",
-          "valor": 3328
+          "valor": 3335
         },
         {
           "periodo": "202306",
           "nome": "abr-mai-jun 2023",
-          "valor": 3343
+          "valor": 3350
         },
         {
           "periodo": "202307",
           "nome": "mai-jun-jul 2023",
-          "valor": 3355
+          "valor": 3362
         },
         {
           "periodo": "202308",
           "nome": "jun-jul-ago 2023",
-          "valor": 3365
+          "valor": 3372
         },
         {
           "periodo": "202309",
           "nome": "jul-ago-set 2023",
-          "valor": 3398
+          "valor": 3405
         },
         {
           "periodo": "202310",
           "nome": "ago-set-out 2023",
-          "valor": 3409
+          "valor": 3417
         },
         {
           "periodo": "202311",
           "nome": "set-out-nov 2023",
-          "valor": 3439
+          "valor": 3446
         },
         {
           "periodo": "202312",
           "nome": "out-nov-dez 2023",
-          "valor": 3424
+          "valor": 3432
         },
         {
           "periodo": "202401",
           "nome": "nov-dez-jan 2024",
-          "valor": 3462
+          "valor": 3470
         },
         {
           "periodo": "202402",
           "nome": "dez-jan-fev 2024",
-          "valor": 3478
+          "valor": 3485
         },
         {
           "periodo": "202403",
           "nome": "jan-fev-mar 2024",
-          "valor": 3475
+          "valor": 3482
         },
         {
           "periodo": "202404",
           "nome": "fev-mar-abr 2024",
-          "valor": 3490
+          "valor": 3498
         },
         {
           "periodo": "202405",
           "nome": "mar-abr-mai 2024",
-          "valor": 3511
+          "valor": 3519
         },
         {
           "periodo": "202406",
           "nome": "abr-mai-jun 2024",
-          "valor": 3534
+          "valor": 3542
         },
         {
           "periodo": "202407",
           "nome": "mai-jun-jul 2024",
-          "valor": 3514
+          "valor": 3521
         },
         {
           "periodo": "202408",
           "nome": "jun-jul-ago 2024",
-          "valor": 3532
+          "valor": 3540
         },
         {
           "periodo": "202409",
           "nome": "jul-ago-set 2024",
-          "valor": 3521
+          "valor": 3528
         },
         {
           "periodo": "202410",
           "nome": "ago-set-out 2024",
-          "valor": 3540
+          "valor": 3547
         },
         {
           "periodo": "202411",
           "nome": "set-out-nov 2024",
-          "valor": 3555
+          "valor": 3563
         },
         {
           "periodo": "202412",
           "nome": "out-nov-dez 2024",
-          "valor": 3570
+          "valor": 3577
         },
         {
           "periodo": "202501",
           "nome": "nov-dez-jan 2025",
-          "valor": 3587
+          "valor": 3594
         },
         {
           "periodo": "202502",
           "nome": "dez-jan-fev 2025",
-          "valor": 3601
+          "valor": 3608
         },
         {
           "periodo": "202503",
           "nome": "jan-fev-mar 2025",
-          "valor": 3611
+          "valor": 3619
         },
         {
           "periodo": "202504",
           "nome": "fev-mar-abr 2025",
-          "valor": 3599
+          "valor": 3607
         },
         {
           "periodo": "202505",
           "nome": "mar-abr-mai 2025",
-          "valor": 3615
+          "valor": 3623
         },
         {
           "periodo": "202506",
           "nome": "abr-mai-jun 2025",
-          "valor": 3650
+          "valor": 3657
         },
         {
           "periodo": "202507",
           "nome": "mai-jun-jul 2025",
-          "valor": 3648
+          "valor": 3656
         },
         {
           "periodo": "202508",
           "nome": "jun-jul-ago 2025",
-          "valor": 3648
+          "valor": 3655
         },
         {
           "periodo": "202509",
           "nome": "jul-ago-set 2025",
-          "valor": 3660
+          "valor": 3667
         },
         {
           "periodo": "202510",
           "nome": "ago-set-out 2025",
-          "valor": 3676
+          "valor": 3684
         },
         {
           "periodo": "202511",
           "nome": "set-out-nov 2025",
-          "valor": 3715
+          "valor": 3723
         },
         {
           "periodo": "202512",
           "nome": "out-nov-dez 2025",
-          "valor": 3749
+          "valor": 3757
         },
         {
           "periodo": "202601",
           "nome": "nov-dez-jan 2026",
-          "valor": 3779
+          "valor": 3787
         },
         {
           "periodo": "202602",
           "nome": "dez-jan-fev 2026",
-          "valor": 3790
+          "valor": 3798
         },
         {
           "periodo": "202603",
           "nome": "jan-fev-mar 2026",
-          "valor": 3811
+          "valor": 3819
         },
         {
           "periodo": "202604",
           "nome": "fev-mar-abr 2026",
-          "valor": 3792
+          "valor": 3800
         },
         {
           "periodo": "202605",
           "nome": "mar-abr-mai 2026",
-          "valor": 3759
+          "valor": 3766
         },
         {
           "periodo": "202606",
           "nome": "abr-mai-jun 2026",
-          "valor": 3753
+          "valor": 3761
         },
         {
           "periodo": "202607",
           "nome": "mai-jun-jul 2026",
-          "valor": 3767
+          "valor": 3775
         },
         {
           "periodo": "202608",
           "nome": "jun-jul-ago 2026",
-          "valor": 3784
+          "valor": 3792
         },
         {
           "periodo": "202609",
           "nome": "jul-ago-set 2026",
-          "valor": 3790
+          "valor": 3798
+        },
+        {
+          "periodo": "202610",
+          "nome": "ago-set-out 2026",
+          "valor": 3812
         }
       ]
     }
