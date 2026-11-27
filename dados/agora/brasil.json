@@ -1,7 +1,7 @@
 {
   "_explicacao": "Indicadores da faixa \"Agora\". Gerado por scripts/brasil-agora/baixar.mjs. Não edite à mão. Cada número traz a data a que se refere.",
   "pais": "BR",
-  "baixadoEm": "2026-11-26",
+  "baixadoEm": "2026-11-27",
   "indicadores": [
     {
       "id": "dolar",
@@ -31,7 +31,7 @@
       "valor": 13.75,
       "formato": "percentual",
       "casas": 2,
-      "data": "2026-11-26",
+      "data": "2026-11-27",
       "variacao": {
         "tipo": "pontos",
         "valor": -0.25,
