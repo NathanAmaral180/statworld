@@ -1,7 +1,7 @@
 {
   "_explicacao": "EUA: séries do painel \"Dinheiro e juros\" (Fed, Tesouro dos EUA, Freddie Mac). Gerado por scripts/eua-dinheiro/baixar.mjs. Não edite à mão.",
   "pais": "US",
-  "baixadoEm": "2026-11-26",
+  "baixadoEm": "2026-11-27",
   "series": [
     {
       "id": "fed-funds",
@@ -16,14 +16,10 @@
           "nome": "Federal Reserve (EUA)",
           "publicacao": "H.15, taxa efetiva dos fundos federais (RIFSPFF_N.D)",
           "url": "https://www.federalreserve.gov/releases/h15/",
-          "dataConsulta": "2026-11-26"
+          "dataConsulta": "2026-11-27"
         }
       ],
       "pontos": [
-        {
-          "data": "2021-11-26",
-          "valor": 0.08
-        },
         {
           "data": "2021-11-27",
           "valor": 0.08
@@ -7335,14 +7331,10 @@
           "nome": "Tesouro dos EUA",
           "publicacao": "Daily Treasury Par Yield Curve Rates, 2 anos",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates",
-          "dataConsulta": "2026-11-26"
+          "dataConsulta": "2026-11-27"
         }
       ],
       "pontos": [
-        {
-          "data": "2021-11-26",
-          "valor": 0.5
-        },
         {
           "data": "2021-11-29",
           "valor": 0.51
@@ -12350,14 +12342,10 @@
           "nome": "Tesouro dos EUA",
           "publicacao": "Daily Treasury Par Yield Curve Rates, 10 anos",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates",
-          "dataConsulta": "2026-11-26"
+          "dataConsulta": "2026-11-27"
         }
       ],
       "pontos": [
-        {
-          "data": "2021-11-26",
-          "valor": 1.48
-        },
         {
           "data": "2021-11-29",
           "valor": 1.52
@@ -17365,7 +17353,7 @@
           "nome": "Freddie Mac (EUA)",
           "publicacao": "Primary Mortgage Market Survey, hipoteca de 30 anos com juro fixo",
           "url": "https://www.freddiemac.com/pmms",
-          "dataConsulta": "2026-11-26"
+          "dataConsulta": "2026-11-27"
         }
       ],
       "pontos": [
