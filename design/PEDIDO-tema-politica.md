@@ -56,4 +56,4 @@ Cada partido ou candidato tem **a sua cor**. No mapa, o **tom** dessa cor mostra
 
 ---
 
-Quando receber, coloque os arquivos numa pasta nova `design/rodada-7-politica/` e avise o Claude.
+Quando receber, coloque os arquivos numa pasta nova `design/rodada-8-politica/` e avise o Claude.

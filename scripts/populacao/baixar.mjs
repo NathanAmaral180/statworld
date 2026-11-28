@@ -82,7 +82,7 @@ function medidasIdade(p) {
     criancas: r1((criancas / total) * 100), // % de 0 a 14 anos
     idosos: r1((idosos60 / total) * 100), // % de 60 anos ou mais
     idosos65: r1((idosos65 / total) * 100),
-    envelhecimento: criancas ? r1((idosos60 / criancas) * 100) : null, // idosos (60+) para cada 100 crianças (0–14)
+    envelhecimento: criancas ? r1((idosos65 / criancas) * 100) : null, // como o IBGE: pessoas de 65+ para cada 100 crianças (0–14)
     mediana: mediana == null ? null : r1(mediana),
     homensPor100Mulheres: r1((p.homens.reduce((a, b) => a + b, 0) / p.mulheres.reduce((a, b) => a + b, 0)) * 100),
   };
@@ -112,7 +112,7 @@ function montar(chaves, pop, area, estA, estB, idades, nomeChave) {
     'estimativa-anterior': ind(`População estimada ${anoEstAnt}`, 'pessoas', [FONTES.estimativa], v((k) => pegar(estA, k)), { periodo: anoEstAnt, frequencia: 'estimativa' }),
     'crescimento-estimativa': ind(`Crescimento da população de ${anoEstAnt} para ${anoEst}`, '%', [FONTES.estimativa], v((k) => (estA?.[k] && estB?.[k] != null ? r1((estB[k] / estA[k] - 1) * 100) : null)), { periodo: `${anoEstAnt}–${anoEst}`, frequencia: 'estimativa', calculo: 'Cálculo do StatWorld com as duas estimativas do IBGE.' }),
     ...Object.fromEntries(['criancas', 'idosos', 'idosos65', 'envelhecimento', 'mediana', 'homensPor100Mulheres'].map((m) => [`idade-${m}`, ind(
-      { criancas: 'Crianças (0 a 14 anos)', idosos: 'Idosos (60 anos ou mais)', idosos65: 'Idosos (65 anos ou mais)', envelhecimento: 'Índice de envelhecimento (idosos de 60+ para cada 100 crianças de 0 a 14)', mediana: 'Idade mediana (aproximada)', homensPor100Mulheres: 'Homens para cada 100 mulheres' }[m],
+      { criancas: 'Crianças (0 a 14 anos)', idosos: 'Idosos (60 anos ou mais)', idosos65: 'Idosos (65 anos ou mais)', envelhecimento: 'Índice de envelhecimento (pessoas de 65 anos ou mais para cada 100 de 0 a 14, como o IBGE)', mediana: 'Idade mediana (aproximada)', homensPor100Mulheres: 'Homens para cada 100 mulheres' }[m],
       m === 'mediana' ? 'anos' : m === 'envelhecimento' || m === 'homensPor100Mulheres' ? 'razão' : '%', [FONTES.idade],
       v((k) => medidasIdade(idades[k])?.[m] ?? null),
       { periodo: '2022', frequencia: 'censo', calculo: m === 'mediana' ? 'Cálculo do StatWorld: interpolação dentro do grupo de 5 anos em que está a metade da população (aproximação).' : 'Cálculo do StatWorld com a população por sexo e idade do Censo 2022.' },

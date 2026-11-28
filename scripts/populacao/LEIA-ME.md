@@ -10,7 +10,7 @@ Busca no IBGE os números de população do **Brasil**, dos **27 estados** e dos
 | Área e densidade (habitantes por km²) | Tabela 4714 |
 | População estimada nos dois anos mais recentes (hoje 2025 e 2026) e o crescimento entre eles | Tabela 6579. O crescimento é **cálculo nosso** |
 | Pirâmide etária (homens e mulheres em 21 grupos de 5 anos) | Tabela 9514 (Censo 2022) |
-| % de crianças (0–14), % de idosos (60+ e 65+), índice de envelhecimento, homens para cada 100 mulheres | **Cálculo nosso** com a pirâmide |
+| % de crianças (0–14), % de idosos (60+ e 65+), índice de envelhecimento (65+ para cada 100 de 0 a 14, como o IBGE), homens para cada 100 mulheres | **Cálculo nosso** com a pirâmide |
 | Idade mediana | **Cálculo nosso, aproximado** (a idade está em grupos de 5 anos) |
 
 No Sidra, "-" quer dizer **zero** e "X", ".." e "..." querem dizer **sem dado**. O script respeita essa diferença.

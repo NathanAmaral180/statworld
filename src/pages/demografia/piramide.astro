@@ -1,6 +1,6 @@
 ---
-// Demografia · Pirâmide etária e idade do Brasil, por estado.
-import PaginaDemografia from '../../componentes/demografia/PaginaDemografia.astro';
+// Demografia · Pirâmide etária · A população do Brasil. Tela fiel ao design (rodada 6): 03-br-piramide.
+import PaginaDemografiaDesign from '../../componentes/demografia/PaginaDemografiaDesign.astro';
 import pais from '../../config/paises/brasil.json';
 ---
-<PaginaDemografia pais={pais} aba="piramide" />
+<PaginaDemografiaDesign pais={pais} tela="03-br-piramide" titulo="Pirâmide etária · A população do Brasil" descricao="A pirâmide etária do Brasil e de cada estado de 1980 a 2070 (Censos e projeções do IBGE), idade mediana e envelhecimento." />

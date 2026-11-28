@@ -46,4 +46,5 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `demografia/brasil-municipios-censo.json` | O mesmo para os 5.570 municípios | `scripts/demografia-censo/` |
 | `demografia/brasil-series.json` | Pirâmides 1980–2070, projeção 2000–2070, Registro Civil 2015–2024 e migração (Brasil e estados) | `scripts/demografia-series/` |
 | `demografia/brasil-municipios-vital.json` | Nascimentos e óbitos do último ano, por município | `scripts/demografia-series/` |
+| `demografia/brasil-sp-piramides.json` | Pirâmide etária (Censo 2022) de cada município de SP | `scripts/piramides-municipios/` |
 | `infraestrutura/brasil-ferrovias.json` | Ferrovias: traçado (GeoJSON) e situação, bitola, concessão de cada trecho | `scripts/ferrovias/` |

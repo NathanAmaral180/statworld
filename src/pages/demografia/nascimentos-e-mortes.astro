@@ -1,6 +1,6 @@
 ---
-// Demografia · aba "nascimentos-mortes" do Brasil, por estado.
-import PaginaDemografia from '../../componentes/demografia/PaginaDemografia.astro';
+// Demografia · Nascimentos e mortes · A população do Brasil. Tela fiel ao design (rodada 6): 04-br-nascimentos-mortes.
+import PaginaDemografiaDesign from '../../componentes/demografia/PaginaDemografiaDesign.astro';
 import pais from '../../config/paises/brasil.json';
 ---
-<PaginaDemografia pais={pais} aba="nascimentos-mortes" />
+<PaginaDemografiaDesign pais={pais} tela="04-br-nascimentos-mortes" titulo="Nascimentos e mortes · A população do Brasil" descricao="Nascimentos e mortes registrados de 2015 a 2024 e a projeção do IBGE: quando as mortes passam os nascimentos, filhos por mulher." />

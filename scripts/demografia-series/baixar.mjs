@@ -69,12 +69,12 @@ for (const r of tab2.slice(cab2 + 1)) {
 const tab4 = XLSX.utils.sheet_to_json(baixar('projecoes_2024_tab4_indicadores.xlsx').Sheets['4) INDICADORES'], { header: 1, defval: null });
 const cab4 = tab4.findIndex((r) => r[0] === 'ANO' && r[2] === 'SIGLA');
 const C4 = Object.fromEntries(tab4[cab4].map((n, i) => [n, i]));
-for (const n of ['NASC_T', 'OBT_T', 'e0_T', 'e0_H', 'e0_M', 'TFT', 'POP_T']) if (C4[n] == null) throw new Error(`A planilha de indicadores mudou: falta ${n}.`);
+for (const n of ['NASC_T', 'OBT_T', 'e0_T', 'e0_H', 'e0_M', 'TFT', 'POP_T', 'IE65', 'ID_MED']) if (C4[n] == null) throw new Error(`A planilha de indicadores mudou: falta ${n}.`);
 const r2 = (v) => (v == null ? null : Math.round(v * 100) / 100);
 const projecao = {}; // lugar -> ano -> {...}
 for (const r of tab4.slice(cab4 + 1)) {
   if (typeof r[0] !== 'number' || !r[2]) continue;
-  ((projecao[r[2]] ??= {})[r[0]] = { pop: r[C4.POP_T], nascimentos: Math.round(r[C4.NASC_T]), obitos: Math.round(r[C4.OBT_T]), e0: r2(r[C4.e0_T]), e0Homens: r2(r[C4.e0_H]), e0Mulheres: r2(r[C4.e0_M]), filhosPorMulher: r2(r[C4.TFT]) });
+  ((projecao[r[2]] ??= {})[r[0]] = { pop: r[C4.POP_T], nascimentos: Math.round(r[C4.NASC_T]), obitos: Math.round(r[C4.OBT_T]), e0: r2(r[C4.e0_T]), e0Homens: r2(r[C4.e0_H]), e0Mulheres: r2(r[C4.e0_M]), filhosPorMulher: r2(r[C4.TFT]), envelhecimento65: r2(r[C4.IE65]), idadeMediana: r2(r[C4.ID_MED]) });
 }
 await rm(pasta, { recursive: true, force: true });
 

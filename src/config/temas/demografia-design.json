@@ -1,0 +1,383 @@
+{
+ "topic": "Demografia",
+ "consult": "consulta em 26 nov 2026",
+ "country": {
+  "key": "BR",
+  "name": "Brasil",
+  "title": "A população do Brasil",
+  "Unit": "Estado",
+  "units": "estados",
+  "regionLabel": "Região"
+ },
+ "sub": {
+  "SP": {
+   "key": "SP",
+   "name": "São Paulo",
+   "title": "A população de São Paulo",
+   "Unit": "Município",
+   "units": "municípios",
+   "regionLabel": "Região intermediária",
+   "flag": {
+    "light": "oklch(0.56 0.19 27)",
+    "dark": "oklch(0.70 0.16 27)",
+    "name": "vermelho da bandeira"
+   },
+   "ficha": "3509502"
+  }
+ },
+ "TABS": [
+  {
+   "g": "",
+   "items": [
+    {
+     "k": "geral",
+     "n": "Visão geral",
+     "BR": "ok",
+     "SUB": "ok"
+    }
+   ]
+  },
+  {
+   "g": "Quantos somos",
+   "items": [
+    {
+     "k": "cresc",
+     "n": "Crescimento",
+     "BR": "ok",
+     "SUB": "ok"
+    }
+   ]
+  },
+  {
+   "g": "Idade e vida",
+   "items": [
+    {
+     "k": "idade",
+     "n": "Pirâmide etária",
+     "BR": "ok",
+     "SUB": "ok"
+    },
+    {
+     "k": "vital",
+     "n": "Nascimentos e mortes",
+     "BR": "ok",
+     "SUB": "ok"
+    },
+    {
+     "k": "vida",
+     "n": "Esperança de vida",
+     "BR": "ok",
+     "SUB": "estado"
+    }
+   ]
+  },
+  {
+   "g": "Quem somos",
+   "items": [
+    {
+     "k": "raca",
+     "n": "Cor ou raça",
+     "BR": "ok",
+     "SUB": "ok"
+    },
+    {
+     "k": "povos",
+     "n": "Indígenas e quilombolas",
+     "BR": "ok",
+     "SUB": "ok"
+    }
+   ]
+  },
+  {
+   "g": "Onde moramos",
+   "items": [
+    {
+     "k": "dom",
+     "n": "Domicílios",
+     "BR": "ok",
+     "SUB": "ok"
+    },
+    {
+     "k": "mig",
+     "n": "Migração",
+     "BR": "ok",
+     "SUB": "breve"
+    }
+   ]
+  }
+ ],
+ "pages": {
+  "BR": {
+   "geral": "/demografia",
+   "cresc": "/demografia/crescimento",
+   "idade": "/demografia/piramide",
+   "vital": "/demografia/nascimentos-e-mortes",
+   "vida": "/demografia/esperanca-de-vida",
+   "raca": "/demografia/cor-ou-raca",
+   "povos": "/demografia/indigenas-e-quilombolas",
+   "dom": "/demografia/domicilios",
+   "mig": "/demografia/migracao"
+  },
+  "SUB": {
+   "geral": "/sp/demografia",
+   "cresc": "/sp/demografia/crescimento",
+   "idade": "/sp/demografia/piramide",
+   "vital": "/sp/demografia/nascimentos-e-mortes",
+   "vida": "/sp/demografia/esperanca-de-vida",
+   "raca": "/sp/demografia/cor-ou-raca",
+   "povos": "/sp/demografia/indigenas-e-quilombolas",
+   "dom": "/sp/demografia/domicilios",
+   "ficha": "/sp/demografia/municipio"
+  }
+ },
+ "SRC": {
+  "pop": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 4709",
+   "f": "censo"
+  },
+  "dens": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 4714",
+   "f": "censo"
+  },
+  "est": {
+   "s": "IBGE, Estimativas da população 2026",
+   "t": "tabela 6579",
+   "f": "est"
+  },
+  "live": {
+   "s": "StatWorld, sobre IBGE Estimativas 2026 e Registro Civil 2024",
+   "t": "cálculo",
+   "f": "est"
+  },
+  "pyr": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 9514",
+   "f": "censo"
+  },
+  "pyrH": {
+   "s": "IBGE, Censos 1980 a 2010 (amostra)",
+   "t": "tabela 200",
+   "f": "censo"
+  },
+  "proj": {
+   "s": "IBGE, Projeções da População, revisão 2024",
+   "t": "planilhas do IBGE",
+   "f": "proj"
+  },
+  "rc": {
+   "s": "IBGE, Estatísticas do Registro Civil 2024",
+   "t": "tabelas 2609 e 2654",
+   "f": "anual"
+  },
+  "e0": {
+   "s": "IBGE, Projeções da População, revisão 2024",
+   "t": "tábuas de mortalidade",
+   "f": "proj"
+  },
+  "raca": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 9605",
+   "f": "censo"
+  },
+  "ind": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 9718",
+   "f": "censo"
+  },
+  "qui": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 9578",
+   "f": "censo"
+  },
+  "dom": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 4712",
+   "f": "censo"
+  },
+  "sit": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 9923",
+   "f": "censo"
+  },
+  "mig": {
+   "s": "IBGE, Censo 2022",
+   "t": "tabela 631",
+   "f": "censo"
+  }
+ },
+ "RACA": [
+  {
+   "k": "b",
+   "n": "Branca"
+  },
+  {
+   "k": "p",
+   "n": "Preta"
+  },
+  {
+   "k": "a",
+   "n": "Amarela"
+  },
+  {
+   "k": "pa",
+   "n": "Parda"
+  },
+  {
+   "k": "i",
+   "n": "Indígena"
+  }
+ ],
+ "AGES": [
+  "0–4",
+  "5–9",
+  "10–14",
+  "15–19",
+  "20–24",
+  "25–29",
+  "30–34",
+  "35–39",
+  "40–44",
+  "45–49",
+  "50–54",
+  "55–59",
+  "60–64",
+  "65–69",
+  "70–74",
+  "75–79",
+  "80+"
+ ],
+ "YEARS": [
+  1980,
+  1991,
+  2000,
+  2010,
+  2022,
+  2030,
+  2040,
+  2050,
+  2060
+ ],
+ "CENSUS_YEAR": 2022,
+ "_explicacao": "Configuração das telas de Demografia do design (rodada 6), usada por src/lib/demografia-design.ts. Endereços das abas do site em pages; fontes (SRC) com as tabelas que os nossos scripts usam. UNITS = estados (sigla: [nome, região]).",
+ "UNITS": {
+  "AC": [
+   "Acre",
+   "Norte"
+  ],
+  "AL": [
+   "Alagoas",
+   "Nordeste"
+  ],
+  "AP": [
+   "Amapá",
+   "Norte"
+  ],
+  "AM": [
+   "Amazonas",
+   "Norte"
+  ],
+  "BA": [
+   "Bahia",
+   "Nordeste"
+  ],
+  "CE": [
+   "Ceará",
+   "Nordeste"
+  ],
+  "DF": [
+   "Distrito Federal",
+   "Centro-Oeste"
+  ],
+  "ES": [
+   "Espírito Santo",
+   "Sudeste"
+  ],
+  "GO": [
+   "Goiás",
+   "Centro-Oeste"
+  ],
+  "MA": [
+   "Maranhão",
+   "Nordeste"
+  ],
+  "MT": [
+   "Mato Grosso",
+   "Centro-Oeste"
+  ],
+  "MS": [
+   "Mato Grosso do Sul",
+   "Centro-Oeste"
+  ],
+  "MG": [
+   "Minas Gerais",
+   "Sudeste"
+  ],
+  "PA": [
+   "Pará",
+   "Norte"
+  ],
+  "PB": [
+   "Paraíba",
+   "Nordeste"
+  ],
+  "PR": [
+   "Paraná",
+   "Sul"
+  ],
+  "PE": [
+   "Pernambuco",
+   "Nordeste"
+  ],
+  "PI": [
+   "Piauí",
+   "Nordeste"
+  ],
+  "RJ": [
+   "Rio de Janeiro",
+   "Sudeste"
+  ],
+  "RN": [
+   "Rio Grande do Norte",
+   "Nordeste"
+  ],
+  "RS": [
+   "Rio Grande do Sul",
+   "Sul"
+  ],
+  "RO": [
+   "Rondônia",
+   "Norte"
+  ],
+  "RR": [
+   "Roraima",
+   "Norte"
+  ],
+  "SC": [
+   "Santa Catarina",
+   "Sul"
+  ],
+  "SP": [
+   "São Paulo",
+   "Sudeste"
+  ],
+  "SE": [
+   "Sergipe",
+   "Nordeste"
+  ],
+  "TO": [
+   "Tocantins",
+   "Norte"
+  ]
+ },
+ "X": {
+  "country": {
+   "name": "Brasil",
+   "title": "A população do Brasil",
+   "units": "estados",
+   "Unit": "Estado"
+  },
+  "pages": {}
+ }
+}

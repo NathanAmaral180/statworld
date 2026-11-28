@@ -52,4 +52,4 @@ A lista completa de ideias está no projeto (`docs/IDEIAS-infraestrutura.md`).
 
 ---
 
-Quando receber, coloque os arquivos numa pasta nova `design/rodada-8-infraestrutura/` e avise o Claude.
+Quando receber, coloque os arquivos numa pasta nova `design/rodada-9-infraestrutura/` e avise o Claude.

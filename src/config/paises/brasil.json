@@ -245,8 +245,10 @@
           "bandeiras": "brasil-sp-bandeiras",
           "demografia": "brasil-municipios",
           "demografiaCenso": "brasil-municipios-censo",
-          "demografiaVital": "brasil-municipios-vital"
-        }
+          "demografiaVital": "brasil-municipios-vital",
+          "demografiaPiramides": "brasil-sp-piramides"
+        },
+        "demografiaDesign": true
       }
     }
   }

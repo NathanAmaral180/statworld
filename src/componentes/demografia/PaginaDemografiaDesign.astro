@@ -1,0 +1,37 @@
+---
+// Telas de Demografia FIÉIS ao design da rodada 6: o mesmo desenho (HTML), o mesmo código (public/demografia/js/,
+// copiado de design/rodada-6-demografia/codigo/ com pequenos ajustes) e os mesmos estilos (design.css, só dentro de .dsg).
+// Os números vêm dos nossos scripts: src/lib/demografia-design.ts monta window.SW_DEMO_DATA no formato que as telas esperam.
+// O cabeçalho e o rodapé são os do site (Base.astro).
+import Base from '../../layouts/Base.astro';
+import EspacoAnuncio from '../EspacoAnuncio.astro';
+import { dadosDesign, configDesign } from '../../lib/demografia-design';
+import './design.css';
+
+interface Props { pais: any; tela: string; uf?: string; titulo: string; descricao: string }
+const { pais, tela, uf, titulo, descricao } = Astro.props;
+const telas = import.meta.glob('./telas/*.json', { eager: true, import: 'default' }) as Record<string, { markup: string; js: string }>;
+const t = telas[`./telas/${tela}.json`];
+if (!t) throw new Error(`Tela de Demografia não encontrada: ${tela}`);
+const dados = dadosDesign(pais, uf);
+const config = configDesign(pais, dados, uf);
+const json = (o: any) => JSON.stringify(o).replace(/</g, '\\u003c');
+const inicio = `window.SW_DATA={UNITS:${json(config.UNITS)}};window.SW_X=${json(config.X)};window.SW_DEMO=${json(config)};window.SW_DEMO_DATA=${json(dados)};`;
+// O código de cada tela é uma classe "Component" do programa do design; aqui ela roda sozinha.
+const tela_js = `window.DCLogic=window.DCLogic||class{};${t.js};new Component().componentDidMount();`;
+---
+<Base titulo={titulo} descricao={descricao} temaAtual="demografia">
+  <div class="dsg" set:html={t.markup} />
+  <div class="conteudo dsg-anuncio"><EspacoAnuncio posicao="abaixo-ranking" /></div>
+  <script is:inline set:html={inicio}></script>
+  <script is:inline src="/demografia/js/base.js"></script>
+  <script is:inline src="/demografia/js/molde-economia.js"></script>
+  <script is:inline src="/demografia/js/molde-demografia.js"></script>
+  <script is:inline src="/demografia/js/geo-br.js"></script>
+  {uf && <script is:inline src="/demografia/js/geo-sp.js"></script>}
+  <script is:inline set:html={tela_js}></script>
+</Base>
+
+<style>
+  .dsg-anuncio { padding-bottom: 64px; }
+</style>

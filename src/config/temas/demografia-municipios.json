@@ -173,8 +173,8 @@
           "rotulo": "Índice de envelhecimento",
           "rotuloCurto": "Envelhecimento",
           "coluna": "Por 100 crianças",
-          "titulo": "Idosos (60+) para cada 100 crianças (0 a 14), Censo {periodo}",
-          "subtitulo": "Acima de 100, há mais idosos do que crianças.",
+          "titulo": "Pessoas de 65+ para cada 100 crianças (0 a 14), Censo {periodo}",
+          "subtitulo": "Índice de envelhecimento, como o IBGE calcula. Acima de 100, há mais idosos do que crianças.",
           "dados": {
             "pasta": "demografia",
             "arquivo": "demografia",

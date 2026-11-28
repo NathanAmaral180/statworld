@@ -84,8 +84,8 @@
       "id": "demografia",
       "nome": "Demografia (2º tema)",
       "peso": 15,
-      "pct": 80,
-      "situacao": "No ar: 9 abas do Brasil e 7 de SP por município; faltam formas extras do design (dispersão, arcos, círculos, ficha do município)"
+      "pct": 92,
+      "situacao": "No ar e fiel ao design: 9 abas do Brasil, SP (visão geral, crescimento em pontos, ficha do município) e as demais abas de SP no molde de estado"
     },
     {
       "id": "seletor-pais",
@@ -125,6 +125,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-27",
+      "titulo": "Demografia fiel ao design",
+      "de": 68.1,
+      "para": 69.6,
+      "itens": [
+        "As 12 telas agora usam o próprio código do design, com os nossos dados conferidos",
+        "Novos: ficha completa do município (Campinas etc.), gráfico de pontos das 645 cidades, mapa com cores divergentes, círculos e arcos de migração, população ao vivo dentro da ficha",
+        "Índice de envelhecimento corrigido para a definição do IBGE (65+ por 100 crianças: 55,2 no Brasil)",
+        "Pirâmide etária de cada cidade de SP (Censo 2022)"
+      ]
+    },
     {
       "data": "2026-11-27",
       "titulo": "Demografia completa no ar",

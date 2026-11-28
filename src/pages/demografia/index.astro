@@ -1,6 +1,6 @@
 ---
-// Demografia · Visão geral do Brasil. O conteúdo vem do molde PaginaDemografia.
-import PaginaDemografia from '../../componentes/demografia/PaginaDemografia.astro';
+// Demografia · A população do Brasil. Tela fiel ao design (rodada 6): 01-br-visao-geral.
+import PaginaDemografiaDesign from '../../componentes/demografia/PaginaDemografiaDesign.astro';
 import pais from '../../config/paises/brasil.json';
 ---
-<PaginaDemografia pais={pais} />
+<PaginaDemografiaDesign pais={pais} tela="01-br-visao-geral" titulo="A população do Brasil" descricao="A população do Brasil estado por estado: quantos somos, densidade, crescimento, idade, cada 100 pessoas e pirâmide etária. Dados do IBGE, com fonte e data." />

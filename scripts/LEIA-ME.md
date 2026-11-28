@@ -21,6 +21,7 @@ Scripts existentes:
 - `populacao/`: população, crescimento, densidade e idade (Censo 2022 e estimativas do IBGE), Brasil, estados e municípios (tema Demografia)
 - `demografia-censo/`: cor ou raça, indígenas, quilombolas, domicílios e urbana × rural (Censo 2022), Brasil, estados e municípios
 - `demografia-series/`: pirâmides 1980–2070, nascimentos e mortes, esperança de vida, filhos por mulher (Projeções 2024 e Registro Civil) e migração entre estados
+- `piramides-municipios/`: pirâmide etária (Censo 2022) de cada município de um estado, para a ficha do município
 - `ferrovias/`: traçado e situação das ferrovias (Ministério dos Transportes), tema Transporte e infraestrutura
 - `lavouras-estados/`: agro, lavouras por estado e produto
 - `pecuaria-estados/`: agro, pecuária (IBGE + MAPA)
