@@ -479,24 +479,136 @@
       "numero": 6,
       "nome": "Saúde",
       "grupo": "pessoas",
-      "situacao": "em-breve",
+      "situacao": "no-ar",
       "cabecalho": true,
       "subdivisoes": [
-        "Expectativa de vida",
-        "Mortalidade",
-        "Doenças",
+        "Causas de morte",
+        "Mortalidade infantil e materna",
+        "Nascimentos",
+        "Rede de saúde",
+        "Planos de saúde",
         "Vacinação",
-        "Leitos e profissionais",
+        "Doenças",
         "Gasto em saúde"
       ],
       "fontesCandidatas": [
-        "DATASUS",
-        "Ministério da Saúde",
-        "IBGE"
+        "Ministério da Saúde (SIM, SINASC, CNES)",
+        "ANS",
+        "IBGE (Pesquisa Nacional de Saúde)"
       ],
       "nivelMaisFino": "Município",
       "numeroDoMundo": "saude",
-      "resumo": "Expectativa de vida, causas de morte e acesso a serviços."
+      "resumo": "Expectativa de vida, causas de morte e acesso a serviços.",
+      "href": "/saude",
+      "abas": {
+        "grupos": [
+          {
+            "id": "visao-geral",
+            "nome": "Visão geral"
+          },
+          {
+            "id": "nascer-morrer",
+            "nome": "Nascer e morrer",
+            "nomeCurto": "Vida"
+          },
+          {
+            "id": "prevencao-habitos",
+            "nome": "Prevenção e hábitos",
+            "nomeCurto": "Prevenção"
+          },
+          {
+            "id": "atendimento",
+            "nome": "Atendimento"
+          },
+          {
+            "id": "gasto-planos",
+            "nome": "Gasto e planos",
+            "nomeCurto": "Gasto"
+          }
+        ],
+        "itens": [
+          {
+            "id": "geral",
+            "nome": "Visão geral",
+            "grupo": "visao-geral",
+            "situacao": "no-ar",
+            "href": "/saude"
+          },
+          {
+            "id": "obitos",
+            "nome": "Causas de morte",
+            "grupo": "nascer-morrer",
+            "situacao": "no-ar",
+            "href": "/saude/causas-de-morte"
+          },
+          {
+            "id": "infantil",
+            "nome": "Mortalidade infantil e materna",
+            "grupo": "nascer-morrer",
+            "situacao": "no-ar",
+            "href": "/saude/mortalidade-infantil-e-materna"
+          },
+          {
+            "id": "nasc",
+            "nome": "Nascimentos",
+            "grupo": "nascer-morrer",
+            "situacao": "no-ar",
+            "href": "/saude/nascimentos"
+          },
+          {
+            "id": "expvida",
+            "nome": "Esperança de vida",
+            "grupo": "nascer-morrer",
+            "situacao": "no-ar",
+            "href": "/demografia/esperanca-de-vida"
+          },
+          {
+            "id": "vac",
+            "nome": "Vacinação",
+            "grupo": "prevencao-habitos",
+            "situacao": "em-breve"
+          },
+          {
+            "id": "doencas",
+            "nome": "Doenças acompanhadas",
+            "grupo": "prevencao-habitos",
+            "situacao": "em-breve"
+          },
+          {
+            "id": "pns",
+            "nome": "Como as pessoas estão",
+            "grupo": "prevencao-habitos",
+            "situacao": "no-ar",
+            "href": "/saude/como-as-pessoas-estao"
+          },
+          {
+            "id": "rede",
+            "nome": "Rede de saúde",
+            "grupo": "atendimento",
+            "situacao": "no-ar",
+            "href": "/saude/rede-de-saude"
+          },
+          {
+            "id": "sus",
+            "nome": "Internações e procedimentos",
+            "grupo": "atendimento",
+            "situacao": "em-breve"
+          },
+          {
+            "id": "gasto",
+            "nome": "Gasto público",
+            "grupo": "gasto-planos",
+            "situacao": "em-breve"
+          },
+          {
+            "id": "planos",
+            "nome": "Planos de saúde",
+            "grupo": "gasto-planos",
+            "situacao": "no-ar",
+            "href": "/saude/planos-de-saude"
+          }
+        ]
+      }
     },
     {
       "id": "educacao",

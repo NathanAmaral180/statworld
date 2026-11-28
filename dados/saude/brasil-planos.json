@@ -1,0 +1,133 @@
+{
+ "_explicacao": "Saúde: planos de saúde, Brasil (BR) e estados. Gerado por scripts/saude-planos/baixar.mjs. Não edite à mão.",
+ "periodo": "set 2026",
+ "frequencia": "mensal",
+ "baixadoEm": "2026-11-28",
+ "fontes": {
+  "ans": {
+   "nome": "ANS",
+   "publicacao": "Beneficiários de planos de assistência médica, set 2026 (ANS TabNet)",
+   "url": "https://www.ans.gov.br/anstabnet/"
+  },
+  "pop": {
+   "nome": "IBGE",
+   "publicacao": "Estimativas da população 2026",
+   "url": "https://sidra.ibge.gov.br/tabela/6579"
+  }
+ },
+ "calculo": "Cálculo do StatWorld: beneficiários de planos de assistência médica (sem os só odontológicos), pelo município de residência do contrato, ÷ população estimada pelo IBGE. Uma pessoa com dois planos conta duas vezes.",
+ "valores": {
+  "BR": {
+   "beneficiarios": 53108097,
+   "pctPopulacao": 24.8
+  },
+  "AC": {
+   "beneficiarios": 47317,
+   "pctPopulacao": 5.3
+  },
+  "AL": {
+   "beneficiarios": 379366,
+   "pctPopulacao": 11.8
+  },
+  "AP": {
+   "beneficiarios": 58735,
+   "pctPopulacao": 7.3
+  },
+  "AM": {
+   "beneficiarios": 711061,
+   "pctPopulacao": 16.3
+  },
+  "BA": {
+   "beneficiarios": 1723965,
+   "pctPopulacao": 11.6
+  },
+  "CE": {
+   "beneficiarios": 1489032,
+   "pctPopulacao": 16
+  },
+  "DF": {
+   "beneficiarios": 1023866,
+   "pctPopulacao": 34
+  },
+  "ES": {
+   "beneficiarios": 1421484,
+   "pctPopulacao": 34.2
+  },
+  "GO": {
+   "beneficiarios": 1942159,
+   "pctPopulacao": 25.9
+  },
+  "MA": {
+   "beneficiarios": 531906,
+   "pctPopulacao": 7.6
+  },
+  "MT": {
+   "beneficiarios": 691415,
+   "pctPopulacao": 17.5
+  },
+  "MS": {
+   "beneficiarios": 673602,
+   "pctPopulacao": 22.9
+  },
+  "MG": {
+   "beneficiarios": 5895238,
+   "pctPopulacao": 27.5
+  },
+  "PA": {
+   "beneficiarios": 891466,
+   "pctPopulacao": 10.2
+  },
+  "PB": {
+   "beneficiarios": 467378,
+   "pctPopulacao": 11.2
+  },
+  "PR": {
+   "beneficiarios": 3215309,
+   "pctPopulacao": 26.9
+  },
+  "PE": {
+   "beneficiarios": 1436936,
+   "pctPopulacao": 15
+  },
+  "PI": {
+   "beneficiarios": 409083,
+   "pctPopulacao": 12.1
+  },
+  "RJ": {
+   "beneficiarios": 5587300,
+   "pctPopulacao": 32.4
+  },
+  "RN": {
+   "beneficiarios": 670842,
+   "pctPopulacao": 19.4
+  },
+  "RS": {
+   "beneficiarios": 2667057,
+   "pctPopulacao": 23.7
+  },
+  "RO": {
+   "beneficiarios": 172027,
+   "pctPopulacao": 9.8
+  },
+  "RR": {
+   "beneficiarios": 31775,
+   "pctPopulacao": 4.2
+  },
+  "SC": {
+   "beneficiarios": 1749323,
+   "pctPopulacao": 21
+  },
+  "SP": {
+   "beneficiarios": 18709845,
+   "pctPopulacao": 40.5
+  },
+  "SE": {
+   "beneficiarios": 329138,
+   "pctPopulacao": 14.3
+  },
+  "TO": {
+   "beneficiarios": 134483,
+   "pctPopulacao": 8.4
+  }
+ }
+}

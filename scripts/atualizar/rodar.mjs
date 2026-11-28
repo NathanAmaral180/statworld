@@ -29,6 +29,8 @@ const SCRIPTS = [
   { nome: 'SP: exportações e importações por município (Comex Stat)', script: 'comercio-municipios', quando: 'diario', arquivos: ['dados/comercio/brasil-sp-municipios.json'] },
   { nome: 'Empregos com carteira por município (Novo Caged)', script: 'caged-municipios', quando: 'semanal', arquivos: ['dados/trabalho/brasil-municipios-caged.json'] },
   { nome: 'Empregos com carteira (Novo Caged)', script: 'caged-estados', quando: 'semanal', arquivos: ['dados/trabalho/brasil-caged.json'] },
+  { nome: 'Saúde: médicos, enfermeiros e leitos (CNES, mensal)', script: 'saude-rede', quando: 'semanal', arquivos: ['dados/saude/brasil-rede.json', 'dados/saude/brasil-sp-rede.json'] },
+  { nome: 'Saúde: planos de saúde (ANS, mensal)', script: 'saude-planos', quando: 'semanal', arquivos: ['dados/saude/brasil-planos.json', 'dados/saude/brasil-sp-planos.json'] },
   { nome: 'EUA: Trabalho e renda (BLS, BEA)', script: 'eua-trabalho', quando: 'diario', arquivos: ['dados/trabalho/eua-estados.json', 'dados/trabalho/eua-series.json'] },
   { nome: 'EUA: Preços (BLS, BEA)', script: 'eua-precos', quando: 'diario', arquivos: ['dados/precos/eua-ipca.json', 'dados/precos/eua-estados.json'] },
   { nome: 'EUA: Dinheiro e juros (Fed, Tesouro, Freddie Mac)', script: 'eua-dinheiro', quando: 'diario', arquivos: ['dados/dinheiro/eua-series.json'] },

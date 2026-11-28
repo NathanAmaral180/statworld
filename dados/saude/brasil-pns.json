@@ -1,0 +1,5429 @@
+{
+ "_explicacao": "Saúde: Pesquisa Nacional de Saúde (IBGE), % das pessoas de 18 anos ou mais, com intervalo de confiança de 95% (inf, sup). Brasil (BR) e estados; total, homens e mulheres. Gerado por scripts/saude-pns/baixar.mjs. Não edite à mão.",
+ "periodo": "2019",
+ "frequencia": "pesquisa",
+ "baixadoEm": "2026-11-28",
+ "nota": "Pesquisa por amostra: cada número tem margem de erro (o intervalo). Não existe por município.",
+ "assuntos": {
+  "autoavaliacao-boa": {
+   "id": "autoavaliacao-boa",
+   "grupo": "autoavaliacao",
+   "nome": "Avaliam a própria saúde como boa ou muito boa",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4751)",
+    "url": "https://sidra.ibge.gov.br/tabela/4751"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 66.1,
+      "inf": 65.5,
+      "sup": 66.7
+     },
+     "homens": {
+      "pct": 70.4,
+      "inf": 69.6,
+      "sup": 71.2
+     },
+     "mulheres": {
+      "pct": 62.3,
+      "inf": 61.6,
+      "sup": 63.1
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 61.4,
+      "inf": 58.7,
+      "sup": 64.1
+     },
+     "homens": {
+      "pct": 64.5,
+      "inf": 61.2,
+      "sup": 67.7
+     },
+     "mulheres": {
+      "pct": 58.5,
+      "inf": 54.5,
+      "sup": 62.4
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 59.9,
+      "inf": 57.2,
+      "sup": 62.6
+     },
+     "homens": {
+      "pct": 65.1,
+      "inf": 61.9,
+      "sup": 68.2
+     },
+     "mulheres": {
+      "pct": 55.1,
+      "inf": 51.1,
+      "sup": 59.1
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 68.2,
+      "inf": 65.8,
+      "sup": 70.4
+     },
+     "homens": {
+      "pct": 71,
+      "inf": 68,
+      "sup": 73.8
+     },
+     "mulheres": {
+      "pct": 65.6,
+      "inf": 62.6,
+      "sup": 68.4
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 62.9,
+      "inf": 59.8,
+      "sup": 65.8
+     },
+     "homens": {
+      "pct": 70.5,
+      "inf": 66.9,
+      "sup": 73.7
+     },
+     "mulheres": {
+      "pct": 55.5,
+      "inf": 51.6,
+      "sup": 59.4
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 59.5,
+      "inf": 57,
+      "sup": 61.9
+     },
+     "homens": {
+      "pct": 63,
+      "inf": 59.2,
+      "sup": 66.6
+     },
+     "mulheres": {
+      "pct": 56.2,
+      "inf": 53.4,
+      "sup": 59.1
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 58.9,
+      "inf": 56.1,
+      "sup": 61.8
+     },
+     "homens": {
+      "pct": 66.4,
+      "inf": 62.5,
+      "sup": 70
+     },
+     "mulheres": {
+      "pct": 52,
+      "inf": 46.9,
+      "sup": 57.1
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 58.9,
+      "inf": 55.9,
+      "sup": 61.7
+     },
+     "homens": {
+      "pct": 63,
+      "inf": 58.8,
+      "sup": 67.1
+     },
+     "mulheres": {
+      "pct": 54.8,
+      "inf": 50.9,
+      "sup": 58.6
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 52,
+      "inf": 50.2,
+      "sup": 53.9
+     },
+     "homens": {
+      "pct": 55.5,
+      "inf": 52.7,
+      "sup": 58.2
+     },
+     "mulheres": {
+      "pct": 48.9,
+      "inf": 46.5,
+      "sup": 51.4
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 54.8,
+      "inf": 52.1,
+      "sup": 57.4
+     },
+     "homens": {
+      "pct": 59.4,
+      "inf": 55.7,
+      "sup": 62.9
+     },
+     "mulheres": {
+      "pct": 50.6,
+      "inf": 47.1,
+      "sup": 54.1
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 60,
+      "inf": 58.1,
+      "sup": 61.9
+     },
+     "homens": {
+      "pct": 65.5,
+      "inf": 63,
+      "sup": 67.9
+     },
+     "mulheres": {
+      "pct": 55.2,
+      "inf": 52.6,
+      "sup": 57.8
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 60.1,
+      "inf": 57.5,
+      "sup": 62.7
+     },
+     "homens": {
+      "pct": 64.6,
+      "inf": 61.2,
+      "sup": 67.8
+     },
+     "mulheres": {
+      "pct": 56.3,
+      "inf": 52.9,
+      "sup": 59.6
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 59.5,
+      "inf": 57.1,
+      "sup": 61.9
+     },
+     "homens": {
+      "pct": 65.4,
+      "inf": 61.8,
+      "sup": 68.8
+     },
+     "mulheres": {
+      "pct": 54.4,
+      "inf": 51.3,
+      "sup": 57.4
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 59,
+      "inf": 56.7,
+      "sup": 61.3
+     },
+     "homens": {
+      "pct": 65.2,
+      "inf": 62.3,
+      "sup": 67.9
+     },
+     "mulheres": {
+      "pct": 54.1,
+      "inf": 51.1,
+      "sup": 57
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 55.9,
+      "inf": 53.3,
+      "sup": 58.6
+     },
+     "homens": {
+      "pct": 62.4,
+      "inf": 59.4,
+      "sup": 65.4
+     },
+     "mulheres": {
+      "pct": 50.5,
+      "inf": 46.7,
+      "sup": 54.3
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 56.6,
+      "inf": 54.1,
+      "sup": 59.1
+     },
+     "homens": {
+      "pct": 61.9,
+      "inf": 58.3,
+      "sup": 65.4
+     },
+     "mulheres": {
+      "pct": 51.9,
+      "inf": 48.8,
+      "sup": 55.1
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 54.2,
+      "inf": 51.7,
+      "sup": 56.6
+     },
+     "homens": {
+      "pct": 59.7,
+      "inf": 56.5,
+      "sup": 62.9
+     },
+     "mulheres": {
+      "pct": 49.3,
+      "inf": 45.7,
+      "sup": 52.8
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 71,
+      "inf": 69.1,
+      "sup": 72.7
+     },
+     "homens": {
+      "pct": 74.1,
+      "inf": 71.6,
+      "sup": 76.4
+     },
+     "mulheres": {
+      "pct": 68.2,
+      "inf": 65.6,
+      "sup": 70.6
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 66.6,
+      "inf": 64.4,
+      "sup": 68.8
+     },
+     "homens": {
+      "pct": 70.7,
+      "inf": 68,
+      "sup": 73.2
+     },
+     "mulheres": {
+      "pct": 63,
+      "inf": 59.8,
+      "sup": 66
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 68.7,
+      "inf": 66.9,
+      "sup": 70.5
+     },
+     "homens": {
+      "pct": 73.1,
+      "inf": 70.7,
+      "sup": 75.5
+     },
+     "mulheres": {
+      "pct": 65.2,
+      "inf": 62.8,
+      "sup": 67.5
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 71,
+      "inf": 69,
+      "sup": 72.8
+     },
+     "homens": {
+      "pct": 75.4,
+      "inf": 72.8,
+      "sup": 77.9
+     },
+     "mulheres": {
+      "pct": 67,
+      "inf": 64.6,
+      "sup": 69.3
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 70.8,
+      "inf": 68.7,
+      "sup": 72.8
+     },
+     "homens": {
+      "pct": 73.9,
+      "inf": 71.2,
+      "sup": 76.4
+     },
+     "mulheres": {
+      "pct": 68.1,
+      "inf": 65.1,
+      "sup": 71
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 73.8,
+      "inf": 71.7,
+      "sup": 75.8
+     },
+     "homens": {
+      "pct": 77.9,
+      "inf": 75.1,
+      "sup": 80.5
+     },
+     "mulheres": {
+      "pct": 70,
+      "inf": 67.3,
+      "sup": 72.6
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 71.6,
+      "inf": 69.6,
+      "sup": 73.6
+     },
+     "homens": {
+      "pct": 74.9,
+      "inf": 72,
+      "sup": 77.6
+     },
+     "mulheres": {
+      "pct": 68.8,
+      "inf": 66,
+      "sup": 71.5
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 70.1,
+      "inf": 68.2,
+      "sup": 72
+     },
+     "homens": {
+      "pct": 75.7,
+      "inf": 72.9,
+      "sup": 78.4
+     },
+     "mulheres": {
+      "pct": 65.2,
+      "inf": 62.4,
+      "sup": 67.9
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 68.6,
+      "inf": 65.7,
+      "sup": 71.3
+     },
+     "homens": {
+      "pct": 72,
+      "inf": 68.5,
+      "sup": 75.3
+     },
+     "mulheres": {
+      "pct": 65.3,
+      "inf": 61.7,
+      "sup": 68.8
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 64.8,
+      "inf": 62.3,
+      "sup": 67.3
+     },
+     "homens": {
+      "pct": 69,
+      "inf": 65.5,
+      "sup": 72.3
+     },
+     "mulheres": {
+      "pct": 61,
+      "inf": 57.8,
+      "sup": 64.1
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 75.3,
+      "inf": 72.4,
+      "sup": 77.9
+     },
+     "homens": {
+      "pct": 78.8,
+      "inf": 75.7,
+      "sup": 81.6
+     },
+     "mulheres": {
+      "pct": 72.3,
+      "inf": 67.8,
+      "sup": 76.3
+     }
+    }
+   }
+  },
+  "hipertensao": {
+   "id": "hipertensao",
+   "grupo": "cronicas",
+   "nome": "Pressão alta",
+   "detalhe": "Diagnóstico de hipertensão por médico",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4418)",
+    "url": "https://sidra.ibge.gov.br/tabela/4418"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 23.9,
+      "inf": 23.5,
+      "sup": 24.4
+     },
+     "homens": {
+      "pct": 21.1,
+      "inf": 20.5,
+      "sup": 21.7
+     },
+     "mulheres": {
+      "pct": 26.4,
+      "inf": 25.8,
+      "sup": 27.1
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 18.8,
+      "inf": 17,
+      "sup": 20.8
+     },
+     "homens": {
+      "pct": 16.1,
+      "inf": 13.9,
+      "sup": 18.7
+     },
+     "mulheres": {
+      "pct": 21.4,
+      "inf": 18.5,
+      "sup": 24.5
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 19.2,
+      "inf": 17.4,
+      "sup": 21.1
+     },
+     "homens": {
+      "pct": 17.7,
+      "inf": 15.2,
+      "sup": 20.5
+     },
+     "mulheres": {
+      "pct": 20.5,
+      "inf": 18.1,
+      "sup": 23.2
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 16,
+      "inf": 14.6,
+      "sup": 17.4
+     },
+     "homens": {
+      "pct": 13.9,
+      "inf": 12.2,
+      "sup": 15.8
+     },
+     "mulheres": {
+      "pct": 17.9,
+      "inf": 16.1,
+      "sup": 19.8
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 15.7,
+      "inf": 14.1,
+      "sup": 17.4
+     },
+     "homens": {
+      "pct": 12.7,
+      "inf": 10.7,
+      "sup": 14.9
+     },
+     "mulheres": {
+      "pct": 18.6,
+      "inf": 16.2,
+      "sup": 21.4
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 15.3,
+      "inf": 14.1,
+      "sup": 16.7
+     },
+     "homens": {
+      "pct": 12,
+      "inf": 10.5,
+      "sup": 13.7
+     },
+     "mulheres": {
+      "pct": 18.4,
+      "inf": 16.5,
+      "sup": 20.5
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 18.2,
+      "inf": 15.8,
+      "sup": 20.8
+     },
+     "homens": {
+      "pct": 15.3,
+      "inf": 12.8,
+      "sup": 18.2
+     },
+     "mulheres": {
+      "pct": 20.9,
+      "inf": 17.7,
+      "sup": 24.5
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 22.5,
+      "inf": 20.3,
+      "sup": 24.8
+     },
+     "homens": {
+      "pct": 20.3,
+      "inf": 17.5,
+      "sup": 23.4
+     },
+     "mulheres": {
+      "pct": 24.6,
+      "inf": 21.8,
+      "sup": 27.7
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 19.3,
+      "inf": 18.1,
+      "sup": 20.6
+     },
+     "homens": {
+      "pct": 16.8,
+      "inf": 15.2,
+      "sup": 18.6
+     },
+     "mulheres": {
+      "pct": 21.5,
+      "inf": 19.9,
+      "sup": 23.3
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 23.6,
+      "inf": 21.7,
+      "sup": 25.7
+     },
+     "homens": {
+      "pct": 22.9,
+      "inf": 20.1,
+      "sup": 26
+     },
+     "mulheres": {
+      "pct": 24.3,
+      "inf": 21.9,
+      "sup": 26.9
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 21.3,
+      "inf": 19.8,
+      "sup": 22.7
+     },
+     "homens": {
+      "pct": 17.1,
+      "inf": 15.3,
+      "sup": 19.1
+     },
+     "mulheres": {
+      "pct": 24.9,
+      "inf": 22.9,
+      "sup": 27
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 21.9,
+      "inf": 20.4,
+      "sup": 23.5
+     },
+     "homens": {
+      "pct": 18.5,
+      "inf": 16.7,
+      "sup": 20.5
+     },
+     "mulheres": {
+      "pct": 24.8,
+      "inf": 22.6,
+      "sup": 27.2
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 25.1,
+      "inf": 23.2,
+      "sup": 27.1
+     },
+     "homens": {
+      "pct": 22,
+      "inf": 19.3,
+      "sup": 25
+     },
+     "mulheres": {
+      "pct": 27.7,
+      "inf": 25.5,
+      "sup": 30.1
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 23.4,
+      "inf": 22.2,
+      "sup": 24.7
+     },
+     "homens": {
+      "pct": 18.4,
+      "inf": 16.5,
+      "sup": 20.4
+     },
+     "mulheres": {
+      "pct": 27.5,
+      "inf": 25.8,
+      "sup": 29.4
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 23.9,
+      "inf": 22.4,
+      "sup": 25.4
+     },
+     "homens": {
+      "pct": 19.1,
+      "inf": 16.8,
+      "sup": 21.6
+     },
+     "mulheres": {
+      "pct": 27.9,
+      "inf": 25.9,
+      "sup": 30
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 22.5,
+      "inf": 20.8,
+      "sup": 24.3
+     },
+     "homens": {
+      "pct": 18.6,
+      "inf": 16.1,
+      "sup": 21.4
+     },
+     "mulheres": {
+      "pct": 26,
+      "inf": 23.7,
+      "sup": 28.4
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 25.2,
+      "inf": 23.7,
+      "sup": 26.8
+     },
+     "homens": {
+      "pct": 21.8,
+      "inf": 19.5,
+      "sup": 24.2
+     },
+     "mulheres": {
+      "pct": 28.3,
+      "inf": 26.1,
+      "sup": 30.5
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 27.7,
+      "inf": 26,
+      "sup": 29.5
+     },
+     "homens": {
+      "pct": 25.5,
+      "inf": 23.2,
+      "sup": 27.9
+     },
+     "mulheres": {
+      "pct": 29.7,
+      "inf": 27.3,
+      "sup": 32.1
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 25.5,
+      "inf": 23.9,
+      "sup": 27.2
+     },
+     "homens": {
+      "pct": 23.7,
+      "inf": 21.8,
+      "sup": 25.7
+     },
+     "mulheres": {
+      "pct": 27.1,
+      "inf": 24.7,
+      "sup": 29.7
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 28.1,
+      "inf": 26.8,
+      "sup": 29.4
+     },
+     "homens": {
+      "pct": 24.8,
+      "inf": 22.9,
+      "sup": 26.8
+     },
+     "mulheres": {
+      "pct": 30.7,
+      "inf": 29,
+      "sup": 32.5
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 24.2,
+      "inf": 22.9,
+      "sup": 25.6
+     },
+     "homens": {
+      "pct": 21.3,
+      "inf": 19.5,
+      "sup": 23.3
+     },
+     "mulheres": {
+      "pct": 26.8,
+      "inf": 24.9,
+      "sup": 28.8
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 22.9,
+      "inf": 21.3,
+      "sup": 24.7
+     },
+     "homens": {
+      "pct": 22.6,
+      "inf": 20.4,
+      "sup": 25
+     },
+     "mulheres": {
+      "pct": 23.2,
+      "inf": 21,
+      "sup": 25.6
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 23.6,
+      "inf": 22.1,
+      "sup": 25.2
+     },
+     "homens": {
+      "pct": 20.5,
+      "inf": 18.6,
+      "sup": 22.5
+     },
+     "mulheres": {
+      "pct": 26.6,
+      "inf": 24.5,
+      "sup": 28.7
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 26.6,
+      "inf": 24.9,
+      "sup": 28.4
+     },
+     "homens": {
+      "pct": 22.5,
+      "inf": 20.6,
+      "sup": 24.6
+     },
+     "mulheres": {
+      "pct": 30.3,
+      "inf": 27.7,
+      "sup": 32.9
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 24.5,
+      "inf": 22.8,
+      "sup": 26.4
+     },
+     "homens": {
+      "pct": 23.2,
+      "inf": 20.7,
+      "sup": 25.8
+     },
+     "mulheres": {
+      "pct": 25.7,
+      "inf": 23.4,
+      "sup": 28.1
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 21.6,
+      "inf": 19.9,
+      "sup": 23.5
+     },
+     "homens": {
+      "pct": 20.4,
+      "inf": 17.5,
+      "sup": 23.5
+     },
+     "mulheres": {
+      "pct": 22.8,
+      "inf": 20.2,
+      "sup": 25.6
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 23.4,
+      "inf": 21.5,
+      "sup": 25.4
+     },
+     "homens": {
+      "pct": 22,
+      "inf": 19.3,
+      "sup": 25.1
+     },
+     "mulheres": {
+      "pct": 24.7,
+      "inf": 22.3,
+      "sup": 27.2
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 16.6,
+      "inf": 14.8,
+      "sup": 18.5
+     },
+     "homens": {
+      "pct": 14.6,
+      "inf": 12.5,
+      "sup": 17
+     },
+     "mulheres": {
+      "pct": 18.2,
+      "inf": 15.7,
+      "sup": 21
+     }
+    }
+   }
+  },
+  "diabetes": {
+   "id": "diabetes",
+   "grupo": "cronicas",
+   "nome": "Diabetes",
+   "detalhe": "Diagnóstico por médico",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4487)",
+    "url": "https://sidra.ibge.gov.br/tabela/4487"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 7.7,
+      "inf": 7.4,
+      "sup": 8
+     },
+     "homens": {
+      "pct": 6.9,
+      "inf": 6.5,
+      "sup": 7.3
+     },
+     "mulheres": {
+      "pct": 8.4,
+      "inf": 8.1,
+      "sup": 8.8
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 5.3,
+      "inf": 4.3,
+      "sup": 6.4
+     },
+     "homens": {
+      "pct": 5,
+      "inf": 3.7,
+      "sup": 6.5
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.3,
+      "sup": 7.2
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 4.3,
+      "inf": 3.5,
+      "sup": 5.2
+     },
+     "homens": {
+      "pct": 4.1,
+      "inf": 3,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 4.4,
+      "inf": 3.3,
+      "sup": 5.9
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 5.4,
+      "inf": 4.6,
+      "sup": 6.4
+     },
+     "homens": {
+      "pct": 4.5,
+      "inf": 3.5,
+      "sup": 5.8
+     },
+     "mulheres": {
+      "pct": 6.3,
+      "inf": 5.1,
+      "sup": 7.8
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 5,
+      "inf": 4.1,
+      "sup": 6
+     },
+     "homens": {
+      "pct": 4.5,
+      "inf": 3.3,
+      "sup": 6.1
+     },
+     "mulheres": {
+      "pct": 5.5,
+      "inf": 4.3,
+      "sup": 6.9
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 5.6,
+      "inf": 4.8,
+      "sup": 6.6
+     },
+     "homens": {
+      "pct": 4.6,
+      "inf": 3.5,
+      "sup": 6
+     },
+     "mulheres": {
+      "pct": 6.5,
+      "inf": 5.3,
+      "sup": 8
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 4.3,
+      "inf": 3.2,
+      "sup": 5.7
+     },
+     "homens": {
+      "pct": 3.7,
+      "inf": 2.4,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 4.9,
+      "inf": 3.4,
+      "sup": 7.1
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 6.3,
+      "inf": 5.2,
+      "sup": 7.6
+     },
+     "homens": {
+      "pct": 5.9,
+      "inf": 4.4,
+      "sup": 7.7
+     },
+     "mulheres": {
+      "pct": 6.6,
+      "inf": 5.1,
+      "sup": 8.5
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 5.5,
+      "inf": 4.8,
+      "sup": 6.4
+     },
+     "homens": {
+      "pct": 4.6,
+      "inf": 3.7,
+      "sup": 5.7
+     },
+     "mulheres": {
+      "pct": 6.3,
+      "inf": 5.3,
+      "sup": 7.6
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 6.8,
+      "inf": 5.7,
+      "sup": 8
+     },
+     "homens": {
+      "pct": 6.1,
+      "inf": 4.5,
+      "sup": 8.3
+     },
+     "mulheres": {
+      "pct": 7.4,
+      "inf": 6,
+      "sup": 8.9
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 8.5,
+      "inf": 7.6,
+      "sup": 9.5
+     },
+     "homens": {
+      "pct": 6.8,
+      "inf": 5.6,
+      "sup": 8.1
+     },
+     "mulheres": {
+      "pct": 10,
+      "inf": 8.6,
+      "sup": 11.5
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 8.8,
+      "inf": 7.4,
+      "sup": 10.3
+     },
+     "homens": {
+      "pct": 6.6,
+      "inf": 5.2,
+      "sup": 8.3
+     },
+     "mulheres": {
+      "pct": 10.6,
+      "inf": 8.8,
+      "sup": 12.8
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 7.5,
+      "inf": 6.5,
+      "sup": 8.7
+     },
+     "homens": {
+      "pct": 5.1,
+      "inf": 3.9,
+      "sup": 6.7
+     },
+     "mulheres": {
+      "pct": 9.6,
+      "inf": 8.2,
+      "sup": 11.2
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 7.1,
+      "inf": 6.2,
+      "sup": 8
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 8.1,
+      "inf": 7,
+      "sup": 9.5
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 7.8,
+      "inf": 6.8,
+      "sup": 8.9
+     },
+     "homens": {
+      "pct": 6.4,
+      "inf": 5,
+      "sup": 8.1
+     },
+     "mulheres": {
+      "pct": 9,
+      "inf": 7.8,
+      "sup": 10.5
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 6.8,
+      "inf": 5.8,
+      "sup": 8
+     },
+     "homens": {
+      "pct": 5.8,
+      "inf": 4.3,
+      "sup": 7.7
+     },
+     "mulheres": {
+      "pct": 7.7,
+      "inf": 6.3,
+      "sup": 9.5
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 6.7,
+      "inf": 5.8,
+      "sup": 7.8
+     },
+     "homens": {
+      "pct": 6.1,
+      "inf": 5,
+      "sup": 7.6
+     },
+     "mulheres": {
+      "pct": 7.2,
+      "inf": 5.9,
+      "sup": 8.9
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 8,
+      "inf": 7.1,
+      "sup": 9
+     },
+     "homens": {
+      "pct": 7.4,
+      "inf": 6.1,
+      "sup": 9
+     },
+     "mulheres": {
+      "pct": 8.5,
+      "inf": 7.3,
+      "sup": 9.9
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 6.8,
+      "inf": 5.8,
+      "sup": 8
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 7.1
+     },
+     "mulheres": {
+      "pct": 7.9,
+      "inf": 6.2,
+      "sup": 9.9
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 9.3,
+      "inf": 8.5,
+      "sup": 10.1
+     },
+     "homens": {
+      "pct": 8,
+      "inf": 7,
+      "sup": 9.3
+     },
+     "mulheres": {
+      "pct": 10.3,
+      "inf": 9.2,
+      "sup": 11.5
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 8.6,
+      "inf": 7.7,
+      "sup": 9.5
+     },
+     "homens": {
+      "pct": 8.3,
+      "inf": 7,
+      "sup": 9.8
+     },
+     "mulheres": {
+      "pct": 8.8,
+      "inf": 7.7,
+      "sup": 10.1
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 7.7,
+      "inf": 6.7,
+      "sup": 8.8
+     },
+     "homens": {
+      "pct": 7.3,
+      "inf": 5.8,
+      "sup": 9.3
+     },
+     "mulheres": {
+      "pct": 8,
+      "inf": 6.6,
+      "sup": 9.6
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 6.9,
+      "inf": 6,
+      "sup": 7.9
+     },
+     "homens": {
+      "pct": 6.4,
+      "inf": 5.1,
+      "sup": 7.9
+     },
+     "mulheres": {
+      "pct": 7.4,
+      "inf": 6.2,
+      "sup": 8.7
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 8.8,
+      "inf": 7.7,
+      "sup": 9.9
+     },
+     "homens": {
+      "pct": 8,
+      "inf": 6.7,
+      "sup": 9.7
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 7.9,
+      "sup": 11.2
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 7.8,
+      "inf": 6.6,
+      "sup": 9.2
+     },
+     "homens": {
+      "pct": 5.6,
+      "inf": 4.3,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 9.8,
+      "inf": 8.2,
+      "sup": 11.8
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 6.6,
+      "inf": 5.1,
+      "sup": 8.5
+     },
+     "homens": {
+      "pct": 6.9,
+      "inf": 4.4,
+      "sup": 10.5
+     },
+     "mulheres": {
+      "pct": 6.3,
+      "inf": 4.9,
+      "sup": 8.2
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 7.4,
+      "inf": 6.4,
+      "sup": 8.5
+     },
+     "homens": {
+      "pct": 6,
+      "inf": 4.9,
+      "sup": 7.3
+     },
+     "mulheres": {
+      "pct": 8.8,
+      "inf": 7.3,
+      "sup": 10.5
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 6.6,
+      "inf": 5.5,
+      "sup": 7.8
+     },
+     "homens": {
+      "pct": 5.4,
+      "inf": 4,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 7.6,
+      "inf": 6.2,
+      "sup": 9.3
+     }
+    }
+   }
+  },
+  "colesterol": {
+   "id": "colesterol",
+   "grupo": "cronicas",
+   "nome": "Colesterol alto",
+   "detalhe": "Diagnóstico por médico",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4547)",
+    "url": "https://sidra.ibge.gov.br/tabela/4547"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 14.6,
+      "inf": 14.2,
+      "sup": 15
+     },
+     "homens": {
+      "pct": 11.1,
+      "inf": 10.6,
+      "sup": 11.7
+     },
+     "mulheres": {
+      "pct": 17.6,
+      "inf": 17.1,
+      "sup": 18.2
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 10.3,
+      "inf": 8.8,
+      "sup": 12.1
+     },
+     "homens": {
+      "pct": 6.8,
+      "inf": 5.2,
+      "sup": 8.9
+     },
+     "mulheres": {
+      "pct": 13.6,
+      "inf": 11.1,
+      "sup": 16.6
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 9.8,
+      "inf": 8.5,
+      "sup": 11.2
+     },
+     "homens": {
+      "pct": 6.7,
+      "inf": 5.1,
+      "sup": 8.6
+     },
+     "mulheres": {
+      "pct": 12.7,
+      "inf": 10.8,
+      "sup": 14.9
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 10.9,
+      "inf": 9.5,
+      "sup": 12.4
+     },
+     "homens": {
+      "pct": 7.3,
+      "inf": 6,
+      "sup": 9
+     },
+     "mulheres": {
+      "pct": 14.2,
+      "inf": 12.3,
+      "sup": 16.5
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 7.8,
+      "inf": 6.5,
+      "sup": 9.3
+     },
+     "homens": {
+      "pct": 5.2,
+      "inf": 3.8,
+      "sup": 7.1
+     },
+     "mulheres": {
+      "pct": 10.3,
+      "inf": 8.4,
+      "sup": 12.6
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 12.5,
+      "inf": 11.2,
+      "sup": 13.9
+     },
+     "homens": {
+      "pct": 8.3,
+      "inf": 6.8,
+      "sup": 10.1
+     },
+     "mulheres": {
+      "pct": 16.3,
+      "inf": 14.3,
+      "sup": 18.5
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 10.4,
+      "inf": 8.5,
+      "sup": 12.8
+     },
+     "homens": {
+      "pct": 7.3,
+      "inf": 5.3,
+      "sup": 10.1
+     },
+     "mulheres": {
+      "pct": 13.3,
+      "inf": 10.7,
+      "sup": 16.5
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 14.9,
+      "inf": 12.9,
+      "sup": 17.1
+     },
+     "homens": {
+      "pct": 10,
+      "inf": 7.7,
+      "sup": 12.9
+     },
+     "mulheres": {
+      "pct": 19.7,
+      "inf": 16.7,
+      "sup": 23
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 12.4,
+      "inf": 11.4,
+      "sup": 13.6
+     },
+     "homens": {
+      "pct": 7.8,
+      "inf": 6.6,
+      "sup": 9.2
+     },
+     "mulheres": {
+      "pct": 16.7,
+      "inf": 15,
+      "sup": 18.5
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 16.5,
+      "inf": 14.5,
+      "sup": 18.6
+     },
+     "homens": {
+      "pct": 11.8,
+      "inf": 9.5,
+      "sup": 14.5
+     },
+     "mulheres": {
+      "pct": 20.7,
+      "inf": 18,
+      "sup": 23.7
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 13.9,
+      "inf": 12.7,
+      "sup": 15.2
+     },
+     "homens": {
+      "pct": 9.4,
+      "inf": 7.9,
+      "sup": 11.2
+     },
+     "mulheres": {
+      "pct": 17.8,
+      "inf": 16.1,
+      "sup": 19.7
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 14.1,
+      "inf": 12.5,
+      "sup": 15.9
+     },
+     "homens": {
+      "pct": 9,
+      "inf": 7.3,
+      "sup": 11.1
+     },
+     "mulheres": {
+      "pct": 18.5,
+      "inf": 16.3,
+      "sup": 20.9
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 12.2,
+      "inf": 10.8,
+      "sup": 13.9
+     },
+     "homens": {
+      "pct": 6.9,
+      "inf": 5.4,
+      "sup": 8.8
+     },
+     "mulheres": {
+      "pct": 16.9,
+      "inf": 14.7,
+      "sup": 19.3
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 13,
+      "inf": 11.8,
+      "sup": 14.4
+     },
+     "homens": {
+      "pct": 8.6,
+      "inf": 7,
+      "sup": 10.5
+     },
+     "mulheres": {
+      "pct": 16.6,
+      "inf": 14.9,
+      "sup": 18.6
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 14.2,
+      "inf": 12.7,
+      "sup": 15.8
+     },
+     "homens": {
+      "pct": 9.7,
+      "inf": 8.1,
+      "sup": 11.7
+     },
+     "mulheres": {
+      "pct": 17.9,
+      "inf": 15.8,
+      "sup": 20.3
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 21.1,
+      "inf": 19.2,
+      "sup": 23.2
+     },
+     "homens": {
+      "pct": 15.2,
+      "inf": 12.9,
+      "sup": 17.7
+     },
+     "mulheres": {
+      "pct": 26.4,
+      "inf": 23.5,
+      "sup": 29.6
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 14.7,
+      "inf": 13.2,
+      "sup": 16.3
+     },
+     "homens": {
+      "pct": 10.1,
+      "inf": 8.4,
+      "sup": 12.1
+     },
+     "mulheres": {
+      "pct": 18.8,
+      "inf": 16.5,
+      "sup": 21.3
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 15.7,
+      "inf": 14.3,
+      "sup": 17.2
+     },
+     "homens": {
+      "pct": 12.2,
+      "inf": 10.5,
+      "sup": 14.1
+     },
+     "mulheres": {
+      "pct": 18.8,
+      "inf": 16.7,
+      "sup": 21
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 15.1,
+      "inf": 13.4,
+      "sup": 17
+     },
+     "homens": {
+      "pct": 12.3,
+      "inf": 10.4,
+      "sup": 14.4
+     },
+     "mulheres": {
+      "pct": 17.6,
+      "inf": 14.9,
+      "sup": 20.7
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 14.5,
+      "inf": 13.3,
+      "sup": 15.8
+     },
+     "homens": {
+      "pct": 11.9,
+      "inf": 10.5,
+      "sup": 13.5
+     },
+     "mulheres": {
+      "pct": 16.6,
+      "inf": 15,
+      "sup": 18.3
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 16.3,
+      "inf": 15,
+      "sup": 17.8
+     },
+     "homens": {
+      "pct": 12.7,
+      "inf": 11,
+      "sup": 14.5
+     },
+     "mulheres": {
+      "pct": 19.6,
+      "inf": 17.8,
+      "sup": 21.5
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 13.3,
+      "inf": 11.9,
+      "sup": 14.8
+     },
+     "homens": {
+      "pct": 12.5,
+      "inf": 10.5,
+      "sup": 14.8
+     },
+     "mulheres": {
+      "pct": 14,
+      "inf": 12.4,
+      "sup": 15.8
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 14,
+      "inf": 12.8,
+      "sup": 15.4
+     },
+     "homens": {
+      "pct": 12.9,
+      "inf": 11.1,
+      "sup": 14.9
+     },
+     "mulheres": {
+      "pct": 15.1,
+      "inf": 13.2,
+      "sup": 17.3
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 15,
+      "inf": 13.6,
+      "sup": 16.5
+     },
+     "homens": {
+      "pct": 11.3,
+      "inf": 9.7,
+      "sup": 13.2
+     },
+     "mulheres": {
+      "pct": 18.2,
+      "inf": 16.2,
+      "sup": 20.4
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 12.6,
+      "inf": 11.3,
+      "sup": 14.1
+     },
+     "homens": {
+      "pct": 10,
+      "inf": 8.2,
+      "sup": 12
+     },
+     "mulheres": {
+      "pct": 15,
+      "inf": 13.1,
+      "sup": 17.1
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 10.9,
+      "inf": 9.2,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 10.6,
+      "inf": 8.1,
+      "sup": 13.7
+     },
+     "mulheres": {
+      "pct": 11.3,
+      "inf": 9.2,
+      "sup": 13.7
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 15.3,
+      "inf": 13.5,
+      "sup": 17.2
+     },
+     "homens": {
+      "pct": 12.4,
+      "inf": 10.2,
+      "sup": 15.1
+     },
+     "mulheres": {
+      "pct": 17.8,
+      "inf": 15.4,
+      "sup": 20.6
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 10.6,
+      "inf": 9,
+      "sup": 12.4
+     },
+     "homens": {
+      "pct": 8.3,
+      "inf": 6.5,
+      "sup": 10.4
+     },
+     "mulheres": {
+      "pct": 12.6,
+      "inf": 10.4,
+      "sup": 15
+     }
+    }
+   }
+  },
+  "depressao": {
+   "id": "depressao",
+   "grupo": "cronicas",
+   "nome": "Depressão",
+   "detalhe": "Diagnóstico por profissional de saúde mental",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4694)",
+    "url": "https://sidra.ibge.gov.br/tabela/4694"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 10.2,
+      "inf": 9.9,
+      "sup": 10.6
+     },
+     "homens": {
+      "pct": 5.1,
+      "inf": 4.7,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 14.7,
+      "inf": 14.2,
+      "sup": 15.4
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 9,
+      "inf": 7.5,
+      "sup": 10.9
+     },
+     "homens": {
+      "pct": 5.1,
+      "inf": 3.5,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 12.8,
+      "inf": 10.5,
+      "sup": 15.6
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 6,
+      "inf": 4.9,
+      "sup": 7.3
+     },
+     "homens": {
+      "pct": 2.5,
+      "inf": 1.6,
+      "sup": 3.9
+     },
+     "mulheres": {
+      "pct": 9.3,
+      "inf": 7.5,
+      "sup": 11.5
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 4.2,
+      "inf": 3.4,
+      "sup": 5.3
+     },
+     "homens": {
+      "pct": 2.9,
+      "inf": 1.9,
+      "sup": 4.4
+     },
+     "mulheres": {
+      "pct": 5.4,
+      "inf": 4.2,
+      "sup": 7
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 5.1,
+      "inf": 4,
+      "sup": 6.4
+     },
+     "homens": {
+      "pct": 2.8,
+      "inf": 1.6,
+      "sup": 4.8
+     },
+     "mulheres": {
+      "pct": 7.3,
+      "inf": 5.7,
+      "sup": 9.2
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 4.1,
+      "inf": 3.2,
+      "sup": 5.3
+     },
+     "homens": {
+      "pct": 2.5,
+      "inf": 1.7,
+      "sup": 3.7
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.3,
+      "sup": 7.3
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 4.5,
+      "inf": 2.9,
+      "sup": 7.2
+     },
+     "homens": {
+      "pct": 2,
+      "inf": 0.9,
+      "sup": 4.5
+     },
+     "mulheres": {
+      "pct": 6.9,
+      "inf": 4.5,
+      "sup": 10.4
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 6.6,
+      "inf": 5.4,
+      "sup": 8.1
+     },
+     "homens": {
+      "pct": 2.7,
+      "inf": 1.6,
+      "sup": 4.4
+     },
+     "mulheres": {
+      "pct": 10.4,
+      "inf": 8.2,
+      "sup": 13.2
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 5.4,
+      "inf": 4.7,
+      "sup": 6.2
+     },
+     "homens": {
+      "pct": 2.4,
+      "inf": 1.7,
+      "sup": 3.3
+     },
+     "mulheres": {
+      "pct": 8.2,
+      "inf": 7.1,
+      "sup": 9.4
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 6.9,
+      "inf": 5.7,
+      "sup": 8.3
+     },
+     "homens": {
+      "pct": 3.4,
+      "inf": 2.4,
+      "sup": 4.9
+     },
+     "mulheres": {
+      "pct": 10,
+      "inf": 8.1,
+      "sup": 12.3
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 8.1,
+      "inf": 7.1,
+      "sup": 9.2
+     },
+     "homens": {
+      "pct": 4,
+      "inf": 3.1,
+      "sup": 5.2
+     },
+     "mulheres": {
+      "pct": 11.6,
+      "inf": 10.2,
+      "sup": 13.3
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 8.5,
+      "inf": 7.3,
+      "sup": 9.9
+     },
+     "homens": {
+      "pct": 3.8,
+      "inf": 2.6,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 12.6,
+      "inf": 10.7,
+      "sup": 14.7
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 7.6,
+      "inf": 6.4,
+      "sup": 8.9
+     },
+     "homens": {
+      "pct": 3.9,
+      "inf": 2.7,
+      "sup": 5.7
+     },
+     "mulheres": {
+      "pct": 10.7,
+      "inf": 9,
+      "sup": 12.8
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 6.8,
+      "inf": 5.8,
+      "sup": 7.9
+     },
+     "homens": {
+      "pct": 2.5,
+      "inf": 1.9,
+      "sup": 3.4
+     },
+     "mulheres": {
+      "pct": 10.2,
+      "inf": 8.7,
+      "sup": 12
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 6.2,
+      "inf": 5.2,
+      "sup": 7.5
+     },
+     "homens": {
+      "pct": 3.3,
+      "inf": 2.2,
+      "sup": 4.9
+     },
+     "mulheres": {
+      "pct": 8.7,
+      "inf": 7.1,
+      "sup": 10.6
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 8.5,
+      "inf": 7.5,
+      "sup": 9.8
+     },
+     "homens": {
+      "pct": 4,
+      "inf": 3,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 12.5,
+      "inf": 10.9,
+      "sup": 14.4
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 6.3,
+      "inf": 5.4,
+      "sup": 7.4
+     },
+     "homens": {
+      "pct": 2.2,
+      "inf": 1.5,
+      "sup": 3.2
+     },
+     "mulheres": {
+      "pct": 10,
+      "inf": 8.4,
+      "sup": 11.8
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 13.7,
+      "inf": 12.2,
+      "sup": 15.3
+     },
+     "homens": {
+      "pct": 7.9,
+      "inf": 6.4,
+      "sup": 9.9
+     },
+     "mulheres": {
+      "pct": 18.8,
+      "inf": 16.6,
+      "sup": 21.2
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 11.3,
+      "inf": 9.9,
+      "sup": 12.8
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 16.3,
+      "inf": 14.1,
+      "sup": 18.8
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 8.1,
+      "inf": 7.2,
+      "sup": 9.1
+     },
+     "homens": {
+      "pct": 4.7,
+      "inf": 3.8,
+      "sup": 5.8
+     },
+     "mulheres": {
+      "pct": 10.8,
+      "inf": 9.5,
+      "sup": 12.4
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 11.8,
+      "inf": 10.7,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 6.9
+     },
+     "mulheres": {
+      "pct": 17.2,
+      "inf": 15.3,
+      "sup": 19.2
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 13.9,
+      "inf": 12.3,
+      "sup": 15.6
+     },
+     "homens": {
+      "pct": 6.5,
+      "inf": 5.1,
+      "sup": 8.3
+     },
+     "mulheres": {
+      "pct": 20.5,
+      "inf": 17.9,
+      "sup": 23.3
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 13.1,
+      "inf": 11.8,
+      "sup": 14.5
+     },
+     "homens": {
+      "pct": 5.6,
+      "inf": 4.5,
+      "sup": 6.9
+     },
+     "mulheres": {
+      "pct": 20.2,
+      "inf": 18.1,
+      "sup": 22.5
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 17.9,
+      "inf": 16.2,
+      "sup": 19.6
+     },
+     "homens": {
+      "pct": 9.8,
+      "inf": 8.2,
+      "sup": 11.7
+     },
+     "mulheres": {
+      "pct": 25,
+      "inf": 22.5,
+      "sup": 27.6
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 10.1,
+      "inf": 8.9,
+      "sup": 11.3
+     },
+     "homens": {
+      "pct": 4.3,
+      "inf": 3.2,
+      "sup": 5.7
+     },
+     "mulheres": {
+      "pct": 15.1,
+      "inf": 13.2,
+      "sup": 17.3
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 8.2,
+      "inf": 7,
+      "sup": 9.6
+     },
+     "homens": {
+      "pct": 3.3,
+      "inf": 2.3,
+      "sup": 4.8
+     },
+     "mulheres": {
+      "pct": 12.7,
+      "inf": 10.4,
+      "sup": 15.4
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 12,
+      "inf": 10.4,
+      "sup": 13.9
+     },
+     "homens": {
+      "pct": 5.9,
+      "inf": 4.3,
+      "sup": 8
+     },
+     "mulheres": {
+      "pct": 17.7,
+      "inf": 15.1,
+      "sup": 20.6
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 9.4,
+      "inf": 8,
+      "sup": 11.1
+     },
+     "homens": {
+      "pct": 4.7,
+      "inf": 3.4,
+      "sup": 6.5
+     },
+     "mulheres": {
+      "pct": 13.5,
+      "inf": 11.1,
+      "sup": 16.2
+     }
+    }
+   }
+  },
+  "asma": {
+   "id": "asma",
+   "grupo": "cronicas",
+   "nome": "Asma",
+   "detalhe": "Diagnóstico por médico",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4576)",
+    "url": "https://sidra.ibge.gov.br/tabela/4576"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 5.3,
+      "inf": 5,
+      "sup": 5.5
+     },
+     "homens": {
+      "pct": 4.4,
+      "inf": 4,
+      "sup": 4.8
+     },
+     "mulheres": {
+      "pct": 6.1,
+      "inf": 5.7,
+      "sup": 6.5
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 3.6,
+      "inf": 2.9,
+      "sup": 4.5
+     },
+     "homens": {
+      "pct": 3.5,
+      "inf": 2.4,
+      "sup": 5
+     },
+     "mulheres": {
+      "pct": 3.8,
+      "inf": 2.6,
+      "sup": 5.3
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 3.7,
+      "inf": 2.9,
+      "sup": 4.7
+     },
+     "homens": {
+      "pct": 3.8,
+      "inf": 2.6,
+      "sup": 5.6
+     },
+     "mulheres": {
+      "pct": 3.6,
+      "inf": 2.6,
+      "sup": 4.9
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 4.5,
+      "inf": 3.7,
+      "sup": 5.4
+     },
+     "homens": {
+      "pct": 3.8,
+      "inf": 2.8,
+      "sup": 5.1
+     },
+     "mulheres": {
+      "pct": 5.2,
+      "inf": 4,
+      "sup": 6.6
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 6.1,
+      "inf": 4.3,
+      "sup": 8.5
+     },
+     "homens": {
+      "pct": 5.6,
+      "inf": 3.4,
+      "sup": 9.1
+     },
+     "mulheres": {
+      "pct": 6.5,
+      "inf": 4.8,
+      "sup": 8.8
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 4.6,
+      "inf": 3.8,
+      "sup": 5.7
+     },
+     "homens": {
+      "pct": 2.2,
+      "inf": 1.6,
+      "sup": 3.2
+     },
+     "mulheres": {
+      "pct": 6.9,
+      "inf": 5.4,
+      "sup": 8.7
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 6.5,
+      "inf": 5.2,
+      "sup": 8.1
+     },
+     "homens": {
+      "pct": 5.5,
+      "inf": 3.6,
+      "sup": 8.3
+     },
+     "mulheres": {
+      "pct": 7.4,
+      "inf": 5.7,
+      "sup": 9.6
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 4.1,
+      "inf": 3.1,
+      "sup": 5.2
+     },
+     "homens": {
+      "pct": 4.3,
+      "inf": 2.9,
+      "sup": 6.5
+     },
+     "mulheres": {
+      "pct": 3.8,
+      "inf": 2.7,
+      "sup": 5.2
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 3.6,
+      "inf": 3,
+      "sup": 4.4
+     },
+     "homens": {
+      "pct": 3.2,
+      "inf": 2.4,
+      "sup": 4.1
+     },
+     "mulheres": {
+      "pct": 4,
+      "inf": 3.2,
+      "sup": 5.1
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 4.7,
+      "inf": 3.7,
+      "sup": 5.8
+     },
+     "homens": {
+      "pct": 4.8,
+      "inf": 3.2,
+      "sup": 7.1
+     },
+     "mulheres": {
+      "pct": 4.5,
+      "inf": 3.3,
+      "sup": 6.1
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 4.9,
+      "inf": 4.1,
+      "sup": 5.8
+     },
+     "homens": {
+      "pct": 4,
+      "inf": 3,
+      "sup": 5.3
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.5,
+      "sup": 7
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 4.8,
+      "inf": 3.9,
+      "sup": 5.9
+     },
+     "homens": {
+      "pct": 3.4,
+      "inf": 2.4,
+      "sup": 4.9
+     },
+     "mulheres": {
+      "pct": 6,
+      "inf": 4.6,
+      "sup": 7.9
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 3.2,
+      "inf": 2.6,
+      "sup": 3.9
+     },
+     "homens": {
+      "pct": 2.2,
+      "inf": 1.5,
+      "sup": 3.1
+     },
+     "mulheres": {
+      "pct": 4.1,
+      "inf": 3.1,
+      "sup": 5.3
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 4.7,
+      "inf": 4,
+      "sup": 5.5
+     },
+     "homens": {
+      "pct": 3.5,
+      "inf": 2.7,
+      "sup": 4.5
+     },
+     "mulheres": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 6.9
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 3.8,
+      "inf": 3.1,
+      "sup": 4.7
+     },
+     "homens": {
+      "pct": 2.1,
+      "inf": 1.4,
+      "sup": 3.2
+     },
+     "mulheres": {
+      "pct": 5.3,
+      "inf": 4.2,
+      "sup": 6.7
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 4.4,
+      "inf": 3.5,
+      "sup": 5.6
+     },
+     "homens": {
+      "pct": 3.5,
+      "inf": 2.4,
+      "sup": 5.2
+     },
+     "mulheres": {
+      "pct": 5.2,
+      "inf": 3.9,
+      "sup": 6.9
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 2.9,
+      "inf": 2.2,
+      "sup": 3.8
+     },
+     "homens": {
+      "pct": 2.2,
+      "inf": 1.3,
+      "sup": 3.6
+     },
+     "mulheres": {
+      "pct": 3.5,
+      "inf": 2.5,
+      "sup": 4.8
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 6,
+      "inf": 5.1,
+      "sup": 7.1
+     },
+     "homens": {
+      "pct": 5.3,
+      "inf": 4,
+      "sup": 6.9
+     },
+     "mulheres": {
+      "pct": 6.7,
+      "inf": 5.5,
+      "sup": 8.1
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 6.2,
+      "inf": 5.3,
+      "sup": 7.3
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.3,
+      "sup": 7.5
+     },
+     "mulheres": {
+      "pct": 6.7,
+      "inf": 5.5,
+      "sup": 8.2
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 4.6,
+      "inf": 3.7,
+      "sup": 5.5
+     },
+     "homens": {
+      "pct": 4.2,
+      "inf": 3.1,
+      "sup": 5.6
+     },
+     "mulheres": {
+      "pct": 4.8,
+      "inf": 3.8,
+      "sup": 6.1
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 6.4,
+      "inf": 5.6,
+      "sup": 7.3
+     },
+     "homens": {
+      "pct": 5.4,
+      "inf": 4.3,
+      "sup": 6.8
+     },
+     "mulheres": {
+      "pct": 7.3,
+      "inf": 6.2,
+      "sup": 8.7
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 5,
+      "inf": 4.1,
+      "sup": 5.9
+     },
+     "homens": {
+      "pct": 3.3,
+      "inf": 2.5,
+      "sup": 4.5
+     },
+     "mulheres": {
+      "pct": 6.4,
+      "inf": 5.1,
+      "sup": 8
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 5,
+      "inf": 4.2,
+      "sup": 6
+     },
+     "homens": {
+      "pct": 4.4,
+      "inf": 3.4,
+      "sup": 5.8
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.3,
+      "sup": 7.1
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 8.1,
+      "inf": 6.9,
+      "sup": 9.5
+     },
+     "homens": {
+      "pct": 7.2,
+      "inf": 5.8,
+      "sup": 9
+     },
+     "mulheres": {
+      "pct": 8.9,
+      "inf": 7.1,
+      "sup": 11
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 4.8,
+      "inf": 4,
+      "sup": 5.7
+     },
+     "homens": {
+      "pct": 3.2,
+      "inf": 2.2,
+      "sup": 4.6
+     },
+     "mulheres": {
+      "pct": 6.1,
+      "inf": 4.8,
+      "sup": 7.7
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 3,
+      "inf": 2.1,
+      "sup": 4.3
+     },
+     "homens": {
+      "pct": 2.5,
+      "inf": 1.5,
+      "sup": 4.1
+     },
+     "mulheres": {
+      "pct": 3.4,
+      "inf": 2.1,
+      "sup": 5.5
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 6,
+      "inf": 4.8,
+      "sup": 7.4
+     },
+     "homens": {
+      "pct": 5.2,
+      "inf": 3.8,
+      "sup": 7.1
+     },
+     "mulheres": {
+      "pct": 6.7,
+      "inf": 5.3,
+      "sup": 8.5
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 5.2,
+      "inf": 4.1,
+      "sup": 6.6
+     },
+     "homens": {
+      "pct": 4.8,
+      "inf": 3.1,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.2,
+      "sup": 7.5
+     }
+    }
+   }
+  },
+  "coracao": {
+   "id": "coracao",
+   "grupo": "cronicas",
+   "nome": "Doença do coração",
+   "detalhe": "Diagnóstico por médico",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4578)",
+    "url": "https://sidra.ibge.gov.br/tabela/4578"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 5.3,
+      "inf": 5,
+      "sup": 5.6
+     },
+     "homens": {
+      "pct": 4.9,
+      "inf": 4.6,
+      "sup": 5.3
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 5.3,
+      "sup": 6
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 3.9,
+      "inf": 3.1,
+      "sup": 4.9
+     },
+     "homens": {
+      "pct": 3.6,
+      "inf": 2.6,
+      "sup": 5.1
+     },
+     "mulheres": {
+      "pct": 4.2,
+      "inf": 3,
+      "sup": 5.8
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 3.5,
+      "inf": 2.7,
+      "sup": 4.4
+     },
+     "homens": {
+      "pct": 3.1,
+      "inf": 2.3,
+      "sup": 4.3
+     },
+     "mulheres": {
+      "pct": 3.8,
+      "inf": 2.7,
+      "sup": 5.3
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 2.6,
+      "inf": 2.1,
+      "sup": 3.3
+     },
+     "homens": {
+      "pct": 3,
+      "inf": 2.2,
+      "sup": 4.1
+     },
+     "mulheres": {
+      "pct": 2.3,
+      "inf": 1.7,
+      "sup": 3.2
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 2.8,
+      "inf": 2,
+      "sup": 3.9
+     },
+     "homens": {
+      "pct": 3,
+      "inf": 1.9,
+      "sup": 4.7
+     },
+     "mulheres": {
+      "pct": 2.7,
+      "inf": 1.6,
+      "sup": 4.4
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 3.2,
+      "inf": 2.4,
+      "sup": 4.3
+     },
+     "homens": {
+      "pct": 4,
+      "inf": 2.6,
+      "sup": 6.1
+     },
+     "mulheres": {
+      "pct": 2.4,
+      "inf": 1.8,
+      "sup": 3.4
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 2,
+      "inf": 1.3,
+      "sup": 3.1
+     },
+     "homens": {
+      "pct": 1.6,
+      "inf": 0.9,
+      "sup": 2.7
+     },
+     "mulheres": {
+      "pct": 2.5,
+      "inf": 1.3,
+      "sup": 4.6
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 5.5,
+      "inf": 4.5,
+      "sup": 6.7
+     },
+     "homens": {
+      "pct": 3.5,
+      "inf": 2.5,
+      "sup": 5.1
+     },
+     "mulheres": {
+      "pct": 7.4,
+      "inf": 5.6,
+      "sup": 9.6
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 2.7,
+      "inf": 2.2,
+      "sup": 3.4
+     },
+     "homens": {
+      "pct": 3.1,
+      "inf": 2.3,
+      "sup": 4.1
+     },
+     "mulheres": {
+      "pct": 2.4,
+      "inf": 1.8,
+      "sup": 3.2
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 4.3,
+      "inf": 3.5,
+      "sup": 5.3
+     },
+     "homens": {
+      "pct": 3.6,
+      "inf": 2.6,
+      "sup": 5.1
+     },
+     "mulheres": {
+      "pct": 4.9,
+      "inf": 3.8,
+      "sup": 6.2
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 4.6,
+      "inf": 3.9,
+      "sup": 5.5
+     },
+     "homens": {
+      "pct": 4.1,
+      "inf": 3,
+      "sup": 5.7
+     },
+     "mulheres": {
+      "pct": 5,
+      "inf": 4.1,
+      "sup": 6.2
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 4.5,
+      "inf": 3.6,
+      "sup": 5.5
+     },
+     "homens": {
+      "pct": 3.9,
+      "inf": 2.9,
+      "sup": 5.2
+     },
+     "mulheres": {
+      "pct": 5,
+      "inf": 3.7,
+      "sup": 6.6
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 4.3,
+      "inf": 3.5,
+      "sup": 5.3
+     },
+     "homens": {
+      "pct": 3.3,
+      "inf": 2.4,
+      "sup": 4.6
+     },
+     "mulheres": {
+      "pct": 5.1,
+      "inf": 3.9,
+      "sup": 6.7
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 4,
+      "inf": 3.3,
+      "sup": 4.8
+     },
+     "homens": {
+      "pct": 3.2,
+      "inf": 2.5,
+      "sup": 4.1
+     },
+     "mulheres": {
+      "pct": 4.6,
+      "inf": 3.5,
+      "sup": 5.9
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 4,
+      "inf": 3.3,
+      "sup": 4.9
+     },
+     "homens": {
+      "pct": 3.6,
+      "inf": 2.6,
+      "sup": 5.1
+     },
+     "mulheres": {
+      "pct": 4.4,
+      "inf": 3.5,
+      "sup": 5.5
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 5.2,
+      "inf": 4.3,
+      "sup": 6.3
+     },
+     "homens": {
+      "pct": 4.7,
+      "inf": 3.3,
+      "sup": 6.5
+     },
+     "mulheres": {
+      "pct": 5.6,
+      "inf": 4.4,
+      "sup": 7.2
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 4,
+      "inf": 3.3,
+      "sup": 4.9
+     },
+     "homens": {
+      "pct": 4.1,
+      "inf": 3.1,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 3.9,
+      "inf": 3,
+      "sup": 5.1
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 6.2,
+      "inf": 5.4,
+      "sup": 7.2
+     },
+     "homens": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 7.2
+     },
+     "mulheres": {
+      "pct": 6.7,
+      "inf": 5.6,
+      "sup": 8
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 5.5,
+      "inf": 4.6,
+      "sup": 6.7
+     },
+     "homens": {
+      "pct": 6.1,
+      "inf": 5,
+      "sup": 7.5
+     },
+     "mulheres": {
+      "pct": 5,
+      "inf": 3.6,
+      "sup": 7
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 5.5,
+      "inf": 4.8,
+      "sup": 6.3
+     },
+     "homens": {
+      "pct": 5.1,
+      "inf": 4.3,
+      "sup": 6.1
+     },
+     "mulheres": {
+      "pct": 5.8,
+      "inf": 4.9,
+      "sup": 6.9
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 6.1,
+      "inf": 5.3,
+      "sup": 7
+     },
+     "homens": {
+      "pct": 6,
+      "inf": 4.9,
+      "sup": 7.4
+     },
+     "mulheres": {
+      "pct": 6.2,
+      "inf": 5.3,
+      "sup": 7.4
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 6.3,
+      "inf": 5.3,
+      "sup": 7.3
+     },
+     "homens": {
+      "pct": 6.2,
+      "inf": 4.9,
+      "sup": 7.7
+     },
+     "mulheres": {
+      "pct": 6.3,
+      "inf": 5.1,
+      "sup": 7.8
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 6.3,
+      "inf": 5.5,
+      "sup": 7.3
+     },
+     "homens": {
+      "pct": 6.1,
+      "inf": 5,
+      "sup": 7.4
+     },
+     "mulheres": {
+      "pct": 6.5,
+      "inf": 5.4,
+      "sup": 7.8
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 7.6,
+      "inf": 6.6,
+      "sup": 8.8
+     },
+     "homens": {
+      "pct": 6,
+      "inf": 4.9,
+      "sup": 7.3
+     },
+     "mulheres": {
+      "pct": 9.1,
+      "inf": 7.5,
+      "sup": 10.9
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 5.2,
+      "inf": 4.2,
+      "sup": 6.3
+     },
+     "homens": {
+      "pct": 4.5,
+      "inf": 3.3,
+      "sup": 6.1
+     },
+     "mulheres": {
+      "pct": 5.7,
+      "inf": 4.6,
+      "sup": 7.2
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 3.7,
+      "inf": 2.8,
+      "sup": 5
+     },
+     "homens": {
+      "pct": 3.7,
+      "inf": 2.5,
+      "sup": 5.5
+     },
+     "mulheres": {
+      "pct": 3.7,
+      "inf": 2.5,
+      "sup": 5.4
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 5.5,
+      "inf": 4.5,
+      "sup": 6.7
+     },
+     "homens": {
+      "pct": 3.5,
+      "inf": 2.6,
+      "sup": 4.7
+     },
+     "mulheres": {
+      "pct": 7.3,
+      "inf": 5.6,
+      "sup": 9.4
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 3.9,
+      "inf": 3.1,
+      "sup": 5
+     },
+     "homens": {
+      "pct": 3.3,
+      "inf": 2.3,
+      "sup": 4.6
+     },
+     "mulheres": {
+      "pct": 4.5,
+      "inf": 3.2,
+      "sup": 6.1
+     }
+    }
+   }
+  },
+  "fumam": {
+   "id": "fumam",
+   "grupo": "habitos",
+   "nome": "Fumam",
+   "detalhe": "Fumantes atuais de tabaco",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4173)",
+    "url": "https://sidra.ibge.gov.br/tabela/4173"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 12.6,
+      "inf": 12.2,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 15.9,
+      "inf": 15.3,
+      "sup": 16.6
+     },
+     "mulheres": {
+      "pct": 9.6,
+      "inf": 9.2,
+      "sup": 10.1
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 10.4,
+      "inf": 8.9,
+      "sup": 12
+     },
+     "homens": {
+      "pct": 15.8,
+      "inf": 13.5,
+      "sup": 18.4
+     },
+     "mulheres": {
+      "pct": 5.2,
+      "inf": 3.7,
+      "sup": 7.3
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 13.9,
+      "inf": 12.1,
+      "sup": 15.8
+     },
+     "homens": {
+      "pct": 17,
+      "inf": 14,
+      "sup": 20.4
+     },
+     "mulheres": {
+      "pct": 10.9,
+      "inf": 8.9,
+      "sup": 13.3
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 10.2,
+      "inf": 9,
+      "sup": 11.4
+     },
+     "homens": {
+      "pct": 15.9,
+      "inf": 13.7,
+      "sup": 18.4
+     },
+     "mulheres": {
+      "pct": 4.7,
+      "inf": 3.8,
+      "sup": 6
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 11.4,
+      "inf": 9.8,
+      "sup": 13.3
+     },
+     "homens": {
+      "pct": 16.2,
+      "inf": 13.6,
+      "sup": 19.2
+     },
+     "mulheres": {
+      "pct": 6.8,
+      "inf": 5.3,
+      "sup": 8.8
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 9.8,
+      "inf": 8.5,
+      "sup": 11.4
+     },
+     "homens": {
+      "pct": 14.1,
+      "inf": 12,
+      "sup": 16.5
+     },
+     "mulheres": {
+      "pct": 5.9,
+      "inf": 4.5,
+      "sup": 7.8
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 10.9,
+      "inf": 9,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 15,
+      "inf": 11.7,
+      "sup": 18.9
+     },
+     "mulheres": {
+      "pct": 7,
+      "inf": 5.2,
+      "sup": 9.4
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 12.6,
+      "inf": 10.6,
+      "sup": 14.8
+     },
+     "homens": {
+      "pct": 17.4,
+      "inf": 14.2,
+      "sup": 21.2
+     },
+     "mulheres": {
+      "pct": 7.9,
+      "inf": 5.9,
+      "sup": 10.3
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 11,
+      "inf": 10,
+      "sup": 12.2
+     },
+     "homens": {
+      "pct": 15.7,
+      "inf": 14,
+      "sup": 17.7
+     },
+     "mulheres": {
+      "pct": 6.8,
+      "inf": 5.7,
+      "sup": 8
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 11,
+      "inf": 9.6,
+      "sup": 12.5
+     },
+     "homens": {
+      "pct": 15.2,
+      "inf": 12.9,
+      "sup": 17.8
+     },
+     "mulheres": {
+      "pct": 7.2,
+      "inf": 5.5,
+      "sup": 9.3
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 11.6,
+      "inf": 10.5,
+      "sup": 12.7
+     },
+     "homens": {
+      "pct": 14.5,
+      "inf": 12.6,
+      "sup": 16.5
+     },
+     "mulheres": {
+      "pct": 9,
+      "inf": 7.8,
+      "sup": 10.4
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 11,
+      "inf": 9.4,
+      "sup": 12.8
+     },
+     "homens": {
+      "pct": 15.1,
+      "inf": 12.4,
+      "sup": 18.1
+     },
+     "mulheres": {
+      "pct": 7.4,
+      "inf": 6,
+      "sup": 9.2
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 11.7,
+      "inf": 10.1,
+      "sup": 13.4
+     },
+     "homens": {
+      "pct": 14.3,
+      "inf": 11.9,
+      "sup": 17.1
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 8,
+      "sup": 11.1
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 11.2,
+      "inf": 9.7,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 14.7,
+      "inf": 11.6,
+      "sup": 18.4
+     },
+     "mulheres": {
+      "pct": 8.5,
+      "inf": 7.2,
+      "sup": 9.9
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 10.6,
+      "inf": 9.4,
+      "sup": 12
+     },
+     "homens": {
+      "pct": 13.8,
+      "inf": 11.8,
+      "sup": 16.2
+     },
+     "mulheres": {
+      "pct": 7.9,
+      "inf": 6.7,
+      "sup": 9.3
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 9.2,
+      "inf": 8.1,
+      "sup": 10.5
+     },
+     "homens": {
+      "pct": 11.4,
+      "inf": 9.5,
+      "sup": 13.7
+     },
+     "mulheres": {
+      "pct": 7.3,
+      "inf": 5.9,
+      "sup": 9
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 9.8,
+      "inf": 8.3,
+      "sup": 11.5
+     },
+     "homens": {
+      "pct": 13.3,
+      "inf": 11.2,
+      "sup": 15.8
+     },
+     "mulheres": {
+      "pct": 6.6,
+      "inf": 5.2,
+      "sup": 8.5
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 12.7,
+      "inf": 11.4,
+      "sup": 14.1
+     },
+     "homens": {
+      "pct": 16.4,
+      "inf": 14.3,
+      "sup": 18.8
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 8,
+      "sup": 10.9
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 10.2,
+      "inf": 9,
+      "sup": 11.5
+     },
+     "homens": {
+      "pct": 13.9,
+      "inf": 11.7,
+      "sup": 16.3
+     },
+     "mulheres": {
+      "pct": 6.9,
+      "inf": 5.6,
+      "sup": 8.5
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 12,
+      "inf": 10.9,
+      "sup": 13.2
+     },
+     "homens": {
+      "pct": 14.6,
+      "inf": 12.9,
+      "sup": 16.5
+     },
+     "mulheres": {
+      "pct": 9.9,
+      "inf": 8.6,
+      "sup": 11.4
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 14.3,
+      "inf": 13.1,
+      "sup": 15.6
+     },
+     "homens": {
+      "pct": 17.6,
+      "inf": 15.7,
+      "sup": 19.7
+     },
+     "mulheres": {
+      "pct": 11.4,
+      "inf": 10.1,
+      "sup": 12.9
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 14.6,
+      "inf": 13,
+      "sup": 16.4
+     },
+     "homens": {
+      "pct": 17.2,
+      "inf": 15,
+      "sup": 19.7
+     },
+     "mulheres": {
+      "pct": 12.2,
+      "inf": 10.3,
+      "sup": 14.5
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 13,
+      "inf": 11.6,
+      "sup": 14.6
+     },
+     "homens": {
+      "pct": 15.6,
+      "inf": 13.5,
+      "sup": 17.9
+     },
+     "mulheres": {
+      "pct": 10.6,
+      "inf": 9,
+      "sup": 12.5
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 15.8,
+      "inf": 14.3,
+      "sup": 17.4
+     },
+     "homens": {
+      "pct": 17.8,
+      "inf": 15.5,
+      "sup": 20.3
+     },
+     "mulheres": {
+      "pct": 14,
+      "inf": 12.2,
+      "sup": 16.1
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 14.9,
+      "inf": 13.3,
+      "sup": 16.7
+     },
+     "homens": {
+      "pct": 18,
+      "inf": 15.6,
+      "sup": 20.8
+     },
+     "mulheres": {
+      "pct": 12.2,
+      "inf": 10.4,
+      "sup": 14.2
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 12.9,
+      "inf": 11.3,
+      "sup": 14.6
+     },
+     "homens": {
+      "pct": 16,
+      "inf": 13.3,
+      "sup": 19.2
+     },
+     "mulheres": {
+      "pct": 9.9,
+      "inf": 8.1,
+      "sup": 12.2
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 13.4,
+      "inf": 11.7,
+      "sup": 15.3
+     },
+     "homens": {
+      "pct": 17.3,
+      "inf": 14.5,
+      "sup": 20.4
+     },
+     "mulheres": {
+      "pct": 9.9,
+      "inf": 8.1,
+      "sup": 12.1
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 11,
+      "inf": 9.4,
+      "sup": 12.8
+     },
+     "homens": {
+      "pct": 14,
+      "inf": 11.5,
+      "sup": 17
+     },
+     "mulheres": {
+      "pct": 8.5,
+      "inf": 6.6,
+      "sup": 10.8
+     }
+    }
+   }
+  },
+  "atividade-fisica": {
+   "id": "atividade-fisica",
+   "grupo": "habitos",
+   "nome": "Atividade física no tempo livre",
+   "detalhe": "Nível recomendado de atividade física no lazer",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4250)",
+    "url": "https://sidra.ibge.gov.br/tabela/4250"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 30.1,
+      "inf": 29.5,
+      "sup": 30.7
+     },
+     "homens": {
+      "pct": 34.2,
+      "inf": 33.3,
+      "sup": 35.1
+     },
+     "mulheres": {
+      "pct": 26.4,
+      "inf": 25.7,
+      "sup": 27.1
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 24.9,
+      "inf": 22.5,
+      "sup": 27.5
+     },
+     "homens": {
+      "pct": 26.1,
+      "inf": 23.2,
+      "sup": 29.3
+     },
+     "mulheres": {
+      "pct": 23.8,
+      "inf": 20.4,
+      "sup": 27.5
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 28.9,
+      "inf": 26.3,
+      "sup": 31.7
+     },
+     "homens": {
+      "pct": 34.5,
+      "inf": 30.8,
+      "sup": 38.3
+     },
+     "mulheres": {
+      "pct": 23.7,
+      "inf": 20.7,
+      "sup": 27
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 30.2,
+      "inf": 28.1,
+      "sup": 32.4
+     },
+     "homens": {
+      "pct": 36.2,
+      "inf": 33.2,
+      "sup": 39.4
+     },
+     "mulheres": {
+      "pct": 24.6,
+      "inf": 22,
+      "sup": 27.4
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 29.8,
+      "inf": 26.8,
+      "sup": 32.9
+     },
+     "homens": {
+      "pct": 34.3,
+      "inf": 30,
+      "sup": 38.9
+     },
+     "mulheres": {
+      "pct": 25.3,
+      "inf": 22,
+      "sup": 29
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 27.2,
+      "inf": 25.3,
+      "sup": 29.1
+     },
+     "homens": {
+      "pct": 32.2,
+      "inf": 29.4,
+      "sup": 35.3
+     },
+     "mulheres": {
+      "pct": 22.5,
+      "inf": 20,
+      "sup": 25.2
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 36.1,
+      "inf": 32.6,
+      "sup": 39.8
+     },
+     "homens": {
+      "pct": 39.5,
+      "inf": 35.1,
+      "sup": 44.2
+     },
+     "mulheres": {
+      "pct": 32.9,
+      "inf": 28.8,
+      "sup": 37.2
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 30.5,
+      "inf": 27.7,
+      "sup": 33.5
+     },
+     "homens": {
+      "pct": 31.4,
+      "inf": 28,
+      "sup": 35
+     },
+     "mulheres": {
+      "pct": 29.6,
+      "inf": 25.8,
+      "sup": 33.7
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 27.9,
+      "inf": 26.3,
+      "sup": 29.6
+     },
+     "homens": {
+      "pct": 30.7,
+      "inf": 28.5,
+      "sup": 33
+     },
+     "mulheres": {
+      "pct": 25.4,
+      "inf": 23.3,
+      "sup": 27.5
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 30.1,
+      "inf": 27.4,
+      "sup": 32.9
+     },
+     "homens": {
+      "pct": 31.2,
+      "inf": 28.1,
+      "sup": 34.4
+     },
+     "mulheres": {
+      "pct": 29.1,
+      "inf": 25.5,
+      "sup": 33
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 30.3,
+      "inf": 28.5,
+      "sup": 32.2
+     },
+     "homens": {
+      "pct": 32.8,
+      "inf": 30.2,
+      "sup": 35.5
+     },
+     "mulheres": {
+      "pct": 28.2,
+      "inf": 25.8,
+      "sup": 30.8
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 33.9,
+      "inf": 31.5,
+      "sup": 36.4
+     },
+     "homens": {
+      "pct": 38.4,
+      "inf": 34.4,
+      "sup": 42.4
+     },
+     "mulheres": {
+      "pct": 30.1,
+      "inf": 27.3,
+      "sup": 33.1
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 29,
+      "inf": 26.8,
+      "sup": 31.3
+     },
+     "homens": {
+      "pct": 32.6,
+      "inf": 29.7,
+      "sup": 35.7
+     },
+     "mulheres": {
+      "pct": 25.8,
+      "inf": 23,
+      "sup": 28.8
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 27.5,
+      "inf": 25.6,
+      "sup": 29.6
+     },
+     "homens": {
+      "pct": 31.1,
+      "inf": 28.2,
+      "sup": 34.2
+     },
+     "mulheres": {
+      "pct": 24.6,
+      "inf": 22,
+      "sup": 27.4
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 27.5,
+      "inf": 25.3,
+      "sup": 29.9
+     },
+     "homens": {
+      "pct": 30.8,
+      "inf": 27.5,
+      "sup": 34.4
+     },
+     "mulheres": {
+      "pct": 24.8,
+      "inf": 21.8,
+      "sup": 28
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 31.4,
+      "inf": 29,
+      "sup": 33.9
+     },
+     "homens": {
+      "pct": 33.5,
+      "inf": 30.3,
+      "sup": 36.9
+     },
+     "mulheres": {
+      "pct": 29.4,
+      "inf": 26.2,
+      "sup": 32.9
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 30.1,
+      "inf": 28,
+      "sup": 32.3
+     },
+     "homens": {
+      "pct": 35.7,
+      "inf": 32.6,
+      "sup": 39
+     },
+     "mulheres": {
+      "pct": 25.1,
+      "inf": 22.6,
+      "sup": 27.7
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 30.4,
+      "inf": 28.3,
+      "sup": 32.6
+     },
+     "homens": {
+      "pct": 36.3,
+      "inf": 33.1,
+      "sup": 39.7
+     },
+     "mulheres": {
+      "pct": 25.1,
+      "inf": 22.6,
+      "sup": 27.7
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 29.4,
+      "inf": 27,
+      "sup": 31.9
+     },
+     "homens": {
+      "pct": 32,
+      "inf": 28.8,
+      "sup": 35.3
+     },
+     "mulheres": {
+      "pct": 27.1,
+      "inf": 24.3,
+      "sup": 30
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 28.9,
+      "inf": 27.3,
+      "sup": 30.6
+     },
+     "homens": {
+      "pct": 33.2,
+      "inf": 30.7,
+      "sup": 35.7
+     },
+     "mulheres": {
+      "pct": 25.5,
+      "inf": 23.4,
+      "sup": 27.8
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 32.5,
+      "inf": 30.6,
+      "sup": 34.5
+     },
+     "homens": {
+      "pct": 37.4,
+      "inf": 34.6,
+      "sup": 40.2
+     },
+     "mulheres": {
+      "pct": 28.2,
+      "inf": 26,
+      "sup": 30.6
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 29.9,
+      "inf": 27.7,
+      "sup": 32.3
+     },
+     "homens": {
+      "pct": 32.4,
+      "inf": 29.5,
+      "sup": 35.5
+     },
+     "mulheres": {
+      "pct": 27.7,
+      "inf": 24.9,
+      "sup": 30.7
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 26.8,
+      "inf": 24.9,
+      "sup": 28.9
+     },
+     "homens": {
+      "pct": 30.2,
+      "inf": 27.3,
+      "sup": 33.3
+     },
+     "mulheres": {
+      "pct": 23.7,
+      "inf": 21.3,
+      "sup": 26.3
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 26,
+      "inf": 24,
+      "sup": 28.1
+     },
+     "homens": {
+      "pct": 30,
+      "inf": 27.2,
+      "sup": 33
+     },
+     "mulheres": {
+      "pct": 22.4,
+      "inf": 19.9,
+      "sup": 25.1
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 30.5,
+      "inf": 28.2,
+      "sup": 32.9
+     },
+     "homens": {
+      "pct": 33.2,
+      "inf": 29.9,
+      "sup": 36.7
+     },
+     "mulheres": {
+      "pct": 28.2,
+      "inf": 25.3,
+      "sup": 31.3
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 28.1,
+      "inf": 25.6,
+      "sup": 30.8
+     },
+     "homens": {
+      "pct": 30,
+      "inf": 26.3,
+      "sup": 34.1
+     },
+     "mulheres": {
+      "pct": 26.3,
+      "inf": 22.9,
+      "sup": 30.1
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 29.3,
+      "inf": 26.9,
+      "sup": 31.7
+     },
+     "homens": {
+      "pct": 32.9,
+      "inf": 29.9,
+      "sup": 36.1
+     },
+     "mulheres": {
+      "pct": 25.9,
+      "inf": 22.7,
+      "sup": 29.4
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 42.7,
+      "inf": 39.3,
+      "sup": 46.1
+     },
+     "homens": {
+      "pct": 46.3,
+      "inf": 42,
+      "sup": 50.8
+     },
+     "mulheres": {
+      "pct": 39.6,
+      "inf": 34.9,
+      "sup": 44.5
+     }
+    }
+   }
+  },
+  "frutas-hortalicas": {
+   "id": "frutas-hortalicas",
+   "grupo": "habitos",
+   "nome": "Comem frutas e hortaliças",
+   "detalhe": "Consumo recomendado de hortaliças e frutas",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 7668)",
+    "url": "https://sidra.ibge.gov.br/tabela/7668"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 13,
+      "inf": 12.5,
+      "sup": 13.4
+     },
+     "homens": {
+      "pct": 10.2,
+      "inf": 9.7,
+      "sup": 10.8
+     },
+     "mulheres": {
+      "pct": 15.4,
+      "inf": 14.8,
+      "sup": 16
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 9.5,
+      "inf": 8,
+      "sup": 11.2
+     },
+     "homens": {
+      "pct": 6.7,
+      "inf": 5.1,
+      "sup": 9
+     },
+     "mulheres": {
+      "pct": 12.1,
+      "inf": 10,
+      "sup": 14.4
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 6.7,
+      "inf": 5.6,
+      "sup": 7.9
+     },
+     "homens": {
+      "pct": 4.7,
+      "inf": 3.5,
+      "sup": 6.4
+     },
+     "mulheres": {
+      "pct": 8.5,
+      "inf": 6.8,
+      "sup": 10.6
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 12.2,
+      "inf": 10.6,
+      "sup": 14.1
+     },
+     "homens": {
+      "pct": 12.5,
+      "inf": 10.1,
+      "sup": 15.4
+     },
+     "mulheres": {
+      "pct": 12,
+      "inf": 10.2,
+      "sup": 14.1
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 8.6,
+      "inf": 7,
+      "sup": 10.5
+     },
+     "homens": {
+      "pct": 7.8,
+      "inf": 5.9,
+      "sup": 10.3
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 7.6,
+      "sup": 11.5
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 8.5,
+      "inf": 7.2,
+      "sup": 10
+     },
+     "homens": {
+      "pct": 8.5,
+      "inf": 6.6,
+      "sup": 11.1
+     },
+     "mulheres": {
+      "pct": 8.4,
+      "inf": 7,
+      "sup": 10
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 9.3,
+      "inf": 7.5,
+      "sup": 11.4
+     },
+     "homens": {
+      "pct": 6.3,
+      "inf": 4.5,
+      "sup": 8.9
+     },
+     "mulheres": {
+      "pct": 12,
+      "inf": 9.3,
+      "sup": 15.5
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 11.9,
+      "inf": 10,
+      "sup": 14.1
+     },
+     "homens": {
+      "pct": 7.3,
+      "inf": 5.4,
+      "sup": 9.8
+     },
+     "mulheres": {
+      "pct": 16.3,
+      "inf": 13.5,
+      "sup": 19.5
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 8.1,
+      "inf": 7,
+      "sup": 9.2
+     },
+     "homens": {
+      "pct": 7,
+      "inf": 5.7,
+      "sup": 8.5
+     },
+     "mulheres": {
+      "pct": 9,
+      "inf": 7.7,
+      "sup": 10.6
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 8,
+      "inf": 6.8,
+      "sup": 9.6
+     },
+     "homens": {
+      "pct": 6.2,
+      "inf": 4.3,
+      "sup": 8.9
+     },
+     "mulheres": {
+      "pct": 9.7,
+      "inf": 7.9,
+      "sup": 11.8
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 8,
+      "inf": 7,
+      "sup": 9.1
+     },
+     "homens": {
+      "pct": 7.4,
+      "inf": 6.1,
+      "sup": 8.9
+     },
+     "mulheres": {
+      "pct": 8.5,
+      "inf": 7.3,
+      "sup": 10
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 10.8,
+      "inf": 9.4,
+      "sup": 12.5
+     },
+     "homens": {
+      "pct": 10,
+      "inf": 8,
+      "sup": 12.3
+     },
+     "mulheres": {
+      "pct": 11.6,
+      "inf": 9.6,
+      "sup": 13.9
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 9.6,
+      "inf": 8.2,
+      "sup": 11.2
+     },
+     "homens": {
+      "pct": 8.2,
+      "inf": 6.4,
+      "sup": 10.4
+     },
+     "mulheres": {
+      "pct": 10.9,
+      "inf": 9,
+      "sup": 13.1
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 9.8,
+      "inf": 8.7,
+      "sup": 11.1
+     },
+     "homens": {
+      "pct": 8,
+      "inf": 6.4,
+      "sup": 10.1
+     },
+     "mulheres": {
+      "pct": 11.3,
+      "inf": 9.8,
+      "sup": 13
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 9.1,
+      "inf": 7.7,
+      "sup": 10.7
+     },
+     "homens": {
+      "pct": 7.8,
+      "inf": 5.9,
+      "sup": 10.3
+     },
+     "mulheres": {
+      "pct": 10.2,
+      "inf": 8.4,
+      "sup": 12.2
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 10,
+      "inf": 8.7,
+      "sup": 11.5
+     },
+     "homens": {
+      "pct": 8,
+      "inf": 6.5,
+      "sup": 9.9
+     },
+     "mulheres": {
+      "pct": 11.8,
+      "inf": 9.8,
+      "sup": 14
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 9.1,
+      "inf": 7.8,
+      "sup": 10.5
+     },
+     "homens": {
+      "pct": 6.2,
+      "inf": 4.6,
+      "sup": 8.4
+     },
+     "mulheres": {
+      "pct": 11.6,
+      "inf": 9.9,
+      "sup": 13.6
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 18.3,
+      "inf": 16.5,
+      "sup": 20.4
+     },
+     "homens": {
+      "pct": 14.6,
+      "inf": 12.5,
+      "sup": 17.1
+     },
+     "mulheres": {
+      "pct": 21.6,
+      "inf": 19.2,
+      "sup": 24.3
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 15.7,
+      "inf": 14.1,
+      "sup": 17.3
+     },
+     "homens": {
+      "pct": 11.5,
+      "inf": 9.5,
+      "sup": 13.9
+     },
+     "mulheres": {
+      "pct": 19.4,
+      "inf": 16.8,
+      "sup": 22.2
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 14,
+      "inf": 12.8,
+      "sup": 15.2
+     },
+     "homens": {
+      "pct": 11.4,
+      "inf": 9.9,
+      "sup": 13.1
+     },
+     "mulheres": {
+      "pct": 16,
+      "inf": 14.3,
+      "sup": 17.9
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 15.7,
+      "inf": 14.3,
+      "sup": 17.1
+     },
+     "homens": {
+      "pct": 12.5,
+      "inf": 10.7,
+      "sup": 14.6
+     },
+     "mulheres": {
+      "pct": 18.4,
+      "inf": 16.7,
+      "sup": 20.4
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 11.6,
+      "inf": 10.5,
+      "sup": 12.9
+     },
+     "homens": {
+      "pct": 8,
+      "inf": 6.7,
+      "sup": 9.6
+     },
+     "mulheres": {
+      "pct": 14.8,
+      "inf": 13,
+      "sup": 16.8
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 11.4,
+      "inf": 10,
+      "sup": 13
+     },
+     "homens": {
+      "pct": 8.8,
+      "inf": 7.2,
+      "sup": 10.8
+     },
+     "mulheres": {
+      "pct": 13.8,
+      "inf": 11.7,
+      "sup": 16.3
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 11.8,
+      "inf": 10.7,
+      "sup": 13.1
+     },
+     "homens": {
+      "pct": 7.4,
+      "inf": 6.1,
+      "sup": 9
+     },
+     "mulheres": {
+      "pct": 15.8,
+      "inf": 13.9,
+      "sup": 17.8
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 10.1,
+      "inf": 8.8,
+      "sup": 11.6
+     },
+     "homens": {
+      "pct": 7.8,
+      "inf": 6.2,
+      "sup": 9.8
+     },
+     "mulheres": {
+      "pct": 12.1,
+      "inf": 10.3,
+      "sup": 14.2
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 13.7,
+      "inf": 11.7,
+      "sup": 16.1
+     },
+     "homens": {
+      "pct": 8.8,
+      "inf": 7,
+      "sup": 11.1
+     },
+     "mulheres": {
+      "pct": 18.3,
+      "inf": 15,
+      "sup": 22
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 14.7,
+      "inf": 12.9,
+      "sup": 16.8
+     },
+     "homens": {
+      "pct": 11.7,
+      "inf": 9.4,
+      "sup": 14.3
+     },
+     "mulheres": {
+      "pct": 17.6,
+      "inf": 15,
+      "sup": 20.5
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 23.8,
+      "inf": 21.1,
+      "sup": 26.8
+     },
+     "homens": {
+      "pct": 18.4,
+      "inf": 15.2,
+      "sup": 21.9
+     },
+     "mulheres": {
+      "pct": 28.4,
+      "inf": 24.6,
+      "sup": 32.6
+     }
+    }
+   }
+  },
+  "alcool": {
+   "id": "alcool",
+   "grupo": "habitos",
+   "nome": "Bebem álcool",
+   "detalhe": "Uma vez por semana ou mais",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 4400)",
+    "url": "https://sidra.ibge.gov.br/tabela/4400"
+   },
+   "niveis": "estados",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 26.4,
+      "inf": 25.8,
+      "sup": 26.9
+     },
+     "homens": {
+      "pct": 37.1,
+      "inf": 36.2,
+      "sup": 37.9
+     },
+     "mulheres": {
+      "pct": 17,
+      "inf": 16.3,
+      "sup": 17.6
+     }
+    },
+    "RO": {
+     "total": {
+      "pct": 18.5,
+      "inf": 16.3,
+      "sup": 20.9
+     },
+     "homens": {
+      "pct": 26.8,
+      "inf": 23.3,
+      "sup": 30.6
+     },
+     "mulheres": {
+      "pct": 10.5,
+      "inf": 8.3,
+      "sup": 13.2
+     }
+    },
+    "AC": {
+     "total": {
+      "pct": 12.8,
+      "inf": 11.1,
+      "sup": 14.7
+     },
+     "homens": {
+      "pct": 16.4,
+      "inf": 13.7,
+      "sup": 19.5
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 7.6,
+      "sup": 11.7
+     }
+    },
+    "AM": {
+     "total": {
+      "pct": 14.4,
+      "inf": 13,
+      "sup": 16
+     },
+     "homens": {
+      "pct": 21.5,
+      "inf": 19.2,
+      "sup": 23.9
+     },
+     "mulheres": {
+      "pct": 7.8,
+      "inf": 6.3,
+      "sup": 9.5
+     }
+    },
+    "RR": {
+     "total": {
+      "pct": 20.7,
+      "inf": 18.4,
+      "sup": 23.3
+     },
+     "homens": {
+      "pct": 32,
+      "inf": 27.8,
+      "sup": 36.5
+     },
+     "mulheres": {
+      "pct": 9.8,
+      "inf": 7.9,
+      "sup": 12.2
+     }
+    },
+    "PA": {
+     "total": {
+      "pct": 17.3,
+      "inf": 15.7,
+      "sup": 19
+     },
+     "homens": {
+      "pct": 26.4,
+      "inf": 23.7,
+      "sup": 29.3
+     },
+     "mulheres": {
+      "pct": 8.9,
+      "inf": 7.2,
+      "sup": 11
+     }
+    },
+    "AP": {
+     "total": {
+      "pct": 20.6,
+      "inf": 18.1,
+      "sup": 23.2
+     },
+     "homens": {
+      "pct": 28.8,
+      "inf": 23.9,
+      "sup": 34.2
+     },
+     "mulheres": {
+      "pct": 12.9,
+      "inf": 10.2,
+      "sup": 16.2
+     }
+    },
+    "TO": {
+     "total": {
+      "pct": 21.4,
+      "inf": 19.2,
+      "sup": 23.9
+     },
+     "homens": {
+      "pct": 31.1,
+      "inf": 27.5,
+      "sup": 34.8
+     },
+     "mulheres": {
+      "pct": 12.1,
+      "inf": 9.7,
+      "sup": 15
+     }
+    },
+    "MA": {
+     "total": {
+      "pct": 17.1,
+      "inf": 15.8,
+      "sup": 18.4
+     },
+     "homens": {
+      "pct": 25.8,
+      "inf": 23.6,
+      "sup": 28.1
+     },
+     "mulheres": {
+      "pct": 9.3,
+      "inf": 7.9,
+      "sup": 10.8
+     }
+    },
+    "PI": {
+     "total": {
+      "pct": 22.2,
+      "inf": 19.7,
+      "sup": 25.1
+     },
+     "homens": {
+      "pct": 33.6,
+      "inf": 29.9,
+      "sup": 37.5
+     },
+     "mulheres": {
+      "pct": 12,
+      "inf": 9.3,
+      "sup": 15.3
+     }
+    },
+    "CE": {
+     "total": {
+      "pct": 16.1,
+      "inf": 14.7,
+      "sup": 17.6
+     },
+     "homens": {
+      "pct": 24.5,
+      "inf": 22.1,
+      "sup": 27.1
+     },
+     "mulheres": {
+      "pct": 8.8,
+      "inf": 7.4,
+      "sup": 10.5
+     }
+    },
+    "RN": {
+     "total": {
+      "pct": 20,
+      "inf": 18.1,
+      "sup": 22.2
+     },
+     "homens": {
+      "pct": 32.3,
+      "inf": 28.5,
+      "sup": 36.3
+     },
+     "mulheres": {
+      "pct": 9.6,
+      "inf": 7.8,
+      "sup": 11.6
+     }
+    },
+    "PB": {
+     "total": {
+      "pct": 18.5,
+      "inf": 16.7,
+      "sup": 20.4
+     },
+     "homens": {
+      "pct": 30.5,
+      "inf": 27.5,
+      "sup": 33.8
+     },
+     "mulheres": {
+      "pct": 8,
+      "inf": 6.3,
+      "sup": 10
+     }
+    },
+    "PE": {
+     "total": {
+      "pct": 19.1,
+      "inf": 17.6,
+      "sup": 20.8
+     },
+     "homens": {
+      "pct": 29.5,
+      "inf": 26.7,
+      "sup": 32.4
+     },
+     "mulheres": {
+      "pct": 10.7,
+      "inf": 9.1,
+      "sup": 12.6
+     }
+    },
+    "AL": {
+     "total": {
+      "pct": 16,
+      "inf": 14.1,
+      "sup": 18.1
+     },
+     "homens": {
+      "pct": 23.8,
+      "inf": 20.5,
+      "sup": 27.5
+     },
+     "mulheres": {
+      "pct": 9.4,
+      "inf": 7.5,
+      "sup": 11.7
+     }
+    },
+    "SE": {
+     "total": {
+      "pct": 26.6,
+      "inf": 24.6,
+      "sup": 28.7
+     },
+     "homens": {
+      "pct": 40,
+      "inf": 36.7,
+      "sup": 43.4
+     },
+     "mulheres": {
+      "pct": 14.7,
+      "inf": 12.6,
+      "sup": 17
+     }
+    },
+    "BA": {
+     "total": {
+      "pct": 26.7,
+      "inf": 25,
+      "sup": 28.5
+     },
+     "homens": {
+      "pct": 36.6,
+      "inf": 33.4,
+      "sup": 39.9
+     },
+     "mulheres": {
+      "pct": 17.9,
+      "inf": 15.9,
+      "sup": 20.2
+     }
+    },
+    "MG": {
+     "total": {
+      "pct": 30.3,
+      "inf": 28.2,
+      "sup": 32.5
+     },
+     "homens": {
+      "pct": 39.8,
+      "inf": 36.7,
+      "sup": 42.9
+     },
+     "mulheres": {
+      "pct": 21.8,
+      "inf": 19.3,
+      "sup": 24.6
+     }
+    },
+    "ES": {
+     "total": {
+      "pct": 26.7,
+      "inf": 24.7,
+      "sup": 28.7
+     },
+     "homens": {
+      "pct": 36.2,
+      "inf": 33.3,
+      "sup": 39.2
+     },
+     "mulheres": {
+      "pct": 18.1,
+      "inf": 15.6,
+      "sup": 20.8
+     }
+    },
+    "RJ": {
+     "total": {
+      "pct": 26.3,
+      "inf": 24.8,
+      "sup": 27.9
+     },
+     "homens": {
+      "pct": 35.2,
+      "inf": 32.8,
+      "sup": 37.6
+     },
+     "mulheres": {
+      "pct": 19.2,
+      "inf": 17.2,
+      "sup": 21.3
+     }
+    },
+    "SP": {
+     "total": {
+      "pct": 31,
+      "inf": 29.3,
+      "sup": 32.7
+     },
+     "homens": {
+      "pct": 43.4,
+      "inf": 40.8,
+      "sup": 46
+     },
+     "mulheres": {
+      "pct": 20,
+      "inf": 17.9,
+      "sup": 22.3
+     }
+    },
+    "PR": {
+     "total": {
+      "pct": 28.5,
+      "inf": 26.2,
+      "sup": 30.9
+     },
+     "homens": {
+      "pct": 40.5,
+      "inf": 36.8,
+      "sup": 44.3
+     },
+     "mulheres": {
+      "pct": 17.8,
+      "inf": 15.7,
+      "sup": 20
+     }
+    },
+    "SC": {
+     "total": {
+      "pct": 31,
+      "inf": 29.1,
+      "sup": 33
+     },
+     "homens": {
+      "pct": 45.3,
+      "inf": 42.2,
+      "sup": 48.5
+     },
+     "mulheres": {
+      "pct": 17.6,
+      "inf": 15.6,
+      "sup": 19.8
+     }
+    },
+    "RS": {
+     "total": {
+      "pct": 34,
+      "inf": 31.7,
+      "sup": 36.5
+     },
+     "homens": {
+      "pct": 47.4,
+      "inf": 43.9,
+      "sup": 51
+     },
+     "mulheres": {
+      "pct": 22.1,
+      "inf": 19.5,
+      "sup": 25
+     }
+    },
+    "MS": {
+     "total": {
+      "pct": 31.3,
+      "inf": 29.1,
+      "sup": 33.7
+     },
+     "homens": {
+      "pct": 42.8,
+      "inf": 39.6,
+      "sup": 46.1
+     },
+     "mulheres": {
+      "pct": 21.2,
+      "inf": 18.2,
+      "sup": 24.5
+     }
+    },
+    "MT": {
+     "total": {
+      "pct": 28.2,
+      "inf": 25.6,
+      "sup": 30.9
+     },
+     "homens": {
+      "pct": 39.8,
+      "inf": 35.6,
+      "sup": 44.1
+     },
+     "mulheres": {
+      "pct": 17.5,
+      "inf": 15,
+      "sup": 20.2
+     }
+    },
+    "GO": {
+     "total": {
+      "pct": 25.8,
+      "inf": 23.7,
+      "sup": 28
+     },
+     "homens": {
+      "pct": 34.9,
+      "inf": 31.2,
+      "sup": 38.9
+     },
+     "mulheres": {
+      "pct": 17.4,
+      "inf": 14.7,
+      "sup": 20.5
+     }
+    },
+    "DF": {
+     "total": {
+      "pct": 26.2,
+      "inf": 23.7,
+      "sup": 28.9
+     },
+     "homens": {
+      "pct": 33,
+      "inf": 29.2,
+      "sup": 37.2
+     },
+     "mulheres": {
+      "pct": 20.4,
+      "inf": 17.4,
+      "sup": 23.7
+     }
+    }
+   }
+  },
+  "obesidade": {
+   "id": "obesidade",
+   "grupo": "habitos",
+   "nome": "Obesidade",
+   "detalhe": "Índice de massa corporal 30 ou mais, medido",
+   "fonte": {
+    "nome": "IBGE",
+    "publicacao": "Pesquisa Nacional de Saúde 2019 (tabela 8168)",
+    "url": "https://sidra.ibge.gov.br/tabela/8168"
+   },
+   "niveis": "brasil",
+   "valores": {
+    "BR": {
+     "total": {
+      "pct": 25.9,
+      "inf": 22.9,
+      "sup": 29.2
+     },
+     "homens": {
+      "pct": 21.8,
+      "inf": 19.1,
+      "sup": 24.7
+     },
+     "mulheres": {
+      "pct": 29.5,
+      "inf": 25.4,
+      "sup": 34
+     }
+    }
+   }
+  }
+ }
+}

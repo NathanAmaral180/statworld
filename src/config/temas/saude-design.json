@@ -1,0 +1,659 @@
+{
+ "_explicacao": "Configuração das telas de Saúde fiéis ao design da rodada 7 (design/rodada-7-saude/codigo/config-saude.js), sem os números de exemplo. Os números vêm de dados/saude/ (src/lib/saude-design.ts). Abas com emBreve ainda não têm dado.",
+ "theme": "Saúde",
+ "links": {
+  "demografia": "/demografia",
+  "expvida": "/demografia/esperanca-de-vida",
+  "contas": "/economia/contas-publicas"
+ },
+ "country": {
+  "key": "BR",
+  "name": "Brasil",
+  "title": "A saúde do Brasil",
+  "Unit": "Estado",
+  "unit": "estado",
+  "units": "estados",
+  "regionLabel": "Região",
+  "regions": [
+   "Norte",
+   "Nordeste",
+   "Sudeste",
+   "Sul",
+   "Centro-Oeste"
+  ],
+  "def": "SP"
+ },
+ "sub": {
+  "SP": {
+   "key": "SP",
+   "name": "São Paulo",
+   "title": "A saúde de São Paulo",
+   "of": "de São Paulo",
+   "Unit": "Município",
+   "unit": "município",
+   "units": "municípios",
+   "regionLabel": "Região intermediária",
+   "flag": {
+    "light": "oklch(0.56 0.19 27)",
+    "dark": "oklch(0.68 0.17 27)"
+   },
+   "def": "3509502",
+   "ficha": "3507506"
+  }
+ },
+ "small": {
+  "avg3": 20000,
+  "few": 5000,
+  "rare": 100000
+ },
+ "years": {
+  "first": 2015,
+  "last": 2025,
+  "prel": 1,
+  "final": 2024
+ },
+ "TABS": [
+  {
+   "k": "geral",
+   "g": "Visão geral",
+   "s": "Visão geral",
+   "items": [
+    [
+     "geral",
+     "Visão geral"
+    ]
+   ]
+  },
+  {
+   "k": "vida",
+   "g": "Nascer e morrer",
+   "s": "Vida",
+   "items": [
+    [
+     "obitos",
+     "Causas de morte"
+    ],
+    [
+     "infantil",
+     "Mortalidade infantil e materna"
+    ],
+    [
+     "nasc",
+     "Nascimentos"
+    ],
+    [
+     "expvida",
+     "Esperança de vida"
+    ]
+   ]
+  },
+  {
+   "k": "prev",
+   "g": "Prevenção e hábitos",
+   "s": "Prevenção",
+   "items": [
+    [
+     "vac",
+     "Vacinação"
+    ],
+    [
+     "doencas",
+     "Doenças acompanhadas"
+    ],
+    [
+     "pns",
+     "Como as pessoas estão"
+    ]
+   ]
+  },
+  {
+   "k": "cuid",
+   "g": "Atendimento",
+   "s": "Atendimento",
+   "items": [
+    [
+     "rede",
+     "Rede de saúde"
+    ],
+    [
+     "sus",
+     "Internações e procedimentos"
+    ]
+   ]
+  },
+  {
+   "k": "rec",
+   "g": "Gasto e planos",
+   "s": "Gasto",
+   "items": [
+    [
+     "gasto",
+     "Gasto público"
+    ],
+    [
+     "planos",
+     "Planos de saúde"
+    ]
+   ]
+  }
+ ],
+ "src": {
+  "sim": "Ministério da Saúde, SIM",
+  "sinasc": "Ministério da Saúde, SINASC",
+  "pni": "Ministério da Saúde, SI-PNI",
+  "cnes": "Ministério da Saúde, CNES",
+  "sih": "Ministério da Saúde, SIH/SUS",
+  "sia": "Ministério da Saúde, SIA/SUS",
+  "sinan": "Ministério da Saúde, SINAN",
+  "siops": "Ministério da Saúde, SIOPS",
+  "ans": "ANS, Beneficiários",
+  "pns": "IBGE, Pesquisa Nacional de Saúde",
+  "pop": "IBGE, Estimativas de população",
+  "calc": "StatWorld, cálculo com CNES e IBGE"
+ },
+ "measures": {
+  "mort": {
+   "l": "Mortes",
+   "long": "Mortes por 100 mil habitantes, padronizadas por idade",
+   "h": "Mortes por 100 mil habitantes em 2024",
+   "unit": "por 100 mil",
+   "col": "Por 100 mil",
+   "ph": "000,0",
+   "src": "sim",
+   "ref": "2024",
+   "f": "anual",
+   "avg3": true,
+   "what": "Quantas pessoas morreram em um ano para cada 100 mil habitantes, como se todos os lugares tivessem a mesma distribuição de idade. Assim um lugar com mais idosos não aparece com taxa maior só por isso."
+  },
+  "inf": {
+   "l": "Mortalidade infantil",
+   "long": "Mortes antes de 1 ano de idade por mil nascidos vivos",
+   "h": "Mortalidade infantil em 2024",
+   "unit": "por mil nascidos vivos",
+   "col": "Por mil nasc.",
+   "ph": "00,0",
+   "src": "sim",
+   "ref": "2024",
+   "f": "anual",
+   "avg3": true,
+   "what": "Quantos bebês morreram antes de completar 1 ano para cada mil que nasceram vivos."
+  },
+  "mat": {
+   "l": "Mortalidade materna",
+   "long": "Mortes maternas por 100 mil nascidos vivos",
+   "h": "Mortalidade materna, média de 2022 a 2024",
+   "unit": "por 100 mil nascidos vivos",
+   "col": "Por 100 mil nasc.",
+   "ph": "00,0",
+   "src": "sim",
+   "ref": "2022–2024",
+   "f": "anual",
+   "rare": true,
+   "what": "Mortes de mulheres durante a gravidez, o parto ou até 42 dias depois, por causas ligadas à gestação, para cada 100 mil nascidos vivos. Como são poucos casos por ano, usamos a média de três anos e mostramos a faixa provável."
+  },
+  "med": {
+   "l": "Médicos",
+   "long": "Médicos por mil habitantes",
+   "h": "Médicos por mil habitantes",
+   "unit": "por mil habitantes",
+   "col": "Por mil hab.",
+   "ph": "0,0",
+   "src": "cnes",
+   "ref": "out 2026",
+   "f": "mensal",
+   "what": "Médicos com cadastro ativo em estabelecimentos de saúde do lugar, públicos e privados, para cada mil habitantes. Um médico que trabalha em dois lugares conta nos dois."
+  },
+  "enf": {
+   "l": "Enfermeiros",
+   "long": "Enfermeiros por mil habitantes",
+   "h": "Enfermeiros por mil habitantes",
+   "unit": "por mil habitantes",
+   "col": "Por mil hab.",
+   "ph": "0,0",
+   "src": "cnes",
+   "ref": "out 2026",
+   "f": "mensal",
+   "what": "Enfermeiros com cadastro ativo, para cada mil habitantes."
+  },
+  "leitos": {
+   "l": "Leitos SUS",
+   "long": "Leitos de internação do SUS por mil habitantes",
+   "h": "Leitos do SUS por mil habitantes",
+   "unit": "por mil habitantes",
+   "col": "Por mil hab.",
+   "ph": "0,0",
+   "src": "cnes",
+   "ref": "out 2026",
+   "f": "mensal",
+   "what": "Leitos de internação disponíveis para o SUS, para cada mil habitantes."
+  },
+  "leitosp": {
+   "l": "Leitos não SUS",
+   "long": "Leitos de internação fora do SUS por mil habitantes",
+   "h": "Leitos fora do SUS por mil habitantes",
+   "unit": "por mil habitantes",
+   "col": "Por mil hab.",
+   "ph": "0,0",
+   "src": "cnes",
+   "ref": "out 2026",
+   "f": "mensal",
+   "what": "Leitos de internação de hospitais privados ou de planos, sem convênio com o SUS, para cada mil habitantes."
+  },
+  "uti": {
+   "l": "Leitos de UTI",
+   "long": "Leitos de UTI por 10 mil habitantes",
+   "h": "Leitos de UTI por 10 mil habitantes",
+   "unit": "por 10 mil habitantes",
+   "col": "Por 10 mil hab.",
+   "ph": "0,0",
+   "src": "cnes",
+   "ref": "out 2026",
+   "f": "mensal",
+   "what": "Leitos de terapia intensiva, SUS e não SUS, para cada 10 mil habitantes."
+  },
+  "gasto": {
+   "l": "Gasto público",
+   "long": "Gasto público em saúde por habitante",
+   "h": "Gasto público em saúde por habitante em 2025",
+   "unit": "por habitante",
+   "col": "R$ por hab.",
+   "ph": "R$ 0.000",
+   "src": "siops",
+   "ref": "2025",
+   "f": "anual",
+   "what": "Quanto União, estado e município gastaram com saúde no lugar, dividido pela população. Não inclui o que as pessoas e as empresas pagam em planos e consultas particulares.",
+   "emBreve": true
+  },
+  "planos": {
+   "l": "Planos de saúde",
+   "long": "Pessoas com plano de assistência médica, em % da população",
+   "h": "Parte da população com plano de saúde",
+   "unit": "% da população",
+   "col": "% da pop.",
+   "ph": "00,0%",
+   "src": "ans",
+   "ref": "set 2026",
+   "f": "mensal",
+   "what": "Beneficiários de planos de assistência médica, contados pelo município de residência informado no contrato, divididos pela população. Planos só odontológicos ficam de fora."
+  },
+  "vac": {
+   "l": "Vacinação infantil",
+   "long": "Cobertura média das vacinas do calendário infantil",
+   "h": "Cobertura vacinal infantil em 2025",
+   "unit": "% das crianças",
+   "col": "Cobertura",
+   "ph": "00,0%",
+   "src": "pni",
+   "ref": "2025",
+   "f": "anual",
+   "prel": true,
+   "what": "Média da cobertura das vacinas do calendário até 1 ano de idade: doses aplicadas divididas pelo número de crianças da idade.",
+   "emBreve": true
+  },
+  "dengue": {
+   "l": "Dengue",
+   "long": "Casos prováveis de dengue por 100 mil habitantes, últimas 4 semanas",
+   "h": "Dengue nas últimas 4 semanas",
+   "unit": "por 100 mil",
+   "col": "Por 100 mil",
+   "ph": "00,0",
+   "src": "sinan",
+   "ref": "semanas 00 a 00",
+   "f": "semanal",
+   "prel": true,
+   "what": "Casos prováveis notificados nas últimas quatro semanas epidemiológicas, por 100 mil habitantes.",
+   "emBreve": true
+  }
+ },
+ "overview": [
+  "mort",
+  "inf",
+  "med",
+  "planos"
+ ],
+ "causes": [
+  {
+   "k": "circ",
+   "n": "Doenças do coração e da circulação",
+   "s": "Coração e circulação",
+   "cid": "I00–I99",
+   "c": "var(--c1)",
+   "cap": [
+    "IX"
+   ]
+  },
+  {
+   "k": "cancer",
+   "n": "Câncer",
+   "s": "Câncer",
+   "cid": "C00–D48",
+   "c": "var(--c2)",
+   "cap": [
+    "II"
+   ]
+  },
+  {
+   "k": "ext",
+   "n": "Causas externas: acidentes e violência",
+   "s": "Causas externas",
+   "cid": "V01–Y98",
+   "c": "var(--c3)",
+   "cap": [
+    "XX"
+   ]
+  },
+  {
+   "k": "resp",
+   "n": "Doenças respiratórias",
+   "s": "Respiratórias",
+   "cid": "J00–J99",
+   "c": "var(--c4)",
+   "cap": [
+    "X"
+   ]
+  },
+  {
+   "k": "endo",
+   "n": "Diabetes e outras doenças endócrinas",
+   "s": "Diabetes e endócrinas",
+   "cid": "E00–E90",
+   "c": "var(--c5)",
+   "cap": [
+    "IV"
+   ]
+  },
+  {
+   "k": "dig",
+   "n": "Doenças digestivas",
+   "s": "Digestivas",
+   "cid": "K00–K93",
+   "c": "var(--c9)",
+   "cap": [
+    "XI"
+   ]
+  },
+  {
+   "k": "inf",
+   "n": "Doenças infecciosas, inclusive covid-19",
+   "s": "Infecciosas e covid-19",
+   "cid": "A00–B99",
+   "c": "var(--c6)",
+   "cap": [
+    "I"
+   ]
+  },
+  {
+   "k": "nerv",
+   "n": "Doenças do sistema nervoso",
+   "s": "Sistema nervoso",
+   "cid": "G00–G99",
+   "c": "var(--c8)",
+   "cap": [
+    "VI"
+   ]
+  },
+  {
+   "k": "out",
+   "n": "Outras causas",
+   "s": "Outras",
+   "cid": "demais capítulos",
+   "c": "var(--bar)",
+   "cap": [
+    "III",
+    "V",
+    "VII",
+    "VIII",
+    "XII",
+    "XIII",
+    "XIV",
+    "XV",
+    "XVI",
+    "XVII",
+    "XIX",
+    "XXI",
+    "XXII"
+   ]
+  },
+  {
+   "k": "mal",
+   "n": "Causa mal definida",
+   "s": "Mal definida",
+   "cid": "R00–R99",
+   "c": "hatch",
+   "quality": true,
+   "cap": [
+    "XVIII"
+   ]
+  }
+ ],
+ "ages": [
+  [
+   "0",
+   "Menos de 1 ano"
+  ],
+  [
+   "1–14",
+   "1 a 14 anos"
+  ],
+  [
+   "15–29",
+   "15 a 29 anos"
+  ],
+  [
+   "30–49",
+   "30 a 49 anos"
+  ],
+  [
+   "50–69",
+   "50 a 69 anos"
+  ],
+  [
+   "70+",
+   "70 anos ou mais"
+  ]
+ ],
+ "births": [
+  {
+   "k": "pre",
+   "t": "Mães com 7 ou mais consultas de pré-natal",
+   "d": "Número de consultas declarado na declaração de nascido vivo."
+  },
+  {
+   "k": "ces",
+   "t": "Partos cesáreos",
+   "d": "Inclui cesáreas agendadas e de urgência."
+  },
+  {
+   "k": "ado",
+   "t": "Mães com até 19 anos",
+   "d": "Idade da mãe no dia do parto."
+  },
+  {
+   "k": "bp",
+   "t": "Bebês com menos de 2,5 kg",
+   "d": "Baixo peso ao nascer, pela classificação da OMS."
+  }
+ ],
+ "pns": {
+  "self": [
+   [
+    "Boa ou muito boa",
+    "var(--r4)"
+   ],
+   [
+    "Regular, ruim ou muito ruim",
+    "var(--g1)"
+   ]
+  ],
+  "groups": [
+   [
+    "Total",
+    "total"
+   ],
+   [
+    "Mulheres",
+    "mulheres"
+   ],
+   [
+    "Homens",
+    "homens"
+   ]
+  ],
+  "chronic": [
+   [
+    "hipertensao",
+    "Pressão alta",
+    "Diagnóstico de hipertensão por médico"
+   ],
+   [
+    "diabetes",
+    "Diabetes",
+    "Diagnóstico por médico"
+   ],
+   [
+    "colesterol",
+    "Colesterol alto",
+    "Diagnóstico por médico"
+   ],
+   [
+    "depressao",
+    "Depressão",
+    "Diagnóstico por profissional de saúde mental"
+   ],
+   [
+    "asma",
+    "Asma",
+    "Diagnóstico por médico"
+   ],
+   [
+    "coracao",
+    "Doença do coração",
+    "Diagnóstico por médico"
+   ]
+  ],
+  "habits": [
+   [
+    "fumam",
+    "Fumam",
+    "Fumantes atuais de tabaco"
+   ],
+   [
+    "atividade-fisica",
+    "Atividade física no tempo livre",
+    "Nível recomendado no lazer"
+   ],
+   [
+    "frutas-hortalicas",
+    "Comem frutas e hortaliças",
+    "Consumo recomendado"
+   ],
+   [
+    "alcool",
+    "Bebem álcool",
+    "Uma vez por semana ou mais"
+   ],
+   [
+    "obesidade",
+    "Obesidade",
+    "Índice de massa corporal 30 ou mais, medido"
+   ]
+  ],
+  "year": "2019",
+  "selfId": "autoavaliacao-boa"
+ },
+ "rotas": {
+  "BR": {
+   "geral": "/saude",
+   "obitos": "/saude/causas-de-morte",
+   "infantil": "/saude/mortalidade-infantil-e-materna",
+   "nasc": "/saude/nascimentos",
+   "pns": "/saude/como-as-pessoas-estao",
+   "rede": "/saude/rede-de-saude",
+   "planos": "/saude/planos-de-saude"
+  },
+  "SP": {
+   "geral": "/sp/saude",
+   "obitos": "/sp/saude/causas-de-morte",
+   "infantil": "/sp/saude/mortalidade-infantil-e-materna",
+   "nasc": "/sp/saude/nascimentos",
+   "pns": "/sp/saude/como-as-pessoas-estao",
+   "rede": "/sp/saude/rede-de-saude",
+   "planos": "/sp/saude/planos-de-saude",
+   "ficha": "/sp/saude/municipio"
+  }
+ },
+ "emBreve": {
+  "vac": "SI-PNI (Ministério da Saúde)",
+  "doencas": "SINAN e InfoDengue",
+  "sus": "SIH/SUS e SIA/SUS",
+  "gasto": "SIOPS",
+  "rede_tempo": "cálculo com CNES e IBGE"
+ },
+ "notaCovid": "No Brasil, as mortes por covid-19 são registradas no SIM com o código B34.2, do capítulo de doenças infecciosas. Por isso elas aparecem dentro de Infecciosas.",
+ "paginas": {
+  "BR": {
+   "geral": [
+    "A saúde do Brasil",
+    "Mortes por idade padronizada, mortalidade infantil, médicos e planos de saúde em cada estado, com dados do Ministério da Saúde, da ANS e do IBGE."
+   ],
+   "obitos": [
+    "Causas de morte · A saúde do Brasil",
+    "De que se morre no Brasil e em cada estado: cada 100 mortes por grupo de causas da CID-10 e as taxas ao longo do tempo."
+   ],
+   "infantil": [
+    "Mortalidade infantil e materna · A saúde do Brasil",
+    "Mortes de bebês antes de 1 ano e mortes maternas em cada estado, com a faixa provável e a série desde 2015."
+   ],
+   "nasc": [
+    "Nascimentos · A saúde do Brasil",
+    "Cada 100 bebês nascidos no Brasil e em cada estado: pré-natal, cesáreas, mães com até 19 anos e baixo peso ao nascer."
+   ],
+   "pns": [
+    "Como as pessoas estão · A saúde do Brasil",
+    "Saúde autoavaliada, doenças crônicas e hábitos no Brasil e em cada estado, pela Pesquisa Nacional de Saúde do IBGE, com a margem da pesquisa."
+   ],
+   "rede": [
+    "Rede de saúde · A saúde do Brasil",
+    "Médicos, enfermeiros, leitos do SUS e fora do SUS e leitos de UTI por habitante em cada estado, pelo CNES do Ministério da Saúde."
+   ],
+   "planos": [
+    "Planos de saúde · A saúde do Brasil",
+    "Parte da população com plano de assistência médica em cada estado, pelos dados da ANS."
+   ]
+  },
+  "SP": {
+   "geral": [
+    "A saúde de São Paulo",
+    "A saúde de São Paulo município por município: mortes padronizadas por idade, mortalidade infantil, médicos e planos de saúde, com mapa, ranking e ficha de cada cidade."
+   ],
+   "obitos": [
+    "Causas de morte · A saúde de São Paulo",
+    "De que se morre em cada município de São Paulo: cada 100 mortes por grupo de causas da CID-10 e as taxas ao longo do tempo."
+   ],
+   "infantil": [
+    "Mortalidade infantil e materna · A saúde de São Paulo",
+    "Mortalidade infantil e materna em cada município de São Paulo, com média de 3 anos nas cidades pequenas."
+   ],
+   "nasc": [
+    "Nascimentos · A saúde de São Paulo",
+    "Cada 100 bebês nascidos em cada município de São Paulo: pré-natal, cesáreas, mães com até 19 anos e baixo peso."
+   ],
+   "pns": [
+    "Como as pessoas estão · A saúde de São Paulo",
+    "Saúde autoavaliada, doenças crônicas e hábitos em São Paulo, pela Pesquisa Nacional de Saúde do IBGE (só o número do estado)."
+   ],
+   "rede": [
+    "Rede de saúde · A saúde de São Paulo",
+    "Médicos, enfermeiros e leitos por habitante em cada município de São Paulo, pelo CNES do Ministério da Saúde."
+   ],
+   "planos": [
+    "Planos de saúde · A saúde de São Paulo",
+    "Parte da população com plano de assistência médica em cada município de São Paulo, pelos dados da ANS."
+   ],
+   "ficha": [
+    "Ficha de saúde do município · São Paulo",
+    "Os números de saúde de um município de São Paulo ao lado do estado e do Brasil: mortes, nascimentos, rede de saúde e planos."
+   ]
+  }
+ }
+}

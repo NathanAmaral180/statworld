@@ -23,6 +23,8 @@ A rotina está em `.github/workflows/atualizar-dados.yml`. O programa que roda o
 | SP: atividade econômica mensal (Seade, Banco Central) | todo dia | mensal |
 | SP: exportações e importações por município (Comex Stat) | todo dia | mensal |
 | Empregos com carteira por município (Novo Caged) | segundas-feiras (só baixa os meses novos) | mensal |
+| Saúde: médicos, enfermeiros e leitos (CNES, TabNet) | segundas-feiras | mensal |
+| Saúde: planos de saúde (ANS TabNet) | segundas-feiras | mensal |
 
 Rodar todo dia não faz mal: se a fonte ainda não publicou nada novo, nada muda no site.
 
@@ -63,6 +65,7 @@ node scripts/atualizar/rodar.mjs --semanal
 ```
 
 ## O que os testes mostraram (23 nov 2026)
+- **Saúde:** nascimentos e mortes (`scripts/saude-vital/`, demora uns 10 minutos) e a Pesquisa Nacional de Saúde (`scripts/saude-pns/`) continuam à mão; rodar quando o DATASUS fechar um ano novo.
 - **Funcionam no robô:** Banco Central (dólar, Selic, crédito, dívida), IBGE (PNAD, IPCA), Ipeadata (cesta básica, salário mínimo), Comex Stat e o servidor do Novo Caged.
 - **Site do Tesouro Transparente:** às vezes responde "403" (acesso negado), inclusive de computadores no Brasil, provavelmente uma proteção depois de muitos pedidos. Por isso o script de Contas públicas mantém os arquivos do Tesouro quando o site não responde. Esses dados mudam uma vez por ano, e a dívida, que vem do Banco Central, continua sendo atualizada. O resumo da execução mostra um aviso quando isso acontece.
 - A rotina também roda sozinha sempre que um script de dados é alterado no GitHub. Assim, cada mudança nos scripts é testada na hora.

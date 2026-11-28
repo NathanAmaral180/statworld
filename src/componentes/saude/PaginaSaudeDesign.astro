@@ -1,0 +1,44 @@
+---
+// Telas de Saúde FIÉIS ao design da rodada 7: o mesmo desenho, o mesmo código (public/saude/js/, copiado de
+// design/rodada-7-saude/codigo/ e ligado aos dados) e os mesmos estilos (design.css, só dentro de .dss).
+// Os números vêm dos nossos scripts: src/lib/saude-design.ts monta window.SW_SAUDE. Cabeçalho e rodapé são os do site.
+import Base from '../../layouts/Base.astro';
+import EspacoAnuncio from '../EspacoAnuncio.astro';
+import { dadosSaude, configSaude } from '../../lib/saude-design';
+import demoCfg from '../../config/temas/demografia-design.json';
+import './design.css';
+
+interface Props { pais: any; aba: string; uf?: string }
+const { pais, aba, uf } = Astro.props;
+const lv = uf ?? 'BR';
+const config = configSaude(pais, uf);
+const [titulo, descricao] = config.paginas[lv][aba];
+const dados = dadosSaude(pais, uf);
+// Estados (sigla: [nome, região]): a mesma lista das telas de Demografia.
+const UNITS = (demoCfg as any).UNITS;
+const json = (o: any) => JSON.stringify(o).replace(/</g, '\\u003c');
+const inicio = `window.SW_PAGE=${json({ p: aba, lv })};window.SW_CFG=${json(config)};window.SW_SAUDE=${json(dados)};window.SW_DATA={UNITS:${json(UNITS)}};`;
+---
+<Base titulo={titulo} descricao={descricao} temaAtual="saude">
+  <div class="dss">
+    <main class="wrap">
+      <div class="crumb" id="crumb"></div>
+      <h1 class="title" id="title">{config.paginas[lv].geral[0]}</h1>
+      <div id="lvl"></div>
+      <div id="tabs"></div>
+      <div id="body"></div>
+    </main>
+  </div>
+  <div class="conteudo dss-anuncio"><EspacoAnuncio posicao="abaixo-ranking" /></div>
+  <script is:inline set:html={inicio}></script>
+  <script is:inline src="/saude/js/base.js"></script>
+  <script is:inline src="/saude/js/molde-economia.js"></script>
+  <script is:inline src="/demografia/js/geo-br.js"></script>
+  {uf && <script is:inline src="/saude/js/geo-mun-sp.js"></script>}
+  <script is:inline src="/saude/js/molde-saude.js"></script>
+  <script is:inline>(function go(){ (window.SWH&&window.SW&&window.SW2&&window.SW_GEO&&(window.SW_GEO_MUN||window.SW_PAGE.lv==='BR')&&window.SW_CFG&&window.SW_DATA)?SWH.mount():setTimeout(go,30); })();</script>
+</Base>
+
+<style>
+  .dss-anuncio { padding-bottom: 64px; }
+</style>

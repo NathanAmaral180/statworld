@@ -1,0 +1,13 @@
+---
+// Saúde do Brasil por estado: telas fiéis ao design da rodada 7. As abas e os endereços vêm de
+// src/config/temas/saude-design.json (rotas.BR); abas sem página ainda aparecem "em breve" na navegação.
+import PaginaSaudeDesign from '../../componentes/saude/PaginaSaudeDesign.astro';
+import pais from '../../config/paises/brasil.json';
+import cfg from '../../config/temas/saude-design.json';
+
+export function getStaticPaths() {
+  return Object.entries(cfg.rotas.BR).map(([aba, rota]) => ({ params: { aba: rota.replace(/^\/saude\/?/, '') || undefined }, props: { aba } }));
+}
+const { aba } = Astro.props;
+---
+<PaginaSaudeDesign pais={pais} aba={aba} />

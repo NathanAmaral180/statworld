@@ -87,6 +87,12 @@
       "estado": "brasil-estados",
       "censo": "brasil-estados-censo",
       "series": "brasil-series"
+    },
+    "saude": {
+      "vital": "brasil-vital",
+      "rede": "brasil-rede",
+      "planos": "brasil-planos",
+      "pns": "brasil-pns"
     }
   },
   "mapa": {
@@ -246,7 +252,10 @@
           "demografia": "brasil-municipios",
           "demografiaCenso": "brasil-municipios-censo",
           "demografiaVital": "brasil-municipios-vital",
-          "demografiaPiramides": "brasil-sp-piramides"
+          "demografiaPiramides": "brasil-sp-piramides",
+          "saudeVital": "brasil-sp-vital",
+          "saudeRede": "brasil-sp-rede",
+          "saudePlanos": "brasil-sp-planos"
         },
         "demografiaDesign": true
       }

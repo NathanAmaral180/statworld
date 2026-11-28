@@ -47,4 +47,8 @@ Aqui ficam **todos os números do site**. Nenhuma página tem número escrito de
 | `demografia/brasil-series.json` | Pirâmides 1980–2070, projeção 2000–2070, Registro Civil 2015–2024 e migração (Brasil e estados) | `scripts/demografia-series/` |
 | `demografia/brasil-municipios-vital.json` | Nascimentos e óbitos do último ano, por município | `scripts/demografia-series/` |
 | `demografia/brasil-sp-piramides.json` | Pirâmide etária (Censo 2022) de cada município de SP | `scripts/piramides-municipios/` |
+| `saude/brasil-vital.json` · `saude/brasil-sp-vital.json` | Nascimentos, mortes (por causa, padronizadas), mortalidade infantil e materna, Brasil/estados 2015–2025 e municípios | `scripts/saude-vital/` |
+| `saude/brasil-rede.json` · `saude/brasil-sp-rede.json` | Médicos, enfermeiros e leitos por habitante (CNES) | `scripts/saude-rede/` |
+| `saude/brasil-planos.json` · `saude/brasil-sp-planos.json` | Beneficiários de planos de saúde (ANS) | `scripts/saude-planos/` |
+| `saude/brasil-pns.json` | Pesquisa Nacional de Saúde 2019 (IBGE) | `scripts/saude-pns/` |
 | `infraestrutura/brasil-ferrovias.json` | Ferrovias: traçado (GeoJSON) e situação, bitola, concessão de cada trecho | `scripts/ferrovias/` |

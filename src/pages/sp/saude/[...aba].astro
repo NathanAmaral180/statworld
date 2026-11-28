@@ -1,0 +1,13 @@
+---
+// Saúde de São Paulo por município (e a ficha de cada município): telas fiéis ao design da rodada 7.
+// Abas e endereços: src/config/temas/saude-design.json (rotas.SP).
+import PaginaSaudeDesign from '../../../componentes/saude/PaginaSaudeDesign.astro';
+import pais from '../../../config/paises/brasil.json';
+import cfg from '../../../config/temas/saude-design.json';
+
+export function getStaticPaths() {
+  return Object.entries(cfg.rotas.SP).map(([aba, rota]) => ({ params: { aba: rota.replace(/^\/sp\/saude\/?/, '') || undefined }, props: { aba } }));
+}
+const { aba } = Astro.props;
+---
+<PaginaSaudeDesign pais={pais} aba={aba} uf="SP" />

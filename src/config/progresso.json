@@ -88,6 +88,24 @@
       "situacao": "No ar e fiel ao design: 9 abas do Brasil, SP (visão geral, crescimento em pontos, ficha do município) e as demais abas de SP no molde de estado"
     },
     {
+      "id": "saude",
+      "nome": "Saúde (3º tema)",
+      "detalhe": "12 abas do design (rodada 7), Brasil por estado e SP por município",
+      "peso": 15,
+      "pct": 50,
+      "situacao": "Fase 1 no ar e fiel ao design: Visão geral, Causas de morte, Mortalidade infantil e materna, Nascimentos, Como as pessoas estão, Rede de saúde e Planos, no Brasil e em SP, com a ficha de cada município",
+      "falta": [
+        "Vacinação (SI-PNI)",
+        "Doenças semana a semana (dengue)",
+        "Internações e procedimentos (SIH/SIA)",
+        "Gasto público (SIOPS)",
+        "Tempo até o hospital",
+        "Causas de morte por idade e sexo",
+        "Série dos planos 2000–2026",
+        "Outros estados por município"
+      ]
+    },
+    {
       "id": "seletor-pais",
       "nome": "Seletor de país",
       "peso": 5,
@@ -125,6 +143,18 @@
     }
   ],
   "historico": [
+    {
+      "data": "2026-11-28",
+      "titulo": "Saúde no ar (fase 1)",
+      "de": 69.6,
+      "para": 67.4,
+      "itens": [
+        "Novo tema Saúde, fiel ao design: 7 abas com dados do Ministério da Saúde (SIM, SINASC, CNES), da ANS e da Pesquisa Nacional de Saúde do IBGE",
+        "Brasil por estado e São Paulo por município, com ficha de saúde de cada cidade",
+        "Regras do design para cidades pequenas: média de 3 anos e aviso de poucos casos; morte materna com faixa provável",
+        "O % geral caiu porque a Saúde entrou no plano como etapa nova (peso 15)"
+      ]
+    },
     {
       "data": "2026-11-27",
       "titulo": "Demografia fiel ao design",
